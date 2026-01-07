@@ -1,0 +1,176 @@
+:root {
+  --azul: #143a5c;
+  --laranja: #ff7a18;
+  --amarelo: #ffcc33;
+  --fundo: #f5f7fa;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  background: var(--fundo);
+  color: #333;
+}
+
+.topo {
+  background: white;
+  border-bottom: 4px solid var(--azul);
+  padding: 15px 10%;
+}
+
+
+
+
+nav a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: var(--azul);
+  font-weight: 600;
+  padding-bottom: 5px;
+}
+
+nav a:hover {
+  color: var(--laranja);
+  border-bottom: 2px solid var(--laranja);
+}
+
+main {
+  padding: 50px 10%;
+}
+
+.destaque {
+  background: white;
+  border-left: 6px solid var(--laranja);
+  padding: 30px;
+  border-radius: 14px;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  text-align: center;
+  font-size: 1.1em;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  background: var(--azul);
+  color: white;
+  margin-top: 60px;
+}
+
+
+.barra-topo {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.logo {
+  height: 150px;
+  flex-shrink: 0;
+}
+
+.bloco-texto h1 {
+  margin: 0;
+  color: var(--azul);
+  font-size: 2em;
+}
+
+.bloco-texto p {
+  margin: 5px 0 8px;
+  color: var(--azul);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.5em;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 1.2em;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+}
+
+.menu a:hover {
+  color: var(--laranja);
+  border-bottom: 2px solid var(--laranja);
+}
+
+
+.conteudo {
+  background: white;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.conteudo h3 {
+  color: var(--azul);
+  margin-top: 40px;
+  border-left: 6px solid var(--amarelo);
+  padding-left: 12px;
+}
+
+.conteudo ul {
+  margin-left: 25px;
+  line-height: 1.7;
+}
+
+.conteudo li {
+  margin-bottom: 8px;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 1em;
+}
+
+.tabela th {
+  background: var(--azul);
+  color: white;
+  padding: 12px;
+}
+
+.tabela td {
+  background: #fdfdfd;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.tabela tr:hover td {
+  background: #f0f4f8;
+}
+
+.imagem-conteudo {
+  display: block;
+  max-width: 700px;
+  width: 100%;
+  margin: 25px auto 35px;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}

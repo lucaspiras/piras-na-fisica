@@ -1,0 +1,101 @@
+/* ===== AJUSTES DO CONVERSOR (ALINHADO AO SITE) ===== */
+
+.conversor-card {
+ text-align: left;
+
+}
+
+/* Destaque laranja lateral (assinatura visual) */
+.conversor-principal {
+  border-left: 4px solid #f97316;
+}
+
+.conversor-personalizado {
+  border-left: 4px solid #f97316;
+}
+
+/* Ajustes de formulário */
+.conversor-card label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+.conversor-card input,
+.conversor-card select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+/* Botões no padrão do site */
+.conversor-card button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 18px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Hover sutil */
+.conversor-card button:hover {
+  box-shadow: inset 0 -3px 0 #f97316;
+}
+
+/* Resultado */
+#resultado {
+  margin-top: 15px;
+  padding: 12px;
+  background-color: #f1f5f9;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.mensagem-unidade {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  min-height: 1.5em;
+}
+
+.mensagem-unidade.erro {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+.mensagem-unidade.sucesso {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #86efac;
+}
+
+.grid-conversor {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+} 
+
+@media (max-width: 768px) {
+  .grid-conversor {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
