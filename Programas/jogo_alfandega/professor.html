@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Modo Professor | Ilha Misteriosa</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>🔐 Modo Professor</h1>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <label>Escolha a regra:</label>
+      <select id="regraSelecionada" onchange="trocarRegra()">
+  <optgroup label="Lógica simples">
+    <option value="c">Começa com C</option>
+    <option value="par">Número par de letras</option>
+    <option value="impar">Número ímpar de letras</option>
+  </optgroup>
+
+  <optgroup label="Padrões da linguagem">
+    <option value="repetida">Letra repetida</option>
+    <option value="duasVogais">Duas vogais seguidas</option>
+    <option value="semVogal">Sem vogais</option>
+  </optgroup>
+
+  <optgroup label="Ciência">
+    <option value="energia">Conceitos de energia</option>
+  </optgroup>
+</select>
+
+    </select>
+
+    <br><br>
+    <button onclick="novaRodada()">🔄 Nova Rodada</button>
+
+    <p><strong>Obs:</strong> os alunos não veem esta tela.</p>
+  </div>
+
+</div>
+
+<script src="script_jogo_ilha.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerador de Gráficos — Portal de Física</title>
+
+  <!-- Caminhos absolutos -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Bibliotecas -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjs@11/lib/browser/math.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div id="header"></div>
+<script src="/js/include.js"></script>
+
+<main>
+
+  <section class="destaque">
+    <h2>Gerador de Gráficos</h2>
+    <p>Digite uma função do tipo <strong>f(x)</strong></p>
+  </section>
+
+  <section class="conteudo app-container">
+
+    <div class="app-card">
+
+  <div class="linha-inputs">
+
+    <div class="campo">
+      <label>Funções (separadas por ponto e vírgula)</label>
+      <input type="text" id="equacao" value="x^2; 2*x+1">
+    </div>
+
+    <div class="campo">
+      <label>Título do gráfico</label>
+      <input type="text" id="tituloGrafico" value="Gráfico das funções">
+    </div>
+
+    <div class="campo">
+      <label>Título eixo X</label>
+      <input type="text" id="tituloX" value="x">
+    </div>
+
+    <div class="campo">
+      <label>Título eixo Y</label>
+      <input type="text" id="tituloY" value="f(x)">
+    </div>
+
+  </div>
+
+  <br>
+
+  <div class="linha-inputs">
+
+    <div class="campo">
+      <label>x mínimo</label>
+      <input type="number" id="xmin" value="-10">
+    </div>
+
+    <div class="campo">
+      <label>x máximo</label>
+      <input type="number" id="xmax" value="10">
+    </div>
+
+    <div class="campo">
+      <label>Passo</label>
+      <input type="number" id="passo" value="1">
+    </div>
+
+    <div class="campo">
+      <label>Largura (px)</label>
+      <input type="number" id="larguraGrafico" value="800">
+    </div>
+
+    <div class="campo">
+      <label>Altura (px)</label>
+      <input type="number" id="alturaGrafico" value="500">
+    </div>
+
+   <div class="campo">
+    <label>Modo</label>
+    <select id="modo">
+      <option value="normal">Funções normais</option>
+      <option value="cinematica">Cinemática (s, v, a)</option>
+    </select>
+    </div>
+   
+   
+    <div class="campo">
+      <button class="botao-principal" onclick="gerarGrafico()">
+        Gerar gráfico
+      </button>
+    </div>
+
+    <div class="campo">
+      <button class="botao-secundario" onclick="baixarImagem()">
+        Baixar imagem
+      </button>
+    </div>
+
+  </div>
+
+</div>
+  </div>
+
+  <div class="area-grafico">
+    <canvas id="graficoCanvas"></canvas>
+  </div>
+
+</section>
+
+ 
+
+</main>
+
+<footer>
+  <p>© 2025 — Portal de Física</p>
+</footer>
+
+<script src="/programas/gerador_graficos/js/grafico.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+/* ---------- LAYOUT PRINCIPAL ---------- */
+.ilha-layout {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* ---------- COLUNA ENTRADA ---------- */
+.ilha-entrada {
+  flex: 1;
+}
+
+.ilha-instrucao p {
+  margin-bottom: 10px;
+}
+
+.ilha-form {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.ilha-form input {
+  flex: 1;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+/* ---------- BOTÃO ---------- */
+.btn-enviar {
+  background: linear-gradient(
+    135deg,
+    var(--laranja),
+    var(--azul)
+  );
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-enviar:hover {
+  opacity: 0.9;
+}
+
+/* ---------- FEEDBACK ---------- */
+.feedback {
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+/* ---------- LISTAS ---------- */
+.ilha-listas {
+  flex: 1;
+}
+
+.lista-bloco {
+  margin-bottom: 25px;
+}
+
+.lista-bloco h3 {
+  margin-bottom: 8px;
+  border-bottom: 2px solid var(--azul);
+  padding-bottom: 4px;
+}
+
+.lista-bloco ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.lista-bloco li {
+  padding: 4px 0;
+  border-bottom: 1px dotted #ccc;
+}
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 900px) {
+  .ilha-layout {
+    flex-direction: column;
+  }
+
+  .ilha-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-enviar {
+    width: 100%;
+  }
+}

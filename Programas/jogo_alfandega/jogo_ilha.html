@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Ilha Misteriosa | Piras na Física</title>
+  <link rel="stylesheet" href="/Programas/jogo_alfandega/style_jogo_ilha.css">
+   <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div id="header"></div>
+<script src="/js/include.js"></script>
+ 
+  <main class="container">
+
+  <section class="page-title">
+    <h2>🏝️ Ilha Misteriosa</h2>
+    <p class="descricao">
+      Descubra a regra secreta do fiscal da alfândega.
+    </p>
+  </section>
+
+  <!-- ÁREA PRINCIPAL -->
+  <section class="ilha-layout">
+
+    <!-- COLUNA ESQUERDA -->
+    <div class="ilha-entrada">
+
+      <div class="ilha-instrucao">
+        <p><strong>Qual objeto você quer levar para a ilha?</strong></p>
+      </div>
+
+      <div class="ilha-form">
+        <input type="text" id="objeto" placeholder="Digite um objeto">
+        <button class="btn-enviar" onclick="verificar()">
+          ➜ Enviar para a alfândega
+        </button>
+      </div>
+
+      <p id="resposta" class="feedback"></p>
+
+    </div>
+
+    <!-- COLUNA DIREITA -->
+    <div class="ilha-listas">
+
+      <div class="lista-bloco">
+        <h3>Permitidos (<span id="qtdPermitidos">0</span>)</h3>
+        <ul id="listaPermitidos"></ul>
+      </div>
+
+      <div class="lista-bloco">
+        <h3>Proibidos (<span id="qtdProibidos">0</span>)</h3>
+        <ul id="listaProibidos"></ul>
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+  <script src="/Programas/jogo_alfandega/script_jogo_ilha.js"></script>
+</body>
+</html>

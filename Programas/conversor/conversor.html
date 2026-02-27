@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conversor de Unidades — Piras na Física</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/Programas/conversor/conversor.css">
+</head>
+
+<body>
+
+<div id="header"></div>
+<script src="/js/include.js"></script>
+
+<main class="pagina-larga">
+
+  <section class="pagina-header">
+    <h1>Conversor de Unidades</h1>
+    <p class="pagina-sub">
+      Transforme unidades do Sistema Internacional e de outros sistemas de forma rápida.
+    </p>
+  </section>
+
+  <section class="conversor-grid">
+
+    <!-- CARD 1: CONVERSOR -->
+    <div class="conversor-card conversor-principal">
+
+      <h2>Conversor de unidades</h2>
+
+      <label for="grandeza">Grandeza</label>
+      <select id="grandeza"></select>
+
+      <label for="valor">Valor</label>
+      <input type="number" id="valor" step="any">
+
+      <div class="linha-dupla">
+        <div>
+          <label for="unidadeOrigem">De</label>
+          <select id="unidadeOrigem"></select>
+        </div>
+
+        <div>
+          <label for="unidadeDestino">Para</label>
+          <select id="unidadeDestino"></select>
+        </div>
+      </div>
+
+      <button class="btn-hero" onclick="converter()">Converter</button>
+
+      <div id="resultado" class="resultado"></div>
+
+    </div>
+
+    <!-- CARD 2: UNIDADE PERSONALIZADA -->
+    <div class="conversor-card conversor-personalizado">
+
+      <h2>Adicionar unidade personalizada</h2>
+
+      <label for="nomeUnidade">Nome da unidade</label>
+      <input type="text" id="nomeUnidade">
+
+      <label for="fatorSI">Equivale a quantos SI?</label>
+      <input type="number" id="fatorSI" step="any">
+
+      <button class="btn-secundario" onclick="adicionarUnidade()">
+        Adicionar unidade
+      </button>
+
+      <div id="mensagemUnidade" class="mensagem-unidade" aria-live="polite"></div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<script type="module" src="/Programas/conversor/interface.js"></script>
+ <script src="/js/include.js"></script>
+
+</body>
+</html>
