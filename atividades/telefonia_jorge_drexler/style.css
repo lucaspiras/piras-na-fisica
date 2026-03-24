@@ -1,0 +1,232 @@
+/* =====================================
+   ATIVIDADE – MODELO INSTITUCIONAL
+   Versão otimizada para 2 páginas A4
+===================================== */
+
+/* RESET */
+* {
+  box-sizing: border-box;
+}
+
+/* BASE */
+body {
+  margin: 0;
+  background: #e5e7eb;
+  font-family: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+  font-size: 11pt;
+  line-height: 1.45;
+  color: #000;
+}
+
+/* CONTAINER A4 */
+.plano {
+  width: 210mm;
+  margin: 0 auto 20mm;
+  padding: 12mm 22mm 18mm;
+  background: #ffffff;
+
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.04),
+              0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   HEADER INSTITUCIONAL
+========================= */
+
+.plano-header-institucional {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 6mm;
+}
+
+.logo-institucional {
+  max-width: 70mm;
+  height: auto;
+}
+
+/* =========================
+   IDENTIFICAÇÃO
+========================= */
+
+.identificacao {
+  margin-top: 4mm;
+  margin-bottom: 6mm;
+}
+
+.linha {
+  display: flex;
+  gap: 12mm;
+  margin-bottom: 4mm;
+}
+
+.campo {
+  display: flex;
+  align-items: baseline;
+  gap: 3mm;
+}
+
+.campo.grande {
+  flex: 2;
+}
+
+.campo.pequena {
+  flex: 1;
+}
+
+.label {
+  font-weight: 600;
+}
+
+.valor {
+  flex: 1;
+  border-bottom: 1px solid #000;
+  min-height: 4mm;
+}
+
+/* =========================
+   TÍTULOS
+========================= */
+
+.titulo-documento {
+  text-align: center;
+  margin: 0;
+}
+
+h1.titulo-documento {
+  font-size: 20pt;
+  font-weight: 700;
+  margin-bottom: 4mm;
+}
+
+.plano-conteudo h2 {
+  font-size: 13.5pt;
+  margin-top: 6mm;
+  margin-bottom: 3mm;
+  border-bottom: 1px solid #000;
+  padding-bottom: 2mm;
+}
+
+.plano-conteudo h3 {
+  font-size: 12pt;
+  margin-top: 5mm;
+  margin-bottom: 2mm;
+}
+
+/* =========================
+   PARÁGRAFOS
+========================= */
+
+.plano-conteudo p {
+  margin-bottom: 3mm;
+  text-align: justify;
+}
+
+/* =========================
+   TABELA DA MÚSICA
+========================= */
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 6mm 0 8mm;
+  font-size: 10.3pt;
+  border: 1px solid #000;   /* moldura externa */
+}
+
+thead th {
+  border: 1px solid #000;
+  padding: 3mm;
+  text-align: center;
+  font-weight: 700;
+}
+
+tbody td {
+  border: 1px solid #000;
+  padding: 3mm;
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+/* Permitir quebra natural */
+table {
+  page-break-inside: auto;
+  break-inside: auto;
+}
+
+/* =========================
+   MÚSICA – CSS GRID
+========================= */
+
+.musica {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid #000;
+  margin: 6mm 0 8mm;
+}
+
+.coluna {
+  padding: 4mm;
+  border-right: 1px solid #000;
+}
+
+.coluna:last-child {
+  border-right: none;
+}
+
+.coluna h4 {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 4mm;
+  border-bottom: 1px solid #000;
+  padding-bottom: 2mm;
+}
+
+.texto {
+  font-size: 11pt;
+  line-height: 1.6;
+}
+
+/* Impressão */
+@media print {
+
+  .musica {
+    break-inside: auto;
+  }
+
+  .coluna {
+    break-inside: auto;
+  }
+
+}
+
+/* =========================
+   IMPRESSÃO
+========================= */
+
+@media print {
+
+  body {
+    background: #ffffff;
+  }
+
+  .plano {
+    margin: 0;
+    box-shadow: none !important;
+    padding: 14mm 20mm 18mm;
+  }
+
+  table {
+    border: 1px solid #000;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  p {
+    margin-bottom: 2.5mm;
+  }
+}
