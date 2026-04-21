@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulador Eletrostático</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+</head>
+<body>
+
+<div id="header"></div>
+<script src="/js/include.js"></script>
+
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>⚡ Simulador</h2>
+
+    <div class="section">
+      <label>Carga (µC)</label>
+      <input id="chargeValue" type="number" value="1" step="0.5">
+
+      <button onclick="addCharge(1)">Adicionar carga positiva</button>
+      <button onclick="addCharge(-1)">Adicionar carga negativa</button>
+      <button onclick="deleteSelected()">Excluir carga selecionada</button>
+    </div>
+
+    <div class="section">
+      <h3>Posição</h3>
+      <input id="posX" placeholder="x (cm)">
+      <input id="posY" placeholder="y (cm)">
+      <button onclick="updatePositionFromInputs()">Mover</button>
+    </div>
+
+    <div class="section">
+      <button onclick="toggleField()">Campo elétrico</button>
+    </div>
+
+    <div class="section">
+      <h3>Gráfico do Campo</h3>
+      <label style="display: flex; align-items: center; gap: 8px; margin: 8px 0;">
+        <input type="checkbox" id="showEx" checked> Eₓ
+      </label>
+      <label style="display: flex; align-items: center; gap: 8px; margin: 8px 0;">
+        <input type="checkbox" id="showEy" checked> Eᵧ
+      </label>
+      <label style="display: flex; align-items: center; gap: 8px; margin: 8px 0;">
+        <input type="checkbox" id="showE" checked> |E|
+      </label>
+      <button onclick="gerarGraficoCampo()">Gerar gráficos</button>
+      <button onclick="baixarGraficoCampo()">Baixar gráfico</button>
+    </div>
+
+    <div class="section">
+      <h3>Personalização</h3>
+      <label>Título</label>
+      <input id="graphTitle" type="text" placeholder="Campo Elétrico" value="Campo Elétrico">
+      
+      <label>Eixo X</label>
+      <input id="graphLabelX" type="text" placeholder="Posição x" value="Posição x (m)">
+      
+      <label>Eixo Y</label>
+      <input id="graphLabelY" type="text" placeholder="Campo Elétrico" value="Campo Elétrico (N/C)">
+      
+      <label style="margin-top: 8px;">Cores</label>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+        <div>
+          <small>Eₓ</small>
+          <input id="colorEx" type="color" value="#2f5bea" style="width: 100%; height: 32px; border: none; border-radius: 6px; cursor: pointer;">
+        </div>
+        <div>
+          <small>Eᵧ</small>
+          <input id="colorEy" type="color" value="#fb923c" style="width: 100%; height: 32px; border: none; border-radius: 6px; cursor: pointer;">
+        </div>
+        <div>
+          <small>|E|</small>
+          <input id="colorE" type="color" value="#facc15" style="width: 100%; height: 32px; border: none; border-radius: 6px; cursor: pointer;">
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+  
+ 
+
+  <!-- MAIN AREA -->
+  <div class="main">
+
+    <div class="page-header">
+      <h1>⚡ Simulador de Força Elétrica</h1>
+      <p>Explore a interação entre cargas elétricas em tempo real. Adicione cargas positivas e negativas no espaço, observe as forças atuantes sobre cada carga e analise o campo elétrico gerado. Visualize graficamente como o campo varia ao longo do espaço e compreenda os princípios fundamentais da eletrostática.</p>
+    </div>
+
+    
+    <div class="canvas-and-info">
+      <div class="canvas-container">
+        <canvas id="canvas"></canvas>
+      </div>
+      <div id="infoPanel"></div>
+    </div>
+
+    <div class="graph-area">
+      <h3>Gráfico do Campo Elétrico</h3>
+      <canvas id="graficoCampo"></canvas>
+    </div>
+<div class="tutorial-section">
+      <button class="tutorial-toggle" onclick="toggleTutorial()">
+        <span class="tutorial-icon">▼</span>
+        <span class="tutorial-label">📖 Como usar o simulador</span>
+      </button>
+      <div id="tutorialContent" class="tutorial-content">
+        <div class="tutorial-grid">
+          <div class="tutorial-card">
+            <h4>🎯 Adicionando Cargas</h4>
+            <p><strong>Carga (µC):</strong> Define a magnitude da carga em microcoulombs.</p>
+            <p><strong>Adicionar carga positiva/negativa:</strong> Clique para adicionar cargas aleatoriamente no canvas.</p>
+            <p><strong>Excluir carga selecionada:</strong> Clique em uma carga no canvas para selecioná-la, depois use este botão.</p>
+          </div>
+
+          <div class="tutorial-card">
+            <h4>📍 Posicionamento</h4>
+            <p>Selecione uma carga clicando nela. Os campos <strong>x (cm)</strong> e <strong>y (cm)</strong> mostram sua posição.</p>
+            <p>Modifique os valores e clique em <strong>Mover</strong> para reposicionar, ou arraste direto no canvas.</p>
+          </div>
+
+          <div class="tutorial-card">
+            <h4>🧲 Campo Elétrico</h4>
+            <p>Clique em <strong>Campo elétrico</strong> para mostrar/ocultar as linhas de força do campo.</p>
+            <p>As setas roxas indicam a direção e magnitude do campo em cada ponto.</p>
+          </div>
+
+          <div class="tutorial-card">
+            <h4>📊 Gerando Gráficos</h4>
+            <p>Selecione os componentes desejados (Eₓ, Eᵧ, |E|).</p>
+            <p>Clique em <strong>Gerar gráficos</strong> para visualizar como o campo varia ao longo do eixo x (y = 0).</p>
+            <p>Use <strong>Baixar gráfico</strong> para salvar a imagem.</p>
+          </div>
+
+          <div class="tutorial-card">
+            <h4>🎨 Personalização</h4>
+            <p><strong>Título:</strong> Nome do gráfico.</p>
+            <p><strong>Eixo X/Y:</strong> Nomes dos eixos.</p>
+            <p><strong>Cores:</strong> Escolha a cor de cada componente (Eₓ, Eᵧ, |E|).</p>
+          </div>
+
+          <div class="tutorial-card">
+            <h4>📏 Escala e Gráficos</h4>
+            <p><strong>Escala do Canvas:</strong> 1 pixel = 0.01 cm (100 pixels = 1 cm).</p>
+            <p><strong>Eixo X do Gráfico:</strong> Valores automaticamente arredondados (0, 1, 2... ou 0, 0.1, 0.2...).</p>
+            <p><strong>Componentes:</strong></p>
+            <ul style="margin: 8px 0;">
+              <li><strong>Eₓ:</strong> Componente do campo na direção x</li>
+              <li><strong>Eᵧ:</strong> Componente do campo na direção y</li>
+              <li><strong>|E|:</strong> Magnitude (módulo) do campo elétrico</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script type="module" src="script.js"></script>
+
+</body>
+</html>
