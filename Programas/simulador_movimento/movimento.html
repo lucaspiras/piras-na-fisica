@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Movimento</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+  <aside class="sidebar">
+    <button class="sidebar-scroll-btn" type="button" data-action="scroll-down" title="Rolar para baixo">↓</button>
+    
+    <div class="sidebar-brand">
+      <img src="novo_logo_final.png" alt="Logo Piras na Física" class="sidebar-logo">
+      <div class="sidebar-brand-text">
+        <span class="sidebar-kicker">Simulador</span>
+        <h2>Piras na Física</h2>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Objeto</h3>
+      <button type="button" data-action="add-object">+ Adicionar objeto</button>
+    </div>
+
+    <div class="section">
+      <h3>Visualização</h3>
+      <div class="viz-toggles">
+        <label title="Trajetória"><input type="checkbox" id="trail" checked> T</label>
+        <label title="Velocidade"><input type="checkbox" id="vel" checked> V</label>
+        <label title="Aceleração"><input type="checkbox" id="acc"> A</label>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Tempo</h3>
+      <button type="button" data-action="pause">Pausar</button>
+      <button type="button" data-action="reset-time">Zerar tempo</button>
+      <span class="time-readout" data-label="time">t = 0.00 s</span>
+      <label for="speedControl" data-label="speed">Velocidade: 1.0x</label>
+      <input id="speedControl" type="range" min="0.1" max="3" step="0.1" value="1" data-action="speed">
+    </div>
+
+    <div class="section">
+      <button type="button" data-scenario="clear">Limpar</button>
+    </div>
+
+    <div class="section">
+      <h3>Gráfico</h3>
+      <div class="graph-series">
+        <label>Objeto <select id="graphObjectA"></select></label>
+        <label>Eixo X <select id="graphXA"></select></label>
+        <label>Eixo Y <select id="graphYA"></select></label>
+      </div>
+      <label class="inline-check"><input type="checkbox" id="graphUseB"> Série B</label>
+      <div class="graph-series" id="seriesB" style="display: none;">
+        <label>Objeto <select id="graphObjectB"></select></label>
+        <label>Eixo X <select id="graphXB"></select></label>
+        <label>Eixo Y <select id="graphYB"></select></label>
+      </div>
+      <div class="graph-time-controls">
+        <label>Inicial (s) <input type="number" id="graphTimeMin" step="0.1" placeholder="auto"></label>
+        <label>Final (s) <input type="number" id="graphTimeMax" step="0.1" placeholder="auto"></label>
+      </div>
+      <button type="button" id="exportGraph">Exportar PNG</button>
+    </div>
+
+    <div class="sidebar-spacer"></div>
+  </aside>
+
+  <main class="main">
+    <div class="page-header">
+      <h1>Simulador de Movimento</h1>
+      <p>
+        Explore movimentos definidos por equações. Visualize trajetórias, vetores de velocidade
+        e aceleração em tempo real e construa sua intuição sobre cinemática.
+      </p>
+    </div>
+
+    <div class="workspace" id="workspace">
+      <section class="window-panel panel-canvas" data-window="canvas">
+        <div class="window-header">
+          <h3>Plano de movimento</h3>
+        </div>
+        <div class="window-body">
+          <div class="canvas-container">
+            <canvas id="canvas"></canvas>
+          </div>
+        </div>
+        <button class="resize-handle" type="button" aria-label="Redimensionar painel"></button>
+      </section>
+
+      <section class="window-panel panel-info" data-window="info">
+        <div class="window-header">
+          <h3>Informações</h3>
+        </div>
+        <div class="window-body info-panel" id="infoPanel">
+          <p>Adicione um objeto para começar.</p>
+        </div>
+        <button class="resize-handle" type="button" aria-label="Redimensionar painel"></button>
+      </section>
+
+      <section class="window-panel panel-data" data-window="tables">
+        <div class="window-header">
+          <h3>Tabelas dos objetos</h3>
+          <button class="collapse-toggle" type="button" data-action="collapse-tables" aria-label="Minimizar tabela">
+            <span class="collapse-icon">▼</span>
+          </button>
+        </div>
+        <div class="window-body data-panel" id="objectTables">
+          <p>Adicione até 4 objetos para acompanhar tempo local e posição.</p>
+        </div>
+        <button class="resize-handle" type="button" aria-label="Redimensionar painel"></button>
+      </section>
+
+      <section class="window-panel panel-graph" data-window="graph">
+        <div class="window-header">
+          <h3>Gráficos do movimento</h3>
+        </div>
+        <div class="window-body graph-panel">
+          <canvas id="graphCanvas" width="900" height="320"></canvas>
+        </div>
+        <button class="resize-handle" type="button" aria-label="Redimensionar painel"></button>
+      </section>
+    </div>
+
+    <div class="tutorial-section">
+      <button class="tutorial-toggle" type="button" data-action="tutorial">
+        <span class="tutorial-icon">▼</span>
+        <span>Como usar</span>
+      </button>
+
+      <div id="tutorialContent" class="tutorial-content">
+        <div class="tutorial-grid">
+          <div class="tutorial-card">
+            <h4>Equações</h4>
+            <p>Defina o movimento usando funções do tempo.</p>
+            <p>Ex: <strong>2*cos(t)</strong>, em metros.</p>
+          </div>
+          <div class="tutorial-card">
+            <h4>Velocidade</h4>
+            <p>Mostra a direção e rapidez do movimento.</p>
+          </div>
+          <div class="tutorial-card">
+            <h4>Aceleração</h4>
+            <p>Mostra como a velocidade muda ao longo do tempo.</p>
+          </div>
+          <div class="tutorial-card">
+            <h4>Cenários</h4>
+            <p>Use exemplos prontos para explorar conceitos físicos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div id="equationModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="equationModalTitle">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="equationModalTitle">Editar equações de movimento</h2>
+      <button class="modal-close" type="button" aria-label="Fechar">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="modal-form-group">
+        <label for="modalEqX">Posição X em função do tempo: x(t)</label>
+        <input type="text" id="modalEqX" placeholder="Ex: 2*cos(t)">
+        <small>Use: t, sin, cos, tan, exp, log, sqrt, abs e pi.</small>
+      </div>
+
+      <div class="modal-form-group">
+        <label for="modalEqY">Posição Y em função do tempo: y(t)</label>
+        <input type="text" id="modalEqY" placeholder="Ex: 2*sin(t)">
+        <small>As coordenadas estão em metros: o valor matemático 1 corresponde a 1 m.</small>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-secondary" type="button" data-action="cancel">Cancelar</button>
+      <button class="btn-primary" type="button" data-action="confirm">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>
