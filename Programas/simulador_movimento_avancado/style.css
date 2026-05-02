@@ -685,7 +685,7 @@ canvas {
   background: white;
   border-radius: 16px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  max-width: 500px;
+  max-width: 760px;
   width: 90%;
   max-height: 90vh;
   display: flex;
@@ -800,6 +800,166 @@ canvas {
   color: white;
 }
 
+/* MODAL TABS */
+.modal-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+}
+
+.modal-tab {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.modal-tab:hover {
+  background: #f3f4f6;
+  color: var(--text);
+}
+
+.modal-tab.active {
+  background: var(--azul);
+  color: white;
+}
+
+.modal-tab-content {
+  display: block;
+}
+
+.modal-tab-content[style*="display: none"] {
+  display: none !important;
+}
+
+/* EDO SECTION */
+.edo-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.equation-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.equation-row {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.8fr) minmax(180px, 1.2fr) 32px;
+  gap: 8px;
+  align-items: center;
+}
+
+.equation-lhs {
+  display: grid;
+  grid-template-columns: auto minmax(50px, 1fr) auto;
+  gap: 4px;
+  align-items: center;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: #374151;
+}
+
+.equation-row input {
+  min-width: 0;
+  padding: 9px 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+}
+
+.equation-row input:focus {
+  outline: none;
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgba(47, 91, 234, 0.1);
+}
+
+.equation-remove-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  background: #fee2e2;
+  color: #b91c1c;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.equation-add-btn {
+  align-self: flex-start;
+  padding: 8px 12px;
+}
+
+.edo-section h4 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.edo-hint {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.edo-variables {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid var(--border);
+}
+
+.edo-variables h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+}
+
+.edo-constant-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.edo-constant-row:last-child {
+  margin-bottom: 0;
+}
+
+.edo-constant-row label {
+  min-width: 100px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.edo-constant-row input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+}
+
+.edo-constant-row input:focus {
+  outline: none;
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgba(47, 91, 234, 0.1);
+}
+
 .btn-primary:hover {
   opacity: 0.9;
 }
@@ -865,6 +1025,20 @@ canvas {
   .graph-time-controls {
     grid-template-columns: 1fr;
     width: 100%;
+  }
+
+  .equation-row {
+    grid-template-columns: 1fr 32px;
+  }
+
+  .equation-lhs,
+  .equation-expression-input {
+    grid-column: 1 / 2;
+  }
+
+  .equation-remove-btn {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
   }
 }
 

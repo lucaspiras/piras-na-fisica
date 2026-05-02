@@ -1,7 +1,7 @@
 import { parseEquation } from './engine/mathparser.js';
 import Object2D from './engine/object2D.js';
 import { getTime, resetTime, togglePause as toggleSimulationPause, setSpeed } from './engine/time.js';
-import { render, pixelsToMath, mathToPixels, getPixelsPerMeter, setScale } from './engine/renderer.js';
+import { render, pixelsToMath, mathToPixels, getPixelsPerMeter } from './engine/renderer.js';
 import * as Controls from './ui/controls.js';
 import * as Sidebar from './ui/sidebar.js';
 import * as Modal from './ui/modal.js';
@@ -61,11 +61,20 @@ function getOptions() {
 }
 
 function editObjectEquations(object) {
-  Modal.openEquationModal(object, (target, eqXStr, eqYStr) => {
+  Modal.openEquationModal(object, (target, eqXStr, eqYStr, systemConfig) => {
     try {
-      const eqX = parseEquation(eqXStr);
-      const eqY = parseEquation(eqYStr);
-      target.setEquations(eqX, eqY, eqXStr, eqYStr, getTime());
+      if (systemConfig?.mode === "differential") {
+        // Modo Equação Diferencial
+        systemConfig.timeOffset = getTime();
+        target.setEDOSystem(systemConfig);
+      } else if (systemConfig?.mode === "direct") {
+        target.setDirectSystem(systemConfig.equations, getTime());
+      } else {
+        // Modo Equação Direta
+        const eqX = parseEquation(eqXStr);
+        const eqY = parseEquation(eqYStr);
+        target.setEquations(eqX, eqY, eqXStr, eqYStr, getTime());
+      }
       updateInfoPanel();
       updateObjectTables(getTime());
       drawGraph(getTime());
@@ -174,12 +183,11 @@ function updateInfoPanel() {
   objects.forEach((obj, i) => {
     const status = obj.hasEquation ? "Com equação" : "Sem equação";
     const isSelected = obj === selected ? " selecionado" : "";
-    const eqX = obj.eqXSource || "sem equação";
-    const eqY = obj.eqYSource || "sem equação";
+    const equationSummary = formatObjectEquations(obj);
     info += `<div class="object-info-card${isSelected}">`;
     info += `<strong>Objeto ${i + 1}</strong>`;
     info += `<p>Posição: (${obj.x.toFixed(2)} m, ${obj.y.toFixed(2)} m)</p>`;
-    info += `<p><code>x(t) = ${escapeHtml(eqX)}</code><br><code>y(t) = ${escapeHtml(eqY)}</code></p>`;
+    info += `<p>${equationSummary}</p>`;
     info += `<small>${status}</small>`;
     info += `<div class="object-actions">`;
     info += `<button type="button" data-object-index="${i}" data-object-action="edit">Editar</button>`;
@@ -188,6 +196,30 @@ function updateInfoPanel() {
   });
 
   panel.innerHTML = info;
+}
+
+function formatObjectEquations(obj) {
+  if (obj.edoSystem?.equations?.length) {
+    const differentialEquations = obj.edoSystem.equations
+      .map((eq) => `<code>d${escapeHtml(eq.variable)}/dt = ${escapeHtml(eq.expression)}</code>`)
+      .join("<br>");
+    const algebraicEquations = obj.edoSystem.algebraicEquations?.length
+      ? "<br>" + obj.edoSystem.algebraicEquations
+        .map((eq) => `<code>${escapeHtml(eq.variable)} = ${escapeHtml(eq.expression)}</code>`)
+        .join("<br>")
+      : "";
+    return differentialEquations + algebraicEquations;
+  }
+
+  if (obj.directSystem?.length) {
+    return obj.directSystem
+      .map((eq) => `<code>${escapeHtml(eq.variable)}(t) = ${escapeHtml(eq.expression)}</code>`)
+      .join("<br>");
+  }
+
+  const eqX = obj.eqXSource || "sem equação";
+  const eqY = obj.eqYSource || "sem equação";
+  return `<code>x(t) = ${escapeHtml(eqX)}</code><br><code>y(t) = ${escapeHtml(eqY)}</code>`;
 }
 
 function updateObjectTables(t) {

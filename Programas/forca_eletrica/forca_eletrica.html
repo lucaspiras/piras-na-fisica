@@ -42,6 +42,15 @@
     </div>
 
     <div class="section">
+      <h3>Escala</h3>
+      <select id="scaleSelect" onchange="updateScale()">
+        <option value="1">1 pixel = 1 cm</option>
+        <option value="10">1 pixel = 10 cm</option>
+        <option value="100" selected>1 pixel = 1 m</option>
+      </select>
+    </div>
+
+    <div class="section">
       <h3>Gráfico do Campo</h3>
       <label style="display: flex; align-items: center; gap: 8px; margin: 8px 0;">
         <input type="checkbox" id="showEx" checked> Eₓ

@@ -1,21 +1,7 @@
 // engine/renderer.js
 
-// Escala visual: 1 metro no sistema matemático = pixels no canvas.
-// Valor padrão: 50 pixels = 1 m
-let PIXELS_PER_METER = 50;
-
-// Escala alternativa: 1 pixel = 1 cm (100 pixels = 1 m)
-let pixelsPerUnit = 100;  // 100 pixels = 1 m (padrão)
-
-export function setScale(value) {
-  pixelsPerUnit = parseInt(value);
-  // Atualiza PIXELS_PER_METER baseado na escala
-  PIXELS_PER_METER = pixelsPerUnit;
-}
-
-export function getScale() {
-  return pixelsPerUnit;
-}
+// Escala visual: 1 metro no sistema matematico = 50 pixels no canvas.
+const PIXELS_PER_METER = 50;
 
 export function drawGrid(ctx, canvas) {
   const centerX = canvas.width / 2;

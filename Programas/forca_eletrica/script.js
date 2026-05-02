@@ -25,6 +25,7 @@ const COLORS = {
   positive: "#fb923c",   // laranja para cargas positivas
   negative: "#2f5bea",   // azul para cargas negativas
   force: "#facc15",      // amarelo para o vetor de força resultante
+  forceIndividual: "#ef4444", // vermelho para forças individuais
   field: "rgba(106,47,232,0.5)", // roxo semi-transparente para o campo elétrico
   axis: "#9ca3af",       // cinza para os eixos coordenados
   selected: "#1e2a78"    // azul escuro para destacar uma carga selecionada
@@ -42,6 +43,10 @@ let dragging = null;
 
 // Flag que controla se o campo elétrico deve ser visualizado
 let showField = true;
+
+// Escala do simulador (pixels por unidade de distância)
+// 1 = 1 pixel = 1 cm, 10 = 1 pixel = 10 cm, 100 = 1 pixel = 1 m
+let pixelsPerUnit = 100;
 
 // =================== REFERÊNCIAS AOS INPUTS ===================
 // Input que controla a magnitude da carga a ser criada
@@ -102,33 +107,36 @@ function formatSci(num) {
 }
 
 /**
- * Converte coordenadas do canvas (pixels) para coordenadas do mundo físico (metros)
+ * Converte coordenadas do canvas (pixels) para coordenadas do mundo físico
  * O canvas tem origem (0,0) no topo-esquerdo, mas a física usa origem no centro
  * Eixo Y é invertido no canvas (positivo para baixo), mas é positivo para cima na física
  * 
  * @param {number} x - Coordenada x no canvas (pixels)
  * @param {number} y - Coordenada y no canvas (pixels)
- * @returns {Object} Objeto com coordenadas {x, y} no sistema de coordenadas do mundo físico (metros)
+ * @returns {Object} Objeto com coordenadas {x, y} no sistema de coordenadas do mundo físico
  */
 function toWorld(x, y) {
+  // Converte pixels para metros usando a escala
+  // pixelsPerUnit: 1 = 1 cm, 10 = 10 cm, 100 = 1 m
   return {
-    x: x - canvas.width / 2,      // Centraliza x: subtrai metade da largura
-    y: canvas.height / 2 - y      // Inverte e centraliza y: usa metade altura menos y
+    x: (x - canvas.width / 2) / pixelsPerUnit,
+    y: (canvas.height / 2 - y) / pixelsPerUnit
   };
 }
 
 /**
- * Converte coordenadas do mundo físico (metros) para o canvas (pixels)
+ * Converte coordenadas do mundo físico para o canvas (pixels)
  * É o inverso da função toWorld()
  * 
- * @param {number} x - Coordenada x no sistema de mundo (metros)
- * @param {number} y - Coordenada y no sistema de mundo (metros)
+ * @param {number} x - Coordenada x no sistema de mundo
+ * @param {number} y - Coordenada y no sistema de mundo
  * @returns {Object} Objeto com coordenadas {x, y} no canvas (pixels)
  */
 function toCanvas(x, y) {
+  // Converte metros para pixels usando a escala
   return {
-    x: x + canvas.width / 2,      // Descentraliza x: adiciona metade da largura
-    y: canvas.height / 2 - y      // Inverte novamente: usa metade altura menos y
+    x: x * pixelsPerUnit + canvas.width / 2,
+    y: canvas.height / 2 - y * pixelsPerUnit
   };
 }
 
@@ -259,6 +267,14 @@ function toggleField() {
   showField = !showField;
 }
 
+/**
+ * Atualiza a escala do simulador baseado na seleção do usuário
+ */
+function updateScale() {
+  const select = document.getElementById("scaleSelect");
+  pixelsPerUnit = parseInt(select.value);
+}
+
 
 // =================== FUNÇÕES DE DESENHO DO CAMPO ELÉTRICO ===================
 /**
@@ -330,88 +346,236 @@ function drawField() {
 // =================== FUNÇÕES DE DESENHO DOS EIXOS ===================
 /**
  * Desenha os eixos coordenados (x e y) no centro do canvas
- * Mostra visualmente onde está a origem (0, 0)
+ * Com marcas e valores de distância baseados na escala atual
  */
 function drawAxes() {
-  // Define a cor e espessura das linhas dos eixos
+  // Cor e espessura das linhas dos eixos
   ctx.strokeStyle = COLORS.axis;
   ctx.lineWidth = 1.2;
 
   // Desenha o eixo x (horizontal) no meio do canvas
   ctx.beginPath();
-  ctx.moveTo(0, canvas.height/2);              // Começa na esquerda
-  ctx.lineTo(canvas.width, canvas.height/2);  // Vai até a direita
+  ctx.moveTo(0, canvas.height/2);
+  ctx.lineTo(canvas.width, canvas.height/2);
   ctx.stroke();
 
   // Desenha o eixo y (vertical) no meio do canvas
   ctx.beginPath();
-  ctx.moveTo(canvas.width/2, 0);              // Começa no topo
-  ctx.lineTo(canvas.width/2, canvas.height);  // Vai até o fundo
+  ctx.moveTo(canvas.width/2, 0);
+  ctx.lineTo(canvas.width/2, canvas.height);
   ctx.stroke();
+
+  // Configurações para as marcas e labels
+  ctx.fillStyle = "#6b7280";
+  ctx.font = "11px Inter";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "top";
+
+  // Centro do canvas
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  
+  // Determina a unidade e espaçamento baseado na escala
+  let unit, spacing, unitLabel;
+  if (pixelsPerUnit === 1) {
+    // 1 pixel = 1 cm
+    unit = "cm";
+    spacing = 100;  // 100 cm = 1 m
+    unitLabel = "cm";
+  } else if (pixelsPerUnit === 10) {
+    // 1 pixel = 10 cm
+    unit = "cm";
+    spacing = 10;  // 10 pixels = 100 cm = 1 m
+    unitLabel = "m";
+  } else {
+    // 1 pixel = 1 m
+    unit = "m";
+    spacing = 100;  // 100 pixels = 100 m
+    unitLabel = "m";
+  }
+  
+  // Desenha marcas no eixo X (direita do centro)
+  for (let px = centerX + spacing; px < canvas.width; px += spacing) {
+    const value = Math.round((px - centerX) / pixelsPerUnit);
+    if (value > 0) {
+      // Marca
+      ctx.beginPath();
+      ctx.moveTo(px, centerY - 5);
+      ctx.lineTo(px, centerY + 5);
+      ctx.stroke();
+      // Label
+      const label = pixelsPerUnit >= 100 ? (value / 100) + " " + unitLabel : value + " " + unit;
+      ctx.fillText(label, px, centerY + 8);
+    }
+  }
+  
+  // Desenha marcas no eixo X (esquerda do centro)
+  for (let px = centerX - spacing; px > 0; px -= spacing) {
+    const value = Math.round((centerX - px) / pixelsPerUnit);
+    if (value > 0) {
+      ctx.beginPath();
+      ctx.moveTo(px, centerY - 5);
+      ctx.lineTo(px, centerY + 5);
+      ctx.stroke();
+      const label = pixelsPerUnit >= 100 ? (value / 100) + " " + unitLabel : value + " " + unit;
+      ctx.fillText("-" + label, px, centerY + 8);
+    }
+  }
+
+  // Marca o eixo Y (para cima do centro - valores positivos)
+  ctx.textAlign = "right";
+  ctx.textBaseline = "middle";
+  
+  for (let py = centerY - spacing; py > 0; py -= spacing) {
+    const value = Math.round((centerY - py) / pixelsPerUnit);
+    if (value > 0) {
+      ctx.beginPath();
+      ctx.moveTo(centerX - 5, py);
+      ctx.lineTo(centerX + 5, py);
+      ctx.stroke();
+      const label = pixelsPerUnit >= 100 ? (value / 100) + " " + unitLabel : value + " " + unit;
+      ctx.fillText(label, centerX - 8, py);
+    }
+  }
+  
+  // Marca o eixo Y (para baixo do centro - valores negativos)
+  for (let py = centerY + spacing; py < canvas.height; py += spacing) {
+    const value = Math.round((py - centerY) / pixelsPerUnit);
+    if (value > 0) {
+      ctx.beginPath();
+      ctx.moveTo(centerX - 5, py);
+      ctx.lineTo(centerX + 5, py);
+      ctx.stroke();
+      const label = pixelsPerUnit >= 100 ? (value / 100) + " " + unitLabel : value + " " + unit;
+      ctx.fillText("-" + label, centerX - 8, py);
+    }
+  }
+
+  // Label "0" no centro
+  ctx.textAlign = "right";
+  ctx.textBaseline = "top";
+  ctx.fillText("0", centerX - 8, centerY + 8);
 }
 
 // =================== FUNÇÕES DE DESENHO DO VETOR DE FORÇA ===================
 /**
- * Desenha o vetor de força resultante sobre a carga selecionada
- * Mostra visualmente a direção e magnitude da força total atuante
+ * Desenha uma seta representando um vetor de força
+ * 
+ * @param {number} startX - Posição x inicial (pixels)
+ * @param {number} startY - Posição y inicial (pixels)
+ * @param {number} endX - Posição x final (pixels)
+ * @param {number} endY - Posição y final (pixels)
+ * @param {string} color - Cor da seta
+ * @param {number} lineWidth - Espessura da linha
+ * @param {number} arrowSize - Tamanho da ponta da seta
+ */
+function drawArrow(startX, startY, endX, endY, color, lineWidth = 2, arrowSize = 8) {
+  // Desenha a linha da seta
+  ctx.beginPath();
+  ctx.moveTo(startX, startY);
+  ctx.lineTo(endX, endY);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = lineWidth;
+  ctx.stroke();
+
+  // Calcula o ângulo da seta
+  const dx = endX - startX;
+  const dy = endY - startY;
+  const angle = Math.atan2(dy, dx);
+
+  // Desenha a ponta triangular da seta
+  ctx.beginPath();
+  ctx.moveTo(endX, endY);
+  ctx.lineTo(
+    endX - arrowSize * Math.cos(angle - Math.PI/6),
+    endY - arrowSize * Math.sin(angle - Math.PI/6)
+  );
+  ctx.lineTo(
+    endX - arrowSize * Math.cos(angle + Math.PI/6),
+    endY - arrowSize * Math.sin(angle + Math.PI/6)
+  );
+  ctx.closePath();
+  ctx.fillStyle = color;
+  ctx.fill();
+}
+
+/**
+ * Desenha os vetores de força sobre a carga selecionada:
+ * - Setas vermelhas menores para cada força individual
+ * - Seta amarela maior para a força resultante
  * 
  * Funcionamento:
- * 1. Calcula a força resultante sobre a carga selecionada
- * 2. Normaliza o vetor para obter a direção
- * 3. Desenha uma seta amarela apontando nessa direção
- * 4. Adiciona uma ponta triangular na extremidade da seta
+ * 1. Para cada outra carga, calcula a força que ela exerce sobre a carga selecionada
+ * 2. Desenha uma seta vermelha pequena para cada força individual
+ * 3. Calcula e desenha a força resultante em amarelo
  */
 function drawForceVector() {
   // Se nenhuma carga está selecionada, não desenha nada
   if (!selectedCharge) return;
 
-  // Calcula a força resultante sobre a carga selecionada
-  const {fx, fy} = computeNetForce(selectedCharge, charges);
+  // Primeiro, desenha as forças individuais de cada carga
+  let totalFx = 0;
+  let totalFy = 0;
+
+  charges.forEach(otherCharge => {
+    // Ignora a carga selecionada (ela não exerce força sobre si mesma)
+    if (otherCharge === selectedCharge) return;
+
+    // Calcula a força que esta carga exerce sobre a carga selecionada
+    const {x: fx, y: fy} = computeForce(selectedCharge, otherCharge);
+    
+    // Soma para obter a força resultante
+    totalFx += fx;
+    totalFy += fy;
+
+    // Calcula a magnitude desta força individual
+    const mag = Math.sqrt(fx*fx + fy*fy);
+    
+    // Se a força é muito pequena, não desenha
+    if (mag < 1e-10) return;
+
+    // Normaliza o vetor para obter a direção
+    const ux = fx / mag;
+    const uy = -fy / mag; // Inverte y para o canvas
+
+    // Tamanho da seta de força individual (20% maior que antes)
+    const length = Math.min(96, 36 + mag * 0.00015);
+
+    // Desenha a seta individual
+    drawArrow(
+      selectedCharge.x,
+      selectedCharge.y,
+      selectedCharge.x + ux * length,
+      selectedCharge.y + uy * length,
+      COLORS.forceIndividual,
+      2.5,
+      8
+    );
+  });
+
+  // Agora desenha a força resultante
+  const resultMag = Math.sqrt(totalFx*totalFx + totalFy*totalFy);
   
-  // Calcula a magnitude do vetor força
-  const mag = Math.sqrt(fx*fx + fy*fy);
-  
-  // Se a força é praticamente zero, não desenha nada
-  if (mag === 0) return;
+  // Se a força resultante é muito pequena, não desenha
+  if (resultMag < 1e-10) return;
 
-  // Normaliza a força para obter um vetor unitário (apenas direção)
-  // uy é invertido para compensar a inversão do eixo y do canvas
-  const ux = fx / mag;
-  const uy = -fy / mag;
+  // Normaliza a força resultante
+  const ux = totalFx / resultMag;
+  const uy = -totalFy / resultMag;
 
-  // Tamanho da seta em pixels
-  const length = 60;
+  // Tamanho da seta proporcional (30% maior que as vermelhas)
+  const length = 52 + resultMag * 0.00052;  // ~30% maior que a fórmula das vermelhas
 
-  // Calcula o ponto final da seta (partindo do centro da carga)
-  const endX = selectedCharge.x + ux * length;
-  const endY = selectedCharge.y + uy * length;
-
-  // Desenha a linha da seta (saindo do centro da carga até endX, endY)
-  ctx.beginPath();
-  ctx.moveTo(selectedCharge.x, selectedCharge.y);
-  ctx.lineTo(endX, endY);
-  ctx.strokeStyle = COLORS.force;
-  ctx.lineWidth = 3;
-  ctx.stroke();
-
-  // Desenha a ponta triangular da seta
-  const angle = Math.atan2(uy, ux);  // Ângulo da seta
-  const size = 10;                    // Tamanho da ponta
-
-  ctx.beginPath();
-  ctx.moveTo(endX, endY);
-  // Desenha duas linhas que formam o triângulo da ponta
-  ctx.lineTo(
-    endX - size * Math.cos(angle - Math.PI/6),
-    endY - size * Math.sin(angle - Math.PI/6)
+  // Desenha a seta da força resultante
+  drawArrow(
+    selectedCharge.x,
+    selectedCharge.y,
+    selectedCharge.x + ux * length,
+    selectedCharge.y + uy * length,
+    COLORS.force,
+    4,
+    12
   );
-  ctx.lineTo(
-    endX - size * Math.cos(angle + Math.PI/6),
-    endY - size * Math.sin(angle + Math.PI/6)
-  );
-  ctx.closePath();
-  ctx.fillStyle = COLORS.force;
-  ctx.fill();
 }
 
 

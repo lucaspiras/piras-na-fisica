@@ -38,15 +38,6 @@
     </div>
 
     <div class="section">
-      <h3>Escala</h3>
-      <select id="scaleSelect" onchange="updateScale()">
-        <option value="1">1 pixel = 1 cm</option>
-        <option value="10">1 pixel = 10 cm</option>
-        <option value="100" selected>1 pixel = 1 m</option>
-      </select>
-    </div>
-
-    <div class="section">
       <h3>Tempo</h3>
       <button type="button" data-action="pause">Pausar</button>
       <button type="button" data-action="reset-time">Zerar tempo</button>
@@ -177,16 +168,38 @@
     </div>
 
     <div class="modal-body">
-      <div class="modal-form-group">
-        <label for="modalEqX">Posição X em função do tempo: x(t)</label>
-        <input type="text" id="modalEqX" placeholder="Ex: 2*cos(t)">
-        <small>Use: t, sin, cos, tan, exp, log, sqrt, abs e pi.</small>
+      <div class="modal-tabs">
+        <button type="button" class="modal-tab active" data-tab="direct">Equação Direta</button>
+        <button type="button" class="modal-tab" data-tab="differential">Equação Diferencial</button>
       </div>
 
-      <div class="modal-form-group">
-        <label for="modalEqY">Posição Y em função do tempo: y(t)</label>
-        <input type="text" id="modalEqY" placeholder="Ex: 2*sin(t)">
-        <small>As coordenadas estão em metros: o valor matemático 1 corresponde a 1 m.</small>
+      <!-- Aba de Equação Direta -->
+      <div class="modal-tab-content" id="tabDirect">
+        <p class="edo-hint">Defina uma ou mais variáveis em função de t. O sistema precisa conter x e y.</p>
+        <div class="equation-grid" id="directEquationsContainer"></div>
+        <button class="btn-secondary equation-add-btn" type="button" data-action="add-direct-equation">Adicionar equação</button>
+      </div>
+
+      <!-- Aba de Equação Diferencial -->
+      <div class="modal-tab-content" id="tabDifferential" style="display: none;">
+        <div class="edo-section">
+          <h4>Equações Diferenciais</h4>
+          <p class="edo-hint">Defina o sistema de EDOs. Exemplos: dx/dt = vx, dy/dt = vy, dvx/dt = 0, dtheta/dt = omega.</p>
+          <div class="equation-grid" id="differentialEquationsContainer"></div>
+          <button class="btn-secondary equation-add-btn" type="button" data-action="add-differential-equation">Adicionar EDO</button>
+
+          <h4>Equações auxiliares</h4>
+          <p class="edo-hint">Use relações normais calculadas a partir das variáveis das EDOs. Ex: x = r*sen(theta), y = r*cos(theta).</p>
+          <div class="equation-grid" id="algebraicEquationsContainer"></div>
+          <button class="btn-secondary equation-add-btn" type="button" data-action="add-algebraic-equation">Adicionar equação auxiliar</button>
+
+          <div class="edo-variables">
+            <h4>Constantes e Condições Iniciais</h4>
+            <div id="edoConstantsContainer">
+              <p class="edo-hint">Defina as equações acima para ver as constantes disponíveis.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
