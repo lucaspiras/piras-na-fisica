@@ -671,6 +671,163 @@ footer {
   line-height: 1.5;
 }
 
+/* =========================
+   ATIVIDADES – LISTA
+========================= */
+
+.atividades-main {
+  background: var(--fundo-claro);
+  padding: 2rem 0;
+}
+
+.atividades-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.atividades-container h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: var(--texto);
+}
+
+.atividades-intro {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2.5rem;
+}
+
+/* Tópico Grande (ex: Cinemática) */
+.topico-grande {
+  margin-bottom: 2.5rem;
+}
+
+.topico-titulo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--azul);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Subtópico (ex: MRU) */
+.subtopico {
+  background: #ffffff;
+  border-left: 4px solid var(--roxo);
+  border-radius: 8px;
+  padding: 1.8rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.subtopico-titulo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--roxo);
+  margin-bottom: 1.2rem;
+}
+
+/* Lista de Atividades */
+.atividades-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.atividades-lista li {
+  margin-bottom: 1rem;
+}
+
+/* Link da Atividade */
+.atividade-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem;
+  background: linear-gradient(135deg, rgba(47, 91, 234, 0.04), rgba(106, 47, 232, 0.04));
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--texto);
+  border: 1px solid rgba(106, 47, 232, 0.15);
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.atividade-link:hover {
+  background: linear-gradient(135deg, rgba(47, 91, 234, 0.1), rgba(106, 47, 232, 0.1));
+  border-color: var(--roxo);
+  transform: translateX(4px);
+}
+
+/* Ícone */
+.atividade-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+/* Nome da Atividade */
+.atividade-nome {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--roxo);
+  flex-grow: 1;
+  text-align: left;
+}
+
+/* Seta */
+.atividade-arrow {
+  color: var(--laranja);
+  font-weight: 800;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.atividade-link:hover .atividade-arrow {
+  transform: translateX(6px);
+}
+
+/* Descrição da Atividade */
+.atividade-desc {
+  margin: 0.8rem 3.8rem 0 3.8rem;
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .atividades-container h1 {
+    font-size: 2rem;
+  }
+
+  .topico-titulo {
+    font-size: 1.5rem;
+  }
+
+  .subtopico-titulo {
+    font-size: 1.1rem;
+  }
+
+  .atividade-link {
+    flex-wrap: wrap;
+  }
+
+  .atividade-desc {
+    margin: 0.8rem 0 0 0;
+  }
+}
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
 
 .pagina-larga {
   max-width: 1400px;

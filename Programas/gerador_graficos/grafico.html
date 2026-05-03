@@ -2,10 +2,12 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Gerador de Gráficos — Portal de Física</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Gr&aacute;ficos - Portal de F&iacute;sica</title>
 
   <!-- Caminhos absolutos -->
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="./grafico.css">
 
   <!-- Bibliotecas -->
   <script src="https://cdn.jsdelivr.net/npm/mathjs@11/lib/browser/math.js"></script>
@@ -17,108 +19,144 @@
 <div id="header"></div>
 <script src="/js/include.js"></script>
 
-<main class="pagina-larga">
+<main class="pagina-larga grafico-page">
 
-  <section class="destaque">
-    <h2>Gerador de Gráficos</h2>
-    <p>Digite uma função do tipo <strong>f(x)</strong></p>
+  <section class="destaque grafico-hero">
+    <div>
+      <span class="grafico-kicker">Ferramenta matemática</span>
+      <h2>Gerador de Gráficos</h2>
+      <p>Digite uma ou mais funções do tipo <strong>f(x)</strong> e exporte uma imagem pronta para usar.</p>
+    </div>
   </section>
 
-  <section class="conteudo app-container">
+  <section class="conteudo app-container grafico-app">
+    <div class="app-card painel-controles">
+      <div class="grupo-controles">
+        <div class="campo campo-amplo">
+          <label for="equacao">Funções</label>
+          <input type="text" id="equacao" value="x^2; 2*x+1" placeholder="Ex.: x^2; 2*x+1; sin(x)">
+          <small>Separe várias funções com ponto e ví rgula.</small>
+        </div>
 
-    <div class="app-card">
+        <div class="campo">
+          <label for="modo">Modo</label>
+          <select id="modo">
+            <option value="normal">Funções normais</option>
+            <option value="cinematica">Cinemática (s, v, a)</option>
+          </select>
+        </div>
+      </div>
 
-  <div class="linha-inputs">
+      <div class="grupo-controles grupo-titulos">
+        <div class="campo">
+          <label for="tituloGrafico">Título do gráfico</label>
+          <input type="text" id="tituloGrafico" value="Gráfico das funções">
+        </div>
 
-    <div class="campo">
-      <label>Funções (separadas por ponto e vírgula)</label>
-      <input type="text" id="equacao" value="x^2; 2*x+1">
+        <div class="campo">
+          <label for="tituloX">Título eixo X</label>
+          <input type="text" id="tituloX" value="x">
+        </div>
+
+        <div class="campo">
+          <label for="tituloY">Título eixo Y</label>
+          <input type="text" id="tituloY" value="f(x)">
+        </div>
+      </div>
+
+      <div class="grupo-controles grupo-medidas">
+        <div class="campo campo-curto">
+          <label for="xmin">x mínimo</label>
+          <input type="number" id="xmin" value="-10">
+        </div>
+
+        <div class="campo campo-curto">
+          <label for="xmax">x máximo</label>
+          <input type="number" id="xmax" value="10">
+        </div>
+
+        <div class="campo campo-curto">
+          <label for="passoCurva">Passo da curva</label>
+          <input type="number" id="passoCurva" value="0.001" step="0.001" min="0.0001">
+        </div>
+
+        <div class="campo campo-curto">
+          <label for="passoPontos">Passo dos pontos</label>
+          <input type="number" id="passoPontos" value="1" step="0.1" min="0.0001">
+        </div>
+
+        <div class="campo campo-curto">
+          <label for="larguraGrafico">Largura (px)</label>
+          <input type="number" id="larguraGrafico" value="900" min="320">
+        </div>
+
+        <div class="campo campo-curto">
+          <label for="alturaGrafico">Altura (px)</label>
+          <input type="number" id="alturaGrafico" value="540" min="260">
+        </div>
+
+        <label class="controle-check" for="mostrarPontos">
+          <input type="checkbox" id="mostrarPontos">
+          <span>Mostrar pontos</span>
+        </label>
+
+        <label class="controle-check" for="mostrarGrade">
+          <input type="checkbox" id="mostrarGrade" checked>
+          <span>Mostrar grade</span>
+        </label>
+      </div>
+
+      <div class="grupo-controles grupo-cores">
+        <div class="campo campo-cor">
+          <label for="corSerie1">Cor 1</label>
+          <input type="color" id="corSerie1" class="cor-serie" value="#2563eb">
+        </div>
+
+        <div class="campo campo-cor">
+          <label for="corSerie2">Cor 2</label>
+          <input type="color" id="corSerie2" class="cor-serie" value="#dc2626">
+        </div>
+
+        <div class="campo campo-cor">
+          <label for="corSerie3">Cor 3</label>
+          <input type="color" id="corSerie3" class="cor-serie" value="#16a34a">
+        </div>
+
+        <div class="campo campo-cor">
+          <label for="corSerie4">Cor 4</label>
+          <input type="color" id="corSerie4" class="cor-serie" value="#9333ea">
+        </div>
+
+        <div class="campo campo-cor">
+          <label for="corSerie5">Cor 5</label>
+          <input type="color" id="corSerie5" class="cor-serie" value="#ea580c">
+        </div>
+
+        <div class="campo campo-cor">
+          <label for="corSerie6">Cor 6</label>
+          <input type="color" id="corSerie6" class="cor-serie" value="#0891b2">
+        </div>
+      </div>
+
+      <div class="acoes-grafico">
+        <button class="botao-principal" type="button" onclick="gerarGrafico()">
+          Gerar gr&aacute;fico
+        </button>
+        <button class="botao-secundario" type="button" onclick="baixarImagem()">
+          Baixar imagem
+        </button>
+      </div>
     </div>
 
-    <div class="campo">
-      <label>Título do gráfico</label>
-      <input type="text" id="tituloGrafico" value="Gráfico das funções">
+    <div class="area-grafico">
+      <canvas id="graficoCanvas"></canvas>
     </div>
-
-    <div class="campo">
-      <label>Título eixo X</label>
-      <input type="text" id="tituloX" value="x">
-    </div>
-
-    <div class="campo">
-      <label>Título eixo Y</label>
-      <input type="text" id="tituloY" value="f(x)">
-    </div>
-
-  </div>
-
-  <br>
-
-  <div class="linha-inputs">
-
-    <div class="campo">
-      <label>x mínimo</label>
-      <input type="number" id="xmin" value="-10">
-    </div>
-
-    <div class="campo">
-      <label>x máximo</label>
-      <input type="number" id="xmax" value="10">
-    </div>
-
-    <div class="campo">
-      <label>Passo</label>
-      <input type="number" id="passo" value="1">
-    </div>
-
-    <div class="campo">
-      <label>Largura (px)</label>
-      <input type="number" id="larguraGrafico" value="800">
-    </div>
-
-    <div class="campo">
-      <label>Altura (px)</label>
-      <input type="number" id="alturaGrafico" value="500">
-    </div>
-
-   <div class="campo">
-    <label>Modo</label>
-    <select id="modo">
-      <option value="normal">Funções normais</option>
-      <option value="cinematica">Cinemática (s, v, a)</option>
-    </select>
-    </div>
-   
-   
-    <div class="campo">
-      <button class="botao-principal" onclick="gerarGrafico()">
-        Gerar gráfico
-      </button>
-    </div>
-
-    <div class="campo">
-      <button class="botao-secundario" onclick="baixarImagem()">
-        Baixar imagem
-      </button>
-    </div>
-
-  </div>
-
-</div>
-  </div>
-
-  <div class="area-grafico">
-    <canvas id="graficoCanvas"></canvas>
-  </div>
-
-</section>
-
- 
+  </section>
 
 </main>
 
 <footer>
-  <p>© 2025 — Portal de Física</p>
+  <p>&copy; 2025 - Portal de F&iacute;sica</p>
 </footer>
 
 <script src="/programas/gerador_graficos/js/grafico.js"></script>
