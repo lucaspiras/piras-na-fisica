@@ -1,0 +1,1227 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutorial — Gerador de Gráficos Científicos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #f5f4f0;
+  --surface:  #ffffff;
+  --surface2: #f0ede6;
+  --border:   #d4cfc5;
+  --border2:  #e8e4dc;
+  --text:     #1a1814;
+  --text2:    #4a4640;
+  --text3:    #7a756e;
+  --accent:   #1a3a6b;
+  --accent2:  #c0392b;
+  --accent3:  #2e7d32;
+  --gold:     #b5860d;
+  --mono:     'IBM Plex Mono', monospace;
+  --sans:     'IBM Plex Sans', sans-serif;
+  --display:  'Playfair Display', serif;
+  --radius:   4px;
+  --shadow:   0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+  --shadow-deep: 0 2px 8px rgba(0,0,0,0.12), 0 8px 32px rgba(0,0,0,0.08);
+  --toc-w: 260px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.65;
+}
+
+/* ── HEADER ───────────────────────────── */
+.site-header {
+  background: var(--accent);
+  border-bottom: 3px solid var(--gold);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo { display: flex; align-items: center; gap: 0.75rem; }
+.logo-img { height: 48px; width: auto; display: block; }
+.logo-text { display: flex; flex-direction: column; }
+.logo-text strong {
+  font-family: var(--display);
+  color: #fff;
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+}
+.logo-text span {
+  color: var(--gold);
+  font-size: 0.68rem;
+  font-family: var(--mono);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.logo-link { text-decoration: none; display: flex; align-items: center; transition: opacity .2s; }
+.logo-link:hover { opacity: .8; }
+.header-right { display: flex; align-items: center; gap: .75rem; }
+.header-badge {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.8);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  padding: 3px 10px;
+  border-radius: 2px;
+  letter-spacing: 0.08em;
+}
+.btn-back {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  padding: 4px 12px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: background .15s;
+  letter-spacing: 0.04em;
+}
+.btn-back:hover { background: rgba(255,255,255,0.25); }
+
+/* ── LAYOUT ───────────────────────────── */
+.page-wrap {
+  display: grid;
+  grid-template-columns: var(--toc-w) 1fr;
+  max-width: 1280px;
+  margin: 0 auto;
+  min-height: calc(100vh - 56px);
+}
+
+/* ── TOC SIDEBAR ──────────────────────── */
+.toc-sidebar {
+  position: sticky;
+  top: 56px;
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+  padding: 2rem 0;
+  border-right: 1px solid var(--border);
+  background: var(--surface);
+}
+.toc-sidebar::-webkit-scrollbar { width: 3px; }
+.toc-sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.toc-title {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text3);
+  padding: 0 1.25rem 0.75rem;
+  border-bottom: 1px solid var(--border2);
+  margin-bottom: 0.5rem;
+}
+
+.toc-list { list-style: none; }
+.toc-list li a {
+  display: block;
+  padding: 0.35rem 1.25rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text2);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color .15s, border-color .15s, background .15s;
+  line-height: 1.35;
+}
+.toc-list li a:hover {
+  color: var(--accent);
+  background: rgba(26,58,107,0.04);
+  border-left-color: var(--accent);
+}
+.toc-list li a.active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  font-weight: 600;
+  background: rgba(26,58,107,0.06);
+}
+.toc-list li.sub a { padding-left: 2.1rem; font-size: 0.67rem; color: var(--text3); }
+.toc-list li.sub a:hover { color: var(--accent); }
+
+/* ── MAIN CONTENT ─────────────────────── */
+.content {
+  padding: 3rem 3.5rem 5rem;
+  max-width: 860px;
+}
+
+/* HERO */
+.hero {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid var(--border);
+}
+.hero-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+.hero h1 {
+  font-family: var(--display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+.hero p {
+  font-size: 1rem;
+  color: var(--text2);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* SECTIONS */
+.doc-section {
+  margin-bottom: 3.5rem;
+  scroll-margin-top: 80px;
+}
+.doc-section h2 {
+  font-family: var(--display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.doc-section h2 .sec-icon {
+  font-size: 1rem;
+  opacity: 0.7;
+}
+.doc-section h3 {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text2);
+  margin: 1.6rem 0 0.6rem;
+}
+.doc-section p {
+  color: var(--text2);
+  font-size: 0.92rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+}
+.doc-section ul, .doc-section ol {
+  padding-left: 1.4rem;
+  color: var(--text2);
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+.doc-section li { margin-bottom: 0.35rem; line-height: 1.6; }
+.doc-section strong { color: var(--text); font-weight: 600; }
+
+/* CALLOUTS */
+.callout {
+  border-radius: var(--radius);
+  padding: 0.85rem 1.1rem;
+  margin: 1rem 0;
+  font-size: 0.875rem;
+  border-left: 3px solid;
+  display: flex;
+  gap: 0.65rem;
+}
+.callout-icon { flex-shrink: 0; font-size: 1rem; line-height: 1.5; }
+.callout-body { flex: 1; }
+.callout-body p { margin-bottom: 0; font-size: 0.875rem; }
+.callout.info  { background: rgba(26,58,107,0.06);  border-color: var(--accent); }
+.callout.tip   { background: rgba(46,125,50,0.06);  border-color: var(--accent3); }
+.callout.warn  { background: rgba(181,134,13,0.08); border-color: var(--gold); }
+.callout.error { background: rgba(192,57,43,0.06);  border-color: var(--accent2); }
+
+/* CODE */
+code {
+  font-family: var(--mono);
+  font-size: 0.82em;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 3px;
+  padding: 1px 5px;
+  color: var(--accent2);
+}
+pre {
+  background: #1a1814;
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  margin: 0.75rem 0;
+}
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #e8e4dc;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+.hlm  { color: #fbbf24; } /* method  */
+.hlv  { color: #60a5fa; } /* value   */
+.hlc  { color: #6b7280; } /* comment */
+.hls  { color: #4ade80; } /* string  */
+
+/* TABLES */
+.ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.83rem;
+  margin: 0.75rem 0;
+  font-family: var(--mono);
+}
+.ref-table th {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text2);
+}
+.ref-table td {
+  border: 1px solid var(--border2);
+  padding: 0.45rem 0.75rem;
+  vertical-align: top;
+  color: var(--text2);
+}
+.ref-table tr:nth-child(even) td { background: rgba(0,0,0,0.02); }
+.ref-table td code { background: none; border: none; padding: 0; color: var(--accent2); }
+.ref-table td.desc { font-family: var(--sans); font-size: 0.82rem; }
+.ref-table td.ex   { color: var(--text3); }
+
+/* STEP LIST */
+.steps { counter-reset: step; list-style: none; padding: 0; }
+.steps li {
+  counter-increment: step;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+  align-items: flex-start;
+}
+.steps li::before {
+  content: counter(step);
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+.steps li p { margin: 0; font-size: 0.9rem; color: var(--text2); }
+
+/* INTERFACE MAP */
+.iface-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+.iface-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+}
+.iface-card .iface-label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text3);
+  margin-bottom: 0.3rem;
+}
+.iface-card .iface-name {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+.iface-card p { font-size: 0.8rem; color: var(--text2); margin: 0; line-height: 1.5; }
+
+/* DIVIDER */
+.divider {
+  height: 1px;
+  background: var(--border2);
+  margin: 2rem 0;
+}
+
+/* SHORTCUTS TABLE */
+.shortcut-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--border2);
+  font-size: 0.86rem;
+}
+.shortcut-row:last-child { border-bottom: none; }
+.kbd {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+  min-width: 180px;
+}
+.key {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 3px;
+  padding: 2px 7px;
+  color: var(--text);
+}
+.shortcut-desc { color: var(--text2); }
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  .page-wrap { grid-template-columns: 1fr; }
+  .toc-sidebar { display: none; }
+  .content { padding: 2rem 1.5rem 4rem; }
+  .hero h1 { font-size: 1.6rem; }
+  .iface-grid { grid-template-columns: 1fr; }
+}
+
+/* FOOTER */
+.page-footer {
+  text-align: center;
+  padding: 2rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--text3);
+  border-top: 1px solid var(--border2);
+  margin-top: 2rem;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="/index.html" class="logo-link">
+    <div class="logo">
+      <img src="/img/Imagem-principal_index.png" alt="Piras na Física" class="logo-img">
+      <div class="logo-text">
+        <strong>Tutorial — Gráficos Científicos</strong>
+        <span>Piras na Física</span>
+      </div>
+    </div>
+  </a>
+  <div class="header-right">
+    <span class="header-badge">Documentação</span>
+    <a href="graficos_cientificos.html" class="btn-back">← Abrir o app</a>
+  </div>
+</header>
+
+<div class="page-wrap">
+
+  <!-- TOC -->
+  <nav class="toc-sidebar" id="tocSidebar">
+    <div class="toc-title">Nesta página</div>
+    <ul class="toc-list" id="tocList">
+      <li><a href="#visao-geral">Visão Geral</a></li>
+      <li><a href="#interface">Interface</a></li>
+      <li><a href="#primeiro-grafico">Primeiro Gráfico</a></li>
+      <li><a href="#funcoes">Funções</a></li>
+      <li class="sub"><a href="#adicionar-remover">Adicionar e remover</a></li>
+      <li class="sub"><a href="#sintaxe">Sintaxe de equações</a></li>
+      <li class="sub"><a href="#ref-trig">Trigonométricas</a></li>
+      <li class="sub"><a href="#ref-exp">A função exp(x)</a></li>
+      <li class="sub"><a href="#ref-log">Logaritmos</a></li>
+      <li class="sub"><a href="#ref-hip">Hiperbólicas</a></li>
+      <li class="sub"><a href="#ref-pot">Potências e raízes</a></li>
+      <li class="sub"><a href="#ref-fisica">Combinações úteis</a></li>
+      <li><a href="#eixos">Domínio e Eixos</a></li>
+      <li><a href="#titulos">Títulos e Legenda</a></li>
+      <li><a href="#estilo">Estilo Visual</a></li>
+      <li class="sub"><a href="#temas">Temas de cores</a></li>
+      <li class="sub"><a href="#opcoes-visuais">Opções visuais</a></li>
+      <li><a href="#toolbar">Barra de Ferramentas</a></li>
+      <li><a href="#dimensoes">Dimensões da Imagem</a></li>
+      <li><a href="#exemplos">Exemplos Prontos</a></li>
+      <li><a href="#exportacao">Exportação</a></li>
+      <li><a href="#erros">Erros Comuns</a></li>
+    </ul>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-label">Documentação completa</div>
+      <h1>Gerador de Gráficos Científicos</h1>
+      <p>Tudo que você precisa para criar, personalizar e exportar gráficos de funções matemáticas com qualidade de publicação, diretamente no navegador.</p>
+    </div>
+
+    <!-- ─── VISÃO GERAL ─────────────────────── -->
+    <section class="doc-section" id="visao-geral">
+      <h2><span class="sec-icon">◉</span> Visão Geral</h2>
+      <p>O Gerador de Gráficos Científicos é uma ferramenta que permite plotar funções matemáticas de <em>f(x)</em> de forma interativa. Ele utiliza <strong>Chart.js</strong> para renderização e <strong>math.js</strong> para avaliar expressões matemáticas, o que significa que você pode escrever equações em notação matemática natural.</p>
+      <p>Principais recursos:</p>
+      <ul>
+        <li>Suporte a múltiplas funções simultaneamente, cada uma com cor e rótulo próprios</li>
+        <li>Escalas linear e logarítmica para ambos os eixos</li>
+        <li>8 temas de cores científicos (Matplotlib, Seaborn, Nature, etc.)</li>
+        <li>Exportação em PNG ou JPEG com resolução configurável (1×, 2× HD, 3× UHD)</li>
+        <li>10 exemplos prontos para explorar funcionalidades rapidamente</li>
+        <li>Controle preciso de estilo: espessura de linha, marcadores, preenchimento de área, fonte</li>
+      </ul>
+    </section>
+
+    <!-- ─── INTERFACE ───────────────────────── -->
+    <section class="doc-section" id="interface">
+      <h2><span class="sec-icon">◈</span> Interface</h2>
+      <p>A tela é dividida em duas áreas principais:</p>
+
+      <div class="iface-grid">
+        <div class="iface-card">
+          <div class="iface-label">Esquerda</div>
+          <div class="iface-name">Painel lateral (sidebar)</div>
+          <p>Contém todos os controles de configuração, organizados em seções colapsáveis. Clique no cabeçalho de qualquer seção para abrí-la ou fechá-la.</p>
+        </div>
+        <div class="iface-card">
+          <div class="iface-label">Direita</div>
+          <div class="iface-name">Área principal</div>
+          <p>Exibe a barra de ferramentas (toolbar) no topo, o canvas do gráfico ao centro, e a barra de status com mensagens e coordenadas na parte inferior.</p>
+        </div>
+      </div>
+
+      <h3>Seções do painel lateral</h3>
+      <ul>
+        <li><strong>Funções</strong> — define as equações a plotar (aberta por padrão)</li>
+        <li><strong>Domínio e Eixos</strong> — intervalo de x, limites de y, passo e escalas</li>
+        <li><strong>Títulos e Legenda</strong> — textos e posição da legenda</li>
+        <li><strong>Estilo Visual</strong> — cores, espessura, fontes e opções de renderização</li>
+        <li><strong>Dimensões da Imagem</strong> — tamanho e resolução para exportação</li>
+        <li><strong>Exemplos Prontos</strong> — atalhos para configurações pré-definidas</li>
+      </ul>
+
+      <div class="callout info">
+        <span class="callout-icon">ℹ</span>
+        <div class="callout-body">
+          <p>As seções começam fechadas para que o botão <strong>Gerar gráfico</strong> fique visível logo ao abrir a página. Você pode abrir qualquer seção a qualquer momento clicando em seu cabeçalho.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── PRIMEIRO GRÁFICO ────────────────── -->
+    <section class="doc-section" id="primeiro-grafico">
+      <h2><span class="sec-icon">▶</span> Primeiro Gráfico</h2>
+      <p>O caminho mais rápido do zero ao gráfico:</p>
+      <ol class="steps">
+        <li><p>A seção <strong>Funções</strong> já estará aberta com <code>sin(x)</code> preenchido. Se quiser outra função, basta digitar no campo <em>Equação</em>.</p></li>
+        <li><p>Clique no botão azul <strong>▶ Gerar gráfico</strong> no final do painel lateral.</p></li>
+        <li><p>O gráfico aparece imediatamente na área principal. A barra de status (rodapé da área principal) confirma quantos pontos foram calculados.</p></li>
+        <li><p>Para exportar, clique em <strong>↓ Baixar PNG</strong> ou <strong>⎘ Copiar</strong> para copiar a imagem para a área de transferência.</p></li>
+      </ol>
+
+      <div class="callout tip">
+        <span class="callout-icon">✦</span>
+        <div class="callout-body">
+          <p>Passe o cursor sobre o gráfico para ver o valor de <em>x</em> exibido na barra de status. Um tooltip exibe os valores de todas as funções naquele ponto.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FUNÇÕES ─────────────────────────── -->
+    <section class="doc-section" id="funcoes">
+      <h2><span class="sec-icon">ƒ</span> Funções</h2>
+      <p>A seção <strong>Funções</strong> é o coração da ferramenta. Cada função é representada por um bloco com três campos:</p>
+      <ul>
+        <li><strong>Equação</strong> — a expressão matemática em termos de <code>x</code></li>
+        <li><strong>Rótulo</strong> — texto exibido na legenda do gráfico</li>
+        <li><strong>Cor</strong> — cor da curva (seletor de cor)</li>
+      </ul>
+
+      <h3 id="adicionar-remover">Adicionar e remover funções</h3>
+      <p>Por padrão, a página inicia com uma única função. Para adicionar mais:</p>
+      <ul>
+        <li>Clique no botão <strong>+ Adicionar função</strong> (com borda tracejada) abaixo da lista de funções.</li>
+        <li>Uma nova função é criada com equação padrão <code>x</code> e a próxima cor do tema ativo.</li>
+        <li>Para remover, clique no botão <strong>✕ Remover</strong> dentro do bloco da função (aparece apenas quando há mais de uma).</li>
+      </ul>
+
+      <div class="callout info">
+        <span class="callout-icon">ℹ</span>
+        <div class="callout-body">
+          <p>Você pode plotar até 8 funções com cores distintas (número de cores por tema). A partir da 9ª, as cores se repetem ciclicamente.</p>
+        </div>
+      </div>
+
+      <h3 id="sintaxe">Sintaxe de equações</h3>
+      <p>As expressões são avaliadas pelo <strong>math.js</strong>. A variável independente é sempre <code>x</code>. Você pode usar:</p>
+
+      <pre><code><span class="hlc"># Operadores aritméticos</span>
+x + 2        <span class="hlc"># soma</span>
+x - 2        <span class="hlc"># subtração</span>
+x * 3        <span class="hlc"># multiplicação (não pode omitir o *)</span>
+x / 4        <span class="hlc"># divisão</span>
+x^2          <span class="hlc"># potenciação</span>
+x^(1/3)      <span class="hlc"># raiz cúbica via expoente fracionário</span>
+
+<span class="hlc"># Constantes</span>
+pi           <span class="hlc"># π ≈ 3.14159…</span>
+e            <span class="hlc"># e ≈ 2.71828…</span>
+
+<span class="hlc"># Exemplos completos</span>
+2*x^2 - 3*x + 1
+exp(-x^2 / 2) / sqrt(2*pi)
+sin(2*x) + cos(x/2)
+1 / (1 + exp(-x))   <span class="hlc"># função logística (sigmoide)</span>
+</code></pre>
+
+      <div class="callout warn">
+        <span class="callout-icon">⚠</span>
+        <div class="callout-body">
+          <p><strong>A multiplicação nunca pode ser implícita.</strong> Escreva <code>2*x</code>, não <code>2x</code>. Da mesma forma, <code>sin(x)cos(x)</code> é inválido; use <code>sin(x)*cos(x)</code>.</p>
+        </div>
+      </div>
+
+      <!-- ─── REFERÊNCIA ──────────────────────── -->
+      <h3>Referência de Funções</h3>
+      <p>Guia detalhado das funções suportadas pelo motor <strong>math.js</strong>. Além da sintaxe, cada grupo traz explicações sobre o que a função representa e como combiná-la para criar curvas fisicamente interessantes. A variável independente é sempre <code>x</code>; letras como <code>A</code>, <code>T</code>, <code>φ</code> representam constantes numéricas que você escolhe.</p>
+
+      <!-- ══ TRIGONOMÉTRICAS ══ -->
+      <h3 id="ref-trig">Funções Trigonométricas</h3>
+
+      <p><strong>Radianos, não graus.</strong> Todas as funções trigonométricas do math.js recebem e devolvem ângulos em <em>radianos</em>. Se você está acostumado a graus, basta multiplicar o ângulo por <code>pi/180</code> antes de passar à função:</p>
+
+      <pre><code><span class="hlc"># Plotar seno em graus (x vai de 0 a 360)</span>
+sin(x * pi / 180)
+
+<span class="hlc"># Plotar cosseno em graus</span>
+cos(x * pi / 180)</code></pre>
+
+      <p>Para esse caso, configure <strong>x mínimo = 0</strong> e <strong>x máximo = 360</strong> e você verá um ciclo completo com os valores familiares de 0°, 90°, 180°, 270° e 360° no eixo horizontal.</p>
+
+      <p><strong>Ângulos notáveis em radianos:</strong></p>
+      <table class="ref-table">
+        <thead><tr><th>Graus</th><th>Radianos (exato)</th><th>Sintaxe no app</th></tr></thead>
+        <tbody>
+          <tr><td>30°</td><td>π/6</td><td><code>pi/6</code></td></tr>
+          <tr><td>45°</td><td>π/4</td><td><code>pi/4</code></td></tr>
+          <tr><td>60°</td><td>π/3</td><td><code>pi/3</code></td></tr>
+          <tr><td>90°</td><td>π/2</td><td><code>pi/2</code></td></tr>
+          <tr><td>180°</td><td>π</td><td><code>pi</code></td></tr>
+          <tr><td>270°</td><td>3π/2</td><td><code>3*pi/2</code></td></tr>
+          <tr><td>360°</td><td>2π</td><td><code>2*pi</code></td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>Controlando amplitude, período e fase.</strong> Uma onda genérica é escrita como:</p>
+      <pre><code>A * sin(2*pi*x / T + phi)</code></pre>
+      <p>onde:</p>
+      <ul>
+        <li><strong>A</strong> — amplitude (altura máxima da onda). <code>A = 2</code> dobra a altura.</li>
+        <li><strong>T</strong> — período (comprimento de um ciclo completo no eixo x). <code>T = 2*pi</code> é o período natural do seno; <code>T = 1</code> faz um ciclo por unidade de x.</li>
+        <li><strong>phi</strong> — fase inicial (desloca a curva horizontalmente). <code>phi = pi/2</code> transforma <code>sin</code> em <code>cos</code>.</li>
+      </ul>
+
+      <pre><code><span class="hlc"># Onda com amplitude 3, período 4 e fase π/4</span>
+3 * sin(2*pi*x / 4 + pi/4)
+
+<span class="hlc"># Batimento entre duas ondas de frequências próximas</span>
+sin(10*x) + sin(11*x)
+
+<span class="hlc"># Onda quadrada aproximada (primeiros harmônicos de Fourier)</span>
+sin(x) + sin(3*x)/3 + sin(5*x)/5 + sin(7*x)/7</code></pre>
+
+      <table class="ref-table">
+        <thead><tr><th>Sintaxe</th><th class="desc">Descrição</th><th>Valor em pontos chave</th></tr></thead>
+        <tbody>
+          <tr><td><code>sin(x)</code></td><td class="desc">Seno — oscila entre −1 e 1, vale 0 em x = 0</td><td class="ex"><code>sin(pi/2)</code> = 1 · <code>sin(pi)</code> = 0</td></tr>
+          <tr><td><code>cos(x)</code></td><td class="desc">Cosseno — oscila entre −1 e 1, vale 1 em x = 0</td><td class="ex"><code>cos(0)</code> = 1 · <code>cos(pi)</code> = −1</td></tr>
+          <tr><td><code>tan(x)</code></td><td class="desc">Tangente — cresce sem limite, tem assíntotas em ±π/2, ±3π/2, …</td><td class="ex"><code>tan(pi/4)</code> = 1</td></tr>
+          <tr><td><code>cot(x)</code></td><td class="desc">Cotangente — equivalente a <code>cos(x)/sin(x)</code></td><td class="ex"><code>cot(pi/4)</code> = 1</td></tr>
+          <tr><td><code>sec(x)</code></td><td class="desc">Secante — equivalente a <code>1/cos(x)</code></td><td class="ex"><code>sec(0)</code> = 1</td></tr>
+          <tr><td><code>csc(x)</code></td><td class="desc">Cossecante — equivalente a <code>1/sin(x)</code></td><td class="ex"><code>csc(pi/2)</code> = 1</td></tr>
+          <tr><td><code>asin(x)</code></td><td class="desc">Arco-seno — inverso do seno, domínio [−1, 1], resultado em radianos no intervalo [−π/2, π/2]</td><td class="ex"><code>asin(1)</code> = π/2</td></tr>
+          <tr><td><code>acos(x)</code></td><td class="desc">Arco-cosseno — inverso do cosseno, domínio [−1, 1], resultado em [0, π]</td><td class="ex"><code>acos(0)</code> = π/2</td></tr>
+          <tr><td><code>atan(x)</code></td><td class="desc">Arco-tangente — domínio todos os reais, resultado em (−π/2, π/2)</td><td class="ex"><code>atan(1)</code> = π/4</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout warn">
+        <span class="callout-icon">⚠</span>
+        <div class="callout-body">
+          <p><code>tan(x)</code>, <code>sec(x)</code> e <code>csc(x)</code> têm assíntotas verticais onde o denominador é zero. Para plotá-las, desative <strong>Suavizar curva</strong> e use interpolação <strong>Linear</strong>, ou restrinja o domínio para evitar os pontos singulares.</p>
+        </div>
+      </div>
+
+      <!-- ══ EXP ══ -->
+      <h3 id="ref-exp">A função exp(x) — exponencial natural</h3>
+
+      <p><code>exp(x)</code> significa <strong>eˣ</strong>, ou seja, o número de Euler <em>e</em> (≈ 2,718) elevado à potência <em>x</em>. É chamada de "exponencial natural" porque <em>e</em> é a base que torna a derivada de eˣ igual a ela mesma — uma propriedade única e fundamental no cálculo.</p>
+
+      <p>Você também pode escrever diretamente <code>e^x</code> no app e obterá o mesmo resultado. A forma <code>exp(x)</code> é preferida por ser mais legível em expressões longas e evitar ambiguidades com a constante <code>e</code>.</p>
+
+      <table class="ref-table">
+        <thead><tr><th>Sintaxe</th><th class="desc">O que representa</th><th>Valor em x = 0</th></tr></thead>
+        <tbody>
+          <tr><td><code>exp(x)</code></td><td class="desc">Crescimento exponencial — duplica a cada ln(2) ≈ 0,693 unidades</td><td class="ex">1</td></tr>
+          <tr><td><code>exp(-x)</code></td><td class="desc">Decaimento exponencial — cai para zero conforme x cresce</td><td class="ex">1</td></tr>
+          <tr><td><code>exp(-x^2)</code></td><td class="desc">Sino gaussiano centrado na origem — base da distribuição normal</td><td class="ex">1 (máximo)</td></tr>
+          <tr><td><code>1 - exp(-x)</code></td><td class="desc">Saturação exponencial — parte de 0 e satura em 1 (carregamento de capacitor, por ex.)</td><td class="ex">0</td></tr>
+        </tbody>
+      </table>
+
+      <pre><code><span class="hlc"># Crescimento versus decaimento</span>
+exp(x)           <span class="hlc"># cresce rapidamente para x > 0</span>
+exp(-x)          <span class="hlc"># decresce rapidamente para x > 0</span>
+
+<span class="hlc"># Oscilador amortecido: onda que perde energia com o tempo</span>
+exp(-0.3*x) * sin(4*x)
+
+<span class="hlc"># Distribuição normal (gaussiana) com média 0 e desvio padrão σ = 1</span>
+exp(-x^2 / 2) / sqrt(2*pi)
+
+<span class="hlc"># Distribuição normal com média μ = 2 e desvio padrão σ = 0.5</span>
+exp(-(x - 2)^2 / (2 * 0.5^2)) / (0.5 * sqrt(2*pi))</code></pre>
+
+      <div class="callout tip">
+        <span class="callout-icon">✦</span>
+        <div class="callout-body">
+          <p>Para crescimento/decaimento com meia-vida <em>t½</em>, use <code>exp(-log(2)/t_meio * x)</code>. Por exemplo, para uma substância com meia-vida de 5 anos: <code>exp(-log(2)/5 * x)</code>.</p>
+        </div>
+      </div>
+
+      <!-- ══ LOGARITMOS ══ -->
+      <h3 id="ref-log">Logaritmos</h3>
+
+      <p>O logaritmo responde à pergunta: <em>"a qual expoente preciso elevar a base para obter este número?"</em>. Se <code>exp(3) ≈ 20,09</code>, então <code>log(20.09) ≈ 3</code> — o logaritmo é a operação inversa da exponencial.</p>
+
+      <div class="callout warn">
+        <span class="callout-icon">⚠</span>
+        <div class="callout-body">
+          <p><strong>Atenção à notação:</strong> no math.js, <code>log(x)</code> é o <strong>logaritmo natural</strong> (base <em>e</em>), também chamado de <em>ln(x)</em> nos livros de física e matemática. Para o logaritmo de base 10 (o "log" das calculadoras científicas), use <code>log10(x)</code>.</p>
+        </div>
+      </div>
+
+      <table class="ref-table">
+        <thead><tr><th>Sintaxe</th><th class="desc">Significado matemático</th><th>Exemplo</th></tr></thead>
+        <tbody>
+          <tr><td><code>log(x)</code></td><td class="desc">Logaritmo natural — base <em>e</em> ≈ 2,718. Também escrito ln(x). Domínio: x &gt; 0.</td><td class="ex"><code>log(e)</code> = 1 · <code>log(1)</code> = 0</td></tr>
+          <tr><td><code>log10(x)</code></td><td class="desc">Logaritmo base 10 — base das escalas de decibéis (dB), pH e magnitude estelar. Domínio: x &gt; 0.</td><td class="ex"><code>log10(100)</code> = 2 · <code>log10(1000)</code> = 3</td></tr>
+          <tr><td><code>log2(x)</code></td><td class="desc">Logaritmo base 2 — natural em informática (bits). Domínio: x &gt; 0.</td><td class="ex"><code>log2(8)</code> = 3 · <code>log2(1)</code> = 0</td></tr>
+          <tr><td><code>log(x, b)</code></td><td class="desc">Logaritmo em qualquer base <em>b</em>. Útil para bases como 3, 5, etc.</td><td class="ex"><code>log(81, 3)</code> = 4</td></tr>
+        </tbody>
+      </table>
+
+      <p><strong>Propriedades importantes para escrever equações:</strong></p>
+      <pre><code><span class="hlc"># Lei de Beer-Lambert (absorbância óptica)</span>
+log10(1 / x)             <span class="hlc"># absorbância em função da transmitância x</span>
+
+<span class="hlc"># Escala de decibéis (intensidade sonora)</span>
+10 * log10(x / 1e-12)    <span class="hlc"># dB, com referência de 10⁻¹² W/m²</span>
+
+<span class="hlc"># Entropia de Shannon (bit por símbolo)</span>
+-x * log2(x) - (1-x) * log2(1-x)
+
+<span class="hlc"># Conversão de base: log base 5 via fórmula da mudança de base</span>
+log(x) / log(5)          <span class="hlc"># equivalente a log(x, 5)</span></code></pre>
+
+      <div class="callout info">
+        <span class="callout-icon">ℹ</span>
+        <div class="callout-body">
+          <p>O logaritmo só é definido para x &gt; 0. Se o domínio incluir zero ou valores negativos, os pontos correspondentes serão automaticamente omitidos do gráfico (aparecem como lacunas na curva). Configure <strong>x mínimo</strong> como um valor pequeno positivo, como <code>0.001</code>.</p>
+        </div>
+      </div>
+
+      <!-- ══ HIPERBÓLICAS ══ -->
+      <h3 id="ref-hip">Funções Hiperbólicas</h3>
+
+      <p>As funções hiperbólicas são análogas às trigonométricas, mas definidas a partir da exponencial em vez de círculos. Aparecem frequentemente em soluções de equações diferenciais, catenárias (formato de cabos suspensos), relatividade especial e redes neurais.</p>
+
+      <table class="ref-table">
+        <thead><tr><th>Sintaxe</th><th class="desc">Definição via exponenciais</th><th>Aplicação típica</th></tr></thead>
+        <tbody>
+          <tr><td><code>sinh(x)</code></td><td class="desc">(exp(x) − exp(−x)) / 2</td><td class="ex">Ondas em meios dispersivos</td></tr>
+          <tr><td><code>cosh(x)</code></td><td class="desc">(exp(x) + exp(−x)) / 2 — mínimo em x=0, sempre ≥ 1</td><td class="ex">Formato de catenária: cosh(x)</td></tr>
+          <tr><td><code>tanh(x)</code></td><td class="desc">sinh(x)/cosh(x) — varia entre −1 e 1, sigmoide "suave"</td><td class="ex">Função de ativação em redes neurais</td></tr>
+          <tr><td><code>asinh(x)</code></td><td class="desc">Inverso de sinh — domínio: todos os reais</td><td class="ex">—</td></tr>
+          <tr><td><code>acosh(x)</code></td><td class="desc">Inverso de cosh — domínio: x ≥ 1</td><td class="ex">—</td></tr>
+          <tr><td><code>atanh(x)</code></td><td class="desc">Inverso de tanh — domínio: −1 &lt; x &lt; 1</td><td class="ex">—</td></tr>
+        </tbody>
+      </table>
+
+      <!-- ══ POTÊNCIAS E RAÍZES ══ -->
+      <h3 id="ref-pot">Potências, Raízes e Valor Absoluto</h3>
+
+      <table class="ref-table">
+        <thead><tr><th>Sintaxe</th><th class="desc">Descrição</th><th>Exemplo / Observação</th></tr></thead>
+        <tbody>
+          <tr><td><code>x^2</code></td><td class="desc">Quadrado de x</td><td class="ex">Parábola</td></tr>
+          <tr><td><code>x^3</code></td><td class="desc">Cubo de x — função ímpar, passa pela origem</td><td class="ex">—</td></tr>
+          <tr><td><code>x^(-1)</code></td><td class="desc">Inverso de x (hipérbole) — equivalente a <code>1/x</code></td><td class="ex">Assíntota em x = 0</td></tr>
+          <tr><td><code>x^0.5</code></td><td class="desc">Raiz quadrada — equivalente a <code>sqrt(x)</code>. Domínio: x ≥ 0</td><td class="ex"><code>4^0.5</code> = 2</td></tr>
+          <tr><td><code>sqrt(x)</code></td><td class="desc">Raiz quadrada — mais legível que <code>x^0.5</code>. Domínio: x ≥ 0</td><td class="ex"><code>sqrt(9)</code> = 3</td></tr>
+          <tr><td><code>cbrt(x)</code></td><td class="desc">Raiz cúbica — funciona para x negativo, ao contrário de <code>x^(1/3)</code></td><td class="ex"><code>cbrt(-8)</code> = −2</td></tr>
+          <tr><td><code>nthRoot(x, n)</code></td><td class="desc">Raiz n-ésima — para n par, domínio: x ≥ 0</td><td class="ex"><code>nthRoot(x, 4)</code></td></tr>
+          <tr><td><code>abs(x)</code></td><td class="desc">Valor absoluto |x| — "dobra" o eixo negativo sobre o positivo, criando um V</td><td class="ex"><code>abs(-3)</code> = 3</td></tr>
+          <tr><td><code>sign(x)</code></td><td class="desc">Sinal de x: retorna −1 para x&lt;0, 0 para x=0, 1 para x&gt;0</td><td class="ex">Função degrau: <code>(sign(x)+1)/2</code></td></tr>
+          <tr><td><code>floor(x)</code></td><td class="desc">Arredonda para baixo — cria uma função escada descendente</td><td class="ex"><code>floor(2.9)</code> = 2</td></tr>
+          <tr><td><code>ceil(x)</code></td><td class="desc">Arredonda para cima — cria uma função escada ascendente</td><td class="ex"><code>ceil(2.1)</code> = 3</td></tr>
+          <tr><td><code>round(x)</code></td><td class="desc">Arredonda para o inteiro mais próximo</td><td class="ex"><code>round(2.5)</code> = 3</td></tr>
+          <tr><td><code>mod(x, n)</code></td><td class="desc">Resto da divisão de x por n — gera padrões periódicos com dente de serra</td><td class="ex"><code>mod(x, 2*pi)</code></td></tr>
+          <tr><td><code>min(a, b)</code></td><td class="desc">Menor entre dois valores — útil para criar "tetos"</td><td class="ex"><code>min(x^2, 4)</code></td></tr>
+          <tr><td><code>max(a, b)</code></td><td class="desc">Maior entre dois valores — útil para criar "pisos"</td><td class="ex"><code>max(sin(x), 0)</code></td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout warn">
+        <span class="callout-icon">⚠</span>
+        <div class="callout-body">
+          <p><code>x^(1/3)</code> pode dar resultados inesperados para x negativo em alguns contextos (retorna NaN). Prefira <code>cbrt(x)</code> sempre que precisar da raiz cúbica de valores negativos.</p>
+        </div>
+      </div>
+
+      <!-- ══ COMBINAÇÕES ÚTEIS ══ -->
+      <h3 id="ref-fisica">Combinações Úteis em Física e Matemática</h3>
+      <p>Estas não são funções primitivas — são expressões completas que você pode copiar e colar diretamente no campo de equação:</p>
+
+      <table class="ref-table">
+        <thead><tr><th>Nome</th><th>Equação</th><th class="desc">Onde aparece</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Gaussiana (normal)</td>
+            <td><code>exp(-x^2 / 2) / sqrt(2*pi)</code></td>
+            <td class="desc">Estatística, mecânica quântica, óptica</td>
+          </tr>
+          <tr>
+            <td>Gaussiana com σ e μ</td>
+            <td><code>exp(-(x-2)^2 / (2*0.5^2)) / (0.5*sqrt(2*pi))</code></td>
+            <td class="desc">Distribuição normal com média μ=2, desvio σ=0,5</td>
+          </tr>
+          <tr>
+            <td>Lorentziana</td>
+            <td><code>1 / (1 + x^2)</code></td>
+            <td class="desc">Perfil de linhas espectrais, ressonância</td>
+          </tr>
+          <tr>
+            <td>Lorentziana com largura γ</td>
+            <td><code>(0.5) / (x^2 + (0.5)^2)</code></td>
+            <td class="desc">Espectroscopia — substituir 0.5 pela meia-largura</td>
+          </tr>
+          <tr>
+            <td>Sigmoide (logística)</td>
+            <td><code>1 / (1 + exp(-x))</code></td>
+            <td class="desc">Redes neurais, crescimento limitado por capacidade</td>
+          </tr>
+          <tr>
+            <td>Oscilador amortecido</td>
+            <td><code>exp(-0.2*x) * cos(3*x)</code></td>
+            <td class="desc">Mola com atrito, circuito RLC subamortecido</td>
+          </tr>
+          <tr>
+            <td>Batimento</td>
+            <td><code>cos(9*x) * cos(x)</code></td>
+            <td class="desc">Superposição de ondas de frequências próximas</td>
+          </tr>
+          <tr>
+            <td>Catenária</td>
+            <td><code>cosh(x)</code></td>
+            <td class="desc">Formato de cabo suspenso entre dois pontos</td>
+          </tr>
+          <tr>
+            <td>Função degrau de Heaviside</td>
+            <td><code>(sign(x) + 1) / 2</code></td>
+            <td class="desc">0 para x&lt;0, 1 para x≥0 — sistemas causais</td>
+          </tr>
+          <tr>
+            <td>Pulso retangular</td>
+            <td><code>(sign(x+1) - sign(x-1)) / 2</code></td>
+            <td class="desc">1 no intervalo [−1, 1], 0 fora — forma de pulso</td>
+          </tr>
+          <tr>
+            <td>Onda triangular</td>
+            <td><code>abs(mod(x, 2) - 1)</code></td>
+            <td class="desc">Oscila entre 0 e 1 com período 2</td>
+          </tr>
+          <tr>
+            <td>Onda quadrada (Fourier)</td>
+            <td><code>sin(x) + sin(3*x)/3 + sin(5*x)/5 + sin(7*x)/7</code></td>
+            <td class="desc">Aproximação com os primeiros harmônicos ímpares</td>
+          </tr>
+          <tr>
+            <td>Potencial de Lennard-Jones</td>
+            <td><code>(1/x)^12 - 2*(1/x)^6</code></td>
+            <td class="desc">Interação entre moléculas — mínimo em x=1</td>
+          </tr>
+          <tr>
+            <td>sinc (normalizado)</td>
+            <td><code>sin(pi*x) / (pi*x)</code></td>
+            <td class="desc">Difração de fenda simples, processamento de sinal</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout tip">
+        <span class="callout-icon">✦</span>
+        <div class="callout-body">
+          <p>Para o <strong>sinc</strong>, o ponto x=0 é uma indeterminação 0/0 cujo limite é 1. O math.js retornará NaN nesse ponto exato, causando uma lacuna no gráfico. Isso é esperado — a curva estará correta em todos os outros pontos.</p>
+        </div>
+      </div>
+
+      <h3>Constantes disponíveis</h3>
+      <table class="ref-table">
+        <thead><tr><th>Símbolo</th><th class="desc">Valor</th><th>Observação</th></tr></thead>
+        <tbody>
+          <tr><td><code>pi</code></td><td class="desc">π ≈ 3,14159265358979</td><td class="ex">Use <code>2*pi</code> para um ciclo completo</td></tr>
+          <tr><td><code>e</code></td><td class="desc">e ≈ 2,71828182845905</td><td class="ex">Base da exponencial natural</td></tr>
+        </tbody>
+      </table>
+
+    </section>
+
+    <!-- ─── EIXOS ───────────────────────────── -->
+    <section class="doc-section" id="eixos">
+      <h2><span class="sec-icon">⊞</span> Domínio e Eixos</h2>
+
+      <h3>Intervalo de x</h3>
+      <p>Defina <strong>x mínimo</strong> e <strong>x máximo</strong> para controlar o domínio de plotagem. O padrão é <code>−10</code> a <code>10</code>.</p>
+
+      <h3>Limites de y</h3>
+      <p>Os campos <strong>y mínimo</strong> e <strong>y máximo</strong> são opcionais. Deixados em branco (<em>auto</em>), o Chart.js ajusta automaticamente com base nos valores calculados. Preencha para fixar o eixo vertical, útil quando a função possui assíntotas.</p>
+
+      <h3>Passo da curva</h3>
+      <p>Controla a resolução de amostragem: a cada <em>passo</em> unidades de x, um ponto é calculado. O padrão é <code>0.01</code>.</p>
+      <ul>
+        <li><strong>Menor passo</strong> → curva mais suave, mais pontos calculados (mais lento para intervalos grandes)</li>
+        <li><strong>Maior passo</strong> → curva mais grosseira, mas geração mais rápida</li>
+      </ul>
+
+      <div class="callout warn">
+        <span class="callout-icon">⚠</span>
+        <div class="callout-body">
+          <p>Para um intervalo <code>[−100, 100]</code> com passo <code>0.001</code>, seriam gerados 200.000 pontos por função. Isso pode deixar o navegador lento. Prefira aumentar o passo para intervalos grandes.</p>
+        </div>
+      </div>
+
+      <h3>Títulos dos eixos</h3>
+      <p>Preencha <strong>Título eixo X</strong> e <strong>Título eixo Y</strong> para adicionar rótulos aos eixos. Os padrões são <code>x</code> e <code>f(x)</code>.</p>
+
+      <h3>Escala logarítmica</h3>
+      <p>Os seletores <strong>Escala eixo X</strong> e <strong>Escala eixo Y</strong> permitem alternar entre escala <em>Linear</em> e <em>Logarítmica</em>.</p>
+
+      <div class="callout warn">
+        <span class="callout-icon">⚠</span>
+        <div class="callout-body">
+          <p>Em escala logarítmica, o domínio de x deve ser <strong>estritamente positivo</strong>. Use, por exemplo, <code>x mínimo = 0.01</code>. Valores negativos ou zero causam comportamento indefinido.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── TÍTULOS ─────────────────────────── -->
+    <section class="doc-section" id="titulos">
+      <h2><span class="sec-icon">T</span> Títulos e Legenda</h2>
+
+      <h3>Título e subtítulo</h3>
+      <p><strong>Título principal</strong> aparece centralizado acima do gráfico. O <strong>Subtítulo</strong> é opcional e, quando preenchido, aparece como segunda linha imediatamente abaixo do título principal.</p>
+
+      <h3>Posição da legenda</h3>
+      <p>Escolha onde exibir a legenda das séries:</p>
+      <ul>
+        <li><strong>Topo</strong> — acima das curvas (padrão)</li>
+        <li><strong>Rodapé</strong> — abaixo do eixo X</li>
+        <li><strong>Esquerda / Direita</strong> — lateral ao gráfico</li>
+        <li><strong>Ocultar</strong> — remove a legenda completamente</li>
+      </ul>
+    </section>
+
+    <!-- ─── ESTILO ──────────────────────────── -->
+    <section class="doc-section" id="estilo">
+      <h2><span class="sec-icon">◐</span> Estilo Visual</h2>
+
+      <h3 id="temas">Temas de cores</h3>
+      <p>Oito temas definem a paleta de cores atribuída automaticamente às funções. Ao trocar o tema, as cores de todas as séries são atualizadas imediatamente:</p>
+
+      <table class="ref-table">
+        <thead><tr><th>Tema</th><th class="desc">Inspiração / Uso indicado</th></tr></thead>
+        <tbody>
+          <tr><td><code>Científico</code></td><td class="desc">Azul escuro, vermelho e verde — visual sóbrio para artigos</td></tr>
+          <tr><td><code>Matplotlib</code></td><td class="desc">Paleta padrão do Matplotlib (Python) — familiar para cientistas</td></tr>
+          <tr><td><code>Seaborn</code></td><td class="desc">Variação suave do Matplotlib, pastel e agradável</td></tr>
+          <tr><td><code>Natureza</code></td><td class="desc">Tons de azul, verde e laranja com alto contraste</td></tr>
+          <tr><td><code>Escuro</code></td><td class="desc">Cores vibrantes sobre fundo escuro — altere a cor de fundo para <code>#1a1814</code></td></tr>
+          <tr><td><code>Monocromático</code></td><td class="desc">Tons de cinza — impressão em preto e branco</td></tr>
+          <tr><td><code>JHEP</code></td><td class="desc">Paleta inspirada no Journal of High Energy Physics</td></tr>
+          <tr><td><code>Nature</code></td><td class="desc">Paleta inspirada nas revistas Nature e Science</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Cores personalizadas</h3>
+      <p>Além do tema, você pode ajustar três cores de base do gráfico:</p>
+      <ul>
+        <li><strong>Cor de fundo</strong> — cor do canvas (padrão: branco)</li>
+        <li><strong>Cor dos eixos / grade</strong> — cor das linhas de grade e bordas dos eixos</li>
+        <li><strong>Cor do texto</strong> — cor dos rótulos dos eixos, título e ticks</li>
+      </ul>
+      <p>Cada série também possui seu próprio seletor de cor individual, no bloco da função na seção Funções.</p>
+
+      <h3>Espessura das linhas</h3>
+      <p>O slider controla a largura de todas as curvas em pixels. O valor atual é exibido ao lado. Valores recomendados: <code>1.5</code> para gráficos densos, <code>2.5</code> a <code>3</code> para apresentações.</p>
+
+      <h3>Fonte do gráfico</h3>
+      <p>Selecione a família tipográfica usada no título, rótulos dos eixos e ticks. Opções: IBM Plex Mono, Georgia, Arial, Times New Roman, Courier New e Helvetica Neue.</p>
+
+      <h3 id="opcoes-visuais">Opções visuais (checkboxes)</h3>
+      <table class="ref-table">
+        <thead><tr><th>Opção</th><th class="desc">Descrição</th></tr></thead>
+        <tbody>
+          <tr><td><code>Mostrar grade</code></td><td class="desc">Exibe linhas de grade no fundo do gráfico. O eixo zero recebe destaque automático.</td></tr>
+          <tr><td><code>Grade secundária</code></td><td class="desc">Adiciona subdivisões menores entre as linhas principais da grade.</td></tr>
+          <tr><td><code>Mostrar pontos marcados</code></td><td class="desc">Exibe marcadores nos pontos de amostragem. O estilo e tamanho são definidos na Barra de Ferramentas.</td></tr>
+          <tr><td><code>Preencher área sob a curva</code></td><td class="desc">Pinta a área entre a curva e o eixo x com a cor da série (semi-transparente por padrão).</td></tr>
+          <tr><td><code>Preenchimento opaco</code></td><td class="desc">Aumenta a opacidade do preenchimento de área. Só tem efeito se "Preencher área" estiver ativo.</td></tr>
+          <tr><td><code>Suavizar curva</code></td><td class="desc">Aplica interpolação cúbica entre os pontos, resultando em curvas mais arredondadas. Desative para funções com descontinuidades.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ─── TOOLBAR ─────────────────────────── -->
+    <section class="doc-section" id="toolbar">
+      <h2><span class="sec-icon">⋮</span> Barra de Ferramentas</h2>
+      <p>A toolbar fica acima do canvas e oferece controles adicionais de estilo que se aplicam a todas as séries simultaneamente.</p>
+
+      <h3>Estilo de linha</h3>
+      <ul>
+        <li><strong>Sólida</strong> — linha contínua (padrão)</li>
+        <li><strong>Tracejada</strong> — sequência de traços longos</li>
+        <li><strong>Pontilhada</strong> — sequência de pontos</li>
+      </ul>
+
+      <h3>Marcador</h3>
+      <p>Forma do marcador exibido nos pontos de amostragem quando <em>Mostrar pontos marcados</em> está ativo:</p>
+      <ul>
+        <li>Círculo, Quadrado, Triângulo, Cruz, Estrela, Traço</li>
+      </ul>
+
+      <h3>Tamanho do marcador</h3>
+      <p>Slider de 0 a 12 px que define o raio dos marcadores. O valor 0 oculta os marcadores.</p>
+
+      <h3>Interpolação</h3>
+      <table class="ref-table">
+        <thead><tr><th>Modo</th><th class="desc">Comportamento</th></tr></thead>
+        <tbody>
+          <tr><td><code>Monotônica</code></td><td class="desc">Spline que preserva monotonia — recomendada para a maioria das funções</td></tr>
+          <tr><td><code>Linear</code></td><td class="desc">Segmentos de reta entre os pontos — mais rápido, sem suavização adicional</td></tr>
+          <tr><td><code>Degrau</code></td><td class="desc">Transição abrupta após cada ponto — útil para funções constantes por partes</td></tr>
+          <tr><td><code>Degrau ant.</code></td><td class="desc">Transição abrupta antes de cada ponto</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout tip">
+        <span class="callout-icon">✦</span>
+        <div class="callout-body">
+          <p>Para funções com descontinuidades (como <code>1/x</code> ou <code>tan(x)</code>), desative <em>Suavizar curva</em> e use interpolação <strong>Linear</strong> para evitar artefatos visuais na descontinuidade.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── DIMENSÕES ───────────────────────── -->
+    <section class="doc-section" id="dimensoes">
+      <h2><span class="sec-icon">⬚</span> Dimensões da Imagem</h2>
+
+      <h3>Formatos predefinidos</h3>
+      <p>O seletor <strong>Formato predefinido</strong> preenche automaticamente os campos Largura e Altura com dimensões comuns:</p>
+      <table class="ref-table">
+        <thead><tr><th>Formato</th><th>Dimensão</th><th class="desc">Uso recomendado</th></tr></thead>
+        <tbody>
+          <tr><td><code>1200 × 800</code></td><td>3:2</td><td class="desc">Artigos e relatórios impressos</td></tr>
+          <tr><td><code>1600 × 900</code></td><td>16:9</td><td class="desc">Slides e apresentações</td></tr>
+          <tr><td><code>1000 × 1000</code></td><td>1:1</td><td class="desc">Posts quadrados (redes sociais)</td></tr>
+          <tr><td><code>1400 × 1050</code></td><td>4:3</td><td class="desc">A4 paisagem</td></tr>
+          <tr><td><code>900 × 1200</code></td><td>3:4</td><td class="desc">A4 retrato</td></tr>
+          <tr><td><code>2400 × 1600</code></td><td>3:2</td><td class="desc">Alta resolução / impressão grande</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Resolução de exportação (DPI)</h3>
+      <ul>
+        <li><strong>1× (tela)</strong> — tamanho nominal, adequado para web</li>
+        <li><strong>2× (HD)</strong> — dobra os pixels, ideal para telas Retina e impressões médias (padrão)</li>
+        <li><strong>3× (UHD)</strong> — três vezes os pixels, para impressão em alta qualidade</li>
+      </ul>
+
+      <div class="callout info">
+        <span class="callout-icon">ℹ</span>
+        <div class="callout-body">
+          <p>Um gráfico de 1200 × 800 em resolução 2× gera uma imagem de 2400 × 1600 pixels, equivalente a ~203 DPI numa impressão A4. Use 3× para impressão em formatos maiores ou quando o gráfico precisar de texto muito nítido.</p>
+        </div>
+      </div>
+
+      <h3>Formato de exportação</h3>
+      <ul>
+        <li><strong>PNG</strong> — sem perda de qualidade, suporta transparência, arquivos maiores</li>
+        <li><strong>JPEG</strong> — compressão com perda leve, arquivos menores, fundo sempre sólido</li>
+      </ul>
+    </section>
+
+    <!-- ─── EXEMPLOS PRONTOS ────────────────── -->
+    <section class="doc-section" id="exemplos">
+      <h2><span class="sec-icon">★</span> Exemplos Prontos</h2>
+      <p>A seção <strong>Exemplos Prontos</strong> contém 10 configurações pré-definidas que carregam automaticamente funções, intervalo de x e título. Úteis para explorar funcionalidades ou como ponto de partida.</p>
+
+      <table class="ref-table">
+        <thead><tr><th>Exemplo</th><th class="desc">Funções incluídas</th></tr></thead>
+        <tbody>
+          <tr><td><code>Parábola</code></td><td class="desc"><code>x^2</code></td></tr>
+          <tr><td><code>Trig. básica</code></td><td class="desc"><code>sin(x)</code> e <code>cos(x)</code></td></tr>
+          <tr><td><code>Exponencial</code></td><td class="desc"><code>exp(x)</code> e <code>exp(-x)</code></td></tr>
+          <tr><td><code>Funções log</code></td><td class="desc"><code>log(x)</code> e <code>log10(x)</code></td></tr>
+          <tr><td><code>Equação de onda</code></td><td class="desc">Harmônicos <code>sin(x − π/2)</code>, <code>sin(2x)</code>, <code>sin(3x)</code></td></tr>
+          <tr><td><code>Hipérbole</code></td><td class="desc"><code>1/x</code></td></tr>
+          <tr><td><code>Série de Taylor</code></td><td class="desc"><code>sin(x)</code> e sua aproximação polinomial</td></tr>
+          <tr><td><code>Funções potência</code></td><td class="desc"><code>√x</code>, <code>x^(1/3)</code> e <code>x²</code></td></tr>
+          <tr><td><code>Oscilador amor.</code></td><td class="desc"><code>e^(−0.3x)·sin(3x)</code></td></tr>
+          <tr><td><code>Gaussiana</code></td><td class="desc">Distribuição normal padrão</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout tip">
+        <span class="callout-icon">✦</span>
+        <div class="callout-body">
+          <p>Ao aplicar um exemplo, as funções e o intervalo de x são substituídos, mas as configurações de estilo, dimensão e títulos personalizados são preservados.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── EXPORTAÇÃO ──────────────────────── -->
+    <section class="doc-section" id="exportacao">
+      <h2><span class="sec-icon">↓</span> Exportação</h2>
+
+      <h3>Baixar imagem</h3>
+      <p>O botão <strong>↓ Baixar PNG</strong> (ou JPEG, conforme o formato selecionado) salva o gráfico diretamente no seu computador. O arquivo é nomeado <code>grafico.png</code> (ou <code>grafico.jpeg</code>). A imagem inclui o fundo branco (ou a cor configurada), independente das configurações do sistema.</p>
+
+      <h3>Copiar para área de transferência</h3>
+      <p>O botão <strong>⎘ Copiar</strong> copia a imagem do gráfico como PNG para a área de transferência. Em seguida, você pode colá-la diretamente em documentos Word, Google Slides, e-mails ou editores de imagem.</p>
+
+      <div class="callout warn">
+        <span class="callout-icon">⚠</span>
+        <div class="callout-body">
+          <p>A função Copiar requer permissão do navegador para acessar a área de transferência. No Firefox, pode ser necessário habilitar a permissão manualmente. No Safari, o suporte é limitado.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ─── ERROS COMUNS ────────────────────── -->
+    <section class="doc-section" id="erros">
+      <h2><span class="sec-icon">!</span> Erros Comuns</h2>
+
+      <div class="callout error">
+        <span class="callout-icon">✕</span>
+        <div class="callout-body">
+          <p><strong>f1: sintaxe inválida</strong><br>
+          A equação contém um erro de sintaxe. Verifique: multiplicação implícita (<code>2x</code> → <code>2*x</code>), parênteses desbalanceados, nome de função incorreto.</p>
+        </div>
+      </div>
+
+      <div class="callout error">
+        <span class="callout-icon">✕</span>
+        <div class="callout-body">
+          <p><strong>Intervalo de x inválido</strong><br>
+          O valor de x mínimo é maior ou igual ao máximo, ou os campos estão em branco.</p>
+        </div>
+      </div>
+
+      <div class="callout error">
+        <span class="callout-icon">✕</span>
+        <div class="callout-body">
+          <p><strong>Passo inválido</strong><br>
+          O campo <em>Passo da curva</em> está em branco ou com valor zero/negativo.</p>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-icon">⚠</span>
+        <div class="callout-body">
+          <p><strong>Gráfico em branco ou curva invisível</strong><br>
+          Possíveis causas: a função retorna <code>NaN</code> ou <code>Infinity</code> em todo o domínio (ex: <code>log(x)</code> com x mínimo negativo), ou a escala automática de y está muito ampla. Tente fixar os limites de y manualmente.</p>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-icon">⚠</span>
+        <div class="callout-body">
+          <p><strong>Curva com "salto" indesejado perto de uma assíntota</strong><br>
+          Funções como <code>1/x</code> e <code>tan(x)</code> têm descontinuidades. Desative <em>Suavizar curva</em> e use interpolação <strong>Linear</strong> para reduzir o artefato. O Chart.js liga os pontos adjacentes à descontinuidade com uma linha vertical — isso é comportamento esperado.</p>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <span class="callout-icon">ℹ</span>
+        <div class="callout-body">
+          <p><strong>Botão "Copiar" não funciona</strong><br>
+          Alguns navegadores exigem que a página seja servida via HTTPS para acessar a API de clipboard. Em uso local (arquivo HTML aberto diretamente), use o botão <em>Baixar PNG</em> como alternativa.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="page-footer">
+      Gerador de Gráficos Científicos — Piras na Física · Chart.js + math.js
+    </div>
+
+  </main>
+</div>
+
+<script>
+// TOC: highlight active section on scroll
+const sections = document.querySelectorAll('.doc-section');
+const links = document.querySelectorAll('#tocList a');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      links.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { rootMargin: '-15% 0px -75% 0px', threshold: 0 });
+
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

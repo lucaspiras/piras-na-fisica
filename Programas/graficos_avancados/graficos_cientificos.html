@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerador de Gráficos Científicos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="graficos_cientificos.css">
+<script src="https://cdn.jsdelivr.net/npm/mathjs@11/lib/browser/math.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/index.html" class="logo-link">
+    <div class="logo">
+      <img src="/img/Imagem-principal_index.png" alt="Piras na Física" class="logo-img">
+      <div class="logo-text">
+        Gerador de Gráficos Científicos
+        <span>Piras na Física</span>
+      </div>
+      </div>
+  </a>
+  <div style="display:flex;align-items:center;gap:0.6rem">
+    <span class="header-badge">Chart.js + math.js</span>
+    <a href="tutorial.html" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:0.7rem;padding:4px 12px;border-radius:4px;text-decoration:none;letter-spacing:0.04em;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">? Tutorial</a>
+  </div>
+</header>
+
+<div class="app-wrap">
+
+  <!-- ═══════════════ SIDEBAR ═══════════════ -->
+  <aside class="sidebar">
+
+    <!-- FUNÇÕES -->
+    <div class="sidebar-section">
+      <div class="section-header" onclick="toggleSection(this)">
+        <h3>Funções</h3>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="series-list" id="seriesList"></div>
+        <button class="btn-add-serie" onclick="adicionarSerie()">+ Adicionar função</button>
+        <div class="help-text">
+          Sintaxe: <code>sin(x)</code>, <code>x^2</code>, <code>exp(x)</code>, <code>log(x)</code>, <code>sqrt(x)</code>, <code>abs(x)</code><br>
+          Constantes: <code>pi</code>, <code>e</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- EIXOS -->
+    <div class="sidebar-section">
+      <div class="section-header collapsed" onclick="toggleSection(this)">
+        <h3>Domínio e Eixos</h3>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body hidden">
+        <div class="field-row">
+          <div class="field">
+            <label>x mínimo</label>
+            <input type="number" id="xmin" value="-10">
+          </div>
+          <div class="field">
+            <label>x máximo</label>
+            <input type="number" id="xmax" value="10">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>y mínimo</label>
+            <input type="number" id="ymin" placeholder="auto">
+          </div>
+          <div class="field">
+            <label>y máximo</label>
+            <input type="number" id="ymax" placeholder="auto">
+          </div>
+        </div>
+        <div class="field">
+          <label>Passo da curva</label>
+          <input type="number" id="passoCurva" value="0.01" step="0.001" min="0.0001">
+          <small>Valores menores = mais suave</small>
+        </div>
+        <div class="sep"></div>
+        <div class="field">
+          <label>Título eixo X</label>
+          <input type="text" id="tituloX" value="x">
+        </div>
+        <div class="field">
+          <label>Título eixo Y</label>
+          <input type="text" id="tituloY" value="f(x)">
+        </div>
+        <div class="field">
+          <label>Escala eixo X</label>
+          <select id="escalaX">
+            <option value="linear">Linear</option>
+            <option value="logarithmic">Logarítmica</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Escala eixo Y</label>
+          <select id="escalaY">
+            <option value="linear">Linear</option>
+            <option value="logarithmic">Logarítmica</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- TÍTULOS -->
+    <div class="sidebar-section">
+      <div class="section-header collapsed" onclick="toggleSection(this)">
+        <h3>Títulos e Legenda</h3>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body hidden">
+        <div class="field">
+          <label>Título principal</label>
+          <input type="text" id="tituloGrafico" value="Gráfico das funções">
+        </div>
+        <div class="field">
+          <label>Subtítulo</label>
+          <input type="text" id="subtituloGrafico" placeholder="(opcional)">
+        </div>
+        <div class="field">
+          <label>Posição da legenda</label>
+          <select id="posLegenda">
+            <option value="top">Topo</option>
+            <option value="bottom">Rodapé</option>
+            <option value="left">Esquerda</option>
+            <option value="right">Direita</option>
+            <option value="none">Ocultar</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- ESTILO DO GRÁFICO -->
+    <div class="sidebar-section">
+      <div class="section-header collapsed" onclick="toggleSection(this)">
+        <h3>Estilo Visual</h3>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body hidden">
+        <div class="field">
+          <label>Tema de cores</label>
+          <div class="theme-row" id="themeRow"></div>
+        </div>
+        <div class="sep"></div>
+        <div class="field">
+          <label>Cor de fundo</label>
+          <input type="color" id="corFundo" value="#ffffff">
+        </div>
+        <div class="field">
+          <label>Cor dos eixos / grade</label>
+          <input type="color" id="corEixos" value="#cccccc">
+        </div>
+        <div class="field">
+          <label>Cor do texto</label>
+          <input type="color" id="corTexto" value="#222222">
+        </div>
+        <div class="sep"></div>
+        <div class="field">
+          <label>Espessura das linhas (px)</label>
+          <input type="range" id="espessuraLinha" min="0.5" max="6" step="0.5" value="2">
+          <small id="espessuraLabel">2 px</small>
+        </div>
+        <div class="sep"></div>
+        <div class="field">
+          <label>Fonte do gráfico</label>
+          <select id="fonteFamiliaGrafico">
+            <option value="'IBM Plex Mono', monospace">IBM Plex Mono</option>
+            <option value="'Georgia', serif">Georgia</option>
+            <option value="'Arial', sans-serif">Arial</option>
+            <option value="'Times New Roman', serif">Times New Roman</option>
+            <option value="'Courier New', monospace">Courier New</option>
+            <option value="'Helvetica Neue', sans-serif">Helvetica Neue</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Tamanho do título (px)</label>
+          <input type="range" id="tamTitulo" min="12" max="32" step="1" value="18">
+          <small id="tamTituloLabel">18 px</small>
+        </div>
+        <div class="sep"></div>
+        <label class="check-field">
+          <input type="checkbox" id="mostrarGrade" checked>
+          Mostrar grade
+        </label>
+        <label class="check-field">
+          <input type="checkbox" id="gradeMinor">
+          Grade secundária
+        </label>
+        <label class="check-field">
+          <input type="checkbox" id="mostrarPontos">
+          Mostrar pontos marcados
+        </label>
+        <label class="check-field">
+          <input type="checkbox" id="preencherArea">
+          Preencher área sob a curva
+        </label>
+        <label class="check-field">
+          <input type="checkbox" id="areaOpaca">
+          Preenchimento opaco
+        </label>
+        <label class="check-field">
+          <input type="checkbox" id="suavizarCurva" checked>
+          Suavizar curva
+        </label>
+      </div>
+    </div>
+
+    <!-- TAMANHO -->
+    <div class="sidebar-section">
+      <div class="section-header collapsed" onclick="toggleSection(this)">
+        <h3>Dimensões da Imagem</h3>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body hidden">
+        <div class="field">
+          <label>Formato predefinido</label>
+          <select id="formatoPredefinido" onchange="aplicarFormato()">
+            <option value="custom">Personalizado</option>
+            <option value="1200x800">1200 × 800 — Artigo (3:2)</option>
+            <option value="1600x900">1600 × 900 — Apresentação (16:9)</option>
+            <option value="1000x1000">1000 × 1000 — Quadrado</option>
+            <option value="1400x1050">1400 × 1050 — A4 paisagem</option>
+            <option value="900x1200">900 × 1200 — A4 retrato</option>
+            <option value="2400x1600">2400 × 1600 — Alta resolução</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Largura (px)</label>
+            <input type="number" id="larguraGrafico" value="1200" min="320">
+          </div>
+          <div class="field">
+            <label>Altura (px)</label>
+            <input type="number" id="alturaGrafico" value="800" min="260">
+          </div>
+        </div>
+        <div class="field">
+          <label>Resolução de exportação</label>
+          <select id="dpiExporte">
+            <option value="1">1× (tela)</option>
+            <option value="2" selected>2× (HD)</option>
+            <option value="3">3× (UHD)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Formato de exportação</label>
+          <select id="formatoExporte">
+            <option value="png">PNG (lossless)</option>
+            <option value="jpeg">JPEG (comprimido)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRESETS -->
+    <div class="sidebar-section">
+      <div class="section-header collapsed" onclick="toggleSection(this)">
+        <h3>Exemplos Prontos</h3>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body hidden">
+        <div class="presets-grid" id="presetsGrid"></div>
+      </div>
+    </div>
+
+    <!-- AÇÕES -->
+    <div class="sidebar-actions">
+      <button class="btn-primary" onclick="gerarGrafico()">▶ Gerar gráfico</button>
+      <div class="btn-row">
+        <button class="btn-secondary" onclick="baixarImagem()">↓ Baixar PNG</button>
+        <button class="btn-secondary" onclick="copiarParaAreaTransferencia()">⎘ Copiar</button>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ═══════════════ MAIN ═══════════════ -->
+  <main class="main-area">
+
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+      <div class="toolbar-group">
+        <span class="toolbar-label">Estilo linha</span>
+        <button class="tb-btn active" id="tbSolid" onclick="setLineStyle('solid')">Sólida</button>
+        <button class="tb-btn" id="tbDashed" onclick="setLineStyle('dashed')">Tracejada</button>
+        <button class="tb-btn" id="tbDotted" onclick="setLineStyle('dotted')">Pontilhada</button>
+      </div>
+      <div class="toolbar-group">
+        <span class="toolbar-label">Marcador</span>
+        <select class="tb-select" id="tipoMarcador">
+          <option value="circle">● Círculo</option>
+          <option value="rect">■ Quadrado</option>
+          <option value="triangle">▲ Triângulo</option>
+          <option value="cross">+ Cruz</option>
+          <option value="star">★ Estrela</option>
+          <option value="dash">— Traço</option>
+        </select>
+      </div>
+      <div class="toolbar-group">
+        <span class="toolbar-label">Tamanho marcador</span>
+        <input type="range" style="width:80px" min="0" max="12" step="1" value="4" id="tamMarcador">
+      </div>
+      <div class="toolbar-group">
+        <span class="toolbar-label">Interpolação</span>
+        <select class="tb-select" id="interpolacao">
+          <option value="monotone">Monotônica</option>
+          <option value="linear">Linear</option>
+          <option value="step">Degrau</option>
+          <option value="stepBefore">Degrau ant.</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- CANVAS -->
+    <div class="canvas-wrap" id="canvasWrap">
+      <div class="canvas-container" id="canvasContainer">
+        <canvas id="graficoCanvas"></canvas>
+      </div>
+    </div>
+
+    <!-- STATUS -->
+    <div class="status-bar">
+      <span class="status-msg" id="statusMsg">Pronto. Configure as opções e clique em "Gerar gráfico".</span>
+      <span class="status-coords" id="coordsDisplay"></span>
+    </div>
+
+  </main>
+</div>
+
+<div class="notif" id="notif"></div>
+
+<script src="graficos_cientificos.js"></script>
+</body>
+</html>

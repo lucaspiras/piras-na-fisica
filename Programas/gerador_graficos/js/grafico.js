@@ -27,7 +27,6 @@ Chart.defaults.color = "#334155";
 
 function gerarGrafico() {
     const equacoesTexto = document.getElementById("equacao").value;
-    const modo = document.getElementById("modo").value;
 
     const tituloGrafico = document.getElementById("tituloGrafico").value;
     const tituloX = document.getElementById("tituloX").value;
@@ -42,6 +41,9 @@ function gerarGrafico() {
     const altura = parseInt(document.getElementById("alturaGrafico").value, 10);
     const mostrarPontos = document.getElementById("mostrarPontos").checked;
     const mostrarGrade = document.getElementById("mostrarGrade").checked;
+
+    atualizarSeletoresCores();
+
     const cores = obterCoresPersonalizadas();
 
     if (!Number.isFinite(xmin) || !Number.isFinite(xmax) || !Number.isFinite(passoCurva) || xmin >= xmax || passoCurva <= 0) {
@@ -69,39 +71,22 @@ function gerarGrafico() {
     const datasets = [];
 
     try {
-        if (modo === "normal") {
-            const equacoes = equacoesTexto
-                .split(";")
-                .map(eq => eq.trim())
-                .filter(Boolean);
+        const equacoes = equacoesTexto
+            .split(";")
+            .map(eq => eq.trim())
+            .filter(Boolean);
 
-            if (equacoes.length === 0) {
-                alert("Digite pelo menos uma funcao.");
-                return;
-            }
-
-            equacoes.forEach((eq, i) => {
-                const expressao = math.compile(eq);
-                datasets.push(
-                    criarDataset(formatarExpressao(eq), expressao, valoresX, cores[i % cores.length], opcoesPontos)
-                );
-            });
-        } else {
-            const eq = equacoesTexto.trim();
-
-            if (!eq) {
-                alert("Digite uma funcao para o modo cinematica.");
-                return;
-            }
-
-            const s = math.compile(eq);
-            const v = math.derivative(eq, "x");
-            const a = math.derivative(v, "x");
-
-            datasets.push(criarDataset("s(x) = " + formatarExpressao(eq), s, valoresX, cores[0], opcoesPontos));
-            datasets.push(criarDataset("v(x)", v, valoresX, cores[1], opcoesPontos));
-            datasets.push(criarDataset("a(x)", a, valoresX, cores[2], opcoesPontos));
+        if (equacoes.length === 0) {
+            alert("Digite pelo menos uma funcao.");
+            return;
         }
+
+        equacoes.forEach((eq, i) => {
+            const expressao = math.compile(eq);
+            datasets.push(
+                criarDataset(formatarExpressao(eq), expressao, valoresX, cores[i % cores.length], opcoesPontos)
+            );
+        });
     } catch {
         alert("Erro na funcao. Confira a sintaxe e tente novamente.");
         return;
@@ -294,6 +279,23 @@ function obterCoresPersonalizadas() {
     return cores.length > 0 ? cores : CORES_SERIES;
 }
 
+function atualizarSeletoresCores() {
+    const equacoesTexto = document.getElementById("equacao").value;
+    const equacoes = equacoesTexto.split(";").map(eq => eq.trim()).filter(Boolean);
+    const num = equacoes.length;
+    const container = document.getElementById("coresContainer");
+    container.innerHTML = "";
+    for (let i = 0; i < num; i++) {
+        const div = document.createElement("div");
+        div.className = "campo campo-cor";
+        div.innerHTML = `
+            <label for="corSerie${i+1}">Cor ${i+1}</label>
+            <input type="color" id="corSerie${i+1}" class="cor-serie" value="${CORES_SERIES[i % CORES_SERIES.length]}">
+        `;
+        container.appendChild(div);
+    }
+}
+
 function formatarNumero(valor) {
     return Number(valor).toLocaleString("pt-BR", {
         maximumFractionDigits: 4
@@ -335,3 +337,6 @@ function baixarImagem() {
 }
 
 gerarGrafico();
+
+document.getElementById("equacao").addEventListener("input", atualizarSeletoresCores);
+atualizarSeletoresCores();
