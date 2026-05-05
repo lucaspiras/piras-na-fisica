@@ -9,7 +9,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-TY56KM22X8');
   </script>
   <link rel="stylesheet" href="css/style.css">
@@ -20,53 +19,86 @@
 <div id="header"></div>
 <script src="js/include.js"></script>
 
-<main class="pagina">
+<main class="pagina pagina-programas">
 
   <section class="pagina-header">
     <h1>Programas Interativos</h1>
-    <p class="pagina-sub">
-      Ferramentas para explorar conceitos de Física de forma prática.
-    </p>
+    <p class="pagina-sub">Ferramentas para explorar conceitos de Física de forma prática.</p>
   </section>
 
-  <section class="conteudos-grid">
+  <div class="filtros-programas">
+    <button class="filtro-btn ativo" data-filtro="todos">Todos</button>
+    <button class="filtro-btn" data-filtro="fisica">Física</button>
+    <button class="filtro-btn" data-filtro="graficos">Gráficos</button>
+    <button class="filtro-btn" data-filtro="ferramentas">Ferramentas</button>
+    <button class="filtro-btn" data-filtro="jogos">Jogos</button>
+  </div>
 
-    <a href="/Programas/gerador_graficos/grafico.html" class="conteudo-card">
-      <span class="icone">📈</span>
-      <h3>Criador de Gráficos - Javascript</h3>
+  <section class="programas-grid">
+
+    <a href="/Programas/gerador_graficos/grafico.html" class="programa-card" data-categoria="graficos">
+      <div class="programa-card-topo">
+        <span class="icone">📈</span>
+        <span class="categoria-badge graficos">Gráficos</span>
+      </div>
+      <h3>Criador de Gráficos</h3>
       <p>Construa gráficos de funções e visualize relações matemáticas.</p>
     </a>
 
-    <a href="/Programas/jogo_alfandega/jogo_ilha.html" class="conteudo-card">
-      <span class="icone">🛃</span>
+    <a href="/Programas/jogo_alfandega/jogo_ilha.html" class="programa-card" data-categoria="jogos">
+      <div class="programa-card-topo">
+        <span class="icone">🛃</span>
+        <span class="categoria-badge jogos">Jogos</span>
+      </div>
       <h3>Jogo da Alfândega</h3>
       <p>Desenvolva o raciocínio lógico identificando padrões.</p>
     </a>
 
-    <a href="/Programas/conversor/conversor.html" class="conteudo-card">
-      <span class="icone">🔄</span>
+    <a href="/Programas/conversor/conversor.html" class="programa-card" data-categoria="ferramentas">
+      <div class="programa-card-topo">
+        <span class="icone">🔄</span>
+        <span class="categoria-badge ferramentas">Ferramenta</span>
+      </div>
       <h3>Conversor de Unidades</h3>
       <p>Converta unidades físicas de forma rápida e prática.</p>
     </a>
 
-        <a href="/Programas/forca_eletrica/forca_eletrica.html" class="conteudo-card">
-      <span class="icone">⚡</span>
+    <a href="/Programas/forca_eletrica/forca_eletrica.html" class="programa-card" data-categoria="fisica">
+      <div class="programa-card-topo">
+        <span class="icone">⚡</span>
+        <span class="categoria-badge fisica">Física</span>
+      </div>
       <h3>Força Elétrica</h3>
       <p>Explore a força elétrica entre cargas pontuais.</p>
     </a>
-    
-     <a href="/Programas/simulador_movimento/movimento.html" class="conteudo-card">
-      <span class="icone">🏃</span>
+
+    <a href="/Programas/simulador_movimento/movimento.html" class="programa-card" data-categoria="fisica">
+      <div class="programa-card-topo">
+        <span class="icone">🏃</span>
+        <span class="categoria-badge fisica">Física</span>
+      </div>
       <h3>Simulador de Movimento</h3>
       <p>Explore os conceitos de movimento e cinemática.</p>
     </a>
-    
 
-     <a href="/Programas/simulador_movimento_avancado/simulador_movimento_avancado.html" class="conteudo-card">
-      <span class="icone">🔬</span>
-      <h3>Simulador de Movimento com uso de Equações diferenciais</h3>
-      <p>Explore os conceitos de movimento e cinemática de forma mais aprofundada.</p>
+    <a href="/Programas/simulador_movimento_avancado/simulador_movimento_avancado.html" class="programa-card" data-categoria="fisica">
+      <div class="programa-card-topo">
+        <span class="icone">🔬</span>
+        <span class="categoria-badge fisica">Física</span>
+      </div>
+      <h3>Simulador de Movimento Avançado</h3>
+      <p>Cinemática aprofundada com equações diferenciais.</p>
     </a>
+
+    <a href="/Programas/graficos_avancados/graficos_cientificos.html" class="programa-card" data-categoria="graficos">
+      <div class="programa-card-topo">
+        <span class="icone">🔧</span>
+        <span class="categoria-badge graficos">Gráficos</span>
+      </div>
+      <h3>Gráficos Científicos</h3>
+      <p>Gerador avançado com ajuste de escala e exportação.</p>
+    </a>
+
   </section>
 
 </main>
@@ -74,6 +106,24 @@
 <footer>
   <p>© 2025 — Portal de Física</p>
 </footer>
+
+<script>
+  const botoes = document.querySelectorAll('.filtro-btn');
+  const cards  = document.querySelectorAll('.programa-card');
+
+  botoes.forEach(btn => {
+    btn.addEventListener('click', () => {
+      botoes.forEach(b => b.classList.remove('ativo'));
+      btn.classList.add('ativo');
+
+      const filtro = btn.dataset.filtro;
+      cards.forEach(card => {
+        const visivel = filtro === 'todos' || card.dataset.categoria === filtro;
+        card.style.display = visivel ? '' : 'none';
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
