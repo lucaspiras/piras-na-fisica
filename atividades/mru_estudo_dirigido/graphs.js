@@ -268,6 +268,25 @@
     animFrameId = requestAnimationFrame(animate);
   }
 
+  function updateCanvasLabels(s0, v) {
+    const cST = document.getElementById('grafico-st');
+    const cVT = document.getElementById('grafico-vt');
+    const sign = v >= 0 ? '+' : '';
+    const sentido = v > 0 ? 'positivo' : v < 0 ? 'negativo' : 'nulo — repouso';
+    const deslocamento = (v * 10).toFixed(0);
+    if (cST) {
+      cST.setAttribute('aria-label',
+        `Gráfico S por t: reta com equação S = ${s0}${sign}${v}t. ` +
+        `Posição inicial ${s0} m, velocidade ${v} m/s, sentido ${sentido}. ` +
+        `Use os controles deslizantes para alterar os valores.`);
+    }
+    if (cVT) {
+      cVT.setAttribute('aria-label',
+        `Gráfico v por t: reta horizontal em v = ${v} m/s. Velocidade constante. ` +
+        `A área sob a reta representa o deslocamento de ${deslocamento} m em 10 segundos.`);
+    }
+  }
+
   function updateSliders() {
     const slS0 = document.getElementById('sl-s0');
     const slV  = document.getElementById('sl-v');
@@ -279,11 +298,13 @@
     slS0.addEventListener('input', () => {
       currentS0 = parseInt(slS0.value);
       lblS0.textContent = currentS0;
+      updateCanvasLabels(currentS0, currentV);
     });
 
     slV.addEventListener('input', () => {
       currentV = parseInt(slV.value);
       lblV.textContent = currentV;
+      updateCanvasLabels(currentS0, currentV);
     });
   }
 

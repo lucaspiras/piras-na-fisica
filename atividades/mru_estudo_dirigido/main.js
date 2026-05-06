@@ -129,4 +129,136 @@
     }
   });
 
+  // ================================================================
+  // BOTÃO REINICIAR
+  // ================================================================
+  const resetBtn = document.getElementById('resetAll');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function() {
+      if (typeof window.MRUQuizReset === 'function') {
+        window.MRUQuizReset();
+      }
+    });
+  }
+
+  // ================================================================
+  // EXPORTAR RELATÓRIO
+  // ================================================================
+  const TOPIC_NAMES = {
+    quiz1: 'Tópico 01 — Referencial',
+    quiz2: 'Tópico 02 — Posição',
+    quiz3: 'Tópico 03 — Velocidade Média',
+    quiz4: 'Tópico 04 — Velocidade Instantânea',
+    quiz5: 'Tópico 05 — Equações do MRU',
+    quiz6: 'Tópico 06 — Função Horária da Posição',
+    quiz7: 'Tópico 07 — Gráficos do MRU',
+    quiz8: 'Tópico 08 — Classificação do MRU',
+    quiz9: 'Tópico 09 — Encontro de Móveis',
+  };
+
+  function stripHtml(str) {
+    return str.replace(/<[^>]+>/g, '');
+  }
+
+  function generateReport() {
+    const state = window.MRUQuizState;
+    const data  = window.MRUQuizData;
+    if (!data || !state) return 'Dados não disponíveis.';
+
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('pt-BR') + ' às ' + now.toLocaleTimeString('pt-BR');
+
+    const lines = [
+      '╔══════════════════════════════════════════╗',
+      '║  RELATÓRIO DE ESTUDO — MRU               ║',
+      '║  Movimento Retilíneo Uniforme            ║',
+      '╚══════════════════════════════════════════╝',
+      '',
+      'Data: ' + dateStr,
+      '',
+      '──────────────────────────────────────────',
+    ];
+
+    let totalAnswered = 0;
+    let totalCorrect  = 0;
+    let totalQs       = 0;
+
+    Object.keys(data).forEach(function(quizId) {
+      const questions = data[quizId];
+      lines.push('');
+      lines.push(TOPIC_NAMES[quizId] || quizId);
+      lines.push('──────────────────────────────────────────');
+
+      questions.forEach(function(q, i) {
+        const qid      = quizId + '_q' + i;
+        const answered = state.answered[qid];
+        totalQs++;
+
+        lines.push('Q' + (i + 1) + ': ' + stripHtml(q.text));
+
+        if (answered) {
+          totalAnswered++;
+          if (answered.correct) {
+            totalCorrect++;
+            lines.push('   -> CORRETA');
+          } else {
+            lines.push('   -> INCORRETA');
+            lines.push('   Explicação: ' + stripHtml(q.explanation));
+          }
+        } else {
+          lines.push('   -> (não respondida)');
+        }
+        lines.push('');
+      });
+    });
+
+    const pct = totalQs > 0 ? Math.round((totalCorrect / totalQs) * 100) : 0;
+    lines.push('══════════════════════════════════════════');
+    lines.push('RESULTADO FINAL: ' + totalCorrect + '/' + totalQs + ' (' + pct + '%)');
+    lines.push('Respondidas: ' + totalAnswered + '/' + totalQs);
+    lines.push('');
+    lines.push('Piras na Física — fisíca.pirasnafisica.com.br');
+
+    return lines.join('\n');
+  }
+
+  const downloadBtn = document.getElementById('downloadReportBtn');
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', function() {
+      const text = generateReport();
+      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href = url;
+      const d = new Date();
+      a.download = 'relatorio_mru_' + d.toISOString().slice(0, 10) + '.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+  }
+
+  const copyBtn = document.getElementById('copyReportBtn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function() {
+      const text = generateReport();
+      navigator.clipboard.writeText(text).then(function() {
+        const orig = copyBtn.textContent;
+        copyBtn.textContent = '✓ Copiado!';
+        setTimeout(function() { copyBtn.textContent = orig; }, 2000);
+      });
+    });
+  }
+
+  const emailBtn = document.getElementById('emailReportBtn');
+  if (emailBtn) {
+    emailBtn.addEventListener('click', function() {
+      const text    = generateReport();
+      const subject = encodeURIComponent('Relatório de Estudo — MRU');
+      const body    = encodeURIComponent(text);
+      window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
+    });
+  }
+
 })();

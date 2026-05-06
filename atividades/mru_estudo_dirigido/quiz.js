@@ -3,6 +3,10 @@
 (function() {
   'use strict';
 
+  function stripHtmlLocal(str) {
+    return str.replace(/<[^>]+>/g, '');
+  }
+
   // ================================================================
   // BANCO DE QUESTÕES
   // Tipo "objective": alternativas, apenas uma correta (índice 0-based)
@@ -46,7 +50,7 @@
         answer: 130,
         tolerance: 1,
         unit: 'm',
-        explanation: 'S_f = 80 + 50 = 130 m'
+        explanation: 'S<sub>f</sub> = 80 + 50 = 130 m'
       },
       {
         type: 'objective',
@@ -62,11 +66,11 @@
       },
       {
         type: 'numeric',
-        text: 'Um móvel parte de S₀ = −20 m e vai até S_f = 60 m. Qual é o deslocamento ΔS (em metros)?',
+        text: 'Um móvel parte de S₀ = −20 m e vai até S<sub>f</sub> = 60 m. Qual é o deslocamento ΔS (em metros)?',
         answer: 80,
         tolerance: 1,
         unit: 'm',
-        explanation: 'ΔS = S_f − S₀ = 60 − (−20) = 80 m'
+        explanation: 'ΔS = S<sub>f</sub> − S₀ = 60 − (−20) = 80 m'
       }
     ],
 
@@ -77,7 +81,7 @@
         answer: 15,
         tolerance: 0.5,
         unit: 'm/s',
-        explanation: 'v_m = ΔS / Δt = 120 / 8 = 15 m/s'
+        explanation: 'v<sub>m</sub> = ΔS / Δt = 120 / 8 = 15 m/s'
       },
       {
         type: 'numeric',
@@ -97,7 +101,7 @@
           '5 m/s, pois percorreu apenas 200 m'
         ],
         correct: 1,
-        explanation: 'Velocidade média = ΔS / Δt. Como o carro voltou ao ponto de partida, ΔS = 0, logo v_m = 0.'
+        explanation: 'Velocidade média = ΔS / Δt. Como o carro voltou ao ponto de partida, ΔS = 0, logo v<sub>m</sub> = 0.'
       }
     ],
 
@@ -241,7 +245,7 @@
           'Os dois vão parar ao mesmo tempo'
         ],
         correct: 2,
-        explanation: 'O ponto de intersecção das retas indica o momento em que S_A = S_B: os dois estão na mesma posição ao mesmo tempo — é o encontro!'
+        explanation: 'O ponto de intersecção das retas indica o momento em que S<sub>A</sub> = S<sub>B</sub>: os dois estão na mesma posição ao mesmo tempo — é o encontro!'
       }
     ],
 
@@ -283,7 +287,7 @@
     quiz9: [
       {
         type: 'numeric',
-        text: 'Dois carros partem em sentidos opostos: A com S_A = 10t e B com S_B = 300 − 20t. Em que instante (s) eles se encontram?',
+        text: 'Dois carros partem em sentidos opostos: A com S<sub>A</sub> = 10t e B com S<sub>B</sub> = 300 − 20t. Em que instante (s) eles se encontram?',
         answer: 10,
         tolerance: 0.5,
         unit: 's',
@@ -291,7 +295,7 @@
       },
       {
         type: 'numeric',
-        text: 'No encontro do exercício anterior (S_A = 10t, S_B = 300 − 20t, t = 10 s), qual é a posição do encontro (em metros)?',
+        text: 'No encontro do exercício anterior (S<sub>A</sub> = 10t, S<sub>B</sub> = 300 − 20t, t = 10 s), qual é a posição do encontro (em metros)?',
         answer: 100,
         tolerance: 2,
         unit: 'm',
@@ -302,16 +306,19 @@
         text: 'Para encontrar onde dois móveis A e B se encontram, devemos:',
         options: [
           'Igualar as velocidades dos dois',
-          'Igualar as posições: S_A(t) = S_B(t) e resolver para t',
+          'Igualar as posições: S<sub>A</sub>(t) = S<sub>B</sub>(t) e resolver para t',
           'Subtrair as funções e encontrar a derivada',
           'Somar as posições iniciais e dividir pela velocidade média'
         ],
         correct: 1,
-        explanation: 'Encontro = mesma posição ao mesmo tempo. Igualamos S_A(t) = S_B(t) e resolvemos a equação para t.'
+        explanation: 'Encontro = mesma posição ao mesmo tempo. Igualamos S<sub>A</sub>(t) = S<sub>B</sub>(t) e resolvemos a equação para t.'
       }
     ]
 
   };
+
+  // Expõe banco de questões para geração de relatório
+  window.MRUQuizData = QUIZZES;
 
   // ================================================================
   // ESTADO GLOBAL DO QUIZ
@@ -341,21 +348,24 @@
         html += `<div class="options-list" id="opts_${qid}">`;
         const letters = ['A', 'B', 'C', 'D', 'E'];
         q.options.forEach((opt, oi) => {
-          html += `<button class="option-btn" data-qid="${qid}" data-oi="${oi}" data-correct="${q.correct}">
-            <span class="opt-letter">${letters[oi]}</span>${opt}
+          html += `<button class="option-btn" data-qid="${qid}" data-oi="${oi}" data-correct="${q.correct}"
+            aria-label="Opção ${letters[oi]}: ${stripHtmlLocal(opt)}">
+            <span class="opt-letter" aria-hidden="true">${letters[oi]}</span>${opt}
           </button>`;
         });
         html += `</div>`;
       } else {
         // Numeric
         html += `<div class="numeric-row">
-          <input type="number" class="numeric-inp" id="inp_${qid}" placeholder="resposta" step="any" />
-          <span class="numeric-unit">${q.unit}</span>
-          <button class="submit-btn" data-qid="${qid}" data-answer="${q.answer}" data-tol="${q.tolerance}">Verificar</button>
+          <input type="number" class="numeric-inp" id="inp_${qid}" placeholder="resposta" step="any"
+            aria-label="Digite a resposta em ${q.unit}" />
+          <span class="numeric-unit" aria-hidden="true">${q.unit}</span>
+          <button class="submit-btn" data-qid="${qid}" data-answer="${q.answer}" data-tol="${q.tolerance}"
+            aria-label="Verificar resposta">Verificar</button>
         </div>`;
       }
 
-      html += `<div class="feedback" id="fb_${qid}"></div>`;
+      html += `<div class="feedback" id="fb_${qid}" role="status" aria-live="polite" aria-atomic="true"></div>`;
       html += `</div>`;
     });
 

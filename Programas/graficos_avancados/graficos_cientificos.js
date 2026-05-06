@@ -35,13 +35,46 @@ let series = [
 ];
 
 /* ─────────────────────────────────────────────
+   FUNÇÕES RESPONSIVAS
+───────────────────────────────────────────── */
+function getScreenSize() {
+  return window.innerWidth;
+}
+
+function ajustarParaTela() {
+  const width = getScreenSize();
+  
+  if (width <= 480) {
+    // Mobile
+    document.getElementById('larguraGrafico').value = '400';
+    document.getElementById('alturaGrafico').value = '350';
+  } else if (width <= 768) {
+    // Tablet
+    document.getElementById('larguraGrafico').value = '600';
+    document.getElementById('alturaGrafico').value = '450';
+  } else if (width <= 900) {
+    // Small desktop
+    document.getElementById('larguraGrafico').value = '800';
+    document.getElementById('alturaGrafico').value = '550';
+  }
+}
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth <= 768) {
+    ajustarParaTela();
+  }
+});
+
+/* ─────────────────────────────────────────────
    INICIALIZAÇÃO
 ───────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
+  ajustarParaTela();
   renderizarTemas();
   renderizarPresets();
   renderizarSeries();
   bindSliders();
+  colapsarSeçõesEmTelasPequenas();
   gerarGrafico();
 
   Chart.defaults.font.family = "'IBM Plex Mono', monospace";
@@ -217,10 +250,17 @@ function gerarGrafico() {
   const ymaxVal    = document.getElementById('ymax').value;
   const ymin       = yminVal !== '' ? parseFloat(yminVal) : null;
   const ymax       = ymaxVal !== '' ? parseFloat(ymaxVal) : null;
-  const passoCurva = parseFloat(document.getElementById('passoCurva').value);
+  let passoCurva = parseFloat(document.getElementById('passoCurva').value);
   const largura    = parseInt(document.getElementById('larguraGrafico').value, 10);
   const altura     = parseInt(document.getElementById('alturaGrafico').value, 10);
   const dpi        = parseInt(document.getElementById('dpiExporte').value, 10);
+
+  // Ajustar passo da curva em telas pequenas para melhorar performance
+  if (getScreenSize() <= 480) {
+    passoCurva = Math.max(passoCurva, 0.05);
+  } else if (getScreenSize() <= 768) {
+    passoCurva = Math.max(passoCurva, 0.03);
+  }
 
   const tituloGrafico   = document.getElementById('tituloGrafico').value;
   const subtituloGrafico= document.getElementById('subtituloGrafico').value;
@@ -517,4 +557,19 @@ function toggleSection(header) {
   const body = header.nextElementSibling;
   const collapsed = body.classList.toggle('hidden');
   header.classList.toggle('collapsed', collapsed);
+}
+
+function colapsarSeçõesEmTelasPequenas() {
+  const width = getScreenSize();
+  if (width <= 768) {
+    const headers = document.querySelectorAll('.section-header');
+    headers.forEach((header, index) => {
+      // Manter seção de funções aberta, colapsar as demais em telas pequenas
+      if (index > 0 && !header.classList.contains('collapsed')) {
+        const body = header.nextElementSibling;
+        body.classList.add('hidden');
+        header.classList.add('collapsed');
+      }
+    });
+  }
 }

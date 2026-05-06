@@ -38,6 +38,8 @@ body {
   align-items: center;
   justify-content: space-between;
   height: 56px;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 .site-header .logo {
   display: flex;
@@ -512,6 +514,235 @@ input[type="range"] {
   .app-wrap { grid-template-columns: 1fr; grid-template-rows: auto auto 1fr auto; }
   .sidebar { grid-row: auto; max-height: 50vh; border-right: none; border-bottom: 1px solid var(--border); }
   .main-area { grid-row: auto; }
+  .toolbar { flex-wrap: wrap; gap: 0.5rem; padding: 0.5rem 1rem; }
+  .toolbar-group { padding-right: 0.5rem; border-right: none; }
+}
+
+/* Tablets (768px and down) */
+@media (max-width: 768px) {
+  .site-header {
+    padding: 0 1rem;
+    height: auto;
+    min-height: 56px;
+  }
+  .site-header .logo {
+    gap: 0.5rem;
+  }
+  .logo-img {
+    height: 40px;
+  }
+  .site-header .logo-text {
+    font-size: 0.95rem;
+  }
+  .sidebar {
+    max-height: 40vh;
+    overflow-y: auto;
+  }
+  .section-body {
+    padding: 0.75rem;
+    gap: 0.5rem;
+  }
+  .field label, .section-header h3 {
+    font-size: 0.68rem;
+  }
+  input[type="text"], input[type="number"], select, textarea {
+    font-size: 0.75rem;
+    padding: 0.4rem;
+  }
+  .canvas-wrap {
+    padding: 1rem;
+  }
+  .toolbar {
+    padding: 0.5rem 0.75rem;
+    gap: 0.3rem;
+  }
+  .toolbar-label {
+    font-size: 0.6rem;
+  }
+  .tb-btn, .tb-select {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.4rem;
+  }
+  .btn-primary, .btn-secondary {
+    font-size: 0.7rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Mobile (480px and down) */
+@media (max-width: 480px) {
+  body {
+    line-height: 1.4;
+  }
+  .site-header {
+    padding: 0.5rem;
+    gap: 0.3rem;
+  }
+  .logo-img {
+    height: 32px;
+  }
+  .site-header .logo-text {
+    font-size: 0.8rem;
+  }
+  .site-header .logo-text span {
+    font-size: 0.55rem;
+    margin-top: -1px;
+  }
+  .header-badge {
+    font-size: 0.6rem;
+    padding: 2px 6px;
+  }
+  .app-wrap {
+    min-height: calc(100vh - 56px);
+  }
+  .sidebar {
+    max-height: 35vh;
+    overflow-y: auto;
+  }
+  .sidebar-section {
+    border-bottom: 1px solid var(--border2);
+  }
+  .section-header {
+    padding: 0.5rem 0.75rem;
+  }
+  .section-header h3 {
+    font-size: 0.62rem;
+  }
+  .section-body {
+    padding: 0.6rem;
+    gap: 0.4rem;
+  }
+  .field label {
+    font-size: 0.62rem;
+  }
+  .field small {
+    font-size: 0.6rem;
+  }
+  input[type="text"], input[type="number"], select, textarea {
+    font-size: 0.7rem;
+    padding: 0.35rem;
+  }
+  .field-row {
+    gap: 0.4rem;
+  }
+  .check-field {
+    font-size: 0.7rem;
+    gap: 0.3rem;
+  }
+  .check-field input[type="checkbox"] {
+    width: 13px;
+    height: 13px;
+  }
+  .btn-add-serie {
+    font-size: 0.65rem;
+    padding: 0.4rem;
+  }
+  .serie-item {
+    margin-bottom: 0.25rem;
+  }
+  .serie-header {
+    padding: 0.4rem;
+    gap: 0.3rem;
+  }
+  .serie-num {
+    font-size: 0.6rem;
+  }
+  .serie-eq-preview {
+    font-size: 0.7rem;
+  }
+  .serie-color-dot {
+    width: 8px;
+    height: 8px;
+  }
+  .serie-body {
+    padding: 0.5rem;
+  }
+  .canvas-wrap {
+    padding: 0.5rem;
+  }
+  .canvas-container {
+    border: 1px solid var(--border);
+  }
+  .toolbar {
+    padding: 0.4rem 0.5rem;
+    gap: 0.2rem;
+    flex-direction: column;
+  }
+  .toolbar-group {
+    width: 100%;
+    flex-wrap: wrap;
+    padding-right: 0;
+    border-right: none;
+    gap: 0.2rem;
+  }
+  .toolbar-label {
+    font-size: 0.55rem;
+    margin-right: 0.1rem;
+  }
+  .tb-btn {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.3rem;
+  }
+  .tb-select {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.3rem;
+  }
+  .status-bar {
+    padding: 0.3rem 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+  .status-msg, .status-coords {
+    font-size: 0.62rem;
+  }
+  .sidebar-actions {
+    padding: 0.75rem;
+    gap: 0.4rem;
+  }
+  .btn-primary, .btn-secondary {
+    font-size: 0.65rem;
+    padding: 0.4rem 0.8rem;
+  }
+  .btn-row {
+    gap: 0.4rem;
+  }
+  .presets-grid {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+  .preset-btn {
+    font-size: 0.6rem;
+    padding: 0.35rem;
+  }
+  .preset-btn .preset-name {
+    font-size: 0.62rem;
+  }
+  .preset-btn .preset-eq {
+    font-size: 0.55rem;
+  }
+  .theme-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.25rem;
+  }
+  .theme-btn {
+    font-size: 0.55rem;
+    padding: 0.3rem;
+  }
+  .theme-btn .theme-preview {
+    height: 16px;
+    margin-bottom: 2px;
+  }
+  .help-text {
+    font-size: 0.6rem;
+    padding: 0.4rem;
+  }
+  .notif {
+    bottom: 1rem;
+    right: 0.5rem;
+    font-size: 0.65rem;
+    padding: 0.5rem 0.8rem;
+  }
 }
 
 /* Select styling */

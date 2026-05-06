@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <a href="#topicos" class="skip-link">Ir para o conteúdo</a>
 
   <!-- HERO -->
   <header class="hero">
@@ -306,7 +307,9 @@
 
           <div class="graph-card">
             <h4>Gráfico S × t (Posição × Tempo)</h4>
-            <canvas id="grafico-st" width="320" height="200"></canvas>
+            <canvas id="grafico-st" width="320" height="200"
+              role="img"
+              aria-label="Gráfico S por t: reta com equação S = 10 + 10t. Posição inicial 10 m, velocidade 10 m/s, sentido positivo. Use os controles deslizantes abaixo para alterar os valores."></canvas>
             <ul>
               <li>Reta oblíqua (inclinada)</li>
               <li>Coeficiente angular = velocidade v</li>
@@ -316,7 +319,9 @@
 
           <div class="graph-card">
             <h4>Gráfico v × t (Velocidade × Tempo)</h4>
-            <canvas id="grafico-vt" width="320" height="200"></canvas>
+            <canvas id="grafico-vt" width="320" height="200"
+              role="img"
+              aria-label="Gráfico v por t: reta horizontal em v = 10 m/s. Velocidade constante. A área sob a reta representa o deslocamento de 100 m em 10 segundos."></canvas>
             <ul>
               <li>Reta horizontal (v constante)</li>
               <li>Área sob a curva = deslocamento ΔS</li>
@@ -329,11 +334,13 @@
           <h4>🎛️ Explore os gráficos:</h4>
           <div class="slider-row">
             <label>S₀ = <span id="s0-val">10</span> m</label>
-            <input type="range" min="-50" max="50" value="10" id="sl-s0" class="slider" />
+            <input type="range" min="-50" max="50" value="10" id="sl-s0" class="slider"
+              aria-label="Posição inicial S₀ em metros (de -50 a 50)" />
           </div>
           <div class="slider-row">
             <label>v = <span id="v-val">10</span> m/s</label>
-            <input type="range" min="-30" max="30" value="10" id="sl-v" class="slider" />
+            <input type="range" min="-30" max="30" value="10" id="sl-v" class="slider"
+              aria-label="Velocidade v em metros por segundo (de -30 a 30)" />
           </div>
         </div>
 
@@ -432,6 +439,15 @@
       </div>
       <p id="score-msg">Responda as questões para ver seu placar!</p>
       <button class="reset-btn" id="resetAll">Reiniciar tudo</button>
+
+      <div class="report-actions">
+        <p class="report-hint">Salve ou compartilhe suas respostas:</p>
+        <div class="report-btns">
+          <button class="report-btn" id="downloadReportBtn">&#8595; Baixar .txt</button>
+          <button class="report-btn" id="copyReportBtn">&#128203; Copiar</button>
+          <button class="report-btn" id="emailReportBtn">&#9993; Enviar por e-mail</button>
+        </div>
+      </div>
     </div>
   </section>
 

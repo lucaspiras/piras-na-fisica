@@ -7,7 +7,7 @@ const VECTOR_LENGTH = 42;
 const DERIVATIVE_STEP = 0.001;
 
 export default class Object2D {
-  constructor({ x, y, eqX = null, eqY = null, eqXSource = "", eqYSource = "", color = "#fb923c", size = 10, id = null }) {
+  constructor({ x, y, eqX = null, eqY = null, eqXSource = "", eqYSource = "", color = "#fb923c", size = 10, id = null, shape = "circle", mass = 1.0, label = "" }) {
     this.x = x;
     this.y = y;
     this.initialX = x;
@@ -18,9 +18,11 @@ export default class Object2D {
     this.eqYSource = eqYSource;
     this.color = color;
     this.size = size;
+    this.shape = shape;
+    this.mass = mass;
+    this.label = label;
     this.id = id || globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random()}`;
 
-    // EDO System
     this.edoSystem = null;
     this.edoSolver = null;
     this.directSystem = null;
@@ -62,10 +64,8 @@ export default class Object2D {
 
     try {
       if (this.edoSolver) {
-        // Modo EDO: usa o solver numérico
         this.updateFromEDO(t);
       } else {
-        // Modo equação direta
         this.x = this.eqX(t);
         this.y = this.eqY(t);
         this.updateKinematics(t);
@@ -75,12 +75,9 @@ export default class Object2D {
     }
 
     this.path.push({ x: this.x, y: this.y });
-    if (this.path.length > 300) this.path.shift();
+    if (this.path.length > 400) this.path.shift();
   }
 
-  /**
-   * Atualiza a posição usando o solver EDO.
-   */
   updateFromEDO(targetTime) {
     if (!this.edoSolver) return;
 
@@ -88,7 +85,7 @@ export default class Object2D {
     const dt = targetTime - currentTime;
 
     if (dt > 0) {
-      const stepSize = 0.001; // 1ms
+      const stepSize = 0.001;
       const steps = Math.floor(dt / stepSize);
       const remainder = dt - steps * stepSize;
 
@@ -111,7 +108,6 @@ export default class Object2D {
     this.timeOffset = timeOffset;
     this.hasEquation = true;
     this.isEditing = false;
-    // Limpa o sistema EDO
     this.edoSystem = null;
     this.edoSolver = null;
     this.directSystem = null;
@@ -157,9 +153,6 @@ export default class Object2D {
     this.updateKinematics(0);
   }
 
-  /**
-   * Configura o sistema de equações diferenciais.
-   */
   setEDOSystem(edoConfig) {
     const equationRows = normalizeEquationRows(edoConfig?.equations || []);
     const algebraicRows = normalizeEquationRows(edoConfig?.algebraicEquations || []);
@@ -167,7 +160,6 @@ export default class Object2D {
       return;
     }
 
-    // Armazena a configuração do EDO
     this.edoSystem = {
       equations: equationRows,
       algebraicEquations: algebraicRows,
@@ -175,36 +167,28 @@ export default class Object2D {
       initialValues: edoConfig.initialValues || {}
     };
 
-    // Parse do sistema
     const system = parseEDOSystem(equationRows.map((eq) => `d${eq.variable}/dt = ${eq.expression}`));
-    
+
     if (system.equations.length === 0) {
       console.error("Nenhuma equação diferencial válida encontrada.");
       return;
     }
 
-    // Valores iniciais
-    const initialValues = {
-      ...edoConfig.initialValues
-    };
+    const initialValues = { ...edoConfig.initialValues };
     system.variables.forEach((variable) => {
       if (initialValues[variable] === undefined) initialValues[variable] = 0;
     });
 
-    // Cria o solver
     this.edoSolver = new EDOSolver(system, initialValues, edoConfig.constants || {}, algebraicRows);
     this.directSystem = null;
 
-    // Configura como modo EDO
     this.hasEquation = true;
     this.isEditing = false;
     this.timeOffset = edoConfig.timeOffset ?? 0;
 
-    // Posição inicial provisória; equações auxiliares podem sobrescrever x e y.
     this.x = initialValues.x ?? this.x ?? 0;
     this.y = initialValues.y ?? this.y ?? 0;
 
-    // Calcula velocidade inicial
     this.vx = initialValues.vx ?? initialValues.v ?? 0;
     this.vy = initialValues.vy ?? 0;
     this.applyEDOState();
@@ -215,9 +199,6 @@ export default class Object2D {
     this.applyEDOState();
   }
 
-  /**
-   * Atualiza a cinemática baseada no solver EDO.
-   */
   updateKinematicsFromEDO() {
     if (!this.edoSolver) return;
     this.applyEDOState();
@@ -296,7 +277,6 @@ export default class Object2D {
     this.x = this.initialX;
     this.y = this.initialY;
     if (this.edoSolver && this.edoSystem) {
-      // Reseta o solver EDO
       this.edoSolver.reset(
         this.edoSystem.initialValues || { x: this.initialX, v: 0 },
         this.edoSystem.constants || {}
@@ -337,7 +317,7 @@ export default class Object2D {
     this.accelerationDirection = null;
   }
 
-  recordSample(globalTime, interval = 0.1, maxSamples = 400) {
+  recordSample(globalTime, interval = 0.1, maxSamples = 600) {
     const t = this.getLocalTime(globalTime);
     if (this.lastSampleTime !== null && t - this.lastSampleTime < interval) return;
 
@@ -369,27 +349,78 @@ export default class Object2D {
         if (i === 0) ctx.moveTo(px, py);
         else ctx.lineTo(px, py);
       });
-      ctx.strokeStyle = `${this.color}55`;
+      ctx.strokeStyle = `${this.color}66`;
       ctx.lineWidth = 2;
       ctx.stroke();
     }
 
-    ctx.beginPath();
-    ctx.arc(screenX, screenY, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = this.color;
-    ctx.fill();
+    // Pendulum rod from origin
+    if (this.shape === "pendulum") {
+      const origin = mathToPixels(0, 0, canvas);
+      ctx.beginPath();
+      ctx.moveTo(origin.px, origin.py);
+      ctx.lineTo(screenX, screenY);
+      ctx.strokeStyle = "#6b7280";
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+      // Pivot dot
+      ctx.beginPath();
+      ctx.arc(origin.px, origin.py, 5, 0, Math.PI * 2);
+      ctx.fillStyle = "#374151";
+      ctx.fill();
+    }
+
+    const vd = this.velocityDirection;
+    // Angle so shape points in velocity direction (default: up = -π/2)
+    const velocityAngle = vd ? Math.atan2(-vd.y, vd.x) + Math.PI / 2 : 0;
+    const s = this.size;
+
+    ctx.save();
+    ctx.translate(screenX, screenY);
+
+    switch (this.shape) {
+      case "rocket":
+        ctx.rotate(velocityAngle);
+        this._drawRocket(ctx, s);
+        break;
+      case "car":
+        ctx.rotate(velocityAngle);
+        this._drawCar(ctx, s);
+        break;
+      case "satellite":
+        ctx.rotate(velocityAngle);
+        this._drawSatellite(ctx, s);
+        break;
+      case "soccer":
+        this._drawSoccer(ctx, s);
+        break;
+      default:
+        this._drawCircle(ctx, s);
+        break;
+    }
 
     if (options.selected === this) {
+      ctx.beginPath();
+      ctx.arc(0, 0, s + 5, 0, Math.PI * 2);
       ctx.strokeStyle = "#1e2a78";
-      ctx.lineWidth = 3;
+      ctx.lineWidth = 2.5;
       ctx.stroke();
+    }
+
+    ctx.restore();
+
+    if (this.label) {
+      ctx.fillStyle = "#1f2937";
+      ctx.font = "bold 11px Inter, sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(this.label, screenX, screenY - s - 10);
     }
 
     if (!this.hasEquation) {
       ctx.fillStyle = "#6b7280";
       ctx.font = "12px Inter, sans-serif";
       ctx.textAlign = "center";
-      ctx.fillText("(clique para editar)", screenX, screenY + 25);
+      ctx.fillText("(clique para editar)", screenX, screenY + s + 20);
     }
 
     if (this.hasEquation) {
@@ -398,32 +429,235 @@ export default class Object2D {
     }
   }
 
+  _drawCircle(ctx, s) {
+    ctx.beginPath();
+    ctx.arc(0, 0, s, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+  }
+
+  _drawSoccer(ctx, s) {
+    ctx.beginPath();
+    ctx.arc(0, 0, s, 0, Math.PI * 2);
+    ctx.fillStyle = "#ffffff";
+    ctx.fill();
+    ctx.strokeStyle = "#111827";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    // Center pentagon (simplified as filled circle)
+    ctx.beginPath();
+    ctx.arc(0, 0, s * 0.32, 0, Math.PI * 2);
+    ctx.fillStyle = "#111827";
+    ctx.fill();
+
+    // 5 outer spots
+    for (let i = 0; i < 5; i++) {
+      const angle = (i / 5) * Math.PI * 2 - Math.PI / 2;
+      const r = s * 0.62;
+      ctx.beginPath();
+      ctx.arc(r * Math.cos(angle), r * Math.sin(angle), s * 0.18, 0, Math.PI * 2);
+      ctx.fillStyle = "#111827";
+      ctx.fill();
+    }
+  }
+
+  _drawRocket(ctx, s) {
+    // Body
+    ctx.beginPath();
+    ctx.moveTo(0, -s * 2.0);
+    ctx.lineTo(s * 0.65, s * 0.7);
+    ctx.lineTo(-s * 0.65, s * 0.7);
+    ctx.closePath();
+    ctx.fillStyle = this.color;
+    ctx.fill();
+
+    // Left fin
+    ctx.beginPath();
+    ctx.moveTo(-s * 0.65, s * 0.2);
+    ctx.lineTo(-s * 1.35, s * 1.0);
+    ctx.lineTo(-s * 0.65, s * 0.7);
+    ctx.closePath();
+    ctx.fillStyle = darkenColor(this.color, 40);
+    ctx.fill();
+
+    // Right fin
+    ctx.beginPath();
+    ctx.moveTo(s * 0.65, s * 0.2);
+    ctx.lineTo(s * 1.35, s * 1.0);
+    ctx.lineTo(s * 0.65, s * 0.7);
+    ctx.closePath();
+    ctx.fillStyle = darkenColor(this.color, 40);
+    ctx.fill();
+
+    // Outer flame
+    ctx.beginPath();
+    ctx.moveTo(-s * 0.4, s * 0.7);
+    ctx.lineTo(0, s * 1.6);
+    ctx.lineTo(s * 0.4, s * 0.7);
+    ctx.closePath();
+    ctx.fillStyle = "#fb923c";
+    ctx.fill();
+
+    // Inner flame
+    ctx.beginPath();
+    ctx.moveTo(-s * 0.2, s * 0.7);
+    ctx.lineTo(0, s * 1.25);
+    ctx.lineTo(s * 0.2, s * 0.7);
+    ctx.closePath();
+    ctx.fillStyle = "#facc15";
+    ctx.fill();
+
+    // Window
+    ctx.beginPath();
+    ctx.arc(0, -s * 0.8, s * 0.28, 0, Math.PI * 2);
+    ctx.fillStyle = "#bfdbfe";
+    ctx.fill();
+    ctx.strokeStyle = "#1e40af";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  _drawCar(ctx, s) {
+    const w = s * 1.8;
+    const h = s * 0.85;
+
+    // Body
+    ctx.fillStyle = this.color;
+    ctx.beginPath();
+    if (ctx.roundRect) {
+      ctx.roundRect(-w, -h * 0.5, w * 2, h, s * 0.25);
+    } else {
+      ctx.rect(-w, -h * 0.5, w * 2, h);
+    }
+    ctx.fill();
+
+    // Roof
+    ctx.beginPath();
+    if (ctx.roundRect) {
+      ctx.roundRect(-w * 0.55, -h * 1.2, w * 1.1, h * 0.75, s * 0.2);
+    } else {
+      ctx.rect(-w * 0.55, -h * 1.2, w * 1.1, h * 0.75);
+    }
+    ctx.fill();
+
+    // Windows
+    ctx.fillStyle = "#bfdbfe";
+    ctx.beginPath();
+    if (ctx.roundRect) {
+      ctx.roundRect(-w * 0.48, -h * 1.12, w * 0.44, h * 0.58, s * 0.1);
+    } else {
+      ctx.rect(-w * 0.48, -h * 1.12, w * 0.44, h * 0.58);
+    }
+    ctx.fill();
+    ctx.beginPath();
+    if (ctx.roundRect) {
+      ctx.roundRect(w * 0.04, -h * 1.12, w * 0.44, h * 0.58, s * 0.1);
+    } else {
+      ctx.rect(w * 0.04, -h * 1.12, w * 0.44, h * 0.58);
+    }
+    ctx.fill();
+
+    // Wheels
+    const wheelR = s * 0.55;
+    const wheelY = h * 0.38;
+    ctx.fillStyle = "#1f2937";
+    for (const wx of [-w * 0.58, w * 0.58]) {
+      ctx.beginPath();
+      ctx.arc(wx, wheelY, wheelR, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(wx, wheelY, wheelR * 0.45, 0, Math.PI * 2);
+      ctx.fillStyle = "#9ca3af";
+      ctx.fill();
+      ctx.fillStyle = "#1f2937";
+    }
+  }
+
+  _drawSatellite(ctx, s) {
+    // Solar panels (left)
+    ctx.fillStyle = "#3b82f6";
+    ctx.beginPath();
+    ctx.rect(-s * 2.4, -s * 0.38, s * 1.6, s * 0.76);
+    ctx.fill();
+    ctx.strokeStyle = "#1e40af";
+    ctx.lineWidth = 0.5;
+    ctx.stroke();
+    // panel grid lines
+    for (let i = 1; i < 3; i++) {
+      ctx.beginPath();
+      ctx.moveTo(-s * 2.4 + (s * 1.6 / 3) * i, -s * 0.38);
+      ctx.lineTo(-s * 2.4 + (s * 1.6 / 3) * i, s * 0.38);
+      ctx.strokeStyle = "#1e40af66";
+      ctx.stroke();
+    }
+
+    // Solar panels (right)
+    ctx.fillStyle = "#3b82f6";
+    ctx.beginPath();
+    ctx.rect(s * 0.8, -s * 0.38, s * 1.6, s * 0.76);
+    ctx.fill();
+    ctx.strokeStyle = "#1e40af";
+    ctx.lineWidth = 0.5;
+    ctx.stroke();
+    for (let i = 1; i < 3; i++) {
+      ctx.beginPath();
+      ctx.moveTo(s * 0.8 + (s * 1.6 / 3) * i, -s * 0.38);
+      ctx.lineTo(s * 0.8 + (s * 1.6 / 3) * i, s * 0.38);
+      ctx.strokeStyle = "#1e40af66";
+      ctx.stroke();
+    }
+
+    // Connector struts
+    ctx.strokeStyle = "#9ca3af";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(-s * 0.8, 0);
+    ctx.lineTo(-s * 2.4, 0);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(s * 0.8, 0);
+    ctx.lineTo(s * 2.4, 0);
+    ctx.stroke();
+
+    // Body
+    ctx.fillStyle = this.color;
+    ctx.beginPath();
+    if (ctx.roundRect) {
+      ctx.roundRect(-s * 0.8, -s * 0.8, s * 1.6, s * 1.6, s * 0.2);
+    } else {
+      ctx.rect(-s * 0.8, -s * 0.8, s * 1.6, s * 1.6);
+    }
+    ctx.fill();
+
+    // Antenna
+    ctx.beginPath();
+    ctx.moveTo(0, -s * 0.8);
+    ctx.lineTo(0, -s * 1.5);
+    ctx.strokeStyle = "#d1d5db";
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(0, -s * 1.6, s * 0.18, 0, Math.PI * 2);
+    ctx.fillStyle = "#d1d5db";
+    ctx.fill();
+  }
+
   drawVelocity(ctx, canvas) {
     if (!this.velocityDirection) return;
-
     const { px: screenX, py: screenY } = mathToPixels(this.x, this.y, canvas);
-    const vxPixels = this.velocityDirection.x * VECTOR_LENGTH;
-    const vyPixels = -this.velocityDirection.y * VECTOR_LENGTH;
-
-    drawVector(ctx, screenX, screenY, vxPixels, vyPixels, "#22c55e");
+    drawVector(ctx, screenX, screenY, this.velocityDirection.x * VECTOR_LENGTH, -this.velocityDirection.y * VECTOR_LENGTH, "#22c55e");
   }
 
   drawAcceleration(ctx, canvas) {
     if (!this.accelerationDirection) return;
-
     const { px: screenX, py: screenY } = mathToPixels(this.x, this.y, canvas);
-    const axPixels = this.accelerationDirection.x * VECTOR_LENGTH;
-    const ayPixels = -this.accelerationDirection.y * VECTOR_LENGTH;
-
-    drawVector(ctx, screenX, screenY, axPixels, ayPixels, "#ef4444");
+    drawVector(ctx, screenX, screenY, this.accelerationDirection.x * VECTOR_LENGTH, -this.accelerationDirection.y * VECTOR_LENGTH, "#ef4444");
   }
 
   updateKinematics(t) {
     const h = DERIVATIVE_STEP;
-    let vx;
-    let vy;
-    let ax;
-    let ay;
+    let vx, vy, ax, ay;
 
     if (t >= h) {
       const xBefore = this.eqX(t - h);
@@ -490,8 +724,16 @@ function advanceState(state, derivatives, dt) {
 function normalize(x, y) {
   const magnitude = Math.hypot(x, y);
   if (magnitude < 1e-9) return null;
-  return {
-    x: x / magnitude,
-    y: y / magnitude
-  };
+  return { x: x / magnitude, y: y / magnitude };
+}
+
+function darkenColor(hex, amount) {
+  try {
+    const r = Math.max(0, parseInt(hex.slice(1, 3), 16) - amount);
+    const g = Math.max(0, parseInt(hex.slice(3, 5), 16) - amount);
+    const b = Math.max(0, parseInt(hex.slice(5, 7), 16) - amount);
+    return `rgb(${r},${g},${b})`;
+  } catch {
+    return hex;
+  }
 }

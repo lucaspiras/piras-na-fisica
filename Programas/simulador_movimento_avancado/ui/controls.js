@@ -40,8 +40,6 @@ export function initializeControls() {
     updateSpeedLabel(speed);
   });
 
-  document.querySelector('[data-scenario="clear"]')?.addEventListener('click', () => window.clearScene());
-
   // Toggle para minimizar tabela
   const collapseBtn = document.querySelector('[data-action="collapse-tables"]');
   collapseBtn?.addEventListener('click', () => {

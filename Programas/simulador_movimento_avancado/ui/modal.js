@@ -3,28 +3,54 @@
 let currentEditingObject = null;
 let onObjectEquationSet = null;
 let currentMode = "direct";
+let lastFocusedInput = null;
 
 const MATH_IDENTIFIERS = new Set(["sin", "sen", "cos", "tan", "exp", "log", "sqrt", "abs", "pi", "e", "t"]);
 const IDENTIFIER_REGEX = /[a-zA-Z_][a-zA-Z0-9_]*/g;
 
-export function openEquationModal(object, callback) {
+const PRESETS = {
+  circular:   { mode: "direct",       equations: [{ variable: "x", expression: "2*cos(t)" }, { variable: "y", expression: "2*sin(t)" }] },
+  projectile: { mode: "direct",       equations: [{ variable: "x", expression: "4*t" }, { variable: "y", expression: "5 + 3*t - 4.9*t*t" }] },
+  ellipse:    { mode: "direct",       equations: [{ variable: "x", expression: "3*cos(t)" }, { variable: "y", expression: "2*sin(t)" }] },
+  lissajous:  { mode: "direct",       equations: [{ variable: "x", expression: "3*cos(3*t)" }, { variable: "y", expression: "2*sin(4*t)" }] },
+  spiral:     { mode: "direct",       equations: [{ variable: "x", expression: "0.4*t*cos(t)" }, { variable: "y", expression: "0.4*t*sin(t)" }] },
+  freeFall:   { mode: "direct",       equations: [{ variable: "x", expression: "0" }, { variable: "y", expression: "8 - 4.9*t*t" }] },
+  pendulum:   { mode: "differential",
+    equations: [{ variable: "theta", expression: "omega" }, { variable: "omega", expression: "-(9.8/2)*sin(theta)" }],
+    algebraicEquations: [{ variable: "x", expression: "2*sin(theta)" }, { variable: "y", expression: "-2*cos(theta)" }],
+    constants: {},
+    initialValues: { theta: 0.8, omega: 0 }
+  },
+};
+
+export function openEquationModal(object, callback, openTab = null) {
   currentEditingObject = object;
   onObjectEquationSet = callback;
 
   const modal = document.getElementById("equationModal");
-  if (!modal) {
-    console.error("Modal nao encontrado no HTML");
-    return;
-  }
+  if (!modal) return;
 
   setupModalTabs();
   setupEquationRows(object);
+  populateAppearanceFields(object);
 
-  if (object.edoSystem) switchToDifferentialMode();
-  else switchToDirectMode();
+  const defaultTab = openTab || (object.edoSystem ? "differential" : "direct");
+  setActiveTab(defaultTab);
 
   modal.classList.add("active");
   modal.querySelector(".equation-var-input")?.focus();
+}
+
+function populateAppearanceFields(object) {
+  const labelInput = document.getElementById("objectLabel");
+  const colorInput = document.getElementById("objectColor");
+  const massInput = document.getElementById("objectMass");
+  const shapeRadio = document.querySelector(`input[name="objectShape"][value="${object.shape || "circle"}"]`);
+
+  if (labelInput) labelInput.value = object.label || "";
+  if (colorInput) colorInput.value = object.color || "#fb923c";
+  if (massInput) massInput.value = object.mass ?? 1.0;
+  if (shapeRadio) shapeRadio.checked = true;
 }
 
 function setupEquationRows(object) {
@@ -37,16 +63,11 @@ function setupEquationRows(object) {
 
   const differentialRows = object.edoSystem?.equations?.length
     ? object.edoSystem.equations
-    : [
-        { variable: "theta", expression: "omega" }
-      ];
+    : [{ variable: "theta", expression: "omega" }, { variable: "omega", expression: "-(9.8/2)*sin(theta)" }];
 
   const algebraicRows = object.edoSystem?.algebraicEquations?.length
     ? object.edoSystem.algebraicEquations
-    : [
-        { variable: "x", expression: "r*sen(theta)" },
-        { variable: "y", expression: "r*cos(theta)" }
-      ];
+    : [{ variable: "x", expression: "2*sin(theta)" }, { variable: "y", expression: "-2*cos(theta)" }];
 
   renderEquationRows("direct", directRows);
   renderEquationRows("differential", differentialRows);
@@ -55,38 +76,29 @@ function setupEquationRows(object) {
 }
 
 function setupModalTabs() {
-  const tabs = document.querySelectorAll(".modal-tab");
-  tabs.forEach((tab) => {
+  document.querySelectorAll(".modal-tab").forEach((tab) => {
     tab.onclick = () => {
-      if (tab.dataset.tab === "differential") switchToDifferentialMode();
-      else switchToDirectMode();
+      if (tab.dataset.tab === "differential") setActiveTab("differential");
+      else if (tab.dataset.tab === "appearance") setActiveTab("appearance");
+      else setActiveTab("direct");
     };
   });
 }
 
-function switchToDirectMode() {
-  setActiveTab("direct");
-}
-
-function switchToDifferentialMode() {
-  setActiveTab("differential");
-  detectEDOParameters();
-}
-
 function setActiveTab(tabName) {
-  currentMode = tabName;
+  currentMode = tabName === "appearance" ? (currentMode === "appearance" ? "direct" : currentMode) : tabName;
   document.querySelectorAll(".modal-tab").forEach((tab) => {
     tab.classList.toggle("active", tab.dataset.tab === tabName);
   });
   document.querySelectorAll(".modal-tab-content").forEach((content) => {
     content.style.display = content.id === `tab${capitalize(tabName)}` ? "block" : "none";
   });
+  if (tabName === "differential") detectEDOParameters();
 }
 
 function renderEquationRows(kind, rows) {
   const container = getRowsContainer(kind);
   if (!container) return;
-
   container.innerHTML = rows.map((row) => createEquationRowHtml(kind, row)).join("");
 }
 
@@ -94,17 +106,17 @@ function createEquationRowHtml(kind, row) {
   const variable = escapeAttribute(row.variable || "");
   const expression = escapeAttribute(row.expression || "");
   const label = kind === "differential" ? "d" : "";
-  const suffix = kind === "differential" ? "/dt" : (kind === "algebraic" ? "" : "(t)");
+  const suffix = kind === "differential" ? "/dt =" : (kind === "algebraic" ? "=" : "(t) =");
 
   return `
     <div class="equation-row" data-equation-row="${kind}">
       <div class="equation-lhs">
-        <span>${label}</span>
-        <input class="equation-var-input" type="text" value="${variable}" placeholder="x">
-        <span>${suffix} =</span>
+        <span class="eq-prefix">${label}</span>
+        <input class="equation-var-input" type="text" value="${variable}" placeholder="var" spellcheck="false" autocomplete="off">
+        <span class="eq-suffix">${suffix}</span>
       </div>
-      <input class="equation-expression-input" type="text" value="${expression}" placeholder="expressão">
-      <button class="equation-remove-btn" type="button" data-action="remove-equation" aria-label="Remover equação">&times;</button>
+      <input class="equation-expression-input" type="text" value="${expression}" placeholder="expressão em t" spellcheck="false" autocomplete="off">
+      <button class="equation-remove-btn" type="button" data-action="remove-equation" aria-label="Remover">&times;</button>
     </div>
   `;
 }
@@ -116,7 +128,6 @@ export function detectEDOParameters() {
     clearConstantsFields();
     return;
   }
-
   updateConstantsFields();
 }
 
@@ -142,22 +153,26 @@ function updateConstantsFields(initialValueOverrides = {}, constantOverrides = {
 
   const constantFields = constants.map((name) => {
     const value = constantOverrides[name] ?? existingInputs[name] ?? "";
-    return createNumberField(name, `${name} =`, value, "valor");
+    return createNumberField(name, `${name}`, value, "valor");
   });
 
   const initialFields = variables.map((name) => {
     const inputName = `init_${name}`;
     const value = initialValueOverrides[name] ?? existingInputs[inputName] ?? defaultInitialValue(name);
-    return createNumberField(inputName, `${name}(0) =`, value, "valor inicial");
+    return createNumberField(inputName, `${name}(0)`, value, "valor inicial");
   });
 
-  container.innerHTML = [...constantFields, ...initialFields].join("");
+  container.innerHTML = `
+    <div class="edo-constants-grid">
+      ${[...constantFields, ...initialFields].join("")}
+    </div>
+  `;
 }
 
 function clearConstantsFields() {
   const container = document.getElementById("edoConstantsContainer");
   if (container) {
-    container.innerHTML = '<p class="edo-hint">Defina as equações acima para ver as constantes disponíveis.</p>';
+    container.innerHTML = '<p class="edo-hint">Defina as equações acima para ver as variáveis disponíveis.</p>';
   }
 }
 
@@ -165,7 +180,7 @@ function createNumberField(name, label, value, placeholder) {
   const safeName = escapeAttribute(name);
   return `
     <div class="edo-constant-row">
-      <label for="edo_${safeName}">${escapeHtml(label)}</label>
+      <label for="edo_${safeName}">${escapeHtml(label)} =</label>
       <input type="number" id="edo_${safeName}" name="${safeName}" value="${escapeAttribute(String(value))}" step="any" placeholder="${placeholder}">
     </div>
   `;
@@ -174,7 +189,6 @@ function createNumberField(name, label, value, placeholder) {
 function detectConstants(rows, variables) {
   const variableSet = new Set(variables);
   const constants = new Set();
-
   rows.forEach((row) => {
     for (const id of getIdentifiers(row.expression)) {
       if (!MATH_IDENTIFIERS.has(id) && !variableSet.has(id)) {
@@ -182,7 +196,6 @@ function detectConstants(rows, variables) {
       }
     }
   });
-
   return Array.from(constants).sort();
 }
 
@@ -191,26 +204,37 @@ export function closeEquationModal() {
   currentEditingObject = null;
   onObjectEquationSet = null;
   currentMode = "direct";
+  lastFocusedInput = null;
 }
 
 export function confirmEquations() {
   if (!currentEditingObject) return;
-  if (currentMode === "direct") confirmDirectEquations();
-  else confirmDifferentialEquations();
+  applyAppearance();
+  if (currentMode === "differential") confirmDifferentialEquations();
+  else confirmDirectEquations();
+}
+
+function applyAppearance() {
+  if (!currentEditingObject) return;
+  const label = document.getElementById("objectLabel")?.value.trim() || "";
+  const mass = parseFloat(document.getElementById("objectMass")?.value) || 1.0;
+  const color = document.getElementById("objectColor")?.value || "#fb923c";
+  const shapeRadio = document.querySelector('input[name="objectShape"]:checked');
+  const shape = shapeRadio?.value || "circle";
+
+  currentEditingObject.label = label;
+  currentEditingObject.mass = mass;
+  currentEditingObject.color = color;
+  currentEditingObject.shape = shape;
 }
 
 function confirmDirectEquations() {
   const equations = collectEquationRows("direct");
-
   if (!equations.some((eq) => eq.variable === "x") || !equations.some((eq) => eq.variable === "y")) {
     alert("O sistema direto precisa ter pelo menos x(t) e y(t).");
     return;
   }
-
-  onObjectEquationSet?.(currentEditingObject, null, null, {
-    mode: "direct",
-    equations
-  });
+  onObjectEquationSet?.(currentEditingObject, null, null, { mode: "direct", equations });
   closeEquationModal();
 }
 
@@ -230,7 +254,6 @@ function confirmDifferentialEquations() {
   container?.querySelectorAll("input").forEach((input) => {
     const value = Number.parseFloat(input.value);
     const numericValue = Number.isFinite(value) ? value : 0;
-
     if (input.name.startsWith("init_")) {
       initialValues[input.name.substring(5)] = numericValue;
     } else {
@@ -245,8 +268,24 @@ function confirmDifferentialEquations() {
     constants,
     initialValues
   });
-
   closeEquationModal();
+}
+
+function applyPreset(presetKey) {
+  const preset = PRESETS[presetKey];
+  if (!preset) return;
+
+  if (preset.mode === "direct") {
+    renderEquationRows("direct", preset.equations);
+    setActiveTab("direct");
+  } else if (preset.mode === "differential") {
+    renderEquationRows("differential", preset.equations);
+    renderEquationRows("algebraic", preset.algebraicEquations || []);
+    setActiveTab("differential");
+    setTimeout(() => {
+      updateConstantsFields(preset.initialValues || {}, preset.constants || {});
+    }, 0);
+  }
 }
 
 export function initializeModal() {
@@ -263,7 +302,7 @@ export function initializeModal() {
 
   modal.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeEquationModal();
-    if (e.key === "Enter" && !e.shiftKey) {
+    if (e.key === "Enter" && !e.shiftKey && e.target.tagName !== "BUTTON") {
       e.preventDefault();
       confirmEquations();
     }
@@ -278,6 +317,25 @@ export function initializeModal() {
       e.target.closest(".equation-row")?.remove();
       if (currentMode === "differential") detectEDOParameters();
     }
+
+    // Math palette insertion
+    const insertText = e.target?.dataset?.insert;
+    if (insertText) {
+      insertAtCursor(insertText);
+    }
+
+    // Preset loading
+    const presetKey = e.target?.dataset?.preset;
+    if (presetKey) {
+      applyPreset(presetKey);
+    }
+  });
+
+  // Track last focused equation input for palette insertion
+  modal.addEventListener("focusin", (e) => {
+    if (e.target.classList.contains("equation-expression-input") || e.target.classList.contains("equation-var-input")) {
+      lastFocusedInput = e.target;
+    }
   });
 
   modal.addEventListener("input", (e) => {
@@ -289,11 +347,31 @@ export function initializeModal() {
   setupModalTabs();
 }
 
+function insertAtCursor(text) {
+  const input = lastFocusedInput;
+  if (!input) return;
+
+  const start = input.selectionStart ?? input.value.length;
+  const end = input.selectionEnd ?? input.value.length;
+  const before = input.value.substring(0, start);
+  const after = input.value.substring(end);
+  input.value = before + text + after;
+  const cursor = start + text.length;
+  input.setSelectionRange(cursor, cursor);
+  input.focus();
+
+  if (input.closest("#differentialEquationsContainer") || input.closest("#algebraicEquationsContainer")) {
+    detectEDOParameters();
+  }
+}
+
 function addEquationRow(kind, row) {
   const container = getRowsContainer(kind);
   if (!container) return;
   container.insertAdjacentHTML("beforeend", createEquationRowHtml(kind, row));
-  container.querySelector(".equation-row:last-child .equation-var-input")?.focus();
+  const newInput = container.querySelector(".equation-row:last-child .equation-expression-input");
+  newInput?.focus();
+  lastFocusedInput = newInput || null;
   if (kind === "differential" || kind === "algebraic") detectEDOParameters();
 }
 
