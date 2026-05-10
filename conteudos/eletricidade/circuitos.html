@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circuitos Elétricos — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TY56KM22X8');</script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero" style="background:linear-gradient(135deg,#78350f 0%,#b45309 55%,#d97706 100%);">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Eletricidade</a><span>/</span>
+      <span>Circuitos Elétricos</span>
+    </nav>
+    <h1 class="content-title">Circuitos Elétricos</h1>
+    <p class="content-subtitle">Série, paralelo e associação mista de resistores. As Leis de Kirchhoff permitem analisar qualquer circuito, por mais complexo que seja.</p>
+    <span class="formula-highlight">Série: R_eq = ΣR  |  Paralelo: 1/R_eq = Σ(1/R)</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Associação em série</a></li>
+      <li><a href="#s2">Associação em paralelo</a></li>
+      <li><a href="#s3">Associação mista</a></li>
+      <li><a href="#s4">Leis de Kirchhoff</a></li>
+      <li><a href="#s5">Fonte com resistência interna</a></li>
+      <li><a href="#s6">Calculadora</a></li>
+      <li><a href="#s7">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="resistencia-ohm.html">← Lei de Ohm</a>
+      <a href="potencia-energia-eletrica.html" class="toc-next">Potência Elétrica →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Associação em série</h2>
+      <p>Resistores em série estão ligados um após o outro — a mesma corrente atravessa todos.</p>
+      <div class="formula-box">
+        <span class="formula-label">Resistores em série</span>
+        <span class="formula-expr">R_eq = R₁ + R₂ + R₃ + …</span>
+        <span class="formula-legend">
+          <span>Corrente igual em todos: i₁ = i₂ = i₃ = i</span>
+          <span>Tensão se divide: V = V₁ + V₂ + V₃</span>
+          <span>Cada V_k = R_k · i (divisor de tensão)</span>
+          <span>Se um "queima" (abre), o circuito inteiro para</span>
+        </span>
+      </div>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Três resistores em série</div>
+        <div class="ex-body">
+          <p>R₁ = 10 Ω, R₂ = 20 Ω, R₃ = 30 Ω, tensão total V = 120 V.</p>
+          <p>R_eq = 10 + 20 + 30 = 60 Ω</p>
+          <p>i = V/R_eq = 120/60 = <strong>2 A</strong></p>
+          <p>V₁ = 2×10 = 20 V; V₂ = 2×20 = 40 V; V₃ = 2×30 = 60 V (soma = 120 V ✓)</p>
+          <div class="ex-result">i = 2 A em todos os resistores; tensões: 20 V, 40 V, 60 V</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Associação em paralelo</h2>
+      <p>Resistores em paralelo têm os terminais conectados ao mesmo par de nós — a mesma tensão aparece em todos.</p>
+      <div class="formula-box">
+        <span class="formula-label">Resistores em paralelo</span>
+        <span class="formula-expr">1/R_eq = 1/R₁ + 1/R₂ + 1/R₃ + …</span>
+        <span class="formula-legend">
+          <span>Tensão igual em todos: V₁ = V₂ = V₃ = V</span>
+          <span>Corrente se divide: i = i₁ + i₂ + i₃</span>
+          <span>Cada i_k = V/R_k (divisor de corrente)</span>
+          <span>R_eq é sempre MENOR que o menor dos R_k</span>
+          <span>Caso especial (2 resistores): R_eq = R₁·R₂/(R₁+R₂)</span>
+        </span>
+      </div>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Dois resistores em paralelo</div>
+        <div class="ex-body">
+          <p>R₁ = 12 Ω, R₂ = 6 Ω, tensão V = 12 V.</p>
+          <p>R_eq = 12×6/(12+6) = 72/18 = <strong>4 Ω</strong></p>
+          <p>i_total = 12/4 = 3 A</p>
+          <p>i₁ = 12/12 = 1 A; i₂ = 12/6 = 2 A (soma = 3 A ✓)</p>
+          <div class="ex-result">R_eq = 4 Ω; correntes: 1 A (R₁) e 2 A (R₂)</div>
+        </div>
+      </div>
+      <div class="highlight-box info">
+        <span class="hb-icon">🏠</span>
+        <p>Os aparelhos domésticos são ligados <strong>em paralelo</strong> na rede elétrica: todos recebem a mesma tensão (127 V ou 220 V) e cada um pode ser ligado ou desligado independentemente. Se um aparelho queimar, os outros continuam funcionando.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Associação mista</h2>
+      <p>Em circuitos reais, resistores se combinam em série e paralelo. A estratégia é <strong>simplificar progressivamente</strong>: identificar grupos em paralelo, substituir pelo R_eq, depois tratar o resultado em série com os demais.</p>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Circuito misto</div>
+        <div class="ex-body">
+          <p>R₁ = 6 Ω em série com o paralelo de R₂ = 12 Ω e R₃ = 12 Ω. Tensão total = 18 V.</p>
+          <p><strong>Passo 1:</strong> R₂ ∥ R₃ = 12×12/(12+12) = 6 Ω</p>
+          <p><strong>Passo 2:</strong> R_total = R₁ + 6 = 6 + 6 = 12 Ω</p>
+          <p><strong>Passo 3:</strong> i_total = 18/12 = 1,5 A</p>
+          <p><strong>Passo 4:</strong> V_paralelo = 1,5 × 6 = 9 V → i₂ = i₃ = 9/12 = 0,75 A cada</p>
+          <div class="ex-result">i_total = 1,5 A; cada resistor paralelo recebe 0,75 A</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Leis de Kirchhoff</h2>
+      <p>Para circuitos que não podem ser simplificados com séries/paralelos, as Leis de Kirchhoff permitem escrever equações sistemáticas:</p>
+      <div class="concept-grid">
+        <div class="concept-card"><span class="cc-icon">⊕</span><div class="cc-title">1ª Lei — Nós (LKC)</div><p class="cc-desc">A soma das correntes que <em>entram</em> em um nó é igual à soma das que <em>saem</em>.<br><strong>Σi_entrada = Σi_saída</strong><br>Conservação de carga: cargas não se acumulam num nó.</p></div>
+        <div class="concept-card"><span class="cc-icon">🔁</span><div class="cc-title">2ª Lei — Malhas (LKT)</div><p class="cc-desc">A soma algébrica das tensões em qualquer malha fechada é zero.<br><strong>Σ ΔV = 0</strong><br>Conservação de energia: ao percorrer uma malha e voltar ao ponto de partida, não há ganho ou perda líquida de energia.</p></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Fonte real — resistência interna</h2>
+      <p>Uma fonte real (bateria) possui uma resistência interna r que dissipa energia e reduz a tensão disponível no circuito externo:</p>
+      <div class="formula-box">
+        <span class="formula-label">Tensão terminal da fonte</span>
+        <span class="formula-expr">V_terminal = ε − i · r</span>
+        <span class="formula-legend">
+          <span>ε = força eletromotriz (fem) da fonte (V)</span>
+          <span>i = corrente fornecida (A)</span>
+          <span>r = resistência interna (Ω)</span>
+          <span>Queda interna: Δv_interno = i·r</span>
+          <span>Curto-circuito (R_ext = 0): i_cc = ε/r (corrente máxima, perigosa)</span>
+        </span>
+      </div>
+      <div class="highlight-box warning">
+        <span class="hb-icon">🔋</span>
+        <p>Quando uma bateria "fraca" não consegue ligar o carro, normalmente o problema é o aumento da resistência interna com o tempo e o frio — a fem está ok, mas a queda interna (i·r) é tão grande que a tensão terminal cai demais.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Calculadora de circuitos</h2>
+      <div class="calc-box">
+        <h4>🧮 Resistência equivalente</h4>
+        <p style="font-size:.85rem;color:#666;margin-bottom:.8rem;">Informe os valores separados por vírgula (ex: 10, 20, 30)</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:flex-end;margin-bottom:.8rem;">
+          <div class="calc-field" style="flex:1;min-width:200px;">
+            <label>Resistores (Ω)</label>
+            <input type="text" id="rc-Rs" placeholder="ex: 10, 20, 30">
+          </div>
+          <div class="calc-field">
+            <label>Associação</label>
+            <select id="rc-tipo" style="padding:.5rem;border:1.5px solid #e5e7eb;border-radius:8px;font-size:.95rem;">
+              <option value="serie">Série</option>
+              <option value="paralelo">Paralelo</option>
+            </select>
+          </div>
+        </div>
+        <div class="calc-field" style="max-width:200px;">
+          <label>Tensão total V (V) — opcional</label>
+          <input type="number" id="rc-V" placeholder="ex: 12">
+        </div>
+        <button class="calc-btn" onclick="calcCircuito()">Calcular</button>
+        <div class="calc-result" id="rc-result"></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Resumo</h2>
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Série: R_eq = ΣR. Mesma corrente. Tensão se divide. Um aberto → tudo para.</li>
+          <li>Paralelo: 1/R_eq = Σ(1/R). Mesma tensão. Corrente se divide. Um aberto → outros funcionam.</li>
+          <li>Mista: simplificar progressivamente, identificando grupos série/paralelo.</li>
+          <li>1ª Lei de Kirchhoff (nós): Σi_entrada = Σi_saída (conservação de carga).</li>
+          <li>2ª Lei de Kirchhoff (malhas): ΣΔV = 0 ao percorrer uma malha (conservação de energia).</li>
+          <li>Fonte real: V_terminal = ε − i·r. Resistência interna reduz a tensão útil.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="resistencia-ohm.html">← Lei de Ohm</a>
+      <a href="potencia-energia-eletrica.html" class="nav-next">Próximo: Potência Elétrica →</a>
+    </div>
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+<script>
+(function(){
+  window.calcCircuito = function(){
+    const raw = document.getElementById('rc-Rs').value;
+    const tipo = document.getElementById('rc-tipo').value;
+    const Vstr = document.getElementById('rc-V').value;
+    const res = document.getElementById('rc-result');
+    const Rs = raw.split(',').map(s=>parseFloat(s.trim())).filter(v=>!isNaN(v)&&v>0);
+    if(Rs.length < 2){ res.className='calc-result erro'; res.textContent='Informe pelo menos 2 resistores válidos.'; return; }
+
+    let Req;
+    if(tipo==='serie'){
+      Req = Rs.reduce((a,b)=>a+b, 0);
+    } else {
+      Req = 1/Rs.reduce((a,b)=>a+1/b, 0);
+    }
+
+    let msg = 'R_eq = ' + Req.toFixed(4) + ' Ω';
+    if(Vstr !== ''){
+      const V = parseFloat(Vstr);
+      if(!isNaN(V)){
+        const i = V/Req;
+        msg += '<br>i_total = ' + i.toFixed(4) + ' A';
+        if(tipo==='serie'){
+          msg += '<br>Tensões: ' + Rs.map(r=>(r*i).toFixed(3)+'V').join(' | ');
+        } else {
+          msg += '<br>Correntes: ' + Rs.map(r=>(V/r).toFixed(3)+'A').join(' | ');
+        }
+      }
+    }
+    res.className='calc-result ok'; res.innerHTML=msg;
+  };
+
+  const sections=document.querySelectorAll('.content-section');
+  const tocLinks=document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll',function(){
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+    tocLinks.forEach(a=>a.parentElement.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. eletricidade/circuito-serie.png
+     Diagrama de 3 resistores em série com bateria. Seta de corrente i igual nos três. Tensões V1, V2, V3 indicadas em cada resistor. Estilo didático.
+
+  2. eletricidade/circuito-paralelo.png
+     Diagrama de 3 resistores em paralelo com bateria. Mesma tensão V em todos. Correntes i1, i2, i3 nos ramos. Corrente total i = i1+i2+i3 indicada.
+
+  3. eletricidade/kirchhoff.png
+     Circuito com duas malhas, dois nós, três ramos. Equações LKC e LKT escritas ao lado. Estilo didático, fundo branco, cores âmbar.
+-->
+</body>
+</html>

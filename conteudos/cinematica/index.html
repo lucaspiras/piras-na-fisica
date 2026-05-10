@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cinemática — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <style>
+    .cinem-hero {
+      background: linear-gradient(135deg, #1e2a78 0%, #2f5bea 50%, #6a2fe8 100%);
+      color: #fff;
+      padding: 3.5rem 2rem 3rem;
+    }
+    .cinem-hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      opacity: 0.75;
+      margin-bottom: 1.2rem;
+    }
+    .breadcrumb a { color: #fff; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { opacity: 0.6; }
+    .cinem-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+    }
+    .cinem-hero p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+    .cinem-main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+    .cinem-intro {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #444;
+      margin-bottom: 2.5rem;
+    }
+    .subtopicos-titulo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #1e2a78;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .subtopicos-lista {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      counter-reset: none;
+    }
+    .subtopicos-lista li {
+      counter-increment: none;
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+    .subtopicos-lista li::before { display: none; }
+    .sub-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem 1.4rem;
+      background: #fff;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #1f2933;
+      border: 1.5px solid #e5e7eb;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .sub-link:hover {
+      border-color: #6a2fe8;
+      box-shadow: 0 6px 20px rgba(106,47,232,0.1);
+      transform: translateX(4px);
+    }
+    .sub-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2f5bea, #6a2fe8);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .sub-info { flex: 1; }
+    .sub-info h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1e2a78;
+      margin-bottom: 0.2rem;
+    }
+    .sub-info p {
+      font-size: 0.88rem;
+      color: #666;
+      margin: 0;
+      line-height: 1.4;
+    }
+    .sub-arrow {
+      font-size: 1.2rem;
+      color: #fb923c;
+      font-weight: 800;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .sub-link:hover .sub-arrow { transform: translateX(5px); }
+    .cinem-atividades {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 2px solid #e8eaf6;
+    }
+    .cinem-atividades h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #2f5bea;
+      margin-bottom: 1rem;
+    }
+    .ativ-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+    .ativ-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.2rem;
+      background: linear-gradient(135deg, rgba(47,91,234,0.06), rgba(106,47,232,0.06));
+      border: 1.5px solid rgba(106,47,232,0.2);
+      border-radius: 10px;
+      text-decoration: none;
+      color: #6a2fe8;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .ativ-btn:hover {
+      background: linear-gradient(135deg, rgba(47,91,234,0.12), rgba(106,47,232,0.12));
+      border-color: #6a2fe8;
+    }
+    @media (max-width: 600px) {
+      .cinem-main { padding: 2rem 1.2rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="cinem-hero">
+  <div class="cinem-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a>
+      <span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a>
+      <span>/</span>
+      <span>Cinemática</span>
+    </nav>
+    <h1>📐 Cinemática</h1>
+    <p>O estudo do movimento: posição, velocidade, aceleração e trajetórias — sem se preocupar com as causas que originam o movimento.</p>
+  </div>
+</div>
+
+<main class="cinem-main">
+
+  <p class="cinem-intro">
+    A Cinemática é o ramo da Mecânica que descreve <strong>como</strong> os corpos se movem, sem investigar o <em>porquê</em> do movimento. Aqui você vai aprender desde os conceitos básicos de referencial e deslocamento até o movimento circular e os lançamentos de projéteis.
+  </p>
+
+  <h2 class="subtopicos-titulo">📚 Textos deste tema</h2>
+
+  <ul class="subtopicos-lista">
+
+    <li>
+      <a href="conceitos.html" class="sub-link">
+        <span class="sub-num">01</span>
+        <div class="sub-info">
+          <h3>Conceitos Iniciais: Referencial, Posição e Deslocamento</h3>
+          <p>O que é movimento? Referencial, ponto de referência, posição, deslocamento e distância percorrida.</p>
+        </div>
+        <span class="sub-arrow">→</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="mru.html" class="sub-link">
+        <span class="sub-num">02</span>
+        <div class="sub-info">
+          <h3>Movimento Retilíneo Uniforme (MRU)</h3>
+          <p>Velocidade constante, equação horária da posição, gráficos S×t e v×t. Calculadora interativa.</p>
+        </div>
+        <span class="sub-arrow">→</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="mruv.html" class="sub-link">
+        <span class="sub-num">03</span>
+        <div class="sub-info">
+          <h3>Movimento Retilíneo Uniformemente Variado (MRUV)</h3>
+          <p>Aceleração constante, equações horárias, Equação de Torricelli e gráficos dinâmicos.</p>
+        </div>
+        <span class="sub-arrow">→</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="lancamento-vertical.html" class="sub-link">
+        <span class="sub-num">04</span>
+        <div class="sub-info">
+          <h3>Lançamento Vertical e Queda Livre</h3>
+          <p>Queda livre, lançamento para cima, altura máxima e tempo de voo. Simulador animado.</p>
+        </div>
+        <span class="sub-arrow">→</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="lancamento-horizontal.html" class="sub-link">
+        <span class="sub-num">05</span>
+        <div class="sub-info">
+          <h3>Lançamento Horizontal</h3>
+          <p>Movimento composto: horizontal uniforme + queda livre. Simulador de projétil.</p>
+        </div>
+        <span class="sub-arrow">→</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="lancamento-obliquo.html" class="sub-link">
+        <span class="sub-num">06</span>
+        <div class="sub-info">
+          <h3>Lançamento Oblíquo</h3>
+          <p>Decomposição em componentes, alcance máximo (45°) e altura máxima. Simulador com ângulo ajustável.</p>
+        </div>
+        <span class="sub-arrow">→</span>
+      </a>
+    </li>
+
+    <li>
+      <a href="mcu.html" class="sub-link">
+        <span class="sub-num">07</span>
+        <div class="sub-info">
+          <h3>Movimento Circular Uniforme (MCU)</h3>
+          <p>Período, frequência, velocidade angular e linear, aceleração centrípeta. Animação circular.</p>
+        </div>
+        <span class="sub-arrow">→</span>
+      </a>
+    </li>
+
+  </ul>
+
+  <div class="cinem-atividades">
+    <h2>✏️ Atividades relacionadas</h2>
+    <div class="ativ-links">
+      <a href="../../atividades/mru_estudo_dirigido/index.html" class="ativ-btn">📚 Estudo Dirigido: MRU</a>
+      <a href="../../atividades/mruv_estudo_dirigido/index.html" class="ativ-btn">📚 Estudo Dirigido: MRUV</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2025 — Piras na Física</p>
+</footer>
+
+</body>
+</html>

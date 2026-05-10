@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 295" width="640" height="295">
+  <rect width="640" height="295" fill="#f9fafb" rx="10"/>
+
+  <!-- Title -->
+  <text x="320" y="24" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle">Relatividade do Movimento</text>
+
+  <!-- Road -->
+  <rect x="0" y="188" width="480" height="42" fill="#d1d5db"/>
+  <rect x="0" y="207" width="480" height="3" fill="#fff" opacity="0.6"/>
+  <!-- Road dashes -->
+  <rect x="30"  y="207" width="30" height="3" fill="#fff" opacity="0.5"/>
+  <rect x="100" y="207" width="30" height="3" fill="#fff" opacity="0.5"/>
+  <rect x="170" y="207" width="30" height="3" fill="#fff" opacity="0.5"/>
+  <rect x="240" y="207" width="30" height="3" fill="#fff" opacity="0.5"/>
+  <rect x="310" y="207" width="30" height="3" fill="#fff" opacity="0.5"/>
+  <rect x="380" y="207" width="30" height="3" fill="#fff" opacity="0.5"/>
+
+  <!-- Sidewalk (right side) -->
+  <rect x="480" y="180" width="160" height="12" fill="#e5e7eb" stroke="#9ca3af" stroke-width="0.5"/>
+  <rect x="480" y="188" width="160" height="42" fill="#f3f4f6"/>
+
+  <!-- Bus body -->
+  <rect x="55" y="105" width="370" height="83" fill="#2563eb" rx="7"/>
+  <!-- Bus front bevel -->
+  <rect x="55" y="105" width="12" height="83" fill="#1d4ed8" rx="7 0 0 7"/>
+
+  <!-- Bus windows -->
+  <rect x="75"  y="116" width="50" height="36" fill="#bfdbfe" rx="3"/>
+  <rect x="137" y="116" width="50" height="36" fill="#bfdbfe" rx="3"/>
+  <rect x="199" y="116" width="50" height="36" fill="#bfdbfe" rx="3"/>
+  <rect x="261" y="116" width="50" height="36" fill="#bfdbfe" rx="3"/>
+  <rect x="323" y="116" width="50" height="36" fill="#bfdbfe" rx="3"/>
+
+  <!-- Bus door -->
+  <rect x="385" y="133" width="30" height="55" fill="#1d4ed8" rx="2"/>
+  <line x1="400" y1="133" x2="400" y2="188" stroke="#93c5fd" stroke-width="1.2"/>
+
+  <!-- Bus wheels -->
+  <circle cx="155" cy="195" r="17" fill="#1f2937"/>
+  <circle cx="155" cy="195" r="7"  fill="#6b7280"/>
+  <circle cx="345" cy="195" r="17" fill="#1f2937"/>
+  <circle cx="345" cy="195" r="7"  fill="#6b7280"/>
+
+  <!-- Bus label -->
+  <text x="240" y="163" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#fff" text-anchor="middle" letter-spacing="3">ÔNIBUS</text>
+
+  <!-- Velocity arrow above bus -->
+  <defs>
+    <marker id="aBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0,10 3.5,0 7" fill="#2f5bea"/>
+    </marker>
+  </defs>
+  <line x1="230" y1="72" x2="420" y2="72" stroke="#2f5bea" stroke-width="3" marker-end="url(#aBlue)"/>
+  <text x="325" y="63" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#2f5bea" text-anchor="middle">v (velocidade do ônibus)</text>
+
+  <!-- Stick figure INSIDE bus (orange) -->
+  <circle cx="218" cy="124" r="8"  fill="#f97316" stroke="#ea580c" stroke-width="1.5"/>
+  <line   x1="218" y1="132" x2="218" y2="154" stroke="#ea580c" stroke-width="2.5"/>
+  <line   x1="218" y1="140" x2="206" y2="148" stroke="#ea580c" stroke-width="2"/>
+  <line   x1="218" y1="140" x2="230" y2="148" stroke="#ea580c" stroke-width="2"/>
+  <line   x1="218" y1="154" x2="211" y2="166" stroke="#ea580c" stroke-width="2"/>
+  <line   x1="218" y1="154" x2="225" y2="166" stroke="#ea580c" stroke-width="2"/>
+  <!-- seat -->
+  <line x1="205" y1="166" x2="231" y2="166" stroke="#93c5fd" stroke-width="2.5"/>
+
+  <!-- Stick figure ON SIDEWALK (green) -->
+  <circle cx="568" cy="156" r="9"  fill="#22c55e" stroke="#16a34a" stroke-width="1.5"/>
+  <line   x1="568" y1="165" x2="568" y2="187" stroke="#16a34a" stroke-width="2.5"/>
+  <line   x1="568" y1="173" x2="554" y2="181" stroke="#16a34a" stroke-width="2"/>
+  <line   x1="568" y1="173" x2="582" y2="181" stroke="#16a34a" stroke-width="2"/>
+  <line   x1="568" y1="187" x2="560" y2="200" stroke="#16a34a" stroke-width="2"/>
+  <line   x1="568" y1="187" x2="576" y2="200" stroke="#16a34a" stroke-width="2"/>
+
+  <!-- Annotation boxes -->
+  <!-- Blue box (bus observer) -->
+  <rect x="10"  y="237" width="285" height="50" fill="#dbeafe" rx="6" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="152" y="254" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#1d4ed8" text-anchor="middle">Observador no ônibus:</text>
+  <text x="152" y="272" font-family="Arial,sans-serif" font-size="12" fill="#1e293b" text-anchor="middle">passageiro → em <tspan font-weight="bold">REPOUSO</tspan></text>
+
+  <!-- Green box (sidewalk observer) -->
+  <rect x="345" y="237" width="285" height="50" fill="#dcfce7" rx="6" stroke="#86efac" stroke-width="1.5"/>
+  <text x="487" y="254" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#16a34a" text-anchor="middle">Observador na calçada:</text>
+  <text x="487" y="272" font-family="Arial,sans-serif" font-size="12" fill="#1e293b" text-anchor="middle">passageiro → em <tspan font-weight="bold">MOVIMENTO</tspan></text>
+</svg>

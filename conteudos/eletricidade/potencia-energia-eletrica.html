@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Potência e Energia Elétrica — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TY56KM22X8');</script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero" style="background:linear-gradient(135deg,#78350f 0%,#b45309 55%,#d97706 100%);">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Eletricidade</a><span>/</span>
+      <span>Potência e Energia Elétrica</span>
+    </nav>
+    <h1 class="content-title">Potência e Energia Elétrica</h1>
+    <p class="content-subtitle">A potência mede quanto rápido um circuito converte energia elétrica. O kWh da conta de luz é energia — e o efeito Joule é o calor gerado por toda corrente.</p>
+    <span class="formula-highlight">P = V·i = R·i² = V²/R  |  E = P·t</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Potência elétrica</a></li>
+      <li><a href="#s2">Formas da fórmula</a></li>
+      <li><a href="#s3">Efeito Joule</a></li>
+      <li><a href="#s4">Energia elétrica e kWh</a></li>
+      <li><a href="#s5">Conta de luz</a></li>
+      <li><a href="#s6">Calculadora</a></li>
+      <li><a href="#s7">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="circuitos.html">← Circuitos Elétricos</a>
+      <a href="index.html" class="toc-next">Índice Eletricidade →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Potência elétrica</h2>
+      <p>A <strong>potência elétrica</strong> é a taxa de conversão de energia elétrica em outras formas (calor, luz, movimento...) por unidade de tempo:</p>
+      <div class="formula-box">
+        <span class="formula-label">Potência elétrica</span>
+        <span class="formula-expr">P = V · i</span>
+        <span class="formula-legend">
+          <span>P = potência (W — watts)</span>
+          <span>V = tensão (ddp) nos terminais (V)</span>
+          <span>i = corrente (A)</span>
+          <span>1 W = 1 J/s — um joule por segundo</span>
+        </span>
+      </div>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Potência de um chuveiro</div>
+        <div class="ex-body">
+          <p>Chuveiro ligado a 220 V com corrente de 20 A.</p>
+          <p>P = V·i = 220 × 20 = <strong>4400 W = 4,4 kW</strong></p>
+          <div class="ex-result">Potência do chuveiro: 4400 W (4,4 kW)</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Três formas da fórmula de potência</h2>
+      <p>Combinando P = V·i com a Lei de Ohm (V = R·i), obtemos três formas equivalentes:</p>
+      <div class="formula-box">
+        <span class="formula-label">Potência dissipada em um resistor</span>
+        <span class="formula-expr">P = V·i = R·i² = V²/R</span>
+        <span class="formula-legend">
+          <span>Use P = V·i quando conhece V e i</span>
+          <span>Use P = R·i² quando conhece R e i</span>
+          <span>Use P = V²/R quando conhece V e R</span>
+        </span>
+      </div>
+      <table class="content-table">
+        <thead><tr><th>Situação</th><th>Fórmula mais útil</th></tr></thead>
+        <tbody>
+          <tr><td>Lâmpada: tensão e corrente conhecidas</td><td>P = V·i</td></tr>
+          <tr><td>Chuveiro: resistência e corrente conhecidas</td><td>P = R·i²</td></tr>
+          <tr><td>Resistor em circuito: tensão e resistência conhecidas</td><td>P = V²/R</td></tr>
+          <tr><td>Comparar potências de aparelhos ligados em paralelo (mesma V)</td><td>P ∝ 1/R (maior R → menor P)</td></tr>
+          <tr><td>Comparar potências ligados em série (mesmo i)</td><td>P ∝ R (maior R → maior P)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Efeito Joule</h2>
+      <p>Toda corrente elétrica que atravessa um resistor converte energia elétrica em calor. Esse fenômeno é chamado <strong>efeito Joule</strong>:</p>
+      <div class="formula-box">
+        <span class="formula-label">Calor gerado pelo efeito Joule</span>
+        <span class="formula-expr">Q = R · i² · t</span>
+        <span class="formula-legend">
+          <span>Q = calor gerado (J)</span>
+          <span>R = resistência (Ω)</span>
+          <span>i = corrente (A)</span>
+          <span>t = tempo (s)</span>
+          <span>Equivalente a Q = P·t para qualquer resistor</span>
+        </span>
+      </div>
+      <div class="concept-grid">
+        <div class="concept-card"><span class="cc-icon">🍳</span><div class="cc-title">Aplicações úteis</div><p class="cc-desc">Chuveiro, ferro elétrico, torradeira, lâmpada incandescente, solda elétrica, fusível (funde quando i é alta demais).</p></div>
+        <div class="concept-card"><span class="cc-icon">🔥</span><div class="cc-title">Efeito indesejado</div><p class="cc-desc">Aquecimento dos fios de transmissão, dos motores elétricos e processadores. Causa perda energética e exige dissipadores de calor.</p></div>
+      </div>
+      <div class="highlight-box warning">
+        <span class="hb-icon">⚡</span>
+        <p>O <strong>fusível</strong> e o <strong>disjuntor</strong> protegem o circuito pelo efeito Joule: quando a corrente excede o limite, o calor gerado funde o fio do fusível (ou abre o disjuntor), interrompendo o circuito antes que os fios superaqueçam e causem incêndio.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Energia elétrica e o kWh</h2>
+      <p>A energia elétrica consumida é a potência multiplicada pelo tempo:</p>
+      <div class="formula-box">
+        <span class="formula-label">Energia elétrica consumida</span>
+        <span class="formula-expr">E = P · t</span>
+        <span class="formula-legend">
+          <span>E = energia (J ou kWh)</span>
+          <span>P = potência (W ou kW)</span>
+          <span>t = tempo (s ou h)</span>
+          <span>Conversão: 1 kWh = 3 600 000 J = 3,6 × 10⁶ J</span>
+        </span>
+      </div>
+      <div class="highlight-box info">
+        <span class="hb-icon">📊</span>
+        <p>O <strong>kilowatt-hora (kWh)</strong> é a unidade usada na conta de luz. É a energia consumida por um aparelho de 1 kW (1000 W) funcionando durante 1 hora. Em 2025, o kWh residencial no Brasil custa em média R$ 0,80 a R$ 1,10 (varia pela distribuidora e bandeira tarifária).</p>
+      </div>
+      <table class="content-table">
+        <thead><tr><th>Aparelho</th><th>Potência típica</th><th>Consumo em 1 hora</th></tr></thead>
+        <tbody>
+          <tr><td>Lâmpada LED</td><td>9 W</td><td>0,009 kWh</td></tr>
+          <tr><td>Lâmpada incandescente</td><td>60 W</td><td>0,06 kWh</td></tr>
+          <tr><td>Televisão LED 42"</td><td>80 W</td><td>0,08 kWh</td></tr>
+          <tr><td>Computador desktop</td><td>250 W</td><td>0,25 kWh</td></tr>
+          <tr><td>Ar-condicionado 9000 BTU</td><td>900 W</td><td>0,9 kWh</td></tr>
+          <tr><td>Chuveiro elétrico</td><td>4400 W</td><td>4,4 kWh</td></tr>
+          <tr><td>Forno elétrico</td><td>2000 W</td><td>2,0 kWh</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Leitura da conta de luz</h2>
+      <p>O medidor registra o total de kWh consumidos. O valor cobrado é:</p>
+      <div class="formula-box">
+        <span class="formula-label">Custo na conta de luz</span>
+        <span class="formula-expr">Custo = E (kWh) × tarifa (R$/kWh)</span>
+        <span class="formula-legend">
+          <span>Inclui também encargos, impostos e bandeira tarifária</span>
+          <span>Bandeira verde: sem adicional; amarela, vermelha: acréscimos</span>
+        </span>
+      </div>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Custo mensal do chuveiro</div>
+        <div class="ex-body">
+          <p>Chuveiro de 4400 W, 2 pessoas × 10 min/dia = 20 min/dia = 1/3 h/dia.</p>
+          <p>Consumo diário: P·t = 4,4 kW × (1/3) h = 1,467 kWh/dia</p>
+          <p>Consumo mensal (30 dias): 1,467 × 30 = <strong>44 kWh/mês</strong></p>
+          <p>Custo (tarifa R$ 0,90/kWh): 44 × 0,90 = <strong>R$ 39,60/mês</strong></p>
+          <div class="ex-result">O chuveiro custa aproximadamente R$ 40/mês para dois usuários de 10 min/dia</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Calculadora — Potência e Conta de Luz</h2>
+      <div class="calc-box">
+        <h4>🧮 Potência: P = V·i = R·i² = V²/R</h4>
+        <p style="font-size:.85rem;color:#666;margin-bottom:.8rem;">Informe dois valores; o terceiro é calculado automaticamente.</p>
+        <div class="calc-grid">
+          <div class="calc-field"><label>V (V)</label><input type="number" id="pt-V" placeholder="tensão"></div>
+          <div class="calc-field"><label>i (A)</label><input type="number" id="pt-i" placeholder="corrente"></div>
+          <div class="calc-field"><label>R (Ω)</label><input type="number" id="pt-R" placeholder="resistência"></div>
+        </div>
+        <button class="calc-btn" onclick="calcPotencia()">Calcular P</button>
+        <div class="calc-result" id="pt-result"></div>
+      </div>
+
+      <div class="calc-box" style="margin-top:1rem;">
+        <h4>🧮 Simulador de conta de luz</h4>
+        <div class="calc-grid">
+          <div class="calc-field"><label>Potência do aparelho (W)</label><input type="number" id="cl-P" placeholder="ex: 4400"></div>
+          <div class="calc-field"><label>Horas de uso por dia (h)</label><input type="number" id="cl-h" placeholder="ex: 0.33"></div>
+          <div class="calc-field"><label>Dias por mês</label><input type="number" id="cl-d" placeholder="ex: 30" value="30"></div>
+          <div class="calc-field"><label>Tarifa (R$/kWh)</label><input type="number" id="cl-t" placeholder="ex: 0.90" step="0.01"></div>
+        </div>
+        <button class="calc-btn" onclick="calcConta()">Calcular consumo e custo</button>
+        <div class="calc-result" id="cl-result"></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Resumo</h2>
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Potência elétrica: P = V·i = R·i² = V²/R. Unidade: watt (W = J/s).</li>
+          <li>Efeito Joule: Q = R·i²·t — toda corrente gera calor no resistor. Útil no chuveiro; indesejado na transmissão.</li>
+          <li>Energia elétrica: E = P·t. Unidade prática: kWh (= 3,6×10⁶ J).</li>
+          <li>Conta de luz = kWh consumidos × tarifa (R$/kWh).</li>
+          <li>Aparelhos em paralelo (mesma V): maior R → menor P. Em série (mesmo i): maior R → maior P.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="circuitos.html">← Circuitos Elétricos</a>
+      <a href="index.html" class="nav-next">Índice: Eletricidade →</a>
+    </div>
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+<script>
+(function(){
+  window.calcPotencia = function(){
+    const V = document.getElementById('pt-V').value;
+    const i = document.getElementById('pt-i').value;
+    const R = document.getElementById('pt-R').value;
+    const res = document.getElementById('pt-result');
+    const known = [V,i,R].filter(v=>v!=='').length;
+    if(known < 2){ res.className='calc-result erro'; res.textContent='Informe pelo menos dois valores.'; return; }
+
+    let Vn=V===''?null:parseFloat(V), in_=i===''?null:parseFloat(i), Rn=R===''?null:parseFloat(R);
+    let P, msg='';
+
+    if(Vn!==null && in_!==null){ P=Vn*in_; if(Rn===null){Rn=Vn/in_;document.getElementById('pt-R').value=Rn.toFixed(4);} }
+    else if(Rn!==null && in_!==null){ P=Rn*in_*in_; if(Vn===null){Vn=Rn*in_;document.getElementById('pt-V').value=Vn.toFixed(4);} }
+    else if(Vn!==null && Rn!==null){ P=Vn*Vn/Rn; if(in_===null){in_=Vn/Rn;document.getElementById('pt-i').value=in_.toFixed(4);} }
+
+    const kW = P/1000;
+    msg='P = '+P.toFixed(2)+' W ('+kW.toFixed(3)+' kW)';
+    res.className='calc-result ok'; res.textContent=msg;
+  };
+
+  window.calcConta = function(){
+    const P=parseFloat(document.getElementById('cl-P').value);
+    const h=parseFloat(document.getElementById('cl-h').value);
+    const d=parseFloat(document.getElementById('cl-d').value)||30;
+    const t=parseFloat(document.getElementById('cl-t').value);
+    const res=document.getElementById('cl-result');
+    if(isNaN(P)||isNaN(h)||P<=0||h<=0){ res.className='calc-result erro'; res.textContent='Preencha a potência e as horas de uso.'; return; }
+    const kWhDia=P/1000*h;
+    const kWhMes=kWhDia*d;
+    let msg='Consumo diário: '+kWhDia.toFixed(3)+' kWh<br>Consumo mensal: '+kWhMes.toFixed(2)+' kWh';
+    if(!isNaN(t)&&t>0) msg+='<br>Custo estimado: R$ '+(kWhMes*t).toFixed(2);
+    res.className='calc-result ok'; res.innerHTML=msg;
+  };
+
+  const sections=document.querySelectorAll('.content-section');
+  const tocLinks=document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll',function(){
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+    tocLinks.forEach(a=>a.parentElement.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. eletricidade/potencia-comparacao.png
+     Tabela visual comparando potências de aparelhos domésticos com barras horizontais:
+     LED 9W, TV 80W, computador 250W, ar-cond. 900W, chuveiro 4400W.
+     Barras proporcionais em laranja-âmbar. Fundo branco.
+-->
+</body>
+</html>

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lançamento Horizontal — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Cinemática</a><span>/</span>
+      <span>Lançamento Horizontal</span>
+    </nav>
+    <h1 class="content-title">Lançamento Horizontal</h1>
+    <p class="content-subtitle">Um movimento composto: horizontal uniforme + queda livre. A parabólica trajetória de uma pedra atirada de um penhasco.</p>
+    <span class="formula-highlight">x = v₀·t &nbsp;|&nbsp; y = H − ½g·t²</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">O que é?</a></li>
+      <li><a href="#s2">Independência dos movimentos</a></li>
+      <li><a href="#s3">Equações</a></li>
+      <li><a href="#s4">Alcance e tempo</a></li>
+      <li><a href="#s5">Velocidade resultante</a></li>
+      <li><a href="#s6">Aplicações</a></li>
+      <li><a href="#s7">Calculadora</a></li>
+      <li><a href="#s8">Simulador</a></li>
+      <li><a href="#s9">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="lancamento-vertical.html">← Lanç. Vertical</a>
+      <a href="lancamento-obliquo.html" class="toc-next">Lanç. Oblíquo →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> O que é lançamento horizontal?</h2>
+
+      <p>
+        O <strong>lançamento horizontal</strong> ocorre quando um objeto é arremessado horizontalmente (sem componente vertical de velocidade inicial) de uma determinada altura. É o caso de uma pedra atirada horizontalmente de um penhasco, ou de um projétil disparado horizontalmente.
+      </p>
+
+      <p>
+        A trajetória resultante é uma <strong>parábola</strong> — curva que combina o movimento horizontal uniforme com a queda livre.
+      </p>
+
+
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Independência dos movimentos</h2>
+
+      <p>
+        O princípio fundamental do lançamento horizontal é que os movimentos horizontal e vertical são <strong>completamente independentes</strong> entre si. Cada um obedece às suas próprias equações:
+      </p>
+
+      <div class="concept-grid">
+        <div class="concept-card">
+          <span class="cc-icon">➡️</span>
+          <div class="cc-title">Direção horizontal (x)</div>
+          <p class="cc-desc">Não há força horizontal (ignorando o ar). Velocidade constante: MRU com v = v₀.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">⬇️</span>
+          <div class="cc-title">Direção vertical (y)</div>
+          <p class="cc-desc">A gravidade age para baixo. Queda livre: MRUV com a = g, v₀ᵧ = 0.</p>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <span class="hb-icon">💡</span>
+        <p>
+          Se você soltar uma pedra e ao mesmo tempo atirar outra horizontalmente com a mesma altura inicial, as <strong>duas chegam ao solo ao mesmo tempo</strong>. A velocidade horizontal não afeta a queda — somente a horizontal.
+        </p>
+      </div>
+
+
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Equações do lançamento horizontal</h2>
+
+      <p>
+        Adotamos: eixo x positivo para a direita; eixo y positivo para cima; origem na posição inicial do objeto (no penhasco). Assim y₀ = H (altura do penhasco) ou, simplificando, podemos colocar a origem no penhasco e medir y para baixo como positivo.
+      </p>
+
+      <p>
+        Aqui usaremos a <strong>convenção mais comum nos livros</strong>: origem na base do penhasco, y positivo para cima. O objeto parte de y = H.
+      </p>
+
+      <div class="formula-row">
+        <div class="formula-box">
+          <span class="formula-label">Horizontal (MRU)</span>
+          <span class="formula-expr">x = v₀ · t</span>
+          <span class="formula-legend">
+            <span>v₀ = velocidade horizontal inicial (m/s)</span>
+            <span>Velocidade horizontal constante: vₓ = v₀</span>
+          </span>
+        </div>
+        <div class="formula-box">
+          <span class="formula-label">Vertical (queda livre)</span>
+          <span class="formula-expr">y = H − ½ · g · t²</span>
+          <span class="formula-legend">
+            <span>H = altura inicial (m)</span>
+            <span>Velocidade vertical: vᵧ = −g·t</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo</div>
+        <div class="ex-body">
+          <p>Um objeto é lançado horizontalmente de H = 20 m com v₀ = 15 m/s. (g = 10 m/s²)</p>
+          <p><strong>Tempo de queda</strong> (quando y = 0): 0 = 20 − ½·10·t² → t² = 4 → <strong>t = 2 s</strong></p>
+          <p><strong>Alcance horizontal:</strong> x = 15 × 2 = <strong>30 m</strong></p>
+          <div class="ex-result">Tempo de voo = 2 s | Alcance = 30 m</div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Tempo de voo e alcance</h2>
+
+      <p>
+        O <strong>tempo de voo</strong> é determinado exclusivamente pela queda vertical. Igualando y = 0:
+      </p>
+
+      <div class="formula-row">
+        <div class="formula-box">
+          <span class="formula-label">Tempo de voo</span>
+          <span class="formula-expr">t = √(2H / g)</span>
+          <span class="formula-legend"><span>Depende apenas da altura H</span></span>
+        </div>
+        <div class="formula-box">
+          <span class="formula-label">Alcance horizontal</span>
+          <span class="formula-expr">R = v₀ · √(2H / g)</span>
+          <span class="formula-legend"><span>Depende de v₀ e H</span></span>
+        </div>
+      </div>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">📌</span>
+        <p>
+          O alcance é proporcional à velocidade horizontal v₀. Dobrando v₀, o alcance dobra. Mas para a mesma v₀, aumentar a altura H aumenta o alcance — pois o objeto tem mais tempo para percorrer horizontalmente.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Velocidade resultante</h2>
+
+      <p>
+        Em qualquer instante t, o objeto tem duas componentes de velocidade: vₓ = v₀ (constante) e vᵧ = −g·t (cresce em módulo para baixo). A velocidade resultante é a composição vetorial dessas duas:
+      </p>
+
+      <div class="formula-row">
+        <div class="formula-box">
+          <span class="formula-label">Módulo da velocidade resultante</span>
+          <span class="formula-expr">v = √(v₀² + (g·t)²)</span>
+          <span class="formula-legend"><span>Pelo Teorema de Pitágoras</span></span>
+        </div>
+        <div class="formula-box">
+          <span class="formula-label">Ângulo com a horizontal</span>
+          <span class="formula-expr">tan θ = vᵧ / vₓ = g·t / v₀</span>
+          <span class="formula-legend"><span>θ aumenta com o tempo</span></span>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Aplicações cotidianas</h2>
+
+      <div class="daily-grid">
+        <div class="daily-card">
+          <span class="dc-icon">🚿</span>
+          <div class="dc-title">Água de uma torneira</div>
+          <p class="dc-desc">O jato de água que sai horizontalmente de uma torneira segue uma trajetória parabólica.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🏌️</span>
+          <div class="dc-title">Tacada horizontal de golf</div>
+          <p class="dc-desc">Uma bola lançada horizontalmente (sem ângulo) do topo de uma colina faz esse movimento.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🎯</span>
+          <div class="dc-title">Bala de canhão</div>
+          <p class="dc-desc">O lançamento horizontal é modelo simplificado para projéteis — base do estudo da balística.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🐈</span>
+          <div class="dc-title">Gato que pula de uma mesa</div>
+          <p class="dc-desc">Ao pular horizontalmente de uma mesa, o gato descreve uma trajetória parabólica até o chão.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Calculadora de lançamento horizontal</h2>
+
+      <div class="calc-box">
+        <h4>🧮 Calculadora de Lançamento Horizontal &nbsp;(g = 10 m/s²)</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Velocidade inicial v₀ (m/s)</label>
+            <input type="number" id="lh-v0" placeholder="ex: 15" value="15">
+          </div>
+          <div class="calc-field">
+            <label>Altura inicial H (m)</label>
+            <input type="number" id="lh-H" placeholder="ex: 20" value="20">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcLH()">Calcular</button>
+        <div class="calc-result" id="lh-result"></div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Simulador de lançamento horizontal</h2>
+
+      <div class="graph-box">
+        <h4>🎯 Simulador de Lançamento Horizontal</h4>
+        <canvas id="lh-sim" width="540" height="320"></canvas>
+        <div class="graph-controls" style="margin-top:1rem;">
+          <div class="slider-row">
+            <label>v₀ = <span id="lh-v0-d">15</span> m/s</label>
+            <input type="range" id="lh-v0-sl" min="5" max="40" value="15" step="1">
+          </div>
+          <div class="slider-row">
+            <label>H = <span id="lh-H-d">20</span> m</label>
+            <input type="range" id="lh-H-sl" min="5" max="60" value="20" step="5">
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:0.8rem;">
+          <button class="calc-btn" id="lh-start-btn">▶ Lançar</button>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s9">
+      <h2><span class="sec-num">9</span> Resumo</h2>
+
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Lançamento horizontal: objeto parte com v₀ horizontal, sem componente vertical inicial.</li>
+          <li>Movimentos horizontal e vertical são independentes.</li>
+          <li>Horizontal: MRU → x = v₀·t; vₓ = v₀ (constante).</li>
+          <li>Vertical: queda livre → y = H − ½g·t²; vᵧ = −g·t.</li>
+          <li>Tempo de voo: t = √(2H/g) — depende só da altura.</li>
+          <li>Alcance: R = v₀·√(2H/g) — proporcional a v₀ e √H.</li>
+          <li>Trajetória é uma parábola.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="lancamento-vertical.html">← Lançamento Vertical</a>
+      <a href="lancamento-obliquo.html" class="nav-next">Próximo: Lançamento Oblíquo →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <p>© 2025 — Piras na Física</p>
+</footer>
+
+<script>
+(function() {
+  const g = 10;
+
+  window.calcLH = function() {
+    const v0 = parseFloat(document.getElementById('lh-v0').value);
+    const H  = parseFloat(document.getElementById('lh-H').value);
+    const res = document.getElementById('lh-result');
+    if (isNaN(v0)||isNaN(H)||H<=0||v0<=0) {
+      res.className='calc-result erro'; res.textContent='Informe valores positivos para v₀ e H.'; return;
+    }
+    const t = Math.sqrt(2*H/g);
+    const R = v0 * t;
+    const vx = v0;
+    const vy = g * t;
+    const vf = Math.sqrt(vx*vx + vy*vy);
+    const ang = Math.atan2(vy, vx) * 180 / Math.PI;
+    res.className='calc-result ok';
+    res.innerHTML =
+      'Tempo de voo: <strong>' + t.toFixed(2) + ' s</strong><br>' +
+      'Alcance horizontal: <strong>' + R.toFixed(2) + ' m</strong><br>' +
+      'Velocidade ao chegar: <strong>' + vf.toFixed(2) + ' m/s</strong> (ângulo ' + ang.toFixed(1) + '° abaixo da horizontal)';
+  };
+
+  /* ---- Simulador ---- */
+  const canvas = document.getElementById('lh-sim');
+  const ctx = canvas.getContext('2d');
+  const v0Sl  = document.getElementById('lh-v0-sl');
+  const HSl   = document.getElementById('lh-H-sl');
+  const v0Disp = document.getElementById('lh-v0-d');
+  const HDisp  = document.getElementById('lh-H-d');
+  const btn    = document.getElementById('lh-start-btn');
+
+  let animId=null, simT=0, running=false;
+
+  function getP() {
+    return { v0: parseFloat(v0Sl.value), H: parseFloat(HSl.value) };
+  }
+
+  function tFly(p) { return Math.sqrt(2*p.H/g); }
+
+  function drawSim(t) {
+    const p = getP();
+    const tt = tFly(p);
+    const W = canvas.width, hH = canvas.height;
+    const PAD = {l:40, r:30, t:20, b:40};
+    const gW = W-PAD.l-PAD.r, gH = hH-PAD.t-PAD.b;
+
+    const xMax = p.v0 * tt * 1.1;
+    const yMax = p.H * 1.1;
+
+    const toX = x => PAD.l + (x/xMax)*gW;
+    const toY = y => PAD.t + (1-y/yMax)*gH;
+
+    ctx.clearRect(0,0,W,hH);
+
+    /* Céu */
+    ctx.fillStyle='#eff6ff';
+    ctx.fillRect(PAD.l,PAD.t,gW,gH);
+
+    /* Solo */
+    const soloY = toY(0);
+    ctx.fillStyle='#d1fae5';
+    ctx.fillRect(PAD.l,soloY,gW,hH-PAD.b-soloY+PAD.b);
+    ctx.strokeStyle='#059669';ctx.lineWidth=2;
+    ctx.beginPath();ctx.moveTo(PAD.l,soloY);ctx.lineTo(PAD.l+gW,soloY);ctx.stroke();
+
+    /* Penhasco */
+    ctx.fillStyle='#9ca3af';
+    ctx.fillRect(PAD.l, toY(p.H), 20, soloY-toY(p.H));
+    ctx.fillStyle='#374151';ctx.font='11px Poppins,sans-serif';ctx.textAlign='center';
+    ctx.fillText('H='+p.H+'m', PAD.l+10, toY(p.H/2));
+
+    /* Trajetória tracejada */
+    ctx.strokeStyle='#bfdbfe';ctx.lineWidth=1.5;ctx.setLineDash([5,5]);
+    ctx.beginPath();
+    for(let i=0;i<=80;i++){
+      const ti=i/80*tt;
+      const xi=p.v0*ti, yi=p.H-0.5*g*ti*ti;
+      if(i===0) ctx.moveTo(toX(xi),toY(Math.max(0,yi)));
+      else ctx.lineTo(toX(xi),toY(Math.max(0,yi)));
+    }
+    ctx.stroke();ctx.setLineDash([]);
+
+    /* Bola atual */
+    const xc = p.v0 * t;
+    const yc = Math.max(0, p.H - 0.5*g*t*t);
+    ctx.beginPath();
+    ctx.arc(toX(xc),toY(yc),9,0,Math.PI*2);
+    ctx.fillStyle='#2f5bea';ctx.fill();
+
+    /* Setas de velocidade */
+    if(t>0 && yc>0){
+      const vx=p.v0, vy=g*t;
+      const scl=4;
+      /* Horizontal */
+      ctx.strokeStyle='#16a34a';ctx.lineWidth=2;
+      ctx.beginPath();ctx.moveTo(toX(xc),toY(yc));
+      ctx.lineTo(toX(xc)+vx*scl,toY(yc));ctx.stroke();
+      /* Vertical */
+      ctx.strokeStyle='#ef4444';
+      ctx.beginPath();ctx.moveTo(toX(xc),toY(yc));
+      ctx.lineTo(toX(xc),toY(yc)+vy*scl);ctx.stroke();
+    }
+
+    /* Eixos */
+    ctx.strokeStyle='#374151';ctx.lineWidth=2;
+    ctx.beginPath();
+    ctx.moveTo(PAD.l,PAD.t);ctx.lineTo(PAD.l,PAD.t+gH);
+    ctx.moveTo(PAD.l,PAD.t+gH);ctx.lineTo(PAD.l+gW,PAD.t+gH);
+    ctx.stroke();
+
+    /* Rótulos */
+    ctx.fillStyle='#555';ctx.font='10px Poppins,sans-serif';
+    ctx.textAlign='center';
+    for(let i=0;i<=5;i++){
+      const x=i/5*p.v0*tt;
+      ctx.fillText(Math.round(x),toX(x),PAD.t+gH+16);
+    }
+    ctx.fillText('x (m)',PAD.l+gW+18,PAD.t+gH+5);
+    ctx.textAlign='right';
+    for(let i=0;i<=4;i++){
+      const y=i/4*p.H;
+      ctx.fillText(Math.round(y),PAD.l-4,toY(y)+4);
+    }
+    ctx.save();ctx.translate(14,PAD.t+gH/2);ctx.rotate(-Math.PI/2);
+    ctx.textAlign='center';ctx.fillText('y (m)',0,0);ctx.restore();
+
+    /* Legenda */
+    ctx.fillStyle='#16a34a';ctx.font='10px Poppins,sans-serif';ctx.textAlign='left';
+    ctx.fillText('— vₓ (horizontal)',PAD.l+8,PAD.t+16);
+    ctx.fillStyle='#ef4444';
+    ctx.fillText('— vᵧ (vertical)',PAD.l+8,PAD.t+30);
+  }
+
+  function animate() {
+    const p=getP();
+    const tt=tFly(p);
+    drawSim(simT);
+    if(running && simT<tt){ simT+=0.04; animId=requestAnimationFrame(animate); }
+    else if(running){ running=false; btn.textContent='▶ Lançar novamente'; }
+  }
+
+  function reset() {
+    const p=getP();
+    v0Disp.textContent=p.v0;
+    HDisp.textContent=p.H;
+    simT=0;running=false;
+    if(animId) cancelAnimationFrame(animId);
+    drawSim(0);
+  }
+
+  v0Sl.addEventListener('input',reset);
+  HSl.addEventListener('input',reset);
+  btn.addEventListener('click',function(){
+    if(!running){ simT=0;running=true;btn.textContent='⏸ Em voo...';animate(); }
+  });
+  reset();
+
+  /* TOC */
+  const sections=document.querySelectorAll('.content-section');
+  const tocLinks=document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll',function(){
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+    tocLinks.forEach(a=>{a.parentElement.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. cinematica/lancamento-horizontal-penhasco.png
+     Pedra sendo atirada horizontalmente de um penhasco de altura H. Trajetória
+     parabólica marcada. Setas mostrando v₀ (horizontal), vₓ e vᵧ em pontos
+     intermediários, e velocidade resultante v na chegada.
+
+  2. cinematica/lancamento-horizontal-independencia.png
+     Duas bolas caindo da mesma altura: uma largada verticalmente e outra
+     atirada horizontalmente. Posições marcadas a cada Δt — chegam ao solo
+     ao mesmo tempo. Fundo com grade de tempo.
+-->
+
+</body>
+</html>

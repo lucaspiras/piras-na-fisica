@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCU — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Cinemática</a><span>/</span>
+      <span>MCU</span>
+    </nav>
+    <h1 class="content-title">Movimento Circular Uniforme</h1>
+    <p class="content-subtitle">Velocidade angular constante, trajetória circular. O modelo do relógio, da roda, da órbita — e da aceleração centrípeta.</p>
+    <span class="formula-highlight">v = ω · r &nbsp;|&nbsp; T = 2π / ω</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Definição</a></li>
+      <li><a href="#s2">Período e frequência</a></li>
+      <li><a href="#s3">Velocidade angular</a></li>
+      <li><a href="#s4">Velocidade linear</a></li>
+      <li><a href="#s5">Aceleração centrípeta</a></li>
+      <li><a href="#s6">Aplicações</a></li>
+      <li><a href="#s7">Calculadora</a></li>
+      <li><a href="#s8">Animação circular</a></li>
+      <li><a href="#s9">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="lancamento-obliquo.html">← Lanç. Oblíquo</a>
+      <a href="index.html">Hub Cinemática</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Definição</h2>
+
+      <p>
+        O <strong>Movimento Circular Uniforme (MCU)</strong> é aquele em que um corpo percorre uma trajetória <strong>circular</strong> com <strong>velocidade escalar constante</strong>. Embora o módulo da velocidade não mude, a direção muda continuamente — o que significa que existe uma aceleração.
+      </p>
+
+      <div class="concept-grid">
+        <div class="concept-card">
+          <span class="cc-icon">⭕</span>
+          <div class="cc-title">Trajetória circular</div>
+          <p class="cc-desc">O corpo percorre uma circunferência de raio r constante.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">🔄</span>
+          <div class="cc-title">Velocidade escalar constante</div>
+          <p class="cc-desc">O módulo de v não muda — mas a direção muda a cada instante.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">🎯</span>
+          <div class="cc-title">Aceleração centrípeta</div>
+          <p class="cc-desc">Sempre aponta para o centro da trajetória (perpendicular à velocidade).</p>
+        </div>
+      </div>
+
+
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Período e frequência</h2>
+
+      <p>
+        O <strong>período T</strong> é o tempo para completar uma volta completa (360° ou 2π radianos). A <strong>frequência f</strong> indica quantas voltas são completadas por segundo.
+      </p>
+
+      <div class="formula-row">
+        <div class="formula-box">
+          <span class="formula-label">Período</span>
+          <span class="formula-expr">T = 1 / f</span>
+          <span class="formula-legend">
+            <span>T = período (s)</span>
+            <span>Tempo de uma volta completa</span>
+          </span>
+        </div>
+        <div class="formula-box">
+          <span class="formula-label">Frequência</span>
+          <span class="formula-expr">f = 1 / T</span>
+          <span class="formula-legend">
+            <span>f = frequência (Hz = 1/s)</span>
+            <span>Número de voltas por segundo</span>
+          </span>
+        </div>
+      </div>
+
+      <table class="content-table">
+        <thead>
+          <tr><th>Objeto</th><th>Período T</th><th>Frequência f</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Ponteiro dos segundos (relógio)</td><td>60 s</td><td>≈ 0,017 Hz</td></tr>
+          <tr><td>Hélice de ventilador (baixa)</td><td>≈ 0,1 s</td><td>≈ 10 Hz</td></tr>
+          <tr><td>Motor de carro (2000 rpm)</td><td>≈ 0,03 s</td><td>≈ 33 Hz</td></tr>
+          <tr><td>Terra ao redor do Sol</td><td>365,25 dias</td><td>≈ 3,2 × 10⁻⁸ Hz</td></tr>
+        </tbody>
+      </table>
+
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Velocidade angular</h2>
+
+      <p>
+        A <strong>velocidade angular ω</strong> (ômega) mede a taxa de variação do ângulo com o tempo. Para o MCU, ω é constante.
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Velocidade angular</span>
+        <span class="formula-expr">ω = Δθ / Δt = 2π / T = 2π · f</span>
+        <span class="formula-legend">
+          <span>ω = velocidade angular (rad/s)</span>
+          <span>Δθ = variação angular (rad)</span>
+          <span>Uma volta completa = 2π rad = 360°</span>
+        </span>
+      </div>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">⚙️</span>
+        <p>
+          A unidade de ω é o <strong>radiano por segundo (rad/s)</strong>. Rotações por minuto (rpm) são comuns na prática; para converter: ω = rpm × 2π / 60.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Velocidade linear (tangencial)</h2>
+
+      <p>
+        A <strong>velocidade linear v</strong> é o módulo da velocidade do ponto em movimento. Ela é tangente à trajetória a cada instante. A relação entre v e ω é fundamental:
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Velocidade linear em função da angular</span>
+        <span class="formula-expr">v = ω · r</span>
+        <span class="formula-legend">
+          <span>v = velocidade linear (m/s)</span>
+          <span>ω = velocidade angular (rad/s)</span>
+          <span>r = raio da trajetória (m)</span>
+        </span>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Roda dentada</div>
+        <div class="ex-body">
+          <p>Uma roda de r = 0,5 m gira a f = 2 Hz. Qual a velocidade linear da borda?</p>
+          <p>ω = 2π × 2 = 4π ≈ <strong>12,6 rad/s</strong></p>
+          <p>v = ω × r = 12,6 × 0,5 ≈ <strong>6,3 m/s</strong></p>
+          <div class="ex-result">v ≈ 6,3 m/s na borda da roda</div>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <span class="hb-icon">💡</span>
+        <p>
+          Em engrenagens e rodas acopladas, pontos a diferentes raios têm diferentes velocidades lineares, mas a mesma velocidade angular. Em polias ligadas por correia, as velocidades lineares são iguais — logo, as velocidades angulares variam inversamente com o raio.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Aceleração centrípeta</h2>
+
+      <p>
+        Embora a velocidade escalar seja constante no MCU, a <em>direção</em> da velocidade muda continuamente. Essa mudança de direção implica uma <strong>aceleração centrípeta</strong> (do latim <em>centrum petere</em> = buscar o centro), sempre apontada para o centro da circunferência.
+      </p>
+
+      <div class="formula-row">
+        <div class="formula-box">
+          <span class="formula-label">Aceleração centrípeta</span>
+          <span class="formula-expr">a<sub>c</sub> = v² / r = ω² · r</span>
+          <span class="formula-legend">
+            <span>a<sub>c</sub> = aceleração centrípeta (m/s²)</span>
+            <span>Sempre aponta para o centro</span>
+            <span>Perpendicular à velocidade</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="highlight-box danger">
+        <span class="hb-icon">⚠️</span>
+        <p>
+          A aceleração centrípeta não muda o módulo da velocidade — apenas a direção. No MCU, não há aceleração tangencial. A força necessária para manter o MCU é chamada <strong>força centrípeta</strong> (F = m·a<sub>c</sub>) e aponta para o centro.
+        </p>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Carro em curva</div>
+        <div class="ex-body">
+          <p>Um carro de corrida faz uma curva de r = 50 m a v = 20 m/s. Qual a aceleração centrípeta?</p>
+          <p>a<sub>c</sub> = v²/r = 400/50 = <strong>8 m/s²</strong></p>
+          <p>Em unidades de g: 8/10 = <strong>0,8 g</strong></p>
+          <div class="ex-result">a<sub>c</sub> = 8 m/s² ≈ 0,8 g</div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Aplicações cotidianas</h2>
+
+      <div class="daily-grid">
+        <div class="daily-card">
+          <span class="dc-icon">🕐</span>
+          <div class="dc-title">Relógio analógico</div>
+          <p class="dc-desc">Os ponteiros realizam MCU com períodos conhecidos: 60 s (segundos), 3600 s (minutos), 43200 s (horas).</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🎡</span>
+          <div class="dc-title">Roda-gigante</div>
+          <p class="dc-desc">Passageiros em uma roda-gigante realizam MCU — e sentem a aceleração centrípeta.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🌍</span>
+          <div class="dc-title">Satélites artificiais</div>
+          <p class="dc-desc">Um satélite em órbita circular realiza MCU; a gravidade fornece a força centrípeta.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">💿</span>
+          <div class="dc-title">CD/DVD em rotação</div>
+          <p class="dc-desc">O disco gira em MCU (ou quase) — pontos mais afastados do centro têm maior velocidade linear.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Calculadora de MCU</h2>
+
+      <div class="calc-box">
+        <h4>🧮 Calculadora de MCU</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Raio r (m)</label>
+            <input type="number" id="mcu-r" placeholder="ex: 0.5" value="0.5">
+          </div>
+          <div class="calc-field">
+            <label>Período T (s)</label>
+            <input type="number" id="mcu-T" placeholder="ex: 2">
+          </div>
+          <div class="calc-field">
+            <label>Frequência f (Hz)</label>
+            <input type="number" id="mcu-f" placeholder="ex: 0.5">
+          </div>
+          <div class="calc-field">
+            <label>Velocidade angular ω (rad/s)</label>
+            <input type="number" id="mcu-w" placeholder="deixe vazio p/ calcular">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcMCU()">Calcular</button>
+        <div class="calc-result" id="mcu-result"></div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Animação do MCU</h2>
+
+      <p>Ajuste o raio e a frequência para visualizar o MCU e os vetores de velocidade e aceleração centrípeta.</p>
+
+      <div class="graph-box">
+        <h4>🔄 Animação do Movimento Circular Uniforme</h4>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
+          <canvas id="mcu-anim" width="300" height="300"></canvas>
+          <canvas id="mcu-graph" width="260" height="280"></canvas>
+        </div>
+        <div class="graph-controls" style="margin-top:1rem;">
+          <div class="slider-row">
+            <label>Raio r = <span id="mcu-r-d">80</span> px</label>
+            <input type="range" id="mcu-r-sl" min="40" max="120" value="80" step="10">
+          </div>
+          <div class="slider-row">
+            <label>Frequência f = <span id="mcu-f-d">0.5</span> Hz</label>
+            <input type="range" id="mcu-f-sl" min="0.1" max="2" value="0.5" step="0.1">
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:0.8rem;">
+          <button class="calc-btn" id="mcu-start-btn">▶ Iniciar</button>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s9">
+      <h2><span class="sec-num">9</span> Resumo</h2>
+
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>MCU: trajetória circular com velocidade escalar constante. Aceleração centrípeta ≠ 0.</li>
+          <li>Período T = tempo de uma volta; frequência f = 1/T (Hz).</li>
+          <li>Velocidade angular: ω = 2π/T = 2πf (rad/s).</li>
+          <li>Velocidade linear: v = ω·r (m/s) — tangente à trajetória.</li>
+          <li>Aceleração centrípeta: a<sub>c</sub> = v²/r = ω²·r — aponta para o centro.</li>
+          <li>A aceleração centrípeta muda a direção, não o módulo da velocidade.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="lancamento-obliquo.html">← Lançamento Oblíquo</a>
+      <a href="index.html" class="nav-next">Hub Cinemática →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <p>© 2025 — Piras na Física</p>
+</footer>
+
+<script>
+(function() {
+  /* ---- Calculadora MCU ---- */
+  window.calcMCU = function() {
+    const r = parseFloat(document.getElementById('mcu-r').value);
+    let T = parseFloat(document.getElementById('mcu-T').value);
+    let f = parseFloat(document.getElementById('mcu-f').value);
+    let w = parseFloat(document.getElementById('mcu-w').value);
+    const res = document.getElementById('mcu-result');
+
+    if (isNaN(r)||r<=0) { res.className='calc-result erro'; res.textContent='Informe um raio positivo.'; return; }
+
+    /* Deduzir parâmetros */
+    if (!isNaN(T) && T>0) { f=1/T; w=2*Math.PI/T; }
+    else if (!isNaN(f) && f>0) { T=1/f; w=2*Math.PI*f; }
+    else if (!isNaN(w) && w>0) { T=2*Math.PI/w; f=1/T; }
+    else { res.className='calc-result erro'; res.textContent='Informe T, f ou ω.'; return; }
+
+    const v=w*r, ac=v*v/r;
+    document.getElementById('mcu-T').value=T.toFixed(4);
+    document.getElementById('mcu-f').value=f.toFixed(4);
+    document.getElementById('mcu-w').value=w.toFixed(4);
+    res.className='calc-result ok';
+    res.innerHTML =
+      'T = '+T.toFixed(3)+' s  |  f = '+f.toFixed(3)+' Hz<br>' +
+      'ω = '+w.toFixed(3)+' rad/s<br>' +
+      'Velocidade linear: <strong>v = '+v.toFixed(3)+' m/s</strong><br>' +
+      'Aceleração centrípeta: <strong>a<sub>c</sub> = '+ac.toFixed(3)+' m/s²</strong>';
+  };
+
+  /* ---- Animação MCU ---- */
+  const animCanvas = document.getElementById('mcu-anim');
+  const graphCanvas = document.getElementById('mcu-graph');
+  const actx = animCanvas.getContext('2d');
+  const gctx = graphCanvas.getContext('2d');
+  const rSl = document.getElementById('mcu-r-sl');
+  const fSl = document.getElementById('mcu-f-sl');
+  const rDisp = document.getElementById('mcu-r-d');
+  const fDisp = document.getElementById('mcu-f-d');
+  const btn  = document.getElementById('mcu-start-btn');
+
+  let animId=null, angle=0, running=false, lastTime=null;
+  const history=[];
+
+  function drawAnim(ang) {
+    const W=animCanvas.width, H=animCanvas.height;
+    const cx=W/2, cy=H/2;
+    const r=parseFloat(rSl.value);
+    const f=parseFloat(fSl.value);
+    const omega=2*Math.PI*f;
+
+    actx.clearRect(0,0,W,H);
+
+    /* Trajetória */
+    actx.strokeStyle='#e2e8f0';actx.lineWidth=1.5;
+    actx.beginPath();actx.arc(cx,cy,r,0,Math.PI*2);actx.stroke();
+
+    /* Raio */
+    const bx=cx+r*Math.cos(ang), by=cy-r*Math.sin(ang);
+    actx.strokeStyle='#94a3b8';actx.lineWidth=1;
+    actx.beginPath();actx.moveTo(cx,cy);actx.lineTo(bx,by);actx.stroke();
+
+    /* Aceleração centrípeta */
+    const acLen=40;
+    const acx2=cx+(r-acLen)*Math.cos(ang), acy2=cy-(r-acLen)*Math.sin(ang);
+    actx.strokeStyle='#ef4444';actx.lineWidth=2;
+    ctx_arrow(actx, bx, by, acx2, acy2, '#ef4444');
+
+    /* Velocidade tangencial */
+    const vLen=50;
+    const vdx=-Math.sin(ang), vdy=Math.cos(ang);
+    ctx_arrow(actx, bx, by, bx+vLen*vdx, by-vLen*vdy, '#16a34a');
+
+    /* Bola */
+    actx.beginPath();actx.arc(bx,by,10,0,Math.PI*2);
+    actx.fillStyle='#2f5bea';actx.fill();
+
+    /* Centro */
+    actx.beginPath();actx.arc(cx,cy,4,0,Math.PI*2);
+    actx.fillStyle='#374151';actx.fill();
+
+    /* Info */
+    actx.fillStyle='#1e2a78';actx.font='bold 11px Poppins,sans-serif';actx.textAlign='center';
+    actx.fillText('ω = '+(omega).toFixed(2)+' rad/s', cx, 18);
+    actx.fillText('T = '+(1/f).toFixed(2)+' s', cx, 32);
+
+    /* Legenda */
+    actx.fillStyle='#16a34a';actx.font='10px Poppins,sans-serif';actx.textAlign='left';
+    actx.fillText('→ v (tangencial)',10,H-30);
+    actx.fillStyle='#ef4444';
+    actx.fillText('→ aₒ (centrípeta)',10,H-15);
+
+    /* Gráfico x×t */
+    drawGraph(ang, omega, r);
+  }
+
+  function ctx_arrow(c, x1,y1,x2,y2,color){
+    const angle=Math.atan2(y2-y1,x2-x1);
+    const len=10;
+    c.strokeStyle=color;c.lineWidth=2;
+    c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();
+    c.beginPath();
+    c.moveTo(x2,y2);
+    c.lineTo(x2-len*Math.cos(angle-0.4),y2-len*Math.sin(angle-0.4));
+    c.lineTo(x2-len*Math.cos(angle+0.4),y2-len*Math.sin(angle+0.4));
+    c.fillStyle=color;c.fill();
+  }
+
+  function drawGraph(ang, omega, r) {
+    const W=graphCanvas.width, H=graphCanvas.height;
+    const PAD={l:48,r:15,t:20,b:36};
+    const gW=W-PAD.l-PAD.r, gH=H-PAD.t-PAD.b;
+
+    gctx.clearRect(0,0,W,H);
+    gctx.fillStyle='#fafafa';
+    gctx.fillRect(PAD.l,PAD.t,gW,gH);
+
+    /* Grade */
+    gctx.strokeStyle='#e2e8f0';gctx.lineWidth=1;
+    for(let i=0;i<=4;i++){
+      const y=PAD.t+i/4*gH;
+      gctx.beginPath();gctx.moveTo(PAD.l,y);gctx.lineTo(PAD.l+gW,y);gctx.stroke();
+    }
+
+    /* Eixo zero */
+    gctx.strokeStyle='#94a3b8';gctx.lineWidth=1;gctx.setLineDash([3,3]);
+    gctx.beginPath();gctx.moveTo(PAD.l,PAD.t+gH/2);gctx.lineTo(PAD.l+gW,PAD.t+gH/2);gctx.stroke();
+    gctx.setLineDash([]);
+
+    /* Senoide x(t) = r·cos(ωt) */
+    const T=2*Math.PI/omega, tShow=2*T;
+    const toX=t=>PAD.l+(t/tShow)*gW;
+    const toY=v=>PAD.t+gH/2*(1-v/r);
+
+    gctx.strokeStyle='#2f5bea';gctx.lineWidth=2;
+    gctx.beginPath();
+    for(let i=0;i<=200;i++){
+      const t=i/200*tShow;
+      const x=r*Math.cos(omega*t);
+      if(i===0)gctx.moveTo(toX(t),toY(x));
+      else gctx.lineTo(toX(t),toY(x));
+    }
+    gctx.stroke();
+
+    /* Posição atual */
+    const tCur=(ang%(2*Math.PI))/omega;
+    const xCur=r*Math.cos(ang);
+    gctx.beginPath();gctx.arc(toX(tCur),toY(xCur),5,0,Math.PI*2);
+    gctx.fillStyle='#ef4444';gctx.fill();
+
+    /* Eixos */
+    gctx.strokeStyle='#374151';gctx.lineWidth=2;
+    gctx.beginPath();
+    gctx.moveTo(PAD.l,PAD.t);gctx.lineTo(PAD.l,PAD.t+gH);
+    gctx.moveTo(PAD.l,PAD.t+gH);gctx.lineTo(PAD.l+gW,PAD.t+gH);
+    gctx.stroke();
+
+    /* Rótulos */
+    gctx.fillStyle='#555';gctx.font='10px Poppins,sans-serif';
+    gctx.textAlign='center';
+    gctx.fillText('0',toX(0),PAD.t+gH+16);
+    gctx.fillText('T',toX(T),PAD.t+gH+16);
+    gctx.fillText('2T',toX(2*T),PAD.t+gH+16);
+    gctx.fillText('t',PAD.l+gW+8,PAD.t+gH+5);
+    gctx.textAlign='right';
+    gctx.fillText('+r',PAD.l-4,PAD.t+8);
+    gctx.fillText('0',PAD.l-4,PAD.t+gH/2+4);
+    gctx.fillText('-r',PAD.l-4,PAD.t+gH+4);
+    gctx.save();gctx.translate(12,PAD.t+gH/2);gctx.rotate(-Math.PI/2);
+    gctx.textAlign='center';gctx.fillText('x(t)',0,0);gctx.restore();
+  }
+
+  function animate(ts) {
+    if(lastTime===null) lastTime=ts;
+    const dt=(ts-lastTime)/1000;
+    lastTime=ts;
+    const omega=2*Math.PI*parseFloat(fSl.value);
+    angle+=omega*dt;
+    drawAnim(angle);
+    if(running) animId=requestAnimationFrame(animate);
+  }
+
+  function reset() {
+    rDisp.textContent=rSl.value;
+    fDisp.textContent=parseFloat(fSl.value).toFixed(1);
+    drawAnim(angle);
+  }
+
+  rSl.addEventListener('input',reset);
+  fSl.addEventListener('input',reset);
+
+  btn.addEventListener('click',function(){
+    if(!running){
+      running=true;lastTime=null;
+      btn.textContent='⏸ Pausar';
+      animId=requestAnimationFrame(animate);
+    } else {
+      running=false;
+      if(animId) cancelAnimationFrame(animId);
+      btn.textContent='▶ Continuar';
+    }
+  });
+
+  reset();
+
+  /* TOC */
+  const sections=document.querySelectorAll('.content-section');
+  const tocLinks=document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll',function(){
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+    tocLinks.forEach(a=>{a.parentElement.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. cinematica/mcu-vetores.png
+     Circunferência com ponto em movimento. Vetor velocidade (tangente, azul)
+     e vetor aceleração centrípeta (aponta para o centro, vermelho) mostrados
+     em três posições. Raio r marcado.
+
+  2. cinematica/mcu-engrenagens.png
+     Duas engrenagens de tamanhos diferentes acopladas. Ponto na borda de cada
+     uma com setas de velocidade linear mostrando que a linear é a mesma no
+     contato, mas a velocidade angular difere.
+-->
+
+</body>
+</html>

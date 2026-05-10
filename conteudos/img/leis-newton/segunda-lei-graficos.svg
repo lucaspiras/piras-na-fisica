@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 310" width="640" height="310">
+  <rect width="640" height="310" fill="#f9fafb" rx="10"/>
+
+  <text x="320" y="26" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#1e293b" text-anchor="middle">Segunda Lei de Newton — Relações Gráficas</text>
+
+  <!-- ===== LEFT GRAPH: F × a ===== -->
+  <text x="175" y="52" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#475569" text-anchor="middle">Força × Aceleração</text>
+  <text x="175" y="67" font-family="Arial,sans-serif" font-size="11" fill="#64748b" text-anchor="middle">(massa m = 2 kg constante)</text>
+
+  <!-- Grid lines -->
+  <line x1="100" y1="90" x2="100" y2="255" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="175" y1="90" x2="175" y2="255" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="250" y1="90" x2="250" y2="255" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="80" y1="255" x2="260" y2="255" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="80" y1="213" x2="260" y2="213" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="80" y1="171" x2="260" y2="171" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="80" y1="129" x2="260" y2="129" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Axes -->
+  <line x1="80" y1="255" x2="265" y2="255" stroke="#475569" stroke-width="2"/>
+  <line x1="80" y1="255" x2="80" y2="87" stroke="#475569" stroke-width="2"/>
+
+  <!-- Axis labels -->
+  <text x="270" y="259" font-family="Arial,sans-serif" font-size="12" fill="#475569">a (m/s²)</text>
+  <text x="55" y="85" font-family="Arial,sans-serif" font-size="12" fill="#475569">F (N)</text>
+  <text x="80" y="270" font-family="Arial,sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">0</text>
+
+  <!-- Tick marks X -->
+  <line x1="175" y1="253" x2="175" y2="258" stroke="#475569" stroke-width="1.5"/>
+  <text x="175" y="270" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="middle">5</text>
+  <line x1="250" y1="253" x2="250" y2="258" stroke="#475569" stroke-width="1.5"/>
+  <text x="250" y="270" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="middle">10</text>
+
+  <!-- Tick marks Y -->
+  <line x1="78" y1="213" x2="83" y2="213" stroke="#475569" stroke-width="1.5"/>
+  <text x="73" y="217" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="end">10</text>
+  <line x1="78" y1="171" x2="83" y2="171" stroke="#475569" stroke-width="1.5"/>
+  <text x="73" y="175" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="end">20</text>
+  <line x1="78" y1="129" x2="83" y2="129" stroke="#475569" stroke-width="1.5"/>
+  <text x="73" y="133" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="end">30</text>
+
+  <!-- F = 2a line: (80,255) to (250,171) — at a=10, F=20 -->
+  <!-- Scale: x: 17px/unit; y: 4.2px/N -->
+  <!-- a=0: (80,255), a=5: (80+85,255-42)=(165,213), a=10: (80+170,255-84)=(250,171) -->
+  <line x1="80" y1="255" x2="250" y2="171" stroke="#2f5bea" stroke-width="2.5"/>
+  <!-- Slope annotation -->
+  <text x="200" y="190" font-family="Arial,sans-serif" font-size="11" fill="#2f5bea">inclinação = m</text>
+
+  <!-- ===== RIGHT GRAPH: a × m ===== -->
+  <text x="490" y="52" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#475569" text-anchor="middle">Aceleração × Massa</text>
+  <text x="490" y="67" font-family="Arial,sans-serif" font-size="11" fill="#64748b" text-anchor="middle">(força F = 12 N constante)</text>
+
+  <!-- Grid -->
+  <line x1="380" y1="255" x2="580" y2="255" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="380" y1="213" x2="580" y2="213" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="380" y1="171" x2="580" y2="171" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="380" y1="129" x2="580" y2="129" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="380" y1="87" x2="580" y2="87" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="430" y1="82" x2="430" y2="258" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="480" y1="82" x2="480" y2="258" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="530" y1="82" x2="530" y2="258" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="580" y1="82" x2="580" y2="258" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Axes -->
+  <line x1="380" y1="255" x2="592" y2="255" stroke="#475569" stroke-width="2"/>
+  <line x1="380" y1="255" x2="380" y2="82" stroke="#475569" stroke-width="2"/>
+
+  <!-- Axis labels -->
+  <text x="597" y="259" font-family="Arial,sans-serif" font-size="12" fill="#475569">m (kg)</text>
+  <text x="355" y="82" font-family="Arial,sans-serif" font-size="12" fill="#475569">a</text>
+  <text x="355" y="94" font-family="Arial,sans-serif" font-size="12" fill="#475569">(m/s²)</text>
+  <text x="380" y="270" font-family="Arial,sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">0</text>
+
+  <!-- Tick X (m: 0 to 8 kg, x: 380 to 580 = 25px/kg) -->
+  <line x1="430" y1="253" x2="430" y2="258" stroke="#475569" stroke-width="1.5"/>
+  <text x="430" y="270" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="middle">2</text>
+  <line x1="480" y1="253" x2="480" y2="258" stroke="#475569" stroke-width="1.5"/>
+  <text x="480" y="270" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="middle">4</text>
+  <line x1="530" y1="253" x2="530" y2="258" stroke="#475569" stroke-width="1.5"/>
+  <text x="530" y="270" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="middle">6</text>
+  <line x1="580" y1="253" x2="580" y2="258" stroke="#475569" stroke-width="1.5"/>
+  <text x="580" y="270" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="middle">8</text>
+
+  <!-- Tick Y (a: 0 to 12 m/s², y: 255 to 87 = 14px per m/s²) -->
+  <line x1="378" y1="213" x2="383" y2="213" stroke="#475569" stroke-width="1.5"/>
+  <text x="374" y="217" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="end">3</text>
+  <line x1="378" y1="171" x2="383" y2="171" stroke="#475569" stroke-width="1.5"/>
+  <text x="374" y="175" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="end">6</text>
+  <line x1="378" y1="129" x2="383" y2="129" stroke="#475569" stroke-width="1.5"/>
+  <text x="374" y="133" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="end">9</text>
+  <line x1="378" y1="87" x2="383" y2="87" stroke="#475569" stroke-width="1.5"/>
+  <text x="372" y="91" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="end">12</text>
+
+  <!-- Hyperbola a = 12/m
+       m=1: a=12 → x=405, y=87
+       m=2: a=6  → x=430, y=171
+       m=3: a=4  → x=455, y=199  (255-4*14=255-56=199)
+       m=4: a=3  → x=480, y=213
+       m=5: a=2.4→ x=505, y=221.4 (255-2.4*14=221.4)
+       m=6: a=2  → x=530, y=227
+       m=8: a=1.5→ x=580, y=234
+  -->
+  <polyline points="405,87 413,112 420,138 430,171 443,187 455,199 470,207 480,213 505,221 530,227 580,234"
+    fill="none" stroke="#f97316" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- Hyperbola label -->
+  <text x="460" y="145" font-family="Arial,sans-serif" font-size="11" fill="#f97316">a = F/m</text>
+  <text x="460" y="158" font-family="Arial,sans-serif" font-size="11" fill="#f97316">(hipérbole)</text>
+
+  <!-- Bottom labels -->
+  <text x="175" y="293" font-family="Arial,sans-serif" font-size="11" fill="#2f5bea" text-anchor="middle">Relação linear: F = m·a</text>
+  <text x="490" y="293" font-family="Arial,sans-serif" font-size="11" fill="#f97316" text-anchor="middle">Relação hiperbólica: a = F/m</text>
+</svg>

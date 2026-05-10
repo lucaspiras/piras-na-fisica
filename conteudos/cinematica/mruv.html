@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MRUV — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Cinemática</a><span>/</span>
+      <span>MRUV</span>
+    </nav>
+    <h1 class="content-title">Movimento Retilíneo Uniformemente Variado</h1>
+    <p class="content-subtitle">Aceleração constante, velocidade que cresce ou decresce linearmente. O modelo que descreve carros acelerando, queda livre e muito mais.</p>
+    <span class="formula-highlight">v = v₀ + a·t</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Definição</a></li>
+      <li><a href="#s2">Aceleração</a></li>
+      <li><a href="#s3">Equações do MRUV</a></li>
+      <li><a href="#s4">Torricelli</a></li>
+      <li><a href="#s5">Gráficos</a></li>
+      <li><a href="#s6">Aplicações</a></li>
+      <li><a href="#s7">Calculadora</a></li>
+      <li><a href="#s8">Gráfico interativo</a></li>
+      <li><a href="#s9">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="mru.html">← MRU</a>
+      <a href="lancamento-vertical.html" class="toc-next">Lanç. Vertical →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Definição</h2>
+
+      <p>
+        O <strong>Movimento Retilíneo Uniformemente Variado (MRUV)</strong> é aquele em que um corpo se move em linha reta com <strong>aceleração constante</strong> e diferente de zero. Isso significa que a velocidade varia de forma uniforme: cresce ou diminui pela mesma quantidade a cada segundo.
+      </p>
+
+      <div class="highlight-box">
+        <span class="hb-icon">💡</span>
+        <p>
+          O MRUV é o modelo mais importante da Cinemática básica. A queda livre, um carro freando, uma bola rolando numa rampa — todos são exemplos de MRUV (ou muito próximos disso).
+        </p>
+      </div>
+
+      <div class="concept-grid">
+        <div class="concept-card">
+          <span class="cc-icon">🚀</span>
+          <div class="cc-title">Movimento acelerado</div>
+          <p class="cc-desc">a e v têm o mesmo sinal: a velocidade aumenta com o tempo.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">🛑</span>
+          <div class="cc-title">Movimento retardado</div>
+          <p class="cc-desc">a e v têm sinais opostos: a velocidade diminui com o tempo até parar.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Aceleração</h2>
+
+      <p>
+        A <strong>aceleração</strong> mede a taxa de variação da velocidade com o tempo. No MRUV, a aceleração é constante.
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Aceleração média</span>
+        <span class="formula-expr">a = Δv / Δt = (v − v₀) / t</span>
+        <span class="formula-legend">
+          <span>a = aceleração (m/s²)</span>
+          <span>v = velocidade final (m/s)</span>
+          <span>v₀ = velocidade inicial (m/s)</span>
+          <span>t = intervalo de tempo (s)</span>
+        </span>
+      </div>
+
+      <p>
+        O sinal da aceleração indica se o corpo está acelerando ou desacelerando:
+      </p>
+
+      <table class="content-table">
+        <thead>
+          <tr><th>Velocidade (v₀)</th><th>Aceleração (a)</th><th>Tipo de movimento</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>v₀ &gt; 0 (positiva)</td><td>a &gt; 0</td><td>Progressivo acelerado ↑v</td></tr>
+          <tr><td>v₀ &gt; 0 (positiva)</td><td>a &lt; 0</td><td>Progressivo retardado ↓v</td></tr>
+          <tr><td>v₀ &lt; 0 (negativa)</td><td>a &lt; 0</td><td>Retrógrado acelerado ↑|v|</td></tr>
+          <tr><td>v₀ &lt; 0 (negativa)</td><td>a &gt; 0</td><td>Retrógrado retardado ↓|v|</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box danger">
+        <span class="hb-icon">⚠️</span>
+        <p>
+          <strong>Cuidado!</strong> "Desacelerar" significa que o módulo da velocidade diminui, não que a aceleração é negativa. Um carro indo para trás e desacelerando tem v &lt; 0 e a &gt; 0.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Equações do MRUV</h2>
+
+      <p>
+        O MRUV possui três equações principais. Com qualquer três das cinco grandezas (s₀, s, v₀, v, a, t) você pode calcular as demais.
+      </p>
+
+      <div class="formula-row">
+        <div class="formula-box">
+          <span class="formula-label">1ª equação — velocidade</span>
+          <span class="formula-expr">v = v₀ + a·t</span>
+          <span class="formula-legend"><span>Velocidade em função do tempo</span></span>
+        </div>
+        <div class="formula-box">
+          <span class="formula-label">2ª equação — posição</span>
+          <span class="formula-expr">s = s₀ + v₀·t + ½·a·t²</span>
+          <span class="formula-legend"><span>Posição em função do tempo</span></span>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo</div>
+        <div class="ex-body">
+          <p>Um carro parte do repouso (v₀ = 0) com aceleração a = 3 m/s². Calcule a velocidade e a posição em t = 6 s.</p>
+          <p><strong>Velocidade:</strong> v = 0 + 3 × 6 = <strong>18 m/s</strong> (≈ 64,8 km/h)</p>
+          <p><strong>Posição:</strong> s = 0 + 0 × 6 + ½ × 3 × 36 = 0 + 54 = <strong>54 m</strong></p>
+          <div class="ex-result">v = 18 m/s e s = 54 m</div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Equação de Torricelli</h2>
+
+      <p>
+        Quando não se conhece o tempo e se quer relacionar velocidade, aceleração e deslocamento, usa-se a <strong>Equação de Torricelli</strong> (obtida eliminando t das duas equações anteriores):
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Equação de Torricelli</span>
+        <span class="formula-expr">v² = v₀² + 2·a·Δs</span>
+        <span class="formula-legend">
+          <span>v = velocidade final (m/s)</span>
+          <span>v₀ = velocidade inicial (m/s)</span>
+          <span>a = aceleração (m/s²)</span>
+          <span>Δs = s − s₀ = deslocamento (m)</span>
+        </span>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Distância de frenagem</div>
+        <div class="ex-body">
+          <p>Um carro a 108 km/h (30 m/s) freia com desaceleração de 6 m/s². Qual a distância de parada?</p>
+          <p>v = 0 (para), v₀ = 30 m/s, a = −6 m/s²</p>
+          <p>0 = 900 + 2 × (−6) × Δs → Δs = 900 / 12 = <strong>75 m</strong></p>
+          <div class="ex-result">Distância de frenagem = 75 m</div>
+        </div>
+      </div>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">🚗</span>
+        <p>
+          A distância de frenagem cresce com o <strong>quadrado</strong> da velocidade. Dobrando a velocidade, a distância de frenagem quadruplica — daí a importância de respeitar os limites de velocidade!
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Gráficos do MRUV</h2>
+
+      <p>
+        Os gráficos do MRUV têm formas características que permitem identificar o movimento e extrair informações:
+      </p>
+
+      <div class="concept-grid">
+        <div class="concept-card">
+          <span class="cc-icon">📈</span>
+          <div class="cc-title">v×t — reta inclinada</div>
+          <p class="cc-desc">Inclinação = aceleração. Área sob a reta = deslocamento.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">〰️</span>
+          <div class="cc-title">S×t — parábola</div>
+          <p class="cc-desc">A posição varia como função quadrática do tempo (curva côncava ou convexa).</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">➡️</span>
+          <div class="cc-title">a×t — reta horizontal</div>
+          <p class="cc-desc">A aceleração é constante — o gráfico é uma reta paralela ao eixo do tempo.</p>
+        </div>
+      </div>
+
+
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Aplicações cotidianas</h2>
+
+      <div class="daily-grid">
+        <div class="daily-card">
+          <span class="dc-icon">🏎️</span>
+          <div class="dc-title">Aceleração de carro</div>
+          <p class="dc-desc">De 0 a 100 km/h em 5 s equivale a uma aceleração média de ≈ 5,6 m/s².</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🪂</span>
+          <div class="dc-title">Queda livre</div>
+          <p class="dc-desc">Objetos em queda livre têm a = g ≈ 9,8 m/s² (usamos 10 m/s² em problemas).</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🛗</span>
+          <div class="dc-title">Elevador</div>
+          <p class="dc-desc">Elevadores acelerem e desaceleram com a ≈ 1–2 m/s² ao subir ou descer.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">⛷️</span>
+          <div class="dc-title">Esquiador</div>
+          <p class="dc-desc">Descendo uma rampa inclinada, o esquiador realiza um MRUV aproximado.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Calculadora MRUV</h2>
+
+      <p>Deixe <strong>um campo em branco</strong> para calculá-lo.</p>
+
+      <div class="calc-box">
+        <h4>🧮 Calculadora MRUV — v = v₀ + a·t &nbsp;|&nbsp; s = s₀ + v₀·t + ½a·t²</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>s₀ — posição inicial (m)</label>
+            <input type="number" id="cv-s0" placeholder="ex: 0">
+          </div>
+          <div class="calc-field">
+            <label>v₀ — velocidade inicial (m/s)</label>
+            <input type="number" id="cv-v0" placeholder="ex: 0">
+          </div>
+          <div class="calc-field">
+            <label>a — aceleração (m/s²)</label>
+            <input type="number" id="cv-a" placeholder="ex: 3">
+          </div>
+          <div class="calc-field">
+            <label>t — tempo (s)</label>
+            <input type="number" id="cv-t" placeholder="deixe vazio p/ calcular">
+          </div>
+          <div class="calc-field">
+            <label>s — posição final (m)</label>
+            <input type="number" id="cv-s" placeholder="deixe vazio p/ calcular">
+          </div>
+          <div class="calc-field">
+            <label>v — velocidade final (m/s)</label>
+            <input type="number" id="cv-v" placeholder="deixe vazio p/ calcular">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcMRUV()">Calcular</button>
+        <div class="calc-result" id="mruv-result"></div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Gráficos interativos do MRUV</h2>
+
+      <p>Ajuste os parâmetros e veja os gráficos v×t e S×t se atualizarem em tempo real.</p>
+
+      <div class="graph-box">
+        <h4>📊 Gráficos do MRUV</h4>
+        <div class="graph-canvases">
+          <canvas id="mruv-vt" width="280" height="220"></canvas>
+          <canvas id="mruv-st" width="280" height="220"></canvas>
+        </div>
+        <div class="graph-controls">
+          <div class="slider-row">
+            <label>v₀ = <span id="mruv-v0-d">0</span> m/s</label>
+            <input type="range" id="mruv-v0-sl" min="-20" max="20" value="0" step="1">
+          </div>
+          <div class="slider-row">
+            <label>a = <span id="mruv-a-d">3</span> m/s²</label>
+            <input type="range" id="mruv-a-sl" min="-10" max="10" value="3" step="0.5">
+          </div>
+          <div class="slider-row">
+            <label>s₀ = <span id="mruv-s0-d">0</span> m</label>
+            <input type="range" id="mruv-s0-sl" min="-30" max="30" value="0" step="5">
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s9">
+      <h2><span class="sec-num">9</span> Resumo</h2>
+
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>No MRUV, a aceleração é constante e diferente de zero; a velocidade varia linearmente.</li>
+          <li>1ª equação: v = v₀ + a·t (velocidade em função do tempo).</li>
+          <li>2ª equação: s = s₀ + v₀·t + ½a·t² (posição — função quadrática do tempo).</li>
+          <li>Torricelli: v² = v₀² + 2·a·Δs (sem o tempo).</li>
+          <li>Gráfico v×t é reta inclinada; área = deslocamento.</li>
+          <li>Gráfico S×t é parábola; gráfico a×t é reta horizontal.</li>
+          <li>Acelerado: |v| aumenta; retardado: |v| diminui.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="mru.html">← MRU</a>
+      <a href="lancamento-vertical.html" class="nav-next">Próximo: Lançamento Vertical →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <p>© 2025 — Piras na Física</p>
+</footer>
+
+<script>
+(function() {
+  /* ---- Calculadora MRUV ---- */
+  window.calcMRUV = function() {
+    const get = id => {
+      const v = document.getElementById(id).value;
+      return v === '' ? null : parseFloat(v);
+    };
+    const s0 = get('cv-s0'), v0 = get('cv-v0'), a = get('cv-a'),
+          t  = get('cv-t'),  s  = get('cv-s'), v = get('cv-v');
+    const res = document.getElementById('mruv-result');
+
+    const known = [s0,v0,a,t,s,v].filter(x=>x!==null);
+    if (known.length < 3) {
+      res.className='calc-result erro';
+      res.textContent='Preencha pelo menos 3 campos.'; return;
+    }
+
+    let msg = [];
+    try {
+      if (v === null && v0!==null && a!==null && t!==null) {
+        const vv = v0 + a*t;
+        document.getElementById('cv-v').value = vv.toFixed(3);
+        msg.push('v = '+vv.toFixed(3)+' m/s');
+      }
+      if (s === null && s0!==null && v0!==null && a!==null && t!==null) {
+        const ss = s0 + v0*t + 0.5*a*t*t;
+        document.getElementById('cv-s').value = ss.toFixed(3);
+        msg.push('s = '+ss.toFixed(3)+' m');
+      }
+      if (t === null && v!==null && v0!==null && a!==null && a!==0) {
+        const tt = (v-v0)/a;
+        document.getElementById('cv-t').value = tt.toFixed(3);
+        msg.push('t = '+tt.toFixed(3)+' s');
+      }
+      if (msg.length === 0) {
+        res.className='calc-result erro';
+        res.textContent='Não foi possível calcular com os dados fornecidos.'; return;
+      }
+      res.className='calc-result ok';
+      res.textContent = msg.join('   |   ');
+    } catch(e) {
+      res.className='calc-result erro';
+      res.textContent='Erro no cálculo.';
+    }
+  };
+
+  /* ---- Gráficos MRUV ---- */
+  function drawGraph(canvasId, data, xlabel, ylabel, color) {
+    const canvas = document.getElementById(canvasId);
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    const PAD = {l:48, r:15, t:18, b:36};
+    const gW = W-PAD.l-PAD.r, gH = H-PAD.t-PAD.b;
+
+    const xs = data.map(p=>p[0]), ys = data.map(p=>p[1]);
+    const xMin=Math.min(...xs), xMax=Math.max(...xs);
+    const yMin=Math.min(...ys,0)-Math.abs(Math.min(...ys))*0.1-5;
+    const yMax=Math.max(...ys,0)+Math.abs(Math.max(...ys))*0.1+5;
+    const yRange=yMax-yMin||10;
+
+    const toX = x => PAD.l + (x-xMin)/(xMax-xMin||1)*gW;
+    const toY = y => PAD.t + (1-(y-yMin)/yRange)*gH;
+
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='#fafafa';
+    ctx.fillRect(PAD.l,PAD.t,gW,gH);
+
+    /* Grade */
+    ctx.strokeStyle='#e2e8f0'; ctx.lineWidth=1;
+    for(let i=0;i<=5;i++){
+      const y=PAD.t+i/5*gH;
+      ctx.beginPath();ctx.moveTo(PAD.l,y);ctx.lineTo(PAD.l+gW,y);ctx.stroke();
+    }
+    for(let i=0;i<=5;i++){
+      const x=PAD.l+i/5*gW;
+      ctx.beginPath();ctx.moveTo(x,PAD.t);ctx.lineTo(x,PAD.t+gH);ctx.stroke();
+    }
+
+    /* Eixo zero */
+    if(yMin<0&&yMax>0){
+      ctx.strokeStyle='#94a3b8';ctx.setLineDash([3,3]);
+      ctx.beginPath();ctx.moveTo(PAD.l,toY(0));ctx.lineTo(PAD.l+gW,toY(0));ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    /* Eixos */
+    ctx.strokeStyle='#374151';ctx.lineWidth=2;
+    ctx.beginPath();
+    ctx.moveTo(PAD.l,PAD.t);ctx.lineTo(PAD.l,PAD.t+gH);
+    ctx.moveTo(PAD.l,PAD.t+gH);ctx.lineTo(PAD.l+gW,PAD.t+gH);
+    ctx.stroke();
+
+    /* Curva */
+    ctx.strokeStyle=color;ctx.lineWidth=3;
+    ctx.beginPath();
+    data.forEach((p,i)=>{
+      if(i===0) ctx.moveTo(toX(p[0]),toY(p[1]));
+      else ctx.lineTo(toX(p[0]),toY(p[1]));
+    });
+    ctx.stroke();
+
+    /* Rótulos */
+    ctx.fillStyle='#555';ctx.font='10px Poppins,sans-serif';
+    ctx.textAlign='center';
+    [0,2,4,6,8,10].forEach(x=>{
+      if(x<=xMax) ctx.fillText(x,toX(x),PAD.t+gH+16);
+    });
+    ctx.fillText(xlabel,PAD.l+gW+4,PAD.t+gH+5);
+    ctx.textAlign='right';
+    const step=Math.ceil((yMax-yMin)/4/5)*5||5;
+    const start=Math.ceil(yMin/step)*step;
+    for(let yv=start;yv<=yMax;yv+=step){
+      ctx.fillText(Math.round(yv),PAD.l-4,toY(yv)+4);
+    }
+    ctx.save();ctx.translate(11,PAD.t+gH/2);ctx.rotate(-Math.PI/2);
+    ctx.textAlign='center';ctx.fillText(ylabel,0,0);ctx.restore();
+  }
+
+  function updateGraphs() {
+    const v0 = parseFloat(document.getElementById('mruv-v0-sl').value);
+    const a  = parseFloat(document.getElementById('mruv-a-sl').value);
+    const s0 = parseFloat(document.getElementById('mruv-s0-sl').value);
+    document.getElementById('mruv-v0-d').textContent = v0;
+    document.getElementById('mruv-a-d').textContent  = a;
+    document.getElementById('mruv-s0-d').textContent = s0;
+
+    const tMax = 10, pts = 100;
+    const vtData=[], stData=[];
+    for(let i=0;i<=pts;i++){
+      const t=i/pts*tMax;
+      vtData.push([t, v0+a*t]);
+      stData.push([t, s0+v0*t+0.5*a*t*t]);
+    }
+    drawGraph('mruv-vt',vtData,'t(s)','v(m/s)','#6a2fe8');
+    drawGraph('mruv-st',stData,'t(s)','s(m)','#2f5bea');
+  }
+
+  ['mruv-v0-sl','mruv-a-sl','mruv-s0-sl'].forEach(id=>{
+    document.getElementById(id).addEventListener('input',updateGraphs);
+  });
+  updateGraphs();
+
+  /* TOC ativo */
+  const sections = document.querySelectorAll('.content-section');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll',function(){
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+    tocLinks.forEach(a=>{
+      a.parentElement.classList.toggle('active',a.getAttribute('href')==='#'+cur);
+    });
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. cinematica/mruv-tres-graficos.png
+     Três gráficos lado a lado: S×t (parábola côncava, a>0), v×t (reta
+     inclinada positivamente, área sombreada = deslocamento), a×t (reta
+     horizontal constante). Eixos rotulados. Estilo didático limpo.
+
+  2. cinematica/mruv-distancia-frenagem.png
+     Diagrama mostrando um carro a 108 km/h freando e parando após 75 m.
+     Setas indicando velocidade inicial, desaceleração e distância de parada.
+     Cálculo resumido ao lado.
+-->
+
+</body>
+</html>

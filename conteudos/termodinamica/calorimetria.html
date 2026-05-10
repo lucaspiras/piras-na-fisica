@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calorimetria — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TY56KM22X8');</script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero" style="background:linear-gradient(135deg,#7f1d1d 0%,#b91c1c 55%,#ef4444 100%);">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Termodinâmica</a><span>/</span>
+      <span>Calorimetria</span>
+    </nav>
+    <h1 class="content-title">Calorimetria</h1>
+    <p class="content-subtitle">Calorimetria é o estudo da troca de calor entre sistemas. A equação fundamental liga calor, massa, calor específico e variação de temperatura.</p>
+    <span class="formula-highlight">Q = m · c · ΔT  |  Q_cedido = Q_recebido</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Equação fundamental</a></li>
+      <li><a href="#s2">Calor específico</a></li>
+      <li><a href="#s3">Capacidade térmica</a></li>
+      <li><a href="#s4">Equilíbrio térmico</a></li>
+      <li><a href="#s5">Calorímetro</a></li>
+      <li><a href="#s6">Calculadora</a></li>
+      <li><a href="#s7">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="dilatacao.html">← Dilatação Térmica</a>
+      <a href="mudancas-estado.html" class="toc-next">Mudanças de Estado →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Equação fundamental da calorimetria</h2>
+      <p>A quantidade de calor Q necessária para variar em ΔT a temperatura de uma massa m de uma substância de calor específico c é:</p>
+      <div class="formula-box">
+        <span class="formula-label">Equação fundamental da calorimetria</span>
+        <span class="formula-expr">Q = m · c · ΔT</span>
+        <span class="formula-legend">
+          <span>Q = calor (J ou cal)</span>
+          <span>m = massa da substância (kg ou g)</span>
+          <span>c = calor específico (J/(kg·°C) ou cal/(g·°C))</span>
+          <span>ΔT = T_final − T_inicial (°C ou K)</span>
+          <span>Q &gt; 0 → substância recebe calor (aquece)</span>
+          <span>Q &lt; 0 → substância cede calor (esfria)</span>
+        </span>
+      </div>
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Calor específico</h2>
+      <p>O <strong>calor específico</strong> c é a quantidade de calor necessária para elevar em 1 °C a temperatura de 1 kg (ou 1 g) de uma substância. É uma propriedade do material.</p>
+      <table class="content-table">
+        <thead><tr><th>Substância</th><th>c (J/(kg·°C))</th><th>c (cal/(g·°C))</th></tr></thead>
+        <tbody>
+          <tr><td>Água líquida (15 °C)</td><td>4186</td><td>1,000</td></tr>
+          <tr><td>Gelo (−10 °C)</td><td>2090</td><td>0,500</td></tr>
+          <tr><td>Vapor d'água (100 °C)</td><td>2010</td><td>0,480</td></tr>
+          <tr><td>Álcool etílico</td><td>2400</td><td>0,573</td></tr>
+          <tr><td>Alumínio</td><td>900</td><td>0,215</td></tr>
+          <tr><td>Ferro</td><td>450</td><td>0,107</td></tr>
+          <tr><td>Cobre</td><td>385</td><td>0,092</td></tr>
+          <tr><td>Chumbo</td><td>128</td><td>0,031</td></tr>
+          <tr><td>Madeira (aprox.)</td><td>1700</td><td>0,41</td></tr>
+        </tbody>
+      </table>
+      <div class="highlight-box info">
+        <span class="hb-icon">🌊</span>
+        <p>A água tem o maior calor específico entre as substâncias comuns (4186 J/(kg·°C)). Por isso os oceanos aquecem e esfriam muito mais lentamente que os continentes, moderando o clima das regiões costeiras. Também por isso a água é o fluido preferido para sistemas de aquecimento/resfriamento.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Capacidade térmica</h2>
+      <p>A <strong>capacidade térmica</strong> C de um objeto (não confundir com o calor específico c) é a quantidade de calor necessária para variar sua temperatura em 1 °C:</p>
+      <div class="formula-box">
+        <span class="formula-label">Capacidade térmica</span>
+        <span class="formula-expr">C = m · c</span>
+        <span class="formula-legend">
+          <span>C = capacidade térmica (J/°C ou cal/°C)</span>
+          <span>Depende da massa E do material do objeto</span>
+          <span>Q = C · ΔT (usando capacidade térmica)</span>
+        </span>
+      </div>
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Equação do equilíbrio térmico</h2>
+      <p>Quando dois sistemas trocam calor entre si sem perda para o ambiente (sistema isolado), a energia conserva-se:</p>
+      <div class="formula-box">
+        <span class="formula-label">Princípio da conservação do calor</span>
+        <span class="formula-expr">Q_cedido = Q_recebido</span>
+        <span class="formula-legend">
+          <span>Ou equivalentemente: Σ Q = 0</span>
+          <span>O sistema mais quente cede calor; o mais frio recebe</span>
+          <span>Ambos atingem a temperatura de equilíbrio T_eq</span>
+        </span>
+      </div>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Temperatura de equilíbrio</div>
+        <div class="ex-body">
+          <p>200 g de água a 80 °C misturados com 300 g de água a 20 °C. Qual a temperatura de equilíbrio?</p>
+          <p>Q_cedido = Q_recebido:</p>
+          <p>m₁·c·(T₁ − T_eq) = m₂·c·(T_eq − T₂)</p>
+          <p>200·(80 − T_eq) = 300·(T_eq − 20)</p>
+          <p>16000 − 200·T_eq = 300·T_eq − 6000</p>
+          <p>22000 = 500·T_eq → T_eq = <strong>44 °C</strong></p>
+          <div class="ex-result">Temperatura de equilíbrio: 44 °C</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Calorímetro</h2>
+      <p>O <strong>calorímetro</strong> é um recipiente com paredes isolantes (minimizando trocas com o ambiente) usado para medir calor específico ou calor de reação. Na prática real, o calorímetro também absorve calor:</p>
+      <div class="formula-box">
+        <span class="formula-label">Equação com calorímetro</span>
+        <span class="formula-expr">Q_sistema = C_cal · ΔT_cal + Σ (m_i · c_i · ΔT_i)</span>
+        <span class="formula-legend">
+          <span>C_cal = capacidade térmica do calorímetro (J/°C)</span>
+          <span>Em problemas ideais: C_cal = 0 (calorímetro ideal)</span>
+        </span>
+      </div>
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Calculadora</h2>
+      <div class="calc-box">
+        <h4>🧮 Q = m · c · ΔT</h4>
+        <p style="font-size:.85rem;color:#666;margin-bottom:1rem;">Deixe um campo em branco para calcular.</p>
+        <div class="calc-grid">
+          <div class="calc-field"><label>Q (J)</label><input type="number" id="ca-Q" placeholder="vazio = calcular"></div>
+          <div class="calc-field"><label>m (g)</label><input type="number" id="ca-m" placeholder="vazio = calcular"></div>
+          <div class="calc-field"><label>c (J/(g·°C))</label><input type="number" id="ca-c" placeholder="ex: 4.186 para água"></div>
+          <div class="calc-field"><label>ΔT (°C)</label><input type="number" id="ca-dt" placeholder="vazio = calcular"></div>
+        </div>
+        <button class="calc-btn" onclick="calcCal()">Calcular</button>
+        <div class="calc-result" id="ca-result"></div>
+      </div>
+
+      <div class="calc-box" style="margin-top:1rem;">
+        <h4>🧮 Temperatura de equilíbrio — dois corpos</h4>
+        <div class="calc-grid">
+          <div class="calc-field"><label>m₁ (g)</label><input type="number" id="eq-m1" placeholder="ex: 200"></div>
+          <div class="calc-field"><label>c₁ (J/(g·°C))</label><input type="number" id="eq-c1" placeholder="ex: 4.186" value="4.186"></div>
+          <div class="calc-field"><label>T₁ (°C)</label><input type="number" id="eq-T1" placeholder="ex: 80"></div>
+          <div class="calc-field"><label>m₂ (g)</label><input type="number" id="eq-m2" placeholder="ex: 300"></div>
+          <div class="calc-field"><label>c₂ (J/(g·°C))</label><input type="number" id="eq-c2" placeholder="ex: 4.186" value="4.186"></div>
+          <div class="calc-field"><label>T₂ (°C)</label><input type="number" id="eq-T2" placeholder="ex: 20"></div>
+        </div>
+        <button class="calc-btn" onclick="calcEq()">Calcular T_eq</button>
+        <div class="calc-result" id="eq-result"></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Resumo</h2>
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Equação fundamental: Q = m·c·ΔT. Q &gt; 0 = absorve calor; Q &lt; 0 = cede calor.</li>
+          <li>Calor específico c: propriedade do material. Água: 4186 J/(kg·°C) — altíssimo.</li>
+          <li>Capacidade térmica C = m·c: propriedade do objeto (depende de m e c).</li>
+          <li>Equilíbrio térmico: Q_cedido = Q_recebido → m₁c₁(T₁−T_eq) = m₂c₂(T_eq−T₂).</li>
+          <li>Calorímetro mede calor minimizando trocas com o ambiente.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="dilatacao.html">← Dilatação Térmica</a>
+      <a href="mudancas-estado.html" class="nav-next">Próximo: Mudanças de Estado →</a>
+    </div>
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+<script>
+(function(){
+  window.calcCal = function(){
+    const Qv=document.getElementById('ca-Q').value, mv=document.getElementById('ca-m').value;
+    const cv=document.getElementById('ca-c').value, dtv=document.getElementById('ca-dt').value;
+    const res=document.getElementById('ca-result');
+    const vals=[Qv,mv,cv,dtv];
+    const blanks=vals.filter(v=>v==='').length;
+    if(blanks!==1){res.className='calc-result erro';res.textContent='Deixe exatamente UM campo em branco.';return;}
+    let Q=Qv===''?null:parseFloat(Qv), m=mv===''?null:parseFloat(mv);
+    let c=cv===''?null:parseFloat(cv), dt=dtv===''?null:parseFloat(dtv);
+    let msg='';
+    if(Q===null){Q=m*c*dt;document.getElementById('ca-Q').value=Q.toFixed(3);msg='Q = '+Q.toFixed(3)+' J';}
+    else if(m===null){m=Q/(c*dt);document.getElementById('ca-m').value=m.toFixed(4);msg='m = '+m.toFixed(4)+' g';}
+    else if(c===null){c=Q/(m*dt);document.getElementById('ca-c').value=c.toFixed(4);msg='c = '+c.toFixed(4)+' J/(g·°C)';}
+    else{dt=Q/(m*c);document.getElementById('ca-dt').value=dt.toFixed(4);msg='ΔT = '+dt.toFixed(4)+' °C';}
+    res.className='calc-result ok';res.textContent=msg;
+  };
+
+  window.calcEq = function(){
+    const m1=parseFloat(document.getElementById('eq-m1').value), c1=parseFloat(document.getElementById('eq-c1').value), T1=parseFloat(document.getElementById('eq-T1').value);
+    const m2=parseFloat(document.getElementById('eq-m2').value), c2=parseFloat(document.getElementById('eq-c2').value), T2=parseFloat(document.getElementById('eq-T2').value);
+    const res=document.getElementById('eq-result');
+    if([m1,c1,T1,m2,c2,T2].some(v=>isNaN(v))){res.className='calc-result erro';res.textContent='Preencha todos os campos.';return;}
+    const Teq=(m1*c1*T1+m2*c2*T2)/(m1*c1+m2*c2);
+    res.className='calc-result ok';
+    res.innerHTML='T_eq = '+Teq.toFixed(2)+' °C';
+  };
+
+  const sections=document.querySelectorAll('.content-section');
+  const tocLinks=document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll',function(){
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+    tocLinks.forEach(a=>a.parentElement.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. termodinamica/calorimetro.png
+     Calorímetro corte transversal: recipiente interno com líquido, parede isolante, tampa.
+     Seta indicando "troca de calor mínima com o exterior". Estilo didático, fundo branco.
+-->
+</body>
+</html>

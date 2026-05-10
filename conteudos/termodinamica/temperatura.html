@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperatura e Escalas Termométricas — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TY56KM22X8');</script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero" style="background:linear-gradient(135deg,#7f1d1d 0%,#b91c1c 55%,#ef4444 100%);">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Termodinâmica</a><span>/</span>
+      <span>Temperatura</span>
+    </nav>
+    <h1 class="content-title">Temperatura e Escalas Termométricas</h1>
+    <p class="content-subtitle">A temperatura é a medida da agitação térmica das partículas. Celsius, Fahrenheit e Kelvin — três escalas para o mesmo fenômeno.</p>
+    <span class="formula-highlight">T(K) = θ(°C) + 273  |  θ(°F) = 1,8·θ(°C) + 32</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">O que é temperatura</a></li>
+      <li><a href="#s2">Escala Celsius</a></li>
+      <li><a href="#s3">Escala Fahrenheit</a></li>
+      <li><a href="#s4">Escala Kelvin</a></li>
+      <li><a href="#s5">Conversões</a></li>
+      <li><a href="#s6">Equilíbrio térmico</a></li>
+      <li><a href="#s7">Calculadora</a></li>
+      <li><a href="#s8">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="index.html">← Índice Termodinâmica</a>
+      <a href="calor.html" class="toc-next">Calor →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> O que é temperatura</h2>
+      <p>Microscopicamente, a <strong>temperatura</strong> mede a energia cinética média de translação das partículas de um sistema. Quanto mais rápido as moléculas se agitam, maior a temperatura.</p>
+      <div class="highlight-box info">
+        <span class="hb-icon">🔬</span>
+        <p>Temperatura ≠ calor. Temperatura é um estado do sistema; calor é energia em trânsito (fluxo de energia de um sistema para outro). Um copo d'água fervendo tem temperatura alta; transfere calor para uma mão que o segura.</p>
+      </div>
+      <p>Macroscopicamente, temperatura é medida por <strong>termômetros</strong>, que exploram propriedades que variam com a temperatura: expansão de líquido, resistência elétrica, emissão de radiação, pressão de gás etc.</p>
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Escala Celsius (°C)</h2>
+      <p>Proposta por Anders Celsius (1742). Dois pontos fixos:</p>
+      <div class="concept-grid">
+        <div class="concept-card"><span class="cc-icon">❄️</span><div class="cc-title">0 °C — ponto de fusão</div><p class="cc-desc">Temperatura de fusão/solidificação da água à pressão de 1 atm (101 325 Pa).</p></div>
+        <div class="concept-card"><span class="cc-icon">💧</span><div class="cc-title">100 °C — ponto de ebulição</div><p class="cc-desc">Temperatura de ebulição/condensação da água à pressão de 1 atm.</p></div>
+      </div>
+      <p>Entre os dois pontos: 100 divisões iguais. É a escala usada no cotidiano na maioria dos países.</p>
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Escala Fahrenheit (°F)</h2>
+      <p>Proposta por Daniel Gabriel Fahrenheit (1724). Usada principalmente nos EUA. Pontos fixos históricos:</p>
+      <table class="content-table">
+        <thead><tr><th>Ponto de referência</th><th>Fahrenheit</th><th>Celsius</th></tr></thead>
+        <tbody>
+          <tr><td>Mistura de gelo e sal (NaCl)</td><td>0 °F</td><td>−17,8 °C</td></tr>
+          <tr><td>Temperatura corporal humana</td><td>96 °F (aprox.)</td><td>35,6 °C</td></tr>
+          <tr><td>Fusão da água pura</td><td>32 °F</td><td>0 °C</td></tr>
+          <tr><td>Ebulição da água pura</td><td>212 °F</td><td>100 °C</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Escala Kelvin (K) — escala absoluta</h2>
+      <p>Proposta por Lord Kelvin (1848). É a unidade SI de temperatura. Baseada no <strong>zero absoluto</strong>: a menor temperatura possível, onde a agitação térmica é mínima (0 K = −273,15 °C).</p>
+      <div class="highlight-box warning">
+        <span class="hb-icon">🧊</span>
+        <p>O <strong>zero absoluto (0 K = −273 °C)</strong> é uma temperatura teoricamente inalcançável: é possível se aproximar cada vez mais, mas nunca chegar. Temperaturas abaixo de 0 K não existem fisicamente. Nas fórmulas de termodinâmica e gases, <strong>sempre use Kelvin</strong>.</p>
+      </div>
+      <table class="content-table">
+        <thead><tr><th>Referência</th><th>Kelvin (K)</th><th>Celsius (°C)</th></tr></thead>
+        <tbody>
+          <tr><td>Zero absoluto</td><td>0</td><td>−273,15</td></tr>
+          <tr><td>Nitrogênio líquido</td><td>77</td><td>−196</td></tr>
+          <tr><td>Fusão do gelo</td><td>273,15</td><td>0</td></tr>
+          <tr><td>Temperatura ambiente</td><td>~298</td><td>~25</td></tr>
+          <tr><td>Ebulição da água</td><td>373,15</td><td>100</td></tr>
+          <tr><td>Superfície do Sol</td><td>~5778</td><td>~5505</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Fórmulas de conversão</h2>
+      <div class="formula-box">
+        <span class="formula-label">Conversões entre escalas</span>
+        <span class="formula-expr">T(K) = θ(°C) + 273</span>
+        <span class="formula-legend">
+          <span>(valor exato: + 273,15; em vestibulares usa-se + 273)</span>
+        </span>
+      </div>
+      <div class="formula-box">
+        <span class="formula-label">Celsius ↔ Fahrenheit</span>
+        <span class="formula-expr">θ(°F) = 1,8 · θ(°C) + 32</span>
+        <span class="formula-legend">
+          <span>Invertendo: θ(°C) = [θ(°F) − 32] / 1,8</span>
+          <span>Ponto especial: −40 °C = −40 °F (único ponto igual nas duas escalas)</span>
+        </span>
+      </div>
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Equilíbrio térmico e Lei Zero da Termodinâmica</h2>
+      <p>Quando dois corpos são colocados em contato térmico, a energia flui do mais quente para o mais frio até que ambos atinjam a mesma temperatura: o <strong>equilíbrio térmico</strong>.</p>
+      <div class="highlight-box info">
+        <span class="hb-icon">⚖️</span>
+        <p><strong>Lei Zero da Termodinâmica:</strong> Se o corpo A está em equilíbrio térmico com o corpo C, e o corpo B também está em equilíbrio térmico com C, então A e B estão em equilíbrio térmico entre si. Esse princípio é o que permite o termômetro funcionar: o termômetro entra em equilíbrio com o sistema medido e sua leitura é igual à temperatura do sistema.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Calculadora de conversão de temperatura</h2>
+      <div class="calc-box">
+        <h4>🌡️ Converter temperatura</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Valor</label>
+            <input type="number" id="tc-val" placeholder="ex: 100">
+          </div>
+          <div class="calc-field">
+            <label>Escala de origem</label>
+            <select id="tc-from" style="padding:.5rem;border:1.5px solid #e5e7eb;border-radius:8px;font-size:.95rem;">
+              <option value="C">Celsius (°C)</option>
+              <option value="F">Fahrenheit (°F)</option>
+              <option value="K">Kelvin (K)</option>
+            </select>
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcTemp()">Converter para todas as escalas</button>
+        <div class="calc-result" id="tc-result"></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Resumo</h2>
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Temperatura mede a agitação cinética média das partículas de um sistema.</li>
+          <li>Celsius: 0 °C = fusão do gelo; 100 °C = ebulição da água (1 atm).</li>
+          <li>Fahrenheit: 32 °F = fusão; 212 °F = ebulição. θ(°F) = 1,8·θ(°C) + 32.</li>
+          <li>Kelvin: escala absoluta. T(K) = θ(°C) + 273. Zero absoluto = 0 K = −273 °C.</li>
+          <li>Nas fórmulas de termodinâmica e gases, sempre usar Kelvin.</li>
+          <li>Lei Zero: dois corpos em equilíbrio com um terceiro estão em equilíbrio entre si — base do termômetro.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="index.html">← Índice Termodinâmica</a>
+      <a href="calor.html" class="nav-next">Próximo: Calor →</a>
+    </div>
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+<script>
+(function(){
+  window.calcTemp = function(){
+    const val = parseFloat(document.getElementById('tc-val').value);
+    const from = document.getElementById('tc-from').value;
+    const res = document.getElementById('tc-result');
+    if(isNaN(val)){ res.className='calc-result erro'; res.textContent='Digite um valor numérico.'; return; }
+
+    let C, F, K;
+    if(from==='C'){ C=val; F=1.8*C+32; K=C+273.15; }
+    else if(from==='F'){ F=val; C=(F-32)/1.8; K=C+273.15; }
+    else { K=val; C=K-273.15; F=1.8*C+32; }
+
+    if(K<0){ res.className='calc-result erro'; res.textContent='Temperatura abaixo do zero absoluto (0 K) não existe.'; return; }
+    res.className='calc-result ok';
+    res.innerHTML=C.toFixed(2)+' °C  =  '+F.toFixed(2)+' °F  =  '+K.toFixed(2)+' K';
+  };
+
+  const sections=document.querySelectorAll('.content-section');
+  const tocLinks=document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll',function(){
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+    tocLinks.forEach(a=>a.parentElement.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. termodinamica/escalas-temperatura.png
+     Três termômetros lado a lado (Celsius, Fahrenheit, Kelvin) com pontos fixos marcados e alinhados:
+     fusão da água e ebulição da água. Barras coloridas mostrando o gradiente quente/frio.
+     Fundo branco, vermelho-vinho para os altos valores.
+-->
+</body>
+</html>

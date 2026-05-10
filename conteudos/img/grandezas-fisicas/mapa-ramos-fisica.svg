@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300">
+  <rect width="640" height="300" fill="#f9fafb" rx="10"/>
+
+  <!-- Title -->
+  <text x="320" y="22" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle">Grandes Ramos da Física</text>
+
+  <!-- Center circle: "FÍSICA" -->
+  <circle cx="320" cy="152" r="42" fill="#1e2a78" stroke="#2f5bea" stroke-width="2"/>
+  <text x="320" y="148" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">FÍSICA</text>
+  <text x="320" y="162" font-family="Arial,sans-serif" font-size="10" fill="#93c5fd" text-anchor="middle">ciência da natureza</text>
+
+  <!-- Branches (6 nodes at 60° intervals, radius=115) -->
+  <!-- Node positions: -->
+  <!-- Mecânica (0°=right):  (435, 152) -->
+  <!-- Termologia (60°):     (378, 53) -->
+  <!-- Óptica (120°):        (263, 53) -->
+  <!-- Eletromag (180°=left):(205, 152) -->
+  <!-- Física Mod (240°):    (263, 251) -->
+  <!-- Ondulatória (300°):   (378, 251) -->
+
+  <!-- Connector lines (from circle edge to node edge) -->
+  <line x1="362" y1="152" x2="408" y2="152" stroke="#e2e8f0" stroke-width="1.5"/>
+  <line x1="341" y1="115" x2="368" y2="72"  stroke="#e2e8f0" stroke-width="1.5"/>
+  <line x1="299" y1="115" x2="272" y2="72"  stroke="#e2e8f0" stroke-width="1.5"/>
+  <line x1="278" y1="152" x2="232" y2="152" stroke="#e2e8f0" stroke-width="1.5"/>
+  <line x1="299" y1="189" x2="272" y2="232" stroke="#e2e8f0" stroke-width="1.5"/>
+  <line x1="341" y1="189" x2="368" y2="232" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Node: Mecânica (blue) -->
+  <rect x="410" y="128" width="115" height="48" fill="#dbeafe" rx="8" stroke="#2f5bea" stroke-width="2"/>
+  <text x="467" y="146" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#1d4ed8" text-anchor="middle">⚙️ Mecânica</text>
+  <text x="467" y="160" font-family="Arial,sans-serif" font-size="10" fill="#1d4ed8" text-anchor="middle">movimento, forças</text>
+  <text x="467" y="171" font-family="Arial,sans-serif" font-size="10" fill="#3b82f6" text-anchor="middle">gravidade</text>
+
+  <!-- Node: Termologia (red/orange) -->
+  <rect x="328" y="30" width="115" height="48" fill="#fef3c7" rx="8" stroke="#d97706" stroke-width="2"/>
+  <text x="385" y="48" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#92400e" text-anchor="middle">🌡️ Termologia</text>
+  <text x="385" y="62" font-family="Arial,sans-serif" font-size="10" fill="#92400e" text-anchor="middle">calor, temperatura</text>
+  <text x="385" y="73" font-family="Arial,sans-serif" font-size="10" fill="#b45309" text-anchor="middle">termodinâmica</text>
+
+  <!-- Node: Óptica (teal) -->
+  <rect x="198" y="30" width="115" height="48" fill="#ccfbf1" rx="8" stroke="#0d9488" stroke-width="2"/>
+  <text x="255" y="48" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#0f766e" text-anchor="middle">💡 Óptica</text>
+  <text x="255" y="62" font-family="Arial,sans-serif" font-size="10" fill="#0f766e" text-anchor="middle">luz, cor, visão</text>
+  <text x="255" y="73" font-family="Arial,sans-serif" font-size="10" fill="#14b8a6" text-anchor="middle">reflexão, refração</text>
+
+  <!-- Node: Eletromagnetismo (amber) -->
+  <rect x="115" y="128" width="115" height="48" fill="#fef9c3" rx="8" stroke="#ca8a04" stroke-width="2"/>
+  <text x="172" y="143" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="#713f12" text-anchor="middle">⚡ Eletromag.</text>
+  <text x="172" y="157" font-family="Arial,sans-serif" font-size="10" fill="#713f12" text-anchor="middle">campos elétrico e</text>
+  <text x="172" y="168" font-family="Arial,sans-serif" font-size="10" fill="#a16207" text-anchor="middle">magnético, ondas EM</text>
+
+  <!-- Node: Física Moderna (purple) -->
+  <rect x="198" y="228" width="115" height="48" fill="#ede9fe" rx="8" stroke="#7c3aed" stroke-width="2"/>
+  <text x="255" y="244" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="#5b21b6" text-anchor="middle">⚛️ Física Moderna</text>
+  <text x="255" y="258" font-family="Arial,sans-serif" font-size="10" fill="#5b21b6" text-anchor="middle">relatividade, quântica</text>
+  <text x="255" y="269" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed" text-anchor="middle">partículas subatômicas</text>
+
+  <!-- Node: Ondulatória (green) -->
+  <rect x="328" y="228" width="115" height="48" fill="#dcfce7" rx="8" stroke="#16a34a" stroke-width="2"/>
+  <text x="385" y="244" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#15803d" text-anchor="middle">〰️ Ondulatória</text>
+  <text x="385" y="258" font-family="Arial,sans-serif" font-size="10" fill="#15803d" text-anchor="middle">ondas, som, ressonância</text>
+  <text x="385" y="269" font-family="Arial,sans-serif" font-size="10" fill="#16a34a" text-anchor="middle">efeito Doppler</text>
+</svg>

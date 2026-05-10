@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campo Elétrico — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TY56KM22X8');</script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero" style="background:linear-gradient(135deg,#78350f 0%,#b45309 55%,#d97706 100%);">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Eletricidade</a><span>/</span>
+      <span>Campo Elétrico</span>
+    </nav>
+    <h1 class="content-title">Campo Elétrico</h1>
+    <p class="content-subtitle">O campo elétrico descreve a força que uma carga de prova sentiria em cada ponto do espaço, mesmo sem que ela esteja presente.</p>
+    <span class="formula-highlight">E = F/q  |  E = k·Q/r²  |  V = k·Q/r</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Conceito de campo</a></li>
+      <li><a href="#s2">Campo de carga puntiforme</a></li>
+      <li><a href="#s3">Linhas de campo</a></li>
+      <li><a href="#s4">Campo uniforme</a></li>
+      <li><a href="#s5">Potencial elétrico</a></li>
+      <li><a href="#s6">Trabalho elétrico</a></li>
+      <li><a href="#s7">Calculadora</a></li>
+      <li><a href="#s8">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="lei-coulomb.html">← Lei de Coulomb</a>
+      <a href="corrente-eletrica.html" class="toc-next">Corrente Elétrica →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> O conceito de campo elétrico</h2>
+      <p>Em vez de descrever a força diretamente entre duas cargas, o conceito de <strong>campo elétrico</strong> permite mapear o espaço ao redor de uma carga fonte: em cada ponto do espaço existe um vetor que indica qual força uma carga de prova positiva unitária sentiria naquele ponto.</p>
+      <div class="formula-box">
+        <span class="formula-label">Definição de campo elétrico</span>
+        <span class="formula-expr">E⃗ = F⃗ / q</span>
+        <span class="formula-legend">
+          <span>E = campo elétrico (N/C ou V/m)</span>
+          <span>F = força sobre a carga de prova (N)</span>
+          <span>q = carga de prova positiva (C)</span>
+          <span>Invertendo: F⃗ = q·E⃗ — força sobre qualquer carga q</span>
+        </span>
+      </div>
+      <div class="highlight-box info">
+        <span class="hb-icon">💡</span>
+        <p>A carga de prova deve ser suficientemente pequena para não perturbar o campo que está sendo medido. O campo existe no espaço independentemente de haver ou não uma carga de prova — é uma propriedade do ponto do espaço.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Campo de uma carga puntiforme</h2>
+      <p>Combinando a definição de campo com a Lei de Coulomb, o campo criado por uma carga Q a uma distância r vale:</p>
+      <div class="formula-box">
+        <span class="formula-label">Campo elétrico de carga puntiforme</span>
+        <span class="formula-expr">E = k · |Q| / r²</span>
+        <span class="formula-legend">
+          <span>E = intensidade do campo (N/C)</span>
+          <span>k = 9×10⁹ N·m²/C²</span>
+          <span>Q = carga fonte (C)</span>
+          <span>r = distância da carga ao ponto (m)</span>
+          <span>Direção: radial (se afastando de +Q; se aproximando de −Q)</span>
+        </span>
+      </div>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Campo a 30 cm de uma carga</div>
+        <div class="ex-body">
+          <p>Uma carga Q = +5 μC. Qual o campo a r = 30 cm = 0,3 m?</p>
+          <p>E = k·Q/r² = (9×10⁹ × 5×10⁻⁶) / (0,3)² = 45000 / 0,09 = <strong>5×10⁵ N/C</strong></p>
+          <p>Direção: radial, afastando-se de Q (carga positiva).</p>
+          <div class="ex-result">E = 5×10⁵ N/C, apontando para longe da carga</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Linhas de campo elétrico</h2>
+      <p>As linhas de campo são representações gráficas que mostram a direção do campo em cada região do espaço:</p>
+      <table class="content-table">
+        <thead><tr><th>Regra</th><th>Interpretação</th></tr></thead>
+        <tbody>
+          <tr><td>Partem de cargas positivas</td><td>O campo aponta para longe de +</td></tr>
+          <tr><td>Chegam em cargas negativas</td><td>O campo aponta em direção a −</td></tr>
+          <tr><td>Nunca se cruzam</td><td>O campo tem direção única em cada ponto</td></tr>
+          <tr><td>Densidade de linhas ∝ intensidade</td><td>Mais linhas próximas = campo mais intenso</td></tr>
+          <tr><td>Tangente à linha = direção do campo</td><td>A linha mostra o caminho que +q seguiria</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Campo elétrico uniforme</h2>
+      <p>Entre duas placas paralelas de grande área carregadas com cargas opostas, o campo elétrico é aproximadamente uniforme (mesma intensidade e direção em todos os pontos da região interna):</p>
+      <div class="formula-box">
+        <span class="formula-label">Campo uniforme entre placas</span>
+        <span class="formula-expr">E = V / d</span>
+        <span class="formula-legend">
+          <span>E = campo entre as placas (V/m = N/C)</span>
+          <span>V = diferença de potencial entre as placas (V)</span>
+          <span>d = distância entre as placas (m)</span>
+        </span>
+      </div>
+      <div class="highlight-box info">
+        <span class="hb-icon">🔋</span>
+        <p>Os capacitores funcionam exatamente assim: duas placas separadas por um isolante, com uma diferença de potencial entre elas criando um campo uniforme. São usados em fontes de energia, filtros eletrônicos e memórias flash.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Potencial elétrico</h2>
+      <p>O potencial elétrico V em um ponto é a energia potencial elétrica por unidade de carga que uma carga de prova teria naquele ponto:</p>
+      <div class="formula-box">
+        <span class="formula-label">Potencial de uma carga puntiforme</span>
+        <span class="formula-expr">V = k · Q / r</span>
+        <span class="formula-legend">
+          <span>V = potencial elétrico (V — volts)</span>
+          <span>k = 9×10⁹ N·m²/C²</span>
+          <span>Q = carga fonte, com sinal (C)</span>
+          <span>r = distância (m)</span>
+          <span>Carga positiva → V &gt; 0; carga negativa → V &lt; 0</span>
+        </span>
+      </div>
+      <table class="content-table">
+        <thead><tr><th>Grandeza</th><th>Símbolo</th><th>Unidade</th><th>Fórmula</th></tr></thead>
+        <tbody>
+          <tr><td>Campo elétrico</td><td>E</td><td>N/C ou V/m</td><td>E = k·Q/r²</td></tr>
+          <tr><td>Potencial elétrico</td><td>V</td><td>V (volt)</td><td>V = k·Q/r</td></tr>
+          <tr><td>Energia potencial elétrica</td><td>Ep</td><td>J (joule)</td><td>Ep = q·V</td></tr>
+        </tbody>
+      </table>
+      <div class="highlight-box warning">
+        <span class="hb-icon">⚠️</span>
+        <p>Campo elétrico é um <strong>vetor</strong> (tem direção e sentido). Potencial elétrico é um <strong>escalar</strong> (só tem magnitude e sinal). O potencial é matematicamente mais simples de calcular quando há várias cargas: V_total = V₁ + V₂ + V₃ + … (soma algébrica, não vetorial).</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Trabalho elétrico e diferença de potencial</h2>
+      <p>Quando uma carga q se move de um ponto A para um ponto B em um campo elétrico, o trabalho realizado pelo campo é:</p>
+      <div class="formula-box">
+        <span class="formula-label">Trabalho da força elétrica</span>
+        <span class="formula-expr">T_{A→B} = q · (V_A − V_B) = q · ΔV</span>
+        <span class="formula-legend">
+          <span>T = trabalho elétrico (J)</span>
+          <span>q = carga que se move (C) — com sinal</span>
+          <span>V_A − V_B = ddp ou tensão entre A e B (V)</span>
+          <span>Se T &gt; 0: campo favorece o movimento (reduz energia potencial)</span>
+        </span>
+      </div>
+      <div class="highlight-box info">
+        <span class="hb-icon">🔌</span>
+        <p>A <strong>diferença de potencial</strong> (ddp) ou <strong>tensão</strong> entre dois pontos é o que os aparelhos elétricos "exploram": ao mover cargas de um polo de maior para menor potencial, o campo realiza trabalho que pode ser convertido em luz, calor, movimento etc.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Calculadora — Campo e Potencial</h2>
+      <div class="calc-box">
+        <h4>🧮 Campo elétrico: E = k·|Q|/r²</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Q (μC) — com sinal</label>
+            <input type="number" id="ce-Q" placeholder="ex: 5">
+          </div>
+          <div class="calc-field">
+            <label>r (cm)</label>
+            <input type="number" id="ce-r" placeholder="ex: 30">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcCampo()">Calcular E e V</button>
+        <div class="calc-result" id="ce-result"></div>
+      </div>
+
+      <div class="calc-box" style="margin-top:1rem;">
+        <h4>🧮 Trabalho elétrico: T = q·(VA − VB)</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>q (μC) — com sinal</label>
+            <input type="number" id="tr-q" placeholder="ex: 2">
+          </div>
+          <div class="calc-field">
+            <label>V_A (V)</label>
+            <input type="number" id="tr-VA" placeholder="ex: 100">
+          </div>
+          <div class="calc-field">
+            <label>V_B (V)</label>
+            <input type="number" id="tr-VB" placeholder="ex: 40">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcTrabalho()">Calcular T</button>
+        <div class="calc-result" id="tr-result"></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Resumo</h2>
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Campo elétrico E = F/q — indica a força por unidade de carga em cada ponto do espaço.</li>
+          <li>Campo de carga puntiforme: E = k·|Q|/r² (N/C). Direção radial (+ para fora, − para dentro).</li>
+          <li>Linhas de campo saem de cargas positivas e chegam em negativas; nunca se cruzam.</li>
+          <li>Campo uniforme entre placas paralelas: E = V/d.</li>
+          <li>Potencial elétrico (escalar): V = k·Q/r (volts).</li>
+          <li>Trabalho elétrico: T = q·(VA − VB). A diferença de potencial ("tensão") dirige o movimento das cargas.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="lei-coulomb.html">← Lei de Coulomb</a>
+      <a href="corrente-eletrica.html" class="nav-next">Próximo: Corrente Elétrica →</a>
+    </div>
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+<script>
+(function(){
+  const k = 9e9;
+
+  window.calcCampo = function(){
+    const Q = parseFloat(document.getElementById('ce-Q').value) * 1e-6;
+    const r = parseFloat(document.getElementById('ce-r').value) * 1e-2;
+    const res = document.getElementById('ce-result');
+    if(isNaN(Q)||isNaN(r)||r<=0){ res.className='calc-result erro'; res.textContent='Preencha Q e r com valores válidos.'; return; }
+    const E = k * Math.abs(Q) / (r*r);
+    const V = k * Q / r;
+    res.className='calc-result ok';
+    res.innerHTML='E = ' + E.toExponential(3) + ' N/C<br>V = ' + V.toExponential(3) + ' V' +
+      '<br><small style="color:#888">Ep sobre carga de +1 C = ' + V.toExponential(3) + ' J</small>';
+  };
+
+  window.calcTrabalho = function(){
+    const q = parseFloat(document.getElementById('tr-q').value) * 1e-6;
+    const VA = parseFloat(document.getElementById('tr-VA').value);
+    const VB = parseFloat(document.getElementById('tr-VB').value);
+    const res = document.getElementById('tr-result');
+    if(isNaN(q)||isNaN(VA)||isNaN(VB)){ res.className='calc-result erro'; res.textContent='Preencha todos os campos.'; return; }
+    const T = q * (VA - VB);
+    const tipo = T > 0 ? 'campo favorece o movimento (trabalho positivo)' : T < 0 ? 'campo opõe ao movimento (trabalho negativo)' : 'campo não realiza trabalho';
+    res.className='calc-result ok';
+    res.innerHTML='T = ' + T.toExponential(3) + ' J<br><small style="color:#888">→ ' + tipo + '</small>';
+  };
+
+  const sections = document.querySelectorAll('.content-section');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', function(){
+    let cur = '';
+    sections.forEach(s=>{ if(window.scrollY >= s.offsetTop-120) cur = s.id; });
+    tocLinks.forEach(a => a.parentElement.classList.toggle('active', a.getAttribute('href')==='#'+cur));
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. eletricidade/campo-linhas.png
+     Três painéis: (A) carga +Q com linhas radiais saindo; (B) carga -Q com linhas chegando;
+     (C) dipolo +Q/-Q com linhas do + para o −. Fundo branco, linhas laranja-âmbar.
+
+  2. eletricidade/campo-placas.png
+     Duas placas paralelas horizontais (+/−). Linhas de campo uniformes verticais entre elas.
+     Rótulo "E = V/d", seta de d entre as placas. Estilo limpo.
+-->
+</body>
+</html>

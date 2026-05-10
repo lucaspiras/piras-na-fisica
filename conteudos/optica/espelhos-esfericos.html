@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espelhos Esféricos — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TY56KM22X8');</script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero" style="background:linear-gradient(135deg,#0c4a6e 0%,#0369a1 55%,#0ea5e9 100%);">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Óptica</a><span>/</span>
+      <span>Espelhos Esféricos</span>
+    </nav>
+    <h1 class="content-title">Espelhos Esféricos</h1>
+    <p class="content-subtitle">Côncavos e convexos. Equação de Gauss, aumento linear e a tabela completa de casos.</p>
+    <span class="formula-highlight">1/f = 1/p + 1/p'</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Tipos de espelho</a></li>
+      <li><a href="#s2">Elementos geométricos</a></li>
+      <li><a href="#s3">Equação de Gauss</a></li>
+      <li><a href="#s4">Aumento linear</a></li>
+      <li><a href="#s5">Convenção de sinais</a></li>
+      <li><a href="#s6">Casos notáveis</a></li>
+      <li><a href="#s7">Calculadora</a></li>
+      <li><a href="#s8">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="espelhos-planos.html">← Espelhos Planos</a>
+      <a href="refracao.html" class="toc-next">Refração →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Tipos de espelho esférico</h2>
+      <div class="concept-grid">
+        <div class="concept-card"><span class="cc-icon">🥣</span><div class="cc-title">Côncavo (convergente)</div><p class="cc-desc">Superfície refletora voltada para dentro da esfera. Converge raios paralelos para o foco. Usado em telescópios, faróis, maquiagem.</p></div>
+        <div class="concept-card"><span class="cc-icon">🔵</span><div class="cc-title">Convexo (divergente)</div><p class="cc-desc">Superfície refletora voltada para fora da esfera. Diverge raios — sempre forma imagem virtual, menor e direita. Usado em retrovisores.</p></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Elementos geométricos</h2>
+      <table class="content-table">
+        <thead><tr><th>Elemento</th><th>Símbolo</th><th>Descrição</th></tr></thead>
+        <tbody>
+          <tr><td>Vértice</td><td>V</td><td>Ponto central da superfície refletora</td></tr>
+          <tr><td>Centro de curvatura</td><td>C</td><td>Centro da esfera de que o espelho é parte. Distância ao vértice = R (raio de curvatura)</td></tr>
+          <tr><td>Foco</td><td>F</td><td>Ponto onde raios paralelos ao eixo convergem (côncavo) ou de onde parecem divergir (convexo)</td></tr>
+          <tr><td>Distância focal</td><td>f</td><td>Distância do foco ao vértice. f = R/2</td></tr>
+          <tr><td>Eixo principal</td><td>—</td><td>Reta que passa por V e C (eixo de simetria do espelho)</td></tr>
+        </tbody>
+      </table>
+      <div class="formula-box">
+        <span class="formula-label">Relação focal</span>
+        <span class="formula-expr">f = R / 2</span>
+        <span class="formula-legend"><span>f = distância focal | R = raio de curvatura</span></span>
+      </div>
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Equação de Gauss</h2>
+      <div class="formula-box">
+        <span class="formula-label">Equação de Gauss para espelhos</span>
+        <span class="formula-expr">1/f = 1/p + 1/p'</span>
+        <span class="formula-legend">
+          <span>f = distância focal (m)</span>
+          <span>p = distância do objeto ao vértice (m)</span>
+          <span>p' = distância da imagem ao vértice (m)</span>
+        </span>
+      </div>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Espelho côncavo</div>
+        <div class="ex-body">
+          <p>Espelho côncavo com f = 20 cm, objeto a p = 60 cm. Onde está a imagem?</p>
+          <p>1/p' = 1/f − 1/p = 1/20 − 1/60 = 3/60 − 1/60 = 2/60</p>
+          <p>p' = 60/2 = <strong>30 cm</strong> (à frente do espelho → real)</p>
+          <div class="ex-result">Imagem real a 30 cm do espelho</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Aumento linear transversal</h2>
+      <div class="formula-box">
+        <span class="formula-label">Aumento linear</span>
+        <span class="formula-expr">M = i / o = − p' / p</span>
+        <span class="formula-legend">
+          <span>M = aumento linear (adimensional)</span>
+          <span>i = tamanho da imagem | o = tamanho do objeto</span>
+          <span>|M| &gt; 1 → ampliada | |M| &lt; 1 → reduzida | |M| = 1 → mesmo tamanho</span>
+          <span>M &gt; 0 → direita | M &lt; 0 → invertida</span>
+        </span>
+      </div>
+      <div class="example-box">
+        <div class="ex-header">📋 Continuação — aumento</div>
+        <div class="ex-body">
+          <p>Para o exemplo anterior: p = 60 cm, p' = 30 cm.</p>
+          <p>M = −p'/p = −30/60 = −0,5</p>
+          <div class="ex-result">|M| = 0,5 → reduzida à metade | M &lt; 0 → invertida</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Convenção de sinais</h2>
+      <table class="content-table">
+        <thead><tr><th>Grandeza</th><th>Positivo (+)</th><th>Negativo (−)</th></tr></thead>
+        <tbody>
+          <tr><td>p (objeto)</td><td>Objeto real (à frente do espelho)</td><td>Objeto virtual (atrás do espelho)</td></tr>
+          <tr><td>p' (imagem)</td><td>Imagem real (à frente do espelho)</td><td>Imagem virtual (atrás do espelho)</td></tr>
+          <tr><td>f (focal)</td><td>Espelho côncavo (convergente)</td><td>Espelho convexo (divergente)</td></tr>
+          <tr><td>M (aumento)</td><td>Imagem direita</td><td>Imagem invertida</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Casos notáveis — espelho côncavo</h2>
+      <table class="content-table">
+        <thead><tr><th>Posição do objeto</th><th>Imagem</th><th>Aplicação</th></tr></thead>
+        <tbody>
+          <tr><td>p &gt; 2f (além de C)</td><td>Real, invertida, reduzida, entre F e C</td><td>Câmara fotográfica (análise)</td></tr>
+          <tr><td>p = 2f (em C)</td><td>Real, invertida, mesmo tamanho, em C</td><td>—</td></tr>
+          <tr><td>f &lt; p &lt; 2f (entre F e C)</td><td>Real, invertida, ampliada, além de C</td><td>Projetor de slides</td></tr>
+          <tr><td>p = f (em F)</td><td>Imprópria (raios paralelos — no infinito)</td><td>Farol de carro, lanterna</td></tr>
+          <tr><td>p &lt; f (entre F e V)</td><td>Virtual, direita, ampliada, atrás do espelho</td><td>Espelho de maquiagem</td></tr>
+        </tbody>
+      </table>
+      <div class="highlight-box info">
+        <span class="hb-icon">💡</span>
+        <p>Para espelhos <strong>convexos</strong>: f &lt; 0, portanto p' sempre negativo → imagem sempre virtual, direita e reduzida, independente da posição do objeto. Por isso são usados em retrovisores laterais: campo de visão amplo, embora objetos pareçam mais distantes.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Calculadora — Equação de Gauss</h2>
+      <div class="calc-box">
+        <h4>🧮 Espelhos Esféricos — 1/f = 1/p + 1/p'</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Distância focal f (cm) <small>côncavo +, convexo −</small></label>
+            <input type="number" id="ee-f" placeholder="deixe vazio p/ calcular">
+          </div>
+          <div class="calc-field">
+            <label>Distância do objeto p (cm)</label>
+            <input type="number" id="ee-p" placeholder="deixe vazio p/ calcular">
+          </div>
+          <div class="calc-field">
+            <label>Distância da imagem p' (cm)</label>
+            <input type="number" id="ee-pp" placeholder="deixe vazio p/ calcular">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcEE()">Calcular</button>
+        <div class="calc-result" id="ee-result"></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Resumo</h2>
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Côncavo (f &gt; 0): convergente — pode formar imagens reais ou virtuais.</li>
+          <li>Convexo (f &lt; 0): divergente — sempre imagem virtual, direita e reduzida.</li>
+          <li>f = R/2 (distância focal = metade do raio de curvatura).</li>
+          <li>Equação de Gauss: 1/f = 1/p + 1/p'.</li>
+          <li>Aumento: M = −p'/p (negativo = invertida; |M| &gt; 1 = ampliada).</li>
+          <li>Objeto em F: raios refletidos paralelos → usado em lanternas e faróis.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="espelhos-planos.html">← Espelhos Planos</a>
+      <a href="refracao.html" class="nav-next">Próximo: Refração →</a>
+    </div>
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+<script>
+(function(){
+  window.calcEE=function(){
+    const ids=['ee-f','ee-p','ee-pp'];
+    const vals=ids.map(id=>{const v=document.getElementById(id).value;return v===''?null:parseFloat(v);});
+    const [f,p,pp]=vals;
+    const res=document.getElementById('ee-result');
+    const blanks=vals.filter(x=>x===null).length;
+    if(blanks!==1){res.className='calc-result erro';res.textContent='Deixe exatamente UM campo em branco.';return;}
+
+    let fv=f,pv=p,ppv=pp,msg='';
+    if(f===null){
+      if(p===0||pp===0){res.className='calc-result erro';res.textContent='p e p\' não podem ser zero.';return;}
+      fv=1/(1/p+1/pp);
+      document.getElementById('ee-f').value=fv.toFixed(2);
+      msg='f = 1/(1/'+p+'+1/'+pp+') = '+fv.toFixed(2)+' cm';
+    } else if(p===null){
+      if(f===0||pp===0){res.className='calc-result erro';res.textContent='f e p\' não podem ser zero.';return;}
+      pv=1/(1/f-1/pp);
+      document.getElementById('ee-p').value=pv.toFixed(2);
+      msg='p = 1/(1/f−1/p\') = '+pv.toFixed(2)+' cm';
+    } else {
+      if(f===0||p===0){res.className='calc-result erro';res.textContent='f e p não podem ser zero.';return;}
+      ppv=1/(1/f-1/p);
+      document.getElementById('ee-pp').value=ppv.toFixed(2);
+      msg='p\' = '+ppv.toFixed(2)+' cm';
+    }
+
+    const M=-ppv/pv;
+    const natImg=ppv>0?'real':'virtual';
+    const orImg=M>0?'direita':'invertida';
+    const tamImg=Math.abs(M)>1.01?'ampliada':Math.abs(M)<0.99?'reduzida':'mesmo tamanho';
+    res.className='calc-result ok';
+    res.innerHTML=msg+'<br>M = −p\'/p = '+M.toFixed(3)+'  →  Imagem: <strong>'+natImg+', '+orImg+', '+tamImg+'</strong>';
+  };
+
+  const sections=document.querySelectorAll('.content-section');
+  const tocLinks=document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll',function(){
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+    tocLinks.forEach(a=>a.parentElement.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. optica/espelhos-esfericos-tipos.png
+     Côncavo com raios convergindo ao foco; convexo com raios divergindo. C e F marcados em cada. Fundo branco.
+-->
+</body>
+</html>

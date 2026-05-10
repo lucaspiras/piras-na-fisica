@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lançamento Oblíquo — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Cinemática</a><span>/</span>
+      <span>Lançamento Oblíquo</span>
+    </nav>
+    <h1 class="content-title">Lançamento Oblíquo</h1>
+    <p class="content-subtitle">A trajetória mais rica da Cinemática: decompomos a velocidade inicial em horizontal e vertical para analisar chutes, arremessos e canhões.</p>
+    <span class="formula-highlight">R = v₀² · sen(2θ) / g</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Definição</a></li>
+      <li><a href="#s2">Decomposição</a></li>
+      <li><a href="#s3">Equações</a></li>
+      <li><a href="#s4">Altura máxima</a></li>
+      <li><a href="#s5">Alcance máximo</a></li>
+      <li><a href="#s6">Aplicações</a></li>
+      <li><a href="#s7">Calculadora</a></li>
+      <li><a href="#s8">Simulador</a></li>
+      <li><a href="#s9">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="lancamento-horizontal.html">← Lanç. Horizontal</a>
+      <a href="mcu.html" class="toc-next">MCU →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Definição</h2>
+
+      <p>
+        O <strong>lançamento oblíquo</strong> ocorre quando um objeto é arremessado com uma velocidade inicial que forma um ângulo θ com a horizontal. É o caso mais geral dos lançamentos e inclui o horizontal (θ = 0°) e o vertical (θ = 90°) como casos especiais.
+      </p>
+
+      <p>
+        Exemplos clássicos: a bola de futebol após um chute, a bola de beisebol, o arremesso de dardo, o projétil de canhão.
+      </p>
+
+
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Decomposição da velocidade inicial</h2>
+
+      <p>
+        O primeiro passo é decompor a velocidade inicial v₀ em suas componentes horizontal e vertical usando trigonometria:
+      </p>
+
+      <div class="formula-row">
+        <div class="formula-box">
+          <span class="formula-label">Componente horizontal</span>
+          <span class="formula-expr">v₀ₓ = v₀ · cos θ</span>
+          <span class="formula-legend"><span>Permanece constante durante todo o voo</span></span>
+        </div>
+        <div class="formula-box">
+          <span class="formula-label">Componente vertical</span>
+          <span class="formula-expr">v₀ᵧ = v₀ · sen θ</span>
+          <span class="formula-legend"><span>Diminui com a gravidade; zero no topo</span></span>
+        </div>
+      </div>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">📐</span>
+        <p>
+          Após a decomposição, o problema se reduz a dois movimentos independentes: <strong>MRU horizontal</strong> (vₓ = constante) e <strong>MRUV vertical</strong> (aᵧ = −g).
+        </p>
+      </div>
+
+
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Equações do lançamento oblíquo</h2>
+
+      <div class="formula-row">
+        <div class="formula-box">
+          <span class="formula-label">Posição horizontal</span>
+          <span class="formula-expr">x = v₀ · cos θ · t</span>
+          <span class="formula-legend"><span>MRU na horizontal</span></span>
+        </div>
+        <div class="formula-box">
+          <span class="formula-label">Posição vertical</span>
+          <span class="formula-expr">y = v₀ · sen θ · t − ½ g · t²</span>
+          <span class="formula-legend"><span>MRUV na vertical (partindo do solo)</span></span>
+        </div>
+      </div>
+
+      <div class="formula-row">
+        <div class="formula-box">
+          <span class="formula-label">Velocidade horizontal</span>
+          <span class="formula-expr">vₓ = v₀ · cos θ</span>
+          <span class="formula-legend"><span>Constante em todo o voo</span></span>
+        </div>
+        <div class="formula-box">
+          <span class="formula-label">Velocidade vertical</span>
+          <span class="formula-expr">vᵧ = v₀ · sen θ − g · t</span>
+          <span class="formula-legend"><span>Zero no ponto mais alto</span></span>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo</div>
+        <div class="ex-body">
+          <p>Uma bola é chutada com v₀ = 20 m/s e θ = 30°. (g = 10 m/s²)</p>
+          <p>v₀ₓ = 20 · cos30° = 20 × 0,866 ≈ <strong>17,3 m/s</strong></p>
+          <p>v₀ᵧ = 20 · sen30° = 20 × 0,5 = <strong>10 m/s</strong></p>
+          <p>Tempo de subida (vᵧ = 0): t<sub>s</sub> = 10/10 = <strong>1 s</strong></p>
+          <p>Altura máxima: y = 10·1 − ½·10·1 = <strong>5 m</strong></p>
+          <p>Tempo total: t = 2×1 = <strong>2 s</strong></p>
+          <p>Alcance: x = 17,3 × 2 ≈ <strong>34,6 m</strong></p>
+          <div class="ex-result">H = 5 m | Alcance = 34,6 m | Voo = 2 s</div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Altura máxima</h2>
+
+      <p>
+        No ponto mais alto da trajetória, a componente vertical da velocidade é zero (vᵧ = 0). Usando a Equação de Torricelli vertical:
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Altura máxima</span>
+        <span class="formula-expr">H = (v₀ · sen θ)² / (2g)</span>
+        <span class="formula-legend">
+          <span>Tempo para atingir: t<sub>subida</sub> = (v₀ · sen θ) / g</span>
+          <span>Tempo total de voo: t<sub>total</sub> = 2 · t<sub>subida</sub></span>
+        </span>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Alcance máximo e ângulo ótimo</h2>
+
+      <p>
+        O alcance horizontal quando o projétil retorna ao mesmo nível é:
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Alcance horizontal</span>
+        <span class="formula-expr">R = v₀² · sen(2θ) / g</span>
+        <span class="formula-legend">
+          <span>Válido quando o projétil retorna à mesma altura (y = 0)</span>
+          <span>Máximo quando sen(2θ) = 1, ou seja, 2θ = 90° → θ = 45°</span>
+        </span>
+      </div>
+
+      <div class="highlight-box">
+        <span class="hb-icon">🎯</span>
+        <p>
+          O alcance é máximo com <strong>θ = 45°</strong>. Além disso, ângulos complementares (θ e 90° − θ) produzem o mesmo alcance. Por exemplo, 30° e 60° têm o mesmo R com o mesmo v₀.
+        </p>
+      </div>
+
+      <table class="content-table">
+        <thead>
+          <tr><th>Ângulo θ</th><th>sen(2θ)</th><th>R / (v₀²/g)</th><th>Observação</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>15°</td><td>0,50</td><td>0,50</td><td></td></tr>
+          <tr><td>30°</td><td>0,87</td><td>0,87</td><td></td></tr>
+          <tr><td>45°</td><td>1,00</td><td>1,00</td><td>Alcance máximo</td></tr>
+          <tr><td>60°</td><td>0,87</td><td>0,87</td><td>Mesmo R que 30°</td></tr>
+          <tr><td>75°</td><td>0,50</td><td>0,50</td><td>Mesmo R que 15°</td></tr>
+        </tbody>
+      </table>
+
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Aplicações cotidianas</h2>
+
+      <div class="daily-grid">
+        <div class="daily-card">
+          <span class="dc-icon">⚽</span>
+          <div class="dc-title">Chute de futebol</div>
+          <p class="dc-desc">Um arremesso para o gol envolve ângulo, força e rotação — o lançamento oblíquo é o modelo básico.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🏹</span>
+          <div class="dc-title">Arco e flecha</div>
+          <p class="dc-desc">Arqueiros ajustam o ângulo de lançamento para acertar alvos a diferentes distâncias.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🚀</span>
+          <div class="dc-title">Fogos de artifício</div>
+          <p class="dc-desc">Os foguetes são lançados em ângulo para cobrir diferentes distâncias horizontais.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">💧</span>
+          <div class="dc-title">Mangueira de jardim</div>
+          <p class="dc-desc">O jato de água forma uma parábola; o ângulo ótimo para maior alcance é próximo de 45°.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Calculadora de lançamento oblíquo</h2>
+
+      <div class="calc-box">
+        <h4>🧮 Calculadora de Lançamento Oblíquo &nbsp;(g = 10 m/s²)</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Velocidade inicial v₀ (m/s)</label>
+            <input type="number" id="lo-v0" placeholder="ex: 20" value="20">
+          </div>
+          <div class="calc-field">
+            <label>Ângulo θ (graus)</label>
+            <input type="number" id="lo-ang" placeholder="ex: 45" value="45" min="0" max="90">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcLO()">Calcular</button>
+        <div class="calc-result" id="lo-result"></div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Simulador de lançamento oblíquo</h2>
+
+      <p>Ajuste o ângulo e a velocidade inicial para ver a trajetória em tempo real.</p>
+
+      <div class="graph-box">
+        <h4>🎯 Simulador de Lançamento Oblíquo</h4>
+        <canvas id="lo-sim" width="560" height="320"></canvas>
+        <div class="graph-controls" style="margin-top:1rem;">
+          <div class="slider-row">
+            <label>v₀ = <span id="lo-v0-d">20</span> m/s</label>
+            <input type="range" id="lo-v0-sl" min="5" max="50" value="20" step="1">
+          </div>
+          <div class="slider-row">
+            <label>θ = <span id="lo-ang-d">45</span>°</label>
+            <input type="range" id="lo-ang-sl" min="5" max="85" value="45" step="5">
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:0.8rem;">
+          <button class="calc-btn" id="lo-start-btn">▶ Lançar</button>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s9">
+      <h2><span class="sec-num">9</span> Resumo</h2>
+
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Lançamento oblíquo: v₀ em ângulo θ com a horizontal. Trajetória é uma parábola.</li>
+          <li>Decomposição: v₀ₓ = v₀ cosθ (horizontal, constante); v₀ᵧ = v₀ senθ (vertical, decresce).</li>
+          <li>Horizontal: MRU — x = v₀ cosθ · t.</li>
+          <li>Vertical: MRUV — y = v₀ senθ · t − ½g·t².</li>
+          <li>Altura máxima: H = (v₀ senθ)² / (2g).</li>
+          <li>Alcance: R = v₀² sen(2θ) / g. Máximo em θ = 45°.</li>
+          <li>Ângulos complementares (θ e 90°−θ) produzem o mesmo alcance.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="lancamento-horizontal.html">← Lançamento Horizontal</a>
+      <a href="mcu.html" class="nav-next">Próximo: MCU →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <p>© 2025 — Piras na Física</p>
+</footer>
+
+<script>
+(function() {
+  const g = 10;
+  const toRad = d => d * Math.PI / 180;
+
+  window.calcLO = function() {
+    const v0  = parseFloat(document.getElementById('lo-v0').value);
+    const ang = parseFloat(document.getElementById('lo-ang').value);
+    const res = document.getElementById('lo-result');
+    if (isNaN(v0)||isNaN(ang)||v0<=0||ang<=0||ang>=90) {
+      res.className='calc-result erro';
+      res.textContent='Informe v₀ > 0 e 0° < θ < 90°.'; return;
+    }
+    const th = toRad(ang);
+    const vx = v0*Math.cos(th), vy = v0*Math.sin(th);
+    const tSub = vy/g, tTot = 2*tSub;
+    const H = vy*vy/(2*g);
+    const R = v0*v0*Math.sin(2*th)/g;
+    res.className='calc-result ok';
+    res.innerHTML =
+      'v₀ₓ = '+vx.toFixed(2)+' m/s  |  v₀ᵧ = '+vy.toFixed(2)+' m/s<br>' +
+      'Tempo de subida: <strong>'+tSub.toFixed(2)+' s</strong><br>' +
+      'Tempo total de voo: <strong>'+tTot.toFixed(2)+' s</strong><br>' +
+      'Altura máxima: <strong>'+H.toFixed(2)+' m</strong><br>' +
+      'Alcance: <strong>'+R.toFixed(2)+' m</strong>';
+  };
+
+  /* ---- Simulador ---- */
+  const canvas = document.getElementById('lo-sim');
+  const ctx = canvas.getContext('2d');
+  const v0Sl  = document.getElementById('lo-v0-sl');
+  const angSl = document.getElementById('lo-ang-sl');
+  const v0Disp  = document.getElementById('lo-v0-d');
+  const angDisp = document.getElementById('lo-ang-d');
+  const btn = document.getElementById('lo-start-btn');
+
+  let animId=null, simT=0, running=false;
+
+  function getP() {
+    const v0=parseFloat(v0Sl.value), ang=parseFloat(angSl.value);
+    const th=toRad(ang);
+    return { v0, ang, th, vx:v0*Math.cos(th), vy:v0*Math.sin(th) };
+  }
+
+  function tFly(p){ return 2*p.vy/g; }
+
+  function drawSim(t) {
+    const p=getP();
+    const tt=tFly(p);
+    const W=canvas.width, H=canvas.height;
+    const PAD={l:40,r:20,t:20,b:40};
+    const gW=W-PAD.l-PAD.r, gH=H-PAD.t-PAD.b;
+    const xMax=p.vx*tt*1.1, yMax=p.vy*p.vy/(2*g)*1.2;
+
+    const toX=x=>PAD.l+(x/xMax)*gW;
+    const toY=y=>PAD.t+(1-y/yMax)*gH;
+
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='#eff6ff';
+    ctx.fillRect(PAD.l,PAD.t,gW,gH);
+    ctx.fillStyle='#d1fae5';
+    ctx.fillRect(PAD.l,toY(0),gW,gH-(toY(0)-PAD.t));
+    ctx.strokeStyle='#059669';ctx.lineWidth=2;
+    ctx.beginPath();ctx.moveTo(PAD.l,toY(0));ctx.lineTo(PAD.l+gW,toY(0));ctx.stroke();
+
+    /* Trajetórias de referência para vários ângulos (tracejado) */
+    [15,30,45,60,75].forEach(a=>{
+      const th2=toRad(a);
+      const vx2=p.v0*Math.cos(th2), vy2=p.v0*Math.sin(th2);
+      const tt2=2*vy2/g;
+      ctx.strokeStyle=a===p.ang?'rgba(0,0,0,0)':'rgba(148,163,184,0.4)';
+      ctx.lineWidth=1;ctx.setLineDash([4,4]);
+      ctx.beginPath();
+      for(let i=0;i<=60;i++){
+        const ti=i/60*tt2;
+        const xi=vx2*ti, yi=vy2*ti-0.5*g*ti*ti;
+        if(xi/xMax<1.05){
+          if(i===0)ctx.moveTo(toX(xi),toY(Math.max(0,yi)));
+          else ctx.lineTo(toX(xi),toY(Math.max(0,yi)));
+        }
+      }
+      ctx.stroke();ctx.setLineDash([]);
+    });
+
+    /* Trajetória principal */
+    ctx.strokeStyle='#2f5bea';ctx.lineWidth=2.5;
+    ctx.beginPath();
+    for(let i=0;i<=80;i++){
+      const ti=i/80*tt;
+      const xi=p.vx*ti, yi=p.vy*ti-0.5*g*ti*ti;
+      if(i===0)ctx.moveTo(toX(xi),toY(Math.max(0,yi)));
+      else ctx.lineTo(toX(xi),toY(Math.max(0,yi)));
+    }
+    ctx.stroke();
+
+    /* Bola */
+    const xc=p.vx*t, yc=Math.max(0,p.vy*t-0.5*g*t*t);
+    ctx.beginPath();ctx.arc(toX(xc),toY(yc),9,0,Math.PI*2);
+    ctx.fillStyle='#ef4444';ctx.fill();
+
+    /* Vetor de velocidade */
+    if(t>0&&yc>0){
+      const vcx=p.vx, vcy=p.vy-g*t;
+      const scl=3;
+      ctx.strokeStyle='#16a34a';ctx.lineWidth=2;
+      ctx.beginPath();ctx.moveTo(toX(xc),toY(yc));
+      ctx.lineTo(toX(xc)+vcx*scl,toY(yc));ctx.stroke();
+      ctx.strokeStyle='#ef4444';
+      ctx.beginPath();ctx.moveTo(toX(xc),toY(yc));
+      ctx.lineTo(toX(xc),toY(yc)-vcy*scl);ctx.stroke();
+    }
+
+    /* Ângulo no lançamento */
+    if(t<0.1){
+      ctx.strokeStyle='#f97316';ctx.lineWidth=1.5;
+      ctx.beginPath();ctx.arc(toX(0),toY(0),30,0,-p.th,true);ctx.stroke();
+      ctx.fillStyle='#ea580c';ctx.font='11px Poppins,sans-serif';ctx.textAlign='left';
+      ctx.fillText(p.ang+'°',toX(0)+35,toY(0)-8);
+    }
+
+    /* Eixos */
+    ctx.strokeStyle='#374151';ctx.lineWidth=2;
+    ctx.beginPath();
+    ctx.moveTo(PAD.l,PAD.t);ctx.lineTo(PAD.l,PAD.t+gH);
+    ctx.moveTo(PAD.l,PAD.t+gH);ctx.lineTo(PAD.l+gW,PAD.t+gH);
+    ctx.stroke();
+
+    /* Rótulos */
+    ctx.fillStyle='#555';ctx.font='10px Poppins,sans-serif';
+    ctx.textAlign='center';
+    for(let i=0;i<=5;i++){
+      const x=i/5*p.vx*tt;
+      ctx.fillText(Math.round(x),toX(x),PAD.t+gH+16);
+    }
+    ctx.fillText('x (m)',PAD.l+gW+10,PAD.t+gH+5);
+    ctx.textAlign='right';
+    for(let i=0;i<=4;i++){
+      const y=i/4*yMax;
+      ctx.fillText(Math.round(y),PAD.l-4,toY(y)+4);
+    }
+    ctx.save();ctx.translate(14,PAD.t+gH/2);ctx.rotate(-Math.PI/2);
+    ctx.textAlign='center';ctx.fillText('y (m)',0,0);ctx.restore();
+
+    /* Info */
+    ctx.fillStyle='#1e2a78';ctx.font='bold 11px Poppins,sans-serif';
+    ctx.textAlign='left';
+    ctx.fillText('θ = '+p.ang+'°  |  v₀ = '+p.v0+' m/s',PAD.l+5,PAD.t+15);
+  }
+
+  function animate() {
+    const p=getP(), tt=tFly(p);
+    drawSim(simT);
+    if(running&&simT<tt){ simT+=0.04; animId=requestAnimationFrame(animate); }
+    else if(running){ running=false; btn.textContent='▶ Lançar novamente'; }
+  }
+
+  function reset() {
+    const p=getP();
+    v0Disp.textContent=p.v0;
+    angDisp.textContent=p.ang;
+    simT=0;running=false;
+    if(animId)cancelAnimationFrame(animId);
+    drawSim(0);
+  }
+
+  v0Sl.addEventListener('input',reset);
+  angSl.addEventListener('input',reset);
+  btn.addEventListener('click',function(){
+    if(!running){ simT=0;running=true;btn.textContent='⏸ Em voo...';animate(); }
+  });
+  reset();
+
+  /* TOC */
+  const sections=document.querySelectorAll('.content-section');
+  const tocLinks=document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll',function(){
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+    tocLinks.forEach(a=>{a.parentElement.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. cinematica/lancamento-obliquo-multiplos-angulos.png
+     Múltiplas trajetórias parabólicas com mesmo v₀ e ângulos 15°, 30°, 45°,
+     60°, 75°. Ângulo de 45° com o maior alcance marcado. Cada curva identificada.
+
+  2. cinematica/lancamento-obliquo-decomposicao.png
+     Vetor v₀ formando ângulo θ com a horizontal. Componentes v₀ₓ e v₀ᵧ
+     desenhadas como catetos do triângulo retângulo. Fórmulas ao lado.
+-->
+
+</body>
+</html>

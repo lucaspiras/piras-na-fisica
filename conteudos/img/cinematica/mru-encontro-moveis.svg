@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" width="640" height="330">
+  <rect width="640" height="330" fill="#f9fafb" rx="10"/>
+
+  <!-- Title -->
+  <text x="320" y="22" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle">Encontro de Dois Móveis — Gráfico S×t</text>
+
+  <!-- Graph area: left=75, right=570, top=38, bottom=275 -->
+  <!-- X: t=0 to 12s → scale_x = 495/12 = 41.25 px/s -->
+  <!-- Y: s=0 to 200m → scale_y = 237/200 = 1.185 px/m; s=0 at y=275, s=200 at y=38 -->
+  <!-- s=120m: y = 275 - 120*1.185 = 275 - 142.2 = 132.8 ≈ 133 -->
+  <!-- t=10s: x = 75 + 10*41.25 = 75 + 412.5 = 487.5 ≈ 488 -->
+
+  <!-- Grid lines -->
+  <line x1="75" y1="38"  x2="570" y2="38"  stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="75" y1="75"  x2="570" y2="75"  stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="75" y1="156" x2="570" y2="156" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="75" y1="215" x2="570" y2="215" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="116" y1="38" x2="116" y2="275" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="199" y1="38" x2="199" y2="275" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="282" y1="38" x2="282" y2="275" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="364" y1="38" x2="364" y2="275" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="447" y1="38" x2="447" y2="275" stroke="#e2e8f0" stroke-width="1"/>
+  <line x1="488" y1="38" x2="488" y2="275" stroke="#e5e7eb" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="570" y1="38" x2="570" y2="275" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Axes -->
+  <defs>
+    <marker id="axC" markerWidth="9" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0,9 3,0 6" fill="#475569"/>
+    </marker>
+  </defs>
+  <line x1="75" y1="275" x2="75"  y2="32" stroke="#475569" stroke-width="2" marker-end="url(#axC)"/>
+  <line x1="75" y1="275" x2="578" y2="275" stroke="#475569" stroke-width="2" marker-end="url(#axC)"/>
+
+  <!-- Y-axis labels (s in metres) -->
+  <text x="64" y="42"  font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="end">200</text>
+  <text x="64" y="79"  font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="end">160</text>
+  <text x="64" y="137" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="end" font-weight="bold">120</text>
+  <text x="64" y="160" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="end">100</text>
+  <text x="64" y="219" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="end">50</text>
+  <text x="64" y="279" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="end">0</text>
+
+  <!-- X-axis labels (t in seconds) -->
+  <line x1="116" y1="270" x2="116" y2="280" stroke="#64748b" stroke-width="1.5"/>
+  <text x="116" y="292" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="middle">1</text>
+  <line x1="199" y1="270" x2="199" y2="280" stroke="#64748b" stroke-width="1.5"/>
+  <text x="199" y="292" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="middle">3</text>
+  <line x1="282" y1="270" x2="282" y2="280" stroke="#64748b" stroke-width="1.5"/>
+  <text x="282" y="292" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="middle">5</text>
+  <line x1="364" y1="270" x2="364" y2="280" stroke="#64748b" stroke-width="1.5"/>
+  <text x="364" y="292" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="middle">7</text>
+  <line x1="447" y1="270" x2="447" y2="280" stroke="#64748b" stroke-width="1.5"/>
+  <text x="447" y="292" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="middle">9</text>
+  <line x1="488" y1="270" x2="488" y2="280" stroke="#64748b" stroke-width="2"/>
+  <text x="488" y="292" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#475569" text-anchor="middle">10</text>
+  <line x1="570" y1="270" x2="570" y2="280" stroke="#64748b" stroke-width="1.5"/>
+  <text x="570" y="292" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="middle">12</text>
+
+  <!-- Axis labels -->
+  <text x="590" y="279" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#475569">t (s)</text>
+  <text x="62"  y="28"  font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#475569">s (m)</text>
+
+  <!-- LINE 1 (blue): s₁ = 12t; t=0→s=0 (75,275); t=12→s=144 (570,105) -->
+  <!-- y = 275 - s*1.185; s=144→y=275-170.6=104.4≈104 -->
+  <line x1="75" y1="275" x2="570" y2="104" stroke="#2f5bea" stroke-width="2.5"/>
+
+  <!-- LINE 2 (red): s₂ = 200 - 8t; t=0→s=200 (75,38); t=12→s=104 (570,152) -->
+  <!-- y: s=200→y=38; s=104→y=275-123.2=151.8≈152 -->
+  <line x1="75" y1="38" x2="570" y2="152" stroke="#dc2626" stroke-width="2.5"/>
+
+  <!-- Meeting point: t=10s, s=120m → (488, 133) -->
+  <circle cx="488" cy="133" r="7" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+  <!-- Dashed lines to axes -->
+  <line x1="488" y1="133" x2="75"  y2="133" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="488" y1="133" x2="488" y2="275" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <!-- Meeting point labels -->
+  <rect x="502" y="118" width="82" height="32" fill="#fef3c7" rx="4" stroke="#f59e0b" stroke-width="1"/>
+  <text x="543" y="132" font-family="Arial,sans-serif" font-size="11" fill="#92400e" text-anchor="middle" font-weight="bold">Encontro!</text>
+  <text x="543" y="144" font-family="Arial,sans-serif" font-size="10" fill="#78350f" text-anchor="middle">t = 10 s</text>
+  <!-- s label on Y axis -->
+  <text x="60" y="137" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#f59e0b" text-anchor="end">120</text>
+
+  <!-- Labels for each line -->
+  <rect x="82" y="241" width="125" height="20" fill="#dbeafe" rx="3"/>
+  <text x="144" y="255" font-family="Arial,sans-serif" font-size="11" fill="#1d4ed8" text-anchor="middle">Móvel 1: s₁ = 12t</text>
+
+  <rect x="82" y="50" width="130" height="20" fill="#fee2e2" rx="3"/>
+  <text x="147" y="64" font-family="Arial,sans-serif" font-size="11" fill="#dc2626" text-anchor="middle">Móvel 2: s₂ = 200 − 8t</text>
+
+  <!-- Bottom note -->
+  <text x="320" y="316" font-family="Arial,sans-serif" font-size="10" fill="#64748b" text-anchor="middle">O encontro ocorre quando s₁ = s₂  →  12t = 200 − 8t  →  20t = 200  →  t = 10 s,  s = 120 m</text>
+</svg>

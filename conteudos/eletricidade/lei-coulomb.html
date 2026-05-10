@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lei de Coulomb — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TY56KM22X8');</script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero" style="background:linear-gradient(135deg,#78350f 0%,#b45309 55%,#d97706 100%);">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Eletricidade</a><span>/</span>
+      <span>Lei de Coulomb</span>
+    </nav>
+    <h1 class="content-title">Lei de Coulomb</h1>
+    <p class="content-subtitle">A força elétrica entre cargas puntiformes: proporcional ao produto das cargas e inversamente proporcional ao quadrado da distância.</p>
+    <span class="formula-highlight">F = k · |q₁| · |q₂| / r²</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Enunciado</a></li>
+      <li><a href="#s2">Constante eletrostática</a></li>
+      <li><a href="#s3">Atração e repulsão</a></li>
+      <li><a href="#s4">Comparação com a gravitação</a></li>
+      <li><a href="#s5">Superposição</a></li>
+      <li><a href="#s6">Calculadora</a></li>
+      <li><a href="#s7">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="carga-eletrica.html">← Carga Elétrica</a>
+      <a href="campo-eletrico.html" class="toc-next">Campo Elétrico →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Enunciado da Lei de Coulomb</h2>
+      <p>Em 1785, Charles-Augustin de Coulomb mediu experimentalmente que a força entre duas cargas elétricas puntiformes tem magnitude:</p>
+      <div class="formula-box">
+        <span class="formula-label">Lei de Coulomb</span>
+        <span class="formula-expr">F = k · |q₁| · |q₂| / r²</span>
+        <span class="formula-legend">
+          <span>F = força elétrica (N)</span>
+          <span>k = constante eletrostática (N·m²/C²)</span>
+          <span>q₁, q₂ = cargas (C) — usa-se o valor absoluto</span>
+          <span>r = distância entre as cargas (m)</span>
+        </span>
+      </div>
+      <p>A força age ao longo da reta que une as duas cargas. O sinal (atração ou repulsão) é determinado pelos sinais das cargas, não pela fórmula acima.</p>
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> A constante eletrostática k</h2>
+      <p>No vácuo, a constante eletrostática vale:</p>
+      <div class="formula-box">
+        <span class="formula-label">Constante eletrostática no vácuo</span>
+        <span class="formula-expr">k₀ = 9 × 10⁹ N·m²/C²</span>
+        <span class="formula-legend">
+          <span>Valor exato: k₀ = 8,99 × 10⁹ N·m²/C²</span>
+          <span>Em outros meios: k = k₀ / ε_r (ε_r = permissividade relativa do meio)</span>
+          <span>Na água: ε_r ≈ 80, logo k_água ≈ 1,1 × 10⁸ N·m²/C²</span>
+        </span>
+      </div>
+      <div class="highlight-box info">
+        <span class="hb-icon">🔗</span>
+        <p>A constante k está relacionada à permissividade elétrica do vácuo ε₀ por: k₀ = 1/(4πε₀), onde ε₀ = 8,85 × 10⁻¹² C²/(N·m²). Você encontrará essa forma em livros de física universitária e em eletromagnetismo avançado.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Atração e repulsão</h2>
+      <div class="concept-grid">
+        <div class="concept-card"><span class="cc-icon">↔️</span><div class="cc-title">Cargas de mesmo sinal</div><p class="cc-desc">A força é <strong>repulsiva</strong>: cada carga é empurrada para se afastar da outra. q₁ e q₂ têm o mesmo sinal (++ ou −−).</p></div>
+        <div class="concept-card"><span class="cc-icon">↩️</span><div class="cc-title">Cargas de sinais opostos</div><p class="cc-desc">A força é <strong>atrativa</strong>: cada carga é puxada em direção à outra. q₁ e q₂ têm sinais opostos (+−).</p></div>
+      </div>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Força entre dois elétrons</div>
+        <div class="ex-body">
+          <p>Dois elétrons separados por r = 1 nm = 10⁻⁹ m. Qual é a força elétrica entre eles?</p>
+          <p>q₁ = q₂ = −e = 1,6×10⁻¹⁹ C (usamos o valor absoluto)</p>
+          <p>F = k·q₁·q₂/r² = (9×10⁹) × (1,6×10⁻¹⁹)² / (10⁻⁹)²</p>
+          <p>F = (9×10⁹) × (2,56×10⁻³⁸) / (10⁻¹⁸)</p>
+          <p>F = (9×10⁹) × 2,56×10⁻²⁰ = <strong>2,3×10⁻¹⁰ N</strong></p>
+          <div class="ex-result">Força repulsiva de 2,3×10⁻¹⁰ N — imensamente maior que a força gravitacional entre os dois elétrons (≈ 5×10⁻⁵¹ N)</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Comparação com a Lei da Gravitação</h2>
+      <p>A força elétrica e a força gravitacional têm a mesma estrutura matemática — ambas seguem a lei do inverso do quadrado:</p>
+      <table class="content-table">
+        <thead>
+          <tr><th>Característica</th><th>Força Elétrica (Coulomb)</th><th>Força Gravitacional (Newton)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Fórmula</td><td>F = k·q₁·q₂/r²</td><td>F = G·m₁·m₂/r²</td></tr>
+          <tr><td>Constante</td><td>k = 9×10⁹ N·m²/C²</td><td>G = 6,67×10⁻¹¹ N·m²/kg²</td></tr>
+          <tr><td>Origem</td><td>Carga elétrica</td><td>Massa</td></tr>
+          <tr><td>Tipo</td><td>Atração ou repulsão</td><td>Sempre atração</td></tr>
+          <tr><td>Intensidade (prótons)</td><td>≈ 10³⁶ vezes maior</td><td>Muito fraca no nível subatômico</td></tr>
+          <tr><td>Alcance</td><td>Infinito (campo inverso do quadrado)</td><td>Infinito</td></tr>
+        </tbody>
+      </table>
+      <div class="highlight-box warning">
+        <span class="hb-icon">⚡</span>
+        <p>A força elétrica entre dois prótons é <strong>10³⁶ vezes mais intensa</strong> que a gravitacional entre eles. É por isso que a estrutura dos átomos é dominada pela eletricidade, não pela gravidade. A gravidade só domina em escalas astronômicas porque a matéria ordinária é eletricamente neutra em grande escala.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Princípio da superposição</h2>
+      <p>Quando há mais de duas cargas, a força sobre uma carga é a <strong>soma vetorial</strong> das forças individuais de cada outra carga sobre ela:</p>
+      <div class="formula-box">
+        <span class="formula-label">Superposição de forças elétricas</span>
+        <span class="formula-expr">F⃗_total = F⃗₁₂ + F⃗₁₃ + F⃗₁₄ + …</span>
+        <span class="formula-legend">
+          <span>Cada força é calculada separadamente pela Lei de Coulomb</span>
+          <span>A soma é vetorial — considerar direções e sentidos</span>
+          <span>Em problemas 1D: escolher sentido positivo e somar com sinais</span>
+        </span>
+      </div>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Três cargas em linha</div>
+        <div class="ex-body">
+          <p>q₁ = +4 μC em x = 0; q₂ = −2 μC em x = 30 cm; q₃ = +3 μC em x = 60 cm. Qual a força sobre q₂?</p>
+          <p>F₁₂ = k·|q₁|·|q₂|/r₁₂² = 9×10⁹ × 4×10⁻⁶ × 2×10⁻⁶ / 0,09 = <strong>0,8 N</strong> (sentido: +x, pois cargas opostas se atraem → q₂ é puxada para q₁)</p>
+          <p>F₃₂ = k·|q₃|·|q₂|/r₃₂² = 9×10⁹ × 3×10⁻⁶ × 2×10⁻⁶ / 0,09 = <strong>0,6 N</strong> (sentido: +x, pois cargas opostas se atraem → q₂ é puxada para q₃)</p>
+          <p>As duas forças puxam q₂ em sentidos opostos (+x e −x respectivamente):</p>
+          <p>F_total = 0,8 − 0,6 = <strong>0,2 N</strong> no sentido +x (em direção a q₁)</p>
+          <div class="ex-result">Força resultante sobre q₂: 0,2 N em direção a q₁</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Calculadora — Lei de Coulomb</h2>
+      <div class="calc-box">
+        <h4>🧮 F = k · |q₁| · |q₂| / r²</h4>
+        <p style="font-size:.85rem;color:#666;margin-bottom:1rem;">Deixe exatamente um campo em branco para calcular.</p>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>F (N)</label>
+            <input type="number" id="cl-F" placeholder="vazio = calcular">
+          </div>
+          <div class="calc-field">
+            <label>q₁ (μC)</label>
+            <input type="number" id="cl-q1" placeholder="vazio = calcular">
+          </div>
+          <div class="calc-field">
+            <label>q₂ (μC)</label>
+            <input type="number" id="cl-q2" placeholder="vazio = calcular">
+          </div>
+          <div class="calc-field">
+            <label>r (cm)</label>
+            <input type="number" id="cl-r" placeholder="vazio = calcular">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcCoulomb()">Calcular</button>
+        <div class="calc-result" id="cl-result"></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Resumo</h2>
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Lei de Coulomb: F = k·|q₁|·|q₂|/r² — força proporcional ao produto das cargas e inversamente proporcional ao quadrado da distância.</li>
+          <li>Constante eletrostática no vácuo: k = 9×10⁹ N·m²/C².</li>
+          <li>Mesmos sinais → repulsão; sinais opostos → atração.</li>
+          <li>A força elétrica é ≈ 10³⁶ vezes mais intensa que a gravitacional no nível subatômico.</li>
+          <li>Com mais de duas cargas: aplica-se o princípio da superposição (soma vetorial).</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="carga-eletrica.html">← Carga Elétrica</a>
+      <a href="campo-eletrico.html" class="nav-next">Próximo: Campo Elétrico →</a>
+    </div>
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+<script>
+(function(){
+  const k = 9e9;
+
+  window.calcCoulomb = function(){
+    const Fv = document.getElementById('cl-F').value;
+    const q1v = document.getElementById('cl-q1').value;
+    const q2v = document.getElementById('cl-q2').value;
+    const rv = document.getElementById('cl-r').value;
+    const res = document.getElementById('cl-result');
+
+    const vals = [Fv, q1v, q2v, rv];
+    const blanks = vals.filter(v => v === '').length;
+    if(blanks !== 1){ res.className='calc-result erro'; res.textContent='Deixe exatamente UM campo em branco.'; return; }
+
+    let F = Fv===''?null:parseFloat(Fv);
+    let q1 = q1v===''?null:parseFloat(q1v)*1e-6;
+    let q2 = q2v===''?null:parseFloat(q2v)*1e-6;
+    let r = rv===''?null:parseFloat(rv)*1e-2;
+
+    let msg = '';
+    if(F === null){
+      F = k * Math.abs(q1) * Math.abs(q2) / (r*r);
+      document.getElementById('cl-F').value = F.toExponential(3);
+      msg = 'F = ' + F.toExponential(3) + ' N';
+    } else if(q1 === null){
+      q1 = F * r*r / (k * Math.abs(q2));
+      document.getElementById('cl-q1').value = (q1*1e6).toFixed(4);
+      msg = 'q₁ = ' + (q1*1e6).toFixed(4) + ' μC';
+    } else if(q2 === null){
+      q2 = F * r*r / (k * Math.abs(q1));
+      document.getElementById('cl-q2').value = (q2*1e6).toFixed(4);
+      msg = 'q₂ = ' + (q2*1e6).toFixed(4) + ' μC';
+    } else {
+      r = Math.sqrt(k * Math.abs(q1) * Math.abs(q2) / F);
+      document.getElementById('cl-r').value = (r*100).toFixed(4);
+      msg = 'r = ' + (r*100).toFixed(4) + ' cm';
+    }
+    res.className='calc-result ok';
+    res.textContent = msg;
+  };
+
+  const sections = document.querySelectorAll('.content-section');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', function(){
+    let cur = '';
+    sections.forEach(s=>{ if(window.scrollY >= s.offsetTop-120) cur = s.id; });
+    tocLinks.forEach(a => a.parentElement.classList.toggle('active', a.getAttribute('href')==='#'+cur));
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. eletricidade/coulomb-forcas.png
+     Duas cargas puntiformes q₁ e q₂ separadas por distância r.
+     Caso A (repulsão): q₁=+ e q₂=+, setas apontando para fora.
+     Caso B (atração): q₁=+ e q₂=−, setas apontando uma para a outra.
+     Eixo horizontal, distância r indicada com seta dupla.
+-->
+</body>
+</html>

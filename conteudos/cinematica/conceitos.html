@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conceitos Iniciais de Cinemática — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<!-- HERO -->
+<div class="content-hero">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Cinemática</a><span>/</span>
+      <span>Conceitos Iniciais</span>
+    </nav>
+    <h1 class="content-title">Conceitos Iniciais de Cinemática</h1>
+    <p class="content-subtitle">Referencial, posição, deslocamento e velocidade média — os alicerces para entender qualquer tipo de movimento.</p>
+    <span class="formula-highlight">Δs = s − s₀</span>
+  </div>
+</div>
+
+<!-- LAYOUT PRINCIPAL -->
+<div class="content-wrapper">
+
+  <!-- SIDEBAR TOC -->
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">O que é movimento?</a></li>
+      <li><a href="#s2">Referencial</a></li>
+      <li><a href="#s3">Posição</a></li>
+      <li><a href="#s4">Deslocamento</a></li>
+      <li><a href="#s5">Distância percorrida</a></li>
+      <li><a href="#s6">Velocidade média</a></li>
+      <li><a href="#s7">Simulador</a></li>
+      <li><a href="#s8">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="index.html">← Hub Cinemática</a>
+      <a href="mru.html" class="toc-next">MRU →</a>
+    </div>
+  </aside>
+
+  <!-- CONTEÚDO -->
+  <main class="content-main">
+
+    <!-- SEÇÃO 1: O que é movimento -->
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> O que é movimento?</h2>
+
+      <p>
+        No dia a dia, dizemos que algo está em movimento quando ele muda de lugar. Um carro que percorre uma rua, uma bola arremessada ao ar, ou até a Terra girando em torno do Sol — todos são exemplos de movimento. Mas, do ponto de vista científico, precisamos ser mais precisos.
+      </p>
+
+      <p>
+        Em Física, dizemos que um corpo está em <strong>movimento</strong> quando sua posição muda com o passar do tempo em relação a um ponto de referência escolhido. Se a posição não muda, dizemos que o corpo está em <strong>repouso</strong>.
+      </p>
+
+      <div class="highlight-box">
+        <span class="hb-icon">💡</span>
+        <p>
+          Movimento e repouso são conceitos <strong>relativos</strong>: dependem sempre do referencial adotado. Um passageiro sentado num ônibus está em repouso em relação ao banco, mas em movimento em relação à calçada.
+        </p>
+      </div>
+
+
+    </section>
+
+    <!-- SEÇÃO 2: Referencial -->
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Referencial</h2>
+
+      <p>
+        O <strong>referencial</strong> (ou sistema de referência) é o corpo ou ponto que escolhemos como "fixo" para observar e descrever o movimento de outro corpo. Sem definir um referencial, não faz sentido dizer se algo está parado ou em movimento.
+      </p>
+
+      <p>
+        Exemplos de referenciais usados no cotidiano:
+      </p>
+
+      <div class="concept-grid">
+        <div class="concept-card">
+          <span class="cc-icon">🏠</span>
+          <div class="cc-title">Solo / Terra</div>
+          <p class="cc-desc">O referencial mais comum no dia a dia. Veículos, pessoas e objetos são descritos em relação ao chão.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">🚗</span>
+          <div class="cc-title">Veículo em movimento</div>
+          <p class="cc-desc">Dentro de um carro, os passageiros são referenciais uns para os outros — todos em repouso relativo entre si.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">🌍</span>
+          <div class="cc-title">Centro da Terra</div>
+          <p class="cc-desc">Usado em astronomia para descrever o movimento de satélites e da Lua ao redor da Terra.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">☀️</span>
+          <div class="cc-title">Centro do Sol</div>
+          <p class="cc-desc">Referencial heliocêntrico, usado para descrever as órbitas dos planetas do Sistema Solar.</p>
+        </div>
+      </div>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">📌</span>
+        <p>
+          Em problemas do Ensino Médio, o referencial adotado é, salvo indicação contrária, o <strong>solo</strong> (Terra). A escolha do referencial não muda o fenômeno físico, apenas a descrição matemática dele.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- SEÇÃO 3: Posição -->
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Posição</h2>
+
+      <p>
+        A <strong>posição</strong> de um corpo é o valor que indica onde ele se encontra ao longo de uma reta (eixo) em relação a uma origem (ponto zero). Representada geralmente pela letra <em>s</em> (ou <em>x</em>), a posição pode ser positiva ou negativa dependendo do lado em que o corpo se encontra em relação à origem.
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Posição em uma dimensão</span>
+        <span class="formula-expr">s [metro, m]</span>
+        <span class="formula-legend">
+          <span>• s &gt; 0 → corpo está à direita (ou acima) da origem</span>
+          <span>• s &lt; 0 → corpo está à esquerda (ou abaixo) da origem</span>
+          <span>• s = 0 → corpo está na origem</span>
+        </span>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo</div>
+        <div class="ex-body">
+          <p>Um carro está na posição s = +200 m. Isso significa que o carro está a 200 metros à direita da origem do referencial adotado.</p>
+          <p>Outro carro está em s = −50 m, ou seja, 50 metros à esquerda da origem.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SEÇÃO 4: Deslocamento -->
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Deslocamento</h2>
+
+      <p>
+        O <strong>deslocamento</strong> (Δs) é a variação de posição de um corpo: a diferença entre a posição final e a posição inicial. É uma grandeza vetorial em sua essência, pois tem módulo, direção e sentido — mas em movimentos unidimensionais (numa reta) trabalhamos apenas com o sinal positivo (+) ou negativo (−) para indicar o sentido.
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Deslocamento</span>
+        <span class="formula-expr">Δs = s − s₀</span>
+        <span class="formula-legend">
+          <span>Δs = deslocamento (m)</span>
+          <span>s = posição final (m)</span>
+          <span>s₀ = posição inicial (m)</span>
+        </span>
+      </div>
+
+      <div class="highlight-box">
+        <span class="hb-icon">⚠️</span>
+        <p>
+          Deslocamento e distância percorrida são conceitos <strong>diferentes</strong>! O deslocamento depende apenas das posições inicial e final; a distância percorrida depende de todo o caminho feito.
+        </p>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo</div>
+        <div class="ex-body">
+          <p>Um atleta parte da posição s₀ = 10 m e chega à posição s = 70 m.</p>
+          <p>Deslocamento: Δs = 70 − 10 = <strong>+60 m</strong> (sentido positivo).</p>
+          <p>Se ele voltasse para s = 30 m, o deslocamento total seria: Δs = 30 − 10 = <strong>+20 m</strong>, embora tenha caminhado muito mais.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SEÇÃO 5: Distância percorrida -->
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Distância percorrida vs. deslocamento</h2>
+
+      <p>
+        A <strong>distância percorrida</strong> é o comprimento total do caminho que um corpo percorre, independentemente de direção ou sentido. É sempre um valor positivo.
+      </p>
+
+      <p>
+        O <strong>deslocamento</strong>, ao contrário, é a variação de posição — e pode ser zero mesmo que a distância percorrida seja grande. Por exemplo, se você sai de casa e volta para casa, seu deslocamento é zero, mas a distância percorrida é o dobro do trajeto de ida.
+      </p>
+
+      <table class="content-table">
+        <thead>
+          <tr>
+            <th>Grandeza</th>
+            <th>Símbolo</th>
+            <th>Tipo</th>
+            <th>Pode ser negativa?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Distância percorrida</td>
+            <td>d</td>
+            <td>Escalar</td>
+            <td>Não</td>
+          </tr>
+          <tr>
+            <td>Deslocamento</td>
+            <td>Δs</td>
+            <td>Vetorial (1D: escalar com sinal)</td>
+            <td>Sim</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </section>
+
+    <!-- SEÇÃO 6: Velocidade média -->
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Velocidade média</h2>
+
+      <p>
+        A <strong>velocidade média</strong> mede quão rápido ocorre um deslocamento, relacionando o deslocamento com o intervalo de tempo em que ele ocorreu.
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Velocidade média</span>
+        <span class="formula-expr">v<sub>m</sub> = Δs / Δt</span>
+        <span class="formula-legend">
+          <span>v<sub>m</sub> = velocidade média (m/s)</span>
+          <span>Δs = deslocamento (m)</span>
+          <span>Δt = intervalo de tempo (s)</span>
+        </span>
+      </div>
+
+      <p>
+        A unidade SI de velocidade é o <strong>metro por segundo (m/s)</strong>. No cotidiano, usamos também o quilômetro por hora (km/h). Para converter:
+      </p>
+
+      <div class="formula-row">
+        <div class="formula-box">
+          <span class="formula-label">De km/h para m/s</span>
+          <span class="formula-expr">÷ 3,6</span>
+          <span class="formula-legend"><span>Ex: 90 km/h ÷ 3,6 = 25 m/s</span></span>
+        </div>
+        <div class="formula-box">
+          <span class="formula-label">De m/s para km/h</span>
+          <span class="formula-expr">× 3,6</span>
+          <span class="formula-legend"><span>Ex: 25 m/s × 3,6 = 90 km/h</span></span>
+        </div>
+      </div>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">📌</span>
+        <p>
+          A velocidade média usa o <em>deslocamento</em>, não a distância percorrida. Se você percorre um circuito fechado e volta ao ponto de partida, a velocidade média é zero — independentemente da distância percorrida.
+        </p>
+      </div>
+
+      <p>
+        A <strong>rapidez média</strong> (ou velocidade escalar média) usa a distância percorrida e sempre resulta em valor positivo. É o que o velocímetro do carro indica a cada instante.
+      </p>
+
+      <!-- CALCULADORA -->
+      <div class="calc-box">
+        <h4>🧮 Calculadora de Velocidade Média</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Posição inicial s₀ (m)</label>
+            <input type="number" id="vm-s0" placeholder="ex: 0">
+          </div>
+          <div class="calc-field">
+            <label>Posição final s (m)</label>
+            <input type="number" id="vm-s" placeholder="ex: 120">
+          </div>
+          <div class="calc-field">
+            <label>Tempo inicial t₀ (s)</label>
+            <input type="number" id="vm-t0" placeholder="ex: 0">
+          </div>
+          <div class="calc-field">
+            <label>Tempo final t (s)</label>
+            <input type="number" id="vm-t" placeholder="ex: 8">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcVm()">Calcular velocidade média</button>
+        <div class="calc-result" id="vm-result"></div>
+      </div>
+
+      <div class="daily-grid">
+        <div class="daily-card">
+          <span class="dc-icon">🏎️</span>
+          <div class="dc-title">Fórmula 1</div>
+          <p class="dc-desc">Carros atingem velocidades médias de 200 km/h (~55,6 m/s) por volta.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">✈️</span>
+          <div class="dc-title">Avião comercial</div>
+          <p class="dc-desc">Cruzeiro a ~900 km/h (250 m/s), mas velocidade média do voo é menor.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🚶</span>
+          <div class="dc-title">Pedestre</div>
+          <p class="dc-desc">Caminhada tranquila: ~5 km/h (≈ 1,4 m/s).</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🐆</span>
+          <div class="dc-title">Guepardo</div>
+          <p class="dc-desc">O animal mais rápido: até 110 km/h (≈ 30,6 m/s) em corrida.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SEÇÃO 7: Simulador de referencial -->
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Simulador: visualizando posição e deslocamento</h2>
+
+      <p>
+        Use o simulador abaixo para visualizar como as posições inicial e final determinam o deslocamento. Arraste os controles para posicionar os pontos na reta numérica.
+      </p>
+
+      <div class="graph-box">
+        <h4>📍 Reta numérica: posição e deslocamento</h4>
+        <canvas id="retalCanvas" width="560" height="120"></canvas>
+        <div class="graph-controls" style="margin-top:1rem;">
+          <div class="slider-row">
+            <label>Posição inicial s₀ = <span id="s0-val">0</span> m</label>
+            <input type="range" id="s0-slider" min="-10" max="10" value="0" step="0.5">
+          </div>
+          <div class="slider-row">
+            <label>Posição final s = <span id="sf-val">6</span> m</label>
+            <input type="range" id="sf-slider" min="-10" max="10" value="6" step="0.5">
+          </div>
+        </div>
+        <div id="sim-output" style="margin-top:0.8rem; font-weight:700; color:#1e2a78; font-size:1rem; text-align:center;"></div>
+      </div>
+
+    </section>
+
+    <!-- SEÇÃO 8: Resumo -->
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Resumo</h2>
+
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Movimento é a variação de posição em relação a um referencial com o tempo.</li>
+          <li>O referencial é o ponto escolhido como "fixo" para descrever o movimento — sua escolha é arbitrária.</li>
+          <li>Posição (s) indica onde o corpo está no eixo em relação à origem.</li>
+          <li>Deslocamento (Δs = s − s₀) é a variação de posição; pode ser positivo, negativo ou zero.</li>
+          <li>Distância percorrida é o comprimento total do caminho; sempre positiva e ≥ |Δs|.</li>
+          <li>Velocidade média = deslocamento ÷ intervalo de tempo (v<sub>m</sub> = Δs / Δt).</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- NAVEGAÇÃO FINAL -->
+    <div class="content-footer-nav">
+      <a href="index.html">← Hub Cinemática</a>
+      <a href="mru.html" class="nav-next">Próximo: MRU →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <p>© 2025 — Piras na Física</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+(function() {
+  /* Calculadora de velocidade média */
+  window.calcVm = function() {
+    const s0 = parseFloat(document.getElementById('vm-s0').value);
+    const s  = parseFloat(document.getElementById('vm-s').value);
+    const t0 = parseFloat(document.getElementById('vm-t0').value);
+    const t  = parseFloat(document.getElementById('vm-t').value);
+    const res = document.getElementById('vm-result');
+
+    if ([s0, s, t0, t].some(isNaN)) {
+      res.className = 'calc-result erro';
+      res.textContent = 'Preencha todos os campos com valores numéricos.';
+      return;
+    }
+    const dt = t - t0;
+    if (dt === 0) {
+      res.className = 'calc-result erro';
+      res.textContent = 'Intervalo de tempo não pode ser zero.';
+      return;
+    }
+    const ds = s - s0;
+    const vm = ds / dt;
+    const vmKmh = vm * 3.6;
+    res.className = 'calc-result ok';
+    res.textContent =
+      'Δs = ' + ds.toFixed(2) + ' m  |  Δt = ' + dt.toFixed(2) +
+      ' s  |  vm = ' + vm.toFixed(3) + ' m/s  ≈  ' + vmKmh.toFixed(2) + ' km/h';
+  };
+
+  /* Simulador de reta numérica */
+  const canvas = document.getElementById('retalCanvas');
+  const ctx = canvas.getContext('2d');
+  const s0Slider = document.getElementById('s0-slider');
+  const sfSlider = document.getElementById('sf-slider');
+  const s0Val    = document.getElementById('s0-val');
+  const sfVal    = document.getElementById('sf-val');
+  const output   = document.getElementById('sim-output');
+
+  function drawReta() {
+    const s0 = parseFloat(s0Slider.value);
+    const sf = parseFloat(sfSlider.value);
+    s0Val.textContent = s0;
+    sfVal.textContent = sf;
+
+    const W = canvas.width, H = canvas.height;
+    const cx = W / 2, cy = H / 2;
+    const scale = (W - 80) / 20; // 20 unidades de -10 a +10
+
+    ctx.clearRect(0, 0, W, H);
+
+    /* Eixo */
+    ctx.strokeStyle = '#94a3b8';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(40, cy);
+    ctx.lineTo(W - 40, cy);
+    ctx.stroke();
+
+    /* Marcações */
+    ctx.fillStyle = '#64748b';
+    ctx.font = '11px Poppins, sans-serif';
+    ctx.textAlign = 'center';
+    for (let i = -10; i <= 10; i += 2) {
+      const x = cx + i * scale;
+      ctx.beginPath();
+      ctx.moveTo(x, cy - 6);
+      ctx.lineTo(x, cy + 6);
+      ctx.strokeStyle = '#cbd5e1';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.fillText(i, x, cy + 20);
+    }
+    ctx.fillText('m', W - 30, cy + 5);
+
+    /* Seta de deslocamento */
+    const xs0 = cx + s0 * scale;
+    const xsf = cx + sf * scale;
+    const ds = sf - s0;
+    if (Math.abs(ds) > 0.1) {
+      ctx.strokeStyle = ds > 0 ? '#2f5bea' : '#ef4444';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(xs0, cy - 20);
+      ctx.lineTo(xsf, cy - 20);
+      ctx.stroke();
+      /* Ponta da seta */
+      const dir = ds > 0 ? 1 : -1;
+      ctx.beginPath();
+      ctx.moveTo(xsf, cy - 20);
+      ctx.lineTo(xsf - dir * 10, cy - 27);
+      ctx.lineTo(xsf - dir * 10, cy - 13);
+      ctx.fillStyle = ds > 0 ? '#2f5bea' : '#ef4444';
+      ctx.fill();
+    }
+
+    /* Ponto s0 */
+    ctx.beginPath();
+    ctx.arc(xs0, cy, 8, 0, Math.PI * 2);
+    ctx.fillStyle = '#22c55e';
+    ctx.fill();
+    ctx.fillStyle = '#15803d';
+    ctx.font = 'bold 11px Poppins, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('s₀', xs0, cy - 40);
+
+    /* Ponto sf */
+    ctx.beginPath();
+    ctx.arc(xsf, cy, 8, 0, Math.PI * 2);
+    ctx.fillStyle = '#f97316';
+    ctx.fill();
+    ctx.fillStyle = '#c2410c';
+    ctx.fillText('s', xsf, cy - 40);
+
+    /* Output */
+    const dir = ds > 0 ? '(sentido positivo)' : ds < 0 ? '(sentido negativo)' : '';
+    output.textContent = 'Δs = s − s₀ = ' + sf + ' − ' + s0 + ' = ' + ds.toFixed(1) + ' m  ' + dir;
+    output.style.color = ds > 0 ? '#2f5bea' : ds < 0 ? '#ef4444' : '#374151';
+  }
+
+  s0Slider.addEventListener('input', drawReta);
+  sfSlider.addEventListener('input', drawReta);
+  drawReta();
+
+  /* Scroll ativo na TOC */
+  const sections = document.querySelectorAll('.content-section');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', function() {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+    });
+    tocLinks.forEach(a => {
+      a.parentElement.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. cinematica/conceitos-relatividade-movimento.png
+     Ônibus em movimento com dois observadores: um dentro (vê passageiro parado) e
+     um na calçada (vê passageiro se mover). Setas indicando velocidades relativas.
+
+  2. cinematica/conceitos-eixo-posicao.png
+     Reta horizontal com origem zero, marcações de −5 a +5. Ponto A em +3 m e
+     ponto B em −2 m destacados com círculos coloridos. Seta indicando sentido positivo.
+
+  3. cinematica/conceitos-distancia-vs-deslocamento.png
+     Dois percursos entre pontos A e B: (1) linha reta direta (distância = deslocamento);
+     (2) caminho curvo passando por C (distância > deslocamento). Setas e legendas claras.
+-->
+
+</body>
+</html>

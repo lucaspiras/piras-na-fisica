@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Som — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TY56KM22X8');</script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero" style="background:linear-gradient(135deg,#134e4a 0%,#0f766e 55%,#14b8a6 100%);">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Ondulatória</a><span>/</span>
+      <span>Som</span>
+    </nav>
+    <h1 class="content-title">Som: Características e Propriedades</h1>
+    <p class="content-subtitle">O som é uma onda mecânica longitudinal que precisa de meio material. Altura, intensidade e timbre definem como ouvimos cada som.</p>
+    <span class="formula-highlight">β = 10 · log(I / I₀)  |  v_som ≈ 340 m/s no ar</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Natureza do som</a></li>
+      <li><a href="#s2">Velocidade do som</a></li>
+      <li><a href="#s3">Altura, timbre e intensidade</a></li>
+      <li><a href="#s4">Nível sonoro (dB)</a></li>
+      <li><a href="#s5">Infra e ultrassom</a></li>
+      <li><a href="#s6">Calculadora</a></li>
+      <li><a href="#s7">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="fenomenos-ondulatorios.html">← Fenômenos Ondulatórios</a>
+      <a href="efeito-doppler.html" class="toc-next">Efeito Doppler →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Natureza do som</h2>
+      <p>O som é uma <strong>onda mecânica longitudinal</strong>: as moléculas do ar (ou outro meio) oscilam paralelamente à direção de propagação, criando regiões alternadas de compressão (maior pressão) e rarefação (menor pressão).</p>
+      <div class="highlight-box warning">
+        <span class="hb-icon">🚀</span>
+        <p>No vácuo, não há moléculas para transmitir a oscilação — o som <strong>não se propaga no vácuo</strong>. Explosões no espaço são silenciosas. Apenas ondas eletromagnéticas (luz, rádio) se propagam no vácuo.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Velocidade do som</h2>
+      <p>A velocidade do som depende do meio de propagação:</p>
+      <table class="content-table">
+        <thead><tr><th>Meio</th><th>Velocidade (m/s)</th><th>Condições</th></tr></thead>
+        <tbody>
+          <tr><td>Ar seco</td><td>331</td><td>0 °C</td></tr>
+          <tr><td>Ar seco</td><td>343</td><td>20 °C</td></tr>
+          <tr><td>Água do mar</td><td>1522</td><td>20 °C</td></tr>
+          <tr><td>Água doce</td><td>1480</td><td>20 °C</td></tr>
+          <tr><td>Alumínio</td><td>5100</td><td>20 °C</td></tr>
+          <tr><td>Ferro/Aço</td><td>5000–5960</td><td>20 °C</td></tr>
+          <tr><td>Vidro</td><td>~5640</td><td>20 °C</td></tr>
+        </tbody>
+      </table>
+      <div class="highlight-box info">
+        <span class="hb-icon">🌡️</span>
+        <p>No ar, a velocidade do som aumenta com a temperatura: v ≈ 331 + 0,6·T(°C) m/s. A 20 °C: v ≈ 343 m/s. Em vestibulares, usa-se frequentemente v = 340 m/s. Sólidos conduzem o som muito mais rapidamente que o ar — por isso você ouve o trem pelo trilho antes de ouvi-lo pelo ar.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Características fisiológicas do som</h2>
+      <div class="concept-grid">
+        <div class="concept-card"><span class="cc-icon">🎵</span><div class="cc-title">Altura (tom)</div><p class="cc-desc">Relacionada à <strong>frequência</strong>. Som agudo = alta frequência. Som grave = baixa frequência. O ouvido humano detecta de 20 Hz a 20 kHz.</p></div>
+        <div class="concept-card"><span class="cc-icon">🔉</span><div class="cc-title">Intensidade (loudness)</div><p class="cc-desc">Relacionada à <strong>amplitude</strong> (energia por área). Medida em decibéis (dB). Independe da frequência.</p></div>
+        <div class="concept-card"><span class="cc-icon">🎺</span><div class="cc-title">Timbre</div><p class="cc-desc">Qualidade que distingue a mesma nota em instrumentos diferentes. Determinado pela composição de harmônicos (forma da onda).</p></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Nível sonoro — decibéis</h2>
+      <p>A intensidade sonora I (W/m²) é convertida para decibéis usando escala logarítmica, pois o ouvido humano percebe intensidade de forma logarítmica:</p>
+      <div class="formula-box">
+        <span class="formula-label">Nível sonoro em decibéis</span>
+        <span class="formula-expr">β = 10 · log₁₀(I / I₀)</span>
+        <span class="formula-legend">
+          <span>β = nível sonoro (dB)</span>
+          <span>I = intensidade sonora (W/m²)</span>
+          <span>I₀ = 10⁻¹² W/m² — limiar da audição humana</span>
+          <span>Cada 10 dB → intensidade multiplica por 10; percepção dobra</span>
+        </span>
+      </div>
+      <table class="content-table">
+        <thead><tr><th>Som</th><th>Nível (dB)</th><th>Intensidade (W/m²)</th></tr></thead>
+        <tbody>
+          <tr><td>Limiar da audição</td><td>0</td><td>10⁻¹²</td></tr>
+          <tr><td>Folhas ao vento</td><td>10</td><td>10⁻¹¹</td></tr>
+          <tr><td>Conversa normal</td><td>60</td><td>10⁻⁶</td></tr>
+          <tr><td>Tráfego intenso</td><td>80</td><td>10⁻⁴</td></tr>
+          <tr><td>Show de rock (próximo)</td><td>110</td><td>10⁻¹</td></tr>
+          <tr><td>Limiar da dor</td><td>130</td><td>10</td></tr>
+          <tr><td>Motor a jato (perto)</td><td>150</td><td>10³</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Infrassom e ultrassom</h2>
+      <table class="content-table">
+        <thead><tr><th>Faixa</th><th>Frequência</th><th>Exemplos e aplicações</th></tr></thead>
+        <tbody>
+          <tr><td>Infrassom</td><td>&lt; 20 Hz</td><td>Terremotos, baleia azul (comunicação), elefantes, vento em turbinas</td></tr>
+          <tr><td>Audível (humano)</td><td>20 Hz – 20 kHz</td><td>Música, voz, sons do ambiente</td></tr>
+          <tr><td>Ultrassom</td><td>&gt; 20 kHz</td><td>Ecografia médica, sonar de morcego/golfinho, limpeza ultrassônica, defeito em solda</td></tr>
+        </tbody>
+      </table>
+      <div class="highlight-box info">
+        <span class="hb-icon">🦇</span>
+        <p>Morcegos emitem pulsos de ultrassom (20–100 kHz) e detectam o eco para se orientar e caçar — é a <strong>ecolocalização</strong>. Golfinhos usam frequências até 150 kHz. O sonar naval funciona com o mesmo princípio: mede o tempo de ida e volta do pulso para calcular a distância do fundo ou de submarinos.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Calculadora</h2>
+      <div class="calc-box">
+        <h4>🧮 Nível sonoro: β = 10·log(I/I₀)</h4>
+        <p style="font-size:.85rem;color:#666;margin-bottom:.8rem;">Deixe um campo em branco para calcular. I₀ = 10⁻¹² W/m²</p>
+        <div class="calc-grid">
+          <div class="calc-field"><label>β (dB)</label><input type="number" id="db-b" placeholder="vazio = calcular"></div>
+          <div class="calc-field"><label>I (W/m²) — notação científica ex: 1e-6</label><input type="number" id="db-I" placeholder="vazio = calcular"></div>
+        </div>
+        <button class="calc-btn" onclick="calcDb()">Calcular</button>
+        <div class="calc-result" id="db-result"></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Resumo</h2>
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Som: onda mecânica longitudinal. Não se propaga no vácuo.</li>
+          <li>Velocidade no ar (20 °C): ~343 m/s. Nos sólidos: muito maior (aço: ~5000 m/s).</li>
+          <li>Altura = frequência; Intensidade = amplitude; Timbre = forma da onda (harmônicos).</li>
+          <li>Nível sonoro: β = 10·log(I/I₀). Escala logarítmica em dB. Cada +10 dB → 10× a intensidade.</li>
+          <li>Infrassom: &lt; 20 Hz. Audível: 20 Hz – 20 kHz. Ultrassom: &gt; 20 kHz.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="fenomenos-ondulatorios.html">← Fenômenos Ondulatórios</a>
+      <a href="efeito-doppler.html" class="nav-next">Próximo: Efeito Doppler →</a>
+    </div>
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+<script>
+(function(){
+  const I0 = 1e-12;
+  window.calcDb = function(){
+    const bv=document.getElementById('db-b').value, Iv=document.getElementById('db-I').value;
+    const res=document.getElementById('db-result');
+    const blanks=[bv,Iv].filter(v=>v==='').length;
+    if(blanks!==1){res.className='calc-result erro';res.textContent='Deixe exatamente UM campo em branco.';return;}
+    if(bv===''){
+      const I=parseFloat(Iv);
+      if(I<=0){res.className='calc-result erro';res.textContent='I deve ser positivo.';return;}
+      const b=10*Math.log10(I/I0);
+      document.getElementById('db-b').value=b.toFixed(2);
+      res.className='calc-result ok';res.textContent='β = '+b.toFixed(2)+' dB';
+    } else {
+      const b=parseFloat(bv);
+      const I=I0*Math.pow(10,b/10);
+      document.getElementById('db-I').value=I.toExponential(3);
+      res.className='calc-result ok';res.textContent='I = '+I.toExponential(3)+' W/m²';
+    }
+  };
+
+  const sections=document.querySelectorAll('.content-section');
+  const tocLinks=document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll',function(){
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+    tocLinks.forEach(a=>a.parentElement.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. ondulatoria/som-longitudinal.png
+     Diagrama de onda sonora longitudinal. Fonte à esquerda, regiões de compressão
+     e rarefação alternadas representadas por pontos mais ou menos densos.
+     Seta de v_som. Fundo branco.
+-->
+</body>
+</html>

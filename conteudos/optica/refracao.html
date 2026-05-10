@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Refração da Luz — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TY56KM22X8');</script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero" style="background:linear-gradient(135deg,#0c4a6e 0%,#0369a1 55%,#0ea5e9 100%);">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Óptica</a><span>/</span>
+      <span>Refração</span>
+    </nav>
+    <h1 class="content-title">Refração da Luz</h1>
+    <p class="content-subtitle">A mudança de velocidade e direção da luz ao passar de um meio para outro — a causa dos arco-íris e das ilusões ópticas.</p>
+    <span class="formula-highlight">n₁ · senθ₁ = n₂ · senθ₂</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">O que é refração?</a></li>
+      <li><a href="#s2">Índice de refração</a></li>
+      <li><a href="#s3">Lei de Snell-Descartes</a></li>
+      <li><a href="#s4">Reflexão total interna</a></li>
+      <li><a href="#s5">Dispersão da luz</a></li>
+      <li><a href="#s6">Simulador</a></li>
+      <li><a href="#s7">Calculadora</a></li>
+      <li><a href="#s8">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="espelhos-esfericos.html">← Espelhos Esféricos</a>
+      <a href="lentes.html" class="toc-next">Lentes →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> O que é refração?</h2>
+      <p>A <strong>refração</strong> ocorre quando a luz passa de um meio para outro com índice de refração diferente. Ao mudar de meio, a velocidade da luz muda — e, se o raio não for perpendicular à interface, a direção também muda.</p>
+      <div class="concept-grid">
+        <div class="concept-card"><span class="cc-icon">🐟</span><div class="cc-title">Peixe "deslocado"</div><p class="cc-desc">Um peixe na água parece estar mais perto da superfície do que realmente está — a luz dobra ao sair da água.</p></div>
+        <div class="concept-card"><span class="cc-icon">🥄</span><div class="cc-title">Colher "quebrada"</div><p class="cc-desc">Uma colher num copo d'água parece dobrada na superfície — cada parte da colher é vista via raios que sofreram refração diferente.</p></div>
+        <div class="concept-card"><span class="cc-icon">🌈</span><div class="cc-title">Arco-íris</div><p class="cc-desc">Luz branca sofre dispersão na gota d'água: cada cor refrata diferente → cores separadas no espectro.</p></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Índice de refração</h2>
+      <div class="formula-box">
+        <span class="formula-label">Índice de refração absoluto</span>
+        <span class="formula-expr">n = c / v</span>
+        <span class="formula-legend">
+          <span>n = índice de refração (adimensional, n ≥ 1)</span>
+          <span>c = velocidade da luz no vácuo (3×10⁸ m/s)</span>
+          <span>v = velocidade da luz no meio (m/s)</span>
+        </span>
+      </div>
+      <table class="content-table">
+        <thead><tr><th>Meio</th><th>n</th><th>v da luz (m/s)</th></tr></thead>
+        <tbody>
+          <tr><td>Vácuo</td><td>1,000</td><td>3,00×10⁸</td></tr>
+          <tr><td>Ar</td><td>1,0003 ≈ 1</td><td>≈ 3,00×10⁸</td></tr>
+          <tr><td>Água (20°C)</td><td>1,333</td><td>2,25×10⁸</td></tr>
+          <tr><td>Vidro comum</td><td>1,50</td><td>2,00×10⁸</td></tr>
+          <tr><td>Vidro óptico denso</td><td>1,70</td><td>1,76×10⁸</td></tr>
+          <tr><td>Diamante</td><td>2,42</td><td>1,24×10⁸</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Lei de Snell-Descartes</h2>
+      <div class="formula-box">
+        <span class="formula-label">Lei de Snell-Descartes</span>
+        <span class="formula-expr">n₁ · senθ₁ = n₂ · senθ₂</span>
+        <span class="formula-legend">
+          <span>n₁, n₂ = índices dos meios 1 e 2</span>
+          <span>θ₁ = ângulo de incidência (relativo à normal)</span>
+          <span>θ₂ = ângulo de refração (relativo à normal)</span>
+          <span>n₁ &lt; n₂ → θ₁ &gt; θ₂ (raio se aproxima da normal ao entrar em meio mais denso)</span>
+        </span>
+      </div>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Ar → Vidro</div>
+        <div class="ex-body">
+          <p>Raio no ar (n₁ = 1) incide a θ₁ = 30° na superfície de vidro (n₂ = 1,5).</p>
+          <p>senθ₂ = n₁·senθ₁/n₂ = 1×0,5/1,5 = 0,333</p>
+          <p>θ₂ = arcsen(0,333) ≈ <strong>19,5°</strong></p>
+          <div class="ex-result">O raio se aproxima da normal ao entrar no vidro mais denso (19,5° &lt; 30°).</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Reflexão total interna</h2>
+      <p>Quando a luz vai de um meio mais denso (n₁ maior) para um menos denso (n₂ menor), existe um <strong>ângulo crítico</strong> θ<sub>c</sub> além do qual a luz não consegue mais atravessar a interface — ela se reflete totalmente de volta:</p>
+      <div class="formula-box">
+        <span class="formula-label">Ângulo crítico</span>
+        <span class="formula-expr">senθ<sub>c</sub> = n₂ / n₁</span>
+        <span class="formula-legend">
+          <span>Válido quando n₁ &gt; n₂</span>
+          <span>Se θ₁ &gt; θ<sub>c</sub>: reflexão total interna (sem refração)</span>
+          <span>Exemplo: vidro(1,5)→ar: senθc = 1/1,5 → θc ≈ 41,8°</span>
+        </span>
+      </div>
+      <div class="daily-grid">
+        <div class="daily-card"><span class="dc-icon">🔌</span><div class="dc-title">Fibra óptica</div><p class="dc-desc">A luz propaga-se por reflexão total interna em fibras de vidro ou plástico com n alto. Nenhuma energia é perdida — base das telecomunicações modernas.</p></div>
+        <div class="daily-card"><span class="dc-icon">💎</span><div class="dc-title">Brilho do diamante</div><p class="dc-desc">n = 2,42 → θc ≈ 24°. A lapidação é desenhada para que a maioria dos raios sofra reflexão total interna, maximizando o brilho.</p></div>
+        <div class="daily-card"><span class="dc-icon">🌅</span><div class="dc-title">Miragem</div><p class="dc-desc">Ar quente perto do asfalto tem n menor. Luz do céu sofre reflexão total ao atingir essa camada — parece uma poça d'água.</p></div>
+        <div class="daily-card"><span class="dc-icon">🔬</span><div class="dc-title">Endoscopia</div><p class="dc-desc">Feixes de fibra óptica transmitem imagens do interior do corpo — sem cirurgia aberta — graças à reflexão total.</p></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Dispersão da luz — arco-íris</h2>
+      <p>O índice de refração depende levemente do comprimento de onda (cor) da luz. Por isso, ao refratar, a luz branca se separa em suas componentes coloridas — fenômeno chamado <strong>dispersão</strong>:</p>
+      <div class="highlight-box info">
+        <span class="hb-icon">🌈</span>
+        <p>No prisma e na gota de chuva: violeta (λ menor, n maior) desvia mais; vermelho (λ maior, n menor) desvia menos. O arco-íris tem vermelho na parte superior e violeta na inferior — ao contrário do que a maioria imagina ao olhar para fora!</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Simulador de refração</h2>
+      <p>Ajuste o ângulo de incidência e os índices de refração.</p>
+      <div class="graph-box">
+        <h4>🌊 Refração — Lei de Snell-Descartes</h4>
+        <div class="graph-canvases">
+          <canvas id="snell-canvas" width="500" height="280"></canvas>
+        </div>
+        <div class="graph-controls">
+          <div class="slider-row">
+            <label>Ângulo de incidência θ₁ = <span id="snell-t1-disp">40</span>°</label>
+            <input type="range" id="snell-t1" min="1" max="89" value="40" step="1">
+          </div>
+          <div class="slider-row">
+            <label>n₁ = <span id="snell-n1-disp">1.0</span></label>
+            <input type="range" id="snell-n1" min="1.0" max="2.5" value="1.0" step="0.1">
+          </div>
+          <div class="slider-row">
+            <label>n₂ = <span id="snell-n2-disp">1.5</span></label>
+            <input type="range" id="snell-n2" min="1.0" max="2.5" value="1.5" step="0.1">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Calculadora</h2>
+      <div class="calc-box">
+        <h4>🧮 Lei de Snell-Descartes — n₁·senθ₁ = n₂·senθ₂</h4>
+        <div class="calc-grid">
+          <div class="calc-field"><label>n₁</label><input type="number" id="sn-n1" placeholder="ex: 1.0" step="0.01" value="1.0"></div>
+          <div class="calc-field"><label>θ₁ (graus)</label><input type="number" id="sn-t1" placeholder="ex: 30"></div>
+          <div class="calc-field"><label>n₂</label><input type="number" id="sn-n2" placeholder="ex: 1.5" step="0.01" value="1.5"></div>
+          <div class="calc-field"><label>θ₂ (graus) — calculado</label><input type="number" id="sn-t2" placeholder="resultado" readonly style="background:#f1f5f9;"></div>
+        </div>
+        <button class="calc-btn" onclick="calcSnell()">Calcular θ₂</button>
+        <div class="calc-result" id="sn-result"></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Resumo</h2>
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Refração: mudança de velocidade e direção da luz ao mudar de meio.</li>
+          <li>Índice de refração: n = c/v (n ≥ 1; maior n = luz mais lenta).</li>
+          <li>Lei de Snell-Descartes: n₁·senθ₁ = n₂·senθ₂.</li>
+          <li>n₁ &lt; n₂ → raio aproxima-se da normal; n₁ &gt; n₂ → raio afasta-se.</li>
+          <li>Ângulo crítico: senθc = n₂/n₁ — base da fibra óptica e do brilho do diamante.</li>
+          <li>Dispersão: cores diferentes refratam em ângulos ligeiramente diferentes → arco-íris.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="espelhos-esfericos.html">← Espelhos Esféricos</a>
+      <a href="lentes.html" class="nav-next">Próximo: Lentes →</a>
+    </div>
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+<script>
+(function(){
+  window.calcSnell=function(){
+    const n1=parseFloat(document.getElementById('sn-n1').value);
+    const t1=parseFloat(document.getElementById('sn-t1').value);
+    const n2=parseFloat(document.getElementById('sn-n2').value);
+    const res=document.getElementById('sn-result');
+    if(isNaN(n1)||isNaN(t1)||isNaN(n2)){res.className='calc-result erro';res.textContent='Preencha n1, θ1 e n2.';return;}
+    const sinT2=n1*Math.sin(t1*Math.PI/180)/n2;
+    if(sinT2>1){
+      res.className='calc-result erro';
+      res.textContent='Reflexão total interna! (senθ₂ = '+sinT2.toFixed(3)+' > 1 — não há raio refratado)';
+      const tc=Math.asin(n2/n1)*180/Math.PI;
+      res.textContent+='  |  Ângulo crítico: θc = '+tc.toFixed(1)+'°';
+      return;
+    }
+    const t2=Math.asin(sinT2)*180/Math.PI;
+    document.getElementById('sn-t2').value=t2.toFixed(2);
+    const dir=n2>n1?'aproximou-se':'afastou-se';
+    res.className='calc-result ok';
+    res.textContent='θ₂ = arcsen('+sinT2.toFixed(4)+') = '+t2.toFixed(2)+'°  →  o raio '+dir+' da normal.';
+  };
+
+  /* Simulador */
+  const canvas=document.getElementById('snell-canvas');
+  const ctx=canvas.getContext('2d');
+  const t1Sl=document.getElementById('snell-t1');
+  const n1Sl=document.getElementById('snell-n1');
+  const n2Sl=document.getElementById('snell-n2');
+  const t1D=document.getElementById('snell-t1-disp');
+  const n1D=document.getElementById('snell-n1-disp');
+  const n2D=document.getElementById('snell-n2-disp');
+
+  function drawSnell(){
+    const t1Deg=parseFloat(t1Sl.value);
+    const n1=parseFloat(n1Sl.value);
+    const n2=parseFloat(n2Sl.value);
+    t1D.textContent=t1Deg; n1D.textContent=n1.toFixed(1); n2D.textContent=n2.toFixed(1);
+
+    const W=canvas.width, H=canvas.height;
+    ctx.clearRect(0,0,W,H);
+    const sy=H/2;
+
+    ctx.fillStyle='#e0f2fe'; ctx.fillRect(0,0,W,sy);
+    ctx.fillStyle='#bae6fd'; ctx.fillRect(0,sy,W,sy);
+    ctx.strokeStyle='#0369a1'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(0,sy); ctx.lineTo(W,sy); ctx.stroke();
+
+    ctx.fillStyle='#0369a1'; ctx.font='13px Poppins'; ctx.textAlign='left';
+    ctx.fillText('n₁ = '+n1.toFixed(1), 8, 22);
+    ctx.fillText('n₂ = '+n2.toFixed(1), 8, sy+22);
+
+    const px=W/2, t1=t1Deg*Math.PI/180;
+    ctx.strokeStyle='#94a3b8'; ctx.lineWidth=1.5; ctx.setLineDash([5,4]);
+    ctx.beginPath(); ctx.moveTo(px,0); ctx.lineTo(px,H); ctx.stroke();
+    ctx.setLineDash([]);
+
+    const len=110;
+    /* Raio incidente */
+    const ix=px-len*Math.sin(t1), iy=sy-len*Math.cos(t1);
+    drawRay(ctx,ix,iy,px,sy,'#f97316');
+
+    /* Raio refletido */
+    const rx=px+len*Math.sin(t1), ry=sy-len*Math.cos(t1);
+    drawRay(ctx,px,sy,rx,ry,'#64748b');
+
+    /* Raio refratado */
+    const sinT2=n1*Math.sin(t1)/n2;
+    if(sinT2<=1){
+      const t2=Math.asin(sinT2);
+      const rx2=px+len*Math.sin(t2), ry2=sy+len*Math.cos(t2);
+      drawRay(ctx,px,sy,rx2,ry2,'#2f5bea');
+      ctx.fillStyle='#1e40af'; ctx.font='12px Poppins'; ctx.textAlign='left';
+      ctx.fillText('θ₂='+( t2*180/Math.PI).toFixed(1)+'°', rx2+6, ry2);
+    } else {
+      ctx.fillStyle='#dc2626'; ctx.font='bold 12px Poppins'; ctx.textAlign='center';
+      ctx.fillText('Reflexão total interna!', px, sy+50);
+    }
+
+    /* Ângulo θ1 */
+    ctx.fillStyle='#c2410c'; ctx.font='12px Poppins'; ctx.textAlign='right';
+    ctx.fillText('θ₁='+t1Deg+'°', ix-4, iy);
+  }
+
+  function drawRay(ctx,x1,y1,x2,y2,color){
+    const dx=x2-x1,dy=y2-y1,l=Math.sqrt(dx*dx+dy*dy);
+    const ux=dx/l,uy=dy/l;
+    ctx.strokeStyle=color; ctx.fillStyle=color; ctx.lineWidth=2.5;
+    ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x2,y2);
+    ctx.lineTo(x2-9*ux+5*uy,y2-9*uy-5*ux);
+    ctx.lineTo(x2-9*ux-5*uy,y2-9*uy+5*ux);
+    ctx.closePath(); ctx.fill();
+  }
+
+  [t1Sl,n1Sl,n2Sl].forEach(sl=>sl.addEventListener('input',drawSnell));
+  drawSnell();
+
+  const sections=document.querySelectorAll('.content-section');
+  const tocLinks=document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll',function(){
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+    tocLinks.forEach(a=>a.parentElement.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. optica/dispersao-prisma.png
+     Prisma com luz branca decomposta em espectro: violeta mais desviado, vermelho menos.
+-->
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Efeito Fotoelétrico — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TY56KM22X8');</script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero" style="background:linear-gradient(135deg,#1e1b4b 0%,#4338ca 55%,#818cf8 100%);">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Física Moderna</a><span>/</span>
+      <span>Efeito Fotoelétrico</span>
+    </nav>
+    <h1 class="content-title">Efeito Fotoelétrico e Física Quântica</h1>
+    <p class="content-subtitle">Luz ilumina metal e arranca elétrons — mas só se a frequência for alta o suficiente. Einstein explicou isso com a quantização da luz, ganhando o Nobel de 1921.</p>
+    <span class="formula-highlight">E_cin = h·f − φ  |  λ_dB = h/(mv)</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">O experimento</a></li>
+      <li><a href="#s2">O que a onda não explica</a></li>
+      <li><a href="#s3">Explicação de Einstein</a></li>
+      <li><a href="#s4">Equação fotoelétrica</a></li>
+      <li><a href="#s5">Dualidade onda-partícula</a></li>
+      <li><a href="#s6">Princípio de Heisenberg</a></li>
+      <li><a href="#s7">Calculadora</a></li>
+      <li><a href="#s8">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="relatividade.html">← Relatividade</a>
+      <a href="modelos-atomicos.html" class="toc-next">Modelos Atômicos →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> O experimento fotoelétrico</h2>
+      <p>Hertz (1887) observou que luz ultravioleta incidindo sobre superfícies metálicas provoca a emissão de elétrons. O fenômeno foi chamado <strong>efeito fotoelétrico</strong>.</p>
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> O que a física clássica não conseguia explicar</h2>
+      <table class="content-table">
+        <thead><tr><th>Observação experimental</th><th>Previsão clássica (onda)</th><th>Resultado real</th></tr></thead>
+        <tbody>
+          <tr><td>Efeito depende de frequência mínima (limiar)</td><td>Qualquer frequência com intensidade suficiente deveria funcionar</td><td>Abaixo da frequência limiar: nenhum elétron, não importa a intensidade</td></tr>
+          <tr><td>Energia cinética dos elétrons</td><td>Deveria crescer com a intensidade da luz</td><td>Cresce com a frequência, não com a intensidade</td></tr>
+          <tr><td>Corrente fotoelétrica</td><td>Deveria haver atraso com luz fraca</td><td>Emissão imediata, mesmo com luz fraca</td></tr>
+          <tr><td>Intensidade da luz</td><td>Controla a energia dos elétrons</td><td>Controla apenas o número de elétrons emitidos</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Explicação de Einstein (1905)</h2>
+      <p>Einstein propôs que a luz é composta de <strong>quanta de energia</strong> (depois chamados <strong>fótons</strong>), cada um com energia E = h·f. A emissão de elétrons não depende da intensidade da onda, mas da energia de cada pacote individual de luz:</p>
+      <div class="highlight-box info">
+        <span class="hb-icon">💡</span>
+        <p>A ideia de que a luz vem em "pacotes" discretos (quanta) havia sido introduzida por Max Planck em 1900 para explicar o espectro do corpo negro — mas Planck achava que era um truque matemático, não uma realidade física. Einstein foi o primeiro a levar a quantização a sério e aplicá-la ao efeito fotoelétrico. Foi por isso, não pela relatividade, que ele ganhou o Nobel de Física de 1921.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Equação fotoelétrica de Einstein</h2>
+      <div class="formula-box">
+        <span class="formula-label">Efeito fotoelétrico</span>
+        <span class="formula-expr">E_cin_máx = h·f − φ</span>
+        <span class="formula-legend">
+          <span>E_cin_máx = energia cinética máxima dos elétrons emitidos (J ou eV)</span>
+          <span>h = 6,626×10⁻³⁴ J·s — constante de Planck</span>
+          <span>f = frequência da luz (Hz)</span>
+          <span>φ = função trabalho do metal (J ou eV) — energia mínima para arrancar o elétron</span>
+          <span>Condição para emissão: h·f ≥ φ → f ≥ f₀ = φ/h</span>
+        </span>
+      </div>
+      <table class="content-table">
+        <thead><tr><th>Metal</th><th>Função trabalho φ (eV)</th><th>Frequência limiar f₀ (Hz)</th></tr></thead>
+        <tbody>
+          <tr><td>Césio (Cs)</td><td>2,1</td><td>5,1 × 10¹⁴</td></tr>
+          <tr><td>Sódio (Na)</td><td>2,3</td><td>5,6 × 10¹⁴</td></tr>
+          <tr><td>Alumínio (Al)</td><td>4,1</td><td>9,9 × 10¹⁴</td></tr>
+          <tr><td>Cobre (Cu)</td><td>4,5</td><td>1,1 × 10¹⁵</td></tr>
+          <tr><td>Platina (Pt)</td><td>5,7</td><td>1,4 × 10¹⁵</td></tr>
+        </tbody>
+      </table>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Luz UV sobre sódio</div>
+        <div class="ex-body">
+          <p>Luz UV com λ = 200 nm incide sobre sódio (φ = 2,3 eV). Qual a energia cinética máxima dos elétrons?</p>
+          <p>f = c/λ = 3×10⁸ / (200×10⁻⁹) = 1,5×10¹⁵ Hz</p>
+          <p>h·f = 6,626×10⁻³⁴ × 1,5×10¹⁵ = 9,94×10⁻¹⁹ J = <strong>6,21 eV</strong></p>
+          <p>E_cin = h·f − φ = 6,21 − 2,3 = <strong>3,91 eV</strong></p>
+          <div class="ex-result">Os elétrons são emitidos com energia cinética máxima de 3,91 eV.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Dualidade onda-partícula</h2>
+      <p>O efeito fotoelétrico mostra que a luz se comporta como partícula (fótons). Mas interferência e difração mostram que se comporta como onda. De Broglie (1924) propôs que a dualidade é universal — toda partícula com momentum p tem um comprimento de onda associado:</p>
+      <div class="formula-box">
+        <span class="formula-label">Comprimento de onda de De Broglie</span>
+        <span class="formula-expr">λ = h / p = h / (m·v)</span>
+        <span class="formula-legend">
+          <span>λ = comprimento de onda da matéria (m)</span>
+          <span>h = 6,626×10⁻³⁴ J·s</span>
+          <span>p = mv = momentum da partícula (kg·m/s)</span>
+          <span>Elétrons, prótons, átomos — todos têm comprimento de onda!</span>
+        </span>
+      </div>
+      <div class="highlight-box info">
+        <span class="hb-icon">🔬</span>
+        <p>O microscópio eletrônico usa exatamente isso: elétrons acelerados têm comprimento de onda da ordem de picômetros (~0,001 nm), muito menor que o da luz visível (~500 nm). Por isso resolvem estruturas atomicamente — revelam proteínas, vírus e nanocristais que seriam invisíveis à luz.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Princípio de Incerteza de Heisenberg</h2>
+      <p>A mecânica quântica impõe um limite fundamental à precisão simultânea de posição e momentum de uma partícula:</p>
+      <div class="formula-box">
+        <span class="formula-label">Princípio de Incerteza</span>
+        <span class="formula-expr">Δx · Δp ≥ ℏ/2</span>
+        <span class="formula-legend">
+          <span>Δx = incerteza na posição (m)</span>
+          <span>Δp = incerteza no momentum (kg·m/s)</span>
+          <span>ℏ = h/(2π) = 1,055×10⁻³⁴ J·s (h-barra)</span>
+          <span>Não é limitação do instrumento — é fundamental à natureza</span>
+        </span>
+      </div>
+      <div class="highlight-box warning">
+        <span class="hb-icon">🎯</span>
+        <p>O princípio de incerteza <strong>não diz que medimos mal</strong> — diz que posição e momentum bem definidos simultaneamente não existem na natureza quântica. Um elétron confinado num espaço muito pequeno (Δx pequeno) necessariamente tem um grande spread de velocidades (Δp grande). É isso que impede o elétron de "cair" no núcleo do átomo.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Calculadora</h2>
+      <div class="calc-box">
+        <h4>🧮 Efeito fotoelétrico: E_cin = h·f − φ</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>λ (nm)</label>
+            <input type="number" id="ef-l" placeholder="ex: 200">
+          </div>
+          <div class="calc-field">
+            <label>φ (eV) — função trabalho</label>
+            <input type="number" id="ef-phi" placeholder="ex: 2.3" step="0.1">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcFoto()">Calcular</button>
+        <div class="calc-result" id="ef-result"></div>
+      </div>
+
+      <div class="calc-box" style="margin-top:1rem;">
+        <h4>🧮 Comprimento de onda de De Broglie: λ = h/(mv)</h4>
+        <div class="calc-grid">
+          <div class="calc-field"><label>m (kg) — ex: 9.11e-31 para elétron</label><input type="number" id="db-m" placeholder="ex: 9.11e-31"></div>
+          <div class="calc-field"><label>v (m/s)</label><input type="number" id="db-v" placeholder="ex: 1e6"></div>
+        </div>
+        <button class="calc-btn" onclick="calcDeBroglie()">Calcular λ</button>
+        <div class="calc-result" id="db-result"></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Resumo</h2>
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Efeito fotoelétrico: luz arranca elétrons de metais apenas se f ≥ f₀ = φ/h.</li>
+          <li>Explicação de Einstein: luz é composta de fótons com E = h·f.</li>
+          <li>Equação fotoelétrica: E_cin = h·f − φ. Intensidade controla o número de elétrons, não a energia.</li>
+          <li>Dualidade onda-partícula: toda partícula tem λ = h/p (De Broglie). Base do microscópio eletrônico.</li>
+          <li>Princípio de Incerteza: Δx·Δp ≥ ℏ/2. Limite fundamental, não instrumental.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="relatividade.html">← Relatividade</a>
+      <a href="modelos-atomicos.html" class="nav-next">Próximo: Modelos Atômicos →</a>
+    </div>
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+<script>
+(function(){
+  const h = 6.626e-34, c = 3e8, eV = 1.6e-19;
+
+  window.calcFoto = function(){
+    const l = parseFloat(document.getElementById('ef-l').value)*1e-9;
+    const phi = parseFloat(document.getElementById('ef-phi').value)*eV;
+    const res = document.getElementById('ef-result');
+    if(isNaN(l)||isNaN(phi)){ res.className='calc-result erro'; res.textContent='Preencha λ e φ.'; return; }
+    const f = c/l;
+    const Ef = h*f;
+    const Ecin = Ef - phi;
+    if(Ecin < 0){
+      res.className='calc-result erro';
+      res.innerHTML='Efeito fotoelétrico não ocorre!<br>h·f = '+(Ef/eV).toFixed(3)+' eV &lt; φ = '+(phi/eV).toFixed(3)+' eV<br>Frequência limiar: f₀ = '+(phi/h/1e12).toFixed(2)+' THz (λ₀ = '+(c*h/phi*1e9).toFixed(1)+' nm)';
+      return;
+    }
+    res.className='calc-result ok';
+    res.innerHTML='f = '+(f*1e-12).toFixed(2)+' THz<br>h·f = '+(Ef/eV).toFixed(3)+' eV<br>E_cin_máx = <strong>'+(Ecin/eV).toFixed(3)+' eV</strong> = '+Ecin.toExponential(3)+' J';
+  };
+
+  window.calcDeBroglie = function(){
+    const m = parseFloat(document.getElementById('db-m').value);
+    const v = parseFloat(document.getElementById('db-v').value);
+    const res = document.getElementById('db-result');
+    if(isNaN(m)||isNaN(v)||m<=0||v<=0){ res.className='calc-result erro'; res.textContent='Preencha m e v com valores positivos.'; return; }
+    const p = m*v, lam = h/p;
+    res.className='calc-result ok';
+    res.innerHTML='p = '+p.toExponential(3)+' kg·m/s<br>λ = '+lam.toExponential(3)+' m = '+(lam*1e12).toFixed(4)+' pm';
+  };
+
+  const sections=document.querySelectorAll('.content-section');
+  const tocLinks=document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll',function(){
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+    tocLinks.forEach(a=>a.parentElement.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. fisica-moderna/efeito-fotoeletrico.png
+     Placa metálica iluminada por fótons. Elétrons saindo apenas quando f ≥ f₀.
+     Dois casos lado a lado: luz vermelha (f < f₀, sem elétrons) e UV (f > f₀, elétrons saindo).
+     Fundo branco, estilo didático.
+
+  2. fisica-moderna/grafico-ecin-f.png
+     Gráfico E_cin × frequência (f). Reta começando em f₀ (intercepta eixo x),
+     inclinação h. Intercepto y negativo = −φ. Fundo branco, reta violeta.
+-->
+</body>
+</html>

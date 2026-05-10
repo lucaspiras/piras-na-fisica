@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energia Potencial — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero" style="background:linear-gradient(135deg,#4c1d95 0%,#7c3aed 55%,#8b5cf6 100%);">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Trabalho e Energia</a><span>/</span>
+      <span>Energia Potencial</span>
+    </nav>
+    <h1 class="content-title">Energia Potencial</h1>
+    <p class="content-subtitle">Energia armazenada pela posição — gravitacional (altura) e elástica (deformação de mola).</p>
+    <span class="formula-highlight">E<sub>pg</sub> = mgh &nbsp;|&nbsp; E<sub>pe</sub> = ½kx²</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">O que é En. Potencial?</a></li>
+      <li><a href="#s2">Ep gravitacional</a></li>
+      <li><a href="#s3">Referência zero</a></li>
+      <li><a href="#s4">Ep elástica</a></li>
+      <li><a href="#s5">Forças conservativas</a></li>
+      <li><a href="#s6">Calculadora</a></li>
+      <li><a href="#s7">Aplicações</a></li>
+      <li><a href="#s8">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="energia-cinetica.html">← En. Cinética</a>
+      <a href="conservacao-energia.html" class="toc-next">Conservação →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> O que é energia potencial?</h2>
+
+      <p>
+        A <strong>energia potencial</strong> é a energia armazenada num sistema em função da sua configuração — posição ou deformação. Diferente da energia cinética (que depende do movimento), a energia potencial existe mesmo num corpo em repouso.
+      </p>
+
+      <div class="concept-grid">
+        <div class="concept-card">
+          <span class="cc-icon">⬆️</span>
+          <div class="cc-title">Energia potencial gravitacional</div>
+          <p class="cc-desc">Armazenada pela posição vertical de um corpo num campo gravitacional. Quanto mais alto, maior a E<sub>pg</sub>.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">🌀</span>
+          <div class="cc-title">Energia potencial elástica</div>
+          <p class="cc-desc">Armazenada por deformação de uma mola (ou qualquer material elástico). Quanto maior a deformação, maior a E<sub>pe</sub>.</p>
+        </div>
+      </div>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">💡</span>
+        <p>
+          Energia potencial é sempre <em>relativa</em> a uma posição de referência. O que importa fisicamente é a <strong>diferença</strong> de energia potencial — não seu valor absoluto.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Energia potencial gravitacional</h2>
+
+      <p>
+        Para um corpo próximo à superfície da Terra, a energia potencial gravitacional é:
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Energia potencial gravitacional</span>
+        <span class="formula-expr">E<sub>pg</sub> = m · g · h</span>
+        <span class="formula-legend">
+          <span>E<sub>pg</sub> = energia potencial gravitacional (J)</span>
+          <span>m = massa (kg)</span>
+          <span>g = aceleração gravitacional (m/s²)</span>
+          <span>h = altura em relação ao nível de referência (m)</span>
+        </span>
+      </div>
+
+      <p>
+        A variação de E<sub>pg</sub> está diretamente ligada ao trabalho do peso:
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Trabalho do peso e variação de Ep</span>
+        <span class="formula-expr">T<sub>P</sub> = −ΔE<sub>pg</sub> = −(E<sub>pgf</sub> − E<sub>pgi</sub>)</span>
+        <span class="formula-legend">
+          <span>Descendo: h diminui → E<sub>pg</sub> diminui → T<sub>P</sub> &gt; 0 (peso realiza trabalho positivo)</span>
+          <span>Subindo: h aumenta → E<sub>pg</sub> aumenta → T<sub>P</sub> &lt; 0 (peso realiza trabalho negativo)</span>
+        </span>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Caixa d'água</div>
+        <div class="ex-body">
+          <p>Uma caixa d'água de m = 500 kg está a h = 10 m de altura. g = 10 m/s².</p>
+          <p>E<sub>pg</sub> = 500 × 10 × 10 = <strong>50 000 J = 50 kJ</strong></p>
+          <div class="ex-result">A caixa armazena 50 kJ de energia potencial gravitacional em relação ao solo.</div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Escolha do nível de referência (h = 0)</h2>
+
+      <p>
+        A altura h é medida a partir de um <strong>nível de referência</strong> que escolhemos livremente. Convenções comuns:
+      </p>
+
+      <div class="concept-grid">
+        <div class="concept-card">
+          <span class="cc-icon">🌍</span>
+          <div class="cc-title">Solo como referência</div>
+          <p class="cc-desc">h = 0 no chão. Corpos acima do solo têm E<sub>pg</sub> > 0.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">📍</span>
+          <div class="cc-title">Ponto inicial como referência</div>
+          <p class="cc-desc">h = 0 na posição inicial. Útil quando o corpo pode subir ou descer.</p>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <span class="hb-icon">💡</span>
+        <p>
+          A escolha da referência não afeta os resultados dos problemas — o que importa é sempre a <strong>variação</strong> ΔE<sub>pg</sub> = mgΔh, que independe da referência escolhida.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Energia potencial elástica</h2>
+
+      <p>
+        Uma mola comprimida ou esticada armazena energia que pode ser liberada para mover objetos. A Lei de Hooke (F = k·x) leva à seguinte expressão para a energia armazenada:
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Energia potencial elástica</span>
+        <span class="formula-expr">E<sub>pe</sub> = ½ · k · x²</span>
+        <span class="formula-legend">
+          <span>E<sub>pe</sub> = energia potencial elástica (J)</span>
+          <span>k = constante elástica da mola (N/m)</span>
+          <span>x = deformação a partir da posição natural (m)</span>
+          <span>E<sub>pe</sub> ≥ 0 sempre (x² é positivo, seja compressão ou extensão)</span>
+        </span>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Mola comprimida</div>
+        <div class="ex-body">
+          <p>Uma mola com k = 400 N/m é comprimida x = 0,15 m.</p>
+          <p>E<sub>pe</sub> = ½ × 400 × (0,15)² = 200 × 0,0225 = <strong>4,5 J</strong></p>
+          <div class="ex-result">E<sub>pe</sub> = 4,5 J (armazenados, prontos para serem convertidos em cinética)</div>
+        </div>
+      </div>
+
+
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Forças conservativas e não-conservativas</h2>
+
+      <p>
+        A energia potencial só pode ser definida para <strong>forças conservativas</strong> — aquelas cujo trabalho independe do caminho percorrido:
+      </p>
+
+      <table class="content-table">
+        <thead>
+          <tr><th>Força</th><th>Tipo</th><th>Tem energia potencial?</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Peso (gravidade)</td><td>Conservativa</td><td>✅ E<sub>pg</sub> = mgh</td></tr>
+          <tr><td>Elástica (mola)</td><td>Conservativa</td><td>✅ E<sub>pe</sub> = ½kx²</td></tr>
+          <tr><td>Eletrostática</td><td>Conservativa</td><td>✅ E<sub>elétrica</sub></td></tr>
+          <tr><td>Atrito cinético</td><td>Não-conservativa</td><td>❌ (dissipa como calor)</td></tr>
+          <tr><td>Força aplicada variável</td><td>Não-conservativa</td><td>❌</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <span class="hb-icon">💡</span>
+        <p>
+          Forças não-conservativas (como o atrito) dissipam energia — transformam energia mecânica em calor de forma irreversível. Por isso, a conservação de energia mecânica só vale <em>sem</em> forças não-conservativas.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Calculadora</h2>
+
+      <div class="calc-box">
+        <h4>🧮 Energia Potencial Gravitacional — E<sub>pg</sub> = mgh</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Massa m (kg)</label>
+            <input type="number" id="epg-m" placeholder="ex: 10">
+          </div>
+          <div class="calc-field">
+            <label>Altura h (m)</label>
+            <input type="number" id="epg-h" placeholder="ex: 5">
+          </div>
+          <div class="calc-field">
+            <label>g (m/s²)</label>
+            <input type="number" id="epg-g" value="10" step="0.1">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcEpg()">Calcular E<sub>pg</sub></button>
+        <div class="calc-result" id="epg-result"></div>
+      </div>
+
+      <div class="calc-box" style="margin-top:1.5rem;">
+        <h4>🧮 Energia Potencial Elástica — E<sub>pe</sub> = ½kx²</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Constante elástica k (N/m)</label>
+            <input type="number" id="epe-k" placeholder="ex: 200">
+          </div>
+          <div class="calc-field">
+            <label>Deformação x (m)</label>
+            <input type="number" id="epe-x" placeholder="ex: 0.1">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcEpe()">Calcular E<sub>pe</sub></button>
+        <div class="calc-result" id="epe-result"></div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Aplicações cotidianas</h2>
+
+      <div class="daily-grid">
+        <div class="daily-card">
+          <span class="dc-icon">💧</span>
+          <div class="dc-title">Usina hidrelétrica</div>
+          <p class="dc-desc">A água represada converte E<sub>pg</sub> em cinética ao cair → turbinas geram eletricidade. Itaipu usa ~100 m de queda d'água.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🎯</span>
+          <div class="dc-title">Besta (arco)</div>
+          <p class="dc-desc">A corda esticada armazena E<sub>pe</sub>. Ao soltar, a energia elástica converte-se em cinética da flecha.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🚗</span>
+          <div class="dc-title">Suspensão automotiva</div>
+          <p class="dc-desc">As molas da suspensão absorvem impactos armazenando E<sub>pe</sub> e devolvendo-a gradualmente para o chassi.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🏔️</span>
+          <div class="dc-title">Pêndulo</div>
+          <p class="dc-desc">No ponto mais alto (repouso momentâneo), toda energia é potencial. Na passagem pelo ponto mais baixo, toda é cinética.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Resumo</h2>
+
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Energia potencial gravitacional: E<sub>pg</sub> = mgh (depende da altura).</li>
+          <li>Energia potencial elástica: E<sub>pe</sub> = ½kx² (depende da deformação).</li>
+          <li>Ep é sempre definida em relação a uma referência (h = 0 ou x = 0).</li>
+          <li>O que importa é sempre a variação ΔEp, não o valor absoluto.</li>
+          <li>T<sub>P</sub> = −ΔE<sub>pg</sub>: o trabalho do peso é o negativo da variação de Ep.</li>
+          <li>Energia potencial só existe para forças conservativas (peso, elástica, elétrica).</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="energia-cinetica.html">← Energia Cinética</a>
+      <a href="conservacao-energia.html" class="nav-next">Próximo: Conservação →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+
+<script>
+(function() {
+  window.calcEpg = function() {
+    const m = parseFloat(document.getElementById('epg-m').value);
+    const h = parseFloat(document.getElementById('epg-h').value);
+    const g = parseFloat(document.getElementById('epg-g').value);
+    const res = document.getElementById('epg-result');
+    if (isNaN(m)||isNaN(h)||isNaN(g)) { res.className='calc-result erro'; res.textContent='Preencha todos os campos.'; return; }
+    const Epg = m*g*h;
+    res.className='calc-result ok';
+    res.textContent = 'E_pg = '+m+' × '+g+' × '+h+' = '+Epg.toFixed(2)+' J  (= '+(Epg/1000).toFixed(4)+' kJ)';
+  };
+
+  window.calcEpe = function() {
+    const k = parseFloat(document.getElementById('epe-k').value);
+    const x = parseFloat(document.getElementById('epe-x').value);
+    const res = document.getElementById('epe-result');
+    if (isNaN(k)||isNaN(x)) { res.className='calc-result erro'; res.textContent='Preencha k e x.'; return; }
+    const Epe = 0.5*k*x*x;
+    const F = k*x;
+    res.className='calc-result ok';
+    res.textContent = 'E_pe = ½ × '+k+' × '+x+'² = '+Epe.toFixed(4)+' J  |  Força da mola: F = k·x = '+F.toFixed(2)+' N';
+  };
+
+  const sections = document.querySelectorAll('.content-section');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', function() {
+    let current = '';
+    sections.forEach(sec => { if (window.scrollY >= sec.offsetTop-120) current = sec.id; });
+    tocLinks.forEach(a => { a.parentElement.classList.toggle('active', a.getAttribute('href')==='#'+current); });
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. trabalho-energia/energia-potencial-elastica.png
+     Dois painéis: mola natural (E_pe=0) e mola comprimida com x indicado + gráfico parábola E_pe×x.
+-->
+
+</body>
+</html>

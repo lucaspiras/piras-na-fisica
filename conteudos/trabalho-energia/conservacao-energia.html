@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conservação da Energia Mecânica — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero" style="background:linear-gradient(135deg,#4c1d95 0%,#7c3aed 55%,#8b5cf6 100%);">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Trabalho e Energia</a><span>/</span>
+      <span>Conservação</span>
+    </nav>
+    <h1 class="content-title">Conservação da Energia Mecânica</h1>
+    <p class="content-subtitle">Sem forças dissipativas, a soma de energia cinética e potencial permanece constante em qualquer instante.</p>
+    <span class="formula-highlight">E<sub>m</sub> = E<sub>c</sub> + E<sub>p</sub> = constante</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Energia mecânica</a></li>
+      <li><a href="#s2">Lei da conservação</a></li>
+      <li><a href="#s3">Queda livre</a></li>
+      <li><a href="#s4">Pêndulo simples</a></li>
+      <li><a href="#s5">Com atrito</a></li>
+      <li><a href="#s6">Calculadora</a></li>
+      <li><a href="#s7">Simulador</a></li>
+      <li><a href="#s8">Aplicações</a></li>
+      <li><a href="#s9">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="energia-potencial.html">← En. Potencial</a>
+      <a href="index.html" class="toc-next">Hub T&E →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Energia mecânica</h2>
+
+      <p>
+        A <strong>energia mecânica</strong> (E<sub>m</sub>) de um sistema é a soma das suas energias cinética e potencial (gravitacional e/ou elástica):
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Energia mecânica</span>
+        <span class="formula-expr">E<sub>m</sub> = E<sub>c</sub> + E<sub>pg</sub> + E<sub>pe</sub></span>
+        <span class="formula-legend">
+          <span>E<sub>c</sub> = ½mv² (energia cinética)</span>
+          <span>E<sub>pg</sub> = mgh (energia potencial gravitacional)</span>
+          <span>E<sub>pe</sub> = ½kx² (energia potencial elástica)</span>
+        </span>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Lei da conservação da energia mecânica</h2>
+
+      <p>
+        Quando <strong>apenas forças conservativas</strong> atuam sobre um sistema (sem atrito, sem resistência do ar), a energia mecânica total se conserva:
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Conservação da energia mecânica</span>
+        <span class="formula-expr">E<sub>mi</sub> = E<sub>mf</sub></span>
+        <span class="formula-legend">
+          <span>E<sub>ci</sub> + E<sub>pi</sub> = E<sub>cf</sub> + E<sub>pf</sub></span>
+          <span>½mv₀² + mgh₀ = ½mv² + mgh</span>
+          <span>A energia muda de forma (cinética ↔ potencial), mas o total permanece constante</span>
+        </span>
+      </div>
+
+      <div class="highlight-box" style="border-left-color:#7c3aed; background:#f5f3ff;">
+        <span class="hb-icon">⚡</span>
+        <p>
+          Este é um dos princípios mais poderosos da Física. Ele permite calcular velocidades, alturas e deformações sem precisar conhecer os detalhes do caminho — basta comparar o estado inicial com o estado final.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Aplicação: queda livre</h2>
+
+      <p>
+        Um corpo cai da altura h em repouso (v₀ = 0). Usando conservação de energia:
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Velocidade na queda livre</span>
+        <span class="formula-expr">v = √(2gh)</span>
+        <span class="formula-legend">
+          <span>Derivada de: mgh = ½mv² → v² = 2gh</span>
+          <span>Independe da massa! (a massa se cancela)</span>
+        </span>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Pedra caindo</div>
+        <div class="ex-body">
+          <p>Uma pedra cai de h = 20 m de altura (g = 10 m/s²). Qual a velocidade ao tocar o chão?</p>
+          <p>v = √(2 × 10 × 20) = √400 = <strong>20 m/s</strong></p>
+          <div class="ex-result">v = 20 m/s — independe da massa da pedra</div>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Altura máxima</div>
+        <div class="ex-body">
+          <p>Uma bola é lançada verticalmente para cima com v₀ = 30 m/s. Qual a altura máxima?</p>
+          <p>½mv₀² = mgh<sub>max</sub> → h<sub>max</sub> = v₀²/(2g) = 900/20 = <strong>45 m</strong></p>
+          <div class="ex-result">h<sub>max</sub> = 45 m</div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Pêndulo simples — conversão contínua</h2>
+
+      <p>
+        O pêndulo simples é o exemplo clássico de conversão entre E<sub>c</sub> e E<sub>pg</sub>:
+      </p>
+
+      <div class="concept-grid">
+        <div class="concept-card">
+          <span class="cc-icon">🔝</span>
+          <div class="cc-title">Ponto mais alto</div>
+          <p class="cc-desc">v = 0, h = h<sub>max</sub>. Toda energia é potencial: E<sub>m</sub> = mgh<sub>max</sub>.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">⬇️</span>
+          <div class="cc-title">Ponto mais baixo</div>
+          <p class="cc-desc">h = 0, v = v<sub>max</sub>. Toda energia é cinética: E<sub>m</sub> = ½mv<sub>max</sub>².</p>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="formula-label">Velocidade máxima do pêndulo</span>
+        <span class="formula-expr">v<sub>max</sub> = √(2gh<sub>max</sub>)</span>
+        <span class="formula-legend"><span>h<sub>max</sub> = altura do ponto de soltura em relação ao ponto mais baixo</span></span>
+      </div>
+
+
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Quando há forças não-conservativas (atrito)</h2>
+
+      <p>
+        Com atrito ou resistência do ar, parte da energia mecânica é dissipada como calor. A energia mecânica <strong>diminui</strong> ao longo do tempo:
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Energia mecânica com atrito</span>
+        <span class="formula-expr">E<sub>mf</sub> = E<sub>mi</sub> + T<sub>NC</sub></span>
+        <span class="formula-legend">
+          <span>T<sub>NC</sub> = trabalho das forças não-conservativas (T<sub>atrito</sub> &lt; 0)</span>
+          <span>|T<sub>atrito</sub>| = calor gerado = f<sub>c</sub> × d</span>
+          <span>ΔE<sub>m</sub> = −Q (Q = calor gerado pelo atrito)</span>
+        </span>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Bloco com atrito</div>
+        <div class="ex-body">
+          <p>Um bloco de m = 2 kg desce h = 5 m por um plano inclinado com atrito. Força de atrito = 5 N, percurso = 8 m. g = 10 m/s².</p>
+          <p>E<sub>mi</sub> = mgh = 2 × 10 × 5 = 100 J (em repouso no topo)</p>
+          <p>Calor gerado: Q = f × d = 5 × 8 = 40 J</p>
+          <p>E<sub>mf</sub> = 100 − 40 = 60 J = ½mv² → v = √(2×60/2) = √60 ≈ <strong>7,75 m/s</strong></p>
+          <div class="ex-result">v ≈ 7,75 m/s (menor que os 10 m/s sem atrito)</div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Calculadora de conservação de energia</h2>
+
+      <div class="calc-box">
+        <h4>🧮 Conservação de Energia — Queda / Lançamento</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Massa m (kg)</label>
+            <input type="number" id="ce-m" placeholder="ex: 5" value="5">
+          </div>
+          <div class="calc-field">
+            <label>Velocidade inicial v₀ (m/s)</label>
+            <input type="number" id="ce-v0" placeholder="ex: 0" value="0">
+          </div>
+          <div class="calc-field">
+            <label>Altura inicial h₀ (m)</label>
+            <input type="number" id="ce-h0" placeholder="ex: 20" value="20">
+          </div>
+          <div class="calc-field">
+            <label>Altura final h (m)</label>
+            <input type="number" id="ce-h" placeholder="ex: 0" value="0">
+          </div>
+          <div class="calc-field">
+            <label>Calor perdido por atrito Q (J)</label>
+            <input type="number" id="ce-Q" placeholder="0 = sem atrito" value="0">
+          </div>
+          <div class="calc-field">
+            <label>g (m/s²)</label>
+            <input type="number" id="ce-g" value="10" step="0.1">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcCE()">Calcular velocidade final</button>
+        <div class="calc-result" id="ce-result"></div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Simulador — Barra de energia em queda livre</h2>
+
+      <p>Arraste o slider de altura e veja como E<sub>c</sub> e E<sub>pg</sub> trocam entre si mantendo E<sub>m</sub> constante.</p>
+
+      <div class="graph-box">
+        <h4>⚡ Distribuição de Energia — Queda Livre (m = 1 kg)</h4>
+        <div class="graph-canvases">
+          <canvas id="ce-canvas" width="500" height="220"></canvas>
+        </div>
+        <div class="graph-controls">
+          <div class="slider-row">
+            <label>Altura atual h = <span id="ce-h-disp">10</span> m (queda de 20 m)</label>
+            <input type="range" id="ce-h-sl" min="0" max="20" value="10" step="0.5">
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Aplicações cotidianas</h2>
+
+      <div class="daily-grid">
+        <div class="daily-card">
+          <span class="dc-icon">🎢</span>
+          <div class="dc-title">Montanha-russa</div>
+          <p class="dc-desc">O primeiro pico (mais alto) fornece E<sub>pg</sub> que alimenta todos os outros. Cada pico subsequente deve ser mais baixo devido à energia dissipada pelo atrito.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🏊</span>
+          <div class="dc-title">Toboágua</div>
+          <p class="dc-desc">A altura inicial define a velocidade máxima na saída: v = √(2gh). Atrito com a água reduz um pouco esse valor real.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🔋</span>
+          <div class="dc-title">Freio regenerativo (carro elétrico)</div>
+          <p class="dc-desc">Converte E<sub>c</sub> de volta em energia elétrica ao frear, em vez de desperdiçar como calor nos freios convencionais. Eficiência ~70%.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🌊</span>
+          <div class="dc-title">Usina hidrelétrica</div>
+          <p class="dc-desc">Água cai de h ≈ 100 m → E<sub>pg</sub> converte-se em cinética das turbinas → energia elétrica. η ≈ 90% (o melhor entre todas as fontes).</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s9">
+      <h2><span class="sec-num">9</span> Resumo</h2>
+
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Energia mecânica: E<sub>m</sub> = E<sub>c</sub> + E<sub>p</sub>.</li>
+          <li>Sem forças não-conservativas: E<sub>mi</sub> = E<sub>mf</sub> (conservação).</li>
+          <li>Queda livre: v = √(2gh) — independe da massa.</li>
+          <li>Pêndulo: no topo toda E<sub>m</sub> é potencial; na base toda é cinética.</li>
+          <li>Com atrito: E<sub>mf</sub> = E<sub>mi</sub> − Q (Q = calor gerado pelo atrito).</li>
+          <li>Freio regenerativo recupera parte da E<sub>c</sub> como energia elétrica.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="energia-potencial.html">← Energia Potencial</a>
+      <a href="index.html" class="nav-next">Hub: Trabalho e Energia →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+
+<script>
+(function() {
+  window.calcCE = function() {
+    const m  = parseFloat(document.getElementById('ce-m').value);
+    const v0 = parseFloat(document.getElementById('ce-v0').value);
+    const h0 = parseFloat(document.getElementById('ce-h0').value);
+    const h  = parseFloat(document.getElementById('ce-h').value);
+    const Q  = parseFloat(document.getElementById('ce-Q').value) || 0;
+    const g  = parseFloat(document.getElementById('ce-g').value);
+    const res = document.getElementById('ce-result');
+
+    if (isNaN(m)||isNaN(v0)||isNaN(h0)||isNaN(h)||isNaN(g)) {
+      res.className='calc-result erro'; res.textContent='Preencha todos os campos.'; return;
+    }
+
+    const Emi = 0.5*m*v0*v0 + m*g*h0;
+    const Epf = m*g*h;
+    const Ecf = Emi - Epf - Q;
+    if (Ecf < 0) {
+      res.className='calc-result erro';
+      res.textContent='Energia mecânica insuficiente: o corpo não atinge a altura h com as condições dadas.'; return;
+    }
+    const vf = Math.sqrt(2*Ecf/m);
+    res.className='calc-result ok';
+    res.innerHTML =
+      'E<sub>mi</sub> = '+Emi.toFixed(2)+' J | E<sub>pg,f</sub> = '+Epf.toFixed(2)+' J | Q = '+Q.toFixed(2)+' J<br>' +
+      'E<sub>cf</sub> = E<sub>mi</sub> − E<sub>pg,f</sub> − Q = '+Ecf.toFixed(2)+' J<br>' +
+      '<strong>v<sub>f</sub> = '+vf.toFixed(3)+' m/s</strong>';
+  };
+
+  /* Simulador de barras */
+  const canvas = document.getElementById('ce-canvas');
+  const ctx = canvas.getContext('2d');
+  const hSl   = document.getElementById('ce-h-sl');
+  const hDisp = document.getElementById('ce-h-disp');
+  const H_MAX = 20, m = 1, g = 10;
+  const Em = m*g*H_MAX;
+
+  function drawBars() {
+    const h = parseFloat(hSl.value);
+    hDisp.textContent = h.toFixed(1);
+    const Epg = m*g*h;
+    const Ec  = Em - Epg;
+
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#fafafa'; ctx.fillRect(0, 0, W, H);
+
+    const barW = 80, barH = 150, top = 30, gap = 60;
+    const x1 = 80, x2 = x1+barW+gap, x3 = x2+barW+gap;
+
+    function bar(x, value, maxVal, color, label, valLabel) {
+      const filled = (value/maxVal)*barH;
+      ctx.fillStyle = '#e5e7eb';
+      ctx.beginPath(); ctx.roundRect(x, top, barW, barH, 4); ctx.fill();
+      if (filled > 1) {
+        ctx.fillStyle = color;
+        ctx.beginPath(); ctx.roundRect(x, top+barH-filled, barW, filled, 4); ctx.fill();
+      }
+      ctx.fillStyle = '#374151'; ctx.font = 'bold 12px Poppins'; ctx.textAlign = 'center';
+      ctx.fillText(label, x+barW/2, top+barH+20);
+      ctx.fillStyle = color; ctx.font = 'bold 13px Poppins';
+      ctx.fillText(valLabel, x+barW/2, top+barH+38);
+    }
+
+    bar(x1, Epg, Em, '#7c3aed', 'E_pg', Epg.toFixed(1)+' J');
+    bar(x2, Ec,  Em, '#2f5bea', 'E_c',  Ec.toFixed(1)+' J');
+    bar(x3, Em,  Em, '#059669', 'E_m',  Em.toFixed(1)+' J');
+
+    /* Legenda */
+    ctx.fillStyle = '#374151'; ctx.font = '12px Poppins'; ctx.textAlign = 'left';
+    ctx.fillText('h = '+h.toFixed(1)+' m  |  v = '+Math.sqrt(2*Ec/m).toFixed(2)+' m/s', W/2-80, H-10);
+
+    /* Labels */
+    const labels = [['#7c3aed','Potencial'],['#2f5bea','Cinética'],['#059669','Total (cte)']];
+    labels.forEach(([c,t],i) => {
+      ctx.fillStyle = c; ctx.fillRect(x1+i*(barW+gap), top-22, 14, 12);
+      ctx.fillStyle = '#374151'; ctx.font = '11px Poppins'; ctx.textAlign = 'left';
+      ctx.fillText(t, x1+i*(barW+gap)+18, top-12);
+    });
+  }
+
+  hSl.addEventListener('input', drawBars);
+  drawBars();
+
+  const sections = document.querySelectorAll('.content-section');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', function() {
+    let current = '';
+    sections.forEach(sec => { if (window.scrollY >= sec.offsetTop-120) current = sec.id; });
+    tocLinks.forEach(a => { a.parentElement.classList.toggle('active', a.getAttribute('href')==='#'+current); });
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. trabalho-energia/pendulo-energia.png
+     Pêndulo em 5 posições. Gráfico de barras E_c e E_pg em cada posição — soma constante. Fundo branco.
+-->
+
+</body>
+</html>

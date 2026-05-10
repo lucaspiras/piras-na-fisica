@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lentes Esféricas — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TY56KM22X8');</script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero" style="background:linear-gradient(135deg,#0c4a6e 0%,#0369a1 55%,#0ea5e9 100%);">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Óptica</a><span>/</span>
+      <span>Lentes</span>
+    </nav>
+    <h1 class="content-title">Lentes Esféricas</h1>
+    <p class="content-subtitle">Convergentes e divergentes. Equação de Gauss, aumento e vergência em dioptrias — a base dos óculos e das câmeras.</p>
+    <span class="formula-highlight">1/f = 1/p + 1/p'  |  D = 1/f</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Tipos de lente</a></li>
+      <li><a href="#s2">Elementos geométricos</a></li>
+      <li><a href="#s3">Equação de Gauss</a></li>
+      <li><a href="#s4">Aumento linear</a></li>
+      <li><a href="#s5">Vergência (dioptrias)</a></li>
+      <li><a href="#s6">Casos notáveis</a></li>
+      <li><a href="#s7">Calculadora</a></li>
+      <li><a href="#s8">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="refracao.html">← Refração</a>
+      <a href="olho-humano.html" class="toc-next">Olho Humano →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Tipos de lente esférica</h2>
+      <div class="concept-grid">
+        <div class="concept-card"><span class="cc-icon">🔎</span><div class="cc-title">Convergente (biconvexa)</div><p class="cc-desc">Mais espessa no centro. Converge raios paralelos para o foco. f &gt; 0. Lupa, óculos de hipermetrope, objetiva de câmera.</p></div>
+        <div class="concept-card"><span class="cc-icon">🔍</span><div class="cc-title">Divergente (bicôncava)</div><p class="cc-desc">Mais espessa nas bordas. Diverge raios — foco virtual. f &lt; 0. Óculos de miope, visor de câmera.</p></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Elementos geométricos</h2>
+      <table class="content-table">
+        <thead><tr><th>Elemento</th><th>Descrição</th></tr></thead>
+        <tbody>
+          <tr><td>Centro óptico (O)</td><td>Centro da lente. Raios que passam por O não são desviados.</td></tr>
+          <tr><td>Focos (F e F')</td><td>Pontos onde raios paralelos convergem (conv.) ou de onde parecem divergir (div.). Simétricos em relação ao centro.</td></tr>
+          <tr><td>Distância focal (f)</td><td>Distância entre o centro e o foco.</td></tr>
+          <tr><td>Eixo principal</td><td>Reta que passa pelo centro óptico e pelos focos.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Equação de Gauss para lentes</h2>
+      <div class="formula-box">
+        <span class="formula-label">Equação de Gauss (lentes)</span>
+        <span class="formula-expr">1/f = 1/p + 1/p'</span>
+        <span class="formula-legend">
+          <span>Mesma forma da equação para espelhos</span>
+          <span>p &gt; 0: objeto real (à esquerda da lente)</span>
+          <span>p' &gt; 0: imagem real (à direita, em lente convergente)</span>
+          <span>p' &lt; 0: imagem virtual (ao mesmo lado do objeto)</span>
+        </span>
+      </div>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Lente convergente como projetor</div>
+        <div class="ex-body">
+          <p>Lente conv. f = 10 cm, objeto a p = 15 cm. Onde está a imagem?</p>
+          <p>1/p' = 1/10 − 1/15 = 3/30 − 2/30 = 1/30 → p' = <strong>30 cm</strong></p>
+          <p>M = −p'/p = −30/15 = −2 → ampliada 2×, invertida</p>
+          <div class="ex-result">Imagem real, invertida, ampliada a 30 cm da lente</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Aumento linear</h2>
+      <div class="formula-box">
+        <span class="formula-label">Aumento linear transversal</span>
+        <span class="formula-expr">M = i / o = − p' / p</span>
+        <span class="formula-legend">
+          <span>Mesma fórmula dos espelhos</span>
+          <span>M &gt; 0 → direita | M &lt; 0 → invertida</span>
+          <span>|M| &gt; 1 → ampliada | |M| &lt; 1 → reduzida</span>
+        </span>
+      </div>
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Vergência e dioptrias</h2>
+      <p>A <strong>vergência</strong> (ou potência) de uma lente é o inverso da distância focal expressa em metros:</p>
+      <div class="formula-box">
+        <span class="formula-label">Vergência</span>
+        <span class="formula-expr">D = 1 / f  (f em metros)</span>
+        <span class="formula-legend">
+          <span>D = vergência em dioptrias (di)</span>
+          <span>Lente convergente: D &gt; 0</span>
+          <span>Lente divergente: D &lt; 0</span>
+          <span>Exemplo: f = 25 cm = 0,25 m → D = +4 di</span>
+        </span>
+      </div>
+      <div class="highlight-box info">
+        <span class="hb-icon">👓</span>
+        <p>O <strong>grau</strong> dos óculos é expresso em dioptrias. "−2 graus" significa uma lente divergente com f = −0,5 m (−50 cm). "+3 graus" significa convergente com f = +1/3 m ≈ 33 cm. Graus positivos: hipermetropia. Graus negativos: miopia.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Casos notáveis — lente convergente</h2>
+      <table class="content-table">
+        <thead><tr><th>Posição do objeto</th><th>Imagem</th><th>Uso</th></tr></thead>
+        <tbody>
+          <tr><td>p &gt; 2f</td><td>Real, invertida, reduzida</td><td>Olho humano formando imagem na retina</td></tr>
+          <tr><td>p = 2f</td><td>Real, invertida, mesmo tamanho</td><td>—</td></tr>
+          <tr><td>f &lt; p &lt; 2f</td><td>Real, invertida, ampliada</td><td>Projetor de slides, cinema</td></tr>
+          <tr><td>p = f</td><td>Imprópria (raios paralelos)</td><td>Microscópio (ocular), lupa com olho relaxado</td></tr>
+          <tr><td>p &lt; f</td><td>Virtual, direita, ampliada</td><td>Lupa, óculos de hipermetrope</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Calculadora — Lentes</h2>
+      <div class="calc-box">
+        <h4>🧮 Lentes Esféricas — 1/f = 1/p + 1/p'</h4>
+        <div class="calc-grid">
+          <div class="calc-field"><label>f (cm) <small>conv.+, div.−</small></label><input type="number" id="lt-f" placeholder="deixe vazio p/ calcular"></div>
+          <div class="calc-field"><label>p (cm)</label><input type="number" id="lt-p" placeholder="deixe vazio p/ calcular"></div>
+          <div class="calc-field"><label>p' (cm)</label><input type="number" id="lt-pp" placeholder="deixe vazio p/ calcular"></div>
+        </div>
+        <button class="calc-btn" onclick="calcLente()">Calcular</button>
+        <div class="calc-result" id="lt-result"></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Resumo</h2>
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Convergente (f &gt; 0): pode formar imagens reais ou virtuais conforme a posição do objeto.</li>
+          <li>Divergente (f &lt; 0): sempre imagem virtual, direita e reduzida.</li>
+          <li>Equação de Gauss: 1/f = 1/p + 1/p' (idêntica à dos espelhos).</li>
+          <li>Aumento: M = −p'/p.</li>
+          <li>Vergência D = 1/f (f em metros) — unidade: dioptrias (di).</li>
+          <li>Grau de óculos = vergência em dioptrias.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="refracao.html">← Refração</a>
+      <a href="olho-humano.html" class="nav-next">Próximo: Olho Humano →</a>
+    </div>
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+<script>
+(function(){
+  window.calcLente=function(){
+    const ids=['lt-f','lt-p','lt-pp'];
+    const vals=ids.map(id=>{const v=document.getElementById(id).value;return v===''?null:parseFloat(v);});
+    const [f,p,pp]=vals;
+    const res=document.getElementById('lt-result');
+    const blanks=vals.filter(x=>x===null).length;
+    if(blanks!==1){res.className='calc-result erro';res.textContent='Deixe exatamente UM campo em branco.';return;}
+    let fv=f,pv=p,ppv=pp,msg='';
+    if(f===null){
+      fv=1/(1/p+1/pp); document.getElementById('lt-f').value=fv.toFixed(2);
+      msg='f = '+fv.toFixed(2)+' cm  |  D = '+(100/fv).toFixed(2)+' dioptrias';
+    } else if(p===null){
+      pv=1/(1/f-1/pp); document.getElementById('lt-p').value=pv.toFixed(2);
+      msg='p = '+pv.toFixed(2)+' cm';
+    } else {
+      ppv=1/(1/f-1/p); document.getElementById('lt-pp').value=ppv.toFixed(2);
+      msg='p\' = '+ppv.toFixed(2)+' cm';
+    }
+    const M=-ppv/pv;
+    const nat=ppv>0?'real':'virtual';
+    const ori=M>0?'direita':'invertida';
+    const tam=Math.abs(M)>1.01?'ampliada':Math.abs(M)<0.99?'reduzida':'mesmo tamanho';
+    res.className='calc-result ok';
+    res.innerHTML=msg+'<br>M = '+M.toFixed(3)+'  →  <strong>'+nat+', '+ori+', '+tam+'</strong>';
+  };
+
+  const sections=document.querySelectorAll('.content-section');
+  const tocLinks=document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll',function(){
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+    tocLinks.forEach(a=>a.parentElement.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. optica/lentes-tipos.png
+     Convergente (biconvexa) com raios paralelos convergindo ao foco. Divergente (bicôncava) com raios divergindo.
+-->
+</body>
+</html>

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 270" width="640" height="270">
+  <rect width="640" height="270" fill="#f9fafb" rx="10"/>
+
+  <!-- Title -->
+  <text x="320" y="24" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle">Distância Percorrida vs. Deslocamento</text>
+
+  <!-- Divider -->
+  <line x1="320" y1="40" x2="320" y2="230" stroke="#e2e8f0" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- ======= LEFT DIAGRAM: percurso reto ======= -->
+  <text x="160" y="52" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="middle">Percurso Reto</text>
+
+  <!-- Straight path arrow A → B -->
+  <defs>
+    <marker id="aGreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0,10 3.5,0 7" fill="#16a34a"/>
+    </marker>
+    <marker id="aBlue2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0,10 3.5,0 7" fill="#2f5bea"/>
+    </marker>
+    <marker id="aOrange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0,10 3.5,0 7" fill="#ea580c"/>
+    </marker>
+  </defs>
+
+  <!-- Ground line (left) -->
+  <line x1="40" y1="145" x2="280" y2="145" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Straight path arrow (green) -->
+  <line x1="58" y1="130" x2="268" y2="130" stroke="#16a34a" stroke-width="3" marker-end="url(#aGreen)"/>
+
+  <!-- Point A (left) -->
+  <circle cx="58" cy="130" r="8" fill="#22c55e" stroke="#16a34a" stroke-width="2"/>
+  <text x="58" y="134" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">A</text>
+  <text x="58" y="155" font-family="Arial,sans-serif" font-size="11" fill="#15803d" text-anchor="middle">s₀</text>
+
+  <!-- Point B (right) -->
+  <circle cx="268" cy="130" r="8" fill="#16a34a" stroke="#14532d" stroke-width="2"/>
+  <text x="268" y="134" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">B</text>
+  <text x="268" y="155" font-family="Arial,sans-serif" font-size="11" fill="#14532d" text-anchor="middle">s</text>
+
+  <!-- Distance = Displacement label -->
+  <text x="163" y="116" font-family="Arial,sans-serif" font-size="11" fill="#16a34a" text-anchor="middle">d  (distância percorrida)</text>
+
+  <!-- Double arrow below showing Δs -->
+  <line x1="58" y1="175" x2="268" y2="175" stroke="#2f5bea" stroke-width="2.5" marker-end="url(#aBlue2)"/>
+  <text x="163" y="193" font-family="Arial,sans-serif" font-size="11" fill="#2f5bea" text-anchor="middle">Δs  (deslocamento)</text>
+
+  <!-- Result box -->
+  <rect x="60" y="205" width="200" height="30" fill="#dcfce7" rx="5" stroke="#86efac" stroke-width="1"/>
+  <text x="160" y="225" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#15803d" text-anchor="middle">d = |Δs|  ✓</text>
+
+  <!-- ======= RIGHT DIAGRAM: percurso curvo ======= -->
+  <text x="480" y="52" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="middle">Percurso Curvo</text>
+
+  <!-- Curved path A → C → B using quadratic bezier -->
+  <path d="M 358,145 Q 480,55 600,145" fill="none" stroke="#ea580c" stroke-width="3" marker-end="url(#aOrange)"/>
+
+  <!-- Point C at top of curve -->
+  <circle cx="479" cy="80" r="6" fill="#f97316" stroke="#c2410c" stroke-width="1.5"/>
+  <text x="497" y="77" font-family="Arial,sans-serif" font-size="11" fill="#c2410c">C</text>
+
+  <!-- Straight dashed line showing Δs (A to B) -->
+  <line x1="358" y1="145" x2="600" y2="145" stroke="#2f5bea" stroke-width="2.5" stroke-dasharray="7,4" marker-end="url(#aBlue2)"/>
+
+  <!-- Point A (left) -->
+  <circle cx="358" cy="145" r="8" fill="#22c55e" stroke="#16a34a" stroke-width="2"/>
+  <text x="358" y="149" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">A</text>
+  <text x="358" y="165" font-family="Arial,sans-serif" font-size="11" fill="#15803d" text-anchor="middle">s₀</text>
+
+  <!-- Point B (right) -->
+  <circle cx="600" cy="145" r="8" fill="#16a34a" stroke="#14532d" stroke-width="2"/>
+  <text x="600" y="149" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#fff" text-anchor="middle">B</text>
+  <text x="600" y="165" font-family="Arial,sans-serif" font-size="11" fill="#14532d" text-anchor="middle">s</text>
+
+  <!-- Labels for curve vs straight -->
+  <text x="540" y="95" font-family="Arial,sans-serif" font-size="11" fill="#ea580c" text-anchor="middle">d (caminho</text>
+  <text x="540" y="108" font-family="Arial,sans-serif" font-size="11" fill="#ea580c" text-anchor="middle">percorrido)</text>
+  <text x="479" y="163" font-family="Arial,sans-serif" font-size="11" fill="#2f5bea" text-anchor="middle">Δs (deslocamento)</text>
+
+  <!-- Result box -->
+  <rect x="358" y="200" width="245" height="30" fill="#fee2e2" rx="5" stroke="#fca5a5" stroke-width="1"/>
+  <text x="480" y="220" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#dc2626" text-anchor="middle">d  &gt;  |Δs|</text>
+
+  <!-- Bottom legend -->
+  <line x1="30"  y1="248" x2="55"  y2="248" stroke="#ea580c" stroke-width="2.5"/>
+  <text x="60"  y="252" font-family="Arial,sans-serif" font-size="11" fill="#64748b">Distância percorrida d (escalar, sempre ≥ 0)</text>
+  <line x1="330" y1="248" x2="355" y2="248" stroke="#2f5bea" stroke-width="2.5" stroke-dasharray="5,3"/>
+  <text x="360" y="252" font-family="Arial,sans-serif" font-size="11" fill="#64748b">Deslocamento Δs (pode ser zero ou negativo)</text>
+</svg>

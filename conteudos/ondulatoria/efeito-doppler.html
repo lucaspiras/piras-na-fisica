@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Efeito Doppler — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TY56KM22X8');</script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero" style="background:linear-gradient(135deg,#134e4a 0%,#0f766e 55%,#14b8a6 100%);">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Ondulatória</a><span>/</span>
+      <span>Efeito Doppler</span>
+    </nav>
+    <h1 class="content-title">Efeito Doppler</h1>
+    <p class="content-subtitle">Quando fonte ou observador se movem, a frequência percebida difere da emitida. O Doppler explica desde ambulâncias até a expansão do universo.</p>
+    <span class="formula-highlight">f' = f · (v ± v_O) / (v ∓ v_F)</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">O que é o efeito Doppler</a></li>
+      <li><a href="#s2">Fórmula</a></li>
+      <li><a href="#s3">Convenção de sinais</a></li>
+      <li><a href="#s4">Aplicações</a></li>
+      <li><a href="#s5">Doppler na luz</a></li>
+      <li><a href="#s6">Calculadora</a></li>
+      <li><a href="#s7">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="som.html">← Som</a>
+      <a href="espectro-eletromagnetico.html" class="toc-next">Espectro Eletromagnético →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> O que é o efeito Doppler</h2>
+      <p>O <strong>efeito Doppler</strong> é a mudança na frequência percebida de uma onda quando há movimento relativo entre a fonte emissora e o observador.</p>
+      <div class="concept-grid">
+        <div class="concept-card"><span class="cc-icon">🚑</span><div class="cc-title">Aproximando-se</div><p class="cc-desc">Fonte e/ou observador se aproximam → comprimento de onda percebido diminui → frequência percebida <strong>aumenta</strong> (som mais agudo).</p></div>
+        <div class="concept-card"><span class="cc-icon">🚗</span><div class="cc-title">Afastando-se</div><p class="cc-desc">Fonte e/ou observador se afastam → comprimento de onda percebido aumenta → frequência percebida <strong>diminui</strong> (som mais grave).</p></div>
+      </div>
+      <div class="example-box">
+        <div class="ex-header">📋 Experiência cotidiana</div>
+        <div class="ex-body">
+          <p>Uma ambulância passa por você na rua: enquanto se aproxima, a sirene parece mais aguda (frequência alta). No momento em que passa e começa a se afastar, o tom cai abruptamente para mais grave. A frequência emitida pela sirene não muda — o que muda é a frequência que <em>você</em> percebe.</p>
+          <div class="ex-result">Eii-EII (agudo chegando) → EII-Eii (grave afastando)</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Fórmula do efeito Doppler</h2>
+      <div class="formula-box">
+        <span class="formula-label">Efeito Doppler — sons</span>
+        <span class="formula-expr">f' = f · (v + v_O) / (v − v_F)</span>
+        <span class="formula-legend">
+          <span>f' = frequência percebida pelo observador (Hz)</span>
+          <span>f = frequência emitida pela fonte (Hz)</span>
+          <span>v = velocidade do som no meio (m/s)</span>
+          <span>v_O = velocidade do observador (m/s)</span>
+          <span>v_F = velocidade da fonte (m/s)</span>
+          <span>Sinais: veja a tabela de convenções abaixo</span>
+        </span>
+      </div>
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Convenção de sinais</h2>
+      <p>A fórmula geral com sinais flexíveis é:</p>
+      <div class="formula-box">
+        <span class="formula-label">Fórmula geral</span>
+        <span class="formula-expr">f' = f · (v ± v_O) / (v ∓ v_F)</span>
+        <span class="formula-legend">
+          <span>No numerador: + se o observador se aproxima da fonte; − se se afasta</span>
+          <span>No denominador: − se a fonte se aproxima do observador; + se se afasta</span>
+          <span>Regra prática: movimento que aproxima → f' aumenta; que afasta → f' diminui</span>
+        </span>
+      </div>
+      <table class="content-table">
+        <thead><tr><th>Situação</th><th>Numerador</th><th>Denominador</th><th>Efeito</th></tr></thead>
+        <tbody>
+          <tr><td>Observador se aproxima da fonte (fixa)</td><td>v + v_O</td><td>v</td><td>f' &gt; f (agudo)</td></tr>
+          <tr><td>Observador se afasta da fonte (fixa)</td><td>v − v_O</td><td>v</td><td>f' &lt; f (grave)</td></tr>
+          <tr><td>Fonte se aproxima do observador (fixo)</td><td>v</td><td>v − v_F</td><td>f' &gt; f (agudo)</td></tr>
+          <tr><td>Fonte se afasta do observador (fixo)</td><td>v</td><td>v + v_F</td><td>f' &lt; f (grave)</td></tr>
+        </tbody>
+      </table>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Ambulância</div>
+        <div class="ex-body">
+          <p>Ambulância (sirene f = 800 Hz, v_F = 20 m/s) se aproxima de observador fixo. v_som = 340 m/s.</p>
+          <p>f' = 800 × 340 / (340 − 20) = 800 × 340/320 = 800 × 1,0625 = <strong>850 Hz</strong></p>
+          <p>Após passar, afastando-se:</p>
+          <p>f' = 800 × 340 / (340 + 20) = 800 × 340/360 = 800 × 0,944 = <strong>756 Hz</strong></p>
+          <div class="ex-result">Antes de passar: 850 Hz (agudo). Depois: 756 Hz (grave). Diferença de 94 Hz!</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Aplicações</h2>
+      <table class="content-table">
+        <thead><tr><th>Aplicação</th><th>Princípio</th></tr></thead>
+        <tbody>
+          <tr><td>Radar de velocidade (polícia)</td><td>Pulso de micro-ondas reflete no carro; Doppler do eco revela a velocidade</td></tr>
+          <tr><td>Ecografia Doppler (médica)</td><td>Ultrassom refletido no sangue em movimento revela velocidade do fluxo</td></tr>
+          <tr><td>Radar meteorológico</td><td>Doppler das gotas d'água indica velocidade e direção das tempestades</td></tr>
+          <tr><td>Sonar (submarino)</td><td>Eco ultrassônico detecta e mede velocidade de objetos submersos</td></tr>
+          <tr><td>Astronomia estelar</td><td>Desvio Doppler das linhas espectrais revela velocidade radial das estrelas</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Efeito Doppler para a luz — desvio para o vermelho</h2>
+      <p>Para ondas eletromagnéticas (luz), o efeito Doppler também ocorre. Quando uma galáxia se afasta, sua luz aparece deslocada para o vermelho (<strong>redshift</strong>); ao se aproximar, para o azul (<strong>blueshift</strong>).</p>
+      <div class="highlight-box info">
+        <span class="hb-icon">🌌</span>
+        <p>Em 1929, Edwin Hubble observou que quase todas as galáxias distantes apresentam <strong>redshift</strong>: estão se afastando de nós. Quanto mais distante, maior o afastamento. Essa descoberta foi a primeira evidência observacional de que o universo está em <strong>expansão</strong> — e levou à teoria do Big Bang.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Calculadora</h2>
+      <div class="calc-box">
+        <h4>🧮 Efeito Doppler: f' = f · (v ± v_O) / (v ∓ v_F)</h4>
+        <div class="calc-grid">
+          <div class="calc-field"><label>f (Hz) — frequência emitida</label><input type="number" id="dp-f" placeholder="ex: 800"></div>
+          <div class="calc-field"><label>v (m/s) — velocidade do som</label><input type="number" id="dp-v" placeholder="ex: 340" value="340"></div>
+          <div class="calc-field"><label>v_O (m/s) — velocidade do observador</label><input type="number" id="dp-vO" placeholder="ex: 0" value="0"></div>
+          <div class="calc-field"><label>v_F (m/s) — velocidade da fonte</label><input type="number" id="dp-vF" placeholder="ex: 20"></div>
+        </div>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:.8rem;">
+          <label style="display:flex;align-items:center;gap:.4rem;font-size:.9rem;">
+            <input type="checkbox" id="dp-Oaprox" checked> Observador se aproxima da fonte
+          </label>
+          <label style="display:flex;align-items:center;gap:.4rem;font-size:.9rem;">
+            <input type="checkbox" id="dp-Faprox" checked> Fonte se aproxima do observador
+          </label>
+        </div>
+        <button class="calc-btn" onclick="calcDoppler()">Calcular f'</button>
+        <div class="calc-result" id="dp-result"></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Resumo</h2>
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Efeito Doppler: mudança na frequência percebida devido a movimento relativo fonte-observador.</li>
+          <li>Aproximação → frequência percebida aumenta (mais agudo). Afastamento → diminui (mais grave).</li>
+          <li>Fórmula: f' = f·(v ± v_O)/(v ∓ v_F). Numerador +vO se observador se aproxima; denominador −vF se fonte se aproxima.</li>
+          <li>Aplicações: radar de velocidade, ecografia Doppler, radar meteorológico, sonar.</li>
+          <li>Redshift: galáxias se afastam → desvio para o vermelho → evidência da expansão do universo.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="som.html">← Som</a>
+      <a href="espectro-eletromagnetico.html" class="nav-next">Próximo: Espectro Eletromagnético →</a>
+    </div>
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+<script>
+(function(){
+  window.calcDoppler = function(){
+    const f=parseFloat(document.getElementById('dp-f').value);
+    const v=parseFloat(document.getElementById('dp-v').value);
+    const vO=parseFloat(document.getElementById('dp-vO').value)||0;
+    const vF=parseFloat(document.getElementById('dp-vF').value)||0;
+    const Oaprox=document.getElementById('dp-Oaprox').checked;
+    const Faprox=document.getElementById('dp-Faprox').checked;
+    const res=document.getElementById('dp-result');
+
+    if(isNaN(f)||isNaN(v)){res.className='calc-result erro';res.textContent='Informe f e v.';return;}
+    const num = v + (Oaprox ? vO : -vO);
+    const den = v - (Faprox ? vF : -vF);
+    if(den<=0){res.className='calc-result erro';res.textContent='v_F não pode ser maior ou igual a v (quebra sônico).';return;}
+    const fp = f * num / den;
+    const delta = fp - f;
+    const tipo = delta > 0 ? 'agudizou (f aumentou)' : delta < 0 ? 'gravou (f diminuiu)' : 'sem mudança';
+    res.className='calc-result ok';
+    res.innerHTML='f\' = '+fp.toFixed(2)+' Hz<br><small style="color:#555">Δf = '+(delta>0?'+':'')+delta.toFixed(2)+' Hz — '+tipo+'</small>';
+  };
+
+  const sections=document.querySelectorAll('.content-section');
+  const tocLinks=document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll',function(){
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+    tocLinks.forEach(a=>a.parentElement.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. ondulatoria/doppler.png
+     Diagrama de ambulância em movimento. Frentes de onda comprimidas na frente (setas mais próximas,
+     observador à direita com f' alta) e espaçadas atrás (observador à esquerda com f' baixa).
+     Fundo branco, ondas teal.
+-->
+</body>
+</html>

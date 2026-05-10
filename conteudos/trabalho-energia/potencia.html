@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Potência — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero" style="background:linear-gradient(135deg,#4c1d95 0%,#7c3aed 55%,#8b5cf6 100%);">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Trabalho e Energia</a><span>/</span>
+      <span>Potência</span>
+    </nav>
+    <h1 class="content-title">Potência</h1>
+    <p class="content-subtitle">A taxa com que o trabalho é realizado — quantos Joules por segundo uma máquina consegue transformar.</p>
+    <span class="formula-highlight">P = T / Δt = F · v</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Definição</a></li>
+      <li><a href="#s2">P = F · v</a></li>
+      <li><a href="#s3">Unidades</a></li>
+      <li><a href="#s4">Rendimento</a></li>
+      <li><a href="#s5">Calculadora</a></li>
+      <li><a href="#s6">Aplicações</a></li>
+      <li><a href="#s7">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="trabalho.html">← Trabalho</a>
+      <a href="energia-cinetica.html" class="toc-next">En. Cinética →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> O que é potência?</h2>
+
+      <p>
+        Dois operários carregam a mesma caixa até o mesmo andar — um leva 1 minuto, o outro leva 5 minutos. Ambos realizam o <em>mesmo trabalho</em>. Mas o primeiro é mais <strong>potente</strong>: realiza o mesmo trabalho em menos tempo.
+      </p>
+
+      <p>
+        <strong>Potência</strong> é a taxa com que o trabalho é realizado — a rapidez na transferência de energia:
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Potência média</span>
+        <span class="formula-expr">P = T / Δt</span>
+        <span class="formula-legend">
+          <span>P = potência (W)</span>
+          <span>T = trabalho realizado (J)</span>
+          <span>Δt = intervalo de tempo (s)</span>
+        </span>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Os dois operários</div>
+        <div class="ex-body">
+          <p>Ambos realizam T = 3 000 J para carregar a caixa.</p>
+          <p>Operário A (1 min = 60 s): P<sub>A</sub> = 3000/60 = <strong>50 W</strong></p>
+          <p>Operário B (5 min = 300 s): P<sub>B</sub> = 3000/300 = <strong>10 W</strong></p>
+          <div class="ex-result">A é 5× mais potente que B — realiza o mesmo trabalho em 1/5 do tempo.</div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Potência e velocidade: P = F · v</h2>
+
+      <p>
+        Substituindo T = F·d (força na direção do deslocamento) e d/Δt = v:
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Potência com força e velocidade</span>
+        <span class="formula-expr">P = F · v</span>
+        <span class="formula-legend">
+          <span>F = força na direção do movimento (N)</span>
+          <span>v = velocidade do corpo (m/s)</span>
+          <span>Válido quando a força e a velocidade têm mesma direção</span>
+        </span>
+      </div>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">💡</span>
+        <p>
+          Essa forma explica por que carros de corrida têm motor de alta potência: para manter alta velocidade contra a resistência do ar (que aumenta com v²), é necessária grande potência do motor.
+        </p>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Carro em velocidade constante</div>
+        <div class="ex-body">
+          <p>Um carro mantém v = 30 m/s (108 km/h) contra resistência total de atrito F = 800 N.</p>
+          <p>P = F·v = 800 × 30 = <strong>24 000 W = 24 kW</strong></p>
+          <div class="ex-result">P = 24 kW ≈ 32,6 CV</div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Unidades de potência</h2>
+
+      <div class="formula-box">
+        <span class="formula-label">Watt — unidade SI</span>
+        <span class="formula-expr">1 W = 1 J/s = 1 N·m/s = 1 kg·m²/s³</span>
+        <span class="formula-legend"><span>Homenagem a James Watt (1736–1819), inventor da máquina a vapor melhorada</span></span>
+      </div>
+
+      <table class="content-table">
+        <thead>
+          <tr><th>Unidade</th><th>Equivalência</th><th>Uso típico</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Watt (W)</td><td>1 J/s</td><td>Eletrodomésticos, lâmpadas</td></tr>
+          <tr><td>Quilowatt (kW)</td><td>1 000 W</td><td>Motores de carro, sistemas de ar-condicionado</td></tr>
+          <tr><td>Megawatt (MW)</td><td>10⁶ W</td><td>Usinas elétricas</td></tr>
+          <tr><td>Gigawatt (GW)</td><td>10⁹ W</td><td>Grandes complexos de geração (Itaipu ≈ 14 GW)</td></tr>
+          <tr><td>Cavalo-vapor (CV)</td><td>≈ 735,5 W</td><td>Motores automotivos no Brasil</td></tr>
+          <tr><td>Horsepower (hp)</td><td>≈ 745,7 W</td><td>Motores em países anglófonos</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight-box">
+        <span class="hb-icon">🐎</span>
+        <p>
+          O cavalo-vapor (CV) foi definido por James Watt como a potência de um cavalo médio trabalhando continuamente. Ele usou essa unidade de marketing para convencer mineiros de carvão de que sua máquina a vapor valia o investimento.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Rendimento de máquinas</h2>
+
+      <p>
+        Nenhuma máquina real converte 100% da energia de entrada em trabalho útil. Parte é perdida como calor (atrito, resistência elétrica), som etc. O <strong>rendimento</strong> (η — eta) mede essa eficiência:
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Rendimento</span>
+        <span class="formula-expr">η = P<sub>útil</sub> / P<sub>total</sub> = T<sub>útil</sub> / T<sub>total</sub></span>
+        <span class="formula-legend">
+          <span>η é adimensional; geralmente expresso em porcentagem: η% = η × 100</span>
+          <span>0 &lt; η ≤ 1 (ou 0% &lt; η% ≤ 100%)</span>
+          <span>η = 1 (100%): máquina ideal, sem perdas</span>
+        </span>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Motor de carro</div>
+        <div class="ex-body">
+          <p>Um motor consome P<sub>total</sub> = 80 kW de combustível e entrega P<sub>útil</sub> = 24 kW às rodas.</p>
+          <p>η = 24/80 = 0,30 → <strong>30%</strong></p>
+          <div class="ex-result">70% da energia do combustível é perdida como calor no motor e escapamento!</div>
+        </div>
+      </div>
+
+      <table class="content-table">
+        <thead>
+          <tr><th>Máquina / sistema</th><th>Rendimento típico</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Motor a combustão interna</td><td>20–35%</td></tr>
+          <tr><td>Motor elétrico</td><td>85–97%</td></tr>
+          <tr><td>Usina hidrelétrica</td><td>85–92%</td></tr>
+          <tr><td>Painel solar fotovoltaico</td><td>15–22%</td></tr>
+          <tr><td>Lâmpada incandescente</td><td>~5% (resto é calor)</td></tr>
+          <tr><td>Lâmpada LED</td><td>~40–50%</td></tr>
+        </tbody>
+      </table>
+
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Calculadora de potência e rendimento</h2>
+
+      <div class="calc-box">
+        <h4>🧮 Calculadora — P = T / Δt</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Potência P (W)</label>
+            <input type="number" id="pot-P" placeholder="deixe vazio p/ calcular">
+          </div>
+          <div class="calc-field">
+            <label>Trabalho T (J)</label>
+            <input type="number" id="pot-T" placeholder="deixe vazio p/ calcular">
+          </div>
+          <div class="calc-field">
+            <label>Tempo Δt (s)</label>
+            <input type="number" id="pot-t" placeholder="deixe vazio p/ calcular">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcPot()">Calcular</button>
+        <div class="calc-result" id="pot-result"></div>
+      </div>
+
+      <div class="calc-box" style="margin-top:1.5rem;">
+        <h4>🧮 Calculadora de Rendimento — η = P_útil / P_total</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Potência útil P<sub>útil</sub> (W)</label>
+            <input type="number" id="rend-Pu" placeholder="ex: 24000">
+          </div>
+          <div class="calc-field">
+            <label>Potência total P<sub>total</sub> (W)</label>
+            <input type="number" id="rend-Pt" placeholder="ex: 80000">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcRend()">Calcular rendimento</button>
+        <div class="calc-result" id="rend-result"></div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Aplicações cotidianas</h2>
+
+      <div class="daily-grid">
+        <div class="daily-card">
+          <span class="dc-icon">💡</span>
+          <div class="dc-title">Conta de luz</div>
+          <p class="dc-desc">A fatura cobra em kWh (quilowatt-hora). 1 kWh = 1 000 W × 3 600 s = 3,6 MJ de energia. Um chuveiro de 5 500 W por 10 min ≈ 0,92 kWh.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🚴</span>
+          <div class="dc-title">Potência humana</div>
+          <p class="dc-desc">Em esforço máximo sustentado, um ciclista amador entrega ~200 W; um campeão do Tour de France sustenta ~400 W por horas.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">💧</span>
+          <div class="dc-title">Itaipu</div>
+          <p class="dc-desc">Com capacidade de 14 GW, Itaipu produz ~14 × 10⁹ J a cada segundo — suficiente para abastecer 15 milhões de residências brasileiras.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">☀️</span>
+          <div class="dc-title">Painel solar</div>
+          <p class="dc-desc">Cada m² de painel recebe ~1 000 W de irradiância solar. Com 20% de rendimento, gera ~200 W/m² — suficiente para uma lâmpada LED + carregador.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Resumo</h2>
+
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Potência = taxa de realização de trabalho: P = T/Δt.</li>
+          <li>Forma alternativa: P = F·v (força na direção do movimento × velocidade).</li>
+          <li>Unidade SI: Watt (W = J/s). 1 CV ≈ 735,5 W.</li>
+          <li>Rendimento: η = P_útil/P_total (adimensional, 0 a 1 ou 0% a 100%).</li>
+          <li>Motores elétricos têm rendimento muito maior que motores a combustão.</li>
+          <li>Conta de energia elétrica usa kWh: 1 kWh = 3,6 MJ.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="trabalho.html">← Trabalho</a>
+      <a href="energia-cinetica.html" class="nav-next">Próximo: Energia Cinética →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+
+<script>
+(function() {
+  window.calcPot = function() {
+    const ids = ['pot-P','pot-T','pot-t'];
+    const vals = ids.map(id => { const v = document.getElementById(id).value; return v===''?null:parseFloat(v); });
+    const [P, T, t] = vals;
+    const res = document.getElementById('pot-result');
+    const blanks = vals.filter(x=>x===null).length;
+    if (blanks !== 1) { res.className='calc-result erro'; res.textContent='Deixe exatamente UM campo em branco.'; return; }
+    let msg = '';
+    if (P===null) {
+      const c = T/t; document.getElementById('pot-P').value = c.toFixed(3);
+      msg = 'P = T/Δt = ' + c.toFixed(3) + ' W  (' + (c/1000).toFixed(4) + ' kW)';
+    } else if (T===null) {
+      const c = P*t; document.getElementById('pot-T').value = c.toFixed(3);
+      msg = 'T = P·Δt = ' + c.toFixed(3) + ' J';
+    } else {
+      if (P===0) { res.className='calc-result erro'; res.textContent='P não pode ser zero.'; return; }
+      const c = T/P; document.getElementById('pot-t').value = c.toFixed(3);
+      msg = 'Δt = T/P = ' + c.toFixed(3) + ' s';
+    }
+    res.className='calc-result ok'; res.textContent=msg;
+  };
+
+  window.calcRend = function() {
+    const Pu = parseFloat(document.getElementById('rend-Pu').value);
+    const Pt = parseFloat(document.getElementById('rend-Pt').value);
+    const res = document.getElementById('rend-result');
+    if (isNaN(Pu)||isNaN(Pt)||Pt===0) { res.className='calc-result erro'; res.textContent='Preencha P_útil e P_total (P_total ≠ 0).'; return; }
+    const eta = Pu/Pt;
+    res.className='calc-result ok';
+    res.textContent = 'η = ' + Pu + '/' + Pt + ' = ' + eta.toFixed(4) + '  →  ' + (eta*100).toFixed(1) + '%  |  Perdas: ' + ((1-eta)*100).toFixed(1) + '%';
+  };
+
+  const sections = document.querySelectorAll('.content-section');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', function() {
+    let current = '';
+    sections.forEach(sec => { if (window.scrollY >= sec.offsetTop-120) current = sec.id; });
+    tocLinks.forEach(a => { a.parentElement.classList.toggle('active', a.getAttribute('href')==='#'+current); });
+  });
+})();
+</script>
+
+</body>
+</html>

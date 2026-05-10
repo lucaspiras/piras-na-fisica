@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leis da Termodinâmica — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TY56KM22X8');</script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero" style="background:linear-gradient(135deg,#7f1d1d 0%,#b91c1c 55%,#ef4444 100%);">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Termodinâmica</a><span>/</span>
+      <span>Leis da Termodinâmica</span>
+    </nav>
+    <h1 class="content-title">Primeira e Segunda Leis da Termodinâmica</h1>
+    <p class="content-subtitle">A Primeira Lei diz que energia se conserva. A Segunda diz que nem toda energia é aproveitável — nenhuma máquina térmica é 100% eficiente.</p>
+    <span class="formula-highlight">ΔU = Q − W  |  η = W/Q_H ≤ 1 − T_C/T_H</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Energia interna</a></li>
+      <li><a href="#s2">1ª Lei — conservação</a></li>
+      <li><a href="#s3">Processos termodinâmicos</a></li>
+      <li><a href="#s4">Máquinas térmicas</a></li>
+      <li><a href="#s5">2ª Lei — entropia</a></li>
+      <li><a href="#s6">Ciclo de Carnot</a></li>
+      <li><a href="#s7">Calculadora</a></li>
+      <li><a href="#s8">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="gases.html">← Leis dos Gases</a>
+      <a href="index.html" class="toc-next">Índice Termodinâmica →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Energia interna</h2>
+      <p>A <strong>energia interna U</strong> de um sistema é a soma de todas as energias cinéticas e potenciais de suas partículas (vibração, rotação, translação molecular). Para um gás ideal:</p>
+      <div class="formula-box">
+        <span class="formula-label">Energia interna do gás ideal monoatômico</span>
+        <span class="formula-expr">U = (3/2) · n · R · T</span>
+        <span class="formula-legend">
+          <span>n = número de moles; R = 8,314 J/(mol·K); T em Kelvin</span>
+          <span>Importante: ΔU depende apenas de ΔT — para gás ideal, U é função só de T</span>
+        </span>
+      </div>
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Primeira Lei da Termodinâmica</h2>
+      <p>A <strong>Primeira Lei</strong> é a lei da conservação de energia para sistemas termodinâmicos:</p>
+      <div class="formula-box">
+        <span class="formula-label">Primeira Lei da Termodinâmica</span>
+        <span class="formula-expr">ΔU = Q − W</span>
+        <span class="formula-legend">
+          <span>ΔU = variação de energia interna (J)</span>
+          <span>Q = calor recebido pelo sistema (J) — positivo se entra, negativo se sai</span>
+          <span>W = trabalho realizado pelo sistema (J) — positivo se o sistema expande</span>
+          <span>Trabalho em expansão: W = P·ΔV (para processo isobárico)</span>
+        </span>
+      </div>
+      <div class="highlight-box info">
+        <span class="hb-icon">⚖️</span>
+        <p>A Primeira Lei proíbe a <strong>máquina de movimento perpétuo de primeira espécie</strong>: uma máquina que produza trabalho sem nenhuma fonte de energia. Energia não se cria do nada — ela vem de alguma fonte (calor, combustível, bateria etc.).</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Processos termodinâmicos</h2>
+      <table class="content-table">
+        <thead><tr><th>Processo</th><th>Constante</th><th>Consequência (1ª Lei)</th></tr></thead>
+        <tbody>
+          <tr><td>Isotérmico</td><td>T</td><td>ΔU = 0 (gás ideal) → Q = W</td></tr>
+          <tr><td>Isobárico</td><td>P</td><td>W = P·ΔV; ΔU = Q − P·ΔV</td></tr>
+          <tr><td>Isocórico (isométrico)</td><td>V</td><td>W = 0 (sem expansão) → ΔU = Q</td></tr>
+          <tr><td>Adiabático</td><td>Q = 0</td><td>ΔU = −W (expansão resfria o gás)</td></tr>
+        </tbody>
+      </table>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Processo isobárico</div>
+        <div class="ex-body">
+          <p>Um gás recebe Q = 500 J e se expande realizando W = 200 J. Qual a variação de energia interna?</p>
+          <p>ΔU = Q − W = 500 − 200 = <strong>300 J</strong></p>
+          <div class="ex-result">A energia interna aumentou 300 J (temperatura subiu)</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Máquinas térmicas</h2>
+      <p>Uma <strong>máquina térmica</strong> converte calor em trabalho operando ciclicamente entre duas fontes de temperatura:</p>
+      <div class="formula-box">
+        <span class="formula-label">Máquina térmica — balanço de energia</span>
+        <span class="formula-expr">W = Q_H − Q_C</span>
+        <span class="formula-legend">
+          <span>Q_H = calor absorvido da fonte quente (J)</span>
+          <span>Q_C = calor rejeitado para a fonte fria (J)</span>
+          <span>W = trabalho útil produzido (J)</span>
+          <span>Rendimento: η = W/Q_H = (Q_H − Q_C)/Q_H</span>
+        </span>
+      </div>
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Segunda Lei da Termodinâmica</h2>
+      <p>A <strong>Segunda Lei</strong> estabelece a irreversibilidade dos processos naturais. Ela pode ser enunciada de várias formas equivalentes:</p>
+      <div class="concept-grid">
+        <div class="concept-card"><span class="cc-icon">🌡️</span><div class="cc-title">Enunciado de Clausius</div><p class="cc-desc">Calor não flui espontaneamente de um corpo mais frio para um mais quente. Só com trabalho externo (refrigerador, ar-condicionado).</p></div>
+        <div class="concept-card"><span class="cc-icon">⚙️</span><div class="cc-title">Enunciado de Kelvin-Planck</div><p class="cc-desc">É impossível construir uma máquina que opere em ciclo, absorva calor de uma única fonte e converta todo esse calor em trabalho. Sempre há rejeição de calor.</p></div>
+      </div>
+      <div class="highlight-box warning">
+        <span class="hb-icon">🚫</span>
+        <p>A Segunda Lei proíbe a <strong>máquina de movimento perpétuo de segunda espécie</strong>: uma máquina que retire calor do oceano (ou do ar) e converta 100% em trabalho sem rejeitar calor em nenhum lugar. Isso violaria a Segunda Lei — o rendimento real sempre é menor que 100%.</p>
+      </div>
+      <p>A grandeza associada à irreversibilidade é a <strong>entropia S</strong>. Em processos espontâneos, a entropia do universo sempre aumenta:</p>
+      <div class="formula-box">
+        <span class="formula-label">Variação de entropia (processo reversível)</span>
+        <span class="formula-expr">ΔS = Q / T</span>
+        <span class="formula-legend">
+          <span>ΔS = variação de entropia (J/K)</span>
+          <span>Q = calor trocado reversivamente (J)</span>
+          <span>T = temperatura absoluta (K)</span>
+          <span>Para o universo: ΔS_universo ≥ 0 (= 0 para processos reversíveis)</span>
+        </span>
+      </div>
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Ciclo de Carnot e rendimento máximo</h2>
+      <p>O <strong>ciclo de Carnot</strong> é o ciclo reversível mais eficiente possível operando entre duas temperaturas. Seu rendimento é o limite superior para qualquer máquina real:</p>
+      <div class="formula-box">
+        <span class="formula-label">Rendimento de Carnot (máximo teórico)</span>
+        <span class="formula-expr">η_Carnot = 1 − T_C / T_H</span>
+        <span class="formula-legend">
+          <span>T_C = temperatura da fonte fria (K)</span>
+          <span>T_H = temperatura da fonte quente (K)</span>
+          <span>Rendimento real de qualquer máquina: η_real ≤ η_Carnot</span>
+          <span>η = 100% só se T_C = 0 K (impossível) ou T_H → ∞</span>
+        </span>
+      </div>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Motor a vapor</div>
+        <div class="ex-body">
+          <p>Motor opera entre T_H = 500 °C (773 K) e T_C = 50 °C (323 K). Qual o rendimento máximo?</p>
+          <p>η_Carnot = 1 − T_C/T_H = 1 − 323/773 = 1 − 0,418 = <strong>58,2%</strong></p>
+          <p>Um motor real operando nestas temperaturas teria rendimento menor que 58,2%.</p>
+          <div class="ex-result">Rendimento máximo de Carnot: 58,2%</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Calculadora</h2>
+      <div class="calc-box">
+        <h4>🧮 1ª Lei: ΔU = Q − W</h4>
+        <p style="font-size:.85rem;color:#666;margin-bottom:.8rem;">Deixe um campo em branco para calcular.</p>
+        <div class="calc-grid">
+          <div class="calc-field"><label>ΔU (J)</label><input type="number" id="tl-dU" placeholder="vazio = calcular"></div>
+          <div class="calc-field"><label>Q (J) — positivo: entra no sistema</label><input type="number" id="tl-Q" placeholder="vazio = calcular"></div>
+          <div class="calc-field"><label>W (J) — positivo: sistema expande</label><input type="number" id="tl-W" placeholder="vazio = calcular"></div>
+        </div>
+        <button class="calc-btn" onclick="calcPrimLei()">Calcular</button>
+        <div class="calc-result" id="tl-result"></div>
+      </div>
+
+      <div class="calc-box" style="margin-top:1rem;">
+        <h4>🧮 Rendimento de Carnot</h4>
+        <div class="calc-grid">
+          <div class="calc-field"><label>T_H (°C) — fonte quente</label><input type="number" id="cr-TH" placeholder="ex: 500"></div>
+          <div class="calc-field"><label>T_C (°C) — fonte fria</label><input type="number" id="cr-TC" placeholder="ex: 50"></div>
+          <div class="calc-field"><label>Q_H (J) — calor absorvido — opcional</label><input type="number" id="cr-QH" placeholder="ex: 1000"></div>
+        </div>
+        <button class="calc-btn" onclick="calcCarnot()">Calcular</button>
+        <div class="calc-result" id="cr-result"></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Resumo</h2>
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>1ª Lei: ΔU = Q − W. A energia se conserva — não se cria nem se destrói.</li>
+          <li>Processos: isotérmico (ΔU=0), isobárico (W=PΔV), isocórico (W=0), adiabático (Q=0).</li>
+          <li>Máquina térmica: W = Q_H − Q_C. Rendimento: η = W/Q_H.</li>
+          <li>2ª Lei: calor não flui espontaneamente do frio para o quente. Nenhuma máquina é 100% eficiente.</li>
+          <li>Entropia: mede a irreversibilidade. ΔS_universo ≥ 0 em todo processo.</li>
+          <li>Rendimento de Carnot: η = 1 − T_C/T_H — limite superior de qualquer máquina real.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="gases.html">← Leis dos Gases</a>
+      <a href="index.html" class="nav-next">Índice: Termodinâmica →</a>
+    </div>
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+<script>
+(function(){
+  window.calcPrimLei = function(){
+    const dUv=document.getElementById('tl-dU').value, Qv=document.getElementById('tl-Q').value, Wv=document.getElementById('tl-W').value;
+    const res=document.getElementById('tl-result');
+    const blanks=[dUv,Qv,Wv].filter(v=>v==='').length;
+    if(blanks!==1){res.className='calc-result erro';res.textContent='Deixe exatamente UM campo em branco.';return;}
+    let dU=dUv===''?null:parseFloat(dUv), Q=Qv===''?null:parseFloat(Qv), W=Wv===''?null:parseFloat(Wv);
+    let msg='';
+    if(dU===null){dU=Q-W;document.getElementById('tl-dU').value=dU.toFixed(3);msg='ΔU = '+dU.toFixed(3)+' J';}
+    else if(Q===null){Q=dU+W;document.getElementById('tl-Q').value=Q.toFixed(3);msg='Q = '+Q.toFixed(3)+' J';}
+    else{W=Q-dU;document.getElementById('tl-W').value=W.toFixed(3);msg='W = '+W.toFixed(3)+' J';}
+    res.className='calc-result ok';res.textContent=msg;
+  };
+
+  window.calcCarnot = function(){
+    const TH=parseFloat(document.getElementById('cr-TH').value)+273;
+    const TC=parseFloat(document.getElementById('cr-TC').value)+273;
+    const QHv=document.getElementById('cr-QH').value;
+    const res=document.getElementById('cr-result');
+    if(isNaN(TH)||isNaN(TC)){res.className='calc-result erro';res.textContent='Informe T_H e T_C.';return;}
+    if(TC>=TH){res.className='calc-result erro';res.textContent='T_H deve ser maior que T_C.';return;}
+    const eta=1-TC/TH;
+    let msg='η_Carnot = '+(eta*100).toFixed(2)+'%';
+    if(QHv!==''){
+      const QH=parseFloat(QHv);
+      const W=eta*QH; const QC=QH-W;
+      msg+='<br>W = '+W.toFixed(2)+' J  |  Q_C = '+QC.toFixed(2)+' J';
+    }
+    res.className='calc-result ok';res.innerHTML=msg;
+  };
+
+  const sections=document.querySelectorAll('.content-section');
+  const tocLinks=document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll',function(){
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+    tocLinks.forEach(a=>a.parentElement.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. termodinamica/maquina-termica.png
+     Diagrama de máquina térmica: fonte quente (vermelho, T_H) → máquina → fonte fria (azul, T_C).
+     Setas Q_H, W e Q_C. Equação η = W/Q_H ao lado. Fundo branco.
+
+  2. termodinamica/ciclo-carnot.png
+     Diagrama P×V do ciclo de Carnot: 4 processos (isotérmico, adiabático, isotérmico, adiabático).
+     Área interna representa W. Duas temperaturas isotérmicas T_H e T_C indicadas. Fundo branco.
+-->
+</body>
+</html>

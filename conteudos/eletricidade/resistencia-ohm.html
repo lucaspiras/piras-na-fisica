@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resistência Elétrica e Lei de Ohm — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TY56KM22X8');</script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero" style="background:linear-gradient(135deg,#78350f 0%,#b45309 55%,#d97706 100%);">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Eletricidade</a><span>/</span>
+      <span>Resistência e Lei de Ohm</span>
+    </nav>
+    <h1 class="content-title">Resistência Elétrica e Lei de Ohm</h1>
+    <p class="content-subtitle">A resistência é a oposição ao fluxo de corrente. Nos resistores ôhmicos, tensão e corrente são proporcionais — é a famosa Lei de Ohm.</p>
+    <span class="formula-highlight">R = V / i  |  R = ρ·L / A</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Lei de Ohm</a></li>
+      <li><a href="#s2">Resistividade</a></li>
+      <li><a href="#s3">Ôhmicos e não-ôhmicos</a></li>
+      <li><a href="#s4">Efeito da temperatura</a></li>
+      <li><a href="#s5">Gráfico V×i interativo</a></li>
+      <li><a href="#s6">Calculadora</a></li>
+      <li><a href="#s7">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="corrente-eletrica.html">← Corrente Elétrica</a>
+      <a href="circuitos.html" class="toc-next">Circuitos Elétricos →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Lei de Ohm</h2>
+      <p>Georg Simon Ohm verificou experimentalmente que, para muitos materiais a temperatura constante, a corrente elétrica é <strong>diretamente proporcional</strong> à tensão aplicada. A constante de proporcionalidade é a <strong>resistência elétrica R</strong>:</p>
+      <div class="formula-box">
+        <span class="formula-label">Lei de Ohm</span>
+        <span class="formula-expr">V = R · i</span>
+        <span class="formula-legend">
+          <span>V = tensão (ddp) nos terminais do resistor (V)</span>
+          <span>R = resistência elétrica (Ω — ohms)</span>
+          <span>i = corrente elétrica (A)</span>
+          <span>Isolando: R = V/i | i = V/R</span>
+        </span>
+      </div>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Resistência de uma lâmpada</div>
+        <div class="ex-body">
+          <p>Uma lâmpada é ligada a 127 V e consome uma corrente de 0,5 A. Qual sua resistência?</p>
+          <p>R = V/i = 127/0,5 = <strong>254 Ω</strong></p>
+          <div class="ex-result">Resistência da lâmpada: 254 Ω</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Resistividade e resistência geométrica</h2>
+      <p>A resistência de um condutor cilíndrico depende do material (resistividade ρ), do comprimento e da área da seção transversal:</p>
+      <div class="formula-box">
+        <span class="formula-label">Resistência de um condutor</span>
+        <span class="formula-expr">R = ρ · L / A</span>
+        <span class="formula-legend">
+          <span>ρ = resistividade do material (Ω·m)</span>
+          <span>L = comprimento do condutor (m)</span>
+          <span>A = área da seção transversal (m²)</span>
+          <span>Fio mais longo → mais resistência; fio mais grosso → menos resistência</span>
+        </span>
+      </div>
+      <table class="content-table">
+        <thead><tr><th>Material</th><th>Resistividade ρ (Ω·m) a 20 °C</th><th>Classificação</th></tr></thead>
+        <tbody>
+          <tr><td>Prata</td><td>1,59 × 10⁻⁸</td><td>Condutor</td></tr>
+          <tr><td>Cobre</td><td>1,72 × 10⁻⁸</td><td>Condutor</td></tr>
+          <tr><td>Alumínio</td><td>2,82 × 10⁻⁸</td><td>Condutor</td></tr>
+          <tr><td>Ferro</td><td>1,0 × 10⁻⁷</td><td>Condutor</td></tr>
+          <tr><td>Nicromo (fios de chuveiro)</td><td>1,1 × 10⁻⁶</td><td>Condutor resistivo</td></tr>
+          <tr><td>Silício puro</td><td>~640</td><td>Semicondutor</td></tr>
+          <tr><td>Vidro</td><td>10¹⁰ – 10¹⁴</td><td>Isolante</td></tr>
+          <tr><td>Borracha</td><td>~10¹³</td><td>Isolante</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Resistores ôhmicos e não-ôhmicos</h2>
+      <div class="concept-grid">
+        <div class="concept-card"><span class="cc-icon">📈</span><div class="cc-title">Ôhmico (linear)</div><p class="cc-desc">R constante → gráfico V×i é uma <strong>reta</strong>. Exemplo: resistor de fio metálico a temperatura constante, chuveiro elétrico, ferro elétrico.</p></div>
+        <div class="concept-card"><span class="cc-icon">📉</span><div class="cc-title">Não-ôhmico (não linear)</div><p class="cc-desc">R varia com a tensão/corrente → gráfico V×i é uma <strong>curva</strong>. Exemplos: diodo, LED, transistor, lâmpada incandescente (aquece, muda ρ).</p></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Efeito da temperatura na resistência</h2>
+      <p>Para metais, a resistividade aumenta com a temperatura (os íons vibram mais e dificultam o fluxo de elétrons):</p>
+      <div class="formula-box">
+        <span class="formula-label">Resistência em função da temperatura</span>
+        <span class="formula-expr">R(T) = R₀ · [1 + α·(T − T₀)]</span>
+        <span class="formula-legend">
+          <span>R₀ = resistência na temperatura de referência T₀ (geralmente 20 °C)</span>
+          <span>α = coeficiente de temperatura (°C⁻¹)</span>
+          <span>Cobre: α ≈ 3,9 × 10⁻³ °C⁻¹</span>
+          <span>Tungstênio (filamento): α ≈ 4,5 × 10⁻³ °C⁻¹</span>
+        </span>
+      </div>
+      <div class="highlight-box info">
+        <span class="hb-icon">💡</span>
+        <p>O filamento de tungstênio de uma lâmpada incandescente opera a ~2700 °C — sua resistência a quente é <strong>10× maior</strong> que a frio. É por isso que a corrente inicial ao ligar a lâmpada é muito maior que a de regime.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Gráfico V×i interativo</h2>
+      <div class="graph-box">
+        <canvas id="cvOhm" width="480" height="260"></canvas>
+        <div class="slider-row">
+          <label>R = <span id="lbl-R">100</span> Ω</label>
+          <input type="range" id="sl-R" min="10" max="500" step="10" value="100" oninput="drawOhm()">
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Calculadora — Lei de Ohm</h2>
+      <div class="calc-box">
+        <h4>🧮 V = R · i</h4>
+        <p style="font-size:.85rem;color:#666;margin-bottom:1rem;">Deixe um campo em branco para calcular.</p>
+        <div class="calc-grid">
+          <div class="calc-field"><label>V (V)</label><input type="number" id="oh-V" placeholder="vazio = calcular"></div>
+          <div class="calc-field"><label>R (Ω)</label><input type="number" id="oh-R" placeholder="vazio = calcular"></div>
+          <div class="calc-field"><label>i (A)</label><input type="number" id="oh-i" placeholder="vazio = calcular"></div>
+        </div>
+        <button class="calc-btn" onclick="calcOhm()">Calcular</button>
+        <div class="calc-result" id="oh-result"></div>
+      </div>
+
+      <div class="calc-box" style="margin-top:1rem;">
+        <h4>🧮 R = ρ·L/A</h4>
+        <div class="calc-grid">
+          <div class="calc-field"><label>ρ (Ω·m) — ex: 1.72e-8 para cobre</label><input type="number" id="rg-rho" placeholder="ex: 1.72e-8"></div>
+          <div class="calc-field"><label>L (m)</label><input type="number" id="rg-L" placeholder="ex: 10"></div>
+          <div class="calc-field"><label>Diâmetro (mm) — para seção circular</label><input type="number" id="rg-d" placeholder="ex: 2"></div>
+        </div>
+        <button class="calc-btn" onclick="calcResistividade()">Calcular R</button>
+        <div class="calc-result" id="rg-result"></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Resumo</h2>
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Lei de Ohm: V = R·i. Unidade de resistência: ohm (Ω = V/A).</li>
+          <li>Resistência geométrica: R = ρ·L/A. Quanto maior o fio, maior R; quanto mais grosso, menor R.</li>
+          <li>Resistividade ρ: propriedade do material. Metais: 10⁻⁸ Ω·m; isolantes: até 10¹⁴ Ω·m.</li>
+          <li>Ôhmico: R constante, gráfico V×i linear. Não-ôhmico: R varia, gráfico curvo.</li>
+          <li>Temperatura aumenta a resistência dos metais: R(T) = R₀[1 + α(T−T₀)].</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="corrente-eletrica.html">← Corrente Elétrica</a>
+      <a href="circuitos.html" class="nav-next">Próximo: Circuitos Elétricos →</a>
+    </div>
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+<script>
+(function(){
+  const cv = document.getElementById('cvOhm');
+  const ctx = cv.getContext('2d');
+
+  function drawOhm(){
+    const R = parseFloat(document.getElementById('sl-R').value);
+    document.getElementById('lbl-R').textContent = R;
+    const W = cv.width, H = cv.height;
+    const pad = {t:20,r:20,b:40,l:50};
+    ctx.clearRect(0,0,W,H);
+
+    // axes
+    ctx.strokeStyle='#ccc'; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(pad.l,pad.t); ctx.lineTo(pad.l,H-pad.b); ctx.lineTo(W-pad.r,H-pad.b); ctx.stroke();
+
+    // labels
+    ctx.fillStyle='#666'; ctx.font='12px sans-serif'; ctx.textAlign='center';
+    ctx.fillText('i (A)', W/2, H-4);
+    ctx.save(); ctx.translate(14, H/2); ctx.rotate(-Math.PI/2); ctx.fillText('V (V)', 0, 0); ctx.restore();
+
+    const iMax = 2;
+    const VMax = R * iMax;
+    const xScale = (W-pad.l-pad.r)/iMax;
+    const yScale = (H-pad.t-pad.b)/VMax;
+
+    // tick marks
+    ctx.fillStyle='#999'; ctx.font='10px sans-serif'; ctx.textAlign='center';
+    for(let i=0;i<=iMax;i+=0.5){
+      const x=pad.l+i*xScale;
+      ctx.beginPath(); ctx.moveTo(x,H-pad.b); ctx.lineTo(x,H-pad.b+4); ctx.strokeStyle='#999'; ctx.lineWidth=1; ctx.stroke();
+      ctx.fillText(i.toFixed(1), x, H-pad.b+14);
+    }
+    ctx.textAlign='right';
+    const Vstep = VMax>600?200:VMax>300?100:VMax>150?50:25;
+    for(let v=0;v<=VMax;v+=Vstep){
+      const y=H-pad.b-v*yScale;
+      ctx.beginPath(); ctx.moveTo(pad.l-4,y); ctx.lineTo(pad.l,y); ctx.stroke();
+      ctx.fillText(v.toFixed(0), pad.l-6, y+4);
+    }
+
+    // line V = R*i
+    ctx.strokeStyle='#d97706'; ctx.lineWidth=2.5;
+    ctx.beginPath();
+    ctx.moveTo(pad.l, H-pad.b);
+    ctx.lineTo(pad.l+iMax*xScale, H-pad.b-VMax*yScale);
+    ctx.stroke();
+
+    // slope label
+    ctx.fillStyle='#b45309'; ctx.font='bold 13px sans-serif'; ctx.textAlign='left';
+    ctx.fillText('inclinação = R = '+R+'Ω', pad.l+10, pad.t+16);
+  }
+
+  window.drawOhm = drawOhm;
+  drawOhm();
+
+  window.calcOhm = function(){
+    const Vv=document.getElementById('oh-V').value, Rv=document.getElementById('oh-R').value, iv=document.getElementById('oh-i').value;
+    const res=document.getElementById('oh-result');
+    const blanks=[Vv,Rv,iv].filter(v=>v==='').length;
+    if(blanks!==1){res.className='calc-result erro';res.textContent='Deixe exatamente UM campo em branco.';return;}
+    let V=Vv===''?null:parseFloat(Vv), R=Rv===''?null:parseFloat(Rv), i=iv===''?null:parseFloat(iv);
+    let msg='';
+    if(V===null){V=R*i;document.getElementById('oh-V').value=V.toFixed(4);msg='V = '+V.toFixed(4)+' V';}
+    else if(R===null){R=V/i;document.getElementById('oh-R').value=R.toFixed(4);msg='R = '+R.toFixed(4)+' Ω';}
+    else{i=V/R;document.getElementById('oh-i').value=i.toFixed(6);msg='i = '+i.toFixed(6)+' A';}
+    res.className='calc-result ok'; res.textContent=msg;
+  };
+
+  window.calcResistividade = function(){
+    const rho=parseFloat(document.getElementById('rg-rho').value);
+    const L=parseFloat(document.getElementById('rg-L').value);
+    const d=parseFloat(document.getElementById('rg-d').value)*1e-3;
+    const res=document.getElementById('rg-result');
+    if(isNaN(rho)||isNaN(L)||isNaN(d)||d<=0){res.className='calc-result erro';res.textContent='Preencha todos os campos.';return;}
+    const A=Math.PI*(d/2)*(d/2);
+    const R=rho*L/A;
+    res.className='calc-result ok';
+    res.innerHTML='A = '+A.toExponential(3)+' m²<br>R = '+R.toFixed(4)+' Ω';
+  };
+
+  const sections=document.querySelectorAll('.content-section');
+  const tocLinks=document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll',function(){
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+    tocLinks.forEach(a=>a.parentElement.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. eletricidade/ohm-graficos.png
+     Dois gráficos V×i lado a lado.
+     Esquerda (ôhmico): reta passando pela origem; inclinação = R indicada.
+     Direita (diodo, não-ôhmico): curva exponencial assimétrica.
+     Eixos rotulados. Fundo branco, cores âmbar.
+-->
+</body>
+</html>

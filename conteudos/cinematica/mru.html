@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MRU — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Cinemática</a><span>/</span>
+      <span>MRU</span>
+    </nav>
+    <h1 class="content-title">Movimento Retilíneo Uniforme</h1>
+    <p class="content-subtitle">Velocidade constante, trajetória reta. O modelo mais simples — e mais poderoso — da Cinemática.</p>
+    <span class="formula-highlight">s = s₀ + v·t</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Definição</a></li>
+      <li><a href="#s2">Equação horária</a></li>
+      <li><a href="#s3">Gráfico S×t</a></li>
+      <li><a href="#s4">Gráfico v×t</a></li>
+      <li><a href="#s5">Encontro de móveis</a></li>
+      <li><a href="#s6">Aplicações cotidianas</a></li>
+      <li><a href="#s7">Calculadora</a></li>
+      <li><a href="#s8">Gráfico interativo</a></li>
+      <li><a href="#s9">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="conceitos.html">← Conceitos</a>
+      <a href="mruv.html" class="toc-next">MRUV →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Definição</h2>
+
+      <p>
+        O <strong>Movimento Retilíneo Uniforme (MRU)</strong> é aquele em que um corpo se move em linha reta com <strong>velocidade constante</strong> — ou seja, sem acelerar nem desacelerar. Isso significa que o corpo percorre iguais distâncias em iguais intervalos de tempo.
+      </p>
+
+      <p>
+        Para que exista MRU, duas condições devem ser satisfeitas:
+      </p>
+
+      <div class="concept-grid">
+        <div class="concept-card">
+          <span class="cc-icon">📏</span>
+          <div class="cc-title">Trajetória reta</div>
+          <p class="cc-desc">O corpo se move ao longo de uma linha reta — sem curvas.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">⚡</span>
+          <div class="cc-title">Velocidade constante</div>
+          <p class="cc-desc">A velocidade não muda com o tempo: nem módulo, nem direção, nem sentido.</p>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <span class="hb-icon">💡</span>
+        <p>
+          No MRU, a aceleração é <strong>zero</strong> (a = 0). A força resultante sobre o corpo também é zero — o que é exatamente o que a Primeira Lei de Newton prevê: sem força resultante, o corpo mantém seu estado de movimento.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Equação horária da posição</h2>
+
+      <p>
+        A equação horária do MRU expressa a posição <em>s</em> do corpo em qualquer instante de tempo <em>t</em>:
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Equação horária do MRU</span>
+        <span class="formula-expr">s = s₀ + v · t</span>
+        <span class="formula-legend">
+          <span>s = posição no instante t (m)</span>
+          <span>s₀ = posição inicial (posição em t = 0) (m)</span>
+          <span>v = velocidade (m/s) — constante e com sinal</span>
+          <span>t = instante de tempo (s)</span>
+        </span>
+      </div>
+
+      <p>
+        O sinal da velocidade indica o <strong>sentido</strong> do movimento:
+      </p>
+
+      <div class="formula-row">
+        <div class="formula-box">
+          <span class="formula-label">Movimento progressivo</span>
+          <span class="formula-expr">v &gt; 0</span>
+          <span class="formula-legend"><span>Corpo se move no sentido positivo do eixo</span></span>
+        </div>
+        <div class="formula-box">
+          <span class="formula-label">Movimento retrógrado</span>
+          <span class="formula-expr">v &lt; 0</span>
+          <span class="formula-legend"><span>Corpo se move no sentido negativo do eixo</span></span>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo 1</div>
+        <div class="ex-body">
+          <p>Um carro parte da posição s₀ = 20 m com velocidade v = 15 m/s. Qual a posição após t = 4 s?</p>
+          <p>s = 20 + 15 × 4 = 20 + 60 = <strong>80 m</strong></p>
+          <div class="ex-result">s = 80 m</div>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo 2 — Movimento retrógrado</div>
+        <div class="ex-body">
+          <p>Um trem está na posição s₀ = 500 m e se move com v = −20 m/s. Qual a posição em t = 10 s?</p>
+          <p>s = 500 + (−20) × 10 = 500 − 200 = <strong>300 m</strong></p>
+          <div class="ex-result">s = 300 m</div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Gráfico S×t (posição × tempo)</h2>
+
+      <p>
+        No MRU, o gráfico da posição em função do tempo (S×t) é uma <strong>reta</strong>. A inclinação dessa reta representa a velocidade do móvel.
+      </p>
+
+      <div class="concept-grid">
+        <div class="concept-card">
+          <span class="cc-icon">↗️</span>
+          <div class="cc-title">Reta com inclinação positiva</div>
+          <p class="cc-desc">v &gt; 0 → movimento progressivo. A posição aumenta com o tempo.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">↘️</span>
+          <div class="cc-title">Reta com inclinação negativa</div>
+          <p class="cc-desc">v &lt; 0 → movimento retrógrado. A posição diminui com o tempo.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">➡️</span>
+          <div class="cc-title">Reta horizontal</div>
+          <p class="cc-desc">v = 0 → corpo em repouso. A posição não muda com o tempo.</p>
+        </div>
+      </div>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">📐</span>
+        <p>
+          A inclinação (coeficiente angular) da reta no gráfico S×t é igual à velocidade:<br>
+          <strong>v = Δs / Δt = (s₂ − s₁) / (t₂ − t₁)</strong>
+        </p>
+      </div>
+
+
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Gráfico v×t (velocidade × tempo)</h2>
+
+      <p>
+        Como a velocidade no MRU é <strong>constante</strong>, o gráfico v×t é uma <strong>reta horizontal</strong> paralela ao eixo do tempo. Independentemente de quanto tempo passa, a velocidade permanece a mesma.
+      </p>
+
+      <div class="highlight-box">
+        <span class="hb-icon">💡</span>
+        <p>
+          A <strong>área sob a curva</strong> no gráfico v×t representa o deslocamento do móvel naquele intervalo de tempo. Para o MRU: área = v × Δt = Δs.
+        </p>
+      </div>
+
+
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Encontro de dois móveis</h2>
+
+      <p>
+        Um problema clássico do MRU é determinar <strong>quando e onde</strong> dois corpos em movimento se encontram (ou se ultrapassam). Para isso, igualam-se as equações horárias dos dois móveis e resolve-se para <em>t</em>.
+      </p>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Encontro</div>
+        <div class="ex-body">
+          <p><strong>Móvel A:</strong> s₀ = 0 m, v = +20 m/s → s<sub>A</sub> = 20t</p>
+          <p><strong>Móvel B:</strong> s₀ = 300 m, v = −10 m/s → s<sub>B</sub> = 300 − 10t</p>
+          <p>No encontro: s<sub>A</sub> = s<sub>B</sub></p>
+          <p>20t = 300 − 10t → 30t = 300 → <strong>t = 10 s</strong></p>
+          <p>Posição do encontro: s = 20 × 10 = <strong>200 m</strong></p>
+          <div class="ex-result">Encontro em t = 10 s, posição s = 200 m</div>
+        </div>
+      </div>
+
+
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Aplicações cotidianas</h2>
+
+      <div class="daily-grid">
+        <div class="daily-card">
+          <span class="dc-icon">🚄</span>
+          <div class="dc-title">Trem em cruzeiro</div>
+          <p class="dc-desc">Em trechos retos sem aceleração, um trem de alta velocidade se aproxima do MRU.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🌊</span>
+          <div class="dc-title">Luz e som</div>
+          <p class="dc-desc">A luz no vácuo (300.000 km/s) e o som no ar (≈ 343 m/s) se propagam em MRU.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🛸</span>
+          <div class="dc-title">Sonda espacial</div>
+          <p class="dc-desc">Longe de qualquer gravidade significativa, sondas como a Voyager viajam em MRU.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🚗</span>
+          <div class="dc-title">Carro no piloto automático</div>
+          <p class="dc-desc">Mantendo velocidade constante numa estrada reta, um carro realiza um MRU aproximado.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Calculadora MRU</h2>
+
+      <p>
+        Deixe <strong>um campo em branco</strong> para que ele seja calculado a partir dos outros três.
+      </p>
+
+      <div class="calc-box">
+        <h4>🧮 Calculadora de MRU &nbsp;— &nbsp;s = s₀ + v · t</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Posição inicial s₀ (m)</label>
+            <input type="number" id="mru-s0" placeholder="deixe vazio p/ calcular">
+          </div>
+          <div class="calc-field">
+            <label>Velocidade v (m/s)</label>
+            <input type="number" id="mru-v" placeholder="deixe vazio p/ calcular">
+          </div>
+          <div class="calc-field">
+            <label>Tempo t (s)</label>
+            <input type="number" id="mru-t" placeholder="deixe vazio p/ calcular">
+          </div>
+          <div class="calc-field">
+            <label>Posição final s (m)</label>
+            <input type="number" id="mru-s" placeholder="deixe vazio p/ calcular">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcMRU()">Calcular</button>
+        <div class="calc-result" id="mru-result"></div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Gráfico S×t interativo</h2>
+
+      <p>
+        Ajuste a posição inicial e a velocidade para ver como o gráfico S×t do MRU muda.
+      </p>
+
+      <div class="graph-box">
+        <h4>📈 Gráfico S×t — MRU</h4>
+        <div class="graph-canvases">
+          <canvas id="mru-graph" width="500" height="280"></canvas>
+        </div>
+        <div class="graph-controls">
+          <div class="slider-row">
+            <label>Posição inicial s₀ = <span id="mru-s0-disp">0</span> m</label>
+            <input type="range" id="mru-s0-sl" min="-50" max="50" value="0" step="5">
+          </div>
+          <div class="slider-row">
+            <label>Velocidade v = <span id="mru-v-disp">10</span> m/s</label>
+            <input type="range" id="mru-v-sl" min="-30" max="30" value="10" step="1">
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s9">
+      <h2><span class="sec-num">9</span> Resumo</h2>
+
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>No MRU, o corpo se move em linha reta com velocidade constante (a = 0).</li>
+          <li>Equação horária: s = s₀ + v·t (função linear do tempo).</li>
+          <li>Gráfico S×t é uma reta — inclinação = velocidade.</li>
+          <li>Gráfico v×t é uma reta horizontal — área = deslocamento.</li>
+          <li>Para encontro de dois móveis: igualar as equações e resolver para t.</li>
+          <li>v &gt; 0 → progressivo; v &lt; 0 → retrógrado; v = 0 → repouso.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="conceitos.html">← Conceitos Iniciais</a>
+      <a href="mruv.html" class="nav-next">Próximo: MRUV →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <p>© 2025 — Piras na Física</p>
+</footer>
+
+<script>
+(function() {
+  /* ---- Calculadora MRU ---- */
+  window.calcMRU = function() {
+    const ids = ['mru-s0','mru-v','mru-t','mru-s'];
+    const vals = ids.map(id => {
+      const v = document.getElementById(id).value;
+      return v === '' ? null : parseFloat(v);
+    });
+    const [s0, v, t, s] = vals;
+    const res = document.getElementById('mru-result');
+    const blanks = vals.filter(x => x === null).length;
+
+    if (blanks !== 1) {
+      res.className = 'calc-result erro';
+      res.textContent = 'Deixe exatamente UM campo em branco para ser calculado.';
+      return;
+    }
+
+    let msg = '';
+    if (s0 === null) {
+      const calc = s - v * t;
+      document.getElementById('mru-s0').value = calc.toFixed(3);
+      msg = 's₀ = s − v·t = ' + calc.toFixed(3) + ' m';
+    } else if (v === null) {
+      if (t === 0) { res.className='calc-result erro'; res.textContent='t não pode ser zero para calcular v.'; return; }
+      const calc = (s - s0) / t;
+      document.getElementById('mru-v').value = calc.toFixed(3);
+      msg = 'v = (s − s₀) / t = ' + calc.toFixed(3) + ' m/s  (' + (calc*3.6).toFixed(2) + ' km/h)';
+    } else if (t === null) {
+      if (v === 0) { res.className='calc-result erro'; res.textContent='v não pode ser zero para calcular t.'; return; }
+      const calc = (s - s0) / v;
+      document.getElementById('mru-t').value = calc.toFixed(3);
+      msg = 't = (s − s₀) / v = ' + calc.toFixed(3) + ' s';
+    } else {
+      const calc = s0 + v * t;
+      document.getElementById('mru-s').value = calc.toFixed(3);
+      msg = 's = s₀ + v·t = ' + calc.toFixed(3) + ' m';
+    }
+
+    res.className = 'calc-result ok';
+    res.textContent = msg;
+  };
+
+  /* ---- Gráfico MRU ---- */
+  const canvas = document.getElementById('mru-graph');
+  const ctx = canvas.getContext('2d');
+  const s0Sl  = document.getElementById('mru-s0-sl');
+  const vSl   = document.getElementById('mru-v-sl');
+  const s0Disp = document.getElementById('mru-s0-disp');
+  const vDisp  = document.getElementById('mru-v-disp');
+
+  function drawMRU() {
+    const s0 = parseFloat(s0Sl.value);
+    const v  = parseFloat(vSl.value);
+    s0Disp.textContent = s0;
+    vDisp.textContent  = v;
+
+    const W = canvas.width, H = canvas.height;
+    const PAD = { l:55, r:20, t:20, b:40 };
+    const gW = W - PAD.l - PAD.r;
+    const gH = H - PAD.t - PAD.b;
+    const tMax = 10; // segundos
+
+    /* Calcular range de s */
+    const s_at_0   = s0;
+    const s_at_end = s0 + v * tMax;
+    const sMin = Math.min(s_at_0, s_at_end, 0) - 10;
+    const sMax = Math.max(s_at_0, s_at_end, 0) + 10;
+    const sRange = sMax - sMin || 20;
+
+    const toX = t => PAD.l + (t / tMax) * gW;
+    const toY = s => PAD.t + (1 - (s - sMin) / sRange) * gH;
+
+    ctx.clearRect(0, 0, W, H);
+
+    /* Fundo */
+    ctx.fillStyle = '#fafafa';
+    ctx.fillRect(PAD.l, PAD.t, gW, gH);
+
+    /* Grade */
+    ctx.strokeStyle = '#e2e8f0';
+    ctx.lineWidth = 1;
+    for (let i = 0; i <= 10; i++) {
+      const x = toX(i);
+      ctx.beginPath(); ctx.moveTo(x, PAD.t); ctx.lineTo(x, PAD.t + gH); ctx.stroke();
+    }
+    for (let i = 0; i <= 6; i++) {
+      const y = PAD.t + (i / 6) * gH;
+      ctx.beginPath(); ctx.moveTo(PAD.l, y); ctx.lineTo(PAD.l + gW, y); ctx.stroke();
+    }
+
+    /* Eixo zero (s = 0) */
+    const y0 = toY(0);
+    if (y0 >= PAD.t && y0 <= PAD.t + gH) {
+      ctx.strokeStyle = '#94a3b8';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath(); ctx.moveTo(PAD.l, y0); ctx.lineTo(PAD.l + gW, y0); ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    /* Eixos */
+    ctx.strokeStyle = '#374151';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(PAD.l, PAD.t); ctx.lineTo(PAD.l, PAD.t + gH);
+    ctx.moveTo(PAD.l, PAD.t + gH); ctx.lineTo(PAD.l + gW, PAD.t + gH);
+    ctx.stroke();
+
+    /* Rótulos eixo t */
+    ctx.fillStyle = '#555';
+    ctx.font = '11px Poppins, sans-serif';
+    ctx.textAlign = 'center';
+    for (let i = 0; i <= 10; i += 2) {
+      ctx.fillText(i, toX(i), PAD.t + gH + 18);
+    }
+    ctx.fillText('t (s)', PAD.l + gW + 10, PAD.t + gH + 5);
+
+    /* Rótulos eixo s */
+    ctx.textAlign = 'right';
+    const step = Math.ceil(sRange / 6 / 10) * 10 || 5;
+    const sStart = Math.ceil(sMin / step) * step;
+    for (let sv = sStart; sv <= sMax; sv += step) {
+      ctx.fillText(sv, PAD.l - 6, toY(sv) + 4);
+    }
+    ctx.save();
+    ctx.translate(14, PAD.t + gH / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.textAlign = 'center';
+    ctx.fillText('s (m)', 0, 0);
+    ctx.restore();
+
+    /* Linha MRU */
+    const color = v >= 0 ? '#2f5bea' : '#ef4444';
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(toX(0), toY(s0));
+    ctx.lineTo(toX(tMax), toY(s0 + v * tMax));
+    ctx.stroke();
+
+    /* Ponto inicial */
+    ctx.beginPath();
+    ctx.arc(toX(0), toY(s0), 5, 0, Math.PI * 2);
+    ctx.fillStyle = color;
+    ctx.fill();
+
+    /* Título */
+    ctx.fillStyle = '#1e2a78';
+    ctx.font = 'bold 12px Poppins, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('s = ' + s0 + ' + ' + v + '·t', PAD.l + 8, PAD.t + 16);
+  }
+
+  s0Sl.addEventListener('input', drawMRU);
+  vSl.addEventListener('input', drawMRU);
+  drawMRU();
+
+  /* TOC ativo */
+  const sections = document.querySelectorAll('.content-section');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', function() {
+    let current = '';
+    sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 120) current = sec.id; });
+    tocLinks.forEach(a => {
+      a.parentElement.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. cinematica/mru-grafico-sxt.png
+     Três retas no gráfico S×t: inclinação positiva, horizontal e negativa.
+     Cada reta identificada com tipo de movimento. Eixos em m e s. Visual limpo.
+
+  2. cinematica/mru-grafico-vxt.png
+     Reta horizontal em v = +15 m/s no gráfico v×t. Área sombreada entre
+     t = 2 s e t = 5 s indicando deslocamento = 45 m.
+
+  3. cinematica/mru-encontro-moveis.png
+     Gráfico S×t com duas retas se cruzando: móvel A (s = 0, v = +20) e
+     móvel B (s = 300, v = −10). Ponto de encontro em (10 s, 200 m) destacado.
+-->
+
+</body>
+</html>

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lançamento Vertical — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Cinemática</a><span>/</span>
+      <span>Lançamento Vertical</span>
+    </nav>
+    <h1 class="content-title">Lançamento Vertical e Queda Livre</h1>
+    <p class="content-subtitle">O que acontece quando largamos ou arremessamos um objeto verticalmente? A gravidade como única aceleração — o MRUV vertical.</p>
+    <span class="formula-highlight">h = v₀·t − ½·g·t²</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Queda livre</a></li>
+      <li><a href="#s2">Lançamento para cima</a></li>
+      <li><a href="#s3">Equações</a></li>
+      <li><a href="#s4">Altura máxima</a></li>
+      <li><a href="#s5">Simetria do movimento</a></li>
+      <li><a href="#s6">Aplicações</a></li>
+      <li><a href="#s7">Calculadora</a></li>
+      <li><a href="#s8">Simulador</a></li>
+      <li><a href="#s9">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="mruv.html">← MRUV</a>
+      <a href="lancamento-horizontal.html" class="toc-next">Lanç. Horizontal →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Queda livre</h2>
+
+      <p>
+        A <strong>queda livre</strong> é o movimento de um objeto que cai sob a ação exclusiva da gravidade, partindo do repouso (v₀ = 0). Na ausência de resistência do ar, todos os corpos caem com a mesma aceleração — independentemente de sua massa.
+      </p>
+
+      <p>
+        Esse resultado, confirmado por Galileu no século XVII, contradiz a intuição: uma pedra e uma pena, em vácuo, caem juntas.
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Aceleração da gravidade</span>
+        <span class="formula-expr">g ≈ 9,8 m/s²  ≈  10 m/s²</span>
+        <span class="formula-legend">
+          <span>• Varia ligeiramente com a latitude e altitude</span>
+          <span>• Nos polos: g ≈ 9,83 m/s²; no equador: g ≈ 9,78 m/s²</span>
+          <span>• Em problemas do EM, usa-se g = 10 m/s²</span>
+        </span>
+      </div>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">🌙</span>
+        <p>
+          Na Lua, g ≈ 1,6 m/s² (cerca de 1/6 da gravidade terrestre). Um astronauta na Lua cai muito mais devagar que na Terra — e salta muito mais alto.
+        </p>
+      </div>
+
+
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Lançamento vertical para cima</h2>
+
+      <p>
+        No lançamento vertical para cima, um objeto é arremessado com velocidade inicial v₀ > 0 (para cima) e sofre a ação da gravidade, que desacelera o movimento até a parada, depois acelera o retorno.
+      </p>
+
+      <p>
+        Adotamos o eixo y positivo para <strong>cima</strong>. Assim, a aceleração da gravidade é <strong>negativa</strong> (aponta para baixo):
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Convenção de sinais</span>
+        <span class="formula-expr">a = −g = −10 m/s²</span>
+        <span class="formula-legend">
+          <span>• v₀ &gt; 0: lançado para cima</span>
+          <span>• g sempre positivo (módulo da aceleração gravitacional)</span>
+          <span>• No ponto mais alto: v = 0</span>
+        </span>
+      </div>
+
+      <div class="concept-grid">
+        <div class="concept-card">
+          <span class="cc-icon">🔼</span>
+          <div class="cc-title">Subida</div>
+          <p class="cc-desc">v &gt; 0, a &lt; 0: velocidade diminui gradualmente até zero no ponto mais alto.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">🔽</span>
+          <div class="cc-title">Descida</div>
+          <p class="cc-desc">v &lt; 0, a &lt; 0: velocidade aumenta em módulo (objeto acelera de volta ao solo).</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">⏸️</span>
+          <div class="cc-title">Ponto mais alto</div>
+          <p class="cc-desc">v = 0 instantaneamente. O objeto não para completamente — apenas muda de sentido.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Equações do lançamento vertical</h2>
+
+      <p>
+        As equações são as mesmas do MRUV, com a = −g e eixo y positivo para cima:
+      </p>
+
+      <div class="formula-row">
+        <div class="formula-box">
+          <span class="formula-label">Velocidade em função do tempo</span>
+          <span class="formula-expr">v = v₀ − g·t</span>
+          <span class="formula-legend">
+            <span>v = velocidade em t (m/s)</span>
+            <span>v₀ = velocidade inicial (m/s)</span>
+          </span>
+        </div>
+        <div class="formula-box">
+          <span class="formula-label">Posição em função do tempo</span>
+          <span class="formula-expr">y = y₀ + v₀·t − ½·g·t²</span>
+          <span class="formula-legend">
+            <span>y = altura em t (m)</span>
+            <span>y₀ = altura inicial (m)</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="formula-box">
+        <span class="formula-label">Torricelli vertical</span>
+        <span class="formula-expr">v² = v₀² − 2·g·Δy</span>
+        <span class="formula-legend">
+          <span>Δy = y − y₀ = variação de altura (m)</span>
+        </span>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Bola arremessada para cima</div>
+        <div class="ex-body">
+          <p>Uma bola é lançada para cima com v₀ = 20 m/s, de y₀ = 0. Use g = 10 m/s².</p>
+          <p><strong>Tempo para atingir a altura máxima (v = 0):</strong></p>
+          <p>0 = 20 − 10·t → t = <strong>2 s</strong></p>
+          <p><strong>Altura máxima:</strong></p>
+          <p>h<sub>max</sub> = 0 + 20·2 − ½·10·4 = 40 − 20 = <strong>20 m</strong></p>
+          <div class="ex-result">t<sub>subida</sub> = 2 s | h<sub>max</sub> = 20 m</div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Altura máxima</h2>
+
+      <p>
+        No ponto mais alto, a velocidade é zero. Usando a Equação de Torricelli com v = 0 e y₀ = 0:
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Altura máxima</span>
+        <span class="formula-expr">H<sub>max</sub> = v₀² / (2g)</span>
+        <span class="formula-legend">
+          <span>Válido quando lançado do nível do solo (y₀ = 0)</span>
+          <span>Tempo para atingir: t<sub>subida</sub> = v₀ / g</span>
+        </span>
+      </div>
+
+
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Simetria do movimento</h2>
+
+      <p>
+        O lançamento vertical para cima tem uma propriedade elegante: o <strong>movimento é simétrico</strong>. Isso significa:
+      </p>
+
+      <div class="summary-box">
+        <h3>Propriedades da simetria</h3>
+        <ul>
+          <li>Tempo de subida = tempo de descida (quando lançado e cai ao mesmo nível).</li>
+          <li>Ao passar novamente pela mesma altura durante a descida, a velocidade tem o mesmo módulo que na subida.</li>
+          <li>Velocidade de chegada ao ponto de lançamento = v₀ (em módulo).</li>
+        </ul>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Simetria</div>
+        <div class="ex-body">
+          <p>Uma pedra é lançada para cima com v₀ = 30 m/s do topo de uma torre de y₀ = 45 m.</p>
+          <p>Qual é a velocidade ao atingir o solo (y = 0)?</p>
+          <p>Usando Torricelli: v² = 30² − 2·10·(0−45) = 900 + 900 = 1800</p>
+          <p>v = √1800 ≈ <strong>42,4 m/s</strong> (no sentido negativo, para baixo)</p>
+          <div class="ex-result">v ≈ 42,4 m/s ao chegar ao solo</div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Aplicações cotidianas</h2>
+
+      <div class="daily-grid">
+        <div class="daily-card">
+          <span class="dc-icon">🏀</span>
+          <div class="dc-title">Lance de basquete</div>
+          <p class="dc-desc">A bola lançada verticalmente para cima descreve o movimento estudado aqui.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🎆</span>
+          <div class="dc-title">Fogos de artifício</div>
+          <p class="dc-desc">O foguete sobe em lançamento vertical até explodir na altura máxima.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🏗️</span>
+          <div class="dc-title">Queda de objetos em obras</div>
+          <p class="dc-desc">Uma ferramenta caindo de um andaime é um exemplo de queda livre a partir do repouso.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">⛲</span>
+          <div class="dc-title">Chafariz</div>
+          <p class="dc-desc">O jato de água de um chafariz vertical sobe e desce como um lançamento vertical.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Calculadora de lançamento vertical</h2>
+
+      <div class="calc-box">
+        <h4>🧮 Calculadora de Lançamento Vertical &nbsp;(g = 10 m/s²)</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Velocidade inicial v₀ (m/s)</label>
+            <input type="number" id="lv-v0" placeholder="ex: 20" value="20">
+          </div>
+          <div class="calc-field">
+            <label>Altura inicial y₀ (m)</label>
+            <input type="number" id="lv-y0" placeholder="ex: 0" value="0">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcLV()">Calcular</button>
+        <div class="calc-result" id="lv-result"></div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Simulador de lançamento vertical</h2>
+
+      <p>Ajuste a velocidade inicial e observe o movimento animado da bola.</p>
+
+      <div class="graph-box">
+        <h4>🎯 Simulador de Lançamento Vertical</h4>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
+          <canvas id="lv-anim" width="200" height="320"></canvas>
+          <canvas id="lv-graph" width="300" height="280"></canvas>
+        </div>
+        <div class="graph-controls" style="margin-top:1rem;">
+          <div class="slider-row">
+            <label>v₀ = <span id="lv-v0-d">20</span> m/s</label>
+            <input type="range" id="lv-v0-sl" min="5" max="50" value="20" step="5">
+          </div>
+          <div class="slider-row">
+            <label>y₀ = <span id="lv-y0-d">0</span> m</label>
+            <input type="range" id="lv-y0-sl" min="0" max="30" value="0" step="5">
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:0.8rem;">
+          <button class="calc-btn" id="lv-start-btn">▶ Iniciar</button>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s9">
+      <h2><span class="sec-num">9</span> Resumo</h2>
+
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Queda livre: v₀ = 0, a = g = 10 m/s² (para baixo). Todos os corpos caem igualmente no vácuo.</li>
+          <li>Lançamento para cima: v₀ &gt; 0, a = −g (convenção eixo positivo para cima).</li>
+          <li>Equações: v = v₀ − g·t e y = y₀ + v₀·t − ½g·t².</li>
+          <li>Altura máxima: H = v₀² / (2g); tempo de subida: t = v₀ / g.</li>
+          <li>Simetria: tempo de subida = tempo de descida (ao mesmo nível).</li>
+          <li>Velocidade de volta ao ponto de lançamento tem mesmo módulo que v₀.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="mruv.html">← MRUV</a>
+      <a href="lancamento-horizontal.html" class="nav-next">Próximo: Lançamento Horizontal →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <p>© 2025 — Piras na Física</p>
+</footer>
+
+<script>
+(function() {
+  const g = 10;
+
+  /* ---- Calculadora ---- */
+  window.calcLV = function() {
+    const v0 = parseFloat(document.getElementById('lv-v0').value);
+    const y0 = parseFloat(document.getElementById('lv-y0').value);
+    const res = document.getElementById('lv-result');
+    if (isNaN(v0) || isNaN(y0)) {
+      res.className='calc-result erro'; res.textContent='Preencha todos os campos.'; return;
+    }
+    const tSubida = v0 / g;
+    const hMax = y0 + v0 * tSubida - 0.5 * g * tSubida * tSubida;
+    /* Tempo de queda até y = 0: y0 + v0*t - 5t² = 0 */
+    /* 5t² - v0*t - y0 = 0 */
+    const disc = v0*v0 + 4*5*y0;
+    const tTotal = (v0 + Math.sqrt(disc)) / (2*5);
+    const vFinal = v0 - g * tTotal;
+    res.className='calc-result ok';
+    res.innerHTML =
+      'Tempo de subida: <strong>' + tSubida.toFixed(2) + ' s</strong><br>' +
+      'Altura máxima: <strong>' + hMax.toFixed(2) + ' m</strong><br>' +
+      'Tempo total de voo: <strong>' + tTotal.toFixed(2) + ' s</strong><br>' +
+      'Velocidade ao atingir y=0: <strong>' + Math.abs(vFinal).toFixed(2) + ' m/s</strong>';
+  };
+
+  /* ---- Simulador ---- */
+  const animCanvas = document.getElementById('lv-anim');
+  const graphCanvas = document.getElementById('lv-graph');
+  const actx = animCanvas.getContext('2d');
+  const gctx = graphCanvas.getContext('2d');
+  const v0Sl = document.getElementById('lv-v0-sl');
+  const y0Sl = document.getElementById('lv-y0-sl');
+  const v0Disp = document.getElementById('lv-v0-d');
+  const y0Disp = document.getElementById('lv-y0-d');
+  const startBtn = document.getElementById('lv-start-btn');
+
+  let animId = null, simTime = 0, running = false;
+
+  function getParams() {
+    return { v0: parseFloat(v0Sl.value), y0: parseFloat(y0Sl.value) };
+  }
+
+  function yAt(t, p) { return p.y0 + p.v0 * t - 0.5 * g * t * t; }
+  function vAt(t, p) { return p.v0 - g * t; }
+  function tTotal(p) {
+    const disc = p.v0 * p.v0 + 4 * 5 * p.y0;
+    return (p.v0 + Math.sqrt(disc)) / 10;
+  }
+
+  function drawAnim(t, p) {
+    const W = animCanvas.width, H = animCanvas.height;
+    const yMax = p.y0 + p.v0 * p.v0 / (2 * g) + 5;
+    const yMin = 0;
+    const scale = (H - 60) / (yMax - yMin || 1);
+    const x0 = W / 2;
+    const toY = y => H - 30 - (y - yMin) * scale;
+
+    actx.clearRect(0, 0, W, H);
+
+    /* Solo */
+    actx.fillStyle = '#d1fae5';
+    actx.fillRect(0, toY(0), W, H);
+    actx.strokeStyle = '#059669';
+    actx.lineWidth = 2;
+    actx.beginPath(); actx.moveTo(0, toY(0)); actx.lineTo(W, toY(0)); actx.stroke();
+
+    /* Torre (y0) */
+    if (p.y0 > 0) {
+      actx.fillStyle = '#9ca3af';
+      actx.fillRect(x0 - 10, toY(p.y0), 20, toY(0) - toY(p.y0));
+      actx.fillStyle = '#374151';
+      actx.font = '10px Poppins,sans-serif';
+      actx.textAlign = 'left';
+      actx.fillText(p.y0 + 'm', x0 + 14, toY(p.y0 / 2));
+    }
+
+    /* Linha de altura máxima */
+    const hm = yAt(p.v0/g, p);
+    actx.strokeStyle = '#fbbf24';
+    actx.setLineDash([4,4]);
+    actx.lineWidth = 1;
+    actx.beginPath(); actx.moveTo(30, toY(hm)); actx.lineTo(W-10, toY(hm)); actx.stroke();
+    actx.setLineDash([]);
+    actx.fillStyle = '#d97706';
+    actx.font = 'bold 10px Poppins,sans-serif';
+    actx.textAlign = 'left';
+    actx.fillText('H=' + hm.toFixed(1)+'m', 32, toY(hm) - 4);
+
+    /* Bola */
+    const y = Math.max(0, yAt(t, p));
+    const v = vAt(t, p);
+    const ballColor = v >= 0 ? '#2f5bea' : '#ef4444';
+    actx.beginPath();
+    actx.arc(x0, toY(y), 10, 0, Math.PI * 2);
+    actx.fillStyle = ballColor;
+    actx.fill();
+
+    /* Seta de velocidade */
+    if (Math.abs(v) > 0.5) {
+      const arrowLen = Math.min(40, Math.abs(v) * 1.5);
+      const dir = v > 0 ? -1 : 1;
+      actx.strokeStyle = ballColor;
+      actx.lineWidth = 2;
+      actx.beginPath();
+      actx.moveTo(x0 + 12, toY(y));
+      actx.lineTo(x0 + 12, toY(y) + dir * arrowLen);
+      actx.stroke();
+      actx.beginPath();
+      actx.moveTo(x0 + 12, toY(y) + dir * arrowLen);
+      actx.lineTo(x0 + 7, toY(y) + dir * (arrowLen - 8));
+      actx.lineTo(x0 + 17, toY(y) + dir * (arrowLen - 8));
+      actx.fillStyle = ballColor;
+      actx.fill();
+    }
+
+    /* Info */
+    actx.fillStyle = '#1e2a78';
+    actx.font = 'bold 11px Poppins,sans-serif';
+    actx.textAlign = 'center';
+    actx.fillText('t = ' + t.toFixed(1) + ' s', W/2, 16);
+    actx.fillText('y = ' + y.toFixed(1) + ' m', W/2, 30);
+  }
+
+  function drawGraph(p) {
+    const W = graphCanvas.width, H = graphCanvas.height;
+    const PAD = {l:50, r:15, t:20, b:36};
+    const gW = W-PAD.l-PAD.r, gH = H-PAD.t-PAD.b;
+    const tt = tTotal(p);
+    const yMax = p.y0 + p.v0*p.v0/(2*g) + 5;
+    const toX = t => PAD.l + (t/tt)*gW;
+    const toY = y => PAD.t + (1 - y/yMax)*gH;
+
+    gctx.clearRect(0, 0, W, H);
+    gctx.fillStyle = '#fafafa';
+    gctx.fillRect(PAD.l, PAD.t, gW, gH);
+
+    /* Grade */
+    gctx.strokeStyle = '#e2e8f0'; gctx.lineWidth = 1;
+    for(let i=0;i<=5;i++){
+      const y=PAD.t+i/5*gH;
+      gctx.beginPath();gctx.moveTo(PAD.l,y);gctx.lineTo(PAD.l+gW,y);gctx.stroke();
+    }
+
+    /* Curva y×t */
+    gctx.strokeStyle = '#2f5bea'; gctx.lineWidth = 2.5;
+    gctx.beginPath();
+    for(let i=0;i<=100;i++){
+      const t=i/100*tt;
+      const y=Math.max(0,yAt(t,p));
+      if(i===0) gctx.moveTo(toX(t),toY(y));
+      else gctx.lineTo(toX(t),toY(y));
+    }
+    gctx.stroke();
+
+    /* Eixos */
+    gctx.strokeStyle='#374151'; gctx.lineWidth=2;
+    gctx.beginPath();
+    gctx.moveTo(PAD.l,PAD.t);gctx.lineTo(PAD.l,PAD.t+gH);
+    gctx.moveTo(PAD.l,PAD.t+gH);gctx.lineTo(PAD.l+gW,PAD.t+gH);
+    gctx.stroke();
+
+    /* Rótulos */
+    gctx.fillStyle='#555';gctx.font='10px Poppins,sans-serif';
+    gctx.textAlign='center';
+    for(let i=0;i<=5;i++){
+      const t=i/5*tt;
+      gctx.fillText(t.toFixed(1),toX(t),PAD.t+gH+16);
+    }
+    gctx.fillText('t (s)',PAD.l+gW+8,PAD.t+gH+5);
+    gctx.textAlign='right';
+    for(let i=0;i<=4;i++){
+      const y=i/4*yMax;
+      gctx.fillText(Math.round(y),PAD.l-4,toY(y)+4);
+    }
+    gctx.save();gctx.translate(12,PAD.t+gH/2);gctx.rotate(-Math.PI/2);
+    gctx.textAlign='center';gctx.fillText('y (m)',0,0);gctx.restore();
+
+    /* Linha de tempo atual */
+    if(running||simTime>0){
+      const xt = toX(Math.min(simTime, tt));
+      gctx.strokeStyle='#ef4444';gctx.lineWidth=2;gctx.setLineDash([4,4]);
+      gctx.beginPath();gctx.moveTo(xt,PAD.t);gctx.lineTo(xt,PAD.t+gH);gctx.stroke();
+      gctx.setLineDash([]);
+    }
+  }
+
+  function update() {
+    const p = getParams();
+    const tt = tTotal(p);
+    drawAnim(simTime, p);
+    drawGraph(p);
+    if (running && simTime < tt) {
+      simTime += 0.05;
+      animId = requestAnimationFrame(update);
+    } else if (running) {
+      running = false;
+      startBtn.textContent = '▶ Reiniciar';
+    }
+  }
+
+  function resetView() {
+    const p = getParams();
+    v0Disp.textContent = p.v0;
+    y0Disp.textContent = p.y0;
+    simTime = 0; running = false;
+    if(animId) cancelAnimationFrame(animId);
+    drawAnim(0, p);
+    drawGraph(p);
+  }
+
+  v0Sl.addEventListener('input', resetView);
+  y0Sl.addEventListener('input', resetView);
+
+  startBtn.addEventListener('click', function() {
+    if (!running) {
+      simTime = 0; running = true;
+      startBtn.textContent = '⏸ Em execução...';
+      update();
+    }
+  });
+
+  resetView();
+
+  /* TOC ativo */
+  const sections = document.querySelectorAll('.content-section');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', function() {
+    let cur='';
+    sections.forEach(s=>{ if(window.scrollY>=s.offsetTop-120) cur=s.id; });
+    tocLinks.forEach(a=>{
+      a.parentElement.classList.toggle('active', a.getAttribute('href')==='#'+cur);
+    });
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. cinematica/lancamento-vertical-queda-livre.png
+     Câmara de vácuo com pena e pedra caindo lado a lado ao mesmo tempo.
+     Contraste com queda no ar (pena mais lenta). Legendas explicativas.
+
+  2. cinematica/lancamento-vertical-diagrama.png
+     Diagrama vertical: bola parte do solo com v₀ para cima, sobe até H_max
+     (seta g para baixo em todo o trajeto), desce ao ponto de origem.
+     Gráfico v×t ao lado: reta de inclinação negativa cruzando v=0 no meio.
+-->
+
+</body>
+</html>

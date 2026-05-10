@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200" width="640" height="200">
+  <rect width="640" height="200" fill="#f9fafb" rx="10"/>
+
+  <!-- Title -->
+  <text x="320" y="22" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle">Prefixos do Sistema Internacional — Régua de Conversão</text>
+
+  <!-- Ruler background -->
+  <!-- Sub-multiples: x=15 to x=310 (cold blue) -->
+  <rect x="15" y="65" width="295" height="40" fill="#dbeafe" rx="4 0 0 4" stroke="#93c5fd" stroke-width="1"/>
+  <!-- Base: x=310 to x=345 (neutral) -->
+  <rect x="310" y="65" width="35" height="40" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1"/>
+  <!-- Multiples: x=345 to x=627 (warm orange) -->
+  <rect x="345" y="65" width="280" height="40" fill="#ffedd5" rx="0 4 4 0" stroke="#fed7aa" stroke-width="1"/>
+
+  <!-- Ruler segments with prefix labels (8 positions, 80px apart) -->
+  <!-- nano: x=40, micro: x=140, mili: x=240, BASE: x=327, kilo: x=415, mega: x=490, giga: x=555, tera: x=610 -->
+
+  <!-- nano (10⁻⁹) -->
+  <line x1="40" y1="65" x2="40" y2="105" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="40" y="60" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#1d4ed8" text-anchor="middle">n</text>
+  <text x="40" y="48" font-family="Arial,sans-serif" font-size="10" fill="#2563eb" text-anchor="middle">nano</text>
+  <text x="40" y="37" font-family="Arial,sans-serif" font-size="9" fill="#3b82f6" text-anchor="middle">10⁻⁹</text>
+
+  <!-- micro (10⁻⁶) -->
+  <line x1="140" y1="65" x2="140" y2="105" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="140" y="60" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#1d4ed8" text-anchor="middle">μ</text>
+  <text x="140" y="48" font-family="Arial,sans-serif" font-size="10" fill="#2563eb" text-anchor="middle">micro</text>
+  <text x="140" y="37" font-family="Arial,sans-serif" font-size="9" fill="#3b82f6" text-anchor="middle">10⁻⁶</text>
+
+  <!-- mili (10⁻³) -->
+  <line x1="240" y1="65" x2="240" y2="105" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="240" y="60" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#1d4ed8" text-anchor="middle">m</text>
+  <text x="240" y="48" font-family="Arial,sans-serif" font-size="10" fill="#2563eb" text-anchor="middle">mili</text>
+  <text x="240" y="37" font-family="Arial,sans-serif" font-size="9" fill="#3b82f6" text-anchor="middle">10⁻³</text>
+
+  <!-- BASE (10⁰) — highlighted -->
+  <line x1="327" y1="58" x2="327" y2="112" stroke="#374151" stroke-width="2.5"/>
+  <text x="327" y="53" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="#374151" text-anchor="middle">unidade</text>
+  <text x="327" y="42" font-family="Arial,sans-serif" font-size="10" fill="#475569" text-anchor="middle">base</text>
+  <text x="327" y="31" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#374151" text-anchor="middle">10⁰ = 1</text>
+
+  <!-- kilo (10³) -->
+  <line x1="415" y1="65" x2="415" y2="105" stroke="#ea580c" stroke-width="2"/>
+  <text x="415" y="60" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#ea580c" text-anchor="middle">k</text>
+  <text x="415" y="48" font-family="Arial,sans-serif" font-size="10" fill="#c2410c" text-anchor="middle">kilo</text>
+  <text x="415" y="37" font-family="Arial,sans-serif" font-size="9" fill="#ea580c" text-anchor="middle">10³</text>
+
+  <!-- mega (10⁶) -->
+  <line x1="495" y1="65" x2="495" y2="105" stroke="#ea580c" stroke-width="2"/>
+  <text x="495" y="60" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#ea580c" text-anchor="middle">M</text>
+  <text x="495" y="48" font-family="Arial,sans-serif" font-size="10" fill="#c2410c" text-anchor="middle">mega</text>
+  <text x="495" y="37" font-family="Arial,sans-serif" font-size="9" fill="#ea580c" text-anchor="middle">10⁶</text>
+
+  <!-- giga (10⁹) -->
+  <line x1="562" y1="65" x2="562" y2="105" stroke="#ea580c" stroke-width="2"/>
+  <text x="562" y="60" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#ea580c" text-anchor="middle">G</text>
+  <text x="562" y="48" font-family="Arial,sans-serif" font-size="10" fill="#c2410c" text-anchor="middle">giga</text>
+  <text x="562" y="37" font-family="Arial,sans-serif" font-size="9" fill="#ea580c" text-anchor="middle">10⁹</text>
+
+  <!-- tera (10¹²) -->
+  <line x1="615" y1="65" x2="615" y2="105" stroke="#dc2626" stroke-width="2"/>
+  <text x="615" y="60" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#dc2626" text-anchor="middle">T</text>
+  <text x="615" y="48" font-family="Arial,sans-serif" font-size="10" fill="#b91c1c" text-anchor="middle">tera</text>
+  <text x="615" y="37" font-family="Arial,sans-serif" font-size="9" fill="#dc2626" text-anchor="middle">10¹²</text>
+
+  <!-- Arrow defs -->
+  <defs>
+    <marker id="aLeft" markerWidth="8" markerHeight="5" refX="1" refY="2.5" orient="auto">
+      <polygon points="8 0,0 2.5,8 5" fill="#2f5bea"/>
+    </marker>
+    <marker id="aRight" markerWidth="8" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <polygon points="0 0,8 2.5,0 5" fill="#ea580c"/>
+    </marker>
+  </defs>
+
+  <!-- Conversion arrows below ruler -->
+  <!-- ÷10³ going left -->
+  <line x1="300" y1="130" x2="90" y2="130" stroke="#2f5bea" stroke-width="2" marker-end="url(#aLeft)"/>
+  <text x="195" y="143" font-family="Arial,sans-serif" font-size="11" fill="#1d4ed8" text-anchor="middle" font-weight="bold">÷ 10³ por passo para a esquerda</text>
+
+  <!-- ×10³ going right -->
+  <line x1="360" y1="155" x2="570" y2="155" stroke="#ea580c" stroke-width="2" marker-end="url(#aRight)"/>
+  <text x="465" y="145" font-family="Arial,sans-serif" font-size="11" fill="#ea580c" text-anchor="middle" font-weight="bold">× 10³ por passo para a direita</text>
+
+  <!-- Example conversion -->
+  <rect x="140" y="170" width="360" height="25" fill="#f1f5f9" rx="5"/>
+  <text x="320" y="186" font-family="Arial,sans-serif" font-size="11" fill="#475569" text-anchor="middle">Ex: 1 km = 1 × 10³ m  |  1 mm = 1 × 10⁻³ m  |  1 μm = 1 × 10⁻⁶ m  |  1 GHz = 10⁹ Hz</text>
+</svg>

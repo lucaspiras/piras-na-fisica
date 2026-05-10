@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algarismos Significativos — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero" style="background:linear-gradient(135deg,#064e3b 0%,#059669 50%,#10b981 100%);">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Grandezas Físicas</a><span>/</span>
+      <span>Algarismos Significativos</span>
+    </nav>
+    <h1 class="content-title">Algarismos Significativos e Erros de Medição</h1>
+    <p class="content-subtitle">Nenhuma medida é perfeita. Aprender a quantificar e comunicar a incerteza de uma medida é tão importante quanto fazer a medida.</p>
+    <span class="formula-highlight">ε<sub>r</sub> = |Δx| / x<sub>real</sub> × 100%</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Por que importa?</a></li>
+      <li><a href="#s2">O que são alg. significativos?</a></li>
+      <li><a href="#s3">Regras de contagem</a></li>
+      <li><a href="#s4">Operações</a></li>
+      <li><a href="#s5">Precisão vs. exatidão</a></li>
+      <li><a href="#s6">Erros de medição</a></li>
+      <li><a href="#s7">Calculadora</a></li>
+      <li><a href="#s8">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="notacao-cientifica.html">← Notação Científica</a>
+      <a href="index.html">Hub Grandezas</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Por que a precisão das medidas importa?</h2>
+      <p>
+        Toda medida carrega uma incerteza intrínseca. Quando medimos 1,73 m com uma régua, sabemos que o valor real pode estar entre 1,725 m e 1,735 m. Isso não é falha — é a natureza da medida.
+      </p>
+      <p>
+        Problemas surgem quando ignoramos essa incerteza. Uma calculadora pode mostrar 12 casas decimais em um resultado, mas se os dados de entrada tinham apenas 2 algarismos confiáveis, as demais casas são fictícias — e reportá-las é desonesto cientificamente.
+      </p>
+      <div class="highlight-box danger">
+        <span class="hb-icon">⚠️</span>
+        <p>
+          Em 1999, a sonda Mars Climate Orbiter se perdeu porque uma equipe usou unidades em libras-força enquanto outra esperava newtons. O custo: US$ 327 milhões. Precisão e unidades corretas não são detalhes — são vida ou morte de missões.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> O que são algarismos significativos?</h2>
+      <p>
+        Os <strong>algarismos significativos</strong> de uma medida são todos os dígitos que carregam informação real — ou seja, que são confiáveis com base no instrumento usado. Eles incluem todos os dígitos certos mais o último dígito, que é estimado.
+      </p>
+      <div class="concept-grid">
+        <div class="concept-card">
+          <span class="cc-icon">✅</span>
+          <div class="cc-title">São significativos</div>
+          <p class="cc-desc">Todos os dígitos não-zero; zeros entre dígitos não-zero; zeros à direita após a vírgula decimal.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">❌</span>
+          <div class="cc-title">Não são significativos</div>
+          <p class="cc-desc">Zeros à esquerda (antes do primeiro não-zero); zeros à direita em inteiros sem vírgula decimal explícita.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Regras de contagem</h2>
+
+      <table class="content-table">
+        <thead>
+          <tr><th>Regra</th><th>Exemplo</th><th>Algarismos significativos</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Todos os dígitos não-zero são significativos</td>
+            <td>347</td>
+            <td>3 (3, 4 e 7)</td>
+          </tr>
+          <tr>
+            <td>Zeros entre dígitos não-zero são significativos</td>
+            <td>4.007</td>
+            <td>4 (4, 0, 0 e 7)</td>
+          </tr>
+          <tr>
+            <td>Zeros à esquerda <strong>não</strong> são significativos</td>
+            <td>0,0052</td>
+            <td>2 (5 e 2)</td>
+          </tr>
+          <tr>
+            <td>Zeros à direita após a vírgula são significativos</td>
+            <td>3,500</td>
+            <td>4 (3, 5, 0 e 0)</td>
+          </tr>
+          <tr>
+            <td>Zeros à direita em inteiro: ambíguo sem vírgula</td>
+            <td>1200</td>
+            <td>2, 3 ou 4 — ambíguo! Use notação científica: 1,2 × 10³</td>
+          </tr>
+          <tr>
+            <td>Notação científica elimina ambiguidade</td>
+            <td>1,200 × 10³</td>
+            <td>4 (1, 2, 0 e 0)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exercício relâmpago</div>
+        <div class="ex-body">
+          <p>Quantos algarismos significativos tem cada número?</p>
+          <p>a) 0,00470 → <strong>3</strong> (4, 7 e 0 final)</p>
+          <p>b) 100 → <strong>ambíguo</strong> — use 1,00 × 10² para 3 alg. sig.</p>
+          <p>c) 8,060 × 10⁴ → <strong>4</strong> (8, 0, 6 e 0)</p>
+          <p>d) 305,00 → <strong>5</strong> (3, 0, 5, 0 e 0)</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Operações com algarismos significativos</h2>
+
+      <h3>Multiplicação e divisão</h3>
+      <p>O resultado deve ter o mesmo número de algarismos significativos que o <strong>fator com menos algarismos significativos</strong>.</p>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo</div>
+        <div class="ex-body">
+          <p>3,24 × 1,8 = 5,832</p>
+          <p>1,8 tem 2 alg. sig. → resultado: <strong>5,8</strong></p>
+        </div>
+      </div>
+
+      <h3>Adição e subtração</h3>
+      <p>O resultado deve ter o mesmo número de <strong>casas decimais</strong> que a parcela com menos casas decimais.</p>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo</div>
+        <div class="ex-body">
+          <p>12,52 + 1,8 = 14,32</p>
+          <p>1,8 tem 1 casa decimal → resultado: <strong>14,3</strong></p>
+        </div>
+      </div>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">📌</span>
+        <p>
+          Ao encadear operações, guarde mais algarismos nos resultados intermediários e arredonde apenas no resultado final. Isso evita o acúmulo de erros de arredondamento.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Precisão versus exatidão</h2>
+      <p>
+        Dois conceitos distintos, frequentemente confundidos:
+      </p>
+      <div class="concept-grid">
+        <div class="concept-card">
+          <span class="cc-icon">🎯</span>
+          <div class="cc-title">Exatidão (acurácia)</div>
+          <p class="cc-desc">Quão próximo o resultado está do valor verdadeiro. Alta exatidão = pouco erro sistemático.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">🔁</span>
+          <div class="cc-title">Precisão (repetibilidade)</div>
+          <p class="cc-desc">Quão consistentes são medidas repetidas entre si. Alta precisão = pouco erro aleatório.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Erros de medição</h2>
+      <p>
+        Todo resultado experimental deve ser acompanhado de sua <strong>incerteza (erro)</strong>. Expressa-se: <strong>x = x<sub>med</sub> ± Δx</strong>
+      </p>
+      <div class="formula-row">
+        <div class="formula-box">
+          <span class="formula-label">Erro absoluto</span>
+          <span class="formula-expr">Δx = |x<sub>med</sub> − x<sub>real</sub>|</span>
+          <span class="formula-legend">
+            <span>Mesmo valor numérico da grandeza</span>
+            <span>Ex: 9,80 ± 0,05 m/s²</span>
+          </span>
+        </div>
+        <div class="formula-box">
+          <span class="formula-label">Erro relativo</span>
+          <span class="formula-expr">ε<sub>r</sub> = Δx / x<sub>real</sub></span>
+          <span class="formula-legend">
+            <span>Adimensional — frequentemente em %</span>
+            <span>Ex: 0,05/9,80 ≈ 0,5%</span>
+          </span>
+        </div>
+      </div>
+
+      <h3>Tipos de erros</h3>
+      <table class="content-table">
+        <thead>
+          <tr><th>Tipo de erro</th><th>Causa</th><th>Como reduzir</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Sistemático</strong></td>
+            <td>Instrumento descalibrado, método inadequado, paralaxe</td>
+            <td>Calibrar o instrumento; usar método correto</td>
+          </tr>
+          <tr>
+            <td><strong>Aleatório</strong></td>
+            <td>Flutuações imprevisíveis (vibração, variação de temperatura)</td>
+            <td>Repetir medidas e calcular média</td>
+          </tr>
+          <tr>
+            <td><strong>Grosseiro</strong></td>
+            <td>Erro humano: ler errado, anotar errado</td>
+            <td>Atenção e revisão cuidadosa</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Calculando erro relativo</div>
+        <div class="ex-body">
+          <p>Você mede g = 9,5 m/s² com um pêndulo. O valor aceito é 9,8 m/s².</p>
+          <p>Erro absoluto: |9,5 − 9,8| = <strong>0,3 m/s²</strong></p>
+          <p>Erro relativo: 0,3 / 9,8 × 100% ≈ <strong>3,1%</strong></p>
+          <div class="ex-result">Erro de 3,1% — aceitável para um experimento simples de pêndulo</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Calculadora de erros e algarismos significativos</h2>
+      <div class="calc-box">
+        <h4>🧮 Calculadora de Erro Relativo e Absoluto</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Valor medido x<sub>med</sub></label>
+            <input type="number" id="err-med" placeholder="ex: 9.5" step="any" value="9.5">
+          </div>
+          <div class="calc-field">
+            <label>Valor real (referência) x<sub>ref</sub></label>
+            <input type="number" id="err-ref" placeholder="ex: 9.8" step="any" value="9.8">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcErro()">Calcular erros</button>
+        <div class="calc-result" id="err-result"></div>
+      </div>
+
+      <div class="calc-box" style="margin-top:1rem;">
+        <h4>🧮 Contagem de Algarismos Significativos</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Número em notação científica (mantissa)</label>
+            <input type="number" id="as-num" placeholder="ex: 3.050" step="any" value="3.050">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="contarAS()">Contar</button>
+        <div class="calc-result" id="as-result"></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Resumo</h2>
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Toda medida tem incerteza — comunicar essa incerteza é obrigação científica.</li>
+          <li>Algarismos significativos: dígitos confiáveis de uma medida.</li>
+          <li>Zeros à esquerda não contam; zeros entre dígitos e zeros à direita após vírgula contam.</li>
+          <li>Multiplicação/divisão: resultado com o menor número de alg. sig. dos fatores.</li>
+          <li>Adição/subtração: resultado com o menor número de casas decimais das parcelas.</li>
+          <li>Exatidão ≠ precisão: exatidão é proximidade ao valor real; precisão é repetibilidade.</li>
+          <li>Erros: sistemático (método), aleatório (flutuações) e grosseiro (humano).</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="notacao-cientifica.html">← Notação Científica</a>
+      <a href="index.html" class="nav-next">Hub Grandezas Físicas →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+
+<script>
+(function(){
+  window.calcErro = function() {
+    const med = parseFloat(document.getElementById('err-med').value);
+    const ref = parseFloat(document.getElementById('err-ref').value);
+    const res = document.getElementById('err-result');
+    if (isNaN(med)||isNaN(ref)) { res.className='calc-result erro'; res.textContent='Preencha os dois campos.'; return; }
+    if (ref === 0) { res.className='calc-result erro'; res.textContent='O valor de referência não pode ser zero.'; return; }
+    const ea = Math.abs(med - ref);
+    const er = (ea / Math.abs(ref)) * 100;
+    res.className='calc-result ok';
+    res.innerHTML =
+      'Erro absoluto: <strong>' + ea.toFixed(4) + ' (mesma unidade)</strong><br>' +
+      'Erro relativo: <strong>' + er.toFixed(2) + '%</strong>';
+  };
+
+  window.contarAS = function() {
+    const num = document.getElementById('as-num').value.trim();
+    const res = document.getElementById('as-result');
+    if (!num || isNaN(parseFloat(num))) { res.className='calc-result erro'; res.textContent='Informe a mantissa (parte a da notação a × 10ⁿ).'; return; }
+
+    /* Conta algarismos significativos na string fornecida */
+    /* Remove sinal, encontra dígitos significativos */
+    let s = num.replace('-', '').replace('+', '');
+    /* Se não há vírgula decimal */
+    const hasDot = s.includes('.');
+    if (!hasDot) {
+      /* Zeros à direita em inteiro: ambíguo */
+      const trimmed = s.replace(/0+$/, '');
+      if (trimmed !== s) {
+        res.className='calc-result ok';
+        res.textContent = 'Sem ponto decimal: ambíguo. Número de zeros finais pode ou não ser significativo. ' +
+          'Use notação científica para ser preciso. Mínimo: ' + trimmed.replace(/^0+/, '').length + ' alg. sig.';
+        return;
+      }
+    }
+    /* Remove zeros à esquerda antes do ponto */
+    let digits = s.replace('.', '');
+    let leading = digits.match(/^(0*)/)[1].length;
+    /* Se tem ponto, zeros à esquerda e depois do ponto não são sig */
+    if (!hasDot || parseFloat(num) >= 1) {
+      leading = digits.match(/^0*/)[1].length;
+    } else {
+      /* Número < 1: todos os zeros antes do primeiro não-zero não são sig */
+      leading = digits.match(/^0*/)[1].length;
+    }
+    const sig = digits.length - leading;
+    res.className='calc-result ok';
+    res.textContent = '"' + num + '" tem aproximadamente ' + sig + ' algarismo(s) significativo(s).';
+  };
+
+  /* TOC */
+  const sections=document.querySelectorAll('.content-section');
+  const tocLinks=document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll',function(){
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+    tocLinks.forEach(a=>{a.parentElement.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. grandezas/precisao-vs-exatidao.png
+     Quatro alvos de tiro ao alvo: (1) alta exatidão + alta precisão — tiros
+     agrupados no centro; (2) alta precisão, baixa exatidão — agrupados fora
+     do centro; (3) alta exatidão, baixa precisão — espalhados mas em média
+     no centro; (4) baixa exatidão e precisão — espalhados e longe. Legendas.
+-->
+</body>
+</html>

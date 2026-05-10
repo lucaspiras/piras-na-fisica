@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calor e Transferência de Calor — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TY56KM22X8');</script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero" style="background:linear-gradient(135deg,#7f1d1d 0%,#b91c1c 55%,#ef4444 100%);">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Termodinâmica</a><span>/</span>
+      <span>Calor</span>
+    </nav>
+    <h1 class="content-title">Calor e Transferência de Calor</h1>
+    <p class="content-subtitle">Calor é energia em trânsito — flui espontaneamente do corpo mais quente para o mais frio. Condução, convecção e irradiação são os três mecanismos.</p>
+    <span class="formula-highlight">H = k · A · ΔT / d</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Calor vs temperatura</a></li>
+      <li><a href="#s2">Condução</a></li>
+      <li><a href="#s3">Convecção</a></li>
+      <li><a href="#s4">Irradiação</a></li>
+      <li><a href="#s5">Isolamento térmico</a></li>
+      <li><a href="#s6">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="temperatura.html">← Temperatura</a>
+      <a href="dilatacao.html" class="toc-next">Dilatação Térmica →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Calor não é temperatura</h2>
+      <p><strong>Calor</strong> é energia térmica em trânsito, transferida de um sistema para outro devido a uma diferença de temperatura. Uma vez absorvido, deixa de ser "calor" e passa a ser energia interna do sistema receptor.</p>
+      <div class="concept-grid">
+        <div class="concept-card"><span class="cc-icon">🌡️</span><div class="cc-title">Temperatura</div><p class="cc-desc">Estado do sistema. Medida da agitação cinética média. Expressa em °C, K ou °F. Propriedade intensiva — não depende da quantidade de matéria.</p></div>
+        <div class="concept-card"><span class="cc-icon">🔥</span><div class="cc-title">Calor</div><p class="cc-desc">Processo, não estado. Energia em trânsito entre sistemas com temperaturas diferentes. Unidade: joule (J) ou caloria (cal). Propriedade extensiva — depende da massa.</p></div>
+      </div>
+      <div class="highlight-box warning">
+        <span class="hb-icon">⚠️</span>
+        <p>Frases como "o objeto tem muito calor" estão incorretas fisicamente. O objeto tem <strong>energia interna</strong> (associada à temperatura) e <strong>transfere calor</strong> para outro objeto mais frio quando em contato. "Calor" só existe durante o processo de transferência.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Condução</h2>
+      <p>Na <strong>condução</strong>, o calor se propaga de partícula em partícula por colisões, sem deslocamento de matéria. Ocorre principalmente em sólidos, especialmente metais.</p>
+      <div class="formula-box">
+        <span class="formula-label">Lei de Fourier — condução estacionária</span>
+        <span class="formula-expr">H = k · A · ΔT / d</span>
+        <span class="formula-legend">
+          <span>H = fluxo de calor (W = J/s)</span>
+          <span>k = condutividade térmica do material (W/(m·K))</span>
+          <span>A = área da seção transversal (m²)</span>
+          <span>ΔT = diferença de temperatura (K ou °C)</span>
+          <span>d = espessura do material (m)</span>
+        </span>
+      </div>
+      <table class="content-table">
+        <thead><tr><th>Material</th><th>k (W/(m·K))</th><th>Classificação</th></tr></thead>
+        <tbody>
+          <tr><td>Prata</td><td>429</td><td>Excelente condutor</td></tr>
+          <tr><td>Cobre</td><td>401</td><td>Excelente condutor</td></tr>
+          <tr><td>Alumínio</td><td>237</td><td>Bom condutor</td></tr>
+          <tr><td>Ferro</td><td>80</td><td>Bom condutor</td></tr>
+          <tr><td>Vidro</td><td>0,8</td><td>Mau condutor</td></tr>
+          <tr><td>Madeira</td><td>0,1–0,4</td><td>Isolante moderado</td></tr>
+          <tr><td>Isopor (EPS)</td><td>0,04</td><td>Isolante</td></tr>
+          <tr><td>Ar seco</td><td>0,025</td><td>Excelente isolante</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Convecção</h2>
+      <p>Na <strong>convecção</strong>, o calor é transportado pelo movimento macroscópico de um fluido (líquido ou gás). A parte mais quente fica menos densa e sobe; a mais fria desce — formando correntes de convecção.</p>
+      <div class="concept-grid">
+        <div class="concept-card"><span class="cc-icon">🏠</span><div class="cc-title">Convecção natural</div><p class="cc-desc">Impulsionada apenas pela diferença de densidade (flutuabilidade). Exemplos: vento, correntes oceânicas, correntes de ar num ambiente aquecido.</p></div>
+        <div class="concept-card"><span class="cc-icon">🌀</span><div class="cc-title">Convecção forçada</div><p class="cc-desc">Fluido é movido por agente externo (bomba, ventilador). Mais eficiente. Exemplos: radiador de carro, ar-condicionado, ventilador, circulação sanguínea.</p></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Irradiação (radiação térmica)</h2>
+      <p>Na <strong>irradiação</strong>, o calor é transferido por ondas eletromagnéticas (principalmente infravermelho) — não requer meio material. É o único mecanismo que funciona no vácuo.</p>
+      <div class="formula-box">
+        <span class="formula-label">Lei de Stefan-Boltzmann</span>
+        <span class="formula-expr">P = ε · σ · A · T⁴</span>
+        <span class="formula-legend">
+          <span>P = potência irradiada (W)</span>
+          <span>ε = emissividade (0 a 1; corpo negro ideal: ε = 1)</span>
+          <span>σ = 5,67×10⁻⁸ W/(m²·K⁴) — constante de Stefan-Boltzmann</span>
+          <span>A = área da superfície (m²)</span>
+          <span>T = temperatura absoluta (K) — note: T⁴, altamente sensível!</span>
+        </span>
+      </div>
+      <div class="highlight-box info">
+        <span class="hb-icon">☀️</span>
+        <p>O Sol transfere calor para a Terra quase que exclusivamente por irradiação — afinal, o espaço entre eles é vácuo. Objetos negros (alta emissividade) absorvem e emitem mais calor por irradiação. Por isso roupas escuras são mais quentes no sol e dissipadores de calor de computadores são pintados de preto.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Isolamento térmico na prática</h2>
+      <p>Para reduzir a transferência de calor, combate-se cada mecanismo:</p>
+      <table class="content-table">
+        <thead><tr><th>Mecanismo</th><th>Como reduzir</th><th>Exemplo</th></tr></thead>
+        <tbody>
+          <tr><td>Condução</td><td>Materiais de baixo k entre superfícies</td><td>Isopor, lã de vidro, câmara de ar</td></tr>
+          <tr><td>Convecção</td><td>Vedar cavidades, eliminar circulação de ar</td><td>Janela dupla com gás argônio, garrafa térmica</td></tr>
+          <tr><td>Irradiação</td><td>Superfícies reflexivas (baixa emissividade)</td><td>Parede interna espelhada da garrafa térmica, manta de sobrevivência</td></tr>
+        </tbody>
+      </table>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Garrafa térmica</div>
+        <div class="ex-body">
+          <p>A garrafa térmica combate todos os mecanismos simultaneamente:</p>
+          <p>• Dupla parede de vidro com vácuo entre elas → elimina condução e convecção.</p>
+          <p>• Superfície interna espelhada → reduz irradiação para &lt; 2% do total.</p>
+          <p>• Tampa isolante → evita convecção pela abertura.</p>
+          <div class="ex-result">Resultado: café quente por horas ou gelo sem derreter por dias</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Resumo</h2>
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Calor é energia em trânsito (fluxo de energia entre temperaturas diferentes). Não é uma propriedade do objeto.</li>
+          <li>Condução: partícula a partícula, sem movimento de matéria. Lei de Fourier: H = k·A·ΔT/d.</li>
+          <li>Convecção: transporte por fluxo de fluido (natural ou forçada). Só ocorre em fluidos.</li>
+          <li>Irradiação: ondas eletromagnéticas. P = ε·σ·A·T⁴. Não precisa de meio material.</li>
+          <li>Isolamento térmico combate os três mecanismos com materiais de baixo k, vedação de cavidades e superfícies reflexivas.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="temperatura.html">← Temperatura</a>
+      <a href="dilatacao.html" class="nav-next">Próximo: Dilatação Térmica →</a>
+    </div>
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+<script>
+(function(){
+  const sections=document.querySelectorAll('.content-section');
+  const tocLinks=document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll',function(){
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+    tocLinks.forEach(a=>a.parentElement.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. termodinamica/conducao.png
+     Barra metálica aquecida numa extremidade (vermelho) e fria na outra (azul).
+     Gradiente de cor mostrando a temperatura variando ao longo da barra.
+     Seta indicando fluxo H. Rótulos k, A, ΔT, d.
+
+  2. termodinamica/conveccao.png
+     Panela com água aquecida no fogo. Setas circulares mostrando correntes de convecção
+     (quente sobe perto do fundo, frio desce pelas bordas). Fundo branco.
+
+  3. termodinamica/irradiacao.png
+     Sol emitindo ondas eletromagnéticas (representadas como ondas) no vácuo do espaço em direção à Terra.
+     Rótulo "vácuo — sem meio material necessário".
+-->
+</body>
+</html>

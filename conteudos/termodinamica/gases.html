@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leis dos Gases — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-TY56KM22X8');</script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-hero" style="background:linear-gradient(135deg,#7f1d1d 0%,#b91c1c 55%,#ef4444 100%);">
+  <div class="content-hero-inner">
+    <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Termodinâmica</a><span>/</span>
+      <span>Leis dos Gases</span>
+    </nav>
+    <h1 class="content-title">Leis dos Gases</h1>
+    <p class="content-subtitle">Boyle, Charles e Gay-Lussac descreveram como pressão, volume e temperatura de um gás ideal se relacionam. A equação geral unifica tudo.</p>
+    <span class="formula-highlight">P·V = n·R·T  |  P₁V₁/T₁ = P₂V₂/T₂</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Gás ideal</a></li>
+      <li><a href="#s2">Lei de Boyle</a></li>
+      <li><a href="#s3">Lei de Charles</a></li>
+      <li><a href="#s4">Lei de Gay-Lussac</a></li>
+      <li><a href="#s5">Equação geral</a></li>
+      <li><a href="#s6">Equação de Clapeyron</a></li>
+      <li><a href="#s7">Calculadora</a></li>
+      <li><a href="#s8">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="mudancas-estado.html">← Mudanças de Estado</a>
+      <a href="leis-termodinamicas.html" class="toc-next">Leis da Termodinâmica →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Gás ideal</h2>
+      <p>O <strong>gás ideal</strong> é um modelo teórico que descreve bem gases reais a baixa pressão e alta temperatura. Suas hipóteses:</p>
+      <div class="concept-grid">
+        <div class="concept-card"><span class="cc-icon">⚛️</span><div class="cc-title">Partículas puntiformes</div><p class="cc-desc">O volume das moléculas é desprezível comparado ao volume do recipiente.</p></div>
+        <div class="concept-card"><span class="cc-icon">💥</span><div class="cc-title">Colisões elásticas</div><p class="cc-desc">As colisões entre moléculas e com as paredes conservam energia cinética. Não há forças interatômicas a distância.</p></div>
+      </div>
+      <div class="highlight-box info">
+        <span class="hb-icon">📐</span>
+        <p>Na prática, o modelo de gás ideal é preciso o suficiente para a maioria dos gases em condições ambientes. Gases como O₂, N₂, H₂ e gases nobres se comportam quase como ideal à pressão atmosférica.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Lei de Boyle-Mariotte (isotérmica)</h2>
+      <p>A temperatura constante, o produto P·V é constante para uma quantidade fixa de gás:</p>
+      <div class="formula-box">
+        <span class="formula-label">Lei de Boyle — processo isotérmico (T = cte)</span>
+        <span class="formula-expr">P · V = constante → P₁ · V₁ = P₂ · V₂</span>
+        <span class="formula-legend">
+          <span>P aumenta → V diminui (inversamente proporcionais)</span>
+          <span>Gráfico P×V: hipérbole (isoterma)</span>
+          <span>Gráfico P×(1/V): reta pela origem</span>
+        </span>
+      </div>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Compressão de um gás</div>
+        <div class="ex-body">
+          <p>Um gás ocupa V₁ = 4 L a P₁ = 2 atm. Qual a pressão se comprimir para V₂ = 1 L (T constante)?</p>
+          <p>P₁V₁ = P₂V₂ → 2 × 4 = P₂ × 1 → P₂ = <strong>8 atm</strong></p>
+          <div class="ex-result">Ao comprimir para ¼ do volume, a pressão quadruplica.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Lei de Charles (isobárica)</h2>
+      <p>A pressão constante, o volume de um gás é diretamente proporcional à temperatura absoluta:</p>
+      <div class="formula-box">
+        <span class="formula-label">Lei de Charles — processo isobárico (P = cte)</span>
+        <span class="formula-expr">V / T = constante → V₁/T₁ = V₂/T₂</span>
+        <span class="formula-legend">
+          <span>T deve ser em Kelvin!</span>
+          <span>V aumenta → T aumenta (diretamente proporcionais)</span>
+          <span>Gráfico V×T (em K): reta pela origem</span>
+        </span>
+      </div>
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Lei de Gay-Lussac (isocórica)</h2>
+      <p>A volume constante, a pressão de um gás é diretamente proporcional à temperatura absoluta:</p>
+      <div class="formula-box">
+        <span class="formula-label">Lei de Gay-Lussac — processo isocórico (V = cte)</span>
+        <span class="formula-expr">P / T = constante → P₁/T₁ = P₂/T₂</span>
+        <span class="formula-legend">
+          <span>T deve ser em Kelvin!</span>
+          <span>P aumenta → T aumenta (diretamente proporcionais)</span>
+          <span>Panela de pressão, pneu quente no verão</span>
+        </span>
+      </div>
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Equação geral dos gases</h2>
+      <p>Combinando as três leis, para uma quantidade fixa de gás em dois estados:</p>
+      <div class="formula-box">
+        <span class="formula-label">Equação geral dos gases</span>
+        <span class="formula-expr">P₁·V₁ / T₁ = P₂·V₂ / T₂</span>
+        <span class="formula-legend">
+          <span>T em Kelvin. P e V em unidades consistentes.</span>
+          <span>É a unificação de Boyle (T cte: cancela T), Charles (P cte: cancela P) e Gay-Lussac (V cte: cancela V)</span>
+        </span>
+      </div>
+      <table class="content-table">
+        <thead><tr><th>Lei</th><th>Processo</th><th>Constante</th><th>Relação</th></tr></thead>
+        <tbody>
+          <tr><td>Boyle</td><td>Isotérmico</td><td>T</td><td>P₁V₁ = P₂V₂</td></tr>
+          <tr><td>Charles</td><td>Isobárico</td><td>P</td><td>V₁/T₁ = V₂/T₂</td></tr>
+          <tr><td>Gay-Lussac</td><td>Isocórico</td><td>V</td><td>P₁/T₁ = P₂/T₂</td></tr>
+          <tr><td>Geral</td><td>Qualquer</td><td>n (moles)</td><td>P₁V₁/T₁ = P₂V₂/T₂</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Equação de Clapeyron (gás ideal)</h2>
+      <p>Para n moles de gás ideal, a equação de estado completa é:</p>
+      <div class="formula-box">
+        <span class="formula-label">Equação de estado do gás ideal</span>
+        <span class="formula-expr">P · V = n · R · T</span>
+        <span class="formula-legend">
+          <span>P = pressão (Pa)</span>
+          <span>V = volume (m³)</span>
+          <span>n = número de moles (mol)</span>
+          <span>R = 8,314 J/(mol·K) — constante universal dos gases</span>
+          <span>T = temperatura absoluta (K)</span>
+        </span>
+      </div>
+      <div class="highlight-box info">
+        <span class="hb-icon">🔢</span>
+        <p>1 mol de qualquer gás ideal a 0 °C (273 K) e 1 atm (101 325 Pa) ocupa <strong>22,4 L</strong> (volume molar nas condições normais — CNTP). Isso vale para qualquer gás ideal — é uma consequência direta de P·V = n·R·T.</p>
+      </div>
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Calculadora</h2>
+      <div class="calc-box">
+        <h4>🧮 Equação geral: P₁V₁/T₁ = P₂V₂/T₂</h4>
+        <p style="font-size:.85rem;color:#666;margin-bottom:.8rem;">Deixe um campo do estado 2 em branco para calcular. Temperaturas em °C serão convertidas para K.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:.8rem;">
+          <div>
+            <p style="font-weight:600;margin-bottom:.5rem;color:#7f1d1d;">Estado 1</p>
+            <div class="calc-field"><label>P₁ (atm)</label><input type="number" id="g-P1" placeholder="ex: 1"></div>
+            <div class="calc-field"><label>V₁ (L)</label><input type="number" id="g-V1" placeholder="ex: 4"></div>
+            <div class="calc-field"><label>T₁ (°C)</label><input type="number" id="g-T1" placeholder="ex: 27"></div>
+          </div>
+          <div>
+            <p style="font-weight:600;margin-bottom:.5rem;color:#7f1d1d;">Estado 2</p>
+            <div class="calc-field"><label>P₂ (atm)</label><input type="number" id="g-P2" placeholder="vazio = calcular"></div>
+            <div class="calc-field"><label>V₂ (L)</label><input type="number" id="g-V2" placeholder="vazio = calcular"></div>
+            <div class="calc-field"><label>T₂ (°C)</label><input type="number" id="g-T2" placeholder="vazio = calcular"></div>
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcGas()">Calcular</button>
+        <div class="calc-result" id="g-result"></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Resumo</h2>
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>Gás ideal: moléculas puntiformes sem interação. Válido para gases reais a baixa pressão.</li>
+          <li>Lei de Boyle (T cte): P·V = constante. Pressão e volume são inversamente proporcionais.</li>
+          <li>Lei de Charles (P cte): V/T = constante. Volume proporcional à temperatura (K).</li>
+          <li>Lei de Gay-Lussac (V cte): P/T = constante. Pressão proporcional à temperatura (K).</li>
+          <li>Equação geral: P₁V₁/T₁ = P₂V₂/T₂ (T em Kelvin obrigatoriamente).</li>
+          <li>Equação de Clapeyron: P·V = n·R·T. 1 mol a 0°C e 1 atm: 22,4 L.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="mudancas-estado.html">← Mudanças de Estado</a>
+      <a href="leis-termodinamicas.html" class="nav-next">Próximo: Leis da Termodinâmica →</a>
+    </div>
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+<script>
+(function(){
+  window.calcGas = function(){
+    const P1=parseFloat(document.getElementById('g-P1').value), V1=parseFloat(document.getElementById('g-V1').value), T1c=parseFloat(document.getElementById('g-T1').value);
+    const P2v=document.getElementById('g-P2').value, V2v=document.getElementById('g-V2').value, T2v=document.getElementById('g-T2').value;
+    const res=document.getElementById('g-result');
+
+    if([P1,V1,T1c].some(v=>isNaN(v))){ res.className='calc-result erro'; res.textContent='Preencha todos os campos do Estado 1.'; return; }
+    const T1=T1c+273;
+    const blanks=[P2v,V2v,T2v].filter(v=>v==='').length;
+    if(blanks!==1){ res.className='calc-result erro'; res.textContent='Deixe exatamente UM campo do Estado 2 em branco.'; return; }
+
+    let P2=P2v===''?null:parseFloat(P2v), V2=V2v===''?null:parseFloat(V2v), T2c=T2v===''?null:parseFloat(T2v);
+    const T2=T2c===null?null:T2c+273;
+    const k=P1*V1/T1;
+    let msg='';
+
+    if(P2===null){ P2=k*T2/V2; document.getElementById('g-P2').value=P2.toFixed(4); msg='P₂ = '+P2.toFixed(4)+' atm'; }
+    else if(V2===null){ V2=k*T2/P2; document.getElementById('g-V2').value=V2.toFixed(4); msg='V₂ = '+V2.toFixed(4)+' L'; }
+    else { const T2k=k*V2/P2; T2c=T2k-273; document.getElementById('g-T2').value=T2c.toFixed(2); msg='T₂ = '+T2c.toFixed(2)+' °C = '+T2k.toFixed(2)+' K'; }
+
+    res.className='calc-result ok'; res.textContent=msg;
+  };
+
+  const sections=document.querySelectorAll('.content-section');
+  const tocLinks=document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll',function(){
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+    tocLinks.forEach(a=>a.parentElement.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. termodinamica/boyle-grafico.png
+     Gráfico P×V com hipérbole (isoterma). Dois pontos (P1,V1) e (P2,V2) marcados.
+     Fundo branco, curva vermelha.
+
+  2. termodinamica/graficos-gases.png
+     Três gráficos lado a lado: P×(1/V) reta (Boyle), V×T reta (Charles), P×T reta (Gay-Lussac).
+     Cada um com título identificando a lei. Fundo branco.
+-->
+</body>
+</html>
