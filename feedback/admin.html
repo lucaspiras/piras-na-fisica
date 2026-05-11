@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administração de Feedbacks</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      padding: 30px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    .top-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    input {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      min-width: 250px;
+    }
+
+    button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #2563eb;
+      color: white;
+      font-weight: bold;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .stats {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      min-width: 180px;
+    }
+
+    .card h2 {
+      font-size: 2rem;
+      margin-top: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #1e293b;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th,
+    td {
+      padding: 14px;
+      text-align: left;
+      border-bottom: 1px solid #334155;
+      vertical-align: top;
+    }
+
+    th {
+      background: #334155;
+    }
+
+    tr:hover {
+      background: #263548;
+    }
+
+    .message {
+      max-width: 400px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .positive {
+      color: #4ade80;
+      font-weight: bold;
+    }
+
+    .negative {
+      color: #f87171;
+      font-weight: bold;
+    }
+
+    .loading {
+      margin-top: 20px;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        padding: 16px;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Painel Administrativo</h1>
+
+  <div class="top-bar">
+    <input
+      type="search"
+      id="search"
+      placeholder="Buscar comentário ou email"
+    />
+
+    <button id="reload-btn">
+      Atualizar
+    </button>
+  </div>
+
+  <div class="stats">
+    <div class="card">
+      <p>Total de feedbacks</p>
+      <h2 id="total-feedbacks">0</h2>
+    </div>
+
+    <div class="card">
+      <p>Feedbacks positivos</p>
+      <h2 id="positive-feedbacks">0</h2>
+    </div>
+
+    <div class="card">
+      <p>Feedbacks negativos</p>
+      <h2 id="negative-feedbacks">0</h2>
+    </div>
+  </div>
+
+  <div class="loading" id="loading">
+    Carregando feedbacks...
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Avaliação</th>
+        <th>Email</th>
+        <th>Comentário</th>
+        <th>Página</th>
+      </tr>
+    </thead>
+
+    <tbody id="feedback-table-body"></tbody>
+  </table>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    const supabaseUrl = 'https://vlihugczatpmnyjbdmqw.supabase.co';
+
+    const supabaseKey =
+      'sb_publishable__QOgJ-nSBouPG9kcbpjcAA_MrcVuNqX';
+
+    const { createClient } = supabase;
+
+    const client = createClient(
+      supabaseUrl,
+      supabaseKey
+    );
+
+    const tableBody = document.getElementById(
+      'feedback-table-body'
+    );
+
+    const loading = document.getElementById(
+      'loading'
+    );
+
+    const searchInput = document.getElementById(
+      'search'
+    );
+
+    const reloadBtn = document.getElementById(
+      'reload-btn'
+    );
+
+    const totalFeedbacks = document.getElementById(
+      'total-feedbacks'
+    );
+
+    const positiveFeedbacks = document.getElementById(
+      'positive-feedbacks'
+    );
+
+    const negativeFeedbacks = document.getElementById(
+      'negative-feedbacks'
+    );
+
+    let allFeedbacks = [];
+
+    async function loadFeedbacks() {
+      loading.style.display = 'block';
+
+      const { data, error } = await client
+        .from('feedbacks')
+        .select('*')
+        .order('created_at', {
+          ascending: false
+        });
+
+      loading.style.display = 'none';
+
+      if (error) {
+        console.error(error);
+
+        alert(
+          'Erro ao carregar feedbacks. Veja o console.'
+        );
+
+        return;
+      }
+
+      allFeedbacks = data;
+
+      updateStats(data);
+
+      renderTable(data);
+    }
+
+    function updateStats(data) {
+      totalFeedbacks.textContent = data.length;
+
+      const positive = data.filter(
+        item => item.rating === 'Sim'
+      ).length;
+
+      const negative = data.filter(
+        item => item.rating === 'Não'
+      ).length;
+
+      positiveFeedbacks.textContent = positive;
+
+      negativeFeedbacks.textContent = negative;
+    }
+
+    function renderTable(data) {
+      tableBody.innerHTML = '';
+
+      data.forEach(item => {
+        const tr = document.createElement('tr');
+
+        const date = new Date(
+          item.created_at
+        ).toLocaleString('pt-BR');
+
+        tr.innerHTML = `
+          <td>${date}</td>
+
+          <td class="${
+            item.rating === 'Sim'
+              ? 'positive'
+              : 'negative'
+          }">
+            ${item.rating}
+          </td>
+
+          <td>
+            ${item.email || '-'}
+          </td>
+
+          <td class="message">
+            ${item.message}
+          </td>
+
+          <td>
+            ${item.page || '-'}
+          </td>
+        `;
+
+        tableBody.appendChild(tr);
+      });
+    }
+
+    searchInput.addEventListener('input', () => {
+      const value = searchInput.value
+        .toLowerCase()
+        .trim();
+
+      const filtered = allFeedbacks.filter(item => {
+        return (
+          (item.message || '')
+            .toLowerCase()
+            .includes(value)
+          ||
+          (item.email || '')
+            .toLowerCase()
+            .includes(value)
+        );
+      });
+
+      renderTable(filtered);
+    });
+
+    reloadBtn.addEventListener(
+      'click',
+      loadFeedbacks
+    );
+
+    loadFeedbacks();
+  </script>
+
+</body>
+</html>
