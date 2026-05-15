@@ -1,12 +1,43 @@
 // engine/renderer.js
 
-// Escala visual: 1 metro no sistema matematico = 50 pixels no canvas.
-const PIXELS_PER_METER = 50;
+let _metersPerUnit = 1; // real meters that each grid division represents
+const GRID_PIXELS = 50; // screen pixels per grid division (fixed)
+
+export function setMetersPerUnit(mpu) {
+  _metersPerUnit = mpu;
+}
+
+export function getMetersPerUnit() {
+  return _metersPerUnit;
+}
+
+function ppm() {
+  return GRID_PIXELS / _metersPerUnit;
+}
+
+function getAxisUnit() {
+  if (_metersPerUnit >= 1.496e11) return 'UA';
+  if (_metersPerUnit >= 1000) return 'km';
+  return 'm';
+}
+
+function formatCoordLabel(gridIndex) {
+  const meters = gridIndex * _metersPerUnit;
+  if (_metersPerUnit >= 1.496e11) {
+    const ua = meters / 1.496e11;
+    return ua.toFixed(Math.abs(ua) < 10 ? 2 : 1);
+  }
+  if (_metersPerUnit >= 1000) {
+    const km = meters / 1000;
+    return Number.isInteger(km) ? String(km) : km.toFixed(1);
+  }
+  return Number.isInteger(meters) ? String(meters) : Number(meters.toPrecision(4)).toString();
+}
 
 export function drawGrid(ctx, canvas) {
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
-  const step = PIXELS_PER_METER;
+  const step = GRID_PIXELS;
 
   ctx.strokeStyle = "#e5e7eb";
   ctx.lineWidth = 1;
@@ -31,6 +62,7 @@ export function drawGrid(ctx, canvas) {
 export function drawCoordinateSystem(ctx, canvas) {
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
+  const unit = getAxisUnit();
 
   ctx.strokeStyle = "#ef4444";
   ctx.lineWidth = 2;
@@ -56,34 +88,34 @@ export function drawCoordinateSystem(ctx, canvas) {
   ctx.font = "11px Inter, sans-serif";
   ctx.textAlign = "center";
 
-  const maxX = Math.ceil(canvas.width / (2 * PIXELS_PER_METER));
+  const maxX = Math.ceil(canvas.width / (2 * GRID_PIXELS));
   for (let i = -maxX; i <= maxX; i += 1) {
     if (i === 0) continue;
-    const x = centerX + i * PIXELS_PER_METER;
+    const x = centerX + i * GRID_PIXELS;
     ctx.beginPath();
     ctx.moveTo(x, centerY - 5);
     ctx.lineTo(x, centerY + 5);
     ctx.stroke();
-    ctx.fillText(`${i}`, x, centerY + 15);
+    ctx.fillText(formatCoordLabel(i), x, centerY + 15);
   }
 
   ctx.textAlign = "right";
-  const maxY = Math.ceil(canvas.height / (2 * PIXELS_PER_METER));
+  const maxY = Math.ceil(canvas.height / (2 * GRID_PIXELS));
   for (let i = -maxY; i <= maxY; i += 1) {
     if (i === 0) continue;
-    const y = centerY - i * PIXELS_PER_METER;
+    const y = centerY - i * GRID_PIXELS;
     ctx.beginPath();
     ctx.moveTo(centerX - 5, y);
     ctx.lineTo(centerX + 5, y);
     ctx.stroke();
-    ctx.fillText(`${i}`, centerX - 10, y + 4);
+    ctx.fillText(formatCoordLabel(i), centerX - 10, y + 4);
   }
 
   ctx.font = "bold 12px Inter, sans-serif";
   ctx.textAlign = "left";
   ctx.fillText("(0,0)", centerX + 8, centerY - 8);
-  ctx.fillText("x (m)", canvas.width - 42, centerY - 8);
-  ctx.fillText("y (m)", centerX + 8, 16);
+  ctx.fillText(`x (${unit})`, canvas.width - 50, centerY - 8);
+  ctx.fillText(`y (${unit})`, centerX + 8, 16);
 }
 
 export function drawVector(ctx, x, y, vx, vy, color) {
@@ -116,20 +148,22 @@ export function drawVector(ctx, x, y, vx, vy, color) {
 }
 
 export function mathToPixels(x, y, canvas) {
+  const p = ppm();
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
   return {
-    px: centerX + x * PIXELS_PER_METER,
-    py: centerY - y * PIXELS_PER_METER
+    px: centerX + x * p,
+    py: centerY - y * p
   };
 }
 
 export function pixelsToMath(px, py, canvas) {
+  const p = ppm();
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
   return {
-    x: (px - centerX) / PIXELS_PER_METER,
-    y: (centerY - py) / PIXELS_PER_METER
+    x: (px - centerX) / p,
+    y: (centerY - py) / p
   };
 }
 
@@ -141,9 +175,9 @@ export function render(ctx, canvas, objects, options) {
 }
 
 export function getScale() {
-  return PIXELS_PER_METER;
+  return ppm();
 }
 
 export function getPixelsPerMeter() {
-  return PIXELS_PER_METER;
+  return ppm();
 }

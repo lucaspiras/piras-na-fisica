@@ -9,12 +9,14 @@ const IDENTIFIER_REGEX = /[a-zA-Z_][a-zA-Z0-9_]*/g;
 export function parseEDOEquation(equationStr) {
   if (!equationStr || !equationStr.trim()) return null;
 
-  const normalized = equationStr.toLowerCase().replace(/\s+/g, '');
-  const equalIndex = normalized.indexOf('=');
+  const stripped = equationStr.replace(/\s+/g, '');
+  const equalIndex = stripped.indexOf('=');
   if (equalIndex === -1) return null;
 
-  const lhs = normalized.substring(0, equalIndex);
-  const rhs = normalized.substring(equalIndex + 1);
+  // Lowercase only the LHS for case-insensitive d.../dt matching;
+  // preserve original case in RHS so identifier names match user-defined constants.
+  const lhs = stripped.substring(0, equalIndex).toLowerCase();
+  const rhs = stripped.substring(equalIndex + 1);
   const derivMatch = lhs.match(/^d([a-zA-Z_][a-zA-Z0-9_]*)\/dt$/);
   if (!derivMatch) return null;
 

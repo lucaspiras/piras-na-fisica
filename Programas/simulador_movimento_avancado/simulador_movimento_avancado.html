@@ -15,22 +15,33 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="app">
-  <aside class="sidebar">
-    <button class="sidebar-scroll-btn" type="button" data-action="scroll-down" title="Rolar para baixo">↓</button>
-
-    <div class="sidebar-brand">
-      <img src="novo_logo_final.png" alt="Logo Piras na Física" class="sidebar-logo">
-      <div class="sidebar-brand-text">
-        <a href="/index.html">Piras na Física</a>
+<header class="page-header">
+  <div class="page-header-inner">
+    <div class="page-header-brand">
+      <a href="/index.html" class="logo-link"><img src="novo_logo_final.png" alt="Logo Piras na Física" class="header-logo"></a>
+      <div class="page-header-brand-text">
+        <div class="page-header-name-row">
+         <h1>Simulador de Movimento</h1>
+        </div>
+        <p class="page-tagline">Piras na Física </p>
       </div>
     </div>
+    <div class="page-header-badges">
+      <span class="badge">2D</span>
+      <span class="badge">EDO</span>
+      <span class="badge">Vetores</span>
+      <a href="tutorial.html" class="badge-link" target="_blank">Tutorial</a>
+    </div>
+  </div>
+</header>
 
+<div class="app">
+  <aside class="sidebar">
     <div class="section">
       <h3>Objeto</h3>
       <button type="button" data-action="add-object" class="btn-add-object">+ Adicionar objeto</button>
@@ -38,19 +49,10 @@
     </div>
 
     <div class="section">
-      <h3>Visualização</h3>
-      <div class="viz-toggles">
-        <label title="Trajetória"><input type="checkbox" id="trail" checked> Trajetória</label>
-        <label title="Velocidade"><input type="checkbox" id="vel" checked> Velocidade</label>
-        <label title="Aceleração"><input type="checkbox" id="acc"> Aceleração</label>
-      </div>
-    </div>
-
-    <div class="section">
       <h3>Simulação</h3>
       <div class="sim-controls">
-        <button type="button" data-action="pause">Pausar</button>
-        <button type="button" data-action="reset-time">Reiniciar</button>
+        <button type="button" data-action="pause">▶  Iniciar</button>
+        <button type="button" data-action="reset-time">Zerar</button>
       </div>
       <span class="time-readout" data-label="time">t = 0.00 s</span>
       <div class="speed-row">
@@ -59,64 +61,91 @@
       </div>
     </div>
 
-    <div class="section">
-      <h3>Cenários</h3>
-      <div class="scenario-grid">
-        <button type="button" data-scenario="circular" title="x=2cos(t), y=2sin(t)">MCU</button>
-        <button type="button" data-scenario="projectile" title="Lançamento oblíquo">Projétil</button>
-        <button type="button" data-scenario="ellipse" title="Órbita elíptica">Elipse</button>
-        <button type="button" data-scenario="pendulum" title="Pêndulo simples (EDO)">Pêndulo</button>
-        <button type="button" data-scenario="lissajous" title="Figuras de Lissajous">Lissajous</button>
-        <button type="button" data-scenario="spiral" title="Espiral de Arquimedes">Espiral</button>
-        <button type="button" data-scenario="freeFall" title="Queda livre">Queda livre</button>
-        <button type="button" data-scenario="clear" class="btn-danger" title="Limpar todos os objetos">Limpar</button>
+    <div class="section section-collapsible">
+      <div class="section-header" data-section-toggle>
+        <h3>Visualização</h3>
+        <span class="section-chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="viz-toggles">
+          <label title="Trajetória"><input type="checkbox" id="trail" checked> Trajetória</label>
+          <label title="Velocidade"><input type="checkbox" id="vel" checked> Velocidade</label>
+          <label title="Aceleração"><input type="checkbox" id="acc"> Aceleração</label>
+        </div>
       </div>
     </div>
 
-    <div class="section">
-      <h3>Gráfico</h3>
-      <div class="graph-series">
-        <label>Objeto <select id="graphObjectA"></select></label>
-        <label>Eixo X <select id="graphXA"></select></label>
-        <label>Eixo Y <select id="graphYA"></select></label>
+    <div class="section section-collapsible section-collapsed">
+      <div class="section-header" data-section-toggle>
+        <h3>Cenários</h3>
+        <span class="section-chevron">▼</span>
       </div>
-      <label class="inline-check"><input type="checkbox" id="graphUseB"> Série B</label>
-      <div class="graph-series" id="seriesB" style="display: none;">
-        <label>Objeto <select id="graphObjectB"></select></label>
-        <label>Eixo X <select id="graphXB"></select></label>
-        <label>Eixo Y <select id="graphYB"></select></label>
+      <div class="section-body">
+        <div class="scenario-grid">
+          <button type="button" data-scenario="circular" title="x=2cos(t), y=2sin(t)">MCU</button>
+          <button type="button" data-scenario="projectile" title="Lançamento oblíquo">Projétil</button>
+          <button type="button" data-scenario="ellipse" title="Órbita elíptica">Elipse</button>
+          <button type="button" data-scenario="pendulum" title="Pêndulo simples (EDO)">Pêndulo</button>
+          <button type="button" data-scenario="lissajous" title="Figuras de Lissajous">Lissajous</button>
+          <button type="button" data-scenario="spiral" title="Espiral de Arquimedes">Espiral</button>
+          <button type="button" data-scenario="freeFall" title="Queda livre">Queda livre</button>
+          <button type="button" data-scenario="clear" class="btn-danger" title="Limpar todos os objetos">Limpar</button>
+        </div>
       </div>
-      <div class="graph-time-controls">
-        <label>t mín (s) <input type="number" id="graphTimeMin" step="0.1" placeholder="auto"></label>
-        <label>t máx (s) <input type="number" id="graphTimeMax" step="0.1" placeholder="auto"></label>
+    </div>
+
+    <div class="section section-collapsible">
+      <div class="section-header" data-section-toggle>
+        <h3>Gráfico</h3>
+        <span class="section-chevron">▼</span>
       </div>
-      <button type="button" id="exportGraph">Exportar PNG</button>
+      <div class="section-body">
+        <div class="graph-series">
+          <label>Objeto <select id="graphObjectA"></select></label>
+          <label>Eixo X <select id="graphXA"></select></label>
+          <label>Eixo Y <select id="graphYA"></select></label>
+        </div>
+        <label class="inline-check"><input type="checkbox" id="graphUseB"> Série B</label>
+        <div class="graph-series" id="seriesB" style="display: none;">
+          <label>Objeto <select id="graphObjectB"></select></label>
+          <label>Eixo X <select id="graphXB"></select></label>
+          <label>Eixo Y <select id="graphYB"></select></label>
+        </div>
+        <div class="graph-time-controls">
+          <label>t mín (s) <input type="number" id="graphTimeMin" step="0.1" placeholder="auto"></label>
+          <label>t máx (s) <input type="number" id="graphTimeMax" step="0.1" placeholder="auto"></label>
+        </div>
+        <button type="button" id="exportGraph">Exportar PNG</button>
+      </div>
+    </div>
+
+    <div class="section section-collapsible section-collapsed">
+      <div class="section-header" data-section-toggle>
+        <h3>Tabelas</h3>
+        <span class="section-chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <div id="tableColumnsConfig">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
     </div>
 
     <div class="sidebar-spacer"></div>
   </aside>
 
   <main class="main">
-    <div class="page-header">
-      <div class="page-header-inner">
-        <div>
-          <h1>Simulador de Movimento</h1>
-          <p class="page-tagline">Cinemática interativa — equações diretas e diferenciais em tempo real</p>
-        </div>
-        <div class="page-header-badges">
-          <span class="badge">2D</span>
-          <span class="badge">EDO</span>
-          <span class="badge">Vetores</span>
-        </div>
-      </div>
-    </div>
-
     <div class="workspace" id="workspace">
       <section class="window-panel panel-canvas" data-window="canvas">
         <div class="window-header">
           <h3>Plano de movimento</h3>
           <div class="panel-header-actions">
-            <span class="panel-hint">Arraste para mover • Redimensione pelo canto</span>
+            <div class="zoom-controls">
+              <button type="button" data-action="zoom-in" class="zoom-btn" title="Zoom in — mais detalhe">+</button>
+              <span class="zoom-label" id="zoomLabel">1 m/div</span>
+              <button type="button" data-action="zoom-out" class="zoom-btn" title="Zoom out — área maior">−</button>
+            </div>
+            <span class="panel-hint">Arraste • Redimensione</span>
           </div>
         </div>
         <div class="window-body">
@@ -129,7 +158,7 @@
 
       <section class="window-panel panel-info" data-window="info">
         <div class="window-header">
-          <h3>Informações</h3>
+          <h3>Informações e equações</h3>
         </div>
         <div class="window-body info-panel" id="infoPanel">
           <div class="empty-state">
@@ -140,7 +169,7 @@
         <button class="resize-handle" type="button" aria-label="Redimensionar painel"></button>
       </section>
 
-      <section class="window-panel panel-data" data-window="tables">
+      <section class="window-panel panel-data collapsed" data-window="tables">
         <div class="window-header">
           <h3>Tabelas cinemáticas</h3>
           <div class="panel-header-actions">
@@ -156,9 +185,14 @@
         <button class="resize-handle" type="button" aria-label="Redimensionar painel"></button>
       </section>
 
-      <section class="window-panel panel-graph" data-window="graph">
+      <section class="window-panel panel-graph collapsed" data-window="graph">
         <div class="window-header">
           <h3>Gráficos do movimento</h3>
+          <div class="panel-header-actions">
+            <button class="collapse-toggle" type="button" data-action="collapse-graph" aria-label="Minimizar">
+              <span class="collapse-icon">▼</span>
+            </button>
+          </div>
         </div>
         <div class="window-body graph-panel">
           <canvas id="graphCanvas" width="900" height="320"></canvas>
@@ -167,185 +201,67 @@
       </section>
     </div>
 
-    <div class="tutorial-section">
-      <button class="tutorial-toggle" type="button" data-action="tutorial">
-        <span class="tutorial-icon">▼</span>
-        <span>Como usar o simulador</span>
-      </button>
-
-      <div id="tutorialContent" class="tutorial-content">
-        <div class="tutorial-grid">
-          <div class="tutorial-card">
-            <h4>Equação Direta</h4>
-            <p>Defina posição em função de <strong>t</strong>. O sistema deve conter <code>x(t)</code> e <code>y(t)</code>.</p>
-            <p>Ex: <code>x = 3*cos(t)</code>, <code>y = 2*sin(t)</code></p>
-          </div>
-          <div class="tutorial-card">
-            <h4>Equação Diferencial</h4>
-            <p>Defina um sistema de EDOs. Ex: <code>d(theta)/dt = omega</code>, com condições iniciais.</p>
-            <p>Use equações auxiliares para mapear variáveis em <code>x</code> e <code>y</code>.</p>
-          </div>
-          <div class="tutorial-card">
-            <h4>Vetores</h4>
-            <p><span style="color:#22c55e">■</span> Verde = velocidade &nbsp; <span style="color:#ef4444">■</span> Vermelho = aceleração</p>
-            <p>Ative/desative na seção Visualização da barra lateral.</p>
-          </div>
-          <div class="tutorial-card">
-            <h4>Tipos de objeto</h4>
-            <p>Na aba <strong>Aparência</strong> do modal, escolha entre partícula, foguete, bola, carro, pêndulo ou satélite.</p>
-          </div>
-          <div class="tutorial-card">
-            <h4>Gráficos</h4>
-            <p>Configure eixos X e Y independentemente para cada série. Exporte como PNG em alta resolução.</p>
-          </div>
-          <div class="tutorial-card">
-            <h4>Tabelas e Exportação</h4>
-            <p>As tabelas mostram posição, velocidade e aceleração em tempo real. Exporte como CSV para análise externa.</p>
-          </div>
-        </div>
-      </div>
-    </div>
   </main>
 </div>
 
-<!-- MODAL DE EQUAÇÕES -->
+<!-- MODAL DE APARÊNCIA -->
 <div id="equationModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="equationModalTitle">
-  <div class="modal-content">
+  <div class="modal-content modal-appearance">
     <div class="modal-header">
-      <h2 id="equationModalTitle">Configurar objeto</h2>
+      <h2 id="equationModalTitle">Aparência do objeto</h2>
       <button class="modal-close" type="button" aria-label="Fechar">&times;</button>
     </div>
 
     <div class="modal-body">
-      <div class="modal-tabs">
-        <button type="button" class="modal-tab" data-tab="appearance">Aparência</button>
-        <button type="button" class="modal-tab active" data-tab="direct">Eq. Direta</button>
-        <button type="button" class="modal-tab" data-tab="differential">Eq. Diferencial</button>
-      </div>
-
-      <!-- Aba Aparência -->
-      <div class="modal-tab-content" id="tabAppearance" style="display:none">
-        <div class="appearance-section">
-          <div class="appearance-top-row">
-            <div class="appearance-field">
-              <label for="objectLabel">Nome</label>
-              <input type="text" id="objectLabel" placeholder="ex: Projétil A" maxlength="24">
-            </div>
-            <div class="appearance-field appearance-field--color">
-              <label for="objectColor">Cor</label>
-              <input type="color" id="objectColor" value="#fb923c">
-            </div>
-            <div class="appearance-field">
-              <label for="objectMass">Massa (kg)</label>
-              <input type="number" id="objectMass" value="1" min="0.001" step="0.1">
-            </div>
+      <div class="appearance-section">
+        <div class="appearance-top-row">
+          <div class="appearance-field">
+            <label for="objectLabel">Nome</label>
+            <input type="text" id="objectLabel" placeholder="ex: Projétil A" maxlength="24">
           </div>
-
-          <div class="shape-picker">
-            <p class="shape-picker-label">Tipo de objeto</p>
-            <div class="shape-options">
-              <label class="shape-option">
-                <input type="radio" name="objectShape" value="circle" checked>
-                <span class="shape-icon-wrap">●</span>
-                <span>Partícula</span>
-              </label>
-              <label class="shape-option">
-                <input type="radio" name="objectShape" value="rocket">
-                <span class="shape-icon-wrap">▲</span>
-                <span>Foguete</span>
-              </label>
-              <label class="shape-option">
-                <input type="radio" name="objectShape" value="soccer">
-                <span class="shape-icon-wrap">◉</span>
-                <span>Bola</span>
-              </label>
-              <label class="shape-option">
-                <input type="radio" name="objectShape" value="car">
-                <span class="shape-icon-wrap">▬</span>
-                <span>Carro</span>
-              </label>
-              <label class="shape-option">
-                <input type="radio" name="objectShape" value="pendulum">
-                <span class="shape-icon-wrap">⊙</span>
-                <span>Pêndulo</span>
-              </label>
-              <label class="shape-option">
-                <input type="radio" name="objectShape" value="satellite">
-                <span class="shape-icon-wrap">✦</span>
-                <span>Satélite</span>
-              </label>
-            </div>
+          <div class="appearance-field appearance-field--color">
+            <label for="objectColor">Cor</label>
+            <input type="color" id="objectColor" value="#fb923c">
           </div>
-
-          <div class="preset-picker">
-            <p class="preset-picker-label">Carregar exemplo de equação</p>
-            <div class="preset-options">
-              <button type="button" class="preset-btn" data-preset="circular" title="x=2cos(t), y=2sin(t)">MCU</button>
-              <button type="button" class="preset-btn" data-preset="projectile" title="Lançamento oblíquo">Projétil</button>
-              <button type="button" class="preset-btn" data-preset="ellipse" title="Órbita elíptica">Elipse</button>
-              <button type="button" class="preset-btn" data-preset="lissajous" title="Figuras de Lissajous">Lissajous</button>
-              <button type="button" class="preset-btn" data-preset="spiral" title="Espiral de Arquimedes">Espiral</button>
-              <button type="button" class="preset-btn" data-preset="freeFall" title="Queda livre">Queda livre</button>
-              <button type="button" class="preset-btn" data-preset="pendulum" title="Pêndulo simples (EDO)">Pêndulo</button>
-            </div>
+          <div class="appearance-field">
+            <label for="objectMass">Massa (kg)</label>
+            <input type="number" id="objectMass" value="1" min="0.001" step="0.1">
           </div>
         </div>
-      </div>
 
-      <!-- Aba Equação Direta -->
-      <div class="modal-tab-content" id="tabDirect">
-        <p class="edo-hint">Defina posição em função de <strong>t</strong>. O sistema deve conter <code>x</code> e <code>y</code>.</p>
-
-        <div class="math-palette">
-          <span class="palette-label">Inserir:</span>
-          <button type="button" class="math-btn" data-insert="sin(">sin</button>
-          <button type="button" class="math-btn" data-insert="cos(">cos</button>
-          <button type="button" class="math-btn" data-insert="tan(">tan</button>
-          <button type="button" class="math-btn" data-insert="sqrt(">√</button>
-          <button type="button" class="math-btn" data-insert="exp(">eˣ</button>
-          <button type="button" class="math-btn" data-insert="log(">ln</button>
-          <button type="button" class="math-btn" data-insert="abs(">|x|</button>
-          <button type="button" class="math-btn" data-insert="pi">π</button>
-          <button type="button" class="math-btn" data-insert="**2">x²</button>
-          <button type="button" class="math-btn" data-insert="t">t</button>
-        </div>
-
-        <div class="equation-grid" id="directEquationsContainer"></div>
-        <button class="btn-secondary equation-add-btn" type="button" data-action="add-direct-equation">+ Equação</button>
-      </div>
-
-      <!-- Aba Equação Diferencial -->
-      <div class="modal-tab-content" id="tabDifferential" style="display: none;">
-        <div class="math-palette">
-          <span class="palette-label">Inserir:</span>
-          <button type="button" class="math-btn" data-insert="sin(">sin</button>
-          <button type="button" class="math-btn" data-insert="cos(">cos</button>
-          <button type="button" class="math-btn" data-insert="tan(">tan</button>
-          <button type="button" class="math-btn" data-insert="sqrt(">√</button>
-          <button type="button" class="math-btn" data-insert="exp(">eˣ</button>
-          <button type="button" class="math-btn" data-insert="abs(">|x|</button>
-          <button type="button" class="math-btn" data-insert="pi">π</button>
-          <button type="button" class="math-btn" data-insert="**2">x²</button>
-        </div>
-
-        <div class="edo-section">
-          <div class="edo-block">
-            <h4>Equações Diferenciais <span class="edo-block-hint">d(var)/dt = f(vars)</span></h4>
-            <div class="equation-grid" id="differentialEquationsContainer"></div>
-            <button class="btn-secondary equation-add-btn" type="button" data-action="add-differential-equation">+ EDO</button>
-          </div>
-
-          <div class="edo-block">
-            <h4>Equações Auxiliares <span class="edo-block-hint">para mapear x, y a partir das variáveis</span></h4>
-            <div class="equation-grid" id="algebraicEquationsContainer"></div>
-            <button class="btn-secondary equation-add-btn" type="button" data-action="add-algebraic-equation">+ Auxiliar</button>
-          </div>
-
-          <div class="edo-variables">
-            <h4>Condições Iniciais e Constantes</h4>
-            <div id="edoConstantsContainer">
-              <p class="edo-hint">Defina as equações acima para ver as variáveis disponíveis.</p>
-            </div>
+        <div class="shape-picker">
+          <p class="shape-picker-label">Tipo de objeto</p>
+          <div class="shape-options">
+            <label class="shape-option">
+              <input type="radio" name="objectShape" value="circle" checked>
+              <span class="shape-icon-wrap">●</span>
+              <span>Partícula</span>
+            </label>
+            <label class="shape-option">
+              <input type="radio" name="objectShape" value="rocket">
+              <span class="shape-icon-wrap">▲</span>
+              <span>Foguete</span>
+            </label>
+            <label class="shape-option">
+              <input type="radio" name="objectShape" value="soccer">
+              <span class="shape-icon-wrap">◉</span>
+              <span>Bola</span>
+            </label>
+            <label class="shape-option">
+              <input type="radio" name="objectShape" value="car">
+              <span class="shape-icon-wrap">▬</span>
+              <span>Carro</span>
+            </label>
+            <label class="shape-option">
+              <input type="radio" name="objectShape" value="pendulum">
+              <span class="shape-icon-wrap">⊙</span>
+              <span>Pêndulo</span>
+            </label>
+            <label class="shape-option">
+              <input type="radio" name="objectShape" value="satellite">
+              <span class="shape-icon-wrap">✦</span>
+              <span>Satélite</span>
+            </label>
           </div>
         </div>
       </div>

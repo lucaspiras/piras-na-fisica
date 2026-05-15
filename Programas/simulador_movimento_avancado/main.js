@@ -1,7 +1,7 @@
 import { parseEquation } from './engine/mathparser.js';
 import Object2D from './engine/object2D.js';
 import { getTime, resetTime, togglePause as toggleSimulationPause, setSpeed } from './engine/time.js';
-import { render, pixelsToMath, mathToPixels, getPixelsPerMeter } from './engine/renderer.js';
+import { render, pixelsToMath, mathToPixels, getPixelsPerMeter, setMetersPerUnit, getMetersPerUnit } from './engine/renderer.js';
 import * as Controls from './ui/controls.js';
 import * as Sidebar from './ui/sidebar.js';
 import * as Modal from './ui/modal.js';
@@ -28,13 +28,378 @@ const GRAPH_FIELDS = {
 };
 const GRAPH_COLORS = ["#2f5bea", "#fb923c", "#22c55e", "#a855f7"];
 
+const TABLE_STANDARD_COLUMNS = [
+  { key: 't',            label: 't (s)' },
+  { key: 'x',            label: 'x (m)' },
+  { key: 'y',            label: 'y (m)' },
+  { key: 'vx',           label: 'vx (m/s)' },
+  { key: 'vy',           label: 'vy (m/s)' },
+  { key: 'speed',        label: '|v| (m/s)' },
+  { key: 'acceleration', label: '|a| (m/s²)' },
+  { key: 'ax',           label: 'ax (m/s²)' },
+  { key: 'ay',           label: 'ay (m/s²)' },
+];
+const DEFAULT_TABLE_COLUMNS = new Set(['t', 'x', 'y', 'vx', 'vy', 'speed', 'acceleration']);
+let activeTableColumns = new Set([...DEFAULT_TABLE_COLUMNS]);
+
+// Returns GRAPH_FIELDS extended with user-defined variables from the given object
+function getObjectFields(obj) {
+  const fields = { ...GRAPH_FIELDS };
+  if (!obj) return fields;
+  obj.getUserVarNames().forEach(name => {
+    if (!fields[name]) {
+      fields[name] = { label: name, get: (s) => s.userVars?.[name] ?? null };
+    }
+  });
+  return fields;
+}
+
+// ── Zoom / scale ──────────────────────────────────────────────
+// Each entry: [metersPerGridUnit, displayLabel]
+const SCALE_LEVELS = [
+  [0.1,      "0,1 m"],
+  [0.5,      "0,5 m"],
+  [1,        "1 m"],        // default index 2
+  [5,        "5 m"],
+  [10,       "10 m"],
+  [50,       "50 m"],
+  [100,      "100 m"],
+  [500,      "500 m"],
+  [1000,     "1 km"],
+  [5000,     "5 km"],
+  [10000,    "10 km"],
+  [50000,    "50 km"],
+  [100000,   "100 km"],
+  [500000,   "500 km"],
+  [1e6,      "1.000 km"],
+  [1e7,      "10.000 km"],
+  [1.496e11, "1 UA"],
+];
+let currentScaleIndex = 2;
+
+function zoomIn() {
+  if (currentScaleIndex > 0) {
+    currentScaleIndex--;
+    applyScale();
+  }
+}
+
+function zoomOut() {
+  if (currentScaleIndex < SCALE_LEVELS.length - 1) {
+    currentScaleIndex++;
+    applyScale();
+  }
+}
+
+function applyScale() {
+  const [mpu, label] = SCALE_LEVELS[currentScaleIndex];
+  setMetersPerUnit(mpu);
+  const zoomLabel = document.getElementById("zoomLabel");
+  if (zoomLabel) zoomLabel.textContent = `${label}/div`;
+  const zoomInBtn = document.querySelector("[data-action='zoom-in']");
+  const zoomOutBtn = document.querySelector("[data-action='zoom-out']");
+  if (zoomInBtn) zoomInBtn.disabled = currentScaleIndex === 0;
+  if (zoomOutBtn) zoomOutBtn.disabled = currentScaleIndex === SCALE_LEVELS.length - 1;
+}
+
+// ── Whiteboard equation presets ───────────────────────────────
+const WHITEBOARD_PRESETS = {
+  circular:   "x(t) = 2*cos(t)\ny(t) = 2*sin(t)",
+  projectile: "x(t) = 4*t\ny(t) = 5 + 3*t - 4.9*t*t",
+  ellipse:    "x(t) = 3*cos(t)\ny(t) = 2*sin(t)",
+  lissajous:  "x(t) = 3*cos(3*t)\ny(t) = 2*sin(4*t)",
+  spiral:     "x(t) = 0.4*t*cos(t)\ny(t) = 0.4*t*sin(t)",
+  freeFall:   "x(t) = 0\ny(t) = 8 - 4.9*t*t",
+  pendulum:   "d(theta)/dt = omega\nd(omega)/dt = -(9.8/L)*sin(theta)\nx = L*sin(theta) + pivotX\ny = -L*cos(theta) + pivotY\ntheta(0) = 0.8\nomega(0) = 0\nL = 2\npivotX = 0\npivotY = 0",
+};
+
+// ── Whiteboard parsing ────────────────────────────────────────
+function parseWhiteboardEquations(text) {
+  const lines = text.split('\n');
+  const direct = [];
+  const differential = [];
+  const algebraic = [];
+  const initialValues = {};
+  const constants = {};
+
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith('//') || line.startsWith('#')) continue;
+
+    let m;
+
+    // Initial condition: var(0) = number
+    m = line.match(/^([a-zA-Z_][a-zA-Z0-9_]*)\(0\)\s*=\s*(.+)$/);
+    if (m) {
+      const val = parseFloat(m[2].trim());
+      if (Number.isFinite(val)) { initialValues[m[1]] = val; continue; }
+    }
+
+    // Differential: d(var)/dt = expr  or  dvar/dt = expr
+    m = line.match(/^d\(?([a-zA-Z_][a-zA-Z0-9_]*)\)?\/dt\s*=\s*(.+)$/);
+    if (m) { differential.push({ variable: m[1], expression: m[2].trim() }); continue; }
+
+    // Direct: var(t) = expr
+    m = line.match(/^([a-zA-Z_][a-zA-Z0-9_]*)\(t\)\s*=\s*(.+)$/);
+    if (m) { direct.push({ variable: m[1], expression: m[2].trim() }); continue; }
+
+    // var = number_or_expression
+    m = line.match(/^([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(.+)$/);
+    if (m) {
+      const varName = m[1];
+      const expr = m[2].trim();
+      const numVal = Number(expr);
+      const isPureNumber = Number.isFinite(numVal) && /^-?\d+(\.\d+)?([eE][+-]?\d+)?$/.test(expr);
+      if (varName === 'x' || varName === 'y') {
+        // Position variables always go to algebraic, even when the value is a constant
+        algebraic.push({ variable: varName, expression: expr });
+      } else if (isPureNumber) {
+        constants[varName] = numVal;
+      } else {
+        algebraic.push({ variable: varName, expression: expr });
+      }
+      continue;
+    }
+  }
+
+  if (differential.length > 0) {
+    return { mode: 'differential', equations: differential, algebraicEquations: algebraic, initialValues, constants };
+  }
+  if (direct.length > 0) {
+    return { mode: 'direct', equations: direct, constants };
+  }
+  // Fallback: treat plain var = expr as direct equations (user wrote without (t))
+  if (algebraic.length > 0) {
+    return { mode: 'direct', equations: algebraic, constants };
+  }
+  return null;
+}
+
+function formatEquationsForWhiteboard(obj) {
+  const lines = [];
+  if (obj.edoSystem?.equations?.length) {
+    obj.edoSystem.equations.forEach(eq => lines.push(`d(${eq.variable})/dt = ${eq.expression}`));
+    obj.edoSystem.algebraicEquations?.forEach(eq => lines.push(`${eq.variable} = ${eq.expression}`));
+    const knownVars = new Set([
+      ...obj.edoSystem.equations.map(eq => eq.variable),
+      ...(obj.edoSystem.algebraicEquations || []).map(eq => eq.variable),
+    ]);
+    Object.entries(obj.edoSystem.constants || {}).forEach(([k, v]) => {
+      if (!knownVars.has(k)) lines.push(`${k} = ${v}`);
+    });
+    Object.entries(obj.edoSystem.initialValues || {}).forEach(([k, v]) => {
+      lines.push(`${k}(0) = ${v}`);
+    });
+  } else if (obj.directSystem?.length) {
+    Object.entries(obj.directConstants || {}).forEach(([k, v]) => lines.push(`${k} = ${v}`));
+    obj.directSystem.forEach(eq => lines.push(`${eq.variable}(t) = ${eq.expression}`));
+  } else if (obj.eqXSource || obj.eqYSource) {
+    if (obj.eqXSource) lines.push(`x(t) = ${obj.eqXSource}`);
+    if (obj.eqYSource) lines.push(`y(t) = ${obj.eqYSource}`);
+  }
+  return lines.join('\n');
+}
+
+function applyWhiteboardEquations(obj, text, card) {
+  try {
+    const parsed = parseWhiteboardEquations(text);
+    if (!parsed) return { success: false, message: "Nenhuma equação válida encontrada." };
+
+    // Merge constants: whiteboard-defined values overridden by UI constant inputs
+    const inputConstants = {};
+    card?.querySelectorAll('.constant-input').forEach(inp => {
+      const v = parseFloat(inp.value);
+      if (inp.dataset.constVar && Number.isFinite(v)) inputConstants[inp.dataset.constVar] = v;
+    });
+    const mergedConstants = { ...(parsed.constants || {}), ...inputConstants };
+
+    if (parsed.mode === 'differential') {
+      // Initial condition inputs take priority over values written in whiteboard text
+      card?.querySelectorAll('.condition-input').forEach(inp => {
+        const v = parseFloat(inp.value);
+        if (inp.dataset.condVar && Number.isFinite(v)) parsed.initialValues[inp.dataset.condVar] = v;
+      });
+      // Default x=0 and y=0 when not defined instead of rejecting the system
+      const hasX = parsed.equations.some(eq => eq.variable === 'x') ||
+                   parsed.algebraicEquations?.some(eq => eq.variable === 'x');
+      const hasY = parsed.equations.some(eq => eq.variable === 'y') ||
+                   parsed.algebraicEquations?.some(eq => eq.variable === 'y');
+      if (!hasX) (parsed.algebraicEquations = parsed.algebraicEquations || []).push({ variable: 'x', expression: '0' });
+      if (!hasY) (parsed.algebraicEquations = parsed.algebraicEquations || []).push({ variable: 'y', expression: '0' });
+      parsed.timeOffset = getTime();
+      parsed.constants = mergedConstants;
+      obj.setEDOSystem(parsed);
+    } else {
+      // Default x=0 and y=0 when not defined
+      const hasX = parsed.equations.some(eq => eq.variable === 'x');
+      const hasY = parsed.equations.some(eq => eq.variable === 'y');
+      if (!hasX) parsed.equations.push({ variable: 'x', expression: '0' });
+      if (!hasY) parsed.equations.push({ variable: 'y', expression: '0' });
+      obj.setDirectSystem(parsed.equations, getTime(), mergedConstants);
+    }
+
+    updateObjectTables(getTime());
+    drawGraph(getTime());
+    updateGraphAxisOptions('A', getGraphObject('graphObjectA'));
+    updateGraphAxisOptions('B', getGraphObject('graphObjectB'));
+    updateTableColumnsEditor();
+    return { success: true };
+  } catch (e) {
+    return { success: false, message: e.message };
+  }
+}
+
+function insertAtCursorInTextarea(textarea, text) {
+  const start = textarea.selectionStart ?? textarea.value.length;
+  const end = textarea.selectionEnd ?? textarea.value.length;
+  textarea.value = textarea.value.substring(0, start) + text + textarea.value.substring(end);
+  const cursor = start + text.length;
+  textarea.setSelectionRange(cursor, cursor);
+  textarea.focus();
+}
+
+function showWhiteboardStatus(card, result) {
+  const status = card?.querySelector(".whiteboard-status");
+  if (!status) return;
+  status.textContent = result.success ? "✓ Aplicado" : `⚠ ${result.message}`;
+  status.className = `whiteboard-status ${result.success ? "status-ok" : "status-error"}`;
+  if (result.success) {
+    setTimeout(() => { status.textContent = ""; status.className = "whiteboard-status"; }, 3000);
+  }
+}
+
+// Names that are never user constants (builtins + loop var t + position outputs)
+const BUILTIN_NAMES = new Set([
+  'sin', 'sen', 'cos', 'tan', 'asin', 'acos', 'atan', 'atan2',
+  'sqrt', 'exp', 'log', 'ln', 'abs', 'pow', 'max', 'min',
+  'floor', 'ceil', 'round', 'sign', 't', 'pi', 'e', 'x', 'y'
+]);
+
+function extractIdentifiers(expr) {
+  const ids = new Set();
+  const re = /[a-zA-Z_][a-zA-Z0-9_]*/g;
+  let m;
+  while ((m = re.exec(expr)) !== null) ids.add(m[0]);
+  return ids;
+}
+
+function detectEDOVariables(text) {
+  const vars = [];
+  const seen = new Set();
+  for (const rawLine of text.split('\n')) {
+    const m = rawLine.trim().match(/^d\(?([a-zA-Z_][a-zA-Z0-9_]*)\)?\/dt\s*=/);
+    if (m && !seen.has(m[1])) { seen.add(m[1]); vars.push(m[1]); }
+  }
+  return vars;
+}
+
+function getTextInitialValues(text) {
+  const vals = {};
+  for (const rawLine of text.split('\n')) {
+    const m = rawLine.trim().match(/^([a-zA-Z_][a-zA-Z0-9_]*)\(0\)\s*=\s*(.+)$/);
+    if (m) { const v = parseFloat(m[2].trim()); if (Number.isFinite(v)) vals[m[1]] = v; }
+  }
+  return vals;
+}
+
+function detectUserConstants(text) {
+  // All names that are not user constants
+  const excluded = new Set([...BUILTIN_NAMES, ...detectEDOVariables(text)]);
+  const usedInRhs = new Set();
+  const explicitValues = {}; // var = number definitions
+
+  for (const rawLine of text.split('\n')) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith('//') || line.startsWith('#')) continue;
+    let m;
+    if (/^([a-zA-Z_][a-zA-Z0-9_]*)\(0\)\s*=/.test(line)) continue; // initial conditions
+
+    m = line.match(/^d\(?([a-zA-Z_][a-zA-Z0-9_]*)\)?\/dt\s*=\s*(.+)$/);
+    if (m) { extractIdentifiers(m[2]).forEach(id => usedInRhs.add(id)); continue; }
+
+    m = line.match(/^([a-zA-Z_][a-zA-Z0-9_]*)\(t\)\s*=\s*(.+)$/);
+    if (m) { excluded.add(m[1]); extractIdentifiers(m[2]).forEach(id => usedInRhs.add(id)); continue; }
+
+    m = line.match(/^([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(.+)$/);
+    if (m) {
+      const varName = m[1], expr = m[2].trim();
+      const numVal = parseFloat(expr);
+      const isPure = Number.isFinite(numVal) && /^-?\d+(\.\d+)?([eE][+-]?\d+)?$/.test(expr);
+      if (varName === 'x' || varName === 'y') {
+        extractIdentifiers(expr).forEach(id => usedInRhs.add(id));
+      } else if (isPure) {
+        explicitValues[varName] = numVal; // explicitly defined constant
+      } else {
+        excluded.add(varName); // algebraic output — not a constant
+        extractIdentifiers(expr).forEach(id => usedInRhs.add(id));
+      }
+    }
+  }
+
+  // Gather: identifiers used in RHS that aren't excluded + explicitly defined constants
+  const seen = new Set();
+  const result = [];
+  // Explicit constants first (so they appear at top)
+  for (const [name, value] of Object.entries(explicitValues)) {
+    if (!excluded.has(name) && !seen.has(name)) { result.push({ name, defaultValue: value }); seen.add(name); }
+  }
+  // Then implicit (used but undefined) constants
+  for (const id of usedInRhs) {
+    if (!excluded.has(id) && !seen.has(id) && !explicitValues[id]) {
+      result.push({ name: id, defaultValue: null }); seen.add(id);
+    }
+  }
+  return result;
+}
+
+function updateConditionsSection(card, text) {
+  const section = card?.querySelector('.whiteboard-conditions');
+  if (!section) return;
+
+  const edoVars = detectEDOVariables(text);
+  const userConsts = detectUserConstants(text);
+
+  if (edoVars.length === 0 && userConsts.length === 0) { section.style.display = 'none'; return; }
+
+  // Preserve existing input values before rebuilding
+  const savedConds = {};
+  section.querySelectorAll('.condition-input').forEach(inp => {
+    if (inp.dataset.condVar && inp.value !== '') savedConds[inp.dataset.condVar] = inp.value;
+  });
+  const savedConsts = {};
+  section.querySelectorAll('.constant-input').forEach(inp => {
+    if (inp.dataset.constVar && inp.value !== '') savedConsts[inp.dataset.constVar] = inp.value;
+  });
+  const textInitVals = getTextInitialValues(text);
+
+  let html = '';
+  if (edoVars.length > 0) {
+    html += `<div class="conditions-subblock"><div class="conditions-header">Condições iniciais (t = 0)</div><div class="conditions-grid">${
+      edoVars.map(v => {
+        const val = savedConds[v] ?? (textInitVals[v] !== undefined ? String(textInitVals[v]) : '');
+        return `<label class="condition-label"><span class="condition-var">${escapeHtml(v)}(0) =</span><input type="number" step="any" class="condition-input" data-cond-var="${escapeHtml(v)}" value="${escapeHtml(val)}"></label>`;
+      }).join('')
+    }</div></div>`;
+  }
+  if (userConsts.length > 0) {
+    html += `<div class="conditions-subblock"><div class="conditions-header">Constantes</div><div class="conditions-grid">${
+      userConsts.map(({ name, defaultValue }) => {
+        const val = savedConsts[name] ?? (defaultValue !== null ? String(defaultValue) : '');
+        return `<label class="condition-label"><span class="condition-var">${escapeHtml(name)} =</span><input type="number" step="any" class="constant-input" data-const-var="${escapeHtml(name)}" value="${escapeHtml(val)}" placeholder="0"></label>`;
+      }).join('')
+    }</div></div>`;
+  }
+  section.style.display = 'block';
+  section.innerHTML = html;
+}
+
+// ── Canvas resize ──────────────────────────────────────────────
 let objects = [];
 let selected = null;
 let dragging = null;
 let topWindowZIndex = 10;
 let resizeObserver = null;
 
-// ── Canvas resize ──────────────────────────────────────────────
 function resizeCanvas() {
   const container = document.querySelector(".canvas-container");
   if (!container) return;
@@ -67,25 +432,10 @@ function getOptions() {
 }
 
 // ── Object management ──────────────────────────────────────────
-function editObjectEquations(object) {
-  Modal.openEquationModal(object, (target, _a, _b, systemConfig) => {
-    try {
-      if (systemConfig?.mode === "differential") {
-        systemConfig.timeOffset = getTime();
-        target.setEDOSystem(systemConfig);
-      } else if (systemConfig?.mode === "direct") {
-        target.setDirectSystem(systemConfig.equations, getTime());
-      } else {
-        const eqX = parseEquation(systemConfig.eqXStr);
-        const eqY = parseEquation(systemConfig.eqYStr);
-        target.setEquations(eqX, eqY, systemConfig.eqXStr, systemConfig.eqYStr, getTime());
-      }
-      updateInfoPanel();
-      updateObjectTables(getTime());
-      drawGraph(getTime());
-    } catch (error) {
-      alert(`Erro ao processar equações: ${error.message}`);
-    }
+function editObjectAppearance(object) {
+  Modal.openAppearanceModal(object, () => {
+    updateInfoPanel();
+    updateObjectTables(getTime());
   });
 }
 
@@ -109,7 +459,7 @@ function addRandomObject() {
   updateInfoPanel();
   updateGraphObjectOptions();
   updateObjectTables(getTime());
-  editObjectEquations(obj);
+  updateTableColumnsEditor();
 }
 
 function clearScene() {
@@ -119,39 +469,19 @@ function clearScene() {
   updateGraphObjectOptions();
   updateObjectTables(0);
   drawGraph(0);
+  updateTableColumnsEditor();
 }
 
 // ── Pre-built scenarios ────────────────────────────────────────
 function loadScenario(name) {
   const scenarios = {
-    circular: () => {
-      const obj = makeObj(0, { eqX: "2*cos(t)", eqY: "2*sin(t)", shape: "circle", label: "MCU" });
-      return [obj];
-    },
-    projectile: () => {
-      const obj = makeObj(1, { eqX: "4*t", eqY: "5 + 3*t - 4.9*t*t", shape: "soccer", label: "Projétil" });
-      return [obj];
-    },
-    ellipse: () => {
-      const obj = makeObj(2, { eqX: "3*cos(t)", eqY: "2*sin(t)", shape: "satellite", label: "Órbita" });
-      return [obj];
-    },
-    pendulum: () => {
-      const obj = makePendulumObj();
-      return [obj];
-    },
-    lissajous: () => {
-      const a = makeObj(0, { eqX: "3*cos(3*t)", eqY: "2*sin(4*t)", shape: "circle", label: "Lissajous" });
-      return [a];
-    },
-    spiral: () => {
-      const obj = makeObj(3, { eqX: "0.4*t*cos(t)", eqY: "0.4*t*sin(t)", shape: "rocket", label: "Espiral" });
-      return [obj];
-    },
-    freeFall: () => {
-      const obj = makeObj(4, { eqX: "0", eqY: "8 - 4.9*t*t", shape: "soccer", label: "Queda livre" });
-      return [obj];
-    }
+    circular: () => [makeObj(0, { eqX: "2*cos(t)", eqY: "2*sin(t)", shape: "circle", label: "MCU" })],
+    projectile: () => [makeObj(1, { eqX: "4*t", eqY: "5 + 3*t - 4.9*t*t", shape: "soccer", label: "Projétil" })],
+    ellipse: () => [makeObj(2, { eqX: "3*cos(t)", eqY: "2*sin(t)", shape: "satellite", label: "Órbita" })],
+    pendulum: () => [makePendulumObj()],
+    lissajous: () => [makeObj(0, { eqX: "3*cos(3*t)", eqY: "2*sin(4*t)", shape: "circle", label: "Lissajous" })],
+    spiral: () => [makeObj(3, { eqX: "0.4*t*cos(t)", eqY: "0.4*t*sin(t)", shape: "rocket", label: "Espiral" })],
+    freeFall: () => [makeObj(4, { eqX: "0", eqY: "8 - 4.9*t*t", shape: "soccer", label: "Queda livre" })],
   };
 
   const builder = scenarios[name];
@@ -166,6 +496,7 @@ function loadScenario(name) {
   updateGraphObjectOptions();
   updateObjectTables(getTime());
   drawGraph(getTime());
+  updateTableColumnsEditor();
 }
 
 function makeObj(colorIndex, { eqX, eqY, shape = "circle", label = "" }) {
@@ -194,13 +525,13 @@ function makePendulumObj() {
     mode: "differential",
     equations: [
       { variable: "theta", expression: "omega" },
-      { variable: "omega", expression: "-(9.8/2)*sin(theta)" }
+      { variable: "omega", expression: "-(9.8/L)*sin(theta)" }
     ],
     algebraicEquations: [
-      { variable: "x", expression: "2*sin(theta)" },
-      { variable: "y", expression: "-2*cos(theta)" }
+      { variable: "x", expression: "L*sin(theta) + pivotX" },
+      { variable: "y", expression: "-L*cos(theta) + pivotY" }
     ],
-    constants: {},
+    constants: { L: 2, pivotX: 0, pivotY: 0 },
     initialValues: { theta: 0.8, omega: 0 },
     timeOffset: 0
   });
@@ -214,6 +545,7 @@ function deleteObject(object) {
   updateGraphObjectOptions();
   updateObjectTables(getTime());
   drawGraph(getTime());
+  updateTableColumnsEditor();
 }
 
 function resetSimulationTime() {
@@ -235,6 +567,121 @@ const SHAPE_LABELS = {
   satellite: "Satélite"
 };
 
+function buildObjectCard(obj, i) {
+  const isSelected = obj === selected;
+  const shapeLabel = SHAPE_LABELS[obj.shape] || obj.shape;
+  const displayName = obj.label ? obj.label : `Objeto ${i + 1}`;
+  const equations = formatEquationsForWhiteboard(obj);
+  const ec = 0.5 * obj.mass * obj.velocityMagnitude ** 2;
+  const kineHidden = obj._kineHidden !== false; // default true (hidden)
+  const cardMin = obj._cardMinimized || false;
+
+  const classes = [
+    "object-info-card",
+    isSelected ? "selecionado" : "",
+    kineHidden ? "kine-hidden" : "",
+    cardMin ? "card-minimized" : ""
+  ].filter(Boolean).join(" ");
+
+  const PALETTE_BTNS = [
+    ["sin(", "sin"], ["cos(", "cos"], ["tan(", "tan"], ["sqrt(", "√"],
+    ["exp(", "eˣ"], ["log(", "ln"], ["abs(", "|x|"], ["pi", "π"],
+    ["**2", "x²"], ["t", "t"]
+  ].map(([ins, lbl]) =>
+    `<button type="button" class="wb-palette-btn" data-wb-insert="${escapeHtml(ins)}">${escapeHtml(lbl)}</button>`
+  ).join("") + `<button type="button" class="wb-palette-btn wb-palette-btn--deriv" data-wb-template="derivative" title="Inserir d(var)/dt = ">d/dt</button>`;
+
+  const PRESET_BTNS = [
+    ["circular", "MCU"], ["projectile", "Projétil"], ["ellipse", "Elipse"],
+    ["pendulum", "Pêndulo"], ["lissajous", "Lissajous"], ["spiral", "Espiral"], ["freeFall", "Queda livre"]
+  ].map(([key, lbl]) =>
+    `<button type="button" class="wb-preset-btn" data-wb-preset="${key}">${escapeHtml(lbl)}</button>`
+  ).join("");
+
+  const wbPlaceholder = [
+    "// Equação direta:",
+    "x(t) = 2*cos(t)",
+    "y(t) = 2*sin(t)",
+    "// ou EDO:",
+    "d(theta)/dt = omega",
+    "d(omega)/dt = -(9.8/2)*sin(theta)",
+    "x = 2*sin(theta)",
+    "y = -2*cos(theta)",
+    "theta(0) = 0.8"
+  ].join("&#10;");
+
+  return `
+    <div class="${classes}" data-object-id="${escapeHtml(obj.id)}">
+      <div class="object-info-header">
+        <button type="button" class="card-toggle-btn" data-object-index="${i}" data-object-action="toggle-card" title="${cardMin ? "Expandir" : "Minimizar"} card"></button>
+        <div class="object-info-title">
+          <span class="obj-color-dot" style="background:${escapeHtml(obj.color)}"></span>
+          ${escapeHtml(displayName)}
+          <span class="object-shape-badge">${escapeHtml(shapeLabel)}</span>
+        </div>
+        <div class="object-header-btns">
+          <button type="button" class="kine-toggle-btn" data-object-index="${i}" data-object-action="toggle-kine" title="Mostrar/ocultar valores cinemáticos">≡</button>
+          <button type="button" data-object-index="${i}" data-object-action="appearance" title="Editar aparência">✎</button>
+          <button type="button" class="danger" data-object-index="${i}" data-object-action="delete" title="Excluir">×</button>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="kinematic-section">
+          <div class="kinematic-grid">
+            <div class="kinematic-item">
+              <span class="k-label">x</span>
+              <span class="k-value" data-kv="x">${obj.x.toFixed(3)} m</span>
+            </div>
+            <div class="kinematic-item">
+              <span class="k-label">y</span>
+              <span class="k-value" data-kv="y">${obj.y.toFixed(3)} m</span>
+            </div>
+            <div class="kinematic-item">
+              <span class="k-label">vx</span>
+              <span class="k-value velocity" data-kv="vx">${obj.vx.toFixed(3)} m/s</span>
+            </div>
+            <div class="kinematic-item">
+              <span class="k-label">vy</span>
+              <span class="k-value velocity" data-kv="vy">${obj.vy.toFixed(3)} m/s</span>
+            </div>
+            <div class="kinematic-item">
+              <span class="k-label">|v|</span>
+              <span class="k-value velocity" data-kv="v">${obj.velocityMagnitude.toFixed(3)} m/s</span>
+            </div>
+            <div class="kinematic-item">
+              <span class="k-label">|a|</span>
+              <span class="k-value acceleration" data-kv="a">${obj.accelerationMagnitude.toFixed(3)} m/s²</span>
+            </div>
+          </div>
+          <div class="ec-row" data-kv="ec">EC = ${ec.toFixed(3)} J &nbsp;|&nbsp; m = ${obj.mass.toFixed(2)} kg</div>
+        </div>
+
+        <div class="whiteboard-section">
+          <div class="whiteboard-presets">
+            <span class="wb-label">Carregar:</span>
+            ${PRESET_BTNS}
+          </div>
+          <textarea
+            class="whiteboard-textarea"
+            data-object-id="${escapeHtml(obj.id)}"
+            placeholder="${wbPlaceholder}"
+            spellcheck="false"
+            autocomplete="off"
+            autocorrect="off"
+            rows="6"
+          >${escapeHtml(equations)}</textarea>
+          <div class="whiteboard-palette">${PALETTE_BTNS}</div>
+          <div class="whiteboard-footer">
+            <button class="whiteboard-apply-btn" type="button" data-object-index="${i}" data-object-action="apply-equations">Aplicar</button>
+            <span class="whiteboard-status"></span>
+          </div>
+          <div class="whiteboard-conditions" style="display:none;"></div>
+        </div>
+      </div>
+    </div>`;
+}
+
 function updateInfoPanel() {
   const panel = document.getElementById("infoPanel");
   if (!panel) return;
@@ -248,78 +695,96 @@ function updateInfoPanel() {
     return;
   }
 
-  panel.innerHTML = objects.map((obj, i) => {
-    const isSelected = obj === selected;
-    const ec = 0.5 * obj.mass * obj.velocityMagnitude ** 2;
-    const shapeLabel = SHAPE_LABELS[obj.shape] || obj.shape;
-    const displayName = obj.label ? `${obj.label}` : `Objeto ${i + 1}`;
+  // Smart rebuild: only rebuild if the set/order of objects changed
+  const existingCards = panel.querySelectorAll(".object-info-card");
+  const existingIds = Array.from(existingCards).map(c => c.dataset.objectId);
+  const currentIds = objects.map(o => o.id);
+  const needsRebuild = existingIds.length !== currentIds.length ||
+    existingIds.some((id, i) => id !== currentIds[i]);
 
-    return `
-      <div class="object-info-card${isSelected ? " selecionado" : ""}">
-        <div class="object-info-header">
-          <div class="object-info-title">
-            <span style="width:10px;height:10px;border-radius:50%;background:${escapeHtml(obj.color)};display:inline-block;flex-shrink:0"></span>
-            ${escapeHtml(displayName)}
-            <span class="object-shape-badge">${escapeHtml(shapeLabel)}</span>
-          </div>
-        </div>
-        <div class="kinematic-grid">
-          <div class="kinematic-item">
-            <span class="k-label">x</span>
-            <span class="k-value">${obj.x.toFixed(3)} m</span>
-          </div>
-          <div class="kinematic-item">
-            <span class="k-label">y</span>
-            <span class="k-value">${obj.y.toFixed(3)} m</span>
-          </div>
-          <div class="kinematic-item">
-            <span class="k-label">vx</span>
-            <span class="k-value velocity">${obj.vx.toFixed(3)} m/s</span>
-          </div>
-          <div class="kinematic-item">
-            <span class="k-label">vy</span>
-            <span class="k-value velocity">${obj.vy.toFixed(3)} m/s</span>
-          </div>
-          <div class="kinematic-item">
-            <span class="k-label">|v|</span>
-            <span class="k-value velocity">${obj.velocityMagnitude.toFixed(3)} m/s</span>
-          </div>
-          <div class="kinematic-item">
-            <span class="k-label">|a|</span>
-            <span class="k-value acceleration">${obj.accelerationMagnitude.toFixed(3)} m/s²</span>
-          </div>
-        </div>
-        <div class="equation-summary">${formatObjectEquations(obj)}</div>
-        <div class="ec-row">EC = <strong>${ec.toFixed(3)} J</strong> &nbsp;|&nbsp; m = ${obj.mass.toFixed(2)} kg</div>
-        <div class="object-actions">
-          <button type="button" data-object-index="${i}" data-object-action="edit">Editar</button>
-          <button type="button" class="danger" data-object-index="${i}" data-object-action="delete">Excluir</button>
-        </div>
-      </div>`;
-  }).join("");
+  if (needsRebuild) {
+    panel.innerHTML = objects.map((obj, i) => buildObjectCard(obj, i)).join("");
+    objects.forEach(obj => {
+      const card = panel.querySelector(`[data-object-id="${obj.id}"]`);
+      const textarea = card?.querySelector('.whiteboard-textarea');
+      if (card && textarea) updateConditionsSection(card, textarea.value);
+    });
+  }
+
+  // Always update selection highlight
+  objects.forEach((obj) => {
+    const card = panel.querySelector(`[data-object-id="${obj.id}"]`);
+    card?.classList.toggle("selecionado", obj === selected);
+  });
 }
 
-function formatObjectEquations(obj) {
-  if (obj.edoSystem?.equations?.length) {
-    const diff = obj.edoSystem.equations
-      .map((eq) => `<code>d${escapeHtml(eq.variable)}/dt = ${escapeHtml(eq.expression)}</code>`)
-      .join(" &nbsp; ");
-    const alg = obj.edoSystem.algebraicEquations?.length
-      ? " &nbsp; " + obj.edoSystem.algebraicEquations
-          .map((eq) => `<code>${escapeHtml(eq.variable)} = ${escapeHtml(eq.expression)}</code>`)
-          .join(" &nbsp; ")
-      : "";
-    return diff + alg;
-  }
-  if (obj.directSystem?.length) {
-    return obj.directSystem
-      .map((eq) => `<code>${escapeHtml(eq.variable)}(t) = ${escapeHtml(eq.expression)}</code>`)
-      .join(" &nbsp; ");
-  }
-  return `<code>x(t) = ${escapeHtml(obj.eqXSource || "—")}</code> &nbsp; <code>y(t) = ${escapeHtml(obj.eqYSource || "—")}</code>`;
+let _lastKvUpdate = 0;
+
+function updateKinematicsLive() {
+  const now = performance.now();
+  if (now - _lastKvUpdate < 80) return;
+  _lastKvUpdate = now;
+
+  const panel = document.getElementById("infoPanel");
+  if (!panel || objects.length === 0) return;
+
+  objects.forEach(obj => {
+    const card = panel.querySelector(`[data-object-id="${obj.id}"]`);
+    if (!card) return;
+
+    const ec = 0.5 * obj.mass * obj.velocityMagnitude ** 2;
+    const kvs = {
+      x:  `${obj.x.toFixed(3)} m`,
+      y:  `${obj.y.toFixed(3)} m`,
+      vx: `${obj.vx.toFixed(3)} m/s`,
+      vy: `${obj.vy.toFixed(3)} m/s`,
+      v:  `${obj.velocityMagnitude.toFixed(3)} m/s`,
+      a:  `${obj.accelerationMagnitude.toFixed(3)} m/s²`,
+    };
+    Object.entries(kvs).forEach(([key, val]) => {
+      const el = card.querySelector(`[data-kv="${key}"]`);
+      if (el && el.textContent !== val) el.textContent = val;
+    });
+    const ecEl = card.querySelector('[data-kv="ec"]');
+    const ecText = `EC = ${ec.toFixed(3)} J | m = ${obj.mass.toFixed(2)} kg`;
+    if (ecEl && ecEl.textContent !== ecText) ecEl.textContent = ecText;
+  });
 }
 
 // ── Object tables ──────────────────────────────────────────────
+function updateTableColumnsEditor() {
+  const container = document.getElementById('tableColumnsConfig');
+  if (!container) return;
+
+  const userVarSet = new Set();
+  objects.forEach(obj => obj.getUserVarNames().forEach(v => userVarSet.add(v)));
+  const allCols = [
+    ...TABLE_STANDARD_COLUMNS,
+    ...[...userVarSet].map(v => ({ key: v, label: v, isUser: true }))
+  ];
+
+  const activeCols   = allCols.filter(col =>  activeTableColumns.has(col.key));
+  const availableCols = allCols.filter(col => !activeTableColumns.has(col.key));
+
+  const tagsHtml = activeCols.length === 0
+    ? '<span class="table-col-empty">Nenhuma coluna ativa</span>'
+    : activeCols.map(col => {
+        const badge = col.isUser ? ' <span class="col-user-badge">var</span>' : '';
+        return `<span class="table-col-tag">
+          ${escapeHtml(col.label)}${badge}
+          <button type="button" class="table-col-remove" data-remove-col="${escapeHtml(col.key)}" title="Remover coluna">×</button>
+        </span>`;
+      }).join('');
+
+  const addSelectHtml = availableCols.length === 0 ? '' : `
+    <select id="tableAddCol" class="table-col-add-select">
+      <option value="">+ Adicionar coluna...</option>
+      ${availableCols.map(col => `<option value="${escapeHtml(col.key)}">${escapeHtml(col.label)}${col.isUser ? ' (var)' : ''}</option>`).join('')}
+    </select>`;
+
+  container.innerHTML = `<div class="table-col-tags">${tagsHtml}</div>${addSelectHtml}`;
+}
+
 function updateObjectTables(t) {
   const panel = document.getElementById("objectTables");
   if (!panel) return;
@@ -329,14 +794,49 @@ function updateObjectTables(t) {
     return;
   }
 
+  // Build full column list: standard + all user vars across all objects
+  const allUserVarSet = new Set();
+  objects.forEach(obj => obj.getUserVarNames().forEach(v => allUserVarSet.add(v)));
+  const allColDefs = [
+    ...TABLE_STANDARD_COLUMNS,
+    ...[...allUserVarSet].map(v => ({ key: v, label: v, isUser: true }))
+  ];
+  const visibleCols = allColDefs.filter(col => activeTableColumns.has(col.key));
+
+  const getSampleVal = (s, key) => {
+    if (key in s && s[key] !== undefined) return s[key];
+    if (s.userVars && key in s.userVars) return s.userVars[key];
+    return null;
+  };
+
   panel.innerHTML = objects.map((obj, index) => {
     const localTime = obj.getLocalTime(t);
+
+    // Current snapshot with user vars
+    const currentUserVars = {};
+    if (obj.edoSolver && obj.edoSystem) {
+      const state = obj.edoSolver.getState();
+      obj.getUserVarNames().forEach(v => { if (v in state) currentUserVars[v] = state[v]; });
+    }
+    const currentSnapshot = {
+      t: localTime, x: obj.x, y: obj.y,
+      vx: obj.vx, vy: obj.vy, ax: obj.ax, ay: obj.ay,
+      speed: obj.velocityMagnitude, acceleration: obj.accelerationMagnitude,
+      userVars: currentUserVars
+    };
+
     const tableSamples = obj.samples.slice(-16);
-    const rows = tableSamples.length === 0
-      ? `<tr><td>${localTime.toFixed(2)}</td><td>${obj.x.toFixed(3)}</td><td>${obj.y.toFixed(3)}</td><td>${obj.vx.toFixed(3)}</td><td>${obj.vy.toFixed(3)}</td><td>${obj.velocityMagnitude.toFixed(3)}</td><td>${obj.accelerationMagnitude.toFixed(3)}</td></tr>`
-      : tableSamples.map((s) =>
-          `<tr><td>${s.t.toFixed(2)}</td><td>${s.x.toFixed(3)}</td><td>${s.y.toFixed(3)}</td><td>${s.vx.toFixed(3)}</td><td>${s.vy.toFixed(3)}</td><td>${s.speed.toFixed(3)}</td><td>${s.acceleration.toFixed(3)}</td></tr>`
-        ).join("");
+    const sampleList = tableSamples.length === 0 ? [currentSnapshot] : tableSamples;
+
+    const rows = sampleList.map(s =>
+      `<tr>${visibleCols.map(col => {
+        const val = getSampleVal(s, col.key);
+        const fmt = (val !== null && val !== undefined && Number.isFinite(val))
+          ? val.toFixed(col.key === 't' ? 2 : 3)
+          : '—';
+        return `<td>${fmt}</td>`;
+      }).join('')}</tr>`
+    ).join('');
 
     const displayName = obj.label ? escapeHtml(obj.label) : `Objeto ${index + 1}`;
 
@@ -347,32 +847,37 @@ function updateObjectTables(t) {
           <button class="btn-csv" type="button" data-export-index="${index}">⬇ CSV</button>
         </div>
         <table>
-          <thead>
-            <tr>
-              <th>t (s)</th><th>x (m)</th><th>y (m)</th>
-              <th>vx (m/s)</th><th>vy (m/s)</th>
-              <th>|v| (m/s)</th><th>|a| (m/s²)</th>
-            </tr>
-          </thead>
+          <thead><tr>${visibleCols.map(col => `<th>${escapeHtml(col.label)}</th>`).join('')}</tr></thead>
           <tbody>${rows}</tbody>
         </table>
       </div>`;
-  }).join("");
+  }).join('');
 }
 
 function exportObjectCSV(index) {
   const obj = objects[index];
   if (!obj) return;
 
-  const header = "t (s),x (m),y (m),vx (m/s),vy (m/s),|v| (m/s),|a| (m/s²)";
-  const rows = obj.samples.map((s) =>
-    [s.t, s.x, s.y, s.vx, s.vy, s.speed, s.acceleration]
-      .map((v) => v.toFixed(6))
-      .join(",")
+  const objUserCols = obj.getUserVarNames().map(v => ({ key: v, label: v }));
+  const allColDefs = [...TABLE_STANDARD_COLUMNS, ...objUserCols];
+  const visibleCols = allColDefs.filter(col => activeTableColumns.has(col.key));
+
+  const getSampleVal = (s, key) => {
+    if (key in s && s[key] !== undefined) return s[key];
+    if (s.userVars && key in s.userVars) return s.userVars[key];
+    return null;
+  };
+
+  const header = visibleCols.map(col => col.label).join(',');
+  const rows = obj.samples.map(s =>
+    visibleCols.map(col => {
+      const val = getSampleVal(s, col.key);
+      return (val !== null && Number.isFinite(val)) ? val.toFixed(6) : '';
+    }).join(',')
   );
-  const csv = [header, ...rows].join("\n");
-  const name = obj.label ? obj.label.replace(/\s+/g, "_") : `objeto_${index + 1}`;
-  downloadText(`tabela_${name}.csv`, csv, "text/csv");
+  const csv = [header, ...rows].join('\n');
+  const name = obj.label ? obj.label.replace(/\s+/g, '_') : `objeto_${index + 1}`;
+  downloadText(`tabela_${name}.csv`, csv, 'text/csv');
 }
 
 function exportAllCSV() {
@@ -391,15 +896,28 @@ function downloadText(filename, content, type = "text/plain") {
 }
 
 // ── Graph ──────────────────────────────────────────────────────
-function initializeGraphControls() {
-  ["graphXA", "graphYA", "graphXB", "graphYB"].forEach((id) => {
-    const select = document.getElementById(id);
-    if (!select) return;
-    select.innerHTML = Object.entries(GRAPH_FIELDS)
-      .map(([value, field]) => `<option value="${value}">${field.label}</option>`)
-      .join("");
-  });
+function updateGraphAxisOptions(letter, obj) {
+  const xSel = document.getElementById(`graphX${letter}`);
+  const ySel = document.getElementById(`graphY${letter}`);
+  if (!xSel || !ySel) return;
 
+  const fields = getObjectFields(obj);
+  const xPrev = xSel.value;
+  const yPrev = ySel.value;
+
+  const optHtml = Object.entries(fields)
+    .map(([val, f]) => `<option value="${escapeHtml(val)}">${escapeHtml(f.label)}</option>`)
+    .join('');
+  xSel.innerHTML = optHtml;
+  ySel.innerHTML = optHtml;
+
+  xSel.value = fields[xPrev] ? xPrev : 't';
+  ySel.value = fields[yPrev] ? yPrev : (letter === 'A' ? 'x' : 'y');
+}
+
+function initializeGraphControls() {
+  updateGraphAxisOptions('A', null);
+  updateGraphAxisOptions('B', null);
   document.getElementById("graphXA").value = "t";
   document.getElementById("graphYA").value = "x";
   document.getElementById("graphXB").value = "t";
@@ -407,7 +925,8 @@ function initializeGraphControls() {
 }
 
 function updateGraphObjectOptions() {
-  ["graphObjectA", "graphObjectB"].forEach((id) => {
+  ["A", "B"].forEach(letter => {
+    const id = `graphObject${letter}`;
     const select = document.getElementById(id);
     if (!select) return;
     const previousValue = select.value;
@@ -422,6 +941,7 @@ function updateGraphObjectOptions() {
     } else if (selected && objects.includes(selected)) {
       select.value = String(objects.indexOf(selected));
     }
+    updateGraphAxisOptions(letter, objects[Number(select.value)] || null);
   });
 }
 
@@ -474,18 +994,35 @@ function getSeriesPoints(series, t, timeMin, timeMax) {
   if (!series.object) return [];
   const obj = series.object;
   const localTime = obj.getLocalTime(t);
+
+  // Snapshot of current user var values
+  const currentUserVars = {};
+  if (obj.edoSolver && obj.edoSystem) {
+    const state = obj.edoSolver.getState();
+    obj.getUserVarNames().forEach(v => { if (v in state) currentUserVars[v] = state[v]; });
+  } else if (obj.directSystem) {
+    const scope = obj.evaluateDirectSystem(localTime);
+    obj.getUserVarNames().forEach(v => { if (v in scope) currentUserVars[v] = scope[v]; });
+  }
+
   const samples = obj.samples.concat({
     t: localTime, x: obj.x, y: obj.y,
     vx: obj.vx, vy: obj.vy, ax: obj.ax, ay: obj.ay,
-    speed: obj.velocityMagnitude, acceleration: obj.accelerationMagnitude
+    speed: obj.velocityMagnitude, acceleration: obj.accelerationMagnitude,
+    userVars: currentUserVars
   });
+
+  const fields = getObjectFields(obj);
+  const xField = fields[series.xKey];
+  const yField = fields[series.yKey];
+  if (!xField || !yField) return [];
 
   return samples
     .filter((s) => timeMin === null || s.t >= timeMin)
     .filter((s) => timeMax === null || s.t <= timeMax)
     .map((s) => ({
-      x: GRAPH_FIELDS[series.xKey].get(s),
-      y: GRAPH_FIELDS[series.yKey].get(s),
+      x: xField.get(s),
+      y: yField.get(s),
       t: s.t
     }))
     .filter((p) => Number.isFinite(p.x) && Number.isFinite(p.y));
@@ -533,11 +1070,9 @@ function drawGraphAxes(seriesList, W, H) {
     y: pad.top + plotH - ((p.y - yRange.min) / ySpan) * plotH
   });
 
-  // Background
   graphCtx.fillStyle = "#fafafa";
   graphCtx.fillRect(pad.left, pad.top, plotW, plotH);
 
-  // Grid lines
   graphCtx.strokeStyle = "#e2e8f0";
   graphCtx.lineWidth = 1;
   xTicks.forEach((tick) => {
@@ -549,7 +1084,6 @@ function drawGraphAxes(seriesList, W, H) {
     graphCtx.beginPath(); graphCtx.moveTo(pad.left, y); graphCtx.lineTo(pad.left + plotW, y); graphCtx.stroke();
   });
 
-  // Zero lines
   if (xRange.min <= 0 && xRange.max >= 0) {
     const x = pad.left + ((0 - xRange.min) / xSpan) * plotW;
     graphCtx.strokeStyle = "#94a3b8"; graphCtx.lineWidth = 1;
@@ -561,12 +1095,10 @@ function drawGraphAxes(seriesList, W, H) {
     graphCtx.beginPath(); graphCtx.moveTo(pad.left, y); graphCtx.lineTo(pad.left + plotW, y); graphCtx.stroke();
   }
 
-  // Border
   graphCtx.strokeStyle = "#cbd5e1";
   graphCtx.lineWidth = 1;
   graphCtx.strokeRect(pad.left, pad.top, plotW, plotH);
 
-  // Tick labels
   graphCtx.font = "11px Inter, sans-serif";
   graphCtx.fillStyle = "#64748b";
   xTicks.forEach((tick) => {
@@ -580,7 +1112,6 @@ function drawGraphAxes(seriesList, W, H) {
     graphCtx.fillText(formatTick(tick), pad.left - 6, y + 4);
   });
 
-  // Axis labels
   graphCtx.font = "12px Inter, sans-serif";
   graphCtx.fillStyle = "#374151";
   graphCtx.textAlign = "center";
@@ -591,7 +1122,6 @@ function drawGraphAxes(seriesList, W, H) {
   graphCtx.fillText(currentAxisLabel("y"), 0, 0);
   graphCtx.restore();
 
-  // Series lines (with anti-aliasing smoothing)
   seriesList.forEach((series) => {
     graphCtx.save();
     graphCtx.beginPath();
@@ -607,7 +1137,6 @@ function drawGraphAxes(seriesList, W, H) {
     graphCtx.stroke();
     graphCtx.restore();
 
-    // End dot
     if (series.points.length > 0) {
       const last = toPx(series.points[series.points.length - 1]);
       graphCtx.beginPath();
@@ -626,7 +1155,10 @@ function drawLegend(seriesList, pad) {
   seriesList.forEach((series) => {
     const objectIndex = objects.indexOf(series.object) + 1;
     const objName = series.object?.label || `Objeto ${objectIndex}`;
-    const label = `${objName} — ${GRAPH_FIELDS[series.yKey].label} × ${GRAPH_FIELDS[series.xKey].label}`;
+    const fields = getObjectFields(series.object);
+    const yLabel = fields[series.yKey]?.label || series.yKey;
+    const xLabel = fields[series.xKey]?.label || series.xKey;
+    const label = `${objName} — ${yLabel} × ${xLabel}`;
     graphCtx.fillStyle = series.color;
     graphCtx.fillRect(x, y - 7, 16, 3);
     graphCtx.fillStyle = "#374151";
@@ -649,7 +1181,8 @@ function currentAxisLabel(axis) {
   const bEnabled = document.getElementById("graphUseB")?.checked || false;
   const bKey = document.getElementById(axis === "x" ? "graphXB" : "graphYB")?.value || aKey;
   if (bEnabled && aKey !== bKey) return axis.toUpperCase();
-  return GRAPH_FIELDS[aKey]?.label || aKey;
+  const fields = getObjectFields(getGraphObject("graphObjectA"));
+  return fields[aKey]?.label || aKey;
 }
 
 function getNiceTicks(min, max, targetCount = 6) {
@@ -682,7 +1215,6 @@ function formatTick(v) {
 function exportGraphPng() {
   if (!graphCanvas) return;
   drawGraph(getTime());
-  // Export at full DPR resolution
   const link = document.createElement("a");
   link.download = "grafico-movimento.png";
   link.href = graphCanvas.toDataURL("image/png");
@@ -722,8 +1254,6 @@ function startWindowDrag(event) {
   if (window.innerWidth <= 800) return;
   const panel = event.currentTarget.closest(".window-panel");
   if (!panel || !workspace) return;
-
-  // Don't drag if clicking a button inside the header
   if (event.target.closest("button")) return;
 
   activateWindow(panel);
@@ -744,6 +1274,7 @@ function startWindowDrag(event) {
     panel.removeEventListener("pointermove", move);
     panel.removeEventListener("pointerup", stop);
     panel.removeEventListener("pointercancel", stop);
+    Controls.updateWorkspaceHeight();
   };
   panel.addEventListener("pointermove", move);
   panel.addEventListener("pointerup", stop);
@@ -775,6 +1306,7 @@ function startWindowResize(event) {
     panel.removeEventListener("pointermove", move);
     panel.removeEventListener("pointerup", stop);
     panel.removeEventListener("pointercancel", stop);
+    Controls.updateWorkspaceHeight();
   };
   panel.addEventListener("pointermove", move);
   panel.addEventListener("pointerup", stop);
@@ -828,7 +1360,6 @@ canvas.addEventListener("mousemove", (e) => {
   const rect = canvas.getBoundingClientRect();
   const pos = pixelsToMath(e.clientX - rect.left, e.clientY - rect.top, canvas);
   dragging.setInitialPosition(pos.x, pos.y);
-  updateInfoPanel();
   updateObjectTables(getTime());
   drawGraph(getTime());
 });
@@ -839,22 +1370,30 @@ canvas.addEventListener("mouseleave", () => { dragging = null; });
 // ── Main loop ──────────────────────────────────────────────────
 function update() {
   const t = getTime();
-  objects.forEach((obj) => { obj.update(t); obj.recordSample(t); });
-  render(ctx, canvas, objects, getOptions());
-  updateObjectTables(t);
-  drawGraph(t);
-  Controls.updateTimeLabel(t);
+  try {
+    objects.forEach((obj) => {
+      try { obj.update(t); } catch (e) { console.error("[obj.update]", e); }
+      try { obj.recordSample(t); } catch (e) { console.error("[obj.recordSample]", e); }
+    });
+    render(ctx, canvas, objects, getOptions());
+  } catch (e) {
+    console.error("[simulador] Erro ao renderizar:", e);
+  }
+  try { updateKinematicsLive(); } catch (_) {}
+  try { updateObjectTables(t); } catch (_) {}
+  try { drawGraph(t); } catch (_) {}
+  try { Controls.updateTimeLabel(t); } catch (_) {}
   requestAnimationFrame(update);
 }
 
-// ── Window globals (for inline handlers) ──────────────────────
+// ── Window globals ──────────────────────────────────────────────
 window.addRandomObject = addRandomObject;
 window.clearScene = clearScene;
 window.togglePause = togglePause;
 window.resetSimulationTime = resetSimulationTime;
 window.setSpeed = setSpeed;
 window.toggleTutorial = toggleTutorial;
-window.closeModal = Modal.closeEquationModal;
+window.closeModal = Modal.closeAppearanceModal;
 
 // ── Init ───────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
@@ -864,6 +1403,7 @@ document.addEventListener("DOMContentLoaded", () => {
   Modal.initializeModal();
   initializeGraphControls();
   initializeWindowPanels();
+  applyScale(); // set initial zoom label
 
   // Add object buttons (sidebar + empty state)
   document.addEventListener("click", (e) => {
@@ -871,8 +1411,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (btn) addRandomObject();
   });
 
+  // Zoom buttons
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-action='zoom-in']");
+    if (btn) { zoomIn(); return; }
+    const btn2 = e.target.closest("[data-action='zoom-out']");
+    if (btn2) { zoomOut(); return; }
+  });
+
   document.querySelector("[data-action='tutorial']")?.addEventListener("click", toggleTutorial);
-  document.querySelector(".modal-close")?.addEventListener("click", Modal.closeEquationModal);
+  document.querySelector(".modal-close")?.addEventListener("click", Modal.closeAppearanceModal);
   document.getElementById("exportGraph")?.addEventListener("click", exportGraphPng);
   document.getElementById("exportAllCSV")?.addEventListener("click", exportAllCSV);
 
@@ -895,17 +1443,160 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById(id)?.addEventListener("change", () => drawGraph(getTime()));
   });
 
-  // Info panel actions (edit / delete) + empty state add button
+  // Update axis options when selected object changes
+  document.getElementById("graphObjectA")?.addEventListener("change", () => {
+    updateGraphAxisOptions('A', getGraphObject('graphObjectA'));
+  });
+  document.getElementById("graphObjectB")?.addEventListener("change", () => {
+    updateGraphAxisOptions('B', getGraphObject('graphObjectB'));
+  });
+
+  // Table columns — remove chip
+  document.getElementById('tableColumnsConfig')?.addEventListener('click', (e) => {
+    const btn = e.target.closest('.table-col-remove');
+    if (!btn) return;
+    activeTableColumns.delete(btn.dataset.removeCol);
+    updateTableColumnsEditor();
+    updateObjectTables(getTime());
+  });
+
+  // Table columns — add from select
+  document.getElementById('tableColumnsConfig')?.addEventListener('change', (e) => {
+    if (e.target.id !== 'tableAddCol') return;
+    const key = e.target.value;
+    if (key) {
+      activeTableColumns.add(key);
+      updateTableColumnsEditor();
+      updateObjectTables(getTime());
+    }
+  });
+
+  // Info panel actions
   document.getElementById("infoPanel")?.addEventListener("click", (e) => {
-    const button = e.target.closest("[data-object-action]");
-    if (!button) return;
-    const obj = objects[Number(button.dataset.objectIndex)];
+    // Object action buttons (appearance, delete, apply-equations)
+    const actionBtn = e.target.closest("[data-object-action]");
+    if (actionBtn) {
+      const card = actionBtn.closest(".object-info-card");
+      const objId = card?.dataset.objectId;
+      const obj = objects.find(o => o.id === objId) ?? objects[Number(actionBtn.dataset.objectIndex)];
+      if (!obj) return;
+
+      const action = actionBtn.dataset.objectAction;
+
+      // Card-level toggles: manipulate DOM directly to avoid full rebuild
+      if (action === "toggle-card") {
+        const isNowMin = card.classList.toggle("card-minimized");
+        obj._cardMinimized = isNowMin;
+        actionBtn.title = isNowMin ? "Expandir card" : "Minimizar card";
+        return;
+      }
+      if (action === "toggle-kine") {
+        obj._kineHidden = card.classList.toggle("kine-hidden");
+        return;
+      }
+
+      if (action !== "apply-equations") {
+        selected = obj;
+        setGraphSelectionToObject(obj);
+      }
+
+      if (action === "appearance") {
+        editObjectAppearance(obj);
+      } else if (action === "delete") {
+        deleteObject(obj);
+        return;
+      } else if (action === "apply-equations") {
+        const textarea = card?.querySelector(".whiteboard-textarea");
+        if (textarea) {
+          const result = applyWhiteboardEquations(obj, textarea.value, card);
+          showWhiteboardStatus(card, result);
+        }
+      }
+
+      if (action !== "delete") updateInfoPanel();
+      return;
+    }
+
+    // Palette insertion
+    const insertBtn = e.target.closest("[data-wb-insert]");
+    if (insertBtn) {
+      const textarea = insertBtn.closest(".object-info-card")?.querySelector(".whiteboard-textarea");
+      if (textarea) insertAtCursorInTextarea(textarea, insertBtn.dataset.wbInsert);
+      return;
+    }
+
+    // Derivative template button
+    const templateBtn = e.target.closest("[data-wb-template='derivative']");
+    if (templateBtn) {
+      const card = templateBtn.closest(".object-info-card");
+      const textarea = card?.querySelector(".whiteboard-textarea");
+      if (textarea) {
+        const start = textarea.selectionStart ?? textarea.value.length;
+        const before = textarea.value.substring(0, start);
+        const prefix = (before.length > 0 && !before.endsWith('\n')) ? '\n' : '';
+        const snippet = prefix + 'd(var)/dt = ';
+        textarea.value = textarea.value.substring(0, start) + snippet + textarea.value.substring(textarea.selectionEnd ?? start);
+        const varStart = start + prefix.length + 2; // after d(
+        textarea.setSelectionRange(varStart, varStart + 3); // select "var"
+        textarea.focus();
+      }
+      return;
+    }
+
+    // Preset loading
+    const presetBtn = e.target.closest("[data-wb-preset]");
+    if (presetBtn) {
+      const card = presetBtn.closest(".object-info-card");
+      const objId = card?.dataset.objectId;
+      const obj = objects.find(o => o.id === objId);
+      const textarea = card?.querySelector(".whiteboard-textarea");
+      if (obj && textarea) {
+        const text = WHITEBOARD_PRESETS[presetBtn.dataset.wbPreset];
+        if (text) {
+          textarea.value = text;
+          updateConditionsSection(card, text);
+          const result = applyWhiteboardEquations(obj, text, card);
+          showWhiteboardStatus(card, result);
+          if (result.success) updateInfoPanel();
+        }
+      }
+      return;
+    }
+  });
+
+  // Auto-apply equations when textarea loses focus (silent on error, tick on success)
+  document.getElementById("infoPanel")?.addEventListener("focusout", (e) => {
+    if (!e.target.matches(".whiteboard-textarea")) return;
+    const textarea = e.target;
+    if (!textarea.value.trim()) return;
+    const card = textarea.closest(".object-info-card");
+    const obj = objects.find(o => o.id === card?.dataset.objectId);
     if (!obj) return;
-    selected = obj;
-    setGraphSelectionToObject(obj);
-    if (button.dataset.objectAction === "edit") editObjectEquations(obj);
-    if (button.dataset.objectAction === "delete") deleteObject(obj);
-    updateInfoPanel();
+    const result = applyWhiteboardEquations(obj, textarea.value, card);
+    if (result.success) showWhiteboardStatus(card, result);
+  });
+
+  // Ctrl+Enter inside textarea → apply and show status
+  document.getElementById("infoPanel")?.addEventListener("keydown", (e) => {
+    if (!(e.ctrlKey || e.metaKey) || e.key !== 'Enter') return;
+    if (!e.target.matches(".whiteboard-textarea")) return;
+    e.preventDefault();
+    const textarea = e.target;
+    const card = textarea.closest(".object-info-card");
+    const obj = objects.find(o => o.id === card?.dataset.objectId);
+    if (!obj) return;
+    const result = applyWhiteboardEquations(obj, textarea.value, card);
+    showWhiteboardStatus(card, result);
+  });
+
+  // Debounced update of conditions section while typing
+  let _conditionsTimer = null;
+  document.getElementById("infoPanel")?.addEventListener("input", (e) => {
+    if (!e.target.matches(".whiteboard-textarea")) return;
+    const textarea = e.target;
+    const card = textarea.closest(".object-info-card");
+    clearTimeout(_conditionsTimer);
+    _conditionsTimer = setTimeout(() => { if (card) updateConditionsSection(card, textarea.value); }, 400);
   });
 
   // Table CSV export buttons
@@ -918,6 +1609,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateGraphObjectOptions();
   updateInfoPanel();
   updateObjectTables(0);
+  updateTableColumnsEditor();
   drawGraph(0);
   update();
 });

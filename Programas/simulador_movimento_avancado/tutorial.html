@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorial — Simulador de Movimento — Piras na Física</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tutorial.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="header-logo" href="/index.html">
+    <img src="novo_logo_final.png" alt="Piras na Física">
+    <span class="header-logo-text">Piras na Física</span>
+  </a>
+  <span class="header-badge">Tutorial</span>
+  <a class="header-back" href="simulador_movimento_avancado.html">← Abrir simulador</a>
+</header>
+
+<div class="page">
+
+  <h1 class="page-title">Como usar o Simulador de Movimento</h1>
+  <p class="page-subtitle">Cinemática interativa — equações diretas e diferenciais em tempo real</p>
+
+  <!-- VISÃO GERAL -->
+  <div class="tut-section">
+    <h2>Visão geral</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Painel de movimento</h3>
+        <p>Canvas 2D onde o objeto se move. Arraste para reposicionar, redimensione pelo canto inferior direito. Use <strong>+</strong> e <strong>−</strong> para ajustar o zoom (de centímetros a UA).</p>
+      </div>
+      <div class="card">
+        <h3>Informações e equações</h3>
+        <p>Um card por objeto. Mostra grandezas cinemáticas em tempo real e o quadro de equações onde você define o movimento.</p>
+      </div>
+      <div class="card">
+        <h3>Tabelas cinemáticas</h3>
+        <p>Registro histórico de posição, velocidade e aceleração amostrado a cada passo. Configure as colunas visíveis no painel lateral e exporte como CSV.</p>
+      </div>
+      <div class="card">
+        <h3>Gráficos do movimento</h3>
+        <p>Plote qualquer grandeza vs. qualquer outra para até duas séries simultâneas. Exporte como PNG de alta resolução.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADICIONANDO OBJETOS -->
+  <div class="tut-section">
+    <h2>Adicionando objetos</h2>
+    <ol class="step-list">
+      <li><span class="step-num">1</span><span class="step-text">Clique em <strong>+ Adicionar objeto</strong> na barra lateral (ou no botão dentro do painel vazio).</span></li>
+      <li><span class="step-num">2</span><span class="step-text">Escolha nome, cor, massa e formato no modal de aparência. Confirme.</span></li>
+      <li><span class="step-num">3</span><span class="step-text">O objeto aparece no card de informações. Clique no ícone de edição (✏) para reabrir o modal de aparência.</span></li>
+      <li><span class="step-num">4</span><span class="step-text">Até 6 objetos podem ser simulados ao mesmo tempo, cada um com sua própria equação e cor.</span></li>
+    </ol>
+  </div>
+
+  <!-- EQUAÇÕES DIRETAS -->
+  <div class="tut-section">
+    <h2>Equações diretas — <code>x(t)</code> e <code>y(t)</code></h2>
+    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1rem;">Use quando a posição pode ser escrita explicitamente como função do tempo.</p>
+
+    <div class="example-block">
+      <div class="example-header">Exemplo — Movimento Circular Uniforme</div>
+      <div class="example-body">
+        <pre>x(t) = 2 * cos(t)
+y(t) = 2 * sin(t)</pre>
+      </div>
+    </div>
+
+    <div class="example-block">
+      <div class="example-header">Exemplo — Lançamento Oblíquo (v₀ = 10 m/s, θ = 45°)</div>
+      <div class="example-body">
+        <pre>x(t) = 10 * cos(pi/4) * t
+y(t) = 10 * sin(pi/4) * t - 0.5 * 9.8 * t^2</pre>
+      </div>
+    </div>
+
+    <div class="card-grid" style="margin-top:1rem;">
+      <div class="card">
+        <h3>Funções disponíveis</h3>
+        <p><code>sin</code> <code>cos</code> <code>tan</code> <code>asin</code> <code>acos</code> <code>atan</code> <code>atan2</code> <code>sqrt</code> <code>abs</code> <code>exp</code> <code>log</code> <code>log2</code> <code>log10</code> <code>floor</code> <code>ceil</code> <code>round</code></p>
+      </div>
+      <div class="card">
+        <h3>Constantes</h3>
+        <p><code>pi</code> = π &nbsp; <code>e</code> = e &nbsp; <code>t</code> = tempo atual (s)</p>
+        <p>Você pode declarar constantes próprias na primeira linha: <code>g = 9.8</code></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDOs -->
+  <div class="tut-section">
+    <h2>Equações Diferenciais — <code>d(var)/dt</code></h2>
+    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1rem;">Use quando o movimento é descrito por EDOs, como o pêndulo. O simulador integra numericamente usando RK4.</p>
+
+    <div class="example-block">
+      <div class="example-header">Exemplo — Pêndulo Simples</div>
+      <div class="example-body">
+        <pre><span class="comment"># Variáveis de estado</span>
+d(theta)/dt = omega
+d(omega)/dt = -(9.8 / 1) * sin(theta)
+
+<span class="comment"># Condições iniciais</span>
+theta(0) = 0.5
+omega(0) = 0
+
+<span class="comment"># Mapeamento para posição 2D</span>
+x = 1 * sin(theta)
+y = -1 * cos(theta)</pre>
+      </div>
+    </div>
+
+    <div class="example-block">
+      <div class="example-header">Exemplo — Queda com arrasto (EDO)</div>
+      <div class="example-body">
+        <pre>d(vy)/dt = -9.8 + 0.1 * vy^2
+vy(0) = 0
+
+x(t) = 0
+y = vy</pre>
+      </div>
+    </div>
+
+    <ol class="step-list" style="margin-top:0.8rem;">
+      <li><span class="step-num">1</span><span class="step-text">Declare as EDOs com <code>d(var)/dt = expressão</code>.</span></li>
+      <li><span class="step-num">2</span><span class="step-text">Defina condições iniciais com <code>var(0) = valor</code> — ou ajuste no painel de condições iniciais que aparece automaticamente.</span></li>
+      <li><span class="step-num">3</span><span class="step-text">Mapeie para posição 2D: <code>x = expressão</code> e <code>y = expressão</code>.</span></li>
+      <li><span class="step-num">4</span><span class="step-text">Variáveis EDO (como <code>theta</code>, <code>omega</code>) aparecem automaticamente nas opções de gráfico e tabela.</span></li>
+    </ol>
+  </div>
+
+  <!-- VISUALIZAÇÃO -->
+  <div class="tut-section">
+    <h2>Visualização de vetores e trajetória</h2>
+    <div class="vector-legend" style="margin-bottom:1rem;">
+      <div class="vector-item"><div class="v-dot" style="background:#22c55e;"></div><span>Verde — vetor velocidade</span></div>
+      <div class="vector-item"><div class="v-dot" style="background:#ef4444;"></div><span>Vermelho — vetor aceleração</span></div>
+      <div class="vector-item"><div class="v-dot" style="background:#9a9088; border-radius:50%;"></div><span>Traço — trajetória percorrida</span></div>
+    </div>
+    <p style="color:var(--text-muted); font-size:0.9rem;">Ative ou desative cada elemento na seção <strong>Visualização</strong> da barra lateral. O comprimento dos vetores escala proporcionalmente à magnitude.</p>
+  </div>
+
+  <!-- GRÁFICOS -->
+  <div class="tut-section">
+    <h2>Gráficos</h2>
+    <ol class="step-list">
+      <li><span class="step-num">1</span><span class="step-text">Expanda a seção <strong>Gráfico</strong> na barra lateral.</span></li>
+      <li><span class="step-num">2</span><span class="step-text">Escolha o objeto e as grandezas para os eixos X e Y da Série A.</span></li>
+      <li><span class="step-num">3</span><span class="step-text">Marque <em>Série B</em> para sobrepor uma segunda curva (útil para comparar objetos ou grandezas).</span></li>
+      <li><span class="step-num">4</span><span class="step-text">Defina limites de tempo opcionais em <em>t mín</em> e <em>t máx</em>; deixe em branco para usar todo o histórico.</span></li>
+      <li><span class="step-num">5</span><span class="step-text">Clique em <strong>Exportar PNG</strong> para salvar o gráfico em alta resolução.</span></li>
+    </ol>
+  </div>
+
+  <!-- TABELAS -->
+  <div class="tut-section">
+    <h2>Tabelas e exportação</h2>
+    <ol class="step-list">
+      <li><span class="step-num">1</span><span class="step-text">Expanda o painel <strong>Tabelas cinemáticas</strong> clicando no cabeçalho ou no botão ▼.</span></li>
+      <li><span class="step-num">2</span><span class="step-text">Configure quais colunas exibir na seção <strong>Tabelas</strong> da barra lateral: remova chips com × e adicione via seletor.</span></li>
+      <li><span class="step-num">3</span><span class="step-text">Variáveis criadas em EDOs (como <code>theta</code>) aparecem automaticamente como opções de coluna.</span></li>
+      <li><span class="step-num">4</span><span class="step-text">Clique em <strong>⬇ CSV</strong> para exportar todas as tabelas de uma vez, ou no botão de cada objeto individualmente.</span></li>
+    </ol>
+  </div>
+
+  <!-- CENÁRIOS -->
+  <div class="tut-section">
+    <h2>Cenários prontos</h2>
+    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1rem;">A seção <strong>Cenários</strong> na barra lateral carrega exemplos prontos. Use-os como ponto de partida e edite as equações livremente.</p>
+
+    <table class="shortcut-table">
+      <thead>
+        <tr><th>Cenário</th><th>Descrição</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>MCU</td><td>Movimento Circular Uniforme — <code>x=2cos(t), y=2sin(t)</code></td></tr>
+        <tr><td>Projétil</td><td>Lançamento oblíquo com velocidade inicial de 20 m/s a 45°</td></tr>
+        <tr><td>Elipse</td><td>Órbita elíptica com semi-eixos 3 e 2</td></tr>
+        <tr><td>Pêndulo</td><td>Pêndulo simples por EDO com RK4 (ângulo grande)</td></tr>
+        <tr><td>Lissajous</td><td>Figuras de Lissajous com razão de frequência 3:2</td></tr>
+        <tr><td>Espiral</td><td>Espiral de Arquimedes com expansão linear</td></tr>
+        <tr><td>Queda livre</td><td>Queda vertical com aceleração gravitacional constante</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CONTROLES -->
+  <div class="tut-section">
+    <h2>Controles da simulação</h2>
+    <table class="shortcut-table">
+      <thead>
+        <tr><th>Controle</th><th>Função</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Pausar / Retomar</td><td>Congela e retoma o avanço do tempo</td></tr>
+        <tr><td>Reiniciar</td><td>Volta ao instante t = 0 e limpa trajetórias e histórico</td></tr>
+        <tr><td>Velocidade ×</td><td>Multiplica a velocidade de simulação (0.1× a 4×)</td></tr>
+        <tr><td>+ / −</td><td>Zoom do plano de movimento (escala de metros a UA)</td></tr>
+        <tr><td>Arrastar painel</td><td>Clique e arraste o cabeçalho de qualquer painel para reposicionar</td></tr>
+        <tr><td>Redimensionar</td><td>Arraste o ícone no canto inferior direito do painel</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h2>Pronto para explorar?</h2>
+    <p>Abra o simulador, adicione um objeto e comece com um cenário pronto — ou escreva suas próprias equações.</p>
+    <a href="simulador_movimento_avancado.html">Abrir o Simulador →</a>
+  </div>
+
+</div>
+</body>
+</html>

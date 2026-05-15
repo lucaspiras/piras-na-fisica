@@ -1,10 +1,20 @@
 // ui/controls.js
 import { isPaused } from '../engine/time.js';
 
+export function updateWorkspaceHeight() {
+  const ws = document.getElementById('workspace');
+  if (!ws) return;
+  let maxBottom = 680;
+  ws.querySelectorAll('.window-panel').forEach(p => {
+    maxBottom = Math.max(maxBottom, p.offsetTop + p.offsetHeight + 20);
+  });
+  ws.style.minHeight = maxBottom + 'px';
+}
+
 export function updatePauseButtonText() {
   const btn = document.querySelector('[data-action="pause"]');
   if (btn) {
-    btn.textContent = isPaused() ? "Retomar" : "Pausar";
+    btn.textContent = isPaused() ? "▶ Iniciar" : "⏸ Pausar";
   }
 }
 
@@ -40,11 +50,18 @@ export function initializeControls() {
     updateSpeedLabel(speed);
   });
 
-  // Toggle para minimizar tabela
+  // Toggle tabelas cinemáticas
   const collapseBtn = document.querySelector('[data-action="collapse-tables"]');
   collapseBtn?.addEventListener('click', () => {
-    const panel = document.querySelector('.panel-data');
-    panel.classList.toggle('collapsed');
+    document.querySelector('.panel-data')?.classList.toggle('collapsed');
+    updateWorkspaceHeight();
+  });
+
+  // Toggle gráfico do movimento
+  const collapseGraphBtn = document.querySelector('[data-action="collapse-graph"]');
+  collapseGraphBtn?.addEventListener('click', () => {
+    document.querySelector('.panel-graph')?.classList.toggle('collapsed');
+    updateWorkspaceHeight();
   });
 
   // Toggle série B do gráfico
@@ -61,5 +78,16 @@ export function initializeControls() {
   scrollDownBtn?.addEventListener('click', () => {
     const sidebar = document.querySelector('.sidebar');
     sidebar.scrollTo({ top: sidebar.scrollHeight, behavior: 'smooth' });
+  });
+
+  updateWorkspaceHeight();
+
+  // Collapsible sidebar sections
+  document.querySelectorAll('[data-section-toggle]').forEach(header => {
+    header.addEventListener('click', (e) => {
+      if (e.target.closest('button, input, select, a, label')) return;
+      const section = header.closest('.section-collapsible');
+      if (section) section.classList.toggle('section-collapsed');
+    });
   });
 }

@@ -26,6 +26,7 @@ export default class Object2D {
     this.edoSystem = null;
     this.edoSolver = null;
     this.directSystem = null;
+    this.directConstants = {};
 
     this.path = [];
     this.samples = [];
@@ -50,6 +51,24 @@ export default class Object2D {
 
   getLocalTime(globalTime) {
     return Math.max(0, globalTime - this.timeOffset);
+  }
+
+  getUserVarNames() {
+    const std = new Set(['x', 'y', 'vx', 'vy', 'ax', 'ay', 'speed', 'acceleration', 't']);
+    if (this.edoSolver && this.edoSystem) {
+      const stateVars = this.edoSystem.equations.map(eq => eq.variable);
+      const algVars = (this.edoSystem.algebraicEquations || []).map(eq => eq.variable);
+      const seen = new Set();
+      const result = [];
+      for (const v of [...stateVars, ...algVars]) {
+        if (!std.has(v) && !seen.has(v)) { seen.add(v); result.push(v); }
+      }
+      return result;
+    }
+    if (this.directSystem) {
+      return this.directSystem.map(eq => eq.variable).filter(v => !std.has(v));
+    }
+    return [];
   }
 
   update(globalTime) {
@@ -111,6 +130,7 @@ export default class Object2D {
     this.edoSystem = null;
     this.edoSolver = null;
     this.directSystem = null;
+    this.directConstants = {};
     try {
       this.x = this.eqX(0);
       this.y = this.eqY(0);
@@ -123,12 +143,13 @@ export default class Object2D {
     if (this.hasEquation) this.updateKinematics(0);
   }
 
-  setDirectSystem(equations, timeOffset = 0) {
+  setDirectSystem(equations, timeOffset = 0, constants = {}) {
     const normalizedEquations = normalizeEquationRows(equations);
-    if (!normalizedEquations.some((eq) => eq.variable === "x") || !normalizedEquations.some((eq) => eq.variable === "y")) {
-      throw new Error("O sistema direto precisa definir x e y.");
-    }
+    // Add defaults so missing position variables don't crash
+    if (!normalizedEquations.some((eq) => eq.variable === "x")) normalizedEquations.push({ variable: "x", expression: "0" });
+    if (!normalizedEquations.some((eq) => eq.variable === "y")) normalizedEquations.push({ variable: "y", expression: "0" });
 
+    this.directConstants = { ...constants };
     this.directSystem = normalizedEquations.map((eq) => ({
       ...eq,
       fn: parseEquation(eq.expression)
@@ -321,7 +342,7 @@ export default class Object2D {
     const t = this.getLocalTime(globalTime);
     if (this.lastSampleTime !== null && t - this.lastSampleTime < interval) return;
 
-    this.samples.push({
+    const sample = {
       t,
       x: this.x,
       y: this.y,
@@ -330,13 +351,24 @@ export default class Object2D {
       ax: this.ax,
       ay: this.ay,
       speed: this.velocityMagnitude,
-      acceleration: this.accelerationMagnitude
-    });
-    this.lastSampleTime = t;
+      acceleration: this.accelerationMagnitude,
+      userVars: {}
+    };
 
-    if (this.samples.length > maxSamples) {
-      this.samples.shift();
+    const userVarNames = this.getUserVarNames();
+    if (userVarNames.length > 0) {
+      if (this.edoSolver && this.edoSystem) {
+        const state = this.edoSolver.getState();
+        userVarNames.forEach(v => { if (v in state) sample.userVars[v] = state[v]; });
+      } else if (this.directSystem) {
+        const scope = this.evaluateDirectSystem(t);
+        userVarNames.forEach(v => { if (v in scope && Number.isFinite(scope[v])) sample.userVars[v] = scope[v]; });
+      }
     }
+
+    this.samples.push(sample);
+    this.lastSampleTime = t;
+    if (this.samples.length > maxSamples) this.samples.shift();
   }
 
   draw(ctx, canvas, options) {
@@ -354,18 +386,20 @@ export default class Object2D {
       ctx.stroke();
     }
 
-    // Pendulum rod from origin
+    // Pendulum rod from pivot point
     if (this.shape === "pendulum") {
-      const origin = mathToPixels(0, 0, canvas);
+      const pivotX = this.edoSystem?.constants?.pivotX ?? this.directConstants?.pivotX ?? 0;
+      const pivotY = this.edoSystem?.constants?.pivotY ?? this.directConstants?.pivotY ?? 0;
+      const pivot = mathToPixels(pivotX, pivotY, canvas);
       ctx.beginPath();
-      ctx.moveTo(origin.px, origin.py);
+      ctx.moveTo(pivot.px, pivot.py);
       ctx.lineTo(screenX, screenY);
       ctx.strokeStyle = "#6b7280";
       ctx.lineWidth = 2.5;
       ctx.stroke();
       // Pivot dot
       ctx.beginPath();
-      ctx.arc(origin.px, origin.py, 5, 0, Math.PI * 2);
+      ctx.arc(pivot.px, pivot.py, 5, 0, Math.PI * 2);
       ctx.fillStyle = "#374151";
       ctx.fill();
     }
@@ -384,7 +418,7 @@ export default class Object2D {
         this._drawRocket(ctx, s);
         break;
       case "car":
-        ctx.rotate(velocityAngle);
+        ctx.rotate(velocityAngle - Math.PI / 2);
         this._drawCar(ctx, s);
         break;
       case "satellite":
@@ -696,7 +730,7 @@ export default class Object2D {
   }
 
   evaluateDirectSystem(t) {
-    const scope = { t };
+    const scope = { ...this.directConstants, t };
     for (const equation of this.directSystem || []) {
       scope[equation.variable] = equation.fn(t, scope);
     }
