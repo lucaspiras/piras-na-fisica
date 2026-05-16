@@ -1,121 +1,171 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Simulador Eletrostático</title>
-  <!-- Google tag (gtag.js) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Força Elétrica — Piras na Física</title>
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-TY56KM22X8');
   </script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
 </head>
 <body>
 
-<div id="header"></div>
-<script src="/js/include.js"></script>
+<!-- ═══ HEADER ═══ -->
+<header class="site-header">
+  <a href="/index.html" class="logo-link">
+    <img src="/img/novo_logo_final.png" alt="Piras na Física" class="logo-img">
+    <div class="logo-text">
+      Simulador de Força Elétrica
+      <span>Piras na Física</span>
+    </div>
+  </a>
+  <div class="header-badges">
+    <span class="header-badge">2D</span>
+    <span class="header-badge">Eletrostática</span>
+    <span class="header-badge">Lei de Coulomb</span>
+  </div>
+</header>
 
 <div class="app">
 
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <h2>⚡ Simulador</h2>
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="sidebar">
 
-    <div class="section">
-      <label>Carga (µC)</label>
-      <input id="chargeValue" type="number" value="1" step="0.5">
-
-      <button onclick="addCharge(1)">Adicionar carga positiva</button>
-      <button onclick="addCharge(-1)">Adicionar carga negativa</button>
-      <button onclick="deleteSelected()">Excluir carga selecionada</button>
-    </div>
-
-    <div class="section">
-      <h3>Posição</h3>
-      <input id="posX" placeholder="x (cm)">
-      <input id="posY" placeholder="y (cm)">
-      <button onclick="updatePositionFromInputs()">Mover</button>
-    </div>
-
-    <div class="section">
-      <button onclick="toggleField()">Campo elétrico</button>
-    </div>
-
-    <div class="section">
-      <h3>Escala</h3>
-      <select id="scaleSelect" onchange="updateScale()">
-        <option value="1">1 pixel = 1 cm</option>
-        <option value="10">1 pixel = 10 cm</option>
-        <option value="100" selected>1 pixel = 1 m</option>
-      </select>
-    </div>
-
-    <div class="section">
-      <h3>Gráfico do Campo</h3>
-      <label style="display: flex; align-items: center; gap: 8px; margin: 8px 0;">
-        <input type="checkbox" id="showEx" checked> Eₓ
-      </label>
-      <label style="display: flex; align-items: center; gap: 8px; margin: 8px 0;">
-        <input type="checkbox" id="showEy" checked> Eᵧ
-      </label>
-      <label style="display: flex; align-items: center; gap: 8px; margin: 8px 0;">
-        <input type="checkbox" id="showE" checked> |E|
-      </label>
-      <button onclick="gerarGraficoCampo()">Gerar gráficos</button>
-      <button onclick="baixarGraficoCampo()">Baixar gráfico</button>
-    </div>
-
-    <div class="section">
-      <h3>Personalização</h3>
-      <label>Título</label>
-      <input id="graphTitle" type="text" placeholder="Campo Elétrico" value="Campo Elétrico">
-      
-      <label>Eixo X</label>
-      <input id="graphLabelX" type="text" placeholder="Posição x" value="Posição x (m)">
-      
-      <label>Eixo Y</label>
-      <input id="graphLabelY" type="text" placeholder="Campo Elétrico" value="Campo Elétrico (N/C)">
-      
-      <label style="margin-top: 8px;">Cores</label>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-        <div>
-          <small>Eₓ</small>
-          <input id="colorEx" type="color" value="#2f5bea" style="width: 100%; height: 32px; border: none; border-radius: 6px; cursor: pointer;">
+    <!-- ⚡ CARGAS -->
+    <div class="sidebar-section">
+      <div class="section-header">
+        <h3>⚡ Cargas</h3>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="field">
+          <label>Carga (µC)</label>
+          <input id="chargeValue" type="number" value="1" step="0.5" min="0.1">
         </div>
-        <div>
-          <small>Eᵧ</small>
-          <input id="colorEy" type="color" value="#fb923c" style="width: 100%; height: 32px; border: none; border-radius: 6px; cursor: pointer;">
+        <button id="btnAddPositive" class="btn-primary">+ Carga Positiva</button>
+        <button id="btnAddNegative" class="btn-primary">− Carga Negativa</button>
+        <button id="btnDeleteSelected" class="btn-secondary">Excluir Selecionada</button>
+      </div>
+    </div>
+
+    <!-- 📍 POSIÇÃO -->
+    <div class="sidebar-section">
+      <div class="section-header collapsed">
+        <h3>📍 Posição</h3>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body hidden">
+        <div class="field-row">
+          <div class="field">
+            <label>x (m)</label>
+            <input id="posX" type="number" step="1" placeholder="0">
+          </div>
+          <div class="field">
+            <label>y (m)</label>
+            <input id="posY" type="number" step="1" placeholder="0">
+          </div>
         </div>
-        <div>
-          <small>|E|</small>
-          <input id="colorE" type="color" value="#facc15" style="width: 100%; height: 32px; border: none; border-radius: 6px; cursor: pointer;">
+        <button id="btnMover" class="btn-secondary">Mover</button>
+      </div>
+    </div>
+
+    <!-- 👁 VISUALIZAÇÃO -->
+    <div class="sidebar-section">
+      <div class="section-header">
+        <h3>👁 Visualização</h3>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body">
+        <button id="btnToggleField" class="btn-secondary">Campo Elétrico: ON</button>
+        <div class="field">
+          <label>Escala</label>
+          <select id="scaleSelect">
+            <option value="0.01" selected>1 pixel = 1 cm</option>
+            <option value="0.1">1 pixel = 10 cm</option>
+            <option value="1">1 pixel = 1 m</option>
+          </select>
         </div>
       </div>
     </div>
-  
-  </div>
 
-  
- 
-
-  <!-- MAIN AREA -->
-  <div class="main">
-
-    <div class="page-header">
-      <h1>⚡ Simulador de Força Elétrica</h1>
-      <p>Explore a interação entre cargas elétricas em tempo real. Adicione cargas positivas e negativas no espaço, observe as forças atuantes sobre cada carga e analise o campo elétrico gerado. Visualize graficamente como o campo varia ao longo do espaço e compreenda os princípios fundamentais da eletrostática.</p>
+    <!-- 📊 GRÁFICO -->
+    <div class="sidebar-section">
+      <div class="section-header">
+        <h3>📊 Gráfico do Campo</h3>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body">
+        <label class="check-field">
+          <input type="checkbox" id="showEx" checked> Eₓ
+        </label>
+        <label class="check-field">
+          <input type="checkbox" id="showEy" checked> Eᵧ
+        </label>
+        <label class="check-field">
+          <input type="checkbox" id="showE" checked> |E|
+        </label>
+        <div class="btn-row">
+          <button id="btnGerarGrafico" class="btn-primary">Gerar</button>
+          <button id="btnBaixarGrafico" class="btn-secondary">⬇ Baixar</button>
+        </div>
+      </div>
     </div>
 
-    
+    <!-- 🎨 PERSONALIZAÇÃO -->
+    <div class="sidebar-section">
+      <div class="section-header collapsed">
+        <h3>🎨 Personalização</h3>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body hidden">
+        <div class="field">
+          <label>Título</label>
+          <input id="graphTitle" type="text" value="Campo Elétrico">
+        </div>
+        <div class="field">
+          <label>Eixo X</label>
+          <input id="graphLabelX" type="text" value="Posição x (m)">
+        </div>
+        <div class="field">
+          <label>Eixo Y</label>
+          <input id="graphLabelY" type="text" value="Campo Elétrico (N/C)">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Eₓ</label>
+            <input id="colorEx" type="color" value="#2f5bea">
+          </div>
+          <div class="field">
+            <label>Eᵧ</label>
+            <input id="colorEy" type="color" value="#fb923c">
+          </div>
+        </div>
+        <div class="field">
+          <label>|E|</label>
+          <input id="colorE" type="color" value="#10b981">
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ═══ MAIN ═══ -->
+  <main class="main">
+
+    <!-- Canvas + painel de informações -->
     <div class="canvas-and-info">
       <div class="canvas-container">
         <canvas id="canvas"></canvas>
@@ -123,70 +173,74 @@
       <div id="infoPanel"></div>
     </div>
 
+    <!-- Gráfico do campo elétrico -->
     <div class="graph-area">
       <h3>Gráfico do Campo Elétrico</h3>
       <canvas id="graficoCampo"></canvas>
     </div>
-<div class="tutorial-section">
-      <button class="tutorial-toggle" onclick="toggleTutorial()">
+
+    <!-- Tutorial -->
+    <div class="tutorial-section">
+      <button id="btnTutorialToggle">
         <span class="tutorial-icon">▼</span>
-        <span class="tutorial-label">📖 Como usar o simulador</span>
+        📖 Como usar o simulador
       </button>
-      <div id="tutorialContent" class="tutorial-content">
+      <div id="tutorialContent">
         <div class="tutorial-grid">
           <div class="tutorial-card">
             <h4>🎯 Adicionando Cargas</h4>
-            <p><strong>Carga (µC):</strong> Define a magnitude da carga em microcoulombs.</p>
-            <p><strong>Adicionar carga positiva/negativa:</strong> Clique para adicionar cargas aleatoriamente no canvas.</p>
-            <p><strong>Excluir carga selecionada:</strong> Clique em uma carga no canvas para selecioná-la, depois use este botão.</p>
+            <p><strong>Carga (µC):</strong> define a magnitude em microcoulombs.</p>
+            <p>Use <strong>+ Carga Positiva</strong> ou <strong>− Carga Negativa</strong> para inserir cargas no canvas.</p>
+            <p><strong>Excluir selecionada:</strong> clique em uma carga para selecioná-la, depois exclua.</p>
           </div>
 
           <div class="tutorial-card">
             <h4>📍 Posicionamento</h4>
-            <p>Selecione uma carga clicando nela. Os campos <strong>x (cm)</strong> e <strong>y (cm)</strong> mostram sua posição.</p>
-            <p>Modifique os valores e clique em <strong>Mover</strong> para reposicionar, ou arraste direto no canvas.</p>
+            <p>Clique em uma carga para selecioná-la. Os campos <strong>x (m)</strong> e <strong>y (m)</strong> mostram sua posição em metros.</p>
+            <p>Edite os valores e clique <strong>Mover</strong>, ou arraste diretamente no canvas.</p>
           </div>
 
           <div class="tutorial-card">
-            <h4>🧲 Campo Elétrico</h4>
-            <p>Clique em <strong>Campo elétrico</strong> para mostrar/ocultar as linhas de força do campo.</p>
-            <p>As setas roxas indicam a direção e magnitude do campo em cada ponto.</p>
+            <h4>👁 Campo Elétrico</h4>
+            <p>Use <strong>Campo Elétrico: ON/OFF</strong> para exibir ou ocultar as linhas de força.</p>
+            <p>As setas roxas indicam direção e intensidade do campo em cada ponto.</p>
           </div>
 
           <div class="tutorial-card">
-            <h4>📊 Gerando Gráficos</h4>
-            <p>Selecione os componentes desejados (Eₓ, Eᵧ, |E|).</p>
-            <p>Clique em <strong>Gerar gráficos</strong> para visualizar como o campo varia ao longo do eixo x (y = 0).</p>
-            <p>Use <strong>Baixar gráfico</strong> para salvar a imagem.</p>
+            <h4>📏 Escala</h4>
+            <p>Escolha a escala do canvas:</p>
+            <ul>
+              <li><strong>1 pixel = 1 cm</strong></li>
+              <li><strong>1 pixel = 10 cm</strong></li>
+              <li><strong>1 pixel = 1 m</strong></li>
+            </ul>
+            <p>A física e os eixos atualizam automaticamente.</p>
+          </div>
+
+          <div class="tutorial-card">
+            <h4>📊 Gráfico do Campo</h4>
+            <p>Selecione os componentes (Eₓ, Eᵧ, |E|) e clique <strong>Gerar</strong>.</p>
+            <p>O gráfico mostra o campo ao longo do eixo x (y = 0) na escala atual.</p>
+            <p>Use <strong>⬇ Baixar</strong> para salvar como PNG.</p>
           </div>
 
           <div class="tutorial-card">
             <h4>🎨 Personalização</h4>
-            <p><strong>Título:</strong> Nome do gráfico.</p>
-            <p><strong>Eixo X/Y:</strong> Nomes dos eixos.</p>
-            <p><strong>Cores:</strong> Escolha a cor de cada componente (Eₓ, Eᵧ, |E|).</p>
-          </div>
-
-          <div class="tutorial-card">
-            <h4>📏 Escala e Gráficos</h4>
-            <p><strong>Escala do Canvas:</strong> 1 pixel = 0.01 cm (100 pixels = 1 cm).</p>
-            <p><strong>Eixo X do Gráfico:</strong> Valores automaticamente arredondados (0, 1, 2... ou 0, 0.1, 0.2...).</p>
-            <p><strong>Componentes:</strong></p>
-            <ul style="margin: 8px 0;">
-              <li><strong>Eₓ:</strong> Componente do campo na direção x</li>
-              <li><strong>Eᵧ:</strong> Componente do campo na direção y</li>
-              <li><strong>|E|:</strong> Magnitude (módulo) do campo elétrico</li>
+            <p>Na seção <strong>Personalização</strong>, ajuste título, nomes dos eixos e cores de cada componente do gráfico.</p>
+            <ul>
+              <li><strong>Eₓ:</strong> Componente x do campo</li>
+              <li><strong>Eᵧ:</strong> Componente y do campo</li>
+              <li><strong>|E|:</strong> Magnitude do campo</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-  </div>
+  </main>
 
 </div>
 
 <script type="module" src="script.js"></script>
-
 </body>
 </html>
