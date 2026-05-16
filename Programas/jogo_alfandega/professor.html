@@ -2,56 +2,173 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Modo Professor | Ilha Misteriosa</title>
-  <!-- Google tag (gtag.js) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ilha Misteriosa — Modo Professor</title>
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-TY56KM22X8');
   </script>
-  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style_jogo_ilha.css">
 </head>
 <body>
 
-<header>
-  <h1>🔐 Modo Professor</h1>
+<!-- ═══ HEADER ═══ -->
+<header class="ilha-header">
+  <a href="/index.html" class="ilha-logo-link">
+    <img src="/img/novo_logo_final.png" alt="Piras na Física" class="ilha-logo-img">
+    <div class="ilha-logo-text">
+      Ilha Misteriosa
+      <span>Piras na Física</span>
+    </div>
+  </a>
+  <div class="ilha-header-badges">
+    <span class="ilha-badge ilha-badge-prof">Professor</span>
+    <span class="ilha-badge">Alfândega</span>
+    <span class="ilha-badge">Controle</span>
+  </div>
 </header>
 
-<div class="container">
+<!-- ═══ MAIN ═══ -->
+<main>
 
-  <div class="card">
-    <label>Escolha a regra:</label>
-      <select id="regraSelecionada" onchange="trocarRegra()">
-  <optgroup label="Lógica simples">
-    <option value="c">Começa com C</option>
-    <option value="par">Número par de letras</option>
-    <option value="impar">Número ímpar de letras</option>
-  </optgroup>
-
-  <optgroup label="Padrões da linguagem">
-    <option value="repetida">Letra repetida</option>
-    <option value="duasVogais">Duas vogais seguidas</option>
-    <option value="semVogal">Sem vogais</option>
-  </optgroup>
-
-  <optgroup label="Ciência">
-    <option value="energia">Conceitos de energia</option>
-  </optgroup>
-</select>
-
-    </select>
-
-    <br><br>
-    <button onclick="novaRodada()">🔄 Nova Rodada</button>
-
-    <p><strong>Obs:</strong> os alunos não veem esta tela.</p>
+  <!-- Regra ativa -->
+  <div class="prof-regra-bar">
+    Regra atual: <strong id="regraAtual">—</strong>
   </div>
 
-</div>
+  <div class="prof-main">
 
-<script src="script_jogo_ilha.js"></script>
+    <!-- ═══ COLUNA ESQUERDA: CONFIGURAÇÃO ═══ -->
+    <div class="prof-col">
+
+      <!-- Card: Regra da Ilha -->
+      <div class="ilha-card">
+        <div class="ilha-card-title">Configurar Regra da Ilha</div>
+
+        <!-- Tipo tabs -->
+        <div class="tipo-tabs">
+          <button id="btnTipoAuto"   class="tipo-tab active">Automático</button>
+          <button id="btnTipoManual" class="tipo-tab">Manual</button>
+          <button id="btnTipoIA"     class="tipo-tab">IA</button>
+        </div>
+
+        <!-- Seção: Auto -->
+        <div id="secaoAuto">
+          <div class="ilha-field">
+            <label class="ilha-field-label" for="selectRegra">Regra</label>
+            <select id="selectRegra"></select>
+          </div>
+
+          <div id="wrapParametro" hidden>
+            <div class="ilha-field">
+              <label class="ilha-field-label" id="lblParametro" for="inputParametro">Parâmetro</label>
+              <input type="text" id="inputParametro"
+                     placeholder="ex: s" autocomplete="off" autocorrect="off" spellcheck="false">
+            </div>
+          </div>
+        </div>
+
+        <!-- Seção: Manual -->
+        <div id="secaoManualInfo" hidden>
+          <p class="prof-info-txt">
+            No modo manual, cada palavra enviada pelo aluno aparece na fila ao lado.
+            Você aprova ou rejeita individualmente com os botões ✅ / ❌.
+          </p>
+        </div>
+
+        <!-- Seção: IA -->
+        <div id="secaoIA" hidden>
+          <div class="ilha-field">
+            <label class="ilha-field-label" for="textareaRegra">Descrição da regra (em linguagem natural)</label>
+            <textarea id="textareaRegra" rows="3"
+                      placeholder="ex: Objetos que existem em uma cozinha"></textarea>
+          </div>
+          <div class="ilha-field">
+            <label class="ilha-field-label" for="inputApiKey">Chave de API Anthropic</label>
+            <input type="password" id="inputApiKey"
+                   placeholder="sk-ant-…" autocomplete="off">
+          </div>
+          <p class="prof-info-txt">
+            A chave é salva localmente neste navegador e usada apenas para chamar o modelo.
+          </p>
+        </div>
+
+        <button id="btnAplicar" class="ilha-btn-primary ilha-btn-full" style="margin-top:0.75rem">
+          Aplicar Regra e Iniciar Rodada
+        </button>
+        <div id="msgRegra" class="prof-mensagem"></div>
+      </div>
+
+      <!-- Card: Override Manual -->
+      <div class="ilha-card">
+        <div class="ilha-card-title">Forçar Resultado</div>
+        <p class="prof-info-txt">Adicione qualquer palavra diretamente às listas, independente da regra.</p>
+
+        <div class="ilha-form-row" style="margin-bottom:0.6rem">
+          <input type="text" id="inputForcar" class="ilha-input"
+                 placeholder="Palavra…" autocomplete="off" autocorrect="off" spellcheck="false">
+        </div>
+        <div class="prof-btn-pair">
+          <button id="btnForcarPermitido" class="ilha-btn-success">✅ Permitido</button>
+          <button id="btnForcarProibido"  class="ilha-btn-danger">❌ Proibido</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ═══ COLUNA DIREITA: MONITOR ═══ -->
+    <div class="prof-col">
+
+      <!-- Card: Estatísticas + Controles -->
+      <div class="ilha-card">
+        <div class="prof-stats">
+          <div class="stat-item stat-perm">
+            <span class="stat-num" id="statPermitidos">0</span>
+            <span class="stat-lbl">Permitidos</span>
+          </div>
+          <div class="stat-item stat-prob">
+            <span class="stat-num" id="statProibidos">0</span>
+            <span class="stat-lbl">Proibidos</span>
+          </div>
+          <div class="stat-item stat-pend">
+            <span class="stat-num" id="statPendentes">0</span>
+            <span class="stat-lbl">Pendentes</span>
+          </div>
+        </div>
+
+        <div class="prof-btn-pair" style="margin-top:1rem">
+          <button id="btnNovaRodada" class="ilha-btn-secondary">🔄 Nova Rodada</button>
+          <button id="btnCopiar"     class="ilha-btn-secondary">📋 Copiar Listas</button>
+        </div>
+      </div>
+
+      <!-- Card: Feed ao Vivo -->
+      <div class="ilha-card">
+        <div class="ilha-card-title">Feed de Submissões</div>
+        <ul id="feedLista" class="feed-lista">
+          <li class="feed-vazio">Nenhuma submissão ainda.</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<script type="module">
+  import { initProfessor } from './professor.js';
+  initProfessor();
+</script>
+
 </body>
 </html>

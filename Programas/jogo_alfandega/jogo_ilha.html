@@ -2,74 +2,330 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Ilha Misteriosa | Piras na Física</title>
-  <!-- Google tag (gtag.js) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ilha Misteriosa — Piras na Física</title>
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-TY56KM22X8');
   </script>
-  <link rel="stylesheet" href="/Programas/jogo_alfandega/style_jogo_ilha.css">
-   <link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style_jogo_ilha.css">
 </head>
 <body>
 
-<div id="header"></div>
-<script src="/js/include.js"></script>
- 
-  <main class="pagina">
+<!-- ═══ HEADER ═══ -->
+<header class="ilha-header">
+  <a href="/index.html" class="ilha-logo-link">
+    <img src="/img/novo_logo_final.png" alt="Piras na Física" class="ilha-logo-img">
+    <div class="ilha-logo-text">
+      Ilha Misteriosa
+      <span>Piras na Física</span>
+    </div>
+  </a>
+  <div class="ilha-header-badges">
+    <span class="ilha-badge">Aluno</span>
+    <span class="ilha-badge">Alfândega</span>
+    <span class="ilha-badge">Raciocínio</span>
+  </div>
+</header>
 
-  <section class="page-title">
-    <h2>🏝️ Ilha Misteriosa</h2>
-    <p class="descricao">
-      Descubra a regra secreta do fiscal da alfândega.
-    </p>
-  </section>
+<!-- ═══ MAIN ═══ -->
+<main class="ilha-main">
 
-  <!-- ÁREA PRINCIPAL -->
-  <section class="ilha-layout">
+  <!-- INPUT -->
+  <div class="ilha-card">
+    <div class="ilha-card-title">Qual objeto você quer levar para a ilha?</div>
+    <div class="ilha-form-row">
+      <input type="text" id="objeto" class="ilha-input"
+             placeholder="Digite um objeto e pressione Enter…"
+             autocomplete="off" autocorrect="off" spellcheck="false">
+      <button id="btnEnviar" class="ilha-btn-primary">→ Enviar</button>
+    </div>
+    <div id="feedback" class="ilha-feedback"></div>
+    <div class="ilha-nova-rodada-row">
+      <button id="btnNovaRodada" class="ilha-btn-nova-rodada">🔄 Nova regra aleatória</button>
+    </div>
+  </div>
 
-    <!-- COLUNA ESQUERDA -->
-    <div class="ilha-entrada">
+  <!-- LISTAS -->
+  <div class="ilha-listas-grid">
 
-      <div class="ilha-instrucao">
-        <p><strong>Qual objeto você quer levar para a ilha?</strong></p>
+    <div class="ilha-card ilha-lista-card">
+      <div class="ilha-lista-title perm">
+        ✅ Permitidos
+        <span class="ilha-count" id="qtdPermitidos">0</span>
       </div>
-
-      <div class="ilha-form">
-        <input type="text" id="objeto" placeholder="Digite um objeto">
-        <button class="btn-enviar" onclick="verificar()">
-          ➜ Enviar para a alfândega
-        </button>
-      </div>
-
-      <p id="resposta" class="feedback"></p>
-
+      <ul id="listaPermitidos" class="ilha-lista">
+        <li class="ilha-item vazia">Nenhum ainda</li>
+      </ul>
     </div>
 
-    <!-- COLUNA DIREITA -->
-    <div class="ilha-listas">
-
-      <div class="lista-bloco">
-        <h3>Permitidos (<span id="qtdPermitidos">0</span>)</h3>
-        <ul id="listaPermitidos"></ul>
+    <div class="ilha-card ilha-lista-card">
+      <div class="ilha-lista-title prob">
+        ❌ Proibidos
+        <span class="ilha-count" id="qtdProibidos">0</span>
       </div>
-
-      <div class="lista-bloco">
-        <h3>Proibidos (<span id="qtdProibidos">0</span>)</h3>
-        <ul id="listaProibidos"></ul>
-      </div>
-
+      <ul id="listaProibidos" class="ilha-lista">
+        <li class="ilha-item vazia">Nenhum ainda</li>
+      </ul>
     </div>
 
-  </section>
+  </div>
+
+  <!-- TESTAR REGRA + AJUDA -->
+  <div class="ilha-card">
+    <div class="ilha-card-title">Acha que descobriu a regra?</div>
+    <div class="ilha-form-row">
+      <input type="text" id="palpite" class="ilha-input"
+             placeholder="Escreva a regra que você acredita ser…"
+             autocomplete="off" autocorrect="off" spellcheck="false">
+      <button id="btnPalpite" class="ilha-btn-primary">→ Verificar</button>
+    </div>
+    <div id="feedbackPalpite" class="ilha-feedback"></div>
+
+    <hr class="ilha-divider">
+
+    <div class="ilha-ajuda-row">
+      <button id="btnPedirPalavra" class="ilha-btn-secondary">💡 Pedir exemplo permitido</button>
+      <button id="btnRevelarRegra" class="ilha-btn-secondary">🔍 Revelar a regra</button>
+    </div>
+    <div id="feedbackAjuda" class="ilha-feedback"></div>
+  </div>
+
+  <!-- MODO COM MESTRE -->
+  <div class="ilha-mestre-section">
+    <div class="ilha-mestre-content">
+      <span class="ilha-mestre-icon">👨‍🏫</span>
+      <div>
+        <div class="ilha-mestre-title">Jogar com um Mestre</div>
+        <div class="ilha-mestre-desc">
+          Uma pessoa assume o papel de fiscal e controla as regras pelo painel do professor —
+          podendo definir a regra manualmente, usar IA ou escolher entre as regras automáticas.
+          Os demais jogadores enviam objetos e tentam descobrir a regra.
+        </div>
+      </div>
+    </div>
+    <a href="./professor.html" target="_blank" class="ilha-btn-mestre">
+      Abrir Painel do Professor →
+    </a>
+  </div>
 
 </main>
 
+<script type="module">
+import { avaliar, getConfig, getPermitidos, getProibidos,
+         registrarResultado, enfileirarPendente, normalizar, getRodada,
+         novaRodadaAleatoria, verificarPalpite, pedirPalavraPermitida, revelarRegra }
+  from './script_jogo_ilha.js';
 
-  <script src="/Programas/jogo_alfandega/script_jogo_ilha.js"></script>
+const inputEl   = document.getElementById("objeto");
+const btnEnviar = document.getElementById("btnEnviar");
+const feedbackEl= document.getElementById("feedback");
+
+let pendingId     = null;
+let pendingRodada = null;
+let pollInterval  = null;
+
+const palpiteEl       = document.getElementById("palpite");
+const btnPalpite      = document.getElementById("btnPalpite");
+const feedbackPalpEl  = document.getElementById("feedbackPalpite");
+const feedbackAjudaEl = document.getElementById("feedbackAjuda");
+
+btnEnviar.addEventListener("click", enviar);
+inputEl.addEventListener("keydown", e => { if (e.key === "Enter") enviar(); });
+
+document.getElementById("btnNovaRodada").addEventListener("click", () => {
+  if (!confirm("Iniciar nova rodada? Uma nova regra aleatória será sorteada e as listas serão apagadas.")) return;
+  novaRodadaAleatoria();
+  renderListas();
+  showFeedback("", "");
+  showFeedbackPalpite("", "");
+  showFeedbackAjuda("", "");
+});
+
+btnPalpite.addEventListener("click", testarPalpite);
+palpiteEl.addEventListener("keydown", e => { if (e.key === "Enter") testarPalpite(); });
+
+document.getElementById("btnPedirPalavra").addEventListener("click", async () => {
+  const btn = document.getElementById("btnPedirPalavra");
+  btn.disabled = true;
+  showFeedbackAjuda("⏳ Buscando exemplo…", "pending");
+  const palavra = await pedirPalavraPermitida();
+  btn.disabled = false;
+  if (palavra === "manual") {
+    showFeedbackAjuda("💬 Modo manual: peça um exemplo diretamente ao professor.", "warn");
+  } else if (!palavra) {
+    showFeedbackAjuda("⚠️ Não foi possível gerar um exemplo. Tente novamente.", "warn");
+  } else {
+    showFeedbackAjuda(`💡 Exemplo permitido: "${palavra}"`, "ok");
+  }
+});
+
+document.getElementById("btnRevelarRegra").addEventListener("click", () => {
+  const regra = revelarRegra();
+  if (regra === "manual") {
+    showFeedbackAjuda("💬 Modo manual: pergunte a regra diretamente ao professor.", "warn");
+  } else {
+    showFeedbackAjuda(`🔍 A regra é: ${regra}`, "ok");
+  }
+});
+
+window.addEventListener("storage", e => {
+  if (e.key === "ilha_tick") renderListas();
+  if (pendingId && e.key === "ilha_resp_" + pendingId) aplicarResposta(e.newValue);
+});
+
+renderListas();
+
+async function enviar() {
+  const raw = inputEl.value.trim();
+  if (!raw) return;
+  const p = normalizar(raw);
+  if (!p) return;
+
+  const cfg = getConfig();
+  const perm = getPermitidos();
+  const prob = getProibidos();
+
+  if (perm.includes(p) || prob.includes(p)) {
+    showFeedback("⚠️ Palavra já testada!", "warn");
+    inputEl.value = "";
+    inputEl.focus();
+    return;
+  }
+
+  if (cfg.tipo === "manual") {
+    const id = enfileirarPendente(p);
+    if (!id) {
+      showFeedback("⚠️ Essa palavra já está aguardando avaliação.", "warn");
+      inputEl.value = "";
+      return;
+    }
+    pendingId     = id;
+    pendingRodada = getRodada();
+    showFeedback("⏳ O fiscal está avaliando…", "pending");
+    setEnabled(false);
+    iniciarPoll(id);
+    inputEl.value = "";
+    return;
+  }
+
+  showFeedback("⏳ Verificando…", "pending");
+  setEnabled(false);
+
+  const resultado = await avaliar(p);
+
+  setEnabled(true);
+  inputEl.value = "";
+  inputEl.focus();
+
+  if (resultado === null) {
+    showFeedback("⚠️ Erro na avaliação. Tente novamente.", "warn");
+    return;
+  }
+
+  registrarResultado(p, resultado);
+  showFeedback(resultado ? "✅ Pode entrar!" : "❌ Barrado!", resultado ? "ok" : "nao");
+  renderListas();
+}
+
+function iniciarPoll(id) {
+  if (pollInterval) clearInterval(pollInterval);
+  pollInterval = setInterval(() => {
+    if (getRodada() !== pendingRodada) { cancelarPoll(); return; }
+    const resp = localStorage.getItem("ilha_resp_" + id);
+    if (resp !== null) aplicarResposta(resp);
+  }, 400);
+  setTimeout(() => { if (pollInterval) cancelarPoll(); }, 180000);
+}
+
+function aplicarResposta(respStr) {
+  cancelarPoll();
+  const permitido = respStr === "1";
+  renderListas();
+  showFeedback(permitido ? "✅ Pode entrar!" : "❌ Barrado!", permitido ? "ok" : "nao");
+}
+
+function cancelarPoll() {
+  if (pollInterval) clearInterval(pollInterval);
+  pollInterval = null;
+  pendingId = null;
+  setEnabled(true);
+}
+
+function setEnabled(on) {
+  inputEl.disabled  = !on;
+  btnEnviar.disabled = !on;
+  if (on) inputEl.focus();
+}
+
+async function testarPalpite() {
+  const raw = palpiteEl.value.trim();
+  if (!raw) return;
+
+  showFeedbackPalpite("⏳ Verificando palpite…", "pending");
+  btnPalpite.disabled = true;
+
+  const resultado = await verificarPalpite(raw);
+
+  btnPalpite.disabled = false;
+
+  if (resultado === "manual") {
+    showFeedbackPalpite("💬 Modo manual: pergunte diretamente ao professor se acertou!", "warn");
+    return;
+  }
+  if (resultado === null) {
+    showFeedbackPalpite("⚠️ Não foi possível verificar. Tente novamente.", "warn");
+    return;
+  }
+  if (resultado) {
+    showFeedbackPalpite("🎉 Isso mesmo! Você descobriu a regra da ilha!", "ok");
+    palpiteEl.value = "";
+  } else {
+    showFeedbackPalpite("❌ Não é essa. Continue tentando!", "nao");
+  }
+}
+
+function showFeedback(msg, tipo) {
+  feedbackEl.textContent = msg;
+  feedbackEl.className = "ilha-feedback" + (tipo ? " " + tipo : "");
+}
+
+function showFeedbackPalpite(msg, tipo) {
+  feedbackPalpEl.textContent = msg;
+  feedbackPalpEl.className = "ilha-feedback" + (tipo ? " " + tipo : "");
+}
+
+function showFeedbackAjuda(msg, tipo) {
+  feedbackAjudaEl.textContent = msg;
+  feedbackAjudaEl.className = "ilha-feedback" + (tipo ? " " + tipo : "");
+}
+
+function renderListas() {
+  const perm = getPermitidos();
+  const prob = getProibidos();
+
+  document.getElementById("listaPermitidos").innerHTML =
+    perm.length ? perm.map(p => `<li class="ilha-item permitido">${p}</li>`).join("") :
+    `<li class="ilha-item vazia">Nenhum ainda</li>`;
+
+  document.getElementById("listaProibidos").innerHTML =
+    prob.length ? prob.map(p => `<li class="ilha-item proibido">${p}</li>`).join("") :
+    `<li class="ilha-item vazia">Nenhum ainda</li>`;
+
+  document.getElementById("qtdPermitidos").textContent = perm.length;
+  document.getElementById("qtdProibidos").textContent  = prob.length;
+}
+</script>
+
 </body>
 </html>
