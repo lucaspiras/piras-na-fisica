@@ -4,90 +4,244 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Conversor de Unidades — Piras na Física</title>
-  <!-- Google tag (gtag.js) -->
+
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-TY56KM22X8');
   </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/Programas/conversor/conversor.css">
 </head>
 
 <body>
 
-<div id="header"></div>
-<script src="/js/include.js"></script>
+<!-- ═══ HEADER ═══ -->
+<header class="conv-header">
+  <a href="/index.html" class="conv-header-logo-link">
+    <img src="/img/novo_logo_final.png" alt="Piras na Física" class="conv-header-logo">
+    <div class="conv-header-title">
+      Conversor de Unidades
+      <span>Piras na Física</span>
+    </div>
+  </a>
+  <div class="conv-header-badges">
+    <span class="conv-header-badge">SI</span>
+    <span class="conv-header-badge">Compostas</span>
+    <span class="conv-header-badge">Personalizado</span>
+  </div>
+</header>
 
 <main class="pagina-larga">
 
-  <section class="pagina-header">
-    <h1>Conversor de Unidades</h1>
-    <p class="pagina-sub">
-      Transforme unidades do Sistema Internacional e de outros sistemas de forma rápida.
-    </p>
-  </section>
+    <div class="conv-layout">
 
-  <section class="conversor-grid">
+    <!-- ═══ COLUNA PRINCIPAL ═══ -->
+    <div class="conv-col-main">
 
-    <!-- CARD 1: CONVERSOR -->
-    <div class="conversor-card conversor-principal">
+      <!-- CARD: CONVERSOR SIMPLES -->
+      <div class="conv-card">
+        <h2 class="conv-card-title">Conversor de Unidades</h2>
+        <p class="conv-card-desc">Converta entre unidades de uma mesma grandeza física.</p>
 
-      <h2>Conversor de unidades</h2>
-
-      <label for="grandeza">Grandeza</label>
-      <select id="grandeza"></select>
-
-      <label for="valor">Valor</label>
-      <input type="number" id="valor" step="any">
-
-      <div class="linha-dupla">
-        <div>
-          <label for="unidadeOrigem">De</label>
-          <select id="unidadeOrigem"></select>
+        <div class="conv-field">
+          <label for="grandeza">Grandeza</label>
+          <select id="grandeza"></select>
         </div>
 
-        <div>
-          <label for="unidadeDestino">Para</label>
-          <select id="unidadeDestino"></select>
+        <div class="conv-field">
+          <label for="valor">Valor</label>
+          <input type="number" id="valor" step="any" placeholder="0">
         </div>
+
+        <div class="conv-field-row">
+          <div class="conv-field">
+            <label for="unidadeOrigem">De</label>
+            <select id="unidadeOrigem"></select>
+          </div>
+          <div class="conv-field">
+            <label for="unidadeDestino">Para</label>
+            <select id="unidadeDestino"></select>
+          </div>
+        </div>
+
+        <button id="btnConverter" class="conv-btn-primary">Converter</button>
+        <div id="resultado" class="conv-resultado"></div>
       </div>
 
-      <button class="btn-hero" onclick="converter()">Converter</button>
+      <!-- CARD: CONVERSOR COMPOSTO -->
+      <div class="conv-card">
+        <h2 class="conv-card-title">Conversor de Unidades Compostas</h2>
+        <p class="conv-card-desc">
+          Monte unidades compostas a partir de grandezas base (comprimento, tempo, massa).
+          Inclui suas unidades personalizadas.
+        </p>
 
-      <div id="resultado" class="resultado"></div>
+        <div class="conv-field">
+          <label for="tipoComposto">Tipo de grandeza</label>
+          <select id="tipoComposto">
+            <option value="velocidade">Velocidade (L / T)</option>
+            <option value="area">Área (L²)</option>
+            <option value="volume">Volume (L³)</option>
+            <option value="forca">Força (M · L / T²)</option>
+          </select>
+        </div>
+
+        <!-- VELOCIDADE: L / T -->
+        <div id="compVelocidade" class="comp-section">
+          <div class="comp-from-to">
+            <div class="comp-side">
+              <span class="comp-side-label">De</span>
+              <div class="comp-row">
+                <select id="fromCompL"></select>
+                <span class="comp-op">/</span>
+                <select id="fromCompT"></select>
+              </div>
+            </div>
+            <span class="comp-arrow">→</span>
+            <div class="comp-side">
+              <span class="comp-side-label">Para</span>
+              <div class="comp-row">
+                <select id="toCompL"></select>
+                <span class="comp-op">/</span>
+                <select id="toCompT"></select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÁREA: L² -->
+        <div id="compArea" class="comp-section" hidden>
+          <div class="comp-from-to">
+            <div class="comp-side">
+              <span class="comp-side-label">De</span>
+              <div class="comp-row">
+                <select id="fromAreaL"></select>
+                <span class="comp-op">²</span>
+              </div>
+            </div>
+            <span class="comp-arrow">→</span>
+            <div class="comp-side">
+              <span class="comp-side-label">Para</span>
+              <div class="comp-row">
+                <select id="toAreaL"></select>
+                <span class="comp-op">²</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- VOLUME: L³ -->
+        <div id="compVolume" class="comp-section" hidden>
+          <div class="comp-from-to">
+            <div class="comp-side">
+              <span class="comp-side-label">De</span>
+              <div class="comp-row">
+                <select id="fromVolL"></select>
+                <span class="comp-op">³</span>
+              </div>
+            </div>
+            <span class="comp-arrow">→</span>
+            <div class="comp-side">
+              <span class="comp-side-label">Para</span>
+              <div class="comp-row">
+                <select id="toVolL"></select>
+                <span class="comp-op">³</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORÇA: M · L / T² -->
+        <div id="compForca" class="comp-section" hidden>
+          <div class="comp-from-to">
+            <div class="comp-side">
+              <span class="comp-side-label">De</span>
+              <div class="comp-row">
+                <select id="fromForcaM"></select>
+                <span class="comp-op">·</span>
+                <select id="fromForcaL"></select>
+                <span class="comp-op">/</span>
+                <select id="fromForcaT"></select>
+                <span class="comp-op">²</span>
+              </div>
+            </div>
+            <span class="comp-arrow">→</span>
+            <div class="comp-side">
+              <span class="comp-side-label">Para</span>
+              <div class="comp-row">
+                <select id="toForcaM"></select>
+                <span class="comp-op">·</span>
+                <select id="toForcaL"></select>
+                <span class="comp-op">/</span>
+                <select id="toForcaT"></select>
+                <span class="comp-op">²</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="conv-divider">
+
+        <div class="conv-field">
+          <label for="valorComposto">Valor</label>
+          <input type="number" id="valorComposto" step="any" placeholder="0">
+        </div>
+
+        <button id="btnConverterComposto" class="conv-btn-primary">Converter</button>
+        <div id="resultadoComposto" class="conv-resultado"></div>
+      </div>
 
     </div>
 
-    <!-- CARD 2: UNIDADE PERSONALIZADA -->
-    <div class="conversor-card conversor-personalizado">
+    <!-- ═══ COLUNA LATERAL: UNIDADES PERSONALIZADAS ═══ -->
+    <div class="conv-col-side">
+      <div class="conv-card">
+        <h2 class="conv-card-title">Unidades Personalizadas</h2>
+        <p class="conv-card-desc">Adicione unidades à grandeza desejada. Ficam disponíveis em todos os conversores.</p>
 
-      <h2>Adicionar unidade personalizada</h2>
+        <div class="conv-field">
+          <label for="grandezaPersonalizada">Grandeza</label>
+          <select id="grandezaPersonalizada"></select>
+        </div>
 
-      <label for="nomeUnidade">Nome da unidade</label>
-      <input type="text" id="nomeUnidade">
+        <div class="conv-field">
+          <label for="nomeUnidade">Nome</label>
+          <input type="text" id="nomeUnidade" placeholder="ex: Légua">
+        </div>
 
-      <label for="fatorSI">Equivale a quantos SI?</label>
-      <input type="number" id="fatorSI" step="any">
+        <div class="conv-field">
+          <label for="simboloUnidade">Símbolo</label>
+          <input type="text" id="simboloUnidade" placeholder="ex: lég">
+        </div>
 
-      <button class="btn-secundario" onclick="adicionarUnidade()">
-        Adicionar unidade
-      </button>
+        <div class="conv-field">
+          <label for="fatorSI">Equivalência (em unidade base SI)</label>
+          <input type="number" id="fatorSI" step="any" placeholder="ex: 6177">
+        </div>
 
-      <div id="mensagemUnidade" class="mensagem-unidade" aria-live="polite"></div>
+        <div id="fatorHint" class="conv-hint">1 [símbolo] = [fator] [base SI]</div>
 
+        <button id="btnAdicionarUnidade" class="conv-btn-secondary">Adicionar unidade</button>
+        <div id="mensagemUnidade" class="conv-mensagem" aria-live="polite"></div>
+
+        <div id="listaCustomUnidades"></div>
+      </div>
     </div>
 
-  </section>
+  </div>
 
 </main>
 
-
 <script type="module" src="/Programas/conversor/interface.js"></script>
- <script src="/js/include.js"></script>
 
 </body>
 </html>
