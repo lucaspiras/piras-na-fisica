@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Juntar PDFs — Piras na Física</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/Programas/juntar_pdf/juntar_pdf.css">
+</head>
+
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header class="pdf-header">
+  <a href="/index.html" class="pdf-header-logo-link">
+    <img src="/img/novo_logo_final.png" alt="Piras na Física" class="pdf-header-logo">
+    <div class="pdf-header-title">
+      Juntar PDFs
+      <span>Piras na Física</span>
+    </div>
+  </a>
+  <div class="pdf-header-badges">
+    <span class="pdf-header-badge">Local</span>
+    <span class="pdf-header-badge">Sem upload</span>
+    <span class="pdf-header-badge">Gratuito</span>
+  </div>
+</header>
+
+<main class="pagina-larga">
+
+  <div class="pdf-layout">
+
+    <!-- ═══ COLUNA PRINCIPAL ═══ -->
+    <div class="pdf-col-main">
+
+      <!-- CARD: ADICIONAR ARQUIVOS -->
+      <div class="pdf-card">
+        <h2 class="pdf-card-title">Arquivos PDF</h2>
+        <p class="pdf-card-desc">
+          Adicione os PDFs que deseja juntar. Arraste para reordenar.
+          Todos os arquivos são processados localmente — nenhum dado é enviado a servidores.
+        </p>
+
+        <!-- ZONA DE DROP -->
+        <div class="pdf-dropzone" id="dropzone" role="button" tabindex="0" aria-label="Clique ou arraste PDFs aqui">
+          <div class="pdf-dropzone-icon" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+          </div>
+          <p class="pdf-dropzone-text">Arraste PDFs aqui ou <span class="pdf-dropzone-link">clique para selecionar</span></p>
+          <p class="pdf-dropzone-hint">Apenas arquivos .pdf</p>
+          <input type="file" id="fileInput" accept=".pdf,application/pdf" multiple hidden>
+        </div>
+
+        <!-- LISTA DE ARQUIVOS -->
+        <div id="fileList" class="pdf-file-list" aria-label="Lista de arquivos" hidden></div>
+
+        <!-- CONTROLES -->
+        <div class="pdf-controls" id="controls" hidden>
+          <button class="pdf-btn-secondary" id="btnLimpar">Limpar lista</button>
+          <button class="pdf-btn-primary" id="btnJuntar">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M8 6H21M8 12H21M8 18H21M3 6h.01M3 12h.01M3 18h.01"/>
+            </svg>
+            Juntar PDFs
+          </button>
+        </div>
+
+        <!-- PROGRESSO -->
+        <div class="pdf-progress-wrap" id="progressWrap" hidden>
+          <div class="pdf-progress-bar">
+            <div class="pdf-progress-fill" id="progressFill"></div>
+          </div>
+          <p class="pdf-progress-label" id="progressLabel">Processando…</p>
+        </div>
+
+        <!-- MENSAGEM -->
+        <div class="pdf-mensagem" id="mensagem" aria-live="polite"></div>
+      </div>
+
+      <!-- CARD: SALVAR -->
+      <div class="pdf-card" id="cardSalvar" hidden>
+        <h2 class="pdf-card-title">PDF Gerado</h2>
+        <p class="pdf-card-desc" id="descSalvar">O documento está pronto. Escolha como salvar.</p>
+
+        <div class="pdf-save-options">
+
+          <!-- Salvar localmente -->
+          <div class="pdf-save-option">
+            <div class="pdf-save-option-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+            </div>
+            <div class="pdf-save-option-info">
+              <strong>Salvar no computador</strong>
+              <span>Baixa o arquivo diretamente para a sua máquina.</span>
+            </div>
+            <button class="pdf-btn-primary" id="btnDownload">Baixar</button>
+          </div>
+
+        </div>
+
+        <!-- Preview -->
+        <div class="pdf-preview-wrap" id="previewWrap" hidden>
+          <hr class="pdf-divider">
+          <h3 class="pdf-preview-title">Pré-visualização</h3>
+          <iframe id="pdfPreview" class="pdf-preview-iframe" title="Pré-visualização do PDF gerado"></iframe>
+        </div>
+
+        <button class="pdf-btn-ghost" id="btnNovoMerge">← Juntar outros PDFs</button>
+      </div>
+
+    </div>
+
+    <!-- ═══ COLUNA LATERAL: INFORMAÇÕES ═══ -->
+    <div class="pdf-col-side">
+      <div class="pdf-card">
+        <h2 class="pdf-card-title">Como funciona</h2>
+        <ol class="pdf-info-list">
+          <li>
+            <span class="pdf-info-num">01</span>
+            <div>
+              <strong>Selecione os PDFs</strong>
+              <p>Clique na área de upload ou arraste os arquivos. Sem limite de quantidade.</p>
+            </div>
+          </li>
+          <li>
+            <span class="pdf-info-num">02</span>
+            <div>
+              <strong>Reordene se quiser</strong>
+              <p>Arraste os itens da lista para definir a ordem das páginas no documento final.</p>
+            </div>
+          </li>
+          <li>
+            <span class="pdf-info-num">03</span>
+            <div>
+              <strong>Clique em Juntar</strong>
+              <p>O PDF é montado diretamente no seu navegador.</p>
+            </div>
+          </li>
+          <li>
+            <span class="pdf-info-num">04</span>
+            <div>
+              <strong>Salve o documento</strong>
+              <p>Baixe o PDF finalizado direto para o seu computador.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="pdf-card pdf-card--privacy">
+        <div class="pdf-privacy-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h2 class="pdf-card-title">Privacidade garantida</h2>
+        <p class="pdf-card-desc">
+          Este programa processa os PDFs inteiramente no seu navegador, usando a biblioteca PDF-lib.
+          Nenhum arquivo é enviado a servidores externos. Seus documentos ficam apenas no seu dispositivo.
+        </p>
+      </div>
+
+      <div class="pdf-card">
+        <h2 class="pdf-card-title">Nomes do arquivo</h2>
+        <div class="pdf-field">
+          <label for="nomeArquivo" class="pdf-label">Nome do PDF gerado</label>
+          <input type="text" id="nomeArquivo" class="pdf-input" value="documento_unificado" placeholder="nome-do-arquivo">
+          <span class="pdf-hint">.pdf será adicionado automaticamente</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- PDF-lib via CDN (processamento local no navegador) -->
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="/Programas/juntar_pdf/juntar_pdf.js"></script>
+
+</body>
+</html>
