@@ -13,16 +13,33 @@ const COLORS = {
   force: "#fbbf24",
   forceIndividual: "#f87171",
   field: "rgba(167,139,250,0.65)",
+  fieldProjector: "rgba(220, 100, 0, 0.92)",
+  fieldLines: "rgba(52, 211, 153, 0.80)",
+  fieldLinesProjector: "rgba(52, 211, 153, 0.97)",
   axis: "#565672",
-  selected: "#a78bfa"
+  selected: "#a78bfa",
+  testCharge: "#7dd3fc"
 };
+
+const Q_TEST = 1e-16; // C (carga de prova)
 
 // =================== STATE ===================
 let charges = [];
 let selectedCharge = null;
 let dragging = null;
 let showField = true;
+let projectorMode = false;
+let showFieldLines = false;
+let fieldLinesPerCharge = 8;
+let fieldLinesCache = [];
+let fieldLinesDirty = true;
 let metersPerPixel = 0.01;
+
+// ── Linhas de campo: constantes ──
+const FL_STEP        = 4;
+const FL_MAX_STEPS   = 600;
+const FL_ARROW_EVERY = 70;
+const FL_MIN_FIELD   = 1e-6;
 
 // =================== INPUTS ===================
 const chargeInput = document.getElementById("chargeValue");
@@ -38,6 +55,7 @@ chargeInput.addEventListener("input", e => {
 function resizeCanvas() {
   canvas.width = container.clientWidth;
   canvas.height = container.clientHeight;
+  fieldLinesDirty = true;
 }
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
@@ -80,6 +98,7 @@ class Charge {
     this.x = x;
     this.y = y;
     this.qMicro = qMicro;
+    this.isTestCharge = false;
   }
 
   get q() {
@@ -87,6 +106,8 @@ class Charge {
   }
 
   draw() {
+    if (this.isTestCharge) { this._drawTestCharge(); return; }
+
     const visualQ = Math.min(Math.abs(this.qMicro), 10);
     const r = Math.max(12, visualQ * 3);
 
@@ -107,6 +128,27 @@ class Charge {
     ctx.textBaseline = "middle";
     ctx.fillText(this.qMicro.toFixed(1), this.x, this.y);
   }
+
+  _drawTestCharge() {
+    const r = 11;
+    const color = this === selectedCharge ? "#ffffff" : COLORS.testCharge;
+
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, r, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(125, 211, 252, 0.10)";
+    ctx.fill();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = this === selectedCharge ? 2.5 : 1.8;
+    ctx.setLineDash([4, 3]);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    ctx.fillStyle = color;
+    ctx.font = "bold 11px 'IBM Plex Mono', monospace";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("q₀", this.x, this.y);
+  }
 }
 
 // =================== CHARGE MANAGEMENT ===================
@@ -116,12 +158,26 @@ function addCharge(sign) {
     Math.random() * canvas.height,
     sign * chargeMagnitude
   ));
+  fieldLinesDirty = true;
 }
 
 function deleteSelected() {
   if (!selectedCharge) return;
   charges = charges.filter(c => c !== selectedCharge);
   selectedCharge = null;
+  fieldLinesDirty = true;
+}
+
+function deleteAll() {
+  charges = [];
+  selectedCharge = null;
+  fieldLinesDirty = true;
+}
+
+function addTestCharge() {
+  const tc = new Charge(canvas.width / 2, canvas.height / 2, 0);
+  tc.isTestCharge = true;
+  charges.push(tc);
 }
 
 function updatePositionFromInputs() {
@@ -139,16 +195,39 @@ function toggleField() {
   if (btn) btn.classList.toggle("active", showField);
 }
 
+function toggleProjectorMode() {
+  projectorMode = !projectorMode;
+  const btn = document.getElementById("btnToggleProjector");
+  if (btn) {
+    btn.classList.toggle("active", projectorMode);
+    btn.textContent = projectorMode ? "🖥 Modo Projetor: ON" : "🖥 Modo Projetor: OFF";
+  }
+}
+
+function toggleFieldLines() {
+  showFieldLines = !showFieldLines;
+  fieldLinesDirty = true;
+  const btn = document.getElementById("btnToggleFieldLines");
+  if (btn) {
+    btn.classList.toggle("active", showFieldLines);
+    btn.textContent = showFieldLines ? "Linhas de Campo: ON" : "Linhas de Campo: OFF";
+  }
+}
+
 function updateScale() {
   const select = document.getElementById("scaleSelect");
   metersPerPixel = parseFloat(select.value);
+  fieldLinesDirty = true;
 }
 window.updateScale = updateScale;
 
 // =================== FIELD DRAWING ===================
 function drawField() {
-  const spacing = 30;
-  const arrowLen = 15;
+  const spacing  = projectorMode ? 68  : 30;
+  const arrowLen = projectorMode ? 30  : 15;
+  const lineW    = projectorMode ? 3.5 : 1.5;
+  const headSize = projectorMode ? 12  : 5;
+  const color    = projectorMode ? COLORS.fieldProjector : COLORS.field;
 
   for (let px = 0; px < canvas.width; px += spacing) {
     for (let py = 0; py < canvas.height; py += spacing) {
@@ -164,21 +243,145 @@ function drawField() {
       ctx.beginPath();
       ctx.moveTo(px, py);
       ctx.lineTo(endX, endY);
-      ctx.strokeStyle = COLORS.field;
-      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lineW;
       ctx.stroke();
 
       const angle = Math.atan2(uy, ux);
-      const size = 5;
       ctx.beginPath();
       ctx.moveTo(endX, endY);
-      ctx.lineTo(endX - size * Math.cos(angle - Math.PI / 6), endY - size * Math.sin(angle - Math.PI / 6));
-      ctx.lineTo(endX - size * Math.cos(angle + Math.PI / 6), endY - size * Math.sin(angle + Math.PI / 6));
+      ctx.lineTo(endX - headSize * Math.cos(angle - Math.PI / 6), endY - headSize * Math.sin(angle - Math.PI / 6));
+      ctx.lineTo(endX - headSize * Math.cos(angle + Math.PI / 6), endY - headSize * Math.sin(angle + Math.PI / 6));
       ctx.closePath();
-      ctx.fillStyle = COLORS.field;
+      ctx.fillStyle = color;
       ctx.fill();
     }
   }
+}
+
+// =================== FIELD LINES ===================
+function chargeRadius(c) {
+  return Math.max(12, Math.min(Math.abs(c.qMicro), 10) * 3);
+}
+
+function generateSeeds() {
+  const positives = charges.filter(c => c.qMicro > 0);
+  const negatives = charges.filter(c => c.qMicro < 0);
+  const seeds = [];
+
+  const addRing = (cx, cy, radius, nLines) => {
+    for (let i = 0; i < nLines; i++) {
+      const angle = (2 * Math.PI * i) / nLines;
+      seeds.push({
+        sx: cx + radius * Math.cos(angle),
+        sy: cy + radius * Math.sin(angle)
+      });
+    }
+  };
+
+  if (positives.length > 0) {
+    const qMin = Math.min(...positives.map(c => Math.abs(c.qMicro)));
+    positives.forEach(c => {
+      const n = Math.min(32, Math.round(fieldLinesPerCharge * Math.abs(c.qMicro) / qMin));
+      addRing(c.x, c.y, chargeRadius(c) + 6, n);
+    });
+  } else {
+    // Só negativos: sementes em anel externo, campo converge naturalmente
+    const R = Math.min(canvas.width, canvas.height) * 0.4;
+    const qMin = Math.min(...negatives.map(c => Math.abs(c.qMicro)));
+    negatives.forEach(c => {
+      const n = Math.min(32, Math.round(fieldLinesPerCharge * Math.abs(c.qMicro) / qMin));
+      addRing(c.x, c.y, R, n);
+    });
+  }
+
+  return seeds;
+}
+
+function integrateFieldLine(sx, sy) {
+  const path = [[sx, sy]];
+  const arrowIdxs = [];
+  let x = sx, y = sy;
+  let arcLength = 0;
+  let lastArrowArc = 0;
+
+  for (let s = 0; s < FL_MAX_STEPS; s++) {
+    if (x < -5 || x > canvas.width + 5 || y < -5 || y > canvas.height + 5) break;
+
+    const { Ex, Ey } = computeFieldAt(x, y, charges, metersPerPixel);
+    const mag = Math.sqrt(Ex * Ex + Ey * Ey);
+    if (mag < FL_MIN_FIELD) break;
+
+    const nx = x + (Ex / mag) * FL_STEP;
+    const ny = y + (Ey / mag) * FL_STEP;
+
+    // Para ao entrar na zona de captura de uma carga negativa
+    let captured = false;
+    for (const c of charges) {
+      if (c.qMicro >= 0) continue;
+      const dx = nx - c.x, dy = ny - c.y;
+      if (Math.sqrt(dx * dx + dy * dy) < chargeRadius(c) + 4) { captured = true; break; }
+    }
+    if (captured) break;
+
+    x = nx;
+    y = ny;
+    path.push([x, y]);
+    arcLength += FL_STEP;
+
+    if (arcLength - lastArrowArc >= FL_ARROW_EVERY) {
+      arrowIdxs.push(path.length - 1);
+      lastArrowArc = arcLength;
+    }
+  }
+
+  return { path, arrowIdxs };
+}
+
+function computeAllFieldLines() {
+  const seeds = generateSeeds();
+  return seeds.map(({ sx, sy }) => integrateFieldLine(sx, sy));
+}
+
+function renderFieldLines(cache) {
+  const color    = projectorMode ? COLORS.fieldLinesProjector : COLORS.fieldLines;
+  const lineW    = projectorMode ? 2.5 : 1.5;
+  const headSize = projectorMode ? 10  : 6;
+
+  cache.forEach(({ path, arrowIdxs }) => {
+    if (path.length < 2) return;
+
+    ctx.beginPath();
+    ctx.moveTo(path[0][0], path[0][1]);
+    for (let i = 1; i < path.length; i++) ctx.lineTo(path[i][0], path[i][1]);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = lineW;
+    ctx.stroke();
+
+    arrowIdxs.forEach(idx => {
+      if (idx < 1 || idx >= path.length) return;
+      const dx = path[idx][0] - path[idx - 1][0];
+      const dy = path[idx][1] - path[idx - 1][1];
+      const angle = Math.atan2(dy, dx);
+      const [ax, ay] = path[idx];
+      ctx.beginPath();
+      ctx.moveTo(ax, ay);
+      ctx.lineTo(ax - headSize * Math.cos(angle - Math.PI / 6), ay - headSize * Math.sin(angle - Math.PI / 6));
+      ctx.lineTo(ax - headSize * Math.cos(angle + Math.PI / 6), ay - headSize * Math.sin(angle + Math.PI / 6));
+      ctx.closePath();
+      ctx.fillStyle = color;
+      ctx.fill();
+    });
+  });
+}
+
+function drawFieldLines() {
+  if (charges.length === 0) return;
+  if (fieldLinesDirty) {
+    fieldLinesCache = computeAllFieldLines();
+    fieldLinesDirty = false;
+  }
+  renderFieldLines(fieldLinesCache);
 }
 
 // =================== AXES DRAWING ===================
@@ -274,6 +477,20 @@ function drawArrow(startX, startY, endX, endY, color, lineWidth = 2, arrowSize =
 function drawForceVector() {
   if (!selectedCharge) return;
 
+  if (selectedCharge.isTestCharge) {
+    const { Ex, Ey } = computeFieldAt(selectedCharge.x, selectedCharge.y, charges, metersPerPixel);
+    const mag = Math.sqrt(Ex * Ex + Ey * Ey);
+    if (mag < 1e-10) return;
+    const length = Math.min(100, 30 + Math.log10(1 + mag) * 18);
+    drawArrow(
+      selectedCharge.x, selectedCharge.y,
+      selectedCharge.x + (Ex / mag) * length,
+      selectedCharge.y + (Ey / mag) * length,
+      COLORS.force, 3, 10
+    );
+    return;
+  }
+
   let totalFx = 0;
   let totalFy = 0;
 
@@ -314,10 +531,12 @@ function drawForceVector() {
 
 // =================== INFO PANEL ===================
 function updateInfoPanel() {
+  const sourceList = charges.filter(c => !c.isTestCharge);
+  const testList   = charges.filter(c =>  c.isTestCharge);
+
   let html = `<h3>Cargas</h3>`;
   html += `<table class="table"><tr><th>#</th><th>q (µC)</th><th>x (m)</th><th>y (m)</th></tr>`;
-
-  charges.forEach((c, i) => {
+  sourceList.forEach((c, i) => {
     const w = toWorld(c.x, c.y);
     const sel = c === selectedCharge ? " selected" : "";
     html += `<tr class="${sel}">
@@ -327,10 +546,24 @@ function updateInfoPanel() {
       <td>${w.y.toFixed(2)}</td>
     </tr>`;
   });
-
   html += `</table>`;
 
-  if (selectedCharge) {
+  if (testList.length > 0) {
+    html += `<h3 style="margin-top:0.75rem">Cargas de prova</h3>`;
+    html += `<table class="table"><tr><th>#</th><th>x (m)</th><th>y (m)</th></tr>`;
+    testList.forEach((c, i) => {
+      const w = toWorld(c.x, c.y);
+      const sel = c === selectedCharge ? " selected" : "";
+      html += `<tr class="${sel}">
+        <td>q₀${testList.length > 1 ? i + 1 : ""}</td>
+        <td>${w.x.toFixed(2)}</td>
+        <td>${w.y.toFixed(2)}</td>
+      </tr>`;
+    });
+    html += `</table>`;
+  }
+
+  if (selectedCharge && !selectedCharge.isTestCharge) {
     const { fx, fy } = computeNetForce(selectedCharge, charges, metersPerPixel);
     const f = Math.sqrt(fx * fx + fy * fy);
     html += `
@@ -342,6 +575,27 @@ function updateInfoPanel() {
     `;
   }
 
+  if (selectedCharge?.isTestCharge) {
+    const { Ex, Ey: EyCanvas } = computeFieldAt(selectedCharge.x, selectedCharge.y, charges, metersPerPixel);
+    const EyPhys = -EyCanvas;
+    const E  = Math.sqrt(Ex * Ex + EyPhys * EyPhys);
+    const Fx = Q_TEST * Ex;
+    const Fy = Q_TEST * EyPhys;
+    const F  = Math.sqrt(Fx * Fx + Fy * Fy);
+    html += `
+      <div class="force-box">
+        <div class="force-main">Campo elétrico</div>
+        Ex = ${formatSci(Ex)} N/C<br>
+        Ey = ${formatSci(EyPhys)} N/C<br>
+        |E| = ${formatSci(E)} N/C
+        <div class="force-main" style="margin-top:0.6rem">Força (q₀ = 1×10⁻¹⁶ C)</div>
+        Fx = ${formatSci(Fx)} N<br>
+        Fy = ${formatSci(Fy)} N<br>
+        <div class="force-main">|F| = ${formatSci(F)} N</div>
+      </div>
+    `;
+  }
+
   infoPanel.innerHTML = html;
 }
 
@@ -349,6 +603,7 @@ function updateInfoPanel() {
 function update() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   if (showField) drawField();
+  if (showFieldLines) drawFieldLines();
   drawAxes();
   drawForceVector();
   charges.forEach(c => c.draw());
@@ -383,6 +638,7 @@ canvas.addEventListener("mousemove", e => {
     const rect = canvas.getBoundingClientRect();
     dragging.x = e.clientX - rect.left;
     dragging.y = e.clientY - rect.top;
+    fieldLinesDirty = true;
   }
 });
 
@@ -582,9 +838,17 @@ document.querySelectorAll(".section-header").forEach(header => {
 // =================== WIRE UP BUTTONS ===================
 document.getElementById("btnAddPositive")?.addEventListener("click", () => addCharge(1));
 document.getElementById("btnAddNegative")?.addEventListener("click", () => addCharge(-1));
+document.getElementById("btnAddTestCharge")?.addEventListener("click", addTestCharge);
 document.getElementById("btnDeleteSelected")?.addEventListener("click", deleteSelected);
+document.getElementById("btnDeleteAll")?.addEventListener("click", deleteAll);
+document.getElementById("fieldLinesCount")?.addEventListener("input", e => {
+  const v = parseInt(e.target.value);
+  if (v >= 1) { fieldLinesPerCharge = v; fieldLinesDirty = true; }
+});
 document.getElementById("btnMover")?.addEventListener("click", updatePositionFromInputs);
 document.getElementById("btnToggleField")?.addEventListener("click", toggleField);
+document.getElementById("btnToggleProjector")?.addEventListener("click", toggleProjectorMode);
+document.getElementById("btnToggleFieldLines")?.addEventListener("click", toggleFieldLines);
 document.getElementById("scaleSelect")?.addEventListener("change", updateScale);
 document.getElementById("btnGerarGrafico")?.addEventListener("click", gerarGraficoCampo);
 document.getElementById("btnBaixarGrafico")?.addEventListener("click", baixarGraficoCampo);

@@ -57,7 +57,9 @@
         </div>
         <button id="btnAddPositive" class="btn-primary">+ Carga Positiva</button>
         <button id="btnAddNegative" class="btn-primary">− Carga Negativa</button>
+        <button id="btnAddTestCharge" class="btn-test">+ Carga de Prova (q₀)</button>
         <button id="btnDeleteSelected" class="btn-secondary">Excluir Selecionada</button>
+        <button id="btnDeleteAll" class="btn-secondary">Excluir Todas</button>
       </div>
     </div>
 
@@ -90,6 +92,12 @@
       </div>
       <div class="section-body">
         <button id="btnToggleField" class="btn-secondary">Campo Elétrico: ON</button>
+        <button id="btnToggleProjector" class="btn-secondary">🖥 Modo Projetor: OFF</button>
+        <button id="btnToggleFieldLines" class="btn-secondary">Linhas de Campo: OFF</button>
+        <div class="field">
+          <label>Linhas (carga menor)</label>
+          <input id="fieldLinesCount" type="number" value="8" min="1" max="32" step="1">
+        </div>
         <div class="field">
           <label>Escala</label>
           <select id="scaleSelect">
