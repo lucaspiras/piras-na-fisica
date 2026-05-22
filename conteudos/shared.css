@@ -888,5 +888,59 @@
   }
 }
 
+/* ---- NOTAS DE RODAPÉ ---- */
+.footnote-ref {
+  color: var(--cor-destaque, #2f5bea);
+  text-decoration: none;
+  font-size: 0.75em;
+  vertical-align: super;
+  line-height: 0;
+}
+.footnote-ref:hover { text-decoration: underline; }
+
+.content-footnotes {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #dde3f0;
+  font-size: 0.82rem;
+  color: #555;
+  line-height: 1.6;
+}
+.content-footnotes ol {
+  padding-left: 1.2em;
+  margin: 0;
+}
+.content-footnotes li {
+  margin-bottom: 0.4rem;
+}
+
+.footnote-back {
+  color: var(--cor-destaque, #2f5bea);
+  text-decoration: none;
+  margin-left: 0.3em;
+  font-size: 0.9em;
+}
+.footnote-back:hover { text-decoration: underline; }
+
+/* ---- NOTAÇÃO VETORIAL ---- */
+.vec {
+  display: inline-block;
+  position: relative;
+  padding-top: 0.5em;
+  line-height: 1;
+}
+.vec::before {
+  content: '\2192'; /* → */
+  position: absolute;
+  top: 0.05em;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.55em;
+  line-height: 1;
+  font-style: normal;
+  font-weight: normal;
+}
+
 /* ---- SCRIPT DE SCROLL ATIVO NA TOC ---- */
 /* Controlado via JS, mas a classe .active é aplicada por JS */

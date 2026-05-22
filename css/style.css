@@ -125,7 +125,7 @@ nav a:hover::after {
   width: 100%;
 }
 
-nav a.feedback-badge {
+nav .feedback-badge {
   padding: 0.5rem 0.9rem;
   border-radius: 999px;
   background: #eef2ff;
@@ -133,7 +133,16 @@ nav a.feedback-badge {
   font-weight: 700;
 }
 
-nav a.feedback-badge:hover {
+nav button.feedback-badge {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+nav .feedback-badge:hover {
   background: #dbeafe;
 }
 

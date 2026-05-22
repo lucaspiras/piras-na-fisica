@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Algarismos Significativos — Piras na Física</title>
+  <title>Medições, Erro e Incerteza — Piras na Física</title>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -25,10 +25,10 @@
       <a href="../../index.html">Início</a><span>/</span>
       <a href="../../conteudos.html">Conteúdos</a><span>/</span>
       <a href="index.html">Grandezas Físicas</a><span>/</span>
-      <span>Algarismos Significativos</span>
+      <span>Medições, Erro e Incerteza</span>
     </nav>
-    <h1 class="content-title">Algarismos Significativos e Erros de Medição</h1>
-    <p class="content-subtitle">Nenhuma medida é perfeita. Aprender a quantificar e comunicar a incerteza de uma medida é tão importante quanto fazer a medida.</p>
+    <h1 class="content-title">Medições, Erro e Incerteza</h1>
+    <p class="content-subtitle">Nenhuma medida é perfeita. Entender de onde vem a incerteza — e como quantificá-la — é tão importante quanto realizar a própria medição.</p>
     <span class="formula-highlight">ε<sub>r</sub> = |Δx| / x<sub>real</sub> × 100%</span>
   </div>
 </div>
@@ -38,7 +38,7 @@
   <aside class="content-toc">
     <div class="toc-header">Neste texto</div>
     <ol class="toc-list">
-      <li><a href="#s1">Por que importa?</a></li>
+      <li><a href="#s1">Toda medida tem incerteza</a></li>
       <li><a href="#s2">O que são alg. significativos?</a></li>
       <li><a href="#s3">Regras de contagem</a></li>
       <li><a href="#s4">Operações</a></li>
@@ -56,17 +56,37 @@
   <main class="content-main">
 
     <section class="content-section" id="s1">
-      <h2><span class="sec-num">1</span> Por que a precisão das medidas importa?</h2>
+      <h2><span class="sec-num">1</span> Toda medida carrega incerteza</h2>
+
+      <p style="font-size:0.9em;color:#666;border-left:3px solid #ccc;padding-left:0.8em;margin-bottom:1.4em;">
+        <em>Este texto apresenta uma introdução ao tema com foco conceitual e qualitativo. Para um tratamento mais aprofundado — incluindo propagação de incertezas, análise estatística e normas metrológicas — consulte fontes especializadas em metrologia ou livros de laboratório de física.</em>
+      </p>
+
       <p>
-        Toda medida carrega uma incerteza intrínseca. Quando medimos 1,73 m com uma régua, sabemos que o valor real pode estar entre 1,725 m e 1,735 m. Isso não é falha — é a natureza da medida.
+        Imagine que você quer medir o comprimento de uma folha de papel. Pega uma régua e apoia uma de suas extremidades na borda da folha. Ao olhar para a outra ponta, percebe que ela não coincide com nenhuma marcação — ela cai entre 29,6 cm e 29,7 cm. É preciso estimar: parece estar mais próxima de 29,7 cm. Você anota 29,7 cm. Mas se um colega fizesse a mesma medição com a mesma régua, ele poderia anotar 29,6 cm, 29,65 cm ou 29,7 cm. Cada pessoa estimaria um valor ligeiramente diferente.
       </p>
       <p>
-        Problemas surgem quando ignoramos essa incerteza. Uma calculadora pode mostrar 12 casas decimais em um resultado, mas se os dados de entrada tinham apenas 2 algarismos confiáveis, as demais casas são fictícias — e reportá-las é desonesto cientificamente.
+        Isso revela a primeira fonte fundamental de incerteza: a <strong>incerteza de leitura</strong>. Ela existe sempre que o valor medido cai entre as marcações do instrumento — e isso acontece na grande maioria das medições reais. Por convenção, a incerteza de leitura é igual à metade da menor divisão: para uma régua milimetrada, ± 0,5 mm. Mas mesmo que o objeto se alinhasse perfeitamente com uma marcação, outras fontes de erro estariam presentes. Ler a escala com o olho em ângulo introduz o <strong>erro de paralaxe</strong>. Já o fato de a régua poder ter sido fabricada com divisões ligeiramente irregulares — medindo sistematicamente acima ou abaixo do valor correto — é chamado de <strong>erro instrumental</strong>, uma das formas mais comuns de <strong>erro sistemático</strong>. Erros sistemáticos são aqueles que afetam todas as medições na mesma direção e com magnitude aproximadamente constante; por isso, repetir a medida muitas vezes não os elimina.
       </p>
-      <div class="highlight-box danger">
-        <span class="hb-icon">⚠️</span>
+      <p>
+        Considere agora um tipo diferente de experimento: medir o tempo de queda de uma bolinha liberada de 1 metro de altura com um cronômetro. No instante em que você solta a bolinha, aciona o cronômetro; quando ela toca o chão, para. O problema é que o sistema nervoso humano leva entre 0,15 e 0,25 segundos para processar o que os olhos veem e acionar os dedos — é o <strong>tempo de reação</strong>. Esse tipo de incerteza, que vem das limitações do próprio observador e não do instrumento, é classificado como <strong>erro pessoal</strong> (ou <strong>erro do observador</strong>). O cronômetro registra o que você consegue reagir, não o instante exato dos eventos. Se o tempo de queda real é de cerca de 0,45 s, um erro de reação de 0,2 s representa mais de 40% de imprecisão.
+      </p>
+      <p>
+        Para reduzir esse erro, pode-se substituir o observador humano por um sistema automático: uma barreira de luz detecta a saída da bolinha e inicia a contagem; outra barreira no chão a encerra no instante do impacto. O erro pessoal praticamente desaparece. Mas o sistema eletrônico tem seu próprio tempo de resposta, o circuito tem uma frequência de amostragem finita, e pequenas vibrações no ambiente interferem na leitura. O erro diminuiu muito — mas não chegou a zero. <strong>Nenhuma medição é perfeitamente exata.</strong>
+      </p>
+      <p>
+        Uma estratégia natural para reduzir a incerteza é usar instrumentos mais precisos. Para comprimentos, substituir a régua milimetrada por um <strong>paquímetro</strong> permite leituras com resolução de 0,1 mm ou até 0,05 mm — dez vezes mais preciso. Para massas, trocar uma balança de cozinha por uma <strong>balança analítica</strong> reduz a incerteza de ± 1 g para ± 0,001 g. Instrumentos mais precisos, porém, geralmente têm custo maior e exigem mais cuidado de calibração e manuseio. Além disso, trocar o instrumento só resolve o problema se ele for a principal fonte de erro. Se o experimento envolve medir a velocidade de uma corrente de ar que varia continuamente, um anemômetro mais preciso não ajuda — a variação do próprio fenômeno domina a incerteza. Identificar a fonte dominante de erro antes de investir em equipamento melhor é parte fundamental do planejamento experimental.
+      </p>
+      <p>
+        Em física experimental, medir é aproximar. A meta não é eliminar a incerteza — isso é impossível —, mas conhecê-la e comunicá-la. Um resultado sem incerteza declarada é uma informação incompleta: se você realizou um experimento para determinar a aceleração da gravidade, informar apenas 9,5 m/s² diz pouco sobre a qualidade da medição. Já 9,5 ± 0,3 m/s² é muito mais informativo — deixa explícito o valor obtido e o intervalo de confiança, e permite comparar com o valor de referência (9,8 m/s²) para avaliar se a diferença é explicada pela incerteza experimental ou indica algum problema no método.
+      </p>
+      <p>
+        Vale notar que até os valores de referência mais confiáveis da física carregam incerteza: a velocidade da luz, a constante gravitacional, a carga do elétron — todos foram determinados por medições com incertezas associadas. A diferença é que essas incertezas são ínfimas em relação ao valor medido, da ordem de partes por bilhão ou menos, tornando-as irrelevantes para a esmagadora maioria dos cálculos. Em experimentos de laboratório escolar ou universitário, as incertezas costumam ser muito maiores — e, por isso, precisam ser identificadas e declaradas.
+      </p>
+      <div class="highlight-box">
+        <span class="hb-icon">💡</span>
         <p>
-          Em 1999, a sonda Mars Climate Orbiter se perdeu porque uma equipe usou unidades em libras-força enquanto outra esperava newtons. O custo: US$ 327 milhões. Precisão e unidades corretas não são detalhes — são vida ou morte de missões.
+          A incerteza não é o problema — ignorá-la é. Uma calculadora pode exibir 12 casas decimais no resultado de um cálculo, mas se os dados de entrada tinham apenas 2 algarismos confiáveis, as demais casas são fictícias. Reportá-las como resultado real é, no mínimo, enganoso.
         </p>
       </div>
     </section>
@@ -74,8 +94,45 @@
     <section class="content-section" id="s2">
       <h2><span class="sec-num">2</span> O que são algarismos significativos?</h2>
       <p>
-        Os <strong>algarismos significativos</strong> de uma medida são todos os dígitos que carregam informação real — ou seja, que são confiáveis com base no instrumento usado. Eles incluem todos os dígitos certos mais o último dígito, que é estimado.
+        Os <strong>algarismos significativos</strong> de uma medida são todos os dígitos que carregam informação real — ou seja, que são confiáveis com base no instrumento usado. Eles incluem todos os dígitos certos mais o último dígito estimado pelo observador.
       </p>
+      <p>
+        Em um restaurante por quilo, você coloca o prato na balança e o visor mostra <strong>432 g</strong> — 3 algarismos significativos: a balança distingue 431 g de 432 g de 433 g, cada dígito veio do instrumento. Se o visor mostrar <strong>430 g</strong>, a resposta depende da balança. Uma balança que resolve 1 g registrou mesmo 430 g, e o zero é significativo — ainda são 3 algarismos significativos. Mas uma balança que só resolve 10 g arredonda tudo para o múltiplo de 10 mais próximo: ela não distingue 425 g de 434 g, e o zero final é apenas um <strong>marcador de posição</strong> — existe para indicar que o número está na casa das centenas, não porque o instrumento o mediu. Nesse caso, são apenas 2 algarismos significativos. O número "430" sozinho, sem saber qual balança foi usada, é ambíguo.
+      </p>
+      <p>
+        Marcadores de posição são zeros que existem somente para colocar os outros dígitos no lugar certo, sem indicar precisão real. Imagine que você mediu o diâmetro de um fio com uma régua milimetrada e o resultado foi <strong>5 mm</strong>. Se precisar escrever esse valor em metros, fica <strong>0,005 m</strong>. Os dois zeros depois da vírgula não significam que a medida foi precisa ao décimo ou centésimo de milímetro — eles apenas empurram o 5 para a posição dos milésimos. A medição continua sendo a mesma, com a mesma precisão. O único algarismo que veio do instrumento é o 5. Portanto, tanto 5 mm quanto 0,005 m têm <strong>1 algarismo significativo</strong>. Zeros à esquerda nunca são significativos: eles não vieram do instrumento, vieram da escolha de unidade.
+      </p>
+
+      <h3>Quando a precisão faz diferença de verdade</h3>
+      <p>
+        Em competições esportivas, a quantidade de dígitos confiáveis em uma medição pode mudar completamente um resultado.
+      </p>
+      <div class="example-box">
+        <div class="ex-header">🏃 Corrida dos 100 metros rasos</div>
+        <div class="ex-body">
+          <p>
+            Em uma corrida escolar cronometrada manualmente, o professor registra <strong>13,5 s</strong> — 3 algarismos significativos, precisão de 0,1 s. Se dois alunos chegam com menos de 0,1 s de diferença, é impossível determinar o vencedor com esse instrumento: a medição simplesmente não tem resolução para isso.
+          </p>
+          <p>
+            Nas Olimpíadas, o sistema eletrônico registra tempos como <strong>9,58 s</strong> — 4 algarismos significativos, precisão de 0,01 s. Esse centésimo de segundo é o que separa o recordista do segundo colocado. Para que o resultado seja justo, o instrumento precisa garantir que o último dígito é real — que veio da medição, não de uma variação aleatória do sistema.
+          </p>
+        </div>
+      </div>
+      <div class="example-box">
+        <div class="ex-header">🚗 Radar de velocidade nas estradas brasileiras</div>
+        <div class="ex-body">
+          <p>
+            A legislação brasileira exige que os radares de velocidade tenham precisão de pelo menos <strong>± 7 km/h</strong> para velocidades abaixo de 100 km/h. Isso significa que toda leitura traz embutida uma incerteza: se o radar marca 84 km/h, a velocidade real do veículo pode estar em qualquer ponto entre <strong>77 km/h e 91 km/h</strong>.
+          </p>
+          <p>
+            Imagine uma estrada com limite de <strong>80 km/h</strong>. Um motorista é flagrado pelo radar a <strong>84 km/h</strong>. À primeira vista, parece que ele estava acima do limite. Mas como a medida tem incerteza de ± 7 km/h, é possível que a velocidade real fosse 78 km/h — dentro do limite. Por isso, a multa só é aplicada quando a leitura do radar supera o limite somado à incerteza do instrumento: neste caso, o motorista só seria autuado se o radar marcasse acima de <strong>87 km/h</strong> (80 + 7). Com 84 km/h, não há multa.
+          </p>
+          <p>
+            Esse é um exemplo direto de como a incerteza de medição tem consequências práticas: o número registrado pelo instrumento não é a velocidade exata do carro — é uma estimativa com uma margem de erro conhecida, e as regras precisam levar essa margem em conta.
+          </p>
+        </div>
+      </div>
+
       <div class="concept-grid">
         <div class="concept-card">
           <span class="cc-icon">✅</span>
@@ -177,18 +234,67 @@
     <section class="content-section" id="s5">
       <h2><span class="sec-num">5</span> Precisão versus exatidão</h2>
       <p>
-        Dois conceitos distintos, frequentemente confundidos:
+        Precisão e exatidão são dois conceitos distintos que descrevem aspectos diferentes da qualidade de uma medição — e confundi-los é um dos equívocos mais comuns em física experimental.
       </p>
+      <p>
+        <strong>Exatidão</strong> (também chamada de acurácia) diz respeito a quão próxima a medida está do valor real da grandeza. Se uma balança indica um valor muito próximo da massa verdadeira do objeto, a medida é exata.
+      </p>
+      <p>
+        <strong>Precisão</strong> diz respeito à consistência das medidas repetidas: se você medir a mesma coisa várias vezes com o mesmo instrumento, quão próximos entre si ficam os resultados? Uma medição é precisa quando as repetições produzem valores muito parecidos — independentemente de esses valores estarem corretos ou não.
+      </p>
+      <p>
+        Os dois conceitos são independentes. É possível ser preciso sem ser exato, exato sem ser preciso, ou — o que se busca em laboratório — preciso <em>e</em> exato ao mesmo tempo.
+      </p>
+
+      <div class="example-box">
+        <div class="ex-header">⚖️ Precisa, mas não exata — balança com defeito sistemático</div>
+        <div class="ex-body">
+          <p>Você sobe em uma balança de banheiro cinco vezes seguidas e registra:</p>
+          <p style="text-align:center;font-size:1.05em;letter-spacing:0.04em;margin:0.6rem 0;">
+            <strong>72,3 — 72,2 — 72,3 — 72,3 — 72,2 kg</strong>
+          </p>
+          <p>Os resultados são muito consistentes — variação de apenas 0,1 kg. A balança é <strong>precisa</strong>. Mas suponha que sua massa real seja 70,1 kg: a balança registra sempre cerca de 2,2 kg a mais por causa de um defeito de fabricação. Ela mede com consistência, mas o valor está sistematicamente errado — é <strong>precisa e inexata</strong>.</p>
+          <p>Esse é o comportamento típico de um erro sistemático: afeta todas as medições na mesma direção e com a mesma magnitude. Repetir a medição não ajuda — você obtém o mesmo valor errado toda vez. A solução é calibrar ou substituir o instrumento.</p>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📏 Exata, mas não precisa — estimativas sem instrumento</div>
+        <div class="ex-body">
+          <p>Cinco pessoas estimam a altura de uma porta sem usar fita métrica, só de olho:</p>
+          <p style="text-align:center;font-size:1.05em;letter-spacing:0.04em;margin:0.6rem 0;">
+            <strong>2,10 — 1,85 — 2,05 — 1,90 — 2,00 m</strong>
+          </p>
+          <p>Os resultados variam bastante — até 0,25 m de diferença entre estimativas. A medição é <strong>imprecisa</strong>. Mas a média dos cinco valores é 1,98 m, próxima da altura real de 2,00 m: as estimativas se distribuem em torno do valor correto sem tendência para cima ou para baixo. A medição é <strong>exata em média, mas imprecisa</strong>.</p>
+          <p>Esse é o comportamento de um erro aleatório: os resultados variam de forma imprevisível, ora para mais, ora para menos. Repetir e calcular a média melhora a exatidão do resultado final, mas cada medida individual continua imprecisa.</p>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">✅ Precisa e exata — o ideal experimental</div>
+        <div class="ex-body">
+          <p>Uma balança clínica devidamente calibrada, medindo a mesma pessoa cinco vezes:</p>
+          <p style="text-align:center;font-size:1.05em;letter-spacing:0.04em;margin:0.6rem 0;">
+            <strong>70,1 — 70,1 — 70,2 — 70,1 — 70,1 kg</strong>
+          </p>
+          <p>Os valores são consistentes entre si (variação de 0,1 kg) <em>e</em> próximos da massa real. A medição é <strong>precisa e exata</strong> — os dois requisitos atendidos ao mesmo tempo.</p>
+        </div>
+      </div>
+
+      <p>
+        Em resumo: a precisão é uma propriedade do instrumento e do método — melhora com equipamentos de maior resolução e com técnica cuidadosa. A exatidão depende principalmente de calibração — um instrumento pode ser muito preciso (muito reproduzível) e ainda assim estar mal calibrado, gerando resultados sistematicamente errados. Por isso, em laboratório, calibrar o instrumento é tão importante quanto escolher um instrumento preciso.
+      </p>
+
       <div class="concept-grid">
         <div class="concept-card">
           <span class="cc-icon">🎯</span>
           <div class="cc-title">Exatidão (acurácia)</div>
-          <p class="cc-desc">Quão próximo o resultado está do valor verdadeiro. Alta exatidão = pouco erro sistemático.</p>
+          <p class="cc-desc">Quão próximo do valor real. Depende de calibração. Comprometida por erros sistemáticos.</p>
         </div>
         <div class="concept-card">
           <span class="cc-icon">🔁</span>
           <div class="cc-title">Precisão (repetibilidade)</div>
-          <p class="cc-desc">Quão consistentes são medidas repetidas entre si. Alta precisão = pouco erro aleatório.</p>
+          <p class="cc-desc">Quão consistentes são medidas repetidas. Depende do instrumento. Comprometida por erros aleatórios.</p>
         </div>
       </div>
     </section>
@@ -196,60 +302,191 @@
     <section class="content-section" id="s6">
       <h2><span class="sec-num">6</span> Erros de medição</h2>
       <p>
-        Todo resultado experimental deve ser acompanhado de sua <strong>incerteza (erro)</strong>. Expressa-se: <strong>x = x<sub>med</sub> ± Δx</strong>
+        Toda medição produz um resultado acompanhado de incerteza. A incerteza não é uma falha a esconder — é uma informação que precisa ser comunicada junto com o valor medido. A forma padrão de fazer isso é escrever o resultado seguido do símbolo ± e o valor da incerteza:
       </p>
-      <div class="formula-row">
-        <div class="formula-box">
-          <span class="formula-label">Erro absoluto</span>
-          <span class="formula-expr">Δx = |x<sub>med</sub> − x<sub>real</sub>|</span>
-          <span class="formula-legend">
-            <span>Mesmo valor numérico da grandeza</span>
-            <span>Ex: 9,80 ± 0,05 m/s²</span>
-          </span>
-        </div>
-        <div class="formula-box">
-          <span class="formula-label">Erro relativo</span>
-          <span class="formula-expr">ε<sub>r</sub> = Δx / x<sub>real</sub></span>
-          <span class="formula-legend">
-            <span>Adimensional — frequentemente em %</span>
-            <span>Ex: 0,05/9,80 ≈ 0,5%</span>
-          </span>
+      <div class="formula-box" style="margin:1rem auto 1.2rem;max-width:340px;">
+        <span class="formula-label">Resultado com incerteza</span>
+        <span class="formula-expr">x = x<sub>med</sub> ± Δx</span>
+        <span class="formula-legend">
+          <span>x<sub>med</sub> = valor medido &nbsp;|&nbsp; Δx = incerteza estimada</span>
+          <span>Exemplo: comprimento = 1,435 ± 0,001 m</span>
+        </span>
+      </div>
+      <p>
+        Essa notação informa duas coisas de uma vez: o melhor valor obtido para a grandeza e o quanto esse valor pode estar errado. Mas como calcular Δx depende de uma distinção fundamental: em alguns experimentos sabemos qual é o valor real da grandeza; na maioria das situações reais, não sabemos.
+      </p>
+
+      <h3>Quando o valor real é conhecido</h3>
+      <p>
+        Isso acontece quando o experimento mede uma grandeza cujo valor de referência já foi determinado com alta precisão pela comunidade científica — a aceleração da gravidade na superfície da Terra (9,80 m/s² ao nível do mar), o ponto de ebulição da água pura a pressão atmosférica padrão (100 °C), a velocidade da luz no vácuo, entre outros. Nesse caso é possível calcular o erro diretamente e avaliar a qualidade do experimento por comparação com a referência.
+      </p>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — experimento de pêndulo para medir g</div>
+        <div class="ex-body">
+          <p>Um estudante usa um pêndulo simples e obtém <strong>g = 9,5 m/s²</strong>. O valor de referência é <strong>9,80 m/s²</strong>.</p>
+          <p>Erro absoluto: |9,5 − 9,80| = <strong>0,30 m/s²</strong></p>
+          <p>Erro relativo: 0,30 / 9,80 × 100% ≈ <strong>3,1%</strong></p>
+          <div class="ex-result">Um erro de 3,1% é considerado aceitável para esse tipo de experimento simples em sala de aula — os cronômetros manuais e as variações de amplitude introduzem incertezas dessa ordem.</div>
         </div>
       </div>
 
+      <h3>Erro absoluto e erro relativo</h3>
+      <p>
+        A incerteza pode ser expressa de duas formas complementares, cada uma respondendo a uma pergunta diferente:
+      </p>
+      <div class="formula-row">
+        <div class="formula-box">
+          <span class="formula-label">Erro absoluto (Δx)</span>
+          <span class="formula-expr">Δx = |x<sub>med</sub> − x<sub>real</sub>|</span>
+          <span class="formula-legend">
+            <span>Na mesma unidade da grandeza medida</span>
+            <span>Pergunta: <em>quanto a medida errou?</em></span>
+          </span>
+        </div>
+        <div class="formula-box">
+          <span class="formula-label">Erro relativo (ε<sub>r</sub>)</span>
+          <span class="formula-expr">ε<sub>r</sub> = Δx / x<sub>real</sub></span>
+          <span class="formula-legend">
+            <span>Adimensional — frequentemente expresso em %</span>
+            <span>Pergunta: <em>quão grande é esse erro?</em></span>
+          </span>
+        </div>
+      </div>
+      <p>
+        O <strong>erro absoluto</strong> é direto e intuitivo: usa a mesma unidade da grandeza e diz exatamente quanto a medida se afastou do valor correto. O problema é que ele não permite julgar se o erro é grande ou pequeno sem mais contexto. Um erro absoluto de 0,30 m/s² na medição de g é relevante (representa mais de 3% do valor). Mas um erro de 0,30 g numa medição de 500 g seria desprezível — menos de 0,1%.
+      </p>
+      <p>
+        O <strong>erro relativo</strong> resolve esse problema ao expressar o erro como fração do valor medido. Isso permite comparar a qualidade de experimentos muito diferentes na mesma escala. Um erro relativo de 2% em qualquer medição — seja de tempo, comprimento, massa ou temperatura — significa que o resultado acertou dentro de 2% do valor correto. Quando o valor real não é conhecido, usa-se x<sub>med</sub> no lugar de x<sub>real</sub> na fórmula.
+      </p>
+ 
+    <h3>Quando o valor real não é conhecido</h3>
+      <p>
+        Na maior parte das situações reais de pesquisa, o valor verdadeiro da grandeza é exatamente o que se quer descobrir — não há referência disponível para comparar. Nesses casos, a incerteza é estimada a partir das limitações conhecidas do método e do instrumento: a resolução de cada instrumento usado, a variação observada entre medições repetidas e as restrições conhecidas do procedimento experimental.
+      </p>
+      <p>
+        O desafio aumenta quando o resultado que se quer calcular depende de <em>várias</em> medições diferentes — cada uma com a sua própria incerteza. Essas incertezas se combinam no resultado final, num processo chamado <strong>propagação de incertezas</strong>. O exemplo a seguir mostra como isso funciona na prática.
+      </p>
+
+      <div class="example-box">
+        <div class="ex-header">🪵 Determinando a densidade de um bloco de madeira</div>
+        <div class="ex-body">
+          <p>
+            Um estudante quer determinar a densidade de um bloco retangular de madeira. A densidade é definida como massa dividida pelo volume (ρ = m/V), e o volume de um bloco retangular é o produto das três dimensões (V = L × W × H). Portanto, são necessárias quatro medições independentes: a massa e as três dimensões.
+          </p>
+
+          <p><strong>Medições realizadas:</strong></p>
+          <table class="content-table" style="margin:0.5rem 0 1rem;">
+            <thead>
+              <tr><th>Grandeza</th><th>Instrumento</th><th>Valor medido</th><th>Incerteza</th><th>Fonte da incerteza</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Massa (m)</td>
+                <td>Balança (resolução 0,1 g)</td>
+                <td>58,4 g</td>
+                <td>± 0,1 g</td>
+                <td>Menor divisão da balança</td>
+              </tr>
+              <tr>
+                <td>Comprimento (L)</td>
+                <td>Régua milimetrada</td>
+                <td>8,2 cm</td>
+                <td>± 0,1 cm</td>
+                <td>Menor divisão + erro de paralaxe</td>
+              </tr>
+              <tr>
+                <td>Largura (W)</td>
+                <td>Régua milimetrada</td>
+                <td>4,5 cm</td>
+                <td>± 0,1 cm</td>
+                <td>Menor divisão + erro de paralaxe</td>
+              </tr>
+              <tr>
+                <td>Altura (H)</td>
+                <td>Régua milimetrada</td>
+                <td>3,1 cm</td>
+                <td>± 0,1 cm</td>
+                <td>Menor divisão + erro de paralaxe</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p><strong>Calculando o volume e sua incerteza:</strong></p>
+          <p>
+            Quando grandezas são <em>multiplicadas</em> ou <em>divididas</em>, as incertezas relativas (em %) se somam no resultado. Isso faz sentido intuitivamente: se cada dimensão tem uma margem de erro, todos esses erros contribuem para a imprecisão do volume final.
+          </p>
+          <p style="margin:0.4rem 0;">
+            V = 8,2 × 4,5 × 3,1 = <strong>114 cm³</strong>
+          </p>
+          <p style="margin:0.4rem 0;">
+            Erro relativo de L: 0,1/8,2 ≈ <strong>1,2%</strong><br>
+            Erro relativo de W: 0,1/4,5 ≈ <strong>2,2%</strong><br>
+            Erro relativo de H: 0,1/3,1 ≈ <strong>3,2%</strong>
+          </p>
+          <p style="margin:0.4rem 0;">
+            Erro relativo do volume: 1,2% + 2,2% + 3,2% = <strong>6,6%</strong><br>
+            Incerteza absoluta do volume: 6,6% × 114 ≈ <strong>± 8 cm³</strong>
+          </p>
+          <p style="margin:0.4rem 0 0.8rem;">
+            Portanto: <strong>V = 114 ± 8 cm³</strong>
+          </p>
+
+          <p><strong>Calculando a densidade e sua incerteza:</strong></p>
+          <p style="margin:0.4rem 0;">
+            ρ = m/V = 58,4/114 ≈ <strong>0,51 g/cm³</strong>
+          </p>
+          <p style="margin:0.4rem 0;">
+            Erro relativo da massa: 0,1/58,4 ≈ <strong>0,2%</strong><br>
+            Erro relativo do volume: <strong>6,6%</strong><br>
+            Erro relativo da densidade: 0,2% + 6,6% = <strong>6,8%</strong><br>
+            Incerteza absoluta: 6,8% × 0,51 ≈ <strong>± 0,03 g/cm³</strong>
+          </p>
+          <div class="ex-result">
+            Resultado final: <strong>ρ = 0,51 ± 0,03 g/cm³</strong><br>
+            (compatível com madeira de pinho, cuja densidade varia entre 0,45 e 0,55 g/cm³)
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <span class="hb-icon">💡</span>
+        <p>
+          <strong>O que esse exemplo revela?</strong> A incerteza da massa (0,2%) é completamente irrelevante — a balança é boa o suficiente. O que domina é a medição das dimensões, especialmente a altura (3,2%), que é a menor das três e por isso tem o maior erro relativo com a mesma régua. Trocar a balança por uma mais cara não mudaria nada. A melhoria certa seria usar um paquímetro para medir as dimensões — com resolução de 0,01 cm, o erro relativo da altura cairia de 3,2% para 0,3%, reduzindo a incerteza total de 6,8% para menos de 1%. Identificar <em>qual</em> fonte de incerteza domina é o caminho para melhorar o experimento de forma eficiente.
+        </p>
+      </div>
+
       <h3>Tipos de erros</h3>
+      <p>
+        Nas seções anteriores já encontramos várias fontes de erro: a incerteza de leitura da régua, o erro de paralaxe, o erro instrumental de fabricação, o tempo de reação do observador. Todos esses casos se encaixam em três categorias, que diferem tanto na origem quanto na forma de reduzi-los:
+      </p>
       <table class="content-table">
         <thead>
-          <tr><th>Tipo de erro</th><th>Causa</th><th>Como reduzir</th></tr>
+          <tr><th>Tipo</th><th>Características</th><th>Exemplos vistos no texto</th><th>Como reduzir</th></tr>
         </thead>
         <tbody>
           <tr>
             <td><strong>Sistemático</strong></td>
-            <td>Instrumento descalibrado, método inadequado, paralaxe</td>
-            <td>Calibrar o instrumento; usar método correto</td>
+            <td>Afeta todas as medições na mesma direção e com magnitude semelhante; repetir não resolve</td>
+            <td>Régua com divisões irregulares (erro instrumental); leitura em ângulo (paralaxe); balança descalibrada</td>
+            <td>Calibrar ou substituir o instrumento; corrigir o método</td>
           </tr>
           <tr>
             <td><strong>Aleatório</strong></td>
-            <td>Flutuações imprevisíveis (vibração, variação de temperatura)</td>
-            <td>Repetir medidas e calcular média</td>
+            <td>Varia de forma imprevisível, ora para mais, ora para menos; a média de muitas medições se aproxima do valor real</td>
+            <td>Vibração da bancada; variação de temperatura; flutuações na tensão elétrica</td>
+            <td>Repetir as medições e calcular a média; isolar o experimento de interferências</td>
           </tr>
           <tr>
-            <td><strong>Grosseiro</strong></td>
-            <td>Erro humano: ler errado, anotar errado</td>
-            <td>Atenção e revisão cuidadosa</td>
+            <td><strong>Pessoal</strong></td>
+            <td>Decorre das limitações ou descuidos do observador</td>
+            <td>Tempo de reação no cronômetro; anotar o valor errado; trocar unidades no cálculo</td>
+            <td>Automatizar a medição; revisar os dados cuidadosamente</td>
           </tr>
         </tbody>
       </table>
-
-      <div class="example-box">
-        <div class="ex-header">📋 Exemplo — Calculando erro relativo</div>
-        <div class="ex-body">
-          <p>Você mede g = 9,5 m/s² com um pêndulo. O valor aceito é 9,8 m/s².</p>
-          <p>Erro absoluto: |9,5 − 9,8| = <strong>0,3 m/s²</strong></p>
-          <p>Erro relativo: 0,3 / 9,8 × 100% ≈ <strong>3,1%</strong></p>
-          <div class="ex-result">Erro de 3,1% — aceitável para um experimento simples de pêndulo</div>
-        </div>
-      </div>
+      <p>
+        Vale notar que o erro pessoal do cronômetro — o tempo de reação — funciona como um erro sistemático: o observador quase sempre chega tarde ao apertar o botão, introduzindo um viés consistente em uma única direção. Ao substituir o observador por um sensor automático, esse erro pessoal desaparece, mas erros sistemáticos do equipamento (tempo de resposta do circuito, frequência de amostragem) passam a dominar. Por isso, identificar qual tipo de erro domina em um experimento é o primeiro passo para escolher a estratégia certa de melhoria.
+      </p>
     </section>
 
     <section class="content-section" id="s7">
@@ -274,8 +511,8 @@
         <h4>🧮 Contagem de Algarismos Significativos</h4>
         <div class="calc-grid">
           <div class="calc-field">
-            <label>Número em notação científica (mantissa)</label>
-            <input type="number" id="as-num" placeholder="ex: 3.050" step="any" value="3.050">
+            <label>Digite o número exatamente como escrito (zeros incluídos)</label>
+            <input type="text" id="as-num" placeholder="ex: 3,050  ou  0,0052  ou  1200" style="font-family:monospace;">
           </div>
         </div>
         <button class="calc-btn" onclick="contarAS()">Contar</button>
@@ -286,15 +523,28 @@
     <section class="content-section" id="s8">
       <h2><span class="sec-num">8</span> Resumo</h2>
       <div class="summary-box">
-        <h3>O que você aprendeu</h3>
+        <h3>Incerteza e medição</h3>
         <ul>
-          <li>Toda medida tem incerteza — comunicar essa incerteza é obrigação científica.</li>
-          <li>Algarismos significativos: dígitos confiáveis de uma medida.</li>
-          <li>Zeros à esquerda não contam; zeros entre dígitos e zeros à direita após vírgula contam.</li>
-          <li>Multiplicação/divisão: resultado com o menor número de alg. sig. dos fatores.</li>
-          <li>Adição/subtração: resultado com o menor número de casas decimais das parcelas.</li>
-          <li>Exatidão ≠ precisão: exatidão é proximidade ao valor real; precisão é repetibilidade.</li>
-          <li>Erros: sistemático (método), aleatório (flutuações) e grosseiro (humano).</li>
+          <li>Toda medição produz uma estimativa, nunca um valor exato. A incerteza é uma propriedade inerente ao ato de medir — não um erro de quem mede.</li>
+          <li>As principais fontes de incerteza são: a resolução do instrumento (incerteza de leitura), defeitos de fabricação ou calibração (erro instrumental), a posição do observador (erro de paralaxe) e as limitações humanas (erro pessoal, como o tempo de reação).</li>
+          <li>Um resultado completo declara sempre o valor e a incerteza: <strong>x = x<sub>med</sub> ± Δx</strong>. Omitir a incerteza é apresentar uma informação incompleta.</li>
+          <li>Investir em instrumentos melhores só ajuda se aquele instrumento for a principal fonte de erro. Identificar a fonte dominante antes de agir é parte essencial do planejamento experimental.</li>
+        </ul>
+
+        <h3 style="margin-top:1.2rem;">Algarismos significativos</h3>
+        <ul>
+          <li>Algarismos significativos são os dígitos que vieram de fato do instrumento — os confiáveis. Incluem todos os dígitos certos mais o último estimado.</li>
+          <li>Zeros à esquerda nunca são significativos (são marcadores de posição). Zeros entre dígitos não-zero sempre são. Zeros à direita após a vírgula decimal sempre são. Zeros à direita em inteiros sem vírgula são ambíguos — use notação científica para eliminar a dúvida.</li>
+          <li>Em multiplicação e divisão, o resultado tem tantos algarismos significativos quantos o fator com menos. Em adição e subtração, o resultado tem tantas casas decimais quantas a parcela com menos.</li>
+          <li>Escrever mais casas decimais do que o instrumento fornece é afirmar uma precisão que não existe.</li>
+        </ul>
+
+        <h3 style="margin-top:1.2rem;">Precisão, exatidão e tipos de erro</h3>
+        <ul>
+          <li><strong>Exatidão</strong> é proximidade ao valor real; depende de calibração. <strong>Precisão</strong> é consistência entre medidas repetidas; depende do instrumento e do método. Um instrumento pode ser preciso e inexato ao mesmo tempo.</li>
+          <li>Erros <strong>sistemáticos</strong> afetam todas as medições na mesma direção — repetir não resolve, é preciso corrigir a fonte. Erros <strong>aleatórios</strong> variam de forma imprevisível — repetir e calcular a média melhora o resultado. Erros <strong>pessoais</strong> vêm das limitações do observador e são reduzidos automatizando a medição.</li>
+          <li>O <strong>erro absoluto</strong> (Δx) indica quanto a medida errou, na mesma unidade da grandeza. O <strong>erro relativo</strong> (Δx/x) expressa esse erro como fração do valor medido, permitindo comparar experimentos diferentes.</li>
+          <li>Quando várias medições se combinam num resultado (como ρ = m/V), os erros relativos de cada grandeza se somam — a maior incerteza relativa domina o resultado final.</li>
         </ul>
       </div>
     </section>
@@ -326,38 +576,53 @@
   };
 
   window.contarAS = function() {
-    const num = document.getElementById('as-num').value.trim();
+    const raw = document.getElementById('as-num').value.trim();
     const res = document.getElementById('as-result');
-    if (!num || isNaN(parseFloat(num))) { res.className='calc-result erro'; res.textContent='Informe a mantissa (parte a da notação a × 10ⁿ).'; return; }
 
-    /* Conta algarismos significativos na string fornecida */
-    /* Remove sinal, encontra dígitos significativos */
-    let s = num.replace('-', '').replace('+', '');
-    /* Se não há vírgula decimal */
+    if (!raw) { res.className='calc-result erro'; res.textContent='Digite um número.'; return; }
+
+    // Aceita vírgula ou ponto como separador decimal; remove sinal
+    const s = raw.replace(',', '.').replace(/^[+\-]/, '');
+
+    // Valida: só dígitos com no máximo um separador decimal
+    if (!/^\d+\.?\d*$/.test(s) && !/^\.\d+$/.test(s)) {
+      res.className='calc-result erro';
+      res.textContent='Valor inválido. Digite apenas o número (ex: 3,050 ou 0,0052).';
+      return;
+    }
+
+    if (parseFloat(s) === 0) {
+      res.className='calc-result ok';
+      res.textContent='O número zero não tem algarismos significativos definidos.';
+      return;
+    }
+
     const hasDot = s.includes('.');
+
     if (!hasDot) {
-      /* Zeros à direita em inteiro: ambíguo */
-      const trimmed = s.replace(/0+$/, '');
-      if (trimmed !== s) {
+      // Inteiro sem ponto decimal: zeros à direita são ambíguos
+      const semTrailing = s.replace(/0+$/, '');
+      if (semTrailing !== s) {
+        const min = semTrailing.replace(/^0+/, '').length || 1;
         res.className='calc-result ok';
-        res.textContent = 'Sem ponto decimal: ambíguo. Número de zeros finais pode ou não ser significativo. ' +
-          'Use notação científica para ser preciso. Mínimo: ' + trimmed.replace(/^0+/, '').length + ' alg. sig.';
+        res.innerHTML = '"' + raw + '" é <strong>ambíguo</strong>: os zeros à direita podem ou não ser significativos.<br>' +
+          'Mínimo: <strong>' + min + '</strong> alg. sig. Para eliminar a ambiguidade, use notação científica.';
         return;
       }
+      // Sem zeros finais: todos os dígitos não-zero são significativos
+      const sig = s.replace(/^0+/, '').length || 1;
+      res.className='calc-result ok';
+      res.textContent = '"' + raw + '" tem ' + sig + ' algarismo(s) significativo(s).';
+      return;
     }
-    /* Remove zeros à esquerda antes do ponto */
-    let digits = s.replace('.', '');
-    let leading = digits.match(/^(0*)/)[1].length;
-    /* Se tem ponto, zeros à esquerda e depois do ponto não são sig */
-    if (!hasDot || parseFloat(num) >= 1) {
-      leading = digits.match(/^0*/)[1].length;
-    } else {
-      /* Número < 1: todos os zeros antes do primeiro não-zero não são sig */
-      leading = digits.match(/^0*/)[1].length;
-    }
-    const sig = digits.length - leading;
+
+    // Com ponto decimal: zeros à direita após a vírgula SÃO significativos
+    // Zeros à esquerda antes do primeiro dígito não-zero NÃO são significativos
+    const digits = s.replace('.', '');
+    const firstNonZero = digits.search(/[1-9]/);
+    const sig = digits.length - firstNonZero;
     res.className='calc-result ok';
-    res.textContent = '"' + num + '" tem aproximadamente ' + sig + ' algarismo(s) significativo(s).';
+    res.textContent = '"' + raw + '" tem ' + sig + ' algarismo(s) significativo(s).';
   };
 
   /* TOC */
