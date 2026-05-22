@@ -101,6 +101,27 @@ body {
   color: #fca5a5;
 }
 
+/* ── INTRO ── */
+.ilha-intro {
+  background: var(--ilha-accent-bg);
+  border: 1px solid var(--ilha-border);
+  border-left: 4px solid var(--ilha-accent);
+  border-radius: var(--ilha-radius);
+  padding: 1.25rem 1.5rem;
+}
+.ilha-intro-title {
+  font-family: var(--ilha-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--ilha-text2);
+  margin-bottom: 0.5rem;
+}
+.ilha-intro-desc {
+  font-size: 0.93rem;
+  color: var(--ilha-text);
+  line-height: 1.65;
+}
+
 /* ── MAIN ── */
 .ilha-main {
   max-width: 900px;
@@ -118,6 +139,15 @@ body {
   border-radius: var(--ilha-radius);
   padding: 1.5rem;
   box-shadow: var(--ilha-shadow);
+}
+
+.ilha-item-num {
+  font-family: var(--ilha-mono);
+  font-size: 0.75em;
+  color: var(--ilha-text2);
+  opacity: 0.6;
+  margin-right: 0.2em;
+  user-select: none;
 }
 
 .ilha-card-title {

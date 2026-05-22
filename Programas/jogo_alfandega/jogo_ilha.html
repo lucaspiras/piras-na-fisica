@@ -42,6 +42,18 @@
 <!-- ═══ MAIN ═══ -->
 <main class="ilha-main">
 
+  <!-- INTRO -->
+  <div class="ilha-intro">
+    <h1 class="ilha-intro-title">Jogo da Ilha Misteriosa</h1>
+    <p class="ilha-intro-desc">
+      Você quer entrar na Ilha Misteriosa, mas o fiscal da alfandega só permite
+      a entrada de objetos que sigam uma <strong>regra secreta</strong>.
+      Teste diferentes objetos, observe o que é permitido e o que é proibido,
+      e tente descobrir qual é a regra. Quando achar que sabe, escreva sua hipótese
+      e veja se acertou!
+    </p>
+  </div>
+
   <!-- INPUT -->
   <div class="ilha-card">
     <div class="ilha-card-title">Qual objeto você quer levar para a ilha?</div>
@@ -53,7 +65,7 @@
     </div>
     <div id="feedback" class="ilha-feedback"></div>
     <div class="ilha-nova-rodada-row">
-      <button id="btnNovaRodada" class="ilha-btn-nova-rodada">🔄 Nova regra aleatória</button>
+      <button id="btnNovaRodada" class="ilha-btn-nova-rodada">🔄 Novo jogo</button>
     </div>
   </div>
 
@@ -125,7 +137,7 @@
 <script type="module">
 import { avaliar, getConfig, getPermitidos, getProibidos,
          registrarResultado, enfileirarPendente, normalizar, getRodada,
-         novaRodadaAleatoria, verificarPalpite, pedirPalavraPermitida, revelarRegra }
+         novaRodadaAleatoria, verificarPalpite, pedirPalavrasPermitidas, revelarRegra }
   from './script_jogo_ilha.js';
 
 const inputEl   = document.getElementById("objeto");
@@ -159,15 +171,15 @@ palpiteEl.addEventListener("keydown", e => { if (e.key === "Enter") testarPalpit
 document.getElementById("btnPedirPalavra").addEventListener("click", async () => {
   const btn = document.getElementById("btnPedirPalavra");
   btn.disabled = true;
-  showFeedbackAjuda("⏳ Buscando exemplo…", "pending");
-  const palavra = await pedirPalavraPermitida();
+  showFeedbackAjuda("⏳ Buscando exemplos…", "pending");
+  const palavras = await pedirPalavrasPermitidas();
   btn.disabled = false;
-  if (palavra === "manual") {
+  if (palavras === "manual") {
     showFeedbackAjuda("💬 Modo manual: peça um exemplo diretamente ao professor.", "warn");
-  } else if (!palavra) {
+  } else if (!palavras || palavras.length === 0) {
     showFeedbackAjuda("⚠️ Não foi possível gerar um exemplo. Tente novamente.", "warn");
   } else {
-    showFeedbackAjuda(`💡 Exemplo permitido: "${palavra}"`, "ok");
+    showFeedbackAjuda("💡 Exemplos permitidos: " + palavras.map(p => '"' + p + '"').join(", "), "ok");
   }
 });
 
@@ -316,12 +328,18 @@ function renderListas() {
   const prob = getProibidos();
 
   document.getElementById("listaPermitidos").innerHTML =
-    perm.length ? perm.map(p => `<li class="ilha-item permitido">${p}</li>`).join("") :
-    `<li class="ilha-item vazia">Nenhum ainda</li>`;
+    perm.length
+      ? [...perm].reverse().map((p, i) =>
+          `<li class="ilha-item permitido"><span class="ilha-item-num">${perm.length - i}.</span> ${p}</li>`
+        ).join("")
+      : `<li class="ilha-item vazia">Nenhum ainda</li>`;
 
   document.getElementById("listaProibidos").innerHTML =
-    prob.length ? prob.map(p => `<li class="ilha-item proibido">${p}</li>`).join("") :
-    `<li class="ilha-item vazia">Nenhum ainda</li>`;
+    prob.length
+      ? [...prob].reverse().map((p, i) =>
+          `<li class="ilha-item proibido"><span class="ilha-item-num">${prob.length - i}.</span> ${p}</li>`
+        ).join("")
+      : `<li class="ilha-item vazia">Nenhum ainda</li>`;
 
   document.getElementById("qtdPermitidos").textContent = perm.length;
   document.getElementById("qtdProibidos").textContent  = prob.length;

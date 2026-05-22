@@ -121,8 +121,10 @@ export function novaRodada() {
   bumpTick();
 }
 
+const EXCLUIR_ALEATORIO = new Set(["semVogal", "cadeia"]);
+
 export function novaRodadaAleatoria() {
-  const chaves = Object.keys(REGRAS).filter(k => !PARAMETRIZADAS.has(k));
+  const chaves = Object.keys(REGRAS).filter(k => !PARAMETRIZADAS.has(k) && !EXCLUIR_ALEATORIO.has(k));
   const chave = chaves[Math.floor(Math.random() * chaves.length)];
   setConfig({ tipo: "auto", chave, parametro: null, textoIA: null });
   novaRodada();
@@ -154,7 +156,7 @@ const PALAVRAS_EXEMPLO = [
   "abacaxi","abelha","amigo","arvore","azul",
   "elefante","espelho","estrela","escola","escada",
   "ilha","inseto","igual","irma",
-  "ovo","orelha","olho","ossso",
+  "ovo","orelha","olho","osso",
   "uva","urso","unha","uniforme",
   "bola","borboleta","banana","barco","balde",
   "carro","casa","cenoura","cachorro","cama",
@@ -175,22 +177,35 @@ const PALAVRAS_EXEMPLO = [
   "vaca","vento","vidro","vale",
   "xícara","xarope",
   "zebra","zona","zíper",
+  "massa","asa","arara",
+  "baile","noite","coelho","feijão","loiro",
+  "gatinho","casinha","caixinha",
+  "animais","flores","sapatos",
+  "homem","armazém",
 ];
 
-export async function pedirPalavraPermitida() {
+export async function pedirPalavrasPermitidas(n = 3) {
   const cfg = getConfig();
 
   if (cfg.tipo === "auto") {
     const regra = REGRAS[cfg.chave];
-    if (!regra) return null;
+    if (!regra) return [];
     const shuffled = [...PALAVRAS_EXEMPLO].sort(() => Math.random() - 0.5);
-    return shuffled.find(p => regra.fn(p, cfg.parametro)) ?? null;
+    const found = [];
+    for (const p of shuffled) {
+      if (regra.fn(p, cfg.parametro)) {
+        found.push(p);
+        if (found.length === n) break;
+      }
+    }
+    return found;
   }
 
   if (cfg.tipo === "ia") {
     const apiKey = localStorage.getItem("ilha_apiKey");
-    if (!apiKey || !cfg.textoIA) return null;
-    return await pedirExemploComIA(cfg.textoIA, apiKey);
+    if (!apiKey || !cfg.textoIA) return [];
+    const ex = await pedirExemploComIA(cfg.textoIA, apiKey);
+    return ex ? [ex] : [];
   }
 
   return "manual";
