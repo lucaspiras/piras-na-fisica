@@ -1,0 +1,647 @@
+/* ---- AJUSTES ESPECÍFICOS: CONCEITOS INICIAIS DE CINEMÁTICA ---- */
+
+.formula-box.formula-inline {
+  max-width: 360px;
+  margin: 1.1rem auto;
+}
+
+p.equation-line {
+  color: #1e2a78;
+  font-weight: 700;
+  text-align: center;
+  overflow: visible;
+  padding: 0.25rem 0;
+  margin: 0.3rem 0;
+}
+
+.formula-box .formula-expr {
+  text-align: center;
+}
+
+.equation-line mjx-container,
+.formula-expr mjx-container {
+  color: #1e2a78;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+/* ---- DIAGRAMAS DE DESLOCAMENTO EM 1D ---- */
+.displacement-1d-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 1.35rem 0 1.6rem;
+}
+
+.displacement-1d-card {
+  border: 1.5px solid #e0e7ff;
+  border-radius: 12px;
+  background: #f8f9ff;
+  overflow: hidden;
+}
+
+.displacement-title {
+  padding: 0.7rem 0.9rem 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1e2a78;
+}
+
+.displacement-1d-card p {
+  margin: 0;
+  padding: 0 0.9rem 0.85rem;
+  color: #4b5563;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.line-diagram {
+  position: relative;
+  height: 138px;
+  margin: 0.15rem 0.55rem 0.2rem;
+}
+
+.line-diagram .axis-line {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  top: 67%;
+  height: 4px;
+  border-radius: 999px;
+  background: #64748b;
+}
+
+.line-diagram .axis-arrow {
+  position: absolute;
+  right: 5.7%;
+  top: calc(67% - 5px);
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 12px solid #64748b;
+}
+
+.line-diagram .tick {
+  position: absolute;
+  top: calc(67% - 10px);
+  width: 3px;
+  height: 24px;
+  border-radius: 999px;
+  background: #475569;
+}
+
+.line-diagram .dot {
+  position: absolute;
+  top: calc(67% - 10px);
+  width: 20px;
+  height: 20px;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 7px rgba(15, 23, 42, 0.25);
+  transform: translateX(-50%);
+}
+
+.line-diagram .dot-start {
+  background: #22c55e;
+}
+
+.line-diagram .dot-end {
+  background: #f97316;
+}
+
+.line-diagram .dot-far {
+  background: #94a3b8;
+}
+
+.line-diagram .diagram-label {
+  position: absolute;
+  color: #1e2a78;
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.line-diagram .zero-label {
+  left: 13%;
+  top: 76%;
+}
+
+.line-diagram .motion-arrow,
+.line-diagram .delta-arrow {
+  position: absolute;
+  height: 3px;
+  border-radius: 999px;
+  transform-origin: left center;
+}
+
+.line-diagram .motion-arrow {
+  background: #94a3b8;
+  color: #94a3b8;
+}
+
+.line-diagram .delta-arrow {
+  background: #2f5bea;
+  color: #2f5bea;
+}
+
+.line-diagram .motion-arrow::after,
+.line-diagram .delta-arrow::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: -5px;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 10px solid currentColor;
+}
+
+.path-back .tick-zero,
+.positive-move .tick-zero,
+.negative-move .tick-zero {
+  left: 14%;
+}
+
+.path-back .tick-start,
+.path-back .dot-start {
+  left: 25%;
+}
+
+.path-back .tick-far,
+.path-back .dot-far {
+  left: 76%;
+}
+
+.path-back .tick-end,
+.path-back .dot-end {
+  left: 58%;
+}
+
+.path-back .start-label {
+  left: 22.8%;
+  top: 76%;
+}
+
+.path-back .far-label {
+  left: 72.5%;
+  top: 76%;
+}
+
+.path-back .end-label {
+  left: 56.5%;
+  top: 76%;
+}
+
+.path-back .motion-arrow-forward {
+  left: 28%;
+  top: 26%;
+  width: 45%;
+}
+
+.path-back .motion-arrow-back {
+  left: 75%;
+  top: 42%;
+  width: 16%;
+  transform: rotate(180deg);
+}
+
+.path-back .delta-positive {
+  left: 28%;
+  top: 55%;
+  width: 27%;
+}
+
+.path-back .delta-label {
+  left: 34%;
+  top: 42%;
+}
+
+.positive-move .tick-start,
+.positive-move .dot-start {
+  left: 28%;
+}
+
+.positive-move .tick-end,
+.positive-move .dot-end {
+  left: 72%;
+}
+
+.positive-move .start-label {
+  left: 25.5%;
+  top: 76%;
+}
+
+.positive-move .end-label {
+  left: 70.5%;
+  top: 76%;
+}
+
+.positive-move .delta-positive {
+  left: 31%;
+  top: 43%;
+  width: 38%;
+}
+
+.positive-move .delta-label {
+  left: 45%;
+  top: 29%;
+}
+
+.negative-move .tick-start,
+.negative-move .dot-start {
+  left: 72%;
+}
+
+.negative-move .tick-end,
+.negative-move .dot-end {
+  left: 31%;
+}
+
+.negative-move .start-label {
+  left: 69.5%;
+  top: 76%;
+}
+
+.negative-move .end-label {
+  left: 29.5%;
+  top: 76%;
+}
+
+.negative-move .delta-negative {
+  left: 72%;
+  top: 43%;
+  width: 38%;
+  transform: rotate(180deg);
+}
+
+.negative-move .delta-label {
+  left: 44%;
+  top: 29%;
+}
+
+@media (min-width: 860px) {
+  .displacement-1d-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .line-diagram {
+    height: 128px;
+  }
+
+  .line-diagram .diagram-label {
+    font-size: 0.7rem;
+  }
+}
+
+/* ---- DIAGRAMA DE DESLOCAMENTO EM 2D ---- */
+.displacement-2d-card {
+  border: 1.5px solid #e0e7ff;
+  border-radius: 12px;
+  background: #f8f9ff;
+  overflow: hidden;
+  margin: 1.35rem 0 1.6rem;
+}
+
+.plane-diagram {
+  position: relative;
+  height: min(420px, 62vw);
+  min-height: 300px;
+  margin: 0.6rem 0.9rem 0.3rem;
+  border-radius: 10px;
+  background:
+    linear-gradient(rgba(47, 91, 234, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47, 91, 234, 0.08) 1px, transparent 1px),
+    #ffffff;
+  background-size: 20% 20%;
+  border: 1px solid #dbe4ff;
+}
+
+.plane-diagram .grid-line,
+.plane-diagram .plane-axis,
+.plane-diagram .component,
+.plane-diagram .projection,
+.plane-diagram .displacement-vector {
+  position: absolute;
+  display: block;
+  transform-origin: left center;
+}
+
+.plane-diagram .plane-axis {
+  z-index: 2;
+  background: #64748b;
+}
+
+.plane-diagram .x-axis {
+  left: 8%;
+  right: 7%;
+  top: 82%;
+  height: 3px;
+}
+
+.plane-diagram .y-axis {
+  left: 12%;
+  top: 8%;
+  width: 3px;
+  height: 78%;
+}
+
+.plane-diagram .axis-arrow {
+  position: absolute;
+  z-index: 3;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 12px solid #64748b;
+}
+
+.plane-diagram .x-arrow {
+  right: 5.7%;
+  top: calc(82% - 5px);
+}
+
+.plane-diagram .y-arrow {
+  left: calc(12% - 5px);
+  top: 6.5%;
+  transform: rotate(-90deg);
+}
+
+.plane-diagram .component,
+.plane-diagram .projection {
+  z-index: 3;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(30, 42, 120, 0.82) 0 8px,
+    transparent 8px 14px
+  );
+}
+
+.plane-diagram .projection {
+  opacity: 0.55;
+}
+
+.plane-diagram .component-x {
+  left: 36%;
+  top: 67%;
+  width: 36%;
+  height: 3px;
+}
+
+.plane-diagram .component-y {
+  left: 72%;
+  top: 28%;
+  width: 3px;
+  height: 39%;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(30, 42, 120, 0.82) 0 8px,
+    transparent 8px 14px
+  );
+}
+
+.plane-diagram .projection-start-x {
+  left: 12%;
+  top: 67%;
+  width: 24%;
+  height: 2px;
+}
+
+.plane-diagram .projection-start-y {
+  left: 36%;
+  top: 67%;
+  width: 2px;
+  height: 15%;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(30, 42, 120, 0.82) 0 8px,
+    transparent 8px 14px
+  );
+}
+
+.plane-diagram .projection-end-x {
+  left: 12%;
+  top: 28%;
+  width: 60%;
+  height: 2px;
+}
+
+.plane-diagram .projection-end-y {
+  left: 72%;
+  top: 28%;
+  width: 2px;
+  height: 54%;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(30, 42, 120, 0.82) 0 8px,
+    transparent 8px 14px
+  );
+}
+
+.plane-diagram .displacement-vector {
+  z-index: 4;
+  left: 36%;
+  top: 67%;
+  width: 41.1%;
+  height: 4px;
+  border-radius: 999px;
+  background: #f97316;
+  transform: rotate(-29.5deg);
+}
+
+.plane-diagram .displacement-vector::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: -5px;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 12px solid #f97316;
+}
+
+.plane-diagram .point {
+  position: absolute;
+  z-index: 5;
+  width: 18px;
+  height: 18px;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 7px rgba(15, 23, 42, 0.25);
+  transform: translate(-50%, -50%);
+}
+
+.plane-diagram .point-start {
+  left: 36%;
+  top: 67%;
+  background: #22c55e;
+}
+
+.plane-diagram .point-end {
+  left: 72%;
+  top: 28%;
+  background: #f97316;
+}
+
+.plane-diagram .plane-label {
+  position: absolute;
+  z-index: 6;
+  padding: 0.2rem 0.38rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #1e2a78;
+  font-size: clamp(0.68rem, 1.7vw, 0.84rem);
+  font-weight: 700;
+  line-height: 1.1;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
+  white-space: nowrap;
+}
+
+.plane-diagram .origin-label {
+  left: 8%;
+  top: 84%;
+}
+
+.plane-diagram .x-label {
+  right: 4.5%;
+  top: 84%;
+}
+
+.plane-diagram .y-label {
+  left: 7.5%;
+  top: 5%;
+}
+
+.plane-diagram .start-label {
+  left: 37%;
+  top: 69%;
+}
+
+.plane-diagram .end-label {
+  left: 73%;
+  top: 24%;
+}
+
+.plane-diagram .x0-label {
+  left: 28%;
+  top: 84%;
+}
+
+.plane-diagram .y0-label {
+  left: 5%;
+  top: 65%;
+}
+
+.plane-diagram .x-end-label {
+  left: 66%;
+  top: 84%;
+}
+
+.plane-diagram .y-end-label {
+  left: 5%;
+  top: 26%;
+}
+
+.plane-diagram .dx-label {
+  left: 48%;
+  top: 69%;
+}
+
+.plane-diagram .dy-label {
+  left: 73.5%;
+  top: 47%;
+}
+
+.plane-diagram .vector-label {
+  left: 53%;
+  top: 44%;
+}
+
+.plane-calculation {
+  padding: 0 0.9rem 0.8rem;
+}
+
+.plane-calculation p {
+  margin-bottom: 0.45rem;
+}
+
+@media (max-width: 520px) {
+  .plane-diagram {
+    min-height: 260px;
+    margin-left: 0.6rem;
+    margin-right: 0.6rem;
+  }
+
+  .plane-diagram .plane-label {
+    font-size: 0.64rem;
+  }
+
+  .plane-diagram .start-label {
+    left: 37%;
+  }
+
+  .plane-diagram .end-label {
+    left: 70%;
+  }
+}
+
+/* ---- CANVAS DO SIMULADOR ---- */
+#planoCanvas {
+  display: block;
+  margin: 0.5rem auto 0;
+  max-width: 100%;
+  border-radius: 12px;
+  border: 1.5px solid #dbe4ff;
+  box-shadow: 0 4px 18px rgba(30, 42, 120, 0.10);
+}
+
+/* ---- SIMULADOR 2D ---- */
+.graph-desc {
+  margin: 0 0 1rem;
+  color: #4b5563;
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+.sim-group {
+  border: 1.5px solid #e0e7ff;
+  border-radius: 10px;
+  padding: 0.65rem 0.8rem 0.5rem;
+  margin-bottom: 0.75rem;
+  background: #f8f9ff;
+}
+
+.sim-group-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #1e2a78;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.01em;
+}
+
+.sim-output-box {
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  background: #f0f4ff;
+  border: 1.5px solid #c7d2fe;
+  border-radius: 10px;
+}
+
+.sim-eq {
+  text-align: center;
+  color: #1e2a78;
+  font-size: 1rem;
+  padding: 0.2rem 0;
+}
+
+.sim-eq-total {
+  margin-top: 0.35rem;
+  padding-top: 0.45rem;
+  border-top: 1px solid #c7d2fe;
+  font-weight: 700;
+}

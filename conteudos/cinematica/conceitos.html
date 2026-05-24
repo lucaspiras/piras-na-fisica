@@ -11,8 +11,21 @@
     gtag('js', new Date());
     gtag('config', 'G-TY56KM22X8');
   </script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
   <link rel="stylesheet" href="../../css/style.css">
   <link rel="stylesheet" href="../shared.css">
+  <link rel="stylesheet" href="conceitos.css">
 </head>
 <body>
 
@@ -47,9 +60,8 @@
       <li><a href="#s4">Posição</a></li>
       <li><a href="#s5">Deslocamento</a></li>
       <li><a href="#s6">Distância percorrida</a></li>
-      <li><a href="#s7">Velocidade média</a></li>
-      <li><a href="#s8">Simulador</a></li>
-      <li><a href="#s9">Resumo</a></li>
+      <li><a href="#s7">Simulador</a></li>
+      <li><a href="#s8">Resumo</a></li>
     </ol>
     <div class="toc-nav">
       <a href="index.html">← Hub Cinemática</a>
@@ -65,15 +77,15 @@
       <h2><span class="sec-num">1</span> O que é movimento?</h2>
 
       <p>
-        No dia a dia, usamos a palavra "movimento" associada a esforço ou ação: quem está sentado está parado, quem caminha está em movimento. Essa ideia parece óbvia — mas em Física ela é imprecisa e pode levar a conclusões erradas.
+        À primeira vista, movimento parece uma coisa fácil de reconhecer: quem caminha está em movimento; quem está sentado está parado. Mas a Física começa justamente quando essa certeza balança. Um passageiro sentado dentro de um ônibus está parado ou está viajando a 60 km/h? A resposta não está no passageiro: está no referencial escolhido.
       </p>
 
       <p>
-        Para a Física, um corpo está em <strong>movimento</strong> quando sua <strong>posição muda com o tempo em relação a um ponto de referência</strong>. Isso é tudo. Não importa se o corpo está fazendo esforço, se está ativo ou passivo, se é animado ou inanimado. A única pergunta que vale é: a posição desse corpo, em relação a algum ponto escolhido, está mudando?
+        Para a Física, um corpo está em <strong>movimento</strong> quando sua <strong>posição muda com o tempo em relação a um referencial</strong>. Não importa se ele faz força, se tem motor, se está vivo, se “parece” parado ou se está sendo carregado por outro corpo. A pergunta decisiva é sempre a mesma: <strong>a posição dele está mudando em relação ao referencial escolhido?</strong>
       </p>
 
       <p>
-        Pense em um passageiro sentado em um ônibus que se move a 60 km/h. Ele está parado ou em movimento? A resposta depende do ponto de referência:
+        Pense em um passageiro sentado em um ônibus que se move a 60 km/h. Ele está parado ou em movimento? A resposta depende do referencial:
       </p>
 
       <div class="example-box">
@@ -86,17 +98,17 @@
             <strong>Observador 2 — na calçada:</strong> o passageiro passa na frente da pessoa parada na calçada a 60 km/h. Sua posição em relação à calçada muda a cada segundo. Para esse observador, o passageiro está em <strong>movimento</strong>.
           </p>
           <p>
-            As duas respostas são corretas ao mesmo tempo — porque cada uma usa um ponto de referência diferente. O passageiro não está "parado porque o ônibus é que se move": <em>o passageiro e o ônibus estão ambos em movimento em relação à calçada</em>, juntos, na mesma velocidade.
+            As duas respostas são corretas ao mesmo tempo, porque cada observador usa um referencial diferente. O passageiro não está “parado de verdade” nem “em movimento de verdade” de forma absoluta. Em relação ao ônibus, está em repouso; em relação à calçada, move-se junto com o ônibus.
           </p>
         </div>
       </div>
 
       <p>
-        Isso revela algo fundamental: <strong>movimento não é uma propriedade do objeto</strong> — é uma relação entre o objeto e um ponto de referência. Dizer "o objeto está em movimento" sem especificar em relação a quê é como dizer "o objeto está à esquerda" sem dizer de quê. A frase está incompleta.
+        Esse exemplo revela uma ideia importante: <strong>movimento não é uma propriedade isolada do objeto</strong>. É uma relação entre o objeto observado e o referencial adotado. Dizer “o objeto está em movimento” sem dizer <strong>em relação a quê</strong> é como dizer “ele está à esquerda” sem dizer à esquerda de quê. Falta uma parte essencial da informação.
       </p>
 
       <p>
-        Mais exemplos que mostram a relatividade do movimento:
+        A mesma lógica aparece em situações muito diferentes:
       </p>
 
       <div class="concept-grid">
@@ -113,12 +125,12 @@
         <div class="concept-card">
           <span class="cc-icon">🧑‍🚀</span>
           <div class="cc-title">Astronauta na ISS</div>
-          <p class="cc-desc">A estação espacial orbita a Terra a ~28 000 km/h. O astronauta está em repouso dentro da estação e em movimento frenético em relação ao solo terrestre.</p>
+          <p class="cc-desc">A estação espacial orbita a Terra a aproximadamente 28 000 km/h. Dentro dela, o astronauta pode estar em repouso em relação às paredes da estação, mas em movimento muito rápido em relação ao solo terrestre.</p>
         </div>
         <div class="concept-card">
           <span class="cc-icon">🌍</span>
           <div class="cc-title">Você, agora</div>
-          <p class="cc-desc">Sentado em relação à cadeira. Em movimento em relação ao Sol — a Terra orbita o Sol a aproximadamente 107 000 km/h. Não sentimos porque tudo ao nosso redor se move junto.</p>
+          <p class="cc-desc">Provavelmente em repouso em relação à cadeira. Ao mesmo tempo, em movimento em relação ao Sol: a Terra orbita o Sol a aproximadamente 107 000 km/h. Não percebemos isso no cotidiano porque o ar, o chão e quase tudo ao nosso redor acompanham a Terra nesse movimento.</p>
         </div>
       </div>
 
@@ -136,19 +148,19 @@
       <h2><span class="sec-num">2</span> Referencial</h2>
 
       <p>
-        O <strong>referencial</strong> (ou sistema de referência) é o corpo ou ponto que escolhemos como fixo para, a partir dele, observar e descrever o movimento de outro corpo. Uma vez feita essa escolha, o referencial é tratado como imóvel por definição — não porque ele realmente não se mova em relação a outros objetos do universo, mas porque decidimos desconsiderar qualquer movimento que ele possa ter e usá-lo como ponto de partida para todas as medições. É uma decisão do observador, não uma propriedade da natureza.
+        O <strong>referencial</strong> é o ponto de vista a partir do qual descrevemos um movimento. Na prática, escolhemos um corpo ou ponto e o tratamos como se estivesse fixo: pode ser o chão, um ônibus, uma árvore, o centro da Terra ou qualquer outro objeto conveniente. Essa escolha não torna o referencial “imóvel de verdade” no universo; ela apenas define o ponto de partida das medidas.
       </p>
 
       <p>
-        O referencial pode ser qualquer coisa: um ponto no chão, um edifício, um veículo, uma árvore, o centro da Terra ou o centro do Sol. O que importa é que, após a escolha, todas as posições e movimentos são medidos em relação a esse ponto. Dois observadores que escolhem referenciais diferentes vão descrever o mesmo fenômeno com números diferentes — e as duas descrições serão igualmente corretas.
+        Depois que o referencial é escolhido, todas as posições, velocidades e trajetórias passam a ser descritas em relação a ele. Por isso, dois observadores podem olhar para o mesmo fenômeno e obter números diferentes sem que nenhum deles esteja “errado”. Eles apenas adotaram pontos de vista diferentes.
       </p>
 
       <p>
-        Para localizar a posição de um corpo em relação ao referencial com precisão, usamos um <strong>sistema de coordenadas</strong> — um conjunto de eixos com uma origem comum (ponto zero) e sentidos positivos definidos. Quando o movimento ocorre ao longo de uma reta, basta um único eixo. Quando ocorre num plano — como uma bola rolando numa mesa —, usamos dois eixos perpendiculares (x e y). Para o espaço tridimensional completo, acrescentamos um terceiro eixo (z). Neste texto trabalharemos com movimentos em uma dimensão; os casos bidimensionais e tridimensionais aparecem em outros tópicos da cinemática.
+        Para transformar essa escolha em medidas, usamos um <strong>sistema de coordenadas</strong>: uma origem, eixos e sentidos positivos. O referencial diz “em relação a quem” o movimento será descrito; o sistema de coordenadas diz “com quais números” essa descrição será feita.
       </p>
 
       <p>
-        Exemplos de referenciais usados em diferentes contextos:
+        Alguns referenciais comuns ajudam a perceber como a escolha muda a descrição:
       </p>
 
       <div class="concept-grid">
@@ -160,7 +172,7 @@
         <div class="concept-card">
           <span class="cc-icon">🚗</span>
           <div class="cc-title">Veículo em movimento</div>
-          <p class="cc-desc">Um carro ou ônibus pode ser usado como referencial. Nesse caso, os passageiros estão em repouso, e são os prédios e postes que "se movem" no sentido contrário.</p>
+          <p class="cc-desc">Um carro ou ônibus também pode ser usado como referencial. Nesse caso, passageiros sentados estão em repouso em relação ao veículo, enquanto prédios, postes e árvores parecem se mover no sentido contrário.</p>
         </div>
         <div class="concept-card">
           <span class="cc-icon">🌍</span>
@@ -177,14 +189,14 @@
       <div class="highlight-box info">
         <span class="hb-icon">📌</span>
         <p>
-          A escolha do referencial não altera o fenômeno físico — o que muda é apenas a descrição matemática dele. Em problemas do Ensino Médio, o referencial adotado é, salvo indicação contrária, o solo. Referenciais diferentes simplificam ou complicam os cálculos dependendo do problema — escolher bem é parte do trabalho do físico.
+          A escolha do referencial não muda o fenômeno físico; muda a forma de descrevê-lo. Em problemas do Ensino Médio, salvo indicação contrária, costuma-se adotar o solo como referencial. Mas essa escolha não é obrigatória: um bom referencial pode transformar um problema complicado em um problema simples.
         </p>
       </div>
 
       <div class="highlight-box">
         <span class="hb-icon">🔭</span>
         <p>
-          Nem todo referencial se comporta da mesma forma matematicamente. Um referencial fixo ao solo de uma sala descreve o movimento de forma simples; um referencial preso a um carrossel em rotação introduz efeitos aparentes que complicam as equações. Referenciais que não estão em rotação nem aceleração são chamados de <strong>referenciais inerciais</strong> e são mais simples de trabalhar. Esse conceito será aprofundado no estudo da Dinâmica.
+          Nem todo referencial torna a Física igualmente simples. Um referencial preso ao chão de uma sala costuma funcionar bem para muitos problemas cotidianos. Já um referencial preso a um carrossel em rotação exige cuidados extras, pois nele aparecem efeitos aparentes. Referenciais que não estão acelerando nem girando são chamados de <strong>referenciais inerciais</strong>. Eles serão estudados com mais cuidado em Dinâmica.
         </p>
       </div>
 
@@ -195,10 +207,10 @@
       <h2><span class="sec-num">3</span> Sistemas de coordenadas</h2>
 
       <p>
-        Uma vez escolhido o referencial, precisamos de uma forma de dizer exatamente onde um corpo se encontra em relação a ele. Para isso usamos um <strong>sistema de coordenadas</strong>: um conjunto de eixos com uma origem comum que permite identificar qualquer ponto do espaço com um conjunto de números. Cada número recebe o nome de <strong>coordenada</strong> — e a quantidade de coordenadas necessárias é igual ao número de dimensões do espaço analisado.
+        Escolher um referencial responde à pergunta “em relação a quê?”. Mas ainda falta outra pergunta: “onde exatamente?”. Para responder a ela, usamos um <strong>sistema de coordenadas</strong>: uma origem, eixos orientados e números que localizam pontos no espaço. Cada número usado nessa localização recebe o nome de <strong>coordenada</strong>.
       </p>
       <p>
-        A ideia aparece em muitas situações do cotidiano, bem antes de qualquer aula de física.
+        Antes de aparecer nas equações da Física, essa ideia já aparece em muitos sistemas que usamos para nos localizar no mundo.
       </p>
 
       <div class="example-box">
@@ -208,7 +220,7 @@
             Qualquer ponto na superfície da Terra pode ser identificado por duas coordenadas: <strong>latitude</strong> (distância angular ao norte ou ao sul do equador, de −90° a +90°) e <strong>longitude</strong> (distância angular a leste ou oeste do meridiano de Greenwich, de −180° a +180°). Juntas, formam um sistema de coordenadas <strong>bidimensional</strong> que cobre toda a superfície do planeta.
           </p>
           <p>
-            Para localizar um ponto fora da superfície — um avião, um drone, um satélite —, acrescenta-se a <strong>altitude</strong>. Com três coordenadas (latitude, longitude, altitude) qualquer ponto do espaço próximo à Terra fica completamente determinado. É exatamente o que um receptor GPS faz: medir essas três coordenadas com alta precisão a partir de sinais de satélites.
+            Para localizar um ponto acima ou abaixo da superfície — um avião, um drone, um balão meteorológico —, acrescenta-se a <strong>altitude</strong>. Com três coordenadas (latitude, longitude e altitude), a posição fica determinada em relação à Terra. É essa a lógica por trás de sistemas como o GPS: combinar medidas feitas a partir de satélites para determinar uma localização.
           </p>
         </div>
       </div>
@@ -217,7 +229,7 @@
         <div class="ex-header">🏠 Números de casas e endereços</div>
         <div class="ex-body">
           <p>
-            O número de uma casa funciona da mesma forma: localiza a edificação ao longo da rua a partir de um ponto de referência. Em muitas cidades brasileiras, o número corresponde à distância em metros do início da via — a casa de número 340 está a 340 m do ponto zero daquela rua. Mas um número sozinho não basta: é preciso também saber o nome da rua, o bairro e a cidade. Um endereço completo é, na prática, um sistema de coordenadas em camadas que vai afunilando a localização do espaço de uma cidade inteira até um ponto específico.
+            O número de uma casa também é uma coordenada: ele localiza a construção ao longo de uma rua. Em muitas cidades brasileiras, esse número se aproxima da distância, em metros, até o início da via — uma casa de número 340 tende a estar perto de 340 m do ponto zero daquela rua. Mas o número sozinho não basta: é preciso saber a rua, o bairro e a cidade. Um endereço completo funciona como um sistema de localização em camadas, que vai reduzindo a ambiguidade até chegar a um ponto específico.
           </p>
         </div>
       </div>
@@ -226,10 +238,10 @@
         <div class="ex-header">🎬 Poltronas de cinema, estádios e edifícios</div>
         <div class="ex-body">
           <p>
-            Em uma sala de cinema, cada poltrona tem um código como <strong>D-12</strong>: a letra identifica a fileira (um eixo), o número identifica a posição dentro da fileira (o outro eixo). Dois valores para identificar um ponto num plano — um sistema <strong>bidimensional</strong>. Estádios de futebol fazem o mesmo com setor, fileira e assento.
+            Em uma sala de cinema, cada poltrona pode ter um código como <strong>D-12</strong>: a letra identifica a fileira, e o número identifica a posição dentro dessa fileira. Dois dados bastam para localizar um assento num plano — um sistema <strong>bidimensional</strong>. Estádios fazem algo parecido, combinando setor, fileira e assento.
           </p>
           <p>
-            Edifícios adicionam uma terceira dimensão: o andar. Um quarto de hotel "305" normalmente significa 3º andar, quarto 05 — três informações que localizam um ponto no espaço tridimensional do edifício.
+            Edifícios acrescentam uma terceira informação: o andar. Um quarto de hotel “305”, por exemplo, geralmente indica 3º andar, quarto 05. A localização deixa de depender apenas de “linha e coluna” no chão e passa a incluir também a altura.
           </p>
         </div>
       </div>
@@ -238,20 +250,23 @@
         <div class="ex-header">🛣️ Marcos quilométricos em rodovias</div>
         <div class="ex-body">
           <p>
-            Nas rodovias brasileiras, cada ponto da estrada tem um número: o marco quilométrico. "BR-101, km 250" identifica um ponto único naquela via — a 250 km do ponto inicial (km 0). Esse é um sistema de coordenadas <strong>unidimensional</strong>: basta um único número para localizar qualquer ponto ao longo da estrada. O km 0 é o referencial; o número crescente é o eixo.
+            Nas rodovias brasileiras, muitos pontos da estrada são identificados pelo marco quilométrico. “BR-101, km 250” indica uma posição ao longo daquela via: 250 km medidos a partir do km 0, no sentido crescente da quilometragem. Esse é um sistema de coordenadas <strong>unidimensional</strong>: uma única coordenada localiza o ponto ao longo da estrada, desde que a rodovia e o estado também estejam especificados.
           </p>
           <p>
-            Uma particularidade importante: a quilometragem <strong>reinicia a cada fronteira estadual</strong>. Ou seja, a BR-101 tem um km 1 em Santa Catarina, outro km 1 no Paraná, outro em São Paulo, e assim por diante. Por isso, para identificar um ponto sem ambiguidade, é necessário informar também o estado — "BR-101/SC km 45" e "BR-101/PR km 45" são pontos completamente diferentes. A coordenada sozinha não basta; o referencial completo inclui também a unidade federativa.
+            Uma particularidade importante é que a quilometragem <strong>reinicia a cada fronteira estadual</strong>. Por isso, a coordenada “km 45” não basta sozinha: é preciso informar também a rodovia e o estado. “BR-101/SC km 45” e “BR-101/PR km 45”, por exemplo, indicam posições diferentes, embora tenham o mesmo número quilométrico.
           </p>
         </div>
       </div>
 
-      <div class="highlight-box" style="background:#f0f7ff;border-left:4px solid #3b82f6;">
-        <span class="hb-icon">🗺️</span>
-        <div>
-          <p><strong>Curiosidade: como as rodovias federais brasileiras são numeradas</strong></p>
+      <div class="highlight-box curiosity-box" style="background:#f0f7ff;border-left:4px solid #3b82f6;">
+        <div class="curiosity-summary">
+          <span class="hb-icon">🗺️</span>
+          <span class="curiosity-title">Curiosidade: o número de uma BR também carrega informação espacial</span>
+          <button class="curiosity-toggle" type="button" aria-expanded="false" aria-controls="curiosidade-rodovias">Expandir</button>
+        </div>
+        <div class="curiosity-content" id="curiosidade-rodovias" hidden>
           <p>
-            O número de uma BR não é aleatório — ele segue um sistema definido pelo Plano Nacional de Viação (PNV) que indica a orientação geral da rodovia. O <strong>primeiro dígito</strong> revela a categoria:
+            O número de uma rodovia federal não é aleatório: ele segue uma lógica do Plano Nacional de Viação (PNV) e já dá pistas sobre a orientação geral da via. Em outras palavras, parte da localização está embutida no próprio código da rodovia.
           </p>
           <ul style="margin:0.5rem 0 0.5rem 1.2rem;line-height:2.1;">
             <li><strong>0</strong> — <strong>radiais</strong>: partem do anel rodoviário de Brasília em direção aos extremos do país, numeradas de 05 a 95 no sentido horário (BR-040, BR-050, BR-060, BR-070…)</li>
@@ -273,7 +288,7 @@
             A quilometragem <strong>reinicia a cada fronteira estadual</strong>. Uma mesma BR pode ter um km 100 em cada estado que atravessa — todos diferentes no espaço, mas com o mesmo número. Por isso, para identificar um ponto sem ambiguidade, é necessário indicar também o estado: "BR-101/SC km 100" e "BR-116/SP km 100" são localizações completamente distintas.
           </p>
           <p>
-            Alguns exemplos concretos:
+            Veja como essa lógica aparece em algumas rodovias conhecidas:
           </p>
           <ul style="margin:0.5rem 0 0.5rem 1.2rem;line-height:2.1;">
             <li><strong>BR-101</strong> — longitudinal, começa em Touros (RN) e percorre todo o litoral atlântico por cerca de 4 800 km até São José do Norte (RS), na fronteira com o Uruguai. Uma das mais longas do país.</li>
@@ -282,13 +297,13 @@
             <li><strong>BR-040</strong> — radial, parte de Brasília (km 0 no anel rodoviário do DF) e chega ao Rio de Janeiro após cerca de 1 200 km, sendo uma das principais ligações entre o planalto central e o litoral sudeste.</li>
           </ul>
           <p>
-            O sistema de numeração foi criado para que, a partir do número, qualquer pessoa possa ter uma ideia imediata sobre a orientação geral da rodovia — uma informação embutida na própria "coordenada" que identifica aquela via no mapa do país.
+            A ideia central é esta: um código de localização só faz sentido dentro de um sistema. O número da BR, o estado e o km formam juntos uma descrição muito mais precisa do que qualquer um deles isoladamente.
           </p>
         </div>
       </div>
 
       <p>
-        Em física, os sistemas de coordenadas mais comuns organizam o espaço com eixos perpendiculares entre si, partindo de uma origem. Nos problemas de cinemática deste texto, trabalharemos com um único eixo — uma reta numérica — porque os movimentos estudados acontecem em linha reta. A posição de um corpo nesse eixo é o tema da próxima seção.
+        Em Física, os sistemas de coordenadas mais comuns usam eixos perpendiculares entre si, todos partindo de uma mesma origem. Quando o movimento acontece numa linha reta, basta um único eixo: uma reta numérica com sentido positivo definido. É nesse eixo que vamos marcar a posição de um corpo na próxima seção.
       </p>
 
     </section>
@@ -298,54 +313,47 @@
       <h2><span class="sec-num">4</span> Posição</h2>
 
       <p>
-        A <strong>posição</strong> de um corpo é o conjunto de coordenadas que indica onde ele se encontra em relação à origem do sistema de referência adotado. O número de coordenadas necessárias depende de quantas dimensões o movimento ocupa:
+        A <strong>posição</strong> de um corpo indica onde ele está em relação à origem escolhida. Em outras palavras: depois de definir o referencial, a origem, os eixos e os sentidos positivos, a posição é o “endereço” do corpo nesse sistema. O número de coordenadas necessárias depende de quantas dimensões queremos descrever:
       </p>
 
-      <div class="concept-grid">
-        <div class="concept-card">
-          <span class="cc-icon">➡️</span>
-          <div class="cc-title">Uma dimensão (1D)</div>
-          <p class="cc-desc">Um único número basta. Exemplo: posição de um trem nos trilhos — s = +350 m indica 350 m à frente da origem.</p>
-        </div>
-        <div class="concept-card">
-          <span class="cc-icon">🗺️</span>
-          <div class="cc-title">Duas dimensões (2D)</div>
-          <p class="cc-desc">Dois números são necessários. Exemplo: posição de um navio no mar — <span class="vec">r</span> = (12 km, −5 km) em relação ao porto de partida.</p>
-        </div>
-        <div class="concept-card">
-          <span class="cc-icon">🛩️</span>
-          <div class="cc-title">Três dimensões (3D)</div>
-          <p class="cc-desc">Três números determinam o ponto no espaço. Exemplo: drone — <span class="vec">r</span> = (8 m, 3 m, 15 m) — dois eixos horizontais e um vertical (altitude).</p>
-        </div>
+      <p>
+        Quando buscamos analisar movimentos que ocorrem ao longo de uma linha, basta uma única informação para identificar a posição do corpo e consequentemente, uma dimensão (1D). Essa linha costuma ser reta em muitos problemas de cinemática, mas também pode ser uma trajetória curva descrita por uma coordenada ao longo do caminho, como a quilometragem de uma estrada. Se precisamos localizar um corpo num plano, usamos duas coordenadas (2D); se precisamos localizar um corpo no espaço, usamos três (3D).
+      </p>
+
+      <div class="position-visual-grid" aria-label="Exemplos visuais de posição em uma, duas e três dimensões">
+        <figure class="position-visual position-visual-1d">
+          <img src="../img/cinematica/trem_1d_posicao.png" alt="Trem sobre trilho retilíneo usado para representar posição em uma dimensão">
+          <figcaption><strong>1D:</strong> ao longo de uma linha, uma única coordenada localiza o corpo. Num trilho, por exemplo, s = +350 m indica uma posição 350 m a partir da origem, no sentido positivo do eixo.</figcaption>
+        </figure>
+
+        <figure class="position-visual position-visual-2d">
+          <img src="../img/cinematica/posicao_2d_navio_correta.png" alt="Vista aérea de uma praia com navio no mar usada para representar posição em duas dimensões">
+          <figcaption><strong>2D:</strong> no plano, duas coordenadas localizam o corpo. No exemplo, <span class="vec">r</span> = (12 km, 5 km) indica a posição do navio em relação ao porto usado como origem.</figcaption>
+        </figure>
+
+        <figure class="position-visual position-visual-3d">
+          <img src="../img/cinematica/posicao_3d_drone_nova.png" alt="Drone no ar acima de uma área de pouso usado para representar posição em três dimensões">
+          <figcaption><strong>3D:</strong> no espaço, três coordenadas localizam o corpo. No exemplo, <span class="vec">r</span> = (8 m, 3 m, 2 m) indica a posição do drone em relação ao ponto escolhido como origem.</figcaption>
+        </figure>
       </div>
 
       <p>
-        Para representar a posição matematicamente, usamos o <strong>vetor posição</strong>, indicado por <strong><span class="vec">r</span></strong>. Em uma dimensão, a posição é frequentemente escrita como <em>s</em> ou <em>x</em> e tratada como um número com sinal: positivo para um lado da origem, negativo para o outro. Em duas ou três dimensões, o vetor posição reúne todas as coordenadas num único objeto matemático:
+        Para representar a posição matematicamente, usamos o <strong>vetor posição</strong>, indicado por <strong><span class="vec">r</span></strong>. Em uma dimensão, é comum escrever a posição como <em>s</em> ou <em>x</em>: um número com sinal, positivo ou negativo conforme o sentido escolhido no eixo. Em duas ou três dimensões, o vetor posição reúne as coordenadas necessárias para localizar o corpo:
       </p>
 
       <div class="formula-box">
         <span class="formula-label">Vetor posição</span>
         <span class="formula-expr"><span class="vec">r</span> = (x, y) &nbsp;[2D] &nbsp;&nbsp;&nbsp; <span class="vec">r</span> = (x, y, z) &nbsp;[3D]</span>
         <span class="formula-legend">
-          <span>x, y, z são as coordenadas nos eixos do sistema de referência</span>
-          <span>Em 1D: s (ou x) — escalar com sinal (positivo ou negativo)</span>
-          <span>Unidade SI: metro (m)</span>
+          <span>x, y e z são as coordenadas medidas nos eixos do sistema escolhido</span>
+          <span>Em 1D, a posição costuma ser representada por uma única coordenada: s, x ou y</span>
         </span>
-      </div>
-
-      <div class="example-box">
-        <div class="ex-header">📋 Exemplos de posição</div>
-        <div class="ex-body">
-          <p><strong>1D — carro em rodovia:</strong> s = +350 m (350 m à frente da origem); s = −80 m (80 m atrás da origem). O sinal indica o sentido em relação ao ponto zero.</p>
-          <p><strong>2D — navio no mar:</strong> <span class="vec">r</span> = (12 km, −5 km). O navio está 12 km a leste e 5 km ao sul do porto de partida — origem do sistema.</p>
-          <p><strong>3D — drone:</strong> <span class="vec">r</span> = (8 m, 3 m, 15 m). Dois deslocamentos horizontais (eixos x e y) e uma altitude de 15 m em relação ao ponto de decolagem.</p>
-        </div>
       </div>
 
       <div class="highlight-box info">
         <span class="hb-icon">📌</span>
         <p>
-          A posição é sempre medida em relação à <strong>origem do referencial</strong>. Mudar a origem muda os valores das coordenadas — mas o corpo está no mesmo ponto do espaço. Em problemas do Ensino Médio, a origem é colocada onde for mais conveniente para simplificar os cálculos.
+          A posição é sempre medida em relação à <strong>origem do sistema de coordenadas</strong>. Mudar a origem muda os valores das coordenadas, mas não muda o ponto onde o corpo está. Em problemas de Física, escolher bem a origem pode simplificar os cálculos.
         </p>
       </div>
 
@@ -356,27 +364,91 @@
       <h2><span class="sec-num">5</span> Deslocamento</h2>
 
       <p>
-        O <strong>deslocamento</strong> é a variação de posição de um corpo: a diferença entre o vetor posição final e o vetor posição inicial. É sempre um vetor — aponta do ponto de partida direto ao ponto de chegada, em linha reta, independentemente do caminho percorrido entre os dois.
+        O <strong>deslocamento</strong> mede a mudança de posição de um corpo. Ele compara apenas duas informações: onde o corpo estava no início e onde está no final. Por isso, o deslocamento é representado por um vetor que aponta da posição inicial para a posição final, independentemente do caminho percorrido entre elas.
       </p>
 
       <div class="formula-box">
         <span class="formula-label">Deslocamento</span>
-        <span class="formula-expr"><span class="vec">Δr</span> = <span class="vec">r</span> − <span class="vec">r</span>₀</span>
         <span class="formula-legend">
-          <span>Em 1D: Δs = s − s₀ &nbsp; (escalar com sinal — positivo ou negativo)</span>
-          <span>Em 2D: <span class="vec">Δr</span> = (x − x₀ , y − y₀) = (Δx , Δy)</span>
-          <span>Módulo em 2D: |<span class="vec">Δr</span>| = √(Δx² + Δy²) &nbsp; (Teorema de Pitágoras)</span>
-          <span>Módulo em 3D: |<span class="vec">Δr</span>| = √(Δx² + Δy² + Δz²)</span>
+          <span>Deslocamento = posição final − posição inicial</span>
         </span>
+        <span class="formula-expr">\( \Delta \vec{r} = \vec{r} - \vec{r}_0 \)</span>
       </div>
 
-      <div class="example-box">
-        <div class="ex-header">📋 Exemplo em 2D — o triângulo 3-4-5</div>
-        <div class="ex-body">
-          <p>Uma bola sai da posição <span class="vec">r</span>₀ = (2 m, 1 m) e chega a <span class="vec">r</span> = (5 m, 5 m), seguindo qualquer trajetória entre os dois pontos.</p>
-          <p>Δx = 5 − 2 = <strong>3 m</strong> &nbsp;&nbsp;&nbsp; Δy = 5 − 1 = <strong>4 m</strong></p>
-          <p>|<span class="vec">Δr</span>| = √(3² + 4²) = √(9 + 16) = √25 = <strong>5 m</strong></p>
-          <p>O módulo do deslocamento é 5 m — seja qual for o caminho percorrido entre os dois pontos.</p>
+      <p>
+        Em <strong>uma dimensão</strong>, o deslocamento é calculado pela diferença entre a coordenada final e a coordenada inicial. O sinal do resultado indica o sentido do deslocamento em relação ao eixo escolhido.
+      </p>
+
+      <div class="formula-box formula-inline">
+        <span class="formula-label">Deslocamento em 1D</span>
+        <span class="formula-expr">\( \Delta s = s - s_0 \)</span>
+      </div>
+
+      <p>
+        Mesmo que o corpo vá e volte durante o movimento, o deslocamento não soma todos os trechos percorridos. Ele liga apenas a <strong>posição inicial</strong> à <strong>posição final</strong>. Por isso, dois movimentos muito diferentes podem ter o mesmo deslocamento — e um corpo pode se mover bastante e terminar com deslocamento pequeno, ou até nulo.
+      </p>
+
+      <div class="displacement-1d-grid" aria-label="Três situações de deslocamento em uma dimensão">
+        <div class="displacement-1d-card">
+          <div class="displacement-title">Vai, volta um pouco</div>
+          <div class="line-diagram path-back">
+            <span class="axis-line"></span>
+            <span class="axis-arrow"></span>
+            <span class="tick tick-zero"></span>
+            <span class="tick tick-start"></span>
+            <span class="tick tick-far"></span>
+            <span class="tick tick-end"></span>
+            <span class="dot dot-start"></span>
+            <span class="dot dot-far"></span>
+            <span class="dot dot-end"></span>
+            <span class="motion-arrow motion-arrow-forward"></span>
+            <span class="motion-arrow motion-arrow-back"></span>
+            <span class="delta-arrow delta-positive"></span>
+            <span class="diagram-label zero-label">0</span>
+            <span class="diagram-label start-label">s₀</span>
+            <span class="diagram-label far-label">ida</span>
+            <span class="diagram-label end-label">s</span>
+            <span class="diagram-label delta-label">Δs = s − s₀</span>
+          </div>
+          <p>A trajetória teve ida e volta, mas o deslocamento considera só do início ao fim.</p>
+        </div>
+
+        <div class="displacement-1d-card">
+          <div class="displacement-title">Deslocamento positivo</div>
+          <div class="line-diagram positive-move">
+            <span class="axis-line"></span>
+            <span class="axis-arrow"></span>
+            <span class="tick tick-zero"></span>
+            <span class="tick tick-start"></span>
+            <span class="tick tick-end"></span>
+            <span class="dot dot-start"></span>
+            <span class="dot dot-end"></span>
+            <span class="delta-arrow delta-positive"></span>
+            <span class="diagram-label zero-label">0</span>
+            <span class="diagram-label start-label">s₀</span>
+            <span class="diagram-label end-label">s</span>
+            <span class="diagram-label delta-label">Δs &gt; 0</span>
+          </div>
+          <p>A posição final está no sentido positivo em relação à posição inicial.</p>
+        </div>
+
+        <div class="displacement-1d-card">
+          <div class="displacement-title">Deslocamento negativo</div>
+          <div class="line-diagram negative-move">
+            <span class="axis-line"></span>
+            <span class="axis-arrow"></span>
+            <span class="tick tick-zero"></span>
+            <span class="tick tick-start"></span>
+            <span class="tick tick-end"></span>
+            <span class="dot dot-start"></span>
+            <span class="dot dot-end"></span>
+            <span class="delta-arrow delta-negative"></span>
+            <span class="diagram-label zero-label">0</span>
+            <span class="diagram-label start-label">s₀</span>
+            <span class="diagram-label end-label">s</span>
+            <span class="diagram-label delta-label">Δs &lt; 0</span>
+          </div>
+          <p>A posição final está no sentido negativo em relação à posição inicial.</p>
         </div>
       </div>
 
@@ -384,8 +456,75 @@
         <div class="ex-header">📋 Exemplo em 1D — atleta na pista</div>
         <div class="ex-body">
           <p>Um atleta parte de s₀ = 10 m e chega a s = 70 m.</p>
-          <p>Δs = 70 − 10 = <strong>+60 m</strong> (sentido positivo).</p>
-          <p>Se ele voltar para s = 30 m, o deslocamento <em>total</em> em relação à posição inicial é: Δs = 30 − 10 = <strong>+20 m</strong> — mesmo que tenha corrido 60 + 40 = 100 m no total.</p>
+          <p class="equation-line">\( \Delta s = 70 - 10 = +60\,\text{m} \)</p>
+          <p>O sinal positivo indica deslocamento no sentido positivo do eixo.</p>
+          <p>Se ele voltar para s = 30 m, o deslocamento total em relação à posição inicial será:</p>
+          <p class="equation-line">\( \Delta s = 30 - 10 = +20\,\text{m} \)</p>
+          <p>Isso acontece mesmo que ele tenha corrido 60 + 40 = 100 m no total.</p>
+        </div>
+      </div>
+
+      <p>
+        Em <strong>duas dimensões</strong>, fazemos a mesma comparação em cada eixo. O vetor deslocamento reúne essas componentes, e seu módulo pode ser calculado pelo Teorema de Pitágoras:
+      </p>
+
+      <p class="equation-line">\( \Delta \vec{r} = (x - x_0,\; y - y_0) = (\Delta x,\; \Delta y) \)</p>
+      <p class="equation-line">\( |\Delta \vec{r}| = \sqrt{\Delta x^2 + \Delta y^2} \)</p>
+
+      <div class="displacement-2d-card" aria-label="Diagrama de deslocamento em duas dimensões">
+        <div class="displacement-title">Deslocamento em 2D</div>
+        <div class="plane-diagram">
+          <span class="grid-line x-grid-1"></span>
+          <span class="grid-line x-grid-2"></span>
+          <span class="grid-line x-grid-3"></span>
+          <span class="grid-line y-grid-1"></span>
+          <span class="grid-line y-grid-2"></span>
+          <span class="grid-line y-grid-3"></span>
+          <span class="plane-axis x-axis"></span>
+          <span class="plane-axis y-axis"></span>
+          <span class="axis-arrow x-arrow"></span>
+          <span class="axis-arrow y-arrow"></span>
+          <span class="component component-x"></span>
+          <span class="component component-y"></span>
+          <span class="projection projection-start-x"></span>
+          <span class="projection projection-start-y"></span>
+          <span class="projection projection-end-x"></span>
+          <span class="projection projection-end-y"></span>
+          <span class="displacement-vector"></span>
+          <span class="point point-start"></span>
+          <span class="point point-end"></span>
+          <span class="plane-label origin-label">O</span>
+          <span class="plane-label x-label">x</span>
+          <span class="plane-label y-label">y</span>
+          <span class="plane-label start-label"><span class="vec">r</span>₀</span>
+          <span class="plane-label end-label"><span class="vec">r</span></span>
+          <span class="plane-label x0-label">x₀ = 2 m</span>
+          <span class="plane-label y0-label">y₀ = 1 m</span>
+          <span class="plane-label x-end-label">x = 5 m</span>
+          <span class="plane-label y-end-label">y = 5 m</span>
+          <span class="plane-label dx-label">Δx = 3 m</span>
+          <span class="plane-label dy-label">Δy = 4 m</span>
+          <span class="plane-label vector-label"><span class="vec">Δr</span></span>
+        </div>
+        <div class="plane-calculation">
+          <p class="equation-line">\( \Delta \vec{r} = (\Delta x,\; \Delta y) = (3\,\text{m},\;4\,\text{m}) \)</p>
+          <p class="equation-line">\( |\Delta \vec{r}| = \sqrt{\Delta x^2 + \Delta y^2} = \sqrt{3^2 + 4^2} = 5\,\text{m} \)</p>
+        </div>
+      </div>
+
+      <p>
+        Em <strong>três dimensões</strong>, a ideia é a mesma: comparamos as coordenadas inicial e final nos três eixos, obtendo Δx, Δy e Δz.
+      </p>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo em 2D — o triângulo 3-4-5</div>
+        <div class="ex-body">
+          <p>Uma bola sai da posição <span class="vec">r</span>₀ = (2 m, 1 m) e chega a <span class="vec">r</span> = (5 m, 5 m), seguindo qualquer trajetória entre os dois pontos.</p>
+          <p class="equation-line">\( \Delta x = 5 - 2 = 3\,\text{m} \)</p>
+          <p class="equation-line">\( \Delta y = 5 - 1 = 4\,\text{m} \)</p>
+          <p class="equation-line">\( \Delta \vec{r} = (3\,\text{m},\;4\,\text{m}) \)</p>
+          <p class="equation-line">\( |\Delta \vec{r}| = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5\,\text{m} \)</p>
+          <p>O módulo do deslocamento é 5 m — seja qual for o caminho percorrido entre os dois pontos.</p>
         </div>
       </div>
 
@@ -413,11 +552,13 @@
       <div class="example-box">
         <div class="ex-header">📋 Três situações, mesma partida e destino</div>
         <div class="ex-body">
-          <p><strong>De A = (0, 0) a B = (3 m, 4 m):</strong> o módulo do deslocamento é sempre |<span class="vec">Δr</span>| = √(3² + 4²) = <strong>5 m</strong>, independentemente do caminho.</p>
-          <br>
-          <p><strong>Caminho 1 — linha reta A → B:</strong> distância percorrida = 5 m. Aqui distância e módulo do deslocamento coincidem.</p>
-          <p><strong>Caminho 2 — em L (via C = (3 m, 0)):</strong> distância percorrida = 3 + 4 = <strong>7 m</strong>. Deslocamento ainda é 5 m.</p>
-          <p><strong>Caminho 3 — ida até B e volta a A:</strong> distância percorrida = 10 m. Deslocamento = <strong>0</strong> (voltou à origem).</p>
+          <p>A figura mostra uma esfera que parte do ponto A e chega ao ponto B por três rotas distintas. Como o ponto de partida e o ponto de chegada são os mesmos nos três casos, o deslocamento resultante é idêntico — independentemente do caminho percorrido.</p>
+          <img src="../img/cinematica/distancia-deslocamento-plano.svg"
+               alt="Três caminhos entre A e B no plano cartesiano: linha reta (azul), percurso em L (laranja) e trajetória curva em S (verde)"
+               style="display:block; width:100%; max-width:480px; margin:0.8rem auto 1.2rem; border-radius:8px;">
+          <p>Pelo <strong>caminho 1</strong> (azul), a esfera seguiu em linha reta — o percurso mais curto possível entre dois pontos. Por isso, a distância percorrida coincidiu exatamente com o módulo do deslocamento: <strong>5 m</strong>.</p>
+          <p>Pelo <strong>caminho 2</strong> (laranja), a esfera foi em linha reta de A até C e depois de C até B, formando um percurso em L. Ao contornar esse canto, acumulou 3 m + 4 m = <strong>7 m</strong> de distância — mais do que os 5 m do deslocamento.</p>
+          <p>Pelo <strong>caminho 3</strong> (verde), a esfera descreveu uma trajetória curva e sinuosa. A distância percorrida correspondeu ao comprimento total dessa curva — certamente maior que 5 m —, mas como o ponto de chegada é o mesmo, o deslocamento não se altera.</p>
         </div>
       </div>
 
@@ -465,187 +606,60 @@
 
     </section>
 
-    <!-- SEÇÃO 7: Velocidade média -->
+    <!-- SEÇÃO 7: Simulador de posição e deslocamento 2D -->
     <section class="content-section" id="s7">
-      <h2><span class="sec-num">7</span> Velocidade média</h2>
-
-      <p>
-        A <strong>velocidade média</strong> relaciona o deslocamento com o intervalo de tempo em que ele ocorreu. Como o deslocamento é um vetor, a velocidade média também é um vetor — aponta na mesma direção e sentido do deslocamento.
-      </p>
-
-      <div class="formula-box">
-        <span class="formula-label">Velocidade média (vetorial)</span>
-        <span class="formula-expr"><span class="vec">v</span><sub>m</sub> = <span class="vec">Δr</span> / Δt</span>
-        <span class="formula-legend">
-          <span>Em 2D: <span class="vec">v</span><sub>m</sub> = (Δx/Δt , Δy/Δt) = (v<sub>mx</sub> , v<sub>my</sub>)</span>
-          <span>Módulo: |<span class="vec">v</span><sub>m</sub>| = |<span class="vec">Δr</span>| / Δt = √(v<sub>mx</sub>² + v<sub>my</sub>²)</span>
-          <span>Em 1D: v<sub>m</sub> = Δs / Δt &nbsp; (escalar com sinal)</span>
-          <span>Unidade SI: metro por segundo (m/s)</span>
-        </span>
-      </div>
-
-      <div class="example-box">
-        <div class="ex-header">📋 Exemplo em 2D — navio</div>
-        <div class="ex-body">
-          <p>Um navio sai de <span class="vec">r</span>₀ = (0, 0) e chega a <span class="vec">r</span> = (60 km, 80 km) em 5 horas.</p>
-          <p><span class="vec">Δr</span> = (60 km, 80 km) &nbsp;&nbsp; |<span class="vec">Δr</span>| = √(60² + 80²) = √10 000 = <strong>100 km</strong></p>
-          <p>v<sub>mx</sub> = 60 / 5 = <strong>12 km/h</strong> &nbsp;&nbsp;&nbsp; v<sub>my</sub> = 80 / 5 = <strong>16 km/h</strong></p>
-          <p>|<span class="vec">v</span><sub>m</sub>| = 100 / 5 = <strong>20 km/h</strong> &nbsp; [verificação: √(12² + 16²) = √400 = 20 km/h ✓]</p>
-        </div>
-      </div>
-
-      <div class="example-box">
-        <div class="ex-header">📋 Exemplo em 1D — ônibus</div>
-        <div class="ex-body">
-          <p>Um ônibus parte da posição s₀ = 0 e chega a s = 12 000 m em Δt = 600 s (10 min).</p>
-          <p>v<sub>m</sub> = Δs / Δt = 12 000 / 600 = <strong>20 m/s</strong> = 72 km/h</p>
-        </div>
-      </div>
-
-      <p>
-        A <strong>rapidez média</strong> usa a distância percorrida — não o deslocamento — e é sempre positiva. É o que o velocímetro do carro registra a cada instante:
-      </p>
-
-      <div class="formula-box">
-        <span class="formula-label">Rapidez média</span>
-        <span class="formula-expr">v̄ = d / Δt</span>
-        <span class="formula-legend">
-          <span>d = distância percorrida (m)</span>
-          <span>Δt = intervalo de tempo (s)</span>
-          <span>v̄ ≥ |<span class="vec">v</span><sub>m</sub>| — a rapidez média nunca é menor que o módulo da velocidade média</span>
-        </span>
-      </div>
-
-      <p>
-        A unidade SI de velocidade é o <strong>metro por segundo (m/s)</strong>. No cotidiano, usamos também o quilômetro por hora (km/h). Para converter:
-      </p>
-
-      <div class="formula-row">
-        <div class="formula-box">
-          <span class="formula-label">De km/h para m/s</span>
-          <span class="formula-expr">÷ 3,6</span>
-          <span class="formula-legend"><span>Ex: 90 km/h ÷ 3,6 = 25 m/s</span></span>
-        </div>
-        <div class="formula-box">
-          <span class="formula-label">De m/s para km/h</span>
-          <span class="formula-expr">× 3,6</span>
-          <span class="formula-legend"><span>Ex: 25 m/s × 3,6 = 90 km/h</span></span>
-        </div>
-      </div>
-
-      <div class="highlight-box">
-        <span class="hb-icon">⚠️</span>
-        <p>
-          Se um corpo percorre um circuito fechado e retorna ao ponto de partida, o deslocamento é zero — portanto a <strong>velocidade média vetorial também é zero</strong>, independentemente da distância percorrida ou do tempo gasto. A rapidez média, por usar a distância percorrida, não é zero. Um carro de Fórmula 1 que completa uma volta tem velocidade média zero, mas rapidez média de ~200 km/h.
-        </p>
-      </div>
-
-      <!-- CALCULADORA 2D -->
-      <div class="calc-box">
-        <h4>🧮 Calculadora de Velocidade Média (2D)</h4>
-        <div class="calc-grid">
-          <div class="calc-field">
-            <label>x₀ (m)</label>
-            <input type="number" id="vm-x0" placeholder="ex: 0">
-          </div>
-          <div class="calc-field">
-            <label>x (m)</label>
-            <input type="number" id="vm-x" placeholder="ex: 30">
-          </div>
-          <div class="calc-field">
-            <label>y₀ (m)</label>
-            <input type="number" id="vm-y0" placeholder="ex: 0">
-          </div>
-          <div class="calc-field">
-            <label>y (m)</label>
-            <input type="number" id="vm-y" placeholder="ex: 40">
-          </div>
-          <div class="calc-field">
-            <label>Tempo inicial t₀ (s)</label>
-            <input type="number" id="vm-t0" placeholder="ex: 0">
-          </div>
-          <div class="calc-field">
-            <label>Tempo final t (s)</label>
-            <input type="number" id="vm-t" placeholder="ex: 5">
-          </div>
-        </div>
-        <button class="calc-btn" onclick="calcVm()">Calcular velocidade média</button>
-        <div class="calc-result" id="vm-result"></div>
-      </div>
-
-      <div class="daily-grid">
-        <div class="daily-card">
-          <span class="dc-icon">🏎️</span>
-          <div class="dc-title">Fórmula 1</div>
-          <p class="dc-desc">Rapidez média por volta: ~200 km/h (≈ 55,6 m/s). Velocidade média vetorial de uma volta completa: zero.</p>
-        </div>
-        <div class="daily-card">
-          <span class="dc-icon">✈️</span>
-          <div class="dc-title">Avião comercial</div>
-          <p class="dc-desc">Cruzeiro a ~900 km/h (250 m/s). Em voo direto, rapidez e módulo da velocidade média são próximos.</p>
-        </div>
-        <div class="daily-card">
-          <span class="dc-icon">🚶</span>
-          <div class="dc-title">Pedestre</div>
-          <p class="dc-desc">Caminhada: ~5 km/h (1,4 m/s). Numa rua reta, as duas medidas praticamente coincidem.</p>
-        </div>
-        <div class="daily-card">
-          <span class="dc-icon">🐆</span>
-          <div class="dc-title">Guepardo</div>
-          <p class="dc-desc">Até 110 km/h (30,6 m/s). Caçadas são curvilíneas — rapidez média supera o módulo da velocidade média.</p>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- SEÇÃO 8: Simulador de posição e deslocamento 2D -->
-    <section class="content-section" id="s8">
-      <h2><span class="sec-num">8</span> Simulador: posição e deslocamento em 2D</h2>
-
-      <p>
-        Use o simulador abaixo para visualizar como as posições inicial e final determinam o vetor deslocamento em duas dimensões. Ajuste os controles para mover os pontos pelo plano cartesiano e observe as componentes Δx, Δy e o módulo |<span class="vec">Δr</span>|.
-      </p>
+      <h2><span class="sec-num">7</span> Simulador: posição e deslocamento em 2D</h2>
 
       <div class="graph-box">
         <h4>📍 Plano cartesiano: posição e deslocamento</h4>
-        <canvas id="planoCanvas" width="560" height="480" style="max-width:100%;"></canvas>
+        <p class="graph-desc">Controle as posições inicial e final do objeto, determinando seu vetor deslocamento em cada situação.</p>
+        <canvas id="planoCanvas" width="560" height="480"></canvas>
         <div class="graph-controls" style="margin-top:1rem;">
-          <div class="slider-row">
-            <label>x₀ = <span id="x0-val">−3</span> m</label>
-            <input type="range" id="x0-slider" min="-8" max="8" value="-3" step="0.5">
+          <div class="sim-group">
+            <div class="sim-group-label">Posição inicial - r₀</div>
+            <div class="slider-row">
+              <label>x₀ = <span id="x0-val">−3</span> m</label>
+              <input type="range" id="x0-slider" min="-10" max="10" value="-3" step="0.5">
+            </div>
+            <div class="slider-row">
+              <label>y₀ = <span id="y0-val">0</span> m</label>
+              <input type="range" id="y0-slider" min="-10" max="10" value="0" step="0.5">
+            </div>
           </div>
-          <div class="slider-row">
-            <label>y₀ = <span id="y0-val">0</span> m</label>
-            <input type="range" id="y0-slider" min="-8" max="8" value="0" step="0.5">
-          </div>
-          <div class="slider-row">
-            <label>x = <span id="xf-val">1</span> m</label>
-            <input type="range" id="xf-slider" min="-8" max="8" value="1" step="0.5">
-          </div>
-          <div class="slider-row">
-            <label>y = <span id="yf-val">3</span> m</label>
-            <input type="range" id="yf-slider" min="-8" max="8" value="3" step="0.5">
+          <div class="sim-group">
+            <div class="sim-group-label">Posição final - r</div>
+            <div class="slider-row">
+              <label>x = <span id="xf-val">1</span> m</label>
+              <input type="range" id="xf-slider" min="-10" max="10" value="1" step="0.5">
+            </div>
+            <div class="slider-row">
+              <label>y = <span id="yf-val">3</span> m</label>
+              <input type="range" id="yf-slider" min="-10" max="10" value="3" step="0.5">
+            </div>
           </div>
         </div>
-        <div id="sim-output" style="margin-top:0.8rem; font-weight:700; color:#1e2a78; font-size:1rem; text-align:center;"></div>
+        <div id="sim-output" class="sim-output-box"></div>
       </div>
 
     </section>
 
-    <!-- SEÇÃO 9: Resumo -->
-    <section class="content-section" id="s9">
-      <h2><span class="sec-num">9</span> Resumo</h2>
+    <!-- SEÇÃO 8: Resumo -->
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Resumo</h2>
 
       <div class="summary-box">
         <h3>O que você aprendeu</h3>
         <ul>
-          <li>Movimento é a variação de posição em relação a um referencial com o tempo — conceito sempre relativo.</li>
-          <li>O referencial é o ponto escolhido como "fixo" — sua escolha é arbitrária e conveniente.</li>
-          <li>A posição (<span class="vec">r</span>) é o vetor que indica onde o corpo está: em 1D usa-se s ou x; em 2D, (x, y); em 3D, (x, y, z).</li>
-          <li>O deslocamento (<span class="vec">Δr</span> = <span class="vec">r</span> − <span class="vec">r</span>₀) é um vetor do ponto inicial ao final. Módulo em 2D: |<span class="vec">Δr</span>| = √(Δx² + Δy²).</li>
-          <li>A distância percorrida é o comprimento total do caminho; sempre positiva e ≥ |<span class="vec">Δr</span>|.</li>
-          <li>A velocidade média (<span class="vec">v</span><sub>m</sub> = <span class="vec">Δr</span>/Δt) é vetorial; em 2D tem componentes v<sub>mx</sub> = Δx/Δt e v<sub>my</sub> = Δy/Δt.</li>
-          <li>A rapidez média usa a distância percorrida (v̄ = d/Δt) e é sempre ≥ |<span class="vec">v</span><sub>m</sub>|.</li>
+          <li>Um corpo está em movimento quando sua posição varia com o tempo em relação a um referencial escolhido. Movimento e repouso são sempre conceitos relativos.</li>
+          <li>O referencial é o corpo ou ponto adotado como fixo para realizar as medidas. Sua escolha é livre e deve ser a mais conveniente para o problema.</li>
+          <li>O vetor posição \(\vec{r}\) indica onde o corpo se encontra em relação à origem do referencial. Em uma dimensão usa-se uma única coordenada; em duas dimensões, o par \((x,\,y)\); em três dimensões, a tripla \((x,\,y,\,z)\).</li>
+          <li>
+            O deslocamento é o vetor que aponta da posição inicial até a posição final do corpo:
+            <p class="equation-line">\( \Delta\vec{r} = \vec{r} - \vec{r}_0 \)</p>
+            Em duas dimensões, seu módulo é dado por:
+            <p class="equation-line">\( |\Delta\vec{r}| = \sqrt{\Delta x^2 + \Delta y^2} \)</p>
+          </li>
+          <li>A distância percorrida é o comprimento total do caminho seguido. Ela é sempre positiva e nunca inferior ao módulo do deslocamento.</li>
         </ul>
       </div>
 
@@ -665,188 +679,7 @@
 </footer>
 
 <!-- SCRIPTS -->
-<script>
-(function() {
-  /* Calculadora de velocidade média 2D */
-  window.calcVm = function() {
-    const x0 = parseFloat(document.getElementById('vm-x0').value);
-    const x  = parseFloat(document.getElementById('vm-x').value);
-    const y0 = parseFloat(document.getElementById('vm-y0').value);
-    const y  = parseFloat(document.getElementById('vm-y').value);
-    const t0 = parseFloat(document.getElementById('vm-t0').value);
-    const t  = parseFloat(document.getElementById('vm-t').value);
-    const res = document.getElementById('vm-result');
-
-    if ([x0, x, y0, y, t0, t].some(isNaN)) {
-      res.className = 'calc-result erro';
-      res.textContent = 'Preencha todos os campos com valores numéricos.';
-      return;
-    }
-    const dt = t - t0;
-    if (dt === 0) {
-      res.className = 'calc-result erro';
-      res.textContent = 'Intervalo de tempo não pode ser zero.';
-      return;
-    }
-    const dx  = x - x0;
-    const dy  = y - y0;
-    const mag = Math.sqrt(dx * dx + dy * dy);
-    const vmx = dx / dt;
-    const vmy = dy / dt;
-    const vm  = mag / dt;
-    res.className = 'calc-result ok';
-    res.innerHTML =
-      '<span class="vec">Δr</span> = (' + dx.toFixed(2) + ', ' + dy.toFixed(2) + ') m &nbsp;|&nbsp; |<span class="vec">Δr</span>| = ' + mag.toFixed(2) + ' m<br>' +
-      'Δt = ' + dt.toFixed(2) + ' s<br>' +
-      '<span class="vec">v</span><sub>m</sub> = (' + vmx.toFixed(3) + ', ' + vmy.toFixed(3) + ') m/s &nbsp;|&nbsp; |<span class="vec">v</span><sub>m</sub>| = ' + vm.toFixed(3) + ' m/s ≈ ' + (vm * 3.6).toFixed(2) + ' km/h';
-  };
-
-  /* Simulador 2D — plano cartesiano */
-  const canvas = document.getElementById('planoCanvas');
-  if (!canvas) return;
-  const ctx    = canvas.getContext('2d');
-  const x0Sl   = document.getElementById('x0-slider');
-  const y0Sl   = document.getElementById('y0-slider');
-  const xfSl   = document.getElementById('xf-slider');
-  const yfSl   = document.getElementById('yf-slider');
-  const x0Lbl  = document.getElementById('x0-val');
-  const y0Lbl  = document.getElementById('y0-val');
-  const xfLbl  = document.getElementById('xf-val');
-  const yfLbl  = document.getElementById('yf-val');
-  const output = document.getElementById('sim-output');
-
-  function drawPlano() {
-    const sx0 = parseFloat(x0Sl.value);
-    const sy0 = parseFloat(y0Sl.value);
-    const sxf = parseFloat(xfSl.value);
-    const syf = parseFloat(yfSl.value);
-
-    x0Lbl.textContent = sx0;
-    y0Lbl.textContent = sy0;
-    xfLbl.textContent = sxf;
-    yfLbl.textContent = syf;
-
-    const W = canvas.width, H = canvas.height;
-    const cx = W / 2, cy = H / 2;
-    const range = 8;
-    const scale = Math.floor(Math.min((W - 80) / (2 * range), (H - 80) / (2 * range)));
-
-    ctx.clearRect(0, 0, W, H);
-
-    /* Grade */
-    for (let i = -range; i <= range; i++) {
-      const xC = cx + i * scale;
-      const yC = cy - i * scale;
-      ctx.strokeStyle = i === 0 ? '#94a3b8' : '#e2e8f0';
-      ctx.lineWidth   = i === 0 ? 2 : 1;
-      ctx.beginPath(); ctx.moveTo(xC, cy - range * scale - 10); ctx.lineTo(xC, cy + range * scale + 10); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(cx - range * scale - 10, yC); ctx.lineTo(cx + range * scale + 10, yC); ctx.stroke();
-    }
-
-    /* Rótulos dos eixos */
-    ctx.fillStyle = '#64748b';
-    ctx.font = '11px Poppins, sans-serif';
-    for (let i = -range; i <= range; i += 2) {
-      if (i === 0) continue;
-      ctx.textAlign = 'center';
-      ctx.fillText(i, cx + i * scale, cy + range * scale + 22);
-      ctx.textAlign = 'right';
-      ctx.fillText(i, cx - range * scale - 14, cy - i * scale + 4);
-    }
-    ctx.textAlign = 'right';
-    ctx.fillText('0', cx - range * scale - 14, cy + 14);
-    ctx.fillStyle = '#1e2a78';
-    ctx.font = 'bold 12px Poppins, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText('x (m)', cx + range * scale + 22, cy - 10);
-    ctx.textAlign = 'left';
-    ctx.fillText('y (m)', cx + 8, cy - range * scale - 14);
-
-    /* Posições em canvas */
-    const px0 = cx + sx0 * scale;
-    const py0 = cy - sy0 * scale;
-    const pxf = cx + sxf * scale;
-    const pyf = cy - syf * scale;
-    const dx  = sxf - sx0;
-    const dy  = syf - sy0;
-    const mag = Math.sqrt(dx * dx + dy * dy);
-
-    if (mag > 0.05) {
-      /* Linhas tracejadas das componentes */
-      ctx.setLineDash([5, 4]);
-      ctx.strokeStyle = '#94a3b8';
-      ctx.lineWidth   = 1.5;
-      ctx.beginPath(); ctx.moveTo(px0, py0); ctx.lineTo(pxf, py0); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(pxf, py0); ctx.lineTo(pxf, pyf); ctx.stroke();
-      ctx.setLineDash([]);
-
-      /* Rótulos das componentes */
-      ctx.fillStyle = '#64748b';
-      ctx.font = '11px Poppins, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('Δx = ' + dx.toFixed(1) + ' m', (px0 + pxf) / 2, py0 + (dy >= 0 ? -12 : 18));
-      ctx.textAlign = dx >= 0 ? 'left' : 'right';
-      ctx.fillText('Δy = ' + dy.toFixed(1) + ' m', pxf + (dx >= 0 ? 6 : -6), (py0 + pyf) / 2 + 4);
-
-      /* Seta de deslocamento */
-      const angle   = Math.atan2(pyf - py0, pxf - px0);
-      const headLen = 14;
-      ctx.strokeStyle = '#2f5bea';
-      ctx.lineWidth   = 3;
-      ctx.beginPath(); ctx.moveTo(px0, py0); ctx.lineTo(pxf, pyf); ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(pxf, pyf);
-      ctx.lineTo(pxf - headLen * Math.cos(angle - Math.PI / 6), pyf - headLen * Math.sin(angle - Math.PI / 6));
-      ctx.lineTo(pxf - headLen * Math.cos(angle + Math.PI / 6), pyf - headLen * Math.sin(angle + Math.PI / 6));
-      ctx.closePath();
-      ctx.fillStyle = '#2f5bea';
-      ctx.fill();
-    }
-
-    /* Ponto r₀ */
-    ctx.beginPath();
-    ctx.arc(px0, py0, 9, 0, Math.PI * 2);
-    ctx.fillStyle = '#22c55e';
-    ctx.fill();
-    ctx.fillStyle = '#15803d';
-    ctx.font = 'bold 12px Poppins, sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText('r₀', px0 - 18, py0 - 14);
-
-    /* Ponto r */
-    ctx.beginPath();
-    ctx.arc(pxf, pyf, 9, 0, Math.PI * 2);
-    ctx.fillStyle = '#f97316';
-    ctx.fill();
-    ctx.fillStyle = '#c2410c';
-    ctx.fillText('r', pxf + 18, pyf - 14);
-
-    /* Saída numérica */
-    const fmt = v => (v >= 0 ? '+' : '') + v.toFixed(2);
-    output.innerHTML =
-      '<span class="vec">Δr</span> = (' + fmt(dx) + ' m, ' + fmt(dy) + ' m) &nbsp; | &nbsp; |<span class="vec">Δr</span>| = ' + mag.toFixed(2) + ' m';
-  }
-
-  x0Sl.addEventListener('input', drawPlano);
-  y0Sl.addEventListener('input', drawPlano);
-  xfSl.addEventListener('input', drawPlano);
-  yfSl.addEventListener('input', drawPlano);
-  drawPlano();
-
-  /* Scroll ativo na TOC */
-  const sections = document.querySelectorAll('.content-section');
-  const tocLinks = document.querySelectorAll('.toc-list a');
-  window.addEventListener('scroll', function() {
-    let current = '';
-    sections.forEach(sec => {
-      if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
-    });
-    tocLinks.forEach(a => {
-      a.parentElement.classList.toggle('active', a.getAttribute('href') === '#' + current);
-    });
-  });
-})();
-</script>
+<script src="conceitos.js" defer></script>
 
 <!-- IMAGENS NECESSÁRIAS:
   1. cinematica/conceitos-relatividade-movimento.png

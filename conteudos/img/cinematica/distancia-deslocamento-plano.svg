@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 482" font-family="Arial, Helvetica, sans-serif">
+
+  <!-- Background -->
+  <rect width="500" height="482" fill="#f8f9ff" rx="10" stroke="#dbe4ff" stroke-width="1.5"/>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="ah1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#2563eb"/>
+    </marker>
+    <marker id="ah2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#ea580c"/>
+    </marker>
+    <marker id="ah3" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#16a34a"/>
+    </marker>
+  </defs>
+
+  <!-- Grid lines -->
+  <!-- Vertical: x=1→165, x=2→235, x=3→305, x=4→375  (origin x=95, scale=70) -->
+  <line x1="165" y1="60" x2="165" y2="355" stroke="#dde8f5" stroke-width="1"/>
+  <line x1="235" y1="60" x2="235" y2="355" stroke="#dde8f5" stroke-width="1"/>
+  <line x1="305" y1="60" x2="305" y2="355" stroke="#dde8f5" stroke-width="1"/>
+  <line x1="375" y1="60" x2="375" y2="355" stroke="#dde8f5" stroke-width="1"/>
+  <!-- Horizontal: y=1→285, y=2→215, y=3→145, y=4→75  (origin y=355, scale=70) -->
+  <line x1="95"  y1="285" x2="415" y2="285" stroke="#dde8f5" stroke-width="1"/>
+  <line x1="95"  y1="215" x2="415" y2="215" stroke="#dde8f5" stroke-width="1"/>
+  <line x1="95"  y1="145" x2="415" y2="145" stroke="#dde8f5" stroke-width="1"/>
+  <line x1="95"  y1="75"  x2="415" y2="75"  stroke="#dde8f5" stroke-width="1"/>
+
+  <!-- Axes -->
+  <line x1="72" y1="355" x2="420" y2="355" stroke="#475569" stroke-width="2"/>
+  <polygon points="420,350 420,360 430,355" fill="#475569"/>
+  <line x1="95" y1="378" x2="95" y2="50" stroke="#475569" stroke-width="2"/>
+  <polygon points="90,50 100,50 95,40" fill="#475569"/>
+  <text x="436" y="359" fill="#475569" font-size="12" font-weight="bold">x (m)</text>
+  <text x="100" y="36"  fill="#475569" font-size="12" font-weight="bold">y (m)</text>
+
+  <!-- Tick labels X -->
+  <text x="95"  y="372" text-anchor="middle" fill="#64748b" font-size="11">0</text>
+  <text x="165" y="372" text-anchor="middle" fill="#64748b" font-size="11">1</text>
+  <text x="235" y="372" text-anchor="middle" fill="#64748b" font-size="11">2</text>
+  <text x="305" y="372" text-anchor="middle" fill="#64748b" font-size="11">3</text>
+  <text x="375" y="372" text-anchor="middle" fill="#64748b" font-size="11">4</text>
+  <!-- Tick labels Y -->
+  <text x="82" y="289" text-anchor="end" fill="#64748b" font-size="11">1</text>
+  <text x="82" y="219" text-anchor="end" fill="#64748b" font-size="11">2</text>
+  <text x="82" y="149" text-anchor="end" fill="#64748b" font-size="11">3</text>
+  <text x="82" y="79"  text-anchor="end" fill="#64748b" font-size="11">4</text>
+
+  <!--
+    PATH 3: green dashed S-curve (bottom layer).
+    Cubic bezier A(95,355) → P1(350,340) → P2(130,100) → B(305,75).
+    P1 pulls the curve RIGHT along the bottom; P2 pulls it back LEFT near the top.
+    All control-point x-values ≥ 95, so the curve never crosses the Y-axis.
+    The two opposite pulls create a visible S-shape with two inflections.
+  -->
+  <path d="M 95,355 C 350,340 130,100 305,75"
+        fill="none" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="5,4"
+        marker-end="url(#ah3)"/>
+
+  <!-- PATH 2: orange L-shape dashed — A → C(3,0) → B -->
+  <polyline points="95,355 305,355 305,75"
+            fill="none" stroke="#ea580c" stroke-width="2.5" stroke-dasharray="8,4"
+            marker-end="url(#ah2)"/>
+  <!-- Corner point C -->
+  <circle cx="305" cy="355" r="4.5" fill="#ea580c" stroke="white" stroke-width="1.5"/>
+  <text x="310" y="370" fill="#ea580c" font-size="10.5">C (3, 0)</text>
+
+  <!-- PATH 1: blue straight line (top layer) -->
+  <line x1="95" y1="355" x2="305" y2="75"
+        stroke="#2563eb" stroke-width="2.5"
+        marker-end="url(#ah1)"/>
+
+  <!-- Ball at A (start, green) -->
+  <circle cx="95" cy="355" r="10" fill="#22c55e" stroke="#15803d" stroke-width="2"/>
+  <!-- Ball at B (end, orange) -->
+  <circle cx="305" cy="75" r="10" fill="#f97316" stroke="#c2410c" stroke-width="2"/>
+
+  <!-- Label A -->
+  <text x="76" y="348" text-anchor="end" fill="#166534" font-size="14" font-weight="bold">A</text>
+  <text x="76" y="363" text-anchor="end" fill="#166534" font-size="10">(0, 0)</text>
+
+  <!-- Label B -->
+  <text x="320" y="70" fill="#c2410c" font-size="14" font-weight="bold">B</text>
+  <text x="320" y="85" fill="#c2410c" font-size="10">(3 m, 4 m)</text>
+
+  <!-- LEGEND BOX (height increased so Caminho 3 text has breathing room) -->
+  <rect x="12" y="383" width="476" height="90" rx="7" fill="white" stroke="#dde8f5" stroke-width="1.5"/>
+
+  <!-- Caminho 1 -->
+  <line x1="24" y1="403" x2="48" y2="403" stroke="#2563eb" stroke-width="2.5"/>
+  <polygon points="48,399.5 48,406.5 56,403" fill="#2563eb"/>
+  <text x="62" y="407" fill="#1d4ed8" font-size="11" font-weight="bold">Caminho 1</text>
+  <text x="126" y="407" fill="#374151" font-size="11">distância = deslocamento = 5 m</text>
+
+  <!-- Caminho 2 -->
+  <line x1="24" y1="427" x2="48" y2="427" stroke="#ea580c" stroke-width="2.5" stroke-dasharray="8,4"/>
+  <polygon points="48,423.5 48,430.5 56,427" fill="#ea580c"/>
+  <text x="62" y="431" fill="#c2410c" font-size="11" font-weight="bold">Caminho 2</text>
+  <text x="126" y="431" fill="#374151" font-size="11">d = 7 m  |  deslocamento = 5 m</text>
+
+  <!-- Caminho 3 -->
+  <line x1="24" y1="451" x2="48" y2="451" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="5,4"/>
+  <polygon points="48,447.5 48,454.5 56,451" fill="#16a34a"/>
+  <text x="62" y="455" fill="#166534" font-size="11" font-weight="bold">Caminho 3</text>
+  <text x="126" y="455" fill="#374151" font-size="11">trajetória curva  (d &gt; 5 m  |  deslocamento = 5 m)</text>
+
+</svg>

@@ -266,6 +266,45 @@
   min-width: 200px;
 }
 
+/* ---- VISUAIS DE POSIÇÃO ---- */
+.position-visual-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+  margin: 1.4rem 0 1.6rem;
+}
+
+.position-visual {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  border: 1.5px solid #dbe4ff;
+  border-radius: 12px;
+  background: #f8f9ff;
+  box-shadow: 0 10px 24px rgba(30, 42, 120, 0.08);
+}
+
+.position-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.position-visual figcaption {
+  padding: 0.75rem 0.95rem 0.85rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #26326f;
+  background: #ffffff;
+}
+
+@media (min-width: 860px) {
+  .position-visual-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 /* ---- CAIXA DE DESTAQUE / DICA ---- */
 .highlight-box {
   background: #fffbeb;
@@ -290,6 +329,61 @@
   font-size: 0.97rem;
   color: #78350f;
   line-height: 1.6;
+}
+
+.highlight-box.curiosity-box {
+  display: block;
+}
+
+.curiosity-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.curiosity-title {
+  flex: 1;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  line-height: 1.4;
+}
+
+.curiosity-toggle {
+  border: 1px solid #93c5fd;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1e3a8a;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.45rem 0.7rem;
+  white-space: nowrap;
+}
+
+.curiosity-toggle:hover,
+.curiosity-toggle:focus-visible {
+  background: #dbeafe;
+  outline: none;
+}
+
+.curiosity-content {
+  margin-top: 0.85rem;
+  padding-left: 2.2rem;
+}
+
+.curiosity-content p,
+.curiosity-content li {
+  color: #1e3a8a;
+}
+
+.curiosity-content p + p,
+.curiosity-content p + ul,
+.curiosity-content ul + p,
+.curiosity-content ul + ul {
+  margin-top: 0.8rem;
 }
 
 .highlight-box.info {
@@ -342,6 +436,12 @@
 .example-box .ex-body p {
   margin-bottom: 0.6rem;
   font-size: 0.97rem;
+}
+
+.example-box .ex-body .equation-line {
+  color: #1e2a78;
+  font-weight: 700;
+  text-align: center;
 }
 
 .example-box .ex-result {
