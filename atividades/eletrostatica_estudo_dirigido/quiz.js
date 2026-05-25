@@ -277,6 +277,9 @@
 
   };
 
+  // Expõe banco de questões para geração de relatório
+  window.EletroQuizData = BANCO;
+
   /* ══════════════════════════════════════════════
      ESTADO GLOBAL
   ══════════════════════════════════════════════ */
@@ -350,7 +353,7 @@
 
         const qi = parseInt(qid.split('_q')[1]);
         mostrarFeedback(qid, acertou, questoes[qi].explicacao);
-        registrar(qid, acertou);
+        registrar(qid, acertou, { type: 'obj', chosenText: questoes[qi].opts[oi], correctText: questoes[qi].opts[certa] });
       });
     });
 
@@ -372,7 +375,7 @@
 
         const qi = parseInt(qid.split('_q')[1]);
         mostrarFeedback(qid, acertou, questoes[qi].explicacao);
-        registrar(qid, acertou);
+        registrar(qid, acertou, { type: 'num', chosenValue: val, correctValue: resp, unit: questoes[qi].unidade || '' });
       });
 
       // Enter
@@ -395,8 +398,8 @@
   /* ══════════════════════════════════════════════
      PLACAR
   ══════════════════════════════════════════════ */
-  function registrar(qid, acertou) {
-    window.EletroState.answered[qid] = { acertou };
+  function registrar(qid, acertou, extra) {
+    window.EletroState.answered[qid] = Object.assign({ acertou }, extra || {});
     if (acertou) window.EletroState.score++;
     updatePlacar();
   }

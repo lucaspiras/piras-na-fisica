@@ -405,7 +405,7 @@
         const q = questions[qIndex];
 
         showFeedback(qid, isRight, q.explanation);
-        registerAnswer(qid, isRight);
+        registerAnswer(qid, isRight, { type: 'objective', chosenText: q.options[oi], correctText: q.options[correct] });
       });
     });
 
@@ -433,7 +433,7 @@
         const q = questions[qIndex];
 
         showFeedback(qid, isRight, q.explanation);
-        registerAnswer(qid, isRight);
+        registerAnswer(qid, isRight, { type: 'numeric', chosenValue: val, correctValue: answer, unit: q.unit || '' });
       });
 
       // Enter na input
@@ -459,8 +459,8 @@
   // ================================================================
   // REGISTRO E PLACAR
   // ================================================================
-  function registerAnswer(qid, isRight) {
-    window.MRUQuizState.answered[qid] = { correct: isRight };
+  function registerAnswer(qid, isRight, extra) {
+    window.MRUQuizState.answered[qid] = Object.assign({ correct: isRight }, extra || {});
     if (isRight) window.MRUQuizState.score++;
     updateScoreDisplay();
   }

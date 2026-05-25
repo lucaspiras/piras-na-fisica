@@ -1120,6 +1120,47 @@ body {
 
 .reset-btn:hover { border-color: var(--minus); color: #e07070; }
 
+.report-name { margin-top: 18px; }
+
+.report-hint-e {
+  display: block;
+  color: rgba(255,255,255,.35);
+  font-family: var(--font-cond);
+  font-size: .7rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.name-input {
+  display: block; width: 100%; max-width: 260px; margin-top: 4px;
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15);
+  border-radius: var(--r); color: rgba(255,255,255,.8);
+  font-family: var(--font-body); font-size: .88rem;
+  padding: 9px 12px; outline: none; transition: border-color .2s;
+}
+.name-input:focus { border-color: var(--accent); }
+.name-input::placeholder { color: rgba(255,255,255,.25); }
+
+.report-actions-e { margin-top: 20px; }
+
+.report-btns-e { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+
+.report-btn-e {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.15);
+  color: rgba(255,255,255,.4);
+  font-family: var(--font-cond);
+  font-size: .72rem;
+  padding: 8px 14px;
+  border-radius: var(--r);
+  cursor: pointer;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  transition: border-color .2s, color .2s;
+}
+.report-btn-e:hover { border-color: var(--accent); color: var(--accent); }
+
 /* ══════════════════════════════════════
    FOOTER
 ══════════════════════════════════════ */

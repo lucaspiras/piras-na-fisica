@@ -360,7 +360,7 @@
 
         const q = questions[parseInt(qid.split('_q')[1])];
         showFeedback(qid, isRight, q.explanation);
-        registerAnswer(qid, isRight);
+        registerAnswer(qid, isRight, { type: 'objective', chosenText: q.options[oi], correctText: q.options[correct] });
       });
     });
 
@@ -382,7 +382,7 @@
 
         const q = questions[parseInt(qid.split('_q')[1])];
         showFeedback(qid, isRight, q.explanation);
-        registerAnswer(qid, isRight);
+        registerAnswer(qid, isRight, { type: 'numeric', chosenValue: val, correctValue: answer, unit: q.unit || '' });
       });
 
       const qid = btn.dataset.qid;
@@ -404,8 +404,8 @@
   // ================================================================
   // PLACAR
   // ================================================================
-  function registerAnswer(qid, isRight) {
-    window.MRUVQuizState.answered[qid] = { correct: isRight };
+  function registerAnswer(qid, isRight, extra) {
+    window.MRUVQuizState.answered[qid] = Object.assign({ correct: isRight }, extra || {});
     if (isRight) window.MRUVQuizState.score++;
     updateScoreDisplay();
   }

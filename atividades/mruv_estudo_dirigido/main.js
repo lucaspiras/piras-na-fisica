@@ -194,6 +194,7 @@
 
     const now = new Date();
     const dateStr = now.toLocaleDateString('pt-BR') + ' às ' + now.toLocaleTimeString('pt-BR');
+    const name = (document.getElementById('studentName') || {}).value || '';
 
     const lines = [
       '╔══════════════════════════════════════════╗',
@@ -203,9 +204,9 @@
       '╚══════════════════════════════════════════╝',
       '',
       'Data: ' + dateStr,
-      '',
-      '──────────────────────────────────────────',
     ];
+    if (name.trim()) lines.push('Aluno: ' + name.trim());
+    lines.push('', '──────────────────────────────────────────');
 
     let totalAnswered = 0, totalCorrect = 0, totalQs = 0;
 
@@ -226,8 +227,20 @@
           if (answered.correct) {
             totalCorrect++;
             lines.push('   -> CORRETA');
+            if (answered.type === 'objective') {
+              lines.push('   Sua resposta: ' + stripHtml(answered.chosenText));
+            } else if (answered.type === 'numeric') {
+              lines.push('   Sua resposta: ' + answered.chosenValue + ' ' + answered.unit);
+            }
           } else {
             lines.push('   -> INCORRETA');
+            if (answered.type === 'objective') {
+              lines.push('   Sua resposta: ' + stripHtml(answered.chosenText));
+              lines.push('   Resposta correta: ' + stripHtml(answered.correctText));
+            } else if (answered.type === 'numeric') {
+              lines.push('   Sua resposta: ' + answered.chosenValue + ' ' + answered.unit);
+              lines.push('   Resposta correta: ' + answered.correctValue + ' ' + answered.unit);
+            }
             lines.push('   Explicação: ' + stripHtml(q.explanation));
           }
         } else {

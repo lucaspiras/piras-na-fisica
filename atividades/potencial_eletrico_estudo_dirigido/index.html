@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Potencial Elétrico — Estudo Dirigido</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a href="#topicos" class="skip-link">Ir para o conteúdo</a>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-line"></span>
+        Física · Eletrostática · Ensino Médio
+        <span class="eyebrow-line"></span>
+      </div>
+      <h1 class="hero-title">
+        <span class="ht-small">Estudo Dirigido</span>
+        <span class="ht-big">Potencial<br><em>Elétrico</em></span>
+      </h1>
+      <p class="hero-desc">Do trabalho da força elétrica ao conceito de potencial, diferença de potencial e a poderosa analogia com a gravitação — a base para entender circuitos e campos.</p>
+      <a href="#topicos" class="hero-cta">Começar o estudo ↓</a>
+    </div>
+    <div class="hero-formula">
+      <span class="formula-big">
+        V = E<sub style="font-size:.65em">p</sub> / q<br>
+        V = k · q / r<br>
+        ΔV = W / q<br>
+        1 V = 1 J/C
+      </span>
+    </div>
+  </header>
+
+  <!-- SUMÁRIO -->
+  <nav class="sumario" id="topicos">
+    <div class="sumario-wrap">
+      <a href="../../index.html" class="sumario-logo-link">
+        <img src="../../img/files/piras_na_fisica_logo_transparente.png" alt="Logo Piras na Física" class="sumario-logo" />
+      </a>
+      <span class="sum-label">Tópicos</span>
+      <ol class="sum-list">
+        <li><a href="#t1">Força e Trabalho</a></li>
+        <li><a href="#t2">Ep Elétrica</a></li>
+        <li><a href="#t3">Potencial</a></li>
+        <li><a href="#t4">Carga Pontual</a></li>
+        <li><a href="#t5">Campo e V</a></li>
+        <li><a href="#t6">Diferença de Pot.</a></li>
+        <li><a href="#t7">Trabalho e ddp</a></li>
+        <li><a href="#t8">Analogia</a></li>
+      </ol>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <!-- TÓPICO 1 — Força Elétrica e Trabalho -->
+    <section class="topic" id="t1">
+      <div class="topic-head">
+        <span class="t-num">01</span>
+        <div>
+          <h2>Força Elétrica e Trabalho</h2>
+          <span class="t-tag">Ponto de Partida</span>
+        </div>
+      </div>
+      <div class="topic-body">
+        <p>O campo elétrico exerce força sobre qualquer carga colocada nele — e essa força, como qualquer outra força, pode realizar <strong>trabalho</strong>. Entender como o campo elétrico faz trabalho é a porta de entrada para o conceito de potencial elétrico.</p>
+
+        <div class="highlight">
+          <span class="hl-icon">⚡</span>
+          <div>
+            <strong>Trabalho da força elétrica em campo uniforme:</strong>
+            <ul>
+              <li>W = F · d · cos(θ), onde F = q·E é a força elétrica.</li>
+              <li>Quando a carga se move <em>a favor</em> do campo: W &gt; 0 (Ep diminui, Ec aumenta).</li>
+              <li>Quando a carga se move <em>contra</em> o campo: W &lt; 0 (Ep aumenta, Ec diminui).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="formula-row">
+          <div class="fbox">
+            <span class="flabel">Força Elétrica</span>
+            <span class="fval">F = q · E</span>
+            <span class="funit">F em newtons (N) · q em coulombs (C) · E em N/C</span>
+          </div>
+          <div class="fbox">
+            <span class="flabel">Trabalho da Força Elétrica</span>
+            <span class="fval">W = F · d · cos θ</span>
+            <span class="funit">W em joules (J) · d = deslocamento (m) · θ = ângulo</span>
+          </div>
+        </div>
+
+        <div class="concept-box">
+          <h4>A força elétrica é conservativa</h4>
+          <p>Isso significa que o trabalho realizado pelo campo elétrico ao mover uma carga entre dois pontos <strong>não depende do caminho percorrido</strong> — depende apenas do ponto inicial e do ponto final. Essa propriedade é análoga à da força gravitacional e é o que permite definir energia potencial elétrica.</p>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplos</h4>
+          <p>Carga q = 2 C em campo E = 100 N/C, desloca 0,3 m na direção do campo:</p>
+          <p>F = 2 × 100 = 200 N → W = 200 × 0,3 × cos(0°) = <strong>60 J</strong></p>
+          <p>Mesma carga se move perpendicularmente ao campo (θ = 90°):</p>
+          <p>W = 200 × 0,3 × cos(90°) = 200 × 0,3 × 0 = <strong>0 J</strong></p>
+        </div>
+      </div>
+      <div class="quiz-zone" id="quiz1">
+        <div class="quiz-header">✦ Questões de verificação</div>
+      </div>
+    </section>
+
+    <!-- TÓPICO 2 — Energia Potencial Elétrica -->
+    <section class="topic" id="t2">
+      <div class="topic-head">
+        <span class="t-num">02</span>
+        <div>
+          <h2>Energia Potencial Elétrica</h2>
+          <span class="t-tag">Energia Armazenada na Configuração</span>
+        </div>
+      </div>
+      <div class="topic-body">
+        <p>Como a força elétrica é conservativa, podemos definir uma <strong>energia potencial elétrica (Ep)</strong> associada a cada configuração de cargas. Essa energia depende das posições relativas das cargas, assim como a energia potencial gravitacional depende da altura.</p>
+
+        <div class="formula-row">
+          <div class="fbox wide">
+            <span class="flabel">Energia Potencial de Duas Cargas Pontuais</span>
+            <span class="fval">Ep = k · q₁ · q₂ / r</span>
+            <span class="funit">k = 9×10⁹ N·m²/C² · q em coulombs · r = distância entre as cargas (m) · Ep em joules (J)</span>
+          </div>
+        </div>
+
+        <div class="highlight">
+          <span class="hl-icon">💡</span>
+          <div>
+            <strong>Interpretando o sinal de Ep:</strong>
+            <ul>
+              <li><strong>Ep &gt; 0</strong> (cargas do mesmo sinal): o sistema tem energia potencial positiva — ao serem liberadas, se afastam e ganham Ec.</li>
+              <li><strong>Ep &lt; 0</strong> (cargas de sinais opostos): o sistema tem energia potencial negativa — ao serem liberadas, se aproximam e ganham Ec. É preciso fornecer energia para separá-las.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="concept-box">
+          <h4>Relação entre trabalho e energia potencial elétrica</h4>
+          <p>O trabalho realizado pelo campo elétrico é igual à variação negativa da energia potencial:</p>
+          <p style="margin-top:10px; font-family:'Courier New',monospace; font-size:.95rem; color:var(--text)"><strong>W<sub>campo</sub> = −ΔEp = Ep<sub>inicial</sub> − Ep<sub>final</sub></strong></p>
+          <p style="margin-top:8px">Quando o campo faz trabalho positivo (W &gt; 0), a Ep do sistema <em>diminui</em>. Quando o campo faz trabalho negativo (W &lt; 0), a Ep <em>aumenta</em>.</p>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplos</h4>
+          <p>Dois prótons (q = 1,6×10⁻¹⁹ C) separados por r = 1×10⁻¹⁰ m:</p>
+          <p>Ep = 9×10⁹ × (1,6×10⁻¹⁹)² / 10⁻¹⁰ ≈ <strong>2,3×10⁻¹⁸ J &gt; 0</strong> (repulsão)</p>
+          <p>Elétron (−e) e próton (+e) separados pela mesma distância:</p>
+          <p>Ep ≈ <strong>−2,3×10⁻¹⁸ J &lt; 0</strong> (atração — precisamos de energia para separar)</p>
+        </div>
+      </div>
+      <div class="quiz-zone" id="quiz2">
+        <div class="quiz-header">✦ Questões de verificação</div>
+      </div>
+    </section>
+
+    <!-- TÓPICO 3 — Potencial Elétrico -->
+    <section class="topic" id="t3">
+      <div class="topic-head">
+        <span class="t-num">03</span>
+        <div>
+          <h2>Potencial Elétrico</h2>
+          <span class="t-tag">A Altitude do Campo Elétrico</span>
+        </div>
+      </div>
+      <div class="topic-body">
+        <p>O <strong>potencial elétrico (V)</strong> em um ponto do espaço é definido como a energia potencial elétrica que uma carga de teste de <em>+1 coulomb</em> teria naquele ponto. É como a "altitude elétrica" de um ponto no espaço — uma propriedade do campo, independente de haver carga ali.</p>
+
+        <div class="formula-destaque">
+          <span class="fd-label">Definição de Potencial Elétrico</span>
+          <span class="fd-eq">V = Ep / q</span>
+          <div class="fd-vars">
+            <span><strong>V</strong> = potencial elétrico em volts (V)</span>
+            <span><strong>Ep</strong> = energia potencial em joules (J)</span>
+            <span><strong>q</strong> = carga em coulombs (C)</span>
+            <span><strong>1 V = 1 J/C</strong></span>
+          </div>
+        </div>
+
+        <div class="concept-box">
+          <h4>Propriedades do potencial elétrico</h4>
+          <ul>
+            <li>É uma <strong>grandeza escalar</strong> — tem valor numérico (positivo, negativo ou zero), mas não direção.</li>
+            <li>É uma propriedade do ponto no espaço, <strong>não da carga de teste</strong>.</li>
+            <li>O campo elétrico aponta sempre de regiões de <strong>maior para menor potencial</strong>.</li>
+            <li>Uma carga positiva livre se move de maior para menor V; uma carga negativa, do menor para o maior V.</li>
+          </ul>
+        </div>
+
+        <div class="highlight warning">
+          <span class="hl-icon">🗻</span>
+          <div>
+            <strong>Analogia com altitude:</strong> imagine o potencial elétrico como um mapa de altitude. Cargas positivas são como pedras — rolam espontaneamente "morro abaixo" (de maior para menor potencial). Cargas negativas têm comportamento oposto — sobem espontaneamente (de menor para maior potencial), pois têm q negativo e sua energia potencial Ep = q·V diminui quando V aumenta.
+          </div>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplos de potencial elétrico</h4>
+          <p>Terminal positivo de pilha AA em relação ao negativo: <strong>+1,5 V</strong></p>
+          <p>Membrana de um neurônio em repouso (interior): <strong>≈ −70 mV</strong></p>
+          <p>Tomada doméstica (Brasil): <strong>127 V ou 220 V</strong> (diferença entre os furos)</p>
+          <p>Relâmpago em relação ao solo: <strong>≈ 10⁸ V (100 MV)</strong></p>
+        </div>
+      </div>
+      <div class="quiz-zone" id="quiz3">
+        <div class="quiz-header">✦ Questões de verificação</div>
+      </div>
+    </section>
+
+    <!-- TÓPICO 4 — Potencial de uma Carga Pontual -->
+    <section class="topic" id="t4">
+      <div class="topic-head">
+        <span class="t-num">04</span>
+        <div>
+          <h2>Potencial de uma Carga Pontual</h2>
+          <span class="t-tag">Cálculo e Superposição</span>
+        </div>
+      </div>
+      <div class="topic-body">
+        <p>Uma carga pontual Q cria um campo elétrico ao redor de si — e consequentemente, cria também um <strong>potencial elétrico</strong> em cada ponto do espaço. Diferente do campo (vetorial), o potencial é <em>escalar</em>, o que facilita muito os cálculos quando há várias cargas.</p>
+
+        <div class="formula-row">
+          <div class="fbox wide">
+            <span class="flabel">Potencial de uma Carga Pontual</span>
+            <span class="fval">V = k · Q / r</span>
+            <span class="funit">k = 9×10⁹ N·m²/C² · Q = carga fonte (C) · r = distância à carga (m) · V em volts (V)</span>
+          </div>
+        </div>
+
+        <div class="highlight">
+          <span class="hl-icon">➕</span>
+          <div>
+            <strong>Princípio de superposição para potencial:</strong> como o potencial é escalar, o potencial total criado por várias cargas em um ponto é simplesmente a <em>soma algébrica</em> dos potenciais individuais. Isso é muito mais simples que somar campos vetoriais!
+          </div>
+        </div>
+
+        <div class="concept-box">
+          <h4>O sinal do potencial depende do sinal da carga:</h4>
+          <ul>
+            <li>Carga <strong>positiva (Q &gt; 0):</strong> cria potencial positivo ao redor — V &gt; 0. Diminui com a distância.</li>
+            <li>Carga <strong>negativa (Q &lt; 0):</strong> cria potencial negativo — V &lt; 0. Torna-se menos negativo ao longe.</li>
+            <li>Em ambos os casos, V → 0 quando r → ∞ (referencial padrão: V = 0 no infinito).</li>
+          </ul>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplos de cálculo</h4>
+          <p>V a 0,1 m de uma carga Q = +2 μC:</p>
+          <p>V = 9×10⁹ × 2×10⁻⁶ / 0,1 = <strong>180 000 V = 180 kV</strong></p>
+          <p>Duas cargas: Q₁ = +3 μC em x=0 e Q₂ = −3 μC em x=0,06 m. Potencial no ponto médio (x = 0,03 m):</p>
+          <p>V₁ = 9×10⁹ × 3×10⁻⁶ / 0,03 = 900 kV</p>
+          <p>V₂ = 9×10⁹ × (−3×10⁻⁶) / 0,03 = −900 kV</p>
+          <p>V_total = V₁ + V₂ = 900 − 900 = <strong>0 V</strong></p>
+        </div>
+      </div>
+      <div class="quiz-zone" id="quiz4">
+        <div class="quiz-header">✦ Questões de verificação</div>
+      </div>
+    </section>
+
+    <!-- TÓPICO 5 — Campo Elétrico e Potencial -->
+    <section class="topic" id="t5">
+      <div class="topic-head">
+        <span class="t-num">05</span>
+        <div>
+          <h2>Campo Elétrico e Potencial</h2>
+          <span class="t-tag">Superfícies Equipotenciais</span>
+        </div>
+      </div>
+      <div class="topic-body">
+        <p>O campo elétrico e o potencial elétrico são duas formas de descrever a mesma realidade física. O campo descreve a <em>força</em> que age sobre uma carga; o potencial descreve a <em>energia potencial</em> por unidade de carga. Eles estão profundamente relacionados.</p>
+
+        <div class="formula-row">
+          <div class="fbox">
+            <span class="flabel">Campo a partir do Potencial (1D)</span>
+            <span class="fval">E = −ΔV / Δx</span>
+            <span class="funit">O campo aponta no sentido de maior queda de V. Unidade: V/m = N/C</span>
+          </div>
+          <div class="fbox">
+            <span class="flabel">Campo Uniforme entre Placas</span>
+            <span class="fval">E = ΔV / d</span>
+            <span class="funit">ΔV = ddp entre as placas (V) · d = distância entre as placas (m)</span>
+          </div>
+        </div>
+
+        <div class="highlight">
+          <span class="hl-icon">🗺️</span>
+          <div>
+            <strong>Superfícies equipotenciais:</strong> são superfícies onde o potencial elétrico é constante. Mover uma carga ao longo de uma superfície equipotencial não requer trabalho (W = q·ΔV = 0). O campo elétrico é sempre <em>perpendicular</em> às superfícies equipotenciais — aponta de equipotenciais de maior V para as de menor V.
+          </div>
+        </div>
+
+        <div class="concept-box">
+          <h4>Propriedades das superfícies equipotenciais:</h4>
+          <ul>
+            <li>As linhas de campo são <strong>sempre perpendiculares</strong> às superfícies equipotenciais.</li>
+            <li>A superfície de qualquer <strong>condutor em equilíbrio eletrostático</strong> é uma superfície equipotencial — não há campo elétrico tangencial na superfície.</li>
+            <li>Quanto mais próximas as equipotenciais, <strong>mais intenso o campo elétrico</strong> naquela região (assim como curvas de nível próximas indicam terreno íngreme).</li>
+          </ul>
+        </div>
+
+        <div class="example-box">
+          <h4>Campo uniforme entre placas paralelas</h4>
+          <p>Duas placas separadas por d = 0,01 m com ddp ΔV = 100 V entre elas:</p>
+          <p>E = ΔV / d = 100 / 0,01 = <strong>10 000 V/m = 10 kV/m</strong></p>
+          <p>A cada 1 mm percorrido na direção do campo, o potencial cai 10 V.</p>
+          <p>As equipotenciais são planos paralelos às placas, espaçados uniformemente.</p>
+        </div>
+      </div>
+      <div class="quiz-zone" id="quiz5">
+        <div class="quiz-header">✦ Questões de verificação</div>
+      </div>
+    </section>
+
+    <!-- TÓPICO 6 — Diferença de Potencial -->
+    <section class="topic" id="t6">
+      <div class="topic-head">
+        <span class="t-num">06</span>
+        <div>
+          <h2>Diferença de Potencial (Tensão)</h2>
+          <span class="t-tag">O que Realmente Importa</span>
+        </div>
+      </div>
+      <div class="topic-body">
+        <p>A <strong>diferença de potencial (ddp)</strong> entre dois pontos A e B — também chamada de <em>tensão elétrica</em> — é o que realmente determina o comportamento das cargas. O potencial absoluto em um ponto isolado não tem significado prático; o que importa é sempre a <em>diferença</em>.</p>
+
+        <div class="formula-row">
+          <div class="fbox wide">
+            <span class="flabel">Diferença de Potencial</span>
+            <span class="fval">ΔV = V<sub>B</sub> − V<sub>A</sub></span>
+            <span class="funit">ΔV positivo quando V_B &gt; V_A. Medida em volts (V). Medida com voltímetro.</span>
+          </div>
+        </div>
+
+        <div class="highlight warning">
+          <span class="hl-icon">🔋</span>
+          <div>
+            <strong>Uma pilha de 1,5 V:</strong> não estamos dizendo que um terminal está a 1,5 V acima do zero absoluto. Estamos dizendo que existe uma <em>diferença</em> de 1,5 V entre os dois terminais. É essa diferença que faz as cargas fluírem pelo circuito — exatamente como a diferença de altura que faz a água fluir em um cano.
+          </div>
+        </div>
+
+        <div class="concept-box">
+          <h4>Exemplos de tensão elétrica:</h4>
+          <ul>
+            <li>Pilha AA: <strong>1,5 V</strong></li>
+            <li>Bateria de carro: <strong>12 V</strong></li>
+            <li>Tomada doméstica (Brasil): <strong>127 V ou 220 V</strong></li>
+            <li>Linha de transmissão de alta tensão: <strong>230 kV a 750 kV</strong></li>
+            <li>Relâmpago em relação ao solo: <strong>≈ 100 MV (10⁸ V)</strong></li>
+            <li>Potencial de membrana de um neurônio: <strong>≈ −70 mV</strong></li>
+          </ul>
+        </div>
+
+        <div class="example-box">
+          <h4>Por que a ddp importa mais que o potencial absoluto</h4>
+          <p>Bateria de 9 V com terminal negativo aterrado (0 V): positivo a 9 V. ΔV = 9 V.</p>
+          <p>Mesma bateria com negativo a 1000 V e positivo a 1009 V. ΔV = <strong>9 V</strong> — circuito idêntico!</p>
+          <p>O voltímetro mede sempre a diferença entre dois pontos, nunca um potencial absoluto.</p>
+        </div>
+      </div>
+      <div class="quiz-zone" id="quiz6">
+        <div class="quiz-header">✦ Questões de verificação</div>
+      </div>
+    </section>
+
+    <!-- TÓPICO 7 — Trabalho e Diferença de Potencial -->
+    <section class="topic" id="t7">
+      <div class="topic-head">
+        <span class="t-num">07</span>
+        <div>
+          <h2>Trabalho e Diferença de Potencial</h2>
+          <span class="t-tag">W = q · ΔV</span>
+        </div>
+      </div>
+      <div class="topic-body">
+        <p>A relação entre trabalho, carga elétrica e diferença de potencial conecta tudo o que vimos. É a equação central do potencial elétrico aplicado — e a base para entender a energia fornecida por fontes elétricas.</p>
+
+        <div class="formula-destaque">
+          <span class="fd-label">Trabalho do Campo Elétrico</span>
+          <span class="fd-eq">W = q · ΔV</span>
+          <div class="fd-vars">
+            <span><strong>W</strong> = trabalho em joules (J)</span>
+            <span><strong>q</strong> = carga elétrica em coulombs (C)</span>
+            <span><strong>ΔV</strong> = diferença de potencial em volts (V)</span>
+          </div>
+        </div>
+
+        <div class="concept-box">
+          <h4>Como interpretar W = q · ΔV:</h4>
+          <ul>
+            <li>Uma ddp de <strong>1 V</strong> realiza <strong>1 J</strong> de trabalho para cada <strong>1 C</strong> de carga que passa — daí 1 V = 1 J/C.</li>
+            <li>Uma bateria de <strong>9 V</strong> fornece 9 J de energia para cada coulomb que percorre o circuito externo.</li>
+            <li>Essa energia se converte em calor (resistor), luz (LED), som (alto-falante), movimento (motor).</li>
+            <li>Para cargas negativas (elétrons), q é negativo — o sinal se inverte, mas o módulo de W é o mesmo.</li>
+          </ul>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplos com W = q · ΔV</h4>
+          <p>ddp = 5 V move q = 4 C: W = 4 × 5 = <strong>20 J</strong></p>
+          <p>Bateria de 12 V realiza 60 J de trabalho: q = 60 / 12 = <strong>5 C</strong></p>
+          <p>Tomada 127 V, q = 10 C em 1 s (corrente de 10 A): W = 10 × 127 = <strong>1 270 J</strong> em 1 s → Potência = 1 270 W</p>
+        </div>
+
+        <div class="formula-row">
+          <div class="fbox wide">
+            <span class="flabel">Energia Total Fornecida por uma Fonte</span>
+            <span class="fval">W_total = q_total · ΔV = I · t · ΔV</span>
+            <span class="funit">I = corrente em amperes (A) · t = tempo em segundos (s) · 1 A = 1 C/s</span>
+          </div>
+        </div>
+
+        <div class="example-box">
+          <h4>Capacidade de uma bateria</h4>
+          <p>Bateria de <strong>12 V</strong> e <strong>60 Ah</strong> (ampere-hora):</p>
+          <p>Carga total: 60 A × 3 600 s = <strong>216 000 C</strong></p>
+          <p>Energia total: W = 216 000 × 12 = <strong>2 592 000 J ≈ 2,6 MJ</strong></p>
+          <p>Equivale a levantar um carro de 1 000 kg até <strong>260 m</strong> de altura!</p>
+        </div>
+      </div>
+      <div class="quiz-zone" id="quiz7">
+        <div class="quiz-header">✦ Questões de verificação</div>
+      </div>
+    </section>
+
+    <!-- TÓPICO 8 — Analogia com a Gravitação -->
+    <section class="topic" id="t8">
+      <div class="topic-head">
+        <span class="t-num">08</span>
+        <div>
+          <h2>Analogia com a Gravitação</h2>
+          <span class="t-tag">Comparação Completa</span>
+        </div>
+      </div>
+      <div class="topic-body">
+        <p>A analogia entre eletrostática e gravitação é uma das mais profundas da física. As leis têm a mesma forma matemática, e os conceitos se espelham com precisão. Entender a comparação ajuda a solidificar ambos os assuntos.</p>
+
+        <div class="compare-table">
+          <div class="ct-head">
+            <div>Grandeza</div>
+            <div>Gravitação</div>
+            <div>Eletrostática</div>
+          </div>
+          <div class="ct-row">
+            <div class="ct-label">Fonte do campo</div>
+            <span>Massa m</span>
+            <span class="ct-val">Carga q</span>
+          </div>
+          <div class="ct-row">
+            <div class="ct-label">Força</div>
+            <span>F = GMm/r²</span>
+            <span class="ct-val">F = kq₁q₂/r²</span>
+          </div>
+          <div class="ct-row">
+            <div class="ct-label">Campo</div>
+            <span>g = GM/r² (m/s²)</span>
+            <span class="ct-val">E = kQ/r² (N/C)</span>
+          </div>
+          <div class="ct-row">
+            <div class="ct-label">Energia potencial</div>
+            <span>Epg = mgh</span>
+            <span class="ct-val">Ep = qV</span>
+          </div>
+          <div class="ct-row">
+            <div class="ct-label">"Altitude"</div>
+            <span>Altura h</span>
+            <span class="ct-val">Potencial V</span>
+          </div>
+          <div class="ct-row">
+            <div class="ct-label">Sentido espontâneo</div>
+            <span>De maior h para menor h</span>
+            <span class="ct-val">De maior V para menor V (carga +)</span>
+          </div>
+          <div class="ct-row">
+            <div class="ct-label">Trabalho</div>
+            <span>W = mg·Δh</span>
+            <span class="ct-val">W = q·ΔV</span>
+          </div>
+        </div>
+
+        <div class="analogy-grid">
+          <div class="analogy-card grav">
+            <h4>💧 Sistema Hidráulico</h4>
+            <ul>
+              <li>Bomba → diferença de pressão</li>
+              <li>Fluxo de água (L/s) → corrente</li>
+              <li>Resistência do cano → resistor</li>
+              <li>Pressão hidráulica → tensão elétrica</li>
+            </ul>
+          </div>
+          <div class="analogy-card elet">
+            <h4>⚡ Circuito Elétrico</h4>
+            <ul>
+              <li>Pilha → diferença de potencial</li>
+              <li>Corrente (C/s = A) → fluxo de cargas</li>
+              <li>Resistor → resistência elétrica</li>
+              <li>Tensão (V) → "pressão elétrica"</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="highlight">
+          <span class="hl-icon">🔑</span>
+          <div>
+            <strong>Diferença fundamental:</strong> a gravitação é sempre atrativa — a massa gravitacional é sempre positiva. Já na eletrostática, as cargas podem ser positivas ou negativas, o que faz aparecer tanto atração quanto repulsão. Por isso o potencial elétrico pode ser positivo ou negativo, enquanto o potencial gravitacional (tomando h = 0 no chão) é sempre ≥ 0.
+          </div>
+        </div>
+
+        <div class="example-box">
+          <h4>Como uma pilha funciona — à luz da analogia</h4>
+          <p>As <strong>reações químicas internas</strong> separam cargas positivas e negativas, mantendo o terminal + em potencial mais alto que o terminal −.</p>
+          <p>Conectando um circuito, as cargas "descem" espontaneamente pelo circuito externo, do potencial alto (+) para o baixo (−) — assim como água que desce pela gravidade.</p>
+          <p>A pilha é a "bomba" que eleva as cargas de volta do potencial baixo ao alto — à custa de energia química.</p>
+          <p>Quando a pilha "acaba", as reações químicas não conseguem mais manter a diferença de potencial.</p>
+        </div>
+      </div>
+      <div class="quiz-zone" id="quiz8">
+        <div class="quiz-header">✦ Questões de verificação</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PLACAR FINAL -->
+  <section class="placar-section">
+    <div class="placar-inner">
+      <h2>Seu Desempenho</h2>
+      <div class="placar-display">
+        <div class="pd-ring">
+          <svg class="ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+            <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="8"/>
+            <circle id="ring-arc" cx="60" cy="60" r="52" fill="none" stroke="#4361ee" stroke-width="8"
+                    stroke-dasharray="326.7" stroke-dashoffset="326.7"
+                    stroke-linecap="round" transform="rotate(-90 60 60)"/>
+          </svg>
+          <div class="pd-nums">
+            <span id="p-score">0</span>
+            <span class="pd-sep">/</span>
+            <span id="p-total">0</span>
+          </div>
+        </div>
+        <div class="pd-info">
+          <p id="p-msg">Responda as questões para ver seu placar!</p>
+          <button class="reset-btn" id="btnReset">Reiniciar tudo</button>
+
+          <div class="report-name">
+            <label for="studentName" class="report-hint-e">Seu nome para o relatório (opcional):</label>
+            <input type="text" id="studentName" class="name-input" placeholder="Ex: João Silva" maxlength="60" autocomplete="off" />
+          </div>
+          <div class="report-actions-e">
+            <p class="report-hint-e">Salve ou compartilhe suas respostas:</p>
+            <div class="report-btns-e">
+              <button class="report-btn-e" id="downloadReportBtn">&#8595; Baixar .txt</button>
+              <button class="report-btn-e" id="copyReportBtn">&#128203; Copiar</button>
+              <button class="report-btn-e" id="emailReportBtn">&#9993; E-mail</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Física · Ensino Médio · Potencial Elétrico, Campo e Diferença de Potencial</p>
+  </footer>
+
+  <script src="quiz.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
