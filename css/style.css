@@ -1046,155 +1046,181 @@ footer {
 }
 
 /* =========================
-   ATIVIDADES – LISTA
+   ATIVIDADES – ED CARDS
 ========================= */
 
 .atividades-main {
   background: var(--fundo-claro);
-  padding: 2rem 0;
+  padding: 2rem 0 3rem;
 }
 
 .atividades-container {
-  max-width: 900px;
+  max-width: 980px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 2rem 1rem;
 }
 
 .atividades-container h1 {
-  font-size: 2.6rem;
+  font-size: 2.2rem;
   font-weight: 800;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   color: var(--texto);
 }
 
 .atividades-intro {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #666;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.8rem;
 }
 
-/* Tópico Grande (ex: Cinemática) */
-.topico-grande {
-  margin-bottom: 2.5rem;
+/* Grid 3 × 2 */
+.ed-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
 }
 
-.topico-titulo {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--azul);
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-/* Subtópico (ex: MRU) */
-.subtopico {
-  background: #ffffff;
-  border-left: 4px solid var(--roxo);
-  border-radius: 8px;
-  padding: 1.8rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-}
-
-.subtopico-titulo {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--roxo);
-  margin-bottom: 1.2rem;
-}
-
-/* Lista de Atividades */
-.atividades-lista {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.atividades-lista li {
-  margin-bottom: 1rem;
-}
-
-/* Link da Atividade */
-.atividade-link {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.2rem;
-  background: linear-gradient(135deg, rgba(47, 91, 234, 0.04), rgba(106, 47, 232, 0.04));
-  border-radius: 8px;
+/* Card */
+.ed-card {
   text-decoration: none;
   color: var(--texto);
-  border: 1px solid rgba(106, 47, 232, 0.15);
-  transition:
-    background 0.3s ease,
-    border-color 0.3s ease,
-    transform 0.2s ease;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1.5px solid #dde1ef;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }
 
-.atividade-link:hover {
-  background: linear-gradient(135deg, rgba(47, 91, 234, 0.1), rgba(106, 47, 232, 0.1));
+.ed-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 36px rgba(47, 91, 234, 0.15);
   border-color: var(--roxo);
-  transform: translateX(4px);
 }
 
-/* Ícone */
-.atividade-icon {
-  font-size: 1.8rem;
+/* Preview (hero thumbnail) */
+.ed-preview {
+  position: relative;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Subtle grid lines for dark cards */
+.ed-grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+}
+
+.ed-preview-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Year badge */
+.ed-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 0.16rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid;
+}
+
+/* Formula */
+.ed-formula {
+  font-family: 'Space Mono', 'Courier New', monospace;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  display: block;
+  text-align: center;
+}
+
+/* Energia card tags */
+.ed-energy-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.ed-energy-tags span {
+  padding: 0.22rem 0.75rem;
+  border-radius: 6px;
+}
+
+/* Footer strip */
+.ed-footer {
+  background: #ffffff;
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #eef0f6;
   flex-shrink: 0;
 }
 
-/* Nome da Atividade */
-.atividade-nome {
-  font-weight: 600;
-  font-size: 1.05rem;
-  color: var(--roxo);
-  flex-grow: 1;
-  text-align: left;
+.ed-footer-text {
+  display: flex;
+  flex-direction: column;
 }
 
-/* Seta */
-.atividade-arrow {
+.ed-topic {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ed-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--texto);
+  line-height: 1.3;
+}
+
+.ed-arrow {
   color: var(--laranja);
   font-weight: 800;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  transition: transform 0.25s ease;
   flex-shrink: 0;
-  transition: transform 0.3s ease;
 }
 
-.atividade-link:hover .atividade-arrow {
-  transform: translateX(6px);
+.ed-card:hover .ed-arrow {
+  transform: translateX(5px);
 }
 
-/* Descrição da Atividade */
-.atividade-desc {
-  margin: 0.8rem 3.8rem 0 3.8rem;
-  font-size: 0.95rem;
-  color: #666;
-  line-height: 1.5;
+@media (max-width: 720px) {
+  .ed-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-/* Responsivo */
-@media (max-width: 600px) {
+@media (max-width: 480px) {
+  .ed-grid {
+    grid-template-columns: 1fr;
+  }
+
   .atividades-container h1 {
-    font-size: 2rem;
-  }
-
-  .topico-titulo {
-    font-size: 1.5rem;
-  }
-
-  .subtopico-titulo {
-    font-size: 1.1rem;
-  }
-
-  .atividade-link {
-    flex-wrap: wrap;
-  }
-
-  .atividade-desc {
-    margin: 0.8rem 0 0 0;
+    font-size: 1.8rem;
   }
 }
   font-size: 0.95rem;
