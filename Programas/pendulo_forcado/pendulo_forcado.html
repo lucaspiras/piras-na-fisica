@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pêndulo Forçado Amortecido — Piras na Física</title>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="pendulo_forcado.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/index.html" class="logo-link">
+    <img src="/img/novo_logo_final.png" alt="Piras na Física" class="logo-img">
+    <div class="logo-text">
+      Pêndulo Amortecido Forçado
+      <span>Piras na Física</span>
+    </div>
+  </a>
+  <div class="header-badges">
+    <span class="header-badge">Oscilações</span>
+    <span class="header-badge">EDO Exata</span>
+    <span class="header-badge">RK4</span>
+    <span class="header-badge">Caos</span>
+    <button class="header-badge" onclick="FeedbackModal.open()" style="cursor:pointer;font-family:inherit;appearance:none;-webkit-appearance:none;">💬 Sua opinião</button>
+  </div>
+</header>
+
+<div class="app">
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="sidebar">
+
+    <!-- PRESETS -->
+    <div class="sidebar-section">
+      <div class="section-header">
+        <h3>⚡ Predefinições</h3>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body">
+        <button class="btn-preset" data-preset="livre">Pêndulo Livre</button>
+        <button class="btn-preset" data-preset="amortecido">Amortecido</button>
+        <button class="btn-preset" data-preset="ressonancia">Próx. Ressonância</button>
+        <button class="btn-preset" data-preset="caotico">Caótico</button>
+      </div>
+    </div>
+
+    <!-- EQUATION DISPLAY -->
+    <div class="sidebar-section">
+      <div class="section-header">
+        <h3>📐 Equação do Movimento</h3>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body eq-section-body">
+        <div class="eq-container">
+          <div class="eq-type-badge" id="eqTypeBadge">Pêndulo Amortecido Forçado</div>
+          <div class="eq-formula">
+            <div class="eq-row">
+              <span class="eq-lhs">θ̈ =</span>
+              <span class="eq-t1">−(g/L)·sin θ</span>
+              <span class="eq-tag t1-tag">restauradora</span>
+            </div>
+            <div class="eq-row" id="eqRowDamping">
+              <span class="eq-indent"></span>
+              <span class="eq-t2">− γ · θ̇</span>
+              <span class="eq-tag t2-tag">amortecimento</span>
+            </div>
+            <div class="eq-row" id="eqRowForcing">
+              <span class="eq-indent"></span>
+              <span class="eq-t3">+ F₀·cos(ωₑt)</span>
+              <span class="eq-tag t3-tag">forçamento</span>
+            </div>
+          </div>
+          <div class="eq-params">
+            <div class="eq-param eq-t1">g/L = <span id="eqPgL">9.81</span></div>
+            <div class="eq-param">g = <span id="eqPg">9.81</span> m/s²</div>
+            <div class="eq-param">L = <span id="eqPL">1.00</span> m</div>
+            <div class="eq-param eq-t2" id="eqParamGamma">γ = <span id="eqPgamma">—</span></div>
+            <div class="eq-param eq-t3" id="eqParamA">F₀ = <span id="eqPA">—</span></div>
+            <div class="eq-param eq-t3" id="eqParamWe">ωₑ = <span id="eqPwe">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PARAMETERS -->
+    <div class="sidebar-section">
+      <div class="section-header">
+        <h3>⚙️ Parâmetros</h3>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body">
+
+        <div class="field">
+          <label>Comprimento <em>L</em> <span class="unit">m</span></label>
+          <div class="slider-row">
+            <input type="range" id="slider_L" min="0.2" max="3" step="0.05" value="1.0">
+            <input type="number" id="num_L" min="0.2" max="3" step="0.05" value="1.0" class="num-input">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Gravidade <em>g</em> <span class="unit">m/s²</span></label>
+          <div class="slider-row">
+            <input type="range" id="slider_g" min="1" max="25" step="0.1" value="9.81">
+            <input type="number" id="num_g" min="1" max="25" step="0.1" value="9.81" class="num-input">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Amortecimento <em>γ</em> <span class="unit">rad/s</span></label>
+          <div class="slider-row">
+            <input type="range" id="slider_gamma" min="0" max="3" step="0.01" value="1.57">
+            <input type="number" id="num_gamma" min="0" max="3" step="0.01" value="1.57" class="num-input">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Amplitude <em>F₀</em> <span class="unit">rad/s²</span></label>
+          <div class="slider-row">
+            <input type="range" id="slider_A" min="0" max="15" step="0.1" value="11.8">
+            <input type="number" id="num_A" min="0" max="15" step="0.1" value="11.8" class="num-input">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Freq. forçamento <em>ωₑ</em> <span class="unit">rad/s</span></label>
+          <div class="slider-row">
+            <input type="range" id="slider_we" min="0" max="8" step="0.01" value="2.09">
+            <input type="number" id="num_we" min="0" max="8" step="0.01" value="2.09" class="num-input">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Ângulo inicial <em>θ₀</em> <span class="unit">rad</span></label>
+          <div class="slider-row">
+            <input type="range" id="slider_theta0" min="-3.14" max="3.14" step="0.01" value="0.2">
+            <input type="number" id="num_theta0" min="-3.14" max="3.14" step="0.01" value="0.2" class="num-input">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- STATE -->
+    <div class="sidebar-section">
+      <div class="section-header collapsed">
+        <h3>📊 Estado</h3>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body hidden">
+        <div class="info-row"><span>ω₀ = √(g/L)</span><span id="infoW0">—</span></div>
+        <div class="info-row"><span>ωₑ / ω₀</span><span id="infoRatio">—</span></div>
+        <div class="info-row separator"></div>
+        <div class="info-row"><span>θ</span><span id="infoTheta">—</span></div>
+        <div class="info-row"><span>ω = θ̇</span><span id="infoOmega">—</span></div>
+        <div class="info-row"><span>F(t)</span><span id="infoForce">—</span></div>
+        <div class="info-row separator"></div>
+        <div class="info-row"><span>Ec</span><span id="infoEc">—</span></div>
+        <div class="info-row"><span>Epg</span><span id="infoEpg">—</span></div>
+        <div class="info-row"><span>Em</span><span id="infoEm">—</span></div>
+        <div class="info-row"><span>Q diss.</span><span id="infoQdiss">—</span></div>
+        <div class="info-row separator"></div>
+        <div class="info-row"><span>t</span><span id="infoT">—</span></div>
+      </div>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="sidebar-section">
+      <div class="section-body controls-body">
+        <button id="btnPlayPause" class="btn-primary">⏸ Pausar</button>
+        <button id="btnReset"     class="btn-secondary">↺ Reiniciar</button>
+        <button id="btnClearPhase" class="btn-secondary">✕ Limpar gráfico</button>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ═══ MAIN VISUALIZATIONS ═══ -->
+  <main class="main-area">
+
+    <!-- Top row: Pendulum + Graph with tabs -->
+    <div class="panel panel-pendulum">
+      <div class="panel-label">ANIMAÇÃO</div>
+      <canvas id="canvasPendulum"></canvas>
+    </div>
+
+    <div class="panel panel-graph">
+      <div class="graph-tabs">
+        <button class="graph-tab active" data-mode="0">Fase  θ × ω</button>
+        <button class="graph-tab"        data-mode="1">θ(t)</button>
+        <button class="graph-tab"        data-mode="2">ω(t)</button>
+        <button class="graph-tab"        data-mode="3">Forças(t) ×2</button>
+        <button class="graph-tab"        data-mode="4">Poincaré</button>
+      </div>
+      <canvas id="canvasGraph"></canvas>
+    </div>
+
+    <!-- Bottom row: Energy strip (full width) -->
+    <div class="panel panel-energy">
+      <div class="panel-label">ENERGIA  &amp;  FORÇA</div>
+      <canvas id="canvasEnergy"></canvas>
+    </div>
+
+  </main>
+
+</div>
+
+<script src="pendulo_forcado.js"></script>
+<script src="/js/feedback-modal.js"></script>
+</body>
+</html>
