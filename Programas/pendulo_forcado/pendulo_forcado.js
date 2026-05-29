@@ -820,6 +820,17 @@
         if (body) body.classList.toggle('hidden');
       })
     );
+
+    // Mobile sidebar toggle
+    const mobileToggle = document.getElementById('btnMobileToggle');
+    const sidebar = document.querySelector('.sidebar');
+    if (mobileToggle && sidebar) {
+      mobileToggle.addEventListener('click', () => {
+        const isOpen = sidebar.classList.toggle('mobile-open');
+        mobileToggle.classList.toggle('open', isOpen);
+        mobileToggle.textContent = isOpen ? '✕ Fechar controles' : '☰ Controles';
+      });
+    }
   }
 
   /* ─────────────────────────────────────────────────────

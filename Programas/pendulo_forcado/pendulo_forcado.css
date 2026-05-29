@@ -391,3 +391,105 @@ input[type="range"] { flex: 1; height: 4px; accent-color: var(--accent); cursor:
 .sidebar::-webkit-scrollbar { width: 5px; }
 .sidebar::-webkit-scrollbar-track { background: transparent; }
 .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* ── MOBILE TOGGLE BUTTON (hidden on desktop) ── */
+.mobile-toggle-btn { display: none; }
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE — painéis empilhados (≤ 860px)
+   Ordem: [toggle] → [sidebar] → [animação] → [gráfico] → [energia]
+   ══════════════════════════════════════════════ */
+@media (max-width: 860px) {
+
+  body { overflow-y: auto; }
+
+  /* Header: altura fixa → automática para badges não serem cortadas */
+  .site-header {
+    height: auto;
+    min-height: 56px;
+    padding-block: 8px;
+  }
+
+  .app {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+
+  /* Botão toggle — visível apenas em mobile */
+  .mobile-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 14px;
+    background: var(--surface2);
+    border: none;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text2);
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .mobile-toggle-btn:hover { background: var(--border2); }
+  .mobile-toggle-btn.open  { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* Sidebar: oculta por padrão, desliza para baixo quando aberta */
+  .sidebar {
+    width: 100%;
+    min-width: unset;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+  .sidebar.mobile-open {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  /* Grid de painéis: coluna única */
+  .main-area {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    height: auto;
+    overflow: visible;
+    flex: none;
+    padding: 6px;
+  }
+
+  .panel-pendulum {
+    grid-row: 1;
+    grid-column: 1;
+    min-height: 300px;
+    height: 44vw;
+    max-height: 420px;
+  }
+
+  .panel-graph {
+    grid-row: 2;
+    grid-column: 1;
+    min-height: 280px;
+    height: 42vw;
+    max-height: 400px;
+  }
+
+  .panel-energy {
+    grid-row: 3;
+    grid-column: 1;
+    height: 160px;
+  }
+}
+
+/* ── Telas muito pequenas (≤ 480px) ── */
+@media (max-width: 480px) {
+  .site-header { padding: 0 1rem; }
+  .header-badges { flex-wrap: wrap; }
+  .panel-pendulum { height: 56vw; max-height: 340px; }
+  .panel-graph    { height: 52vw; max-height: 320px; }
+}
