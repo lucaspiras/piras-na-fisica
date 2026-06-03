@@ -194,22 +194,45 @@
       simulateGroupStandings, saveGroupStandings
     } from './supabase.js'
 
-    const poolId = new URLSearchParams(location.search).get('id')
-    if (!poolId) { location.replace('dashboard.html'); }
+    function showFatal(error) {
+      console.error(error)
+      const loading = document.getElementById('loading')
+      loading.innerHTML = `
+        <strong>Nao foi possivel abrir este bolao.</strong>
+        <p class="muted mt-8" style="font-size:.88rem;line-height:1.5">
+          ${escHtml(error?.message || 'Tente novamente em alguns instantes.')}
+        </p>
+        <a href="dashboard.html" class="btn btn-ghost btn-sm mt-12" style="text-decoration:none">Voltar ao painel</a>`
+      loading.classList.remove('hidden')
+      document.getElementById('content').classList.add('hidden')
+    }
 
-    const { user, profile } = await requireAuthWithProfile() ?? {}
-    if (!user) throw new Error('not reached')
+    main().catch(showFatal)
+
+    async function main() {
+    const poolId = new URLSearchParams(location.search).get('id')
+    if (!poolId) {
+      location.replace('dashboard.html')
+      return
+    }
+
+    const auth = await requireAuthWithProfile()
+    if (!auth) return
+    const { user, profile } = auth
 
     document.getElementById('header-slot').innerHTML = renderHeader(profile, true)
     bindSignOut()
     document.getElementById('link-rules').href = `rules.html?pool=${poolId}`
     document.getElementById('link-standings-full').href = `standings.html?pool=${poolId}`
 
-    const [{ data: pool }, { data: membership }] = await Promise.all([
+    const [{ data: pool, error: poolError }, { data: membership, error: membershipError }] = await Promise.all([
       supabase.from('pools').select('id, name, invite_code').eq('id', poolId).maybeSingle(),
       supabase.from('pool_members').select('role').eq('pool_id', poolId).eq('user_id', user.id).maybeSingle()
     ])
-    if (!pool) { location.replace('dashboard.html'); }
+    if (poolError) throw new Error(`Erro ao buscar o bolao: ${poolError.message}`)
+    if (membershipError) throw new Error(`Erro ao verificar sua participacao: ${membershipError.message}`)
+    if (!pool) throw new Error('Bolao nao encontrado ou sem permissao de acesso.')
+    if (!membership) throw new Error('Voce nao participa deste bolao.')
 
     const isOwner = membership?.role === 'owner'
     document.title = `${pool.name} · Copa 2026`
@@ -594,6 +617,7 @@
           ${hasResult?`<span style="font-family:var(--font-display);font-weight:800;font-size:.88rem;color:var(--pitch-deep);min-width:46px;text-align:right">${pts>0?'+'+pts:'0'} pts</span>`:''}
         </div>`
       }).join('')
+    }
     }
   </script>
 </body>

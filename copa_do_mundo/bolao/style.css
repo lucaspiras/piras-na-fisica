@@ -603,6 +603,11 @@ h3 {
 .standings-table tr:last-child td { border-bottom: none; }
 .pos-qualify { background: rgba(14,159,80,.07); }
 .pos-maybe   { background: rgba(240,165,0,.07); }
+.pos-best3rd {
+  background: linear-gradient(90deg, rgba(240,165,0,.18), rgba(240,165,0,.08));
+  box-shadow: inset 3px 0 0 var(--gold);
+}
+.pos-best3rd td { font-weight: 600; }
 .team-cell { display: flex; align-items: center; gap: 6px; font-weight: 600; white-space: nowrap; }
 .pos-num {
   display: inline-flex; width: 20px; height: 20px; border-radius: 50%;
