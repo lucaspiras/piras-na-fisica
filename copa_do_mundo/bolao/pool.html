@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bolão · Copa 2026</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="header-slot"></div>
+
+  <main class="container pt-24 pb-32">
+    <div id="loading" class="empty"><strong>Carregando…</strong></div>
+    <div id="content" class="hidden">
+
+      <!-- Pool header -->
+      <div class="section-header">
+        <h2 id="pool-name"></h2>
+        <div class="pitch-rule"></div>
+      </div>
+
+      <!-- Invite block -->
+      <div class="invite-block mt-16">
+        <p class="invite-label">Código de convite</p>
+        <div style="display:flex;align-items:center;gap:12px;margin-top:4px">
+          <p class="invite-code" id="invite-code" style="margin:0"></p>
+          <button id="btn-copy" class="btn btn-sm"
+            style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);flex-shrink:0">
+            Copiar
+          </button>
+        </div>
+        <p class="invite-hint">Compartilhe com quem você quer no bolão.</p>
+      </div>
+
+      <!-- Action bar -->
+      <div class="pool-actions-bar mt-12">
+        <a id="link-rules" href="rules.html" class="pool-action-btn" style="text-decoration:none">📋 Regras</a>
+        <div class="pool-actions-spacer"></div>
+        <button id="btn-config" class="pool-action-btn hidden">⚙ Configurações</button>
+        <button id="btn-leave" class="pool-action-btn danger">Sair do bolão</button>
+      </div>
+
+      <!-- Ranking banner (expansível) -->
+      <div style="margin-top:14px">
+        <button class="ranking-toggle" id="ranking-toggle">
+          <span class="ranking-toggle-label">📊 Placar do Bolão</span>
+          <span class="ranking-toggle-pos" id="ranking-my-pos"></span>
+          <span class="ranking-arrow" id="ranking-arrow">▾</span>
+        </button>
+        <div id="ranking-panel" class="card hidden" style="padding:0;overflow:hidden;border-radius:0 0 var(--radius-lg) var(--radius-lg);border-top:none;margin-top:-6px">
+          <div id="ranking-list"></div>
+        </div>
+      </div>
+
+      <!-- Config panel (owner only) -->
+      <div id="config-panel" class="card hidden mt-12">
+        <h3>Configurações do bolão</h3>
+
+        <!-- Membros -->
+        <div class="card mt-12">
+          <h3 style="font-size:1rem">Membros</h3>
+          <div id="members-list" class="stack gap-8 mt-12">
+            <div class="empty"><strong>Carregando…</strong></div>
+          </div>
+          <p id="members-msg" class="hidden mt-8" style="font-size:.85rem"></p>
+        </div>
+
+        <!-- Regras de placar -->
+        <div class="card mt-8">
+          <h3 style="font-size:1rem">Palpites de placar — Fase de grupos</h3>
+          <div id="rules-match" class="stack gap-12 mt-12"></div>
+        </div>
+        <div class="card mt-8">
+          <h3 style="font-size:1rem">Palpites de placar — Mata-mata</h3>
+          <p class="muted mt-4" style="font-size:.8rem">Mesmos critérios, pontuação em dobro por padrão.</p>
+          <div id="rules-ko" class="stack gap-12 mt-12"></div>
+        </div>
+        <div class="card mt-8">
+          <h3 style="font-size:1rem">Classificação dos grupos</h3>
+          <div id="rules-cls" class="stack gap-12 mt-12"></div>
+        </div>
+        <div class="card mt-8">
+          <h3 style="font-size:1rem">Pódio da Copa</h3>
+          <div id="rules-tourn" class="stack gap-12 mt-12"></div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:16px">
+          <span style="font-size:.82rem;color:var(--muted)">
+            Máx/jogo grupos: <strong id="rules-max-match">—</strong> &nbsp;·&nbsp;
+            Máx/jogo mata-mata: <strong id="rules-max-ko">—</strong>
+          </span>
+          <button id="btn-save-rules" class="btn btn-primary btn-sm">Salvar regras</button>
+        </div>
+        <p id="rules-msg" class="hidden mt-8" style="font-size:.85rem"></p>
+      </div>
+
+      <!-- Pool nav -->
+      <nav class="pool-nav">
+        <button class="pool-nav-item active" data-tab="palpites">Palpites</button>
+        <button class="pool-nav-item" data-tab="grupos">Grupos</button>
+        <button class="pool-nav-item" data-tab="podio">🏆 Pódio</button>
+      </nav>
+
+      <!-- Tab: Palpites -->
+      <div id="tab-palpites">
+        <div id="countdown-banner" class="countdown-banner hidden"></div>
+        <div id="progress-section" class="progress-section hidden">
+          <div class="progress-meta">
+            <span class="progress-label" id="progress-label">Palpites feitos</span>
+            <span class="progress-fraction" id="progress-fraction"></span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+          </div>
+        </div>
+        <div id="filter-bar" class="filter-bar hidden"></div>
+        <div id="matches-list"></div>
+      </div>
+
+      <!-- Tab: Grupos -->
+      <div id="tab-grupos" class="hidden">
+        <p class="muted mt-4 mb-16" style="font-size:.82rem">
+          Classificação prevista com base nos seus palpites. Atualiza a cada palpite salvo.
+        </p>
+        <div id="groups-grid" class="groups-grid"></div>
+        <div class="mt-16">
+          <a id="link-standings-full" href="#" class="btn btn-ghost btn-sm">Ver tabela completa →</a>
+        </div>
+      </div>
+
+      <!-- Tab: Pódio -->
+      <div id="tab-podio" class="hidden">
+        <div id="podio-card" class="card mt-8">
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px">
+            <div style="text-align:center">
+              <div style="font-size:1.3rem">🥇</div>
+              <div id="pts-1st" style="font-family:var(--font-display);font-weight:800;font-size:1rem;color:var(--pitch-deep)">100 pts</div>
+              <div style="font-size:.68rem;color:var(--muted)">Campeão</div>
+            </div>
+            <div style="text-align:center">
+              <div style="font-size:1.3rem">🥈</div>
+              <div id="pts-2nd" style="font-family:var(--font-display);font-weight:800;font-size:1rem;color:var(--pitch-deep)">50 pts</div>
+              <div style="font-size:.68rem;color:var(--muted)">Vice</div>
+            </div>
+            <div style="text-align:center">
+              <div style="font-size:1.3rem">🥉</div>
+              <div id="pts-3rd" style="font-family:var(--font-display);font-weight:800;font-size:1rem;color:var(--pitch-deep)">25 pts</div>
+              <div style="font-size:.68rem;color:var(--muted)">3º lugar</div>
+            </div>
+            <div style="text-align:center">
+              <div style="font-size:1.3rem">🎯</div>
+              <div id="pts-bonus" style="font-family:var(--font-display);font-weight:800;font-size:1rem;color:var(--pitch-deep)">225 pts</div>
+              <div style="font-size:.68rem;color:var(--muted)">Pódio exato</div>
+            </div>
+          </div>
+          <div id="result-banner-pod" class="hidden card mb-16"
+            style="background:var(--pitch-light);border-color:rgba(14,159,80,.25);padding:12px 14px">
+            <p style="font-size:.75rem;font-weight:700;color:var(--pitch-deep);margin-bottom:6px">RESULTADO OFICIAL</p>
+            <div id="result-content-pod"></div>
+          </div>
+          <div class="stack gap-10">
+            <div>
+              <label style="font-size:.75rem;font-weight:700;color:var(--muted);display:block;margin-bottom:5px">🥇 Campeão</label>
+              <select class="filter-select" id="pod-sel-1" style="width:100%;max-width:none"></select>
+            </div>
+            <div>
+              <label style="font-size:.75rem;font-weight:700;color:var(--muted);display:block;margin-bottom:5px">🥈 Vice-campeão</label>
+              <select class="filter-select" id="pod-sel-2" style="width:100%;max-width:none"></select>
+            </div>
+            <div>
+              <label style="font-size:.75rem;font-weight:700;color:var(--muted);display:block;margin-bottom:5px">🥉 3º lugar</label>
+              <select class="filter-select" id="pod-sel-3" style="width:100%;max-width:none"></select>
+            </div>
+            <button id="btn-save-pod" class="btn btn-primary btn-full">Salvar palpite</button>
+            <p id="pod-msg" class="hidden" style="font-size:.85rem;text-align:center"></p>
+          </div>
+        </div>
+        <!-- Palpites da galera -->
+        <div class="card mt-12" style="padding:0;overflow:hidden">
+          <div style="padding:12px 16px 8px;font-size:.75rem;font-weight:700;color:var(--muted);border-bottom:1px solid var(--line)">PALPITES DA GALERA</div>
+          <div id="pod-others"></div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script type="module">
+    import {
+      supabase, requireAuthWithProfile,
+      renderHeader, bindSignOut,
+      escHtml, fmtDate, fmtTime,
+      matchStatus, statusBadge, medalIcon, translateTeam,
+      getRules, MATCH_RULE_LABELS, KO_RULE_LABELS, CLS_RULE_LABELS, TOURN_RULE_LABELS,
+      simulateGroupStandings, saveGroupStandings
+    } from './supabase.js'
+
+    const poolId = new URLSearchParams(location.search).get('id')
+    if (!poolId) { location.replace('dashboard.html'); }
+
+    const { user, profile } = await requireAuthWithProfile() ?? {}
+    if (!user) throw new Error('not reached')
+
+    document.getElementById('header-slot').innerHTML = renderHeader(profile, true)
+    bindSignOut()
+    document.getElementById('link-rules').href = `rules.html?pool=${poolId}`
+    document.getElementById('link-standings-full').href = `standings.html?pool=${poolId}`
+
+    const [{ data: pool }, { data: membership }] = await Promise.all([
+      supabase.from('pools').select('id, name, invite_code').eq('id', poolId).maybeSingle(),
+      supabase.from('pool_members').select('role').eq('pool_id', poolId).eq('user_id', user.id).maybeSingle()
+    ])
+    if (!pool) { location.replace('dashboard.html'); }
+
+    const isOwner = membership?.role === 'owner'
+    document.title = `${pool.name} · Copa 2026`
+    document.getElementById('pool-name').textContent = pool.name
+    document.getElementById('invite-code').textContent = pool.invite_code
+    if (isOwner) document.getElementById('btn-config').classList.remove('hidden')
+
+    document.getElementById('loading').classList.add('hidden')
+    document.getElementById('content').classList.remove('hidden')
+
+    // Copiar
+    document.getElementById('btn-copy').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(pool.invite_code) } catch {}
+      const btn = document.getElementById('btn-copy')
+      btn.textContent = 'Copiado!'; setTimeout(() => btn.textContent = 'Copiar', 2000)
+    })
+
+    // Sair
+    document.getElementById('btn-leave').addEventListener('click', async () => {
+      if (isOwner) { alert('Você é o dono deste bolão e não pode sair.'); return }
+      if (!confirm(`Sair do bolão "${pool.name}"?`)) return
+      await supabase.from('pool_members').delete().eq('pool_id', poolId).eq('user_id', user.id)
+      location.replace('dashboard.html')
+    })
+
+    // ── Ranking banner ────────────────────────────────────────
+    let rankingOpen = false, rankingLoaded = false
+    document.getElementById('ranking-toggle').addEventListener('click', async () => {
+      rankingOpen = !rankingOpen
+      document.getElementById('ranking-panel').classList.toggle('hidden', !rankingOpen)
+      document.getElementById('ranking-arrow').classList.toggle('open', rankingOpen)
+      if (rankingOpen && !rankingLoaded) { rankingLoaded = true; await loadRanking() }
+    })
+
+    async function loadRanking() {
+      const { data } = await supabase.rpc('pool_ranking', { p: poolId })
+      const list = document.getElementById('ranking-list')
+      if (!data?.length) { list.innerHTML = '<p class="muted" style="padding:14px">Sem participantes ainda.</p>'; return }
+      const me = data.find(r => r.user_id === user.id)
+      if (me) {
+        document.getElementById('ranking-my-pos').textContent = `${me.placement}º · ${me.total_points} pts`
+      }
+      list.innerHTML = data.map(r => `
+        <div class="rank-row${r.user_id === user.id ? ' me' : ''}">
+          <span class="rank-pos">${medalIcon(r.placement)}</span>
+          <span class="rank-name">${escHtml(r.display_name)}
+            ${r.user_id === user.id ? '<span style="font-size:.7rem;color:var(--muted);margin-left:4px">(você)</span>' : ''}
+          </span>
+          <span style="text-align:right">
+            <span class="rank-pts">${r.total_points}</span>
+            ${r.class_points > 0 ? `<span style="display:block;font-size:.68rem;color:var(--muted)">${r.match_points}+${r.class_points}</span>` : ''}
+          </span>
+        </div>`).join('')
+    }
+
+    // ── Config panel ──────────────────────────────────────────
+    let configOpen = false, configLoaded = false
+    document.getElementById('btn-config').addEventListener('click', () => {
+      configOpen = !configOpen
+      document.getElementById('config-panel').classList.toggle('hidden', !configOpen)
+      document.getElementById('btn-config').textContent = configOpen ? '✕ Fechar config.' : '⚙ Configurações'
+      if (configOpen && !configLoaded) { configLoaded = true; loadConfig() }
+    })
+
+    async function loadConfig() {
+      // ── Membros ──────────────────────────────────────────────
+      const { data: members } = await supabase
+        .from('pool_members')
+        .select('user_id, role, profiles(display_name, avatar)')
+        .eq('pool_id', poolId)
+
+      const membersList = document.getElementById('members-list')
+      membersList.innerHTML = (members ?? []).map(m => {
+        const name   = m.profiles?.display_name ?? '?'
+        const avatar = m.profiles?.avatar || '⚽'
+        const isMe   = m.user_id === user.id
+        const canKick = !isMe && m.role !== 'owner'
+        return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)">
+          <span style="font-size:1.2rem">${escHtml(avatar)}</span>
+          <span style="flex:1;font-size:.9rem;font-weight:${m.role==='owner'?'700':'500'}">${escHtml(name)}${m.role==='owner'?' <span style="font-size:.7rem;color:var(--pitch-deep)">(dono)</span>':''}</span>
+          ${canKick ? `<button class="pool-action-btn danger btn-kick" data-uid="${m.user_id}" data-name="${escHtml(name)}" style="font-size:.75rem;padding:4px 9px">Remover</button>` : ''}
+        </div>`
+      }).join('') || '<p class="muted" style="font-size:.85rem">Nenhum membro.</p>'
+
+      membersList.querySelectorAll('.btn-kick').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const memberId   = btn.dataset.uid
+          const memberName = btn.dataset.name
+          const msg = document.getElementById('members-msg')
+          if (!confirm(`Remover "${memberName}" do bolão? Esta ação é irreversível.`)) return
+          const pw = prompt('Confirme sua senha para continuar:')
+          if (!pw) return
+          // Re-autenticar
+          const { data: { user: authUser } } = await supabase.auth.getUser()
+          const { error: authErr } = await supabase.auth.signInWithPassword({ email: authUser.email, password: pw })
+          if (authErr) {
+            msg.textContent = 'Senha incorreta. Membro não removido.'
+            msg.style.color = 'var(--flare)'; msg.classList.remove('hidden'); return
+          }
+          const { error } = await supabase.from('pool_members').delete()
+            .eq('pool_id', poolId).eq('user_id', memberId)
+          if (error) {
+            msg.textContent = error.message; msg.style.color = 'var(--flare)'
+          } else {
+            btn.closest('div').remove()
+            msg.textContent = `✓ ${memberName} removido do bolão.`; msg.style.color = 'var(--pitch-deep)'
+          }
+          msg.classList.remove('hidden')
+        })
+      })
+
+      // ── Regras ───────────────────────────────────────────────
+      const rules = await getRules(poolId)
+      const MATCH_KEYS = Object.keys(MATCH_RULE_LABELS)
+      const KO_KEYS    = Object.keys(KO_RULE_LABELS)
+      const CLS_KEYS   = Object.keys(CLS_RULE_LABELS)
+      const TOURN_KEYS = Object.keys(TOURN_RULE_LABELS)
+      const ALL_KEYS   = [...MATCH_KEYS, ...KO_KEYS, ...CLS_KEYS, ...TOURN_KEYS]
+
+      const renderInputs = (keys, labels, id) => {
+        document.getElementById(id).innerHTML = keys.map(k => `
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+            <label for="rule-${k}" style="font-size:.85rem;font-weight:500;flex:1">${labels[k]}</label>
+            <input id="rule-${k}" class="rules-input" type="number" min="0" max="999" value="${rules[k] ?? 0}">
+          </div>`).join('')
+      }
+      renderInputs(MATCH_KEYS,  MATCH_RULE_LABELS,  'rules-match')
+      renderInputs(KO_KEYS,     KO_RULE_LABELS,     'rules-ko')
+      renderInputs(CLS_KEYS,    CLS_RULE_LABELS,    'rules-cls')
+      renderInputs(TOURN_KEYS,  TOURN_RULE_LABELS,  'rules-tourn')
+
+      const updateMax = () => {
+        const mMax  = MATCH_KEYS.reduce((s,k) => s+(parseInt(document.getElementById(`rule-${k}`)?.value)||0),0)
+        const koMax = KO_KEYS.reduce((s,k) => s+(parseInt(document.getElementById(`rule-${k}`)?.value)||0),0)
+        document.getElementById('rules-max-match').textContent = `${mMax} pts`
+        document.getElementById('rules-max-ko').textContent    = `${koMax} pts`
+      }
+      updateMax()
+      document.querySelectorAll('.rules-input').forEach(inp => inp.addEventListener('input', updateMax))
+
+      document.getElementById('btn-save-rules').addEventListener('click', async () => {
+        const btn = document.getElementById('btn-save-rules')
+        const msg = document.getElementById('rules-msg')
+        const updates = { updated_at: new Date().toISOString() }
+        for (const k of ALL_KEYS) {
+          const v = parseInt(document.getElementById(`rule-${k}`)?.value)
+          if (isNaN(v) || v < 0) { msg.textContent = 'Todos os valores precisam ser ≥ 0.'; msg.style.color='var(--flare)'; msg.classList.remove('hidden'); return }
+          updates[k] = v
+        }
+        btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>'
+        msg.classList.add('hidden')
+        const { error } = await supabase.from('pool_scoring_rules').update(updates).eq('pool_id', poolId)
+        btn.disabled = false; btn.textContent = 'Salvar regras'
+        msg.textContent = error ? error.message : '✓ Regras salvas.'
+        msg.style.color = error ? 'var(--flare)' : 'var(--pitch-deep)'
+        msg.classList.remove('hidden')
+      })
+    }
+
+    // ── Tabs ──────────────────────────────────────────────────
+    let tabsLoaded = { palpites: false, grupos: false, podio: false }
+    document.querySelectorAll('.pool-nav-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.pool-nav-item').forEach(b => b.classList.remove('active'))
+        btn.classList.add('active')
+        const tab = btn.dataset.tab
+        document.getElementById('tab-palpites').classList.toggle('hidden', tab !== 'palpites')
+        document.getElementById('tab-grupos').classList.toggle('hidden', tab !== 'grupos')
+        document.getElementById('tab-podio').classList.toggle('hidden', tab !== 'podio')
+        if (!tabsLoaded[tab]) { tabsLoaded[tab] = true; if (tab === 'grupos') loadGrupos(); if (tab === 'podio') loadPodio() }
+      })
+    })
+
+    // ── Estado palpites ───────────────────────────────────────
+    const timers = {}, latestVals = {}
+    let predsMap = {}, allMatches = []
+    let activeGroup = 'todos', activeRound = 'todos', viewMode = 'group'
+
+    async function loadMatches() {
+      const [{ data: matches }, { data: preds }] = await Promise.all([
+        supabase.from('matches').select('id,match_date,home_team,away_team,home_score,away_score,group_name,status,match_number').eq('phase','group').order('match_date'),
+        supabase.from('predictions').select('match_id,home_score,away_score,points').eq('pool_id',poolId).eq('user_id',user.id)
+      ])
+      predsMap = {}
+      for (const p of preds ?? []) predsMap[p.match_id] = p
+      const list = document.getElementById('matches-list')
+      if (!matches?.length) { list.innerHTML = `<div class="empty"><strong>Nenhuma partida importada ainda</strong></div>`; return }
+      allMatches = matches
+      updateProgress(); startCountdown(); buildFilterBar(matches); renderMatches()
+    }
+
+    function updateProgress() {
+      const open = allMatches.filter(m => matchStatus(m) === 'open')
+      const total = open.length, done = open.filter(m => predsMap[m.id] !== undefined).length
+      const pct = total ? Math.round(done/total*100) : 0
+      const sec = document.getElementById('progress-section')
+      if (!total) { sec.classList.add('hidden'); return }
+      sec.classList.remove('hidden')
+      document.getElementById('progress-label').textContent = pct === 100 ? 'Todos os palpites feitos! 🎉' : 'Palpites feitos'
+      document.getElementById('progress-fraction').textContent = `${done} de ${total}`
+      document.getElementById('progress-fill').style.width = pct + '%'
+    }
+
+    function startCountdown() {
+      const banner = document.getElementById('countdown-banner')
+      const next = allMatches.filter(m => new Date(m.match_date) > new Date() && m.status === 'scheduled').sort((a,b) => new Date(a.match_date)-new Date(b.match_date))[0]
+      if (!next) { banner.classList.add('hidden'); return }
+      const update = () => {
+        const diff = new Date(next.match_date) - new Date()
+        if (diff <= 0) { banner.classList.add('hidden'); return }
+        const totalH = Math.floor(diff/3600000), d = Math.floor(totalH/24), h = totalH%24, m = Math.floor((diff%3600000)/60000)
+        banner.textContent = `⏱ Próxima partida em ${d>0?`${d}d ${h}h`:h>0?`${h}h ${m}min`:`${m}min`} · ${translateTeam(next.home_team)} × ${translateTeam(next.away_team)}`
+        banner.classList.remove('hidden')
+      }
+      update(); setInterval(update, 60000)
+    }
+
+    function buildFilterBar(matches) {
+      const groups = [...new Set(matches.map(m=>m.group_name).filter(Boolean))].sort()
+      const rounds = [...new Set(matches.map(m=>m.match_number).filter(n=>n>0))].sort((a,b)=>a-b)
+      const bar = document.getElementById('filter-bar')
+      bar.classList.remove('hidden')
+      bar.innerHTML = `<div class="filter-selects">
+        ${groups.length?`<select class="filter-select" id="sel-group"><option value="todos">Todos os grupos</option>${groups.map(g=>`<option value="${escHtml(g)}">Grupo ${escHtml(g)}</option>`).join('')}</select>`:''}
+        ${rounds.length?`<select class="filter-select" id="sel-round"><option value="todos">Todas as rodadas</option>${rounds.map(r=>`<option value="${r}">Rodada ${r}</option>`).join('')}</select>`:''}
+        <select class="filter-select" id="sel-view"><option value="group">Por grupo</option><option value="date">Por data</option></select>
+      </div>`
+      document.getElementById('sel-group')?.addEventListener('change',e=>{activeGroup=e.target.value;renderMatches()})
+      document.getElementById('sel-round')?.addEventListener('change',e=>{activeRound=e.target.value;renderMatches()})
+      document.getElementById('sel-view').addEventListener('change',e=>{viewMode=e.target.value;renderMatches()})
+    }
+
+    function renderMatches() {
+      const filtered = allMatches.filter(m => (activeGroup==='todos'||m.group_name===activeGroup) && (activeRound==='todos'||String(m.match_number)===String(activeRound)))
+      const list = document.getElementById('matches-list')
+      if (!filtered.length) { list.innerHTML='<div class="empty"><strong>Nenhuma partida nesse filtro</strong></div>'; return }
+      const bucket = m => viewMode==='group' ? (m.group_name??'?') : m.match_date.slice(0,10)
+      const label  = k => viewMode==='group' ? `Grupo ${escHtml(k)}` : new Date(k+'T12:00:00').toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long'})
+      const sections = {}
+      for (const m of filtered) { const k=bucket(m); if(!sections[k]) sections[k]=[]; sections[k].push(m) }
+      list.innerHTML = Object.entries(sections).sort(([a],[b])=>a.localeCompare(b)).map(([k,ms])=>`
+        <div style="margin-bottom:28px">
+          <div class="round-header"><span class="round-label" style="text-transform:capitalize">${label(k)}</span><div class="round-line"></div></div>
+          <div class="stack gap-8">${ms.sort((a,b)=>new Date(a.match_date)-new Date(b.match_date)).map(m=>renderMatchCard(m)).join('')}</div>
+        </div>`).join('')
+      for (const m of filtered) {
+        if (matchStatus(m)!=='open') continue
+        const h=document.getElementById(`home-${m.id}`), a=document.getElementById(`away-${m.id}`)
+        if (!h||!a) continue
+        h.addEventListener('input',()=>schedSave(m.id)); a.addEventListener('input',()=>schedSave(m.id))
+      }
+    }
+
+    function renderMatchCard(m) {
+      const status=matchStatus(m), pred=predsMap[m.id], isOpen=status==='open', isClosed=status==='closed'
+      const home=translateTeam(m.home_team), away=translateTeam(m.away_team)
+      const scoreArea = isOpen
+        ? `<span class="score-area"><input id="home-${m.id}" class="score-input" type="number" min="0" max="20" value="${pred?pred.home_score:''}" placeholder="—"><span class="score-sep">:</span><input id="away-${m.id}" class="score-input" type="number" min="0" max="20" value="${pred?pred.away_score:''}" placeholder="—"></span>`
+        : `<span class="score-locked">${m.home_score!==null?`<span>${m.home_score}</span><span class="score-sep">:</span><span>${m.away_score}</span>`:`<span style="font-size:.9rem;color:var(--muted)">— : —</span>`}</span>`
+      let footer = ''
+      if (isClosed&&pred) footer = `Seu palpite: ${pred.home_score}–${pred.away_score} ${pred.points!==null?`<span class="points-earned">+${pred.points} pts</span>`:'<span style="font-style:italic">calculando…</span>'}`
+      else if (isClosed&&!pred) footer = `<span style="color:var(--flare)">Sem palpite registrado</span>`
+      return `<div class="match-card ${status}" id="card-${m.id}">
+        <div class="match-meta"><strong>Grupo ${escHtml(m.group_name??'?')}</strong><span>·</span><span>${fmtDate(m.match_date)} · ${fmtTime(m.match_date)}</span>${statusBadge(status)}</div>
+        <div class="match-row"><span class="team-name team-home">${escHtml(home)}</span>${scoreArea}<span class="team-name team-away">${escHtml(away)}</span></div>
+        <div class="match-footer" id="footer-${m.id}">${footer}</div>
+      </div>`
+    }
+
+    function schedSave(matchId, delay=700) {
+      const hI=document.getElementById(`home-${matchId}`), aI=document.getElementById(`away-${matchId}`)
+      if (hI) latestVals[matchId]={home:hI.value,away:aI.value}
+      clearTimeout(timers[matchId])
+      timers[matchId]=setTimeout(async()=>{
+        const {home,away}=latestVals[matchId]??{}
+        const h=parseInt(home), a=parseInt(away)
+        if (isNaN(h)||isNaN(a)||h<0||a<0) return
+        setFooter(matchId,'<span class="save-status">Salvando…</span>')
+        const {error}=await supabase.from('predictions').upsert({user_id:user.id,match_id:matchId,pool_id:poolId,home_score:h,away_score:a,updated_at:new Date().toISOString()},{onConflict:'user_id,match_id,pool_id'})
+        if (error) { setFooter(matchId,'<span style="color:var(--flare)">Erro ao salvar</span>') }
+        else {
+          predsMap[matchId]={...predsMap[matchId],home_score:h,away_score:a}
+          updateProgress()
+          setFooter(matchId,'<span class="save-status" style="color:var(--pitch)">✓ Salvo</span>')
+          setTimeout(()=>setFooter(matchId,''),2000)
+          const match=allMatches.find(m=>m.id===matchId)
+          if (match?.group_name) saveGroupStandings(poolId,user.id,match.group_name,allMatches.filter(m=>m.group_name===match.group_name),predsMap)
+        }
+      },delay)
+    }
+
+    function setFooter(id,html) { const el=document.getElementById(`footer-${id}`); if(el) el.innerHTML=html }
+
+    await loadMatches()
+
+    // ── Tab Grupos ────────────────────────────────────────────
+    async function loadGrupos() {
+      if (!allMatches.length) { document.getElementById('groups-grid').innerHTML='<div class="empty"><strong>Sem partidas ainda</strong></div>'; return }
+      const groupNames = [...new Set(allMatches.map(m=>m.group_name).filter(Boolean))].sort()
+      document.getElementById('groups-grid').innerHTML = groupNames.map(g => {
+        const gMatches = allMatches.filter(m=>m.group_name===g)
+        const standings = simulateGroupStandings(gMatches, predsMap)
+        return `<div class="group-mini-card">
+          <div class="group-mini-title">Grupo ${escHtml(g)}</div>
+          ${standings.map((s,i)=>{
+            const pos=i+1
+            return `<div class="group-mini-team">
+              <span class="group-mini-pos gmp-${pos}">${pos}</span>
+              <span style="flex:1;font-size:.82rem">${escHtml(translateTeam(s.team))}</span>
+              <span class="group-mini-pts">${s.pts}</span>
+            </div>`
+          }).join('')}
+        </div>`
+      }).join('')
+    }
+
+    // ── Tab Pódio ─────────────────────────────────────────────
+    async function loadPodio() {
+      const rules = await getRules(poolId)
+      document.getElementById('pts-1st').textContent   = `${rules.tourn_1st??100} pts`
+      document.getElementById('pts-2nd').textContent   = `${rules.tourn_2nd??50} pts`
+      document.getElementById('pts-3rd').textContent   = `${rules.tourn_3rd??25} pts`
+      document.getElementById('pts-bonus').textContent = `${rules.tourn_bonus??225} pts`
+
+      const [{ data: teamsData }, { data: myPred }, { data: results }, { data: allPreds }, { data: members }] = await Promise.all([
+        supabase.from('matches').select('home_team,away_team').eq('phase','group'),
+        supabase.from('tournament_predictions').select('pred_1st,pred_2nd,pred_3rd').eq('pool_id',poolId).eq('user_id',user.id).maybeSingle(),
+        supabase.from('tournament_results').select('position,team_name').order('position'),
+        supabase.from('tournament_predictions').select('user_id,pred_1st,pred_2nd,pred_3rd').eq('pool_id',poolId),
+        supabase.from('pool_members').select('user_id,profiles(display_name,avatar)').eq('pool_id',poolId)
+      ])
+
+      const teamSet = new Set()
+      for (const m of teamsData??[]) { if(m.home_team&&m.home_team!=='TBD') teamSet.add(m.home_team); if(m.away_team&&m.away_team!=='TBD') teamSet.add(m.away_team) }
+      const teams = [...teamSet].sort((a,b)=>translateTeam(a).localeCompare(translateTeam(b),'pt-BR'))
+      const opts = `<option value="">— Escolha —</option>` + teams.map(t=>`<option value="${escHtml(t)}">${escHtml(translateTeam(t))}</option>`).join('')
+      ;['pod-sel-1','pod-sel-2','pod-sel-3'].forEach((id,i)=>{ const sel=document.getElementById(id); sel.innerHTML=opts; const sv=[myPred?.pred_1st,myPred?.pred_2nd,myPred?.pred_3rd][i]; if(sv) sel.value=sv })
+
+      if (results?.length===3) {
+        const resultMap={}; for (const r of results) resultMap[r.position]=r.team_name
+        document.getElementById('result-content-pod').innerHTML=['🥇','🥈','🥉'].map((m,i)=>`<div style="font-size:.88rem;font-weight:600;margin-bottom:3px">${m} ${escHtml(translateTeam(resultMap[i+1]))}</div>`).join('')
+        document.getElementById('result-banner-pod').classList.remove('hidden')
+      }
+
+      document.getElementById('btn-save-pod').addEventListener('click', async()=>{
+        const v1=document.getElementById('pod-sel-1').value, v2=document.getElementById('pod-sel-2').value, v3=document.getElementById('pod-sel-3').value
+        const msg=document.getElementById('pod-msg')
+        if (!v1||!v2||!v3) { msg.textContent='Escolha as 3 seleções.'; msg.style.color='var(--flare)'; msg.classList.remove('hidden'); return }
+        if (new Set([v1,v2,v3]).size<3) { msg.textContent='Repita não pode.'; msg.style.color='var(--flare)'; msg.classList.remove('hidden'); return }
+        const btn=document.getElementById('btn-save-pod')
+        btn.disabled=true; btn.innerHTML='<span class="spinner"></span>'
+        msg.classList.add('hidden')
+        const {error}=await supabase.from('tournament_predictions').upsert({pool_id:poolId,user_id:user.id,pred_1st:v1,pred_2nd:v2,pred_3rd:v3,updated_at:new Date().toISOString()},{onConflict:'pool_id,user_id'})
+        btn.disabled=false; btn.textContent='Salvar palpite'
+        msg.textContent=error?error.message:'✓ Palpite do pódio salvo!'; msg.style.color=error?'var(--flare)':'var(--pitch-deep)'; msg.classList.remove('hidden')
+        renderPodioOthers(allPreds, members, results, rules)
+      })
+
+      renderPodioOthers(allPreds, members, results, rules)
+    }
+
+    function renderPodioOthers(allPreds, members, results, rules) {
+      const nameMap={}, avatarMap={}
+      for (const m of members??[]) { nameMap[m.user_id]=m.profiles?.display_name??'?'; avatarMap[m.user_id]=m.profiles?.avatar||'⚽' }
+      const resultMap={}; for (const r of results??[]) resultMap[r.position]=r.team_name
+      const hasResult=Object.keys(resultMap).length===3
+      const list=document.getElementById('pod-others')
+      if (!allPreds?.length) { list.innerHTML='<p class="muted" style="padding:14px">Nenhum palpite ainda.</p>'; return }
+      list.innerHTML=allPreds.map(p=>{
+        let pts=0
+        if (hasResult) {
+          if(p.pred_1st===resultMap[1]) pts+=rules.tourn_1st??100
+          if(p.pred_2nd===resultMap[2]) pts+=rules.tourn_2nd??50
+          if(p.pred_3rd===resultMap[3]) pts+=rules.tourn_3rd??25
+          if(p.pred_1st===resultMap[1]&&p.pred_2nd===resultMap[2]&&p.pred_3rd===resultMap[3]) pts+=rules.tourn_bonus??225
+        }
+        const isMe=p.user_id===user.id
+        return `<div style="display:flex;align-items:center;gap:8px;padding:9px 14px;border-bottom:1px solid var(--line);${isMe?'background:var(--pitch-light)':''}">
+          <span style="font-size:1.1rem">${escHtml(avatarMap[p.user_id])}</span>
+          <span style="flex:1;font-size:.85rem;font-weight:${isMe?'700':'500'}">${escHtml(nameMap[p.user_id])}</span>
+          <span style="font-size:.78rem;color:var(--muted)">🥇${escHtml(translateTeam(p.pred_1st??'?'))} 🥈${escHtml(translateTeam(p.pred_2nd??'?'))} 🥉${escHtml(translateTeam(p.pred_3rd??'?'))}</span>
+          ${hasResult?`<span style="font-family:var(--font-display);font-weight:800;font-size:.88rem;color:var(--pitch-deep);min-width:46px;text-align:right">${pts>0?'+'+pts:'0'} pts</span>`:''}
+        </div>`
+      }).join('')
+    }
+  </script>
+</body>
+</html>

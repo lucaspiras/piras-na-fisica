@@ -2,9 +2,11 @@
   'use strict';
 
   const DT         = 0.005;   // RK4 step (s)
-  const MAX_PH       = 12000;   // phase / ω(t) trace points
+  const MAX_PH       = 72000;   // phase history fallback (6 min @ DT=0.005)
   const TS_WINDOW    = 14;      // seconds of scrolling history
-  const MAX_POINCARE = 2000;    // Poincaré section dots
+  const MAX_POINCARE   = 2000;   // Poincaré section dots
+  const FRAME_BUF_SIZE = 600;    // backward step buffer (~3 s)
+  const EMA            = 0.06;   // energy smoothing factor
 
   /* ─────────────────────────────────────────────────────
    * PRESETS
@@ -37,9 +39,15 @@
   let Q_diss = 0.0;
   let maxBar = 0.1;
 
-  let phHist      = [];   // [{theta_w, omega}]         phase + ω(t) trace
-  let tsHist      = [];   // [{t, theta_w, omega, Ft, rest}]  time series
-  let poincareHist = [];  // [{theta, omega}] sampled at t = n·T_drive
+  let phHist       = [];   // [{theta_w, omega}]
+  let tsHist       = [];   // [{t, theta_w, omega, Ft, rest, damp}]
+  let poincareHist = [];   // [{theta, omega}] sampled at t = n·T_drive
+  let frameBuffer  = [];   // [{theta,omega,t,Qdiss,addedPoincare}] for ◀▶ stepping
+  let cvPhOff = null, ctxPhOff = null, phDrawn = 0; // persistent phase trace
+  let phPendingClear = false;
+
+  let showForces = { rest: true, damp: true, driv: true };
+  let smoothEc = 0, smoothEpg = 0, smoothEm = 0, smoothFt = 0;
 
   let graphMode = 0;  // 0=phase, 1=θ(t), 2=ω(t), 3=Forças(t), 4=Poincaré
 
@@ -75,6 +83,10 @@
   }
 
   function advance() {
+    // Save state before stepping (enables ◀ backward navigation)
+    frameBuffer.push({ theta: s.theta, omega: s.omega, t: s.t, Qdiss: Q_diss, addedPoincare: false });
+    if (frameBuffer.length > FRAME_BUF_SIZE) frameBuffer.shift();
+
     const oPrev = s.omega;
     const [nt, no] = rk4(s.theta, s.omega, s.t, DT);
     Q_diss += p.gamma * ((oPrev+no)*0.5) ** 2 * p.L * p.L * DT;
@@ -86,16 +98,21 @@
     const tw   = wrapAngle(nt);
     const Ft   = p.A * Math.cos(p.we * s.t);
     const rest = -(p.g / p.L) * Math.sin(nt);
+    const damp = -p.gamma * no;
 
     if (phHist.length >= MAX_PH) phHist.shift();
     phHist.push({ theta: tw, omega: no });
 
     const tCutoff = s.t - TS_WINDOW;
     while (tsHist.length && tsHist[0].t < tCutoff) tsHist.shift();
-    tsHist.push({ t: s.t, theta: tw, omega: no, Ft, rest });
+    tsHist.push({ t: s.t, theta: tw, omega: no, Ft, rest, damp });
 
-    const { Em } = energies();
+    const { Ec, Epg, Em } = energies();
     if (Em > maxBar) maxBar = Em;
+    smoothEc  += EMA * (Ec  - smoothEc);
+    smoothEpg += EMA * (Epg - smoothEpg);
+    smoothEm  += EMA * (Em  - smoothEm);
+    smoothFt  += EMA * (Ft  - smoothFt);
 
     // Poincaré section: sample at t = n·T_drive
     const T_drive = p.we > 0.01 ? (2 * Math.PI / p.we) : 0;
@@ -105,8 +122,32 @@
       if (currPhase > prevPhase) {
         if (poincareHist.length >= MAX_POINCARE) poincareHist.shift();
         poincareHist.push({ theta: wrapAngle(s.theta), omega: s.omega });
+        frameBuffer[frameBuffer.length - 1].addedPoincare = true;
       }
     }
+  }
+
+  function stepForward() {
+    advance();
+    render();
+    updateInfoPanel();
+  }
+
+  function stepBack() {
+    if (frameBuffer.length === 0) return;
+    const prev = frameBuffer.pop();
+    s.theta = prev.theta;
+    s.omega = prev.omega;
+    s.t     = prev.t;
+    Q_diss  = prev.Qdiss;
+    if (phHist.length > 0) phHist.pop();
+    while (tsHist.length > 0 && tsHist[tsHist.length - 1].t > s.t) tsHist.pop();
+    if (prev.addedPoincare && poincareHist.length > 0) poincareHist.pop();
+    const { Ec, Epg, Em } = energies();
+    smoothEc = Ec; smoothEpg = Epg; smoothEm = Em;
+    smoothFt = p.A * Math.cos(p.we * s.t);
+    render();
+    updateInfoPanel();
   }
 
   /* ─────────────────────────────────────────────────────
@@ -288,21 +329,85 @@
     ctx.textAlign = 'left';
   }
 
-  // ── Mode 0: Phase space ──
+  // ── Persistent offscreen phase trace helpers ──
+  function phaseCoords(W, H, r) {
+    const padL=42*r, padR=10*r, padT=20*r, padB=26*r;
+    const pw=W-padL-padR, ph=H-padT-padB;
+    const cx=padL+pw/2, cy=padT+ph/2;
+    const maxT=Math.PI, maxO=12;
+    return { padL, padR, padT, padB, pw, ph, cx, cy,
+      tx: (t) => cx + (t/maxT)*(pw/2),
+      ty: (o) => cy - (o/maxO)*(ph/2) };
+  }
+
+  function drawPhaseSegments(from, to) {
+    if (!ctxPhOff || to <= from) return;
+    // Start one index back so each batch connects to the previous batch's last point
+    const start = from > 0 ? from - 1 : 0;
+    const r = R(), W = cvPhOff.width, H = cvPhOff.height;
+    const { tx, ty } = phaseCoords(W, H, r);
+    ctxPhOff.strokeStyle = 'rgba(45,212,191,0.40)';
+    ctxPhOff.lineWidth = 1.2 * r;
+    ctxPhOff.lineJoin = 'round';
+    ctxPhOff.beginPath();
+    let needMove = true;
+    for (let i = start; i < to; i++) {
+      const curr = phHist[i];
+      if (!needMove && Math.abs(curr.theta - phHist[i-1].theta) > Math.PI * 0.9) {
+        ctxPhOff.stroke();
+        ctxPhOff.beginPath();
+        needMove = true;
+      }
+      if (needMove) { ctxPhOff.moveTo(tx(curr.theta), ty(curr.omega)); needMove = false; }
+      else           ctxPhOff.lineTo(tx(curr.theta), ty(curr.omega));
+    }
+    ctxPhOff.stroke();
+  }
+
+  function syncPhaseOffscreen() {
+    const W = cvGraph.width, H = cvGraph.height;
+    if (!cvPhOff) {
+      cvPhOff = document.createElement('canvas');
+      cvPhOff.width = W; cvPhOff.height = H;
+      ctxPhOff = cvPhOff.getContext('2d');
+      phPendingClear = false;
+      phDrawn = 0;
+    } else if (cvPhOff.width !== W || cvPhOff.height !== H) {
+      cvPhOff.width = W; cvPhOff.height = H;
+      // Canvas cleared by resize — redraw from phHist backup
+      phPendingClear = false;
+      phDrawn = 0;
+      drawPhaseSegments(0, phHist.length);
+      phDrawn = phHist.length;
+    } else if (phPendingClear) {
+      ctxPhOff.clearRect(0, 0, cvPhOff.width, cvPhOff.height);
+      phPendingClear = false;
+      phDrawn = 0;
+    }
+  }
+
+  function clearPhaseOffscreen() {
+    phPendingClear = true;
+    phDrawn = 0;
+  }
+
+  // ── Mode 0: Phase space (persistent canvas) ──
   function drawGraphPhase() {
     const ctx = ctxGraph;
     const r = R(), W = cvGraph.width, H = cvGraph.height;
+
+    syncPhaseOffscreen();
+
+    // Append only the new segments to offscreen
+    if (phDrawn < phHist.length) {
+      drawPhaseSegments(phDrawn, phHist.length);
+      phDrawn = phHist.length;
+    }
+
+    // Main canvas: background + grid
     setupAxesCtx(ctx, W, H);
+    const { padL, padR, padT, padB, cx, cy, tx, ty } = phaseCoords(W, H, r);
 
-    const padL=42*r, padR=10*r, padT=20*r, padB=26*r;
-    const pw = W-padL-padR, ph = H-padT-padB;
-    const cx = padL+pw/2, cy = padT+ph/2;
-    const maxT = Math.PI, maxO = 12;
-
-    const tx = (t) => cx + (t/maxT)*(pw/2);
-    const ty = (o) => cy - (o/maxO)*(ph/2);
-
-    // Grid lines
     ctx.strokeStyle = 'rgba(255,255,255,0.04)'; ctx.lineWidth = r;
     [-Math.PI, -Math.PI/2, 0, Math.PI/2, Math.PI].forEach(a => {
       ctx.beginPath(); ctx.moveTo(tx(a), padT); ctx.lineTo(tx(a), H-padB); ctx.stroke();
@@ -311,9 +416,11 @@
       ctx.beginPath(); ctx.moveTo(padL, ty(o)); ctx.lineTo(W-padR, ty(o)); ctx.stroke();
     });
 
-    drawAxes(ctx, r, padL, padR, padT, padB, W, H, cx, cy, 'θ →', 'ω ↑');
+    // Composite persistent trace
+    ctx.drawImage(cvPhOff, 0, 0);
 
-    // Axis labels
+    // Axes + labels on top
+    drawAxes(ctx, r, padL, padR, padT, padB, W, H, cx, cy, 'θ →', 'ω ↑');
     ctx.fillStyle = '#2d3c50'; ctx.font = `${9*r}px IBM Plex Mono, monospace`;
     ctx.textAlign = 'center';
     [['π', Math.PI], ['-π', -Math.PI], ['π/2', Math.PI/2], ['-π/2', -Math.PI/2]].forEach(([lbl, val]) => {
@@ -323,23 +430,7 @@
     [8,-8].forEach(o => ctx.fillText(o, cx-5*r, ty(o)+4*r));
     ctx.textAlign = 'left';
 
-    // Trace
-    if (phHist.length > 1) {
-      const n = phHist.length;
-      ctx.lineWidth = 1.2*r;
-      for (let i = 1; i < n; i++) {
-        const pt = phHist[i-1], pn = phHist[i];
-        if (Math.abs(pn.theta - pt.theta) > Math.PI*0.9) continue;
-        const alpha = 0.06 + 0.65*(i/n);
-        ctx.strokeStyle = `rgba(45,212,191,${alpha})`;
-        ctx.beginPath();
-        ctx.moveTo(tx(pt.theta), ty(pt.omega));
-        ctx.lineTo(tx(pn.theta), ty(pn.omega));
-        ctx.stroke();
-      }
-    }
-
-    // Current point
+    // Current point (always on top)
     const curX = tx(wrapAngle(s.theta)), curY = ty(s.omega);
     ctx.shadowColor = '#f59e0b'; ctx.shadowBlur = 8*r;
     ctx.fillStyle = '#f59e0b';
@@ -436,40 +527,44 @@
     drawTimeLabel(ctx, r, W, H, padR);
   }
 
-  // ── Mode 3: Forças(t) — 2 linhas ──
+  // ── Mode 3: Forças(t) — até 3 linhas com toggle ──
   function drawGraphForces() {
     const ctx = ctxGraph;
     const r = R(), W = cvGraph.width, H = cvGraph.height;
     const {padL, padR, padT, padB, ph, cy} = timeSeriesSetup(ctx, r, W, H);
 
-    const maxAcc = Math.max(p.g/p.L, p.A, 2);
-    const aToY = (a) => cy - (a/maxAcc)*(ph/2);
+    // Y-scale: max das forças visíveis
+    let maxAcc = 2;
+    if (showForces.rest) maxAcc = Math.max(maxAcc, p.g / p.L);
+    if (showForces.driv) maxAcc = Math.max(maxAcc, p.A);
+    if (showForces.damp) maxAcc = Math.max(maxAcc, p.gamma * 14);
+
+    const aToY = (a) => cy - (a / maxAcc) * (ph / 2);
 
     ctx.strokeStyle = 'rgba(255,255,255,0.12)'; ctx.lineWidth = r;
     ctx.beginPath(); ctx.moveTo(padL, cy); ctx.lineTo(W-padR, cy); ctx.stroke();
 
     ctx.fillStyle = '#2d3c50'; ctx.font = `${9*r}px IBM Plex Mono, monospace`;
     ctx.textAlign = 'right';
-    ctx.fillText(maxAcc.toFixed(1), padL-5*r, aToY(maxAcc)+4*r);
-    ctx.fillText('0',               padL-5*r, cy+4*r);
-    ctx.fillText('-'+maxAcc.toFixed(1), padL-5*r, aToY(-maxAcc)+4*r);
+    ctx.fillText(maxAcc.toFixed(1),          padL-5*r, aToY(maxAcc)+4*r);
+    ctx.fillText('0',                         padL-5*r, cy+4*r);
+    ctx.fillText('-'+maxAcc.toFixed(1),       padL-5*r, aToY(-maxAcc)+4*r);
     ctx.textAlign = 'left';
 
-    // Line 1: restoring term  −(g/L)·sin θ  (cyan)
-    drawTimeLine(ctx, r, tsHist, pt => aToY(pt.rest), '#3dd6f5', W-padR, padL);
+    if (showForces.rest)
+      drawTimeLine(ctx, r, tsHist, pt => aToY(pt.rest), '#3dd6f5', W-padR, padL);
+    if (showForces.damp)
+      drawTimeLine(ctx, r, tsHist, pt => aToY(pt.damp), '#f87171', W-padR, padL);
+    if (showForces.driv && p.A > 0.01)
+      drawTimeLine(ctx, r, tsHist, pt => aToY(pt.Ft),   '#fbbf24', W-padR, padL);
 
-    // Line 2: forcing term  F₀·cos(ωₑt)  (amber)
-    if (p.A > 0.01) {
-      drawTimeLine(ctx, r, tsHist, pt => aToY(pt.Ft), '#fbbf24', W-padR, padL);
-    }
-
-    // Legend
+    // Legend (only visible lines)
     ctx.font = `${9*r}px IBM Plex Mono, monospace`;
     ctx.textAlign = 'right';
-    ctx.fillStyle = '#3dd6f5'; ctx.fillText('── −(g/L)sin θ', W-padR-2*r, padT+12*r);
-    if (p.A > 0.01) {
-      ctx.fillStyle = '#fbbf24'; ctx.fillText('── F₀cos(ωₑt)', W-padR-2*r, padT+25*r);
-    }
+    let legY = padT + 12*r;
+    if (showForces.rest) { ctx.fillStyle = '#3dd6f5'; ctx.fillText('── −(g/L)sinθ', W-padR-2*r, legY); legY += 13*r; }
+    if (showForces.damp) { ctx.fillStyle = '#f87171'; ctx.fillText('── −γθ̇',        W-padR-2*r, legY); legY += 13*r; }
+    if (showForces.driv && p.A > 0.01) { ctx.fillStyle = '#fbbf24'; ctx.fillText('── F₀cos(ωₑt)', W-padR-2*r, legY); }
     ctx.textAlign = 'left';
     drawTimeLabel(ctx, r, W, H, padR);
   }
@@ -565,23 +660,21 @@
 
     darkBackground(ctx, W, H);
 
-    const { Ec, Epg, Em } = energies();
     const scale = maxBar > 0.001 ? 1/maxBar : 1;
-    const F  = p.A * Math.cos(p.we * s.t);
-    const Fn = p.A > 0.01 ? F/p.A : 0;
+    const Fn = p.A > 0.01 ? smoothFt / p.A : 0;
 
     // Layout: label | bar track | value column
     const padL = 54*r, padR = 10*r, padT = 22*r, valW = 76*r;
-    const barH = 11*r, barGap = 7*r;
+    const barH = 8*r, barGap = 6*r;
     const barW = W - padL - padR - valW;
     const halfW = barW / 2;
     const valX = W - padR - 4*r;        // right-aligned value position
     const lblColor = '#6b8099';
 
     const rows = [
-      { label:'Ec',  val: Ec,  color:'#22d3ee' },
-      { label:'Epg', val: Epg, color:'#fb923c' },
-      { label:'Em',  val: Em,  color:'#a78bfa' },
+      { label:'Ec',  val: smoothEc,  color:'#22d3ee' },
+      { label:'Epg', val: smoothEpg, color:'#fb923c' },
+      { label:'Em',  val: smoothEm,  color:'#a78bfa' },
     ];
 
     ctx.font = `${10*r}px IBM Plex Mono, monospace`;
@@ -621,7 +714,7 @@
       else          ctx.fillRect(cx - fw, FRow, fw, barH);
       ctx.globalAlpha = 1;
       ctx.fillStyle = '#fbbf24'; ctx.textAlign = 'right';
-      ctx.fillText(F.toFixed(2), valX, FRow + barH - 2*r);
+      ctx.fillText(smoothFt.toFixed(2), valX, FRow + barH - 2*r);
     }
     ctx.fillStyle = lblColor; ctx.textAlign = 'right';
     ctx.fillText('F(t)', padL - 6*r, FRow + barH - 2*r);
@@ -763,11 +856,14 @@
     s.omega = p.omega0 || 0;
     s.t     = 0;
     Q_diss  = 0;
-    const { Em } = energies();
-    maxBar  = Math.max(Em, 0.1);
+    const { Ec, Epg, Em } = energies();
+    maxBar       = Math.max(Em, 0.1);
     phHist       = [];
     tsHist       = [];
     poincareHist = [];
+    frameBuffer  = [];
+    clearPhaseOffscreen();
+    smoothEc = Ec; smoothEpg = Epg; smoothEm = Em; smoothFt = 0;
     acc     = 0;
     lastTs  = null;
   }
@@ -784,20 +880,40 @@
       btn.addEventListener('click', () => applyPreset(btn.dataset.preset))
     );
 
+    const ftToggle = document.getElementById('forcesToggle');
+
+    const setStepBtns = (disabled) => {
+      document.getElementById('btnPrevFrame').disabled = disabled;
+      document.getElementById('btnNextFrame').disabled = disabled;
+    };
+
     document.querySelectorAll('.graph-tab').forEach(btn =>
       btn.addEventListener('click', () => {
         graphMode = parseInt(btn.dataset.mode, 10);
         document.querySelectorAll('.graph-tab').forEach(b =>
           b.classList.toggle('active', b === btn)
         );
+        if (ftToggle) ftToggle.classList.toggle('visible', graphMode === 3);
+      })
+    );
+
+    document.querySelectorAll('.force-btn').forEach(btn =>
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.force;
+        showForces[key] = !showForces[key];
+        btn.classList.toggle('active', showForces[key]);
       })
     );
 
     document.getElementById('btnPlayPause').addEventListener('click', () => {
       running = !running;
       document.getElementById('btnPlayPause').textContent = running ? '⏸ Pausar' : '▶ Continuar';
+      setStepBtns(running);
       if (running) { lastTs = null; animId = requestAnimationFrame(tick); }
     });
+
+    document.getElementById('btnPrevFrame').addEventListener('click', stepBack);
+    document.getElementById('btnNextFrame').addEventListener('click', stepForward);
 
     document.getElementById('btnReset').addEventListener('click', () => {
       resetSim();
@@ -807,10 +923,12 @@
         lastTs = null;
         animId = requestAnimationFrame(tick);
       }
+      setStepBtns(running);
     });
 
     document.getElementById('btnClearPhase').addEventListener('click', () => {
-      phHist = []; tsHist = [];
+      phHist = []; tsHist = []; poincareHist = [];
+      clearPhaseOffscreen();
     });
 
     document.querySelectorAll('.section-header').forEach(hdr =>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Regras · Bolão da Copa 2026</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="header-slot"></div>
+
+  <main class="container pt-24 pb-32">
+    <div class="section-header">
+      <h2>Regras de pontuação</h2>
+      <div class="pitch-rule"></div>
+    </div>
+
+    <p class="muted mt-12">
+      Para cada partida, você faz duas previsões: o placar e se ambas as equipes marcam.
+      Os pontos abaixo são somados quando seu palpite bater com o resultado real.
+    </p>
+
+    <div class="card mt-24" style="padding:0;overflow:hidden" id="rules-card">
+      <div class="empty"><strong>Carregando…</strong></div>
+    </div>
+
+    <div class="card mt-16" style="background:var(--pitch-light);border-color:rgba(14,159,80,.2)">
+      <h3 style="color:var(--pitch-deep)">Exemplo</h3>
+      <p class="mt-8" style="font-size:.88rem;color:var(--pitch-deep);line-height:1.6">
+        Jogo real: <strong>Brasil 2 × 1 Argentina</strong><br>
+        Seu palpite: <strong>Brasil 2 × 1 Argentina</strong> · Ambas marcam: <strong>Sim</strong><br>
+        → Placar exato + bônus + resultado + saldo + casa + visitante + ambas = pontuação máxima.
+      </p>
+    </div>
+
+    <div class="card mt-16">
+      <h3>Como funciona o ranking</h3>
+      <ul class="mt-8" style="font-size:.88rem;color:var(--muted);line-height:1.9;padding-left:16px">
+        <li>Pontos são somados ao longo de toda a fase de grupos.</li>
+        <li>O palpite só pode ser enviado <strong>antes do apito inicial</strong>.</li>
+        <li>Palpites não enviados valem zero — não deixe para a última hora.</li>
+        <li>Em caso de empate no total, a posição é compartilhada.</li>
+      </ul>
+    </div>
+
+    <div class="mt-24" style="text-align:center">
+      <a href="dashboard.html" class="btn btn-ghost">← Voltar</a>
+    </div>
+  </main>
+
+  <script type="module">
+    import { supabase, getRules, MATCH_RULE_LABELS, CLS_RULE_LABELS, requireAuthWithProfile, renderHeader, bindSignOut } from './supabase.js'
+
+    const result = await requireAuthWithProfile()
+    if (!result) throw new Error('not reached')
+    const { profile } = result
+    document.getElementById('header-slot').innerHTML = renderHeader(profile, true)
+    bindSignOut()
+
+    const poolId = new URLSearchParams(location.search).get('pool')
+    const rules  = await getRules(poolId)
+    const MATCH_ORDER = Object.keys(MATCH_RULE_LABELS)
+    const CLS_ORDER   = Object.keys(CLS_RULE_LABELS)
+    const order       = [...MATCH_ORDER, ...CLS_ORDER]
+    const ALL_LABELS  = { ...MATCH_RULE_LABELS, ...CLS_RULE_LABELS }
+    const maxPts = MATCH_ORDER.reduce((s, k) => s + (rules[k] ?? 0), 0)
+
+    document.getElementById('rules-card').innerHTML = `
+      <table class="rules-table">
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th style="text-align:right">Pontos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="2" style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:12px 14px 4px">Palpites de placar</td></tr>
+          ${MATCH_ORDER.map(k => `
+            <tr>
+              <td>${ALL_LABELS[k]}</td>
+              <td style="text-align:right"><span class="pts-badge">${rules[k] ?? 0}</span></td>
+            </tr>`).join('')}
+          <tr style="background:var(--pitch-light)">
+            <td><strong>Máximo por jogo</strong></td>
+            <td style="text-align:right"><span class="pts-badge" style="background:var(--pitch);color:#fff">${maxPts}</span></td>
+          </tr>
+          <tr><td colspan="2" style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:16px 14px 4px">Classificação dos grupos</td></tr>
+          ${CLS_ORDER.map(k => `
+            <tr>
+              <td>${ALL_LABELS[k]}</td>
+              <td style="text-align:right"><span class="pts-badge">${rules[k] ?? 0}</span></td>
+            </tr>`).join('')}
+        </tbody>
+      </table>`
+  </script>
+</body>
+</html>

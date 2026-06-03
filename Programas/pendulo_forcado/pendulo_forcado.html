@@ -51,7 +51,7 @@
         <span class="toggle-icon">▼</span>
       </div>
       <div class="section-body">
-        <button class="btn-preset" data-preset="livre">Pêndulo Livre</button>
+        <button class="btn-preset" data-preset="livre">Pêndulo Simples</button>
         <button class="btn-preset" data-preset="amortecido">Amortecido</button>
         <button class="btn-preset" data-preset="ressonancia">Próx. Ressonância</button>
         <button class="btn-preset" data-preset="caotico">Caótico</button>
@@ -182,6 +182,10 @@
     <div class="sidebar-section">
       <div class="section-body controls-body">
         <button id="btnPlayPause" class="btn-primary">⏸ Pausar</button>
+        <div class="btn-row">
+          <button id="btnPrevFrame" class="btn-secondary" disabled>◀ Frame ant.</button>
+          <button id="btnNextFrame" class="btn-secondary" disabled>Frame seg. ▶</button>
+        </div>
         <button id="btnReset"     class="btn-secondary">↺ Reiniciar</button>
         <button id="btnClearPhase" class="btn-secondary">✕ Limpar gráfico</button>
       </div>
@@ -203,8 +207,13 @@
         <button class="graph-tab active" data-mode="0">Fase  θ × ω</button>
         <button class="graph-tab"        data-mode="1">θ(t)</button>
         <button class="graph-tab"        data-mode="2">ω(t)</button>
-        <button class="graph-tab"        data-mode="3">Forças(t) ×2</button>
+        <button class="graph-tab"        data-mode="3">Forças(t)</button>
         <button class="graph-tab"        data-mode="4">Poincaré</button>
+      </div>
+      <div id="forcesToggle" class="forces-toggle">
+        <button class="force-btn force-rest active" data-force="rest">−(g/L)sin θ</button>
+        <button class="force-btn force-damp active" data-force="damp">−γ·θ̇</button>
+        <button class="force-btn force-driv active" data-force="driv">F₀·cos(ωₑt)</button>
       </div>
       <canvas id="canvasGraph"></canvas>
     </div>

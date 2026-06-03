@@ -392,6 +392,39 @@ input[type="range"] { flex: 1; height: 4px; accent-color: var(--accent); cursor:
 .sidebar::-webkit-scrollbar-track { background: transparent; }
 .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
+/* ── FORCES TOGGLE (modo 3 do gráfico) ── */
+.forces-toggle {
+  display: none;
+  gap: 4px;
+  padding: 5px 8px;
+  background: #040710;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+.forces-toggle.visible { display: flex; }
+.force-btn {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #3a4a60;
+  font-family: var(--mono);
+  font-size: 0.60rem;
+  padding: 3px 8px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.force-btn.force-rest.active { border-color: rgba(61,214,245,0.5);  background: rgba(61,214,245,0.08);  color: #3dd6f5; }
+.force-btn.force-damp.active { border-color: rgba(248,113,113,0.5); background: rgba(248,113,113,0.08); color: #f87171; }
+.force-btn.force-driv.active { border-color: rgba(251,191,36,0.5);  background: rgba(251,191,36,0.08);  color: #fbbf24; }
+
+/* ── STEP BUTTONS ROW ── */
+.btn-row { display: flex; gap: 6px; }
+.btn-row .btn-secondary { flex: 1; text-align: center; }
+.btn-secondary:disabled { opacity: 0.3; cursor: not-allowed; }
+.btn-secondary:disabled:hover { border-color: var(--border); color: var(--text2); }
+
 /* ── MOBILE TOGGLE BUTTON (hidden on desktop) ── */
 .mobile-toggle-btn { display: none; }
 

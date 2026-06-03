@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entrar · Bolão da Copa 2026</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="auth-page">
+    <div class="auth-brand">
+      <p class="eyebrow">Copa 2026</p>
+      <h1>Bolão<br>da galera</h1>
+      <div class="pitch-rule"></div>
+      <p class="muted mt-12" id="subtitle">Entre com seu e-mail e senha.</p>
+    </div>
+
+    <form id="auth-form" class="auth-form">
+      <input
+        id="input-email"
+        class="input"
+        type="email"
+        inputmode="email"
+        autocomplete="email"
+        placeholder="seu@email.com"
+        required
+      >
+      <input
+        id="input-password"
+        class="input"
+        type="password"
+        autocomplete="current-password"
+        placeholder="Senha"
+        minlength="6"
+        required
+      >
+      <button type="submit" class="btn btn-primary btn-full" id="btn-submit">
+        Entrar
+      </button>
+      <p id="error-msg" class="error-msg hidden"></p>
+    </form>
+
+    <p class="muted mt-16 center" style="font-size:.85rem">
+      <span id="toggle-hint">Ainda não tem conta?</span>
+      <button id="btn-toggle" style="color:var(--pitch);font-weight:700;margin-left:4px;text-decoration:underline;font-size:.85rem">
+        Criar conta
+      </button>
+    </p>
+  </main>
+
+  <script type="module">
+    import { supabase } from './supabase.js'
+
+    const { data: { user: u } } = await supabase.auth.getUser()
+    if (u) { location.replace('dashboard.html'); }
+
+    let mode = 'login' // 'login' | 'signup'
+
+    const form     = document.getElementById('auth-form')
+    const btn      = document.getElementById('btn-submit')
+    const errMsg   = document.getElementById('error-msg')
+    const toggle   = document.getElementById('btn-toggle')
+    const hint     = document.getElementById('toggle-hint')
+    const subtitle = document.getElementById('subtitle')
+    const pwInput  = document.getElementById('input-password')
+
+    toggle.addEventListener('click', () => {
+      mode = mode === 'login' ? 'signup' : 'login'
+      errMsg.classList.add('hidden')
+      if (mode === 'signup') {
+        btn.textContent = 'Criar conta'
+        pwInput.autocomplete = 'new-password'
+        pwInput.placeholder = 'Escolha uma senha (mín. 6 caracteres)'
+        subtitle.textContent = 'Crie sua conta para entrar no bolão.'
+        hint.textContent = 'Já tem conta?'
+        toggle.textContent = 'Entrar'
+      } else {
+        btn.textContent = 'Entrar'
+        pwInput.autocomplete = 'current-password'
+        pwInput.placeholder = 'Senha'
+        subtitle.textContent = 'Entre com seu e-mail e senha.'
+        hint.textContent = 'Ainda não tem conta?'
+        toggle.textContent = 'Criar conta'
+      }
+    })
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const email    = document.getElementById('input-email').value.trim()
+      const password = document.getElementById('input-password').value
+      btn.disabled = true
+      btn.innerHTML = '<span class="spinner"></span>'
+      errMsg.classList.add('hidden')
+
+      if (mode === 'login') {
+        const { error } = await supabase.auth.signInWithPassword({ email, password })
+        if (error) {
+          btn.disabled = false
+          btn.textContent = 'Entrar'
+          errMsg.textContent = error.message.includes('Invalid')
+            ? 'E-mail ou senha incorretos.'
+            : error.message
+          errMsg.classList.remove('hidden')
+          return
+        }
+      } else {
+        const { error } = await supabase.auth.signUp({ email, password })
+        if (error) {
+          btn.disabled = false
+          btn.textContent = 'Criar conta'
+          errMsg.textContent = error.message.includes('already registered')
+            ? 'Este e-mail já tem conta. Tente entrar.'
+            : error.message
+          errMsg.classList.remove('hidden')
+          return
+        }
+      }
+
+      const { data: { user } } = await supabase.auth.getUser()
+      const { data: profile } = await supabase
+        .from('profiles').select('id').eq('id', user.id).maybeSingle()
+      location.replace(profile ? 'dashboard.html' : 'onboarding.html')
+    })
+  </script>
+</body>
+</html>

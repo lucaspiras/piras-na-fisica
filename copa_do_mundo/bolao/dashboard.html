@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seus Bolões · Bolão da Copa 2026</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="header-slot"></div>
+
+  <main class="container pt-24 pb-32">
+    <!-- Bolões -->
+    <section>
+      <div class="section-header">
+        <h2>Seus bolões</h2>
+        <div class="pitch-rule"></div>
+      </div>
+      <div id="pools-list" class="stack gap-8 mt-16">
+        <div class="empty"><strong>Carregando…</strong></div>
+      </div>
+    </section>
+
+    <!-- Criar / Entrar -->
+    <section class="mt-40">
+      <div style="display:grid;gap:12px;grid-template-columns:1fr 1fr">
+        <!-- Criar -->
+        <div class="card">
+          <h3>Criar um bolão</h3>
+          <p class="muted mt-4" style="font-size:.82rem">
+            Você vira o dono e recebe um código pra convidar a galera.
+          </p>
+          <form id="form-create" class="stack gap-8 mt-12">
+            <input
+              id="input-pool-name"
+              class="input"
+              type="text"
+              placeholder="Nome do bolão"
+              minlength="2"
+              maxlength="60"
+              required
+            >
+            <button type="submit" class="btn btn-primary btn-full btn-sm" id="btn-create">
+              Criar
+            </button>
+          </form>
+          <p id="err-create" class="error-msg hidden mt-4"></p>
+        </div>
+
+        <!-- Entrar -->
+        <div class="card">
+          <h3>Entrar num bolão</h3>
+          <p class="muted mt-4" style="font-size:.82rem">
+            Tem um código de convite? Cola aqui.
+          </p>
+          <form id="form-join" class="stack gap-8 mt-12">
+            <input
+              id="input-join-code"
+              class="input"
+              type="text"
+              placeholder="Código (ex.: 3F9A2C7B)"
+              maxlength="12"
+              required
+              style="text-transform:uppercase;letter-spacing:.1em"
+            >
+            <button type="submit" class="btn btn-ghost btn-full btn-sm" id="btn-join">
+              Entrar
+            </button>
+          </form>
+          <p id="err-join" class="error-msg hidden mt-4"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import {
+      supabase, requireAuthWithProfile,
+      renderHeader, bindSignOut, escHtml
+    } from './supabase.js'
+
+    const { user, profile } = await requireAuthWithProfile() ?? {}
+    if (!user) throw new Error('not reached')
+
+    document.getElementById('header-slot').innerHTML = renderHeader(profile, true)
+    bindSignOut()
+
+    // Carregar bolões
+    async function loadPools() {
+      const { data, error } = await supabase
+        .from('pool_members')
+        .select('role, pool:pools(id, name, invite_code)')
+        .order('joined_at', { ascending: true })
+
+      const list = document.getElementById('pools-list')
+      if (error || !data?.length) {
+        list.innerHTML = `
+          <div class="empty">
+            <strong>Nenhum bolão ainda</strong>
+            Crie o seu ou entre com um código abaixo.
+          </div>`
+        return
+      }
+
+      list.innerHTML = data
+        .filter(m => m.pool)
+        .map(m => `
+          <a href="pool.html?id=${m.pool.id}" class="pool-card">
+            <div>
+              <span class="display" style="font-weight:700;font-size:1rem">
+                ${escHtml(m.pool.name)}
+              </span>
+              ${m.role === 'owner'
+                ? '<span class="pool-card-badge">dono</span>'
+                : ''}
+            </div>
+            <span class="pool-card-arrow">→</span>
+          </a>`)
+        .join('')
+    }
+
+    await loadPools()
+
+    // Criar bolão
+    document.getElementById('form-create').addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const name = document.getElementById('input-pool-name').value.trim()
+      const btn  = document.getElementById('btn-create')
+      const err  = document.getElementById('err-create')
+      btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>'
+      err.classList.add('hidden')
+
+      const { data, error } = await supabase.rpc('create_pool', { p_name: name })
+      btn.disabled = false; btn.textContent = 'Criar'
+      if (error) {
+        err.textContent = error.message; err.classList.remove('hidden'); return
+      }
+      location.href = `pool.html?id=${data.id}`
+    })
+
+    // Entrar num bolão
+    document.getElementById('form-join').addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const code = document.getElementById('input-join-code').value.trim().toUpperCase()
+      const btn  = document.getElementById('btn-join')
+      const err  = document.getElementById('err-join')
+      btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>'
+      err.classList.add('hidden')
+
+      const { data, error } = await supabase.rpc('join_pool', { p_code: code })
+      btn.disabled = false; btn.textContent = 'Entrar'
+      if (error) {
+        err.textContent = 'Código inválido. Confira com quem te convidou.'
+        err.classList.remove('hidden'); return
+      }
+      location.href = `pool.html?id=${data.id}`
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin · Bolão da Copa 2026</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="header-slot"></div>
+
+  <main class="container pt-24 pb-32">
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab active" data-tab="matches">Resultados</button>
+      <button class="tab" data-tab="third">3ºs Colocados</button>
+      <button class="tab" data-tab="tournament">Torneio</button>
+    </div>
+
+    <!-- Resultados -->
+    <div id="tab-matches">
+      <div class="card mt-12" style="background:#fffbea;border-color:#e6d88a;font-size:.82rem;color:#7a6000;padding:12px 16px">
+        Para sincronizar as partidas da API, rode no terminal:<br>
+        <code style="font-family:monospace;font-weight:700">node sync.mjs</code>
+        dentro da pasta <code style="font-family:monospace">bolao-html</code>.
+      </div>
+      <div id="matches-list" class="stack gap-8 mt-16">
+        <div class="empty"><strong>Carregando…</strong></div>
+      </div>
+    </div>
+
+    <!-- Torneio -->
+    <div id="tab-tournament" class="hidden">
+      <div class="card mt-16">
+        <h3>Resultado final — Pódio</h3>
+        <p class="muted mt-8" style="font-size:.85rem">
+          Após a final da Copa, registre o pódio oficial para calcular os pontos.
+        </p>
+        <div class="stack gap-12 mt-16">
+          <div>
+            <label style="font-size:.8rem;font-weight:700;color:var(--muted);display:block;margin-bottom:6px">🥇 1º Lugar — Campeão</label>
+            <select class="filter-select" id="tourn-1st" style="width:100%;max-width:none">
+              <option value="">— Selecione —</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:.8rem;font-weight:700;color:var(--muted);display:block;margin-bottom:6px">🥈 2º Lugar — Vice-campeão</label>
+            <select class="filter-select" id="tourn-2nd" style="width:100%;max-width:none">
+              <option value="">— Selecione —</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:.8rem;font-weight:700;color:var(--muted);display:block;margin-bottom:6px">🥉 3º Lugar</label>
+            <select class="filter-select" id="tourn-3rd" style="width:100%;max-width:none">
+              <option value="">— Selecione —</option>
+            </select>
+          </div>
+          <button id="btn-save-tourn" class="btn btn-primary btn-sm" style="align-self:flex-start">
+            Salvar e pontuar todos os bolões
+          </button>
+          <p id="tourn-msg" class="hidden" style="font-size:.85rem"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3ºs Colocados -->
+    <div id="tab-third" class="hidden">
+      <div class="card mt-16">
+        <h3>Confirmar 8 melhores 3ºs colocados</h3>
+        <p class="muted mt-8" style="font-size:.85rem">
+          Após o fim da fase de grupos, marque quais 8 grupos tiveram seu 3º colocado avançando.
+          Depois clique em <strong>Salvar e pontuar</strong>.
+        </p>
+        <div id="third-list" class="stack gap-8 mt-16">
+          <div class="empty"><strong>Carregando…</strong></div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+          <button id="btn-save-3rd" class="btn btn-primary btn-sm">Salvar e pontuar melhores 3ºs</button>
+          <button id="btn-score-groups" class="btn btn-ghost btn-sm">Pontuar classificações de grupos concluídos</button>
+        </div>
+        <p id="third-msg" class="hidden mt-8" style="font-size:.85rem"></p>
+      </div>
+    </div>
+
+  </main>
+
+  <script type="module">
+    import {
+      supabase, requireAdmin,
+      renderHeader, bindSignOut,
+      escHtml, fmtDate, fmtTime, matchStatus, translateTeam,
+      getRules, RULE_LABELS
+    } from './supabase.js'
+
+    const { user, profile } = await requireAdmin() ?? {}
+    if (!user) throw new Error('not reached')
+
+    document.getElementById('header-slot').innerHTML = renderHeader(profile, true)
+    bindSignOut()
+
+    // ── Tabs ──────────────────────────────────────────────────
+    let thirdLoaded = false, tournLoaded = false
+    document.querySelectorAll('.tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'))
+        btn.classList.add('active')
+        const tab = btn.dataset.tab
+        document.getElementById('tab-matches').classList.toggle('hidden', tab !== 'matches')
+        document.getElementById('tab-third').classList.toggle('hidden', tab !== 'third')
+        document.getElementById('tab-tournament').classList.toggle('hidden', tab !== 'tournament')
+        if (tab === 'third' && !thirdLoaded)      { thirdLoaded = true;  loadThird() }
+        if (tab === 'tournament' && !tournLoaded) { tournLoaded = true;  loadTournament() }
+      })
+    })
+
+    // ── Resultados ────────────────────────────────────────────
+    async function loadMatches() {
+      const { data, error } = await supabase
+        .from('matches')
+        .select('id, match_date, home_team, away_team, home_score, away_score, group_name, match_number, status')
+        .order('match_date')
+
+      const list = document.getElementById('matches-list')
+      if (error || !data?.length) {
+        list.innerHTML = `
+          <div class="empty">
+            <strong>Nenhuma partida ainda</strong>
+            Rode <code>node sync.mjs</code> para importar a tabela da Copa.
+          </div>`
+        return
+      }
+
+      list.innerHTML = data.map(m => renderMatchRow(m)).join('')
+      for (const m of data) {
+        document.getElementById(`form-${m.id}`)
+          ?.addEventListener('submit', (e) => handleSave(e, m.id))
+      }
+    }
+
+    function renderMatchRow(m) {
+      const status = matchStatus(m)
+      const cls    = status === 'closed' ? 'closed' : status === 'live' ? 'live' : 'open'
+      return `
+        <div class="match-card ${cls}">
+          <div class="match-meta">
+            <strong>Grupo ${escHtml(m.group_name ?? '?')} · Rodada ${m.match_number}</strong>
+            <span>·</span>
+            <span>${fmtDate(m.match_date)} · ${fmtTime(m.match_date)}</span>
+            ${m.status === 'finished' ? '<span class="badge badge-closed">Encerrado</span>'
+            : m.status === 'live'    ? '<span class="badge badge-live">Ao vivo</span>' : ''}
+          </div>
+          <form id="form-${m.id}" class="match-row" style="gap:8px;align-items:center">
+            <span class="team-name team-home" style="font-size:.85rem">
+              ${escHtml(translateTeam(m.home_team))}
+            </span>
+            <span class="score-area">
+              <input name="home" class="score-input" type="number" min="0" max="20"
+                value="${m.home_score ?? ''}" placeholder="—"
+                style="width:46px;height:46px;font-size:1.2rem">
+              <span class="score-sep">:</span>
+              <input name="away" class="score-input" type="number" min="0" max="20"
+                value="${m.away_score ?? ''}" placeholder="—"
+                style="width:46px;height:46px;font-size:1.2rem">
+              <button type="submit" class="btn btn-primary btn-sm" style="margin-left:4px">
+                Salvar
+              </button>
+            </span>
+            <span class="team-name team-away" style="font-size:.85rem">
+              ${escHtml(translateTeam(m.away_team))}
+            </span>
+          </form>
+          <div class="match-footer" id="save-msg-${m.id}"></div>
+        </div>`
+    }
+
+    async function handleSave(e, matchId) {
+      e.preventDefault()
+      const form = e.currentTarget
+      const home = parseInt(form.home.value)
+      const away = parseInt(form.away.value)
+      const msg  = document.getElementById(`save-msg-${matchId}`)
+      if (isNaN(home) || isNaN(away) || home < 0 || away < 0) {
+        msg.innerHTML = '<span style="color:var(--flare)">Informe placar válido.</span>'
+        return
+      }
+      const btn = form.querySelector('button[type=submit]')
+      btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>'
+      msg.innerHTML = ''
+      const { error } = await supabase.rpc('set_match_result', {
+        p_match_id: matchId, p_home_score: home, p_away_score: away
+      })
+      btn.disabled = false; btn.textContent = 'Salvar'
+      if (error) {
+        msg.innerHTML = `<span style="color:var(--flare)">${escHtml(error.message)}</span>`
+      } else {
+        msg.innerHTML = '<span style="color:var(--pitch)">✓ Salvo e pontos recalculados</span>'
+        setTimeout(() => msg.innerHTML = '', 3000)
+      }
+    }
+
+    // ── Pontuação ─────────────────────────────────────────────
+    const ORDER = ['exact_home', 'exact_away', 'correct_result', 'correct_diff', 'exact_score', 'btts']
+    let rulesLoaded = false
+
+    async function loadRules() {
+      if (rulesLoaded) return
+      rulesLoaded = true
+      const rules = await getRules()
+      const container = document.getElementById('rules-form')
+
+      container.innerHTML = `
+        <div class="stack gap-12">
+          ${ORDER.map(k => `
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+              <label for="rule-${k}" style="font-size:.9rem;font-weight:500;flex:1">
+                ${RULE_LABELS[k]}
+              </label>
+              <input
+                id="rule-${k}"
+                class="rules-input"
+                type="number" min="0" max="99"
+                value="${rules[k] ?? 0}"
+              >
+            </div>`).join('')}
+          <div style="border-top:1px solid var(--line);padding-top:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+            <span id="rules-max-label" style="font-size:.85rem;color:var(--muted)">
+              Máximo por jogo: <strong id="rules-max">${ORDER.reduce((s,k) => s + (rules[k]??0), 0)} pts</strong>
+            </span>
+            <button id="btn-save-rules" class="btn btn-primary btn-sm">
+              Salvar regras
+            </button>
+          </div>
+          <p id="rules-msg" class="hidden" style="font-size:.85rem"></p>
+        </div>`
+
+      // Live max update
+      container.querySelectorAll('.rules-input').forEach(inp => {
+        inp.addEventListener('input', () => {
+          const total = ORDER.reduce((s, k) => {
+            const el = document.getElementById(`rule-${k}`)
+            return s + (parseInt(el?.value) || 0)
+          }, 0)
+          document.getElementById('rules-max').textContent = `${total} pts`
+        })
+      })
+
+      document.getElementById('btn-save-rules').addEventListener('click', async () => {
+        const btn = document.getElementById('btn-save-rules')
+        const msg = document.getElementById('rules-msg')
+        const updates = { updated_at: new Date().toISOString() }
+        for (const k of ORDER) {
+          const val = parseInt(document.getElementById(`rule-${k}`)?.value)
+          if (isNaN(val) || val < 0) {
+            msg.textContent = 'Todos os valores precisam ser números ≥ 0.'
+            msg.style.color = 'var(--flare)'
+            msg.classList.remove('hidden')
+            return
+          }
+          updates[k] = val
+        }
+        btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>'
+        msg.classList.add('hidden')
+
+        const { error } = await supabase
+          .from('scoring_rules').update(updates).eq('id', 1)
+        btn.disabled = false; btn.textContent = 'Salvar regras'
+        if (error) {
+          msg.textContent = error.message
+          msg.style.color = 'var(--flare)'
+        } else {
+          msg.textContent = '✓ Regras salvas. Novas pontuações valem para partidas encerradas a partir de agora.'
+          msg.style.color = 'var(--pitch-deep)'
+        }
+        msg.classList.remove('hidden')
+      })
+    }
+
+    await loadMatches()
+
+    // ── Torneio ───────────────────────────────────────────────
+    async function loadTournament() {
+      const [{ data: teamsData }, { data: existing }] = await Promise.all([
+        supabase.from('matches').select('home_team, away_team').eq('phase', 'group'),
+        supabase.from('tournament_results').select('position, team_name').order('position')
+      ])
+
+      const teamSet = new Set()
+      for (const m of teamsData ?? []) {
+        if (m.home_team && m.home_team !== 'TBD') teamSet.add(m.home_team)
+        if (m.away_team && m.away_team !== 'TBD') teamSet.add(m.away_team)
+      }
+      const teams = [...teamSet].sort((a, b) => translateTeam(a).localeCompare(translateTeam(b), 'pt-BR'))
+      const existingMap = {}
+      for (const r of existing ?? []) existingMap[r.position] = r.team_name
+
+      const opts = `<option value="">— Selecione —</option>` +
+        teams.map(t => `<option value="${escHtml(t)}">${escHtml(translateTeam(t))}</option>`).join('')
+
+      ;['tourn-1st', 'tourn-2nd', 'tourn-3rd'].forEach((id, i) => {
+        const sel = document.getElementById(id)
+        sel.innerHTML = opts
+        const saved = existingMap[i + 1]
+        if (saved) sel.value = saved
+      })
+
+      document.getElementById('btn-save-tourn').addEventListener('click', async () => {
+        const btn = document.getElementById('btn-save-tourn')
+        const msg = document.getElementById('tourn-msg')
+        const v1 = document.getElementById('tourn-1st').value
+        const v2 = document.getElementById('tourn-2nd').value
+        const v3 = document.getElementById('tourn-3rd').value
+
+        if (!v1 || !v2 || !v3) {
+          msg.textContent = 'Selecione as 3 seleções.'; msg.style.color = 'var(--flare)'; msg.classList.remove('hidden'); return
+        }
+        if (new Set([v1, v2, v3]).size < 3) {
+          msg.textContent = 'As 3 seleções precisam ser diferentes.'; msg.style.color = 'var(--flare)'; msg.classList.remove('hidden'); return
+        }
+
+        btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>'
+        msg.classList.add('hidden')
+
+        // Upsert results
+        await supabase.from('tournament_results').upsert([
+          { position: 1, team_name: v1 },
+          { position: 2, team_name: v2 },
+          { position: 3, team_name: v3 },
+        ])
+
+        // Score all pools
+        const { error } = await supabase.rpc('score_tournament_all_pools')
+        btn.disabled = false; btn.textContent = 'Salvar e pontuar todos os bolões'
+        msg.textContent = error ? error.message : '✓ Pódio salvo e pontos calculados em todos os bolões.'
+        msg.style.color = error ? 'var(--flare)' : 'var(--pitch-deep)'
+        msg.classList.remove('hidden')
+      })
+    }
+
+    // ── 3ºs Colocados ─────────────────────────────────────────
+    async function loadThird() {
+      const [{ data: actualRows }, { data: qualified }] = await Promise.all([
+        supabase.from('group_standings_actual').select('group_name, team, position'),
+        supabase.from('qualified_3rd_places').select('group_name')
+      ])
+
+      const qualSet = new Set((qualified ?? []).map(r => r.group_name))
+      const groups = [...new Set((actualRows ?? []).map(r => r.group_name))].sort()
+      const third3rd = {}
+      for (const r of actualRows ?? []) {
+        if (r.position === 3) third3rd[r.group_name] = r.team
+      }
+
+      const list = document.getElementById('third-list')
+      if (!groups.length) {
+        list.innerHTML = `<div class="empty"><strong>Nenhum grupo concluído ainda</strong>Os 3ºs colocados aparecem aqui quando todos os jogos do grupo estiverem encerrados.</div>`
+        return
+      }
+
+      list.innerHTML = groups.map(g => `
+        <label style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);cursor:pointer">
+          <input type="checkbox" id="q3-${escHtml(g)}" value="${escHtml(g)}" ${qualSet.has(g) ? 'checked' : ''}
+            style="width:16px;height:16px;cursor:pointer;accent-color:var(--pitch)">
+          <span>
+            <strong>Grupo ${escHtml(g)}</strong>
+            ${third3rd[g] ? ` — 3º: <span style="color:var(--ink)">${escHtml(translateTeam(third3rd[g]))}</span>` : ' — grupo incompleto'}
+          </span>
+        </label>`).join('')
+
+      document.getElementById('btn-save-3rd').addEventListener('click', async () => {
+        const btn = document.getElementById('btn-save-3rd')
+        const msg = document.getElementById('third-msg')
+        const checked = groups.filter(g => document.getElementById(`q3-${g}`)?.checked)
+
+        if (checked.length !== 8) {
+          msg.textContent = `Selecione exatamente 8 grupos (${checked.length} selecionados).`
+          msg.style.color = 'var(--flare)'; msg.classList.remove('hidden'); return
+        }
+
+        btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>'
+        msg.classList.add('hidden')
+
+        // Replace all qualified_3rd_places
+        await supabase.from('qualified_3rd_places').delete().neq('group_name', '')
+        const { error } = await supabase.from('qualified_3rd_places')
+          .insert(checked.map(g => ({ group_name: g })))
+
+        if (error) {
+          btn.disabled = false; btn.textContent = 'Salvar e pontuar melhores 3ºs'
+          msg.textContent = error.message; msg.style.color = 'var(--flare)'; msg.classList.remove('hidden'); return
+        }
+
+        // Score best 3rd for all pools
+        await supabase.rpc('score_best_3rd_all_pools')
+        btn.disabled = false; btn.textContent = 'Salvar e pontuar melhores 3ºs'
+        msg.textContent = '✓ Melhores 3ºs salvos e pontos calculados em todos os bolões.'
+        msg.style.color = 'var(--pitch-deep)'; msg.classList.remove('hidden')
+      })
+
+      document.getElementById('btn-score-groups').addEventListener('click', async () => {
+        const btn = document.getElementById('btn-score-groups')
+        const msg = document.getElementById('third-msg')
+        btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>'
+        msg.classList.add('hidden')
+        let count = 0, errors = []
+        for (const g of groups) {
+          const { error } = await supabase.rpc('score_group_all_pools', { p_group_name: g })
+          if (error) errors.push(g)
+          else count++
+        }
+        btn.disabled = false; btn.textContent = 'Pontuar classificações de grupos concluídos'
+        msg.textContent = errors.length
+          ? `${count} grupos pontuados. Erros: ${errors.join(', ')}`
+          : `✓ ${count} grupos pontuados em todos os bolões.`
+        msg.style.color = errors.length ? 'var(--flare)' : 'var(--pitch-deep)'
+        msg.classList.remove('hidden')
+      })
+    }
+  </script>
+</body>
+</html>
