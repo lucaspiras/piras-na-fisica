@@ -63,26 +63,33 @@ begin
   -- group_standings_override
   execute 'alter table public.group_standings_override enable row level security';
   execute 'grant select, insert, update, delete on public.group_standings_override to authenticated';
+  execute 'grant select on public.group_standings_override to anon';
   execute 'drop policy if exists gso_admin_all on public.group_standings_override';
   execute $p$create policy gso_admin_all on public.group_standings_override
             for all
             using      (exists (select 1 from public.profiles where id = auth.uid() and is_admin))
             with check (exists (select 1 from public.profiles where id = auth.uid() and is_admin))$p$;
+  -- Leitura pública (as views são security_invoker); escrita continua só admin.
+  execute 'drop policy if exists gso_select_all on public.group_standings_override';
+  execute 'create policy gso_select_all on public.group_standings_override for select using (true)';
 
   -- third_place_ranking_override
   execute 'alter table public.third_place_ranking_override enable row level security';
   execute 'grant select, insert, update, delete on public.third_place_ranking_override to authenticated';
+  execute 'grant select on public.third_place_ranking_override to anon';
   execute 'drop policy if exists tpro_admin_all on public.third_place_ranking_override';
   execute $p$create policy tpro_admin_all on public.third_place_ranking_override
             for all
             using      (exists (select 1 from public.profiles where id = auth.uid() and is_admin))
             with check (exists (select 1 from public.profiles where id = auth.uid() and is_admin))$p$;
+  execute 'drop policy if exists tpro_select_all on public.third_place_ranking_override';
+  execute 'create policy tpro_select_all on public.third_place_ranking_override for select using (true)';
 end $$;
 
 -- ────────────────────────────────────────────────────────────────────────────
 -- View: classificação real dos grupos (cálculo FIFA + override)
 -- ────────────────────────────────────────────────────────────────────────────
-create view public.group_standings_actual as
+create view public.group_standings_actual with (security_invoker = on) as
 with
 -- Só jogos da fase de grupos já encerrados e com placar.
 finished as (
@@ -178,7 +185,7 @@ grant select on public.group_standings_actual to anon, authenticated;
 --   saldo geral → gols geral → nome. `qualified` indica se o grupo já foi
 --   marcado como classificado na aba "3ºs Colocados" (qualified_3rd_places).
 -- ────────────────────────────────────────────────────────────────────────────
-create view public.third_place_standings as
+create view public.third_place_standings with (security_invoker = on) as
 with thirds as (
   select group_name, team, pts, gf, ga, gd
   from public.group_standings_actual

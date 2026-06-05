@@ -172,6 +172,38 @@ Deno.serve(async (req) => {
         return json({ ok: true })
       }
 
+      /* ---- Resultado e pontuação (só admin; functions revogadas do cliente) ---- */
+      case 'set_match_result': {
+        const { match_id, home_score, away_score } = p
+        if (!match_id || home_score == null || away_score == null)
+          return json({ error: 'match_id, home_score e away_score obrigatórios.' }, 400)
+        const { error } = await admin.rpc('set_match_result', {
+          p_match_id: match_id, p_home_score: home_score, p_away_score: away_score,
+        })
+        if (error) throw error
+        return json({ ok: true })
+      }
+
+      case 'score_tournament_all_pools': {
+        const { error } = await admin.rpc('score_tournament_all_pools')
+        if (error) throw error
+        return json({ ok: true })
+      }
+
+      case 'score_best_3rd_all_pools': {
+        const { error } = await admin.rpc('score_best_3rd_all_pools')
+        if (error) throw error
+        return json({ ok: true })
+      }
+
+      case 'score_group_all_pools': {
+        const { group_name } = p
+        if (!group_name) return json({ error: 'group_name obrigatório.' }, 400)
+        const { error } = await admin.rpc('score_group_all_pools', { p_group_name: group_name })
+        if (error) throw error
+        return json({ ok: true })
+      }
+
       /* ---- Auditoria de palpites ---- */
       // Grade completa de um bolão: membros, jogos, todos os palpites de placar
       // (com pontos calculados) e os palpites de pódio. O front monta a visão.
