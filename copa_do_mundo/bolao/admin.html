@@ -651,8 +651,9 @@
               </select>
               <button class="btn btn-primary btn-sm" data-act="add">Adicionar</button>
             </div>
-            <div style="margin-top:10px">
+            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
               <button class="btn btn-ghost btn-sm" data-act="rules">⚙ Configurar pontuação</button>
+              <button class="btn btn-danger btn-sm" data-act="delete-pool">Excluir bolão</button>
             </div>
             <div id="rules-panel-${escHtml(pool.id)}" class="hidden" style="margin-top:6px"></div>
           </div>`
@@ -688,6 +689,14 @@
         const panel = document.getElementById(`rules-panel-${poolId}`)
         panel.classList.toggle('hidden')
         if (!panel.classList.contains('hidden') && !panel.dataset.loaded) await openPoolRules(poolId)
+      } else if (btn.dataset.act === 'delete-pool') {
+        if (!confirm(`Excluir o bolão "${pool.name}"?\n\nApaga TODOS os palpites, pontuações, membros e configurações deste bolão. Esta ação é irreversível.`)) return
+        btn.disabled = true; btn.textContent = 'Excluindo…'
+        try {
+          await callAdmin('delete_pool', { pool_id: poolId })
+          adminPools = adminPools.filter(p => p.id !== poolId)
+          renderPoolsAdmin()
+        } catch (err) { btn.disabled = false; btn.textContent = 'Excluir bolão'; alert('Erro: ' + err.message) }
       }
     })
 

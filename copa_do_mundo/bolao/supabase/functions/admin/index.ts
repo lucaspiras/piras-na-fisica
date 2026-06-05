@@ -155,6 +155,23 @@ Deno.serve(async (req) => {
         return json({ ok: true })
       }
 
+      case 'delete_pool': {
+        const { pool_id } = p
+        if (!pool_id) return json({ error: 'pool_id obrigatório.' }, 400)
+        // Apaga todas as dependências do bolão antes de remover o bolão em si.
+        await admin.from('predictions').delete().eq('pool_id', pool_id)
+        await admin.from('tournament_predictions').delete().eq('pool_id', pool_id)
+        await admin.from('predicted_group_standings').delete().eq('pool_id', pool_id)
+        await admin.from('classification_scores').delete().eq('pool_id', pool_id)
+        await admin.from('pool_scoring_rules').delete().eq('pool_id', pool_id)
+        await admin.from('pool_members').delete().eq('pool_id', pool_id)
+        // Histórico de auditoria guarda pool_id como text.
+        await admin.from('prediction_history').delete().eq('pool_id', String(pool_id))
+        const { error } = await admin.from('pools').delete().eq('id', pool_id)
+        if (error) throw error
+        return json({ ok: true })
+      }
+
       /* ---- Auditoria de palpites ---- */
       // Grade completa de um bolão: membros, jogos, todos os palpites de placar
       // (com pontos calculados) e os palpites de pódio. O front monta a visão.
