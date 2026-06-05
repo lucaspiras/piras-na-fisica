@@ -60,17 +60,6 @@
         </div>
       </div>
 
-      <!-- Excluir conta -->
-      <div class="danger-zone mt-24">
-        <h3 style="color:var(--flare)">Excluir conta</h3>
-        <p class="mt-8" style="font-size:.85rem;color:var(--muted);line-height:1.5">
-          Esta ação é <strong>irreversível</strong>. Sua conta, palpites e histórico serão apagados permanentemente.
-          Você será removido de todos os bolões.
-        </p>
-        <button id="btn-delete" class="btn btn-danger btn-sm mt-12">Excluir minha conta</button>
-        <p id="delete-msg" class="hidden mt-8" style="font-size:.85rem"></p>
-      </div>
-
       <div class="mt-24">
         <a href="dashboard.html" class="btn btn-ghost">← Voltar</a>
       </div>
@@ -165,31 +154,6 @@
       msg.textContent = error ? error.message : '✓ Senha alterada com sucesso!'
       msg.style.color = error ? 'var(--flare)' : 'var(--pitch-deep)'
       msg.classList.remove('hidden')
-    })
-
-    // ── Excluir conta ─────────────────────────────────────────
-    document.getElementById('btn-delete').addEventListener('click', async () => {
-      const msg = document.getElementById('delete-msg')
-      const confirmed = confirm(
-        'Tem certeza? Esta ação é irreversível.\n\nSua conta e todos os seus palpites serão apagados permanentemente.'
-      )
-      if (!confirmed) return
-      const confirmName = prompt(`Para confirmar, digite seu apelido: "${profile.display_name}"`)
-      if (confirmName?.trim() !== profile.display_name) {
-        msg.textContent = 'Apelido incorreto. Conta não excluída.'
-        msg.style.color = 'var(--flare)'; msg.classList.remove('hidden')
-        return
-      }
-      const btn = document.getElementById('btn-delete')
-      btn.disabled = true; btn.textContent = 'Excluindo…'
-      const { error } = await supabase.rpc('delete_my_account')
-      if (error) {
-        btn.disabled = false; btn.textContent = 'Excluir minha conta'
-        msg.textContent = error.message; msg.style.color = 'var(--flare)'; msg.classList.remove('hidden')
-      } else {
-        await supabase.auth.signOut()
-        location.replace('login.html')
-      }
     })
   </script>
 </body>

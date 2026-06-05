@@ -16,7 +16,8 @@
     if (!user) { location.replace('login.html'); }
     else {
       const { data: profile } = await supabase.from('profiles').select('id').eq('id', user.id).maybeSingle()
-      location.replace(profile ? 'dashboard.html' : 'onboarding.html')
+      if (profile) { location.replace('dashboard.html') }
+      else { await supabase.auth.signOut(); location.replace('login.html') }
     }
   </script>
 </body>

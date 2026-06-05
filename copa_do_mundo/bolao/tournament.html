@@ -118,7 +118,7 @@
       { data: allPreds },
       { data: members }
     ] = await Promise.all([
-      supabase.from('matches').select('home_team, away_team').eq('phase', 'group'),
+      supabase.from('matches').select('home_team, away_team, match_date').eq('phase', 'group'),
       supabase.from('tournament_predictions')
         .select('pred_1st, pred_2nd, pred_3rd')
         .eq('pool_id', poolId).eq('user_id', user.id).maybeSingle(),
@@ -155,6 +155,17 @@
     populateSelect('sel-2nd', myPred?.pred_2nd)
     populateSelect('sel-3rd', myPred?.pred_3rd)
 
+    // Apostas de pódio fecham no início da Copa (1ª partida da fase de grupos).
+    const kickoffs = (teamsData ?? []).map(m => m.match_date).filter(Boolean).map(d => new Date(d).getTime())
+    const firstKickoff = kickoffs.length ? Math.min(...kickoffs) : null
+    const podiumLocked = firstKickoff !== null && Date.now() >= firstKickoff
+    if (podiumLocked) {
+      for (const id of ['sel-1st', 'sel-2nd', 'sel-3rd']) document.getElementById(id).disabled = true
+      const btn = document.getElementById('btn-save')
+      btn.disabled = true; btn.textContent = 'Apostas encerradas'
+      showMsg('As apostas de pódio fecharam no início da Copa.', 'var(--muted)')
+    }
+
     // Show actual results if available
     if (results?.length === 3) {
       const resultMap = {}
@@ -174,6 +185,7 @@
       const v3 = document.getElementById('sel-3rd').value
       const msg = document.getElementById('save-msg')
 
+      if (podiumLocked) { showMsg('Apostas de pódio encerradas — a Copa já começou.', 'var(--flare)'); return }
       if (!v1 || !v2 || !v3) {
         showMsg('Escolha as 3 seleções.', 'var(--flare)'); return
       }

@@ -12,7 +12,7 @@
       <p class="eyebrow">Copa 2026</p>
       <h1>Bolão<br>da galera</h1>
       <div class="pitch-rule"></div>
-      <p class="muted mt-12" id="subtitle">Entre com seu e-mail e senha.</p>
+      <p class="muted mt-12" id="subtitle">Entre com o e-mail e a senha que o organizador te passou.</p>
     </div>
 
     <form id="auth-form" class="auth-form">
@@ -41,10 +41,7 @@
     </form>
 
     <p class="muted mt-16 center" style="font-size:.85rem">
-      <span id="toggle-hint">Ainda não tem conta?</span>
-      <button id="btn-toggle" style="color:var(--pitch);font-weight:700;margin-left:4px;text-decoration:underline;font-size:.85rem">
-        Criar conta
-      </button>
+      Ainda não tem acesso? Fale com o organizador do bolão.
     </p>
   </main>
 
@@ -54,35 +51,9 @@
     const { data: { user: u } } = await supabase.auth.getUser()
     if (u) { location.replace('dashboard.html'); }
 
-    let mode = 'login' // 'login' | 'signup'
-
-    const form     = document.getElementById('auth-form')
-    const btn      = document.getElementById('btn-submit')
-    const errMsg   = document.getElementById('error-msg')
-    const toggle   = document.getElementById('btn-toggle')
-    const hint     = document.getElementById('toggle-hint')
-    const subtitle = document.getElementById('subtitle')
-    const pwInput  = document.getElementById('input-password')
-
-    toggle.addEventListener('click', () => {
-      mode = mode === 'login' ? 'signup' : 'login'
-      errMsg.classList.add('hidden')
-      if (mode === 'signup') {
-        btn.textContent = 'Criar conta'
-        pwInput.autocomplete = 'new-password'
-        pwInput.placeholder = 'Escolha uma senha (mín. 6 caracteres)'
-        subtitle.textContent = 'Crie sua conta para entrar no bolão.'
-        hint.textContent = 'Já tem conta?'
-        toggle.textContent = 'Entrar'
-      } else {
-        btn.textContent = 'Entrar'
-        pwInput.autocomplete = 'current-password'
-        pwInput.placeholder = 'Senha'
-        subtitle.textContent = 'Entre com seu e-mail e senha.'
-        hint.textContent = 'Ainda não tem conta?'
-        toggle.textContent = 'Criar conta'
-      }
-    })
+    const form   = document.getElementById('auth-form')
+    const btn    = document.getElementById('btn-submit')
+    const errMsg = document.getElementById('error-msg')
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault()
@@ -92,34 +63,30 @@
       btn.innerHTML = '<span class="spinner"></span>'
       errMsg.classList.add('hidden')
 
-      if (mode === 'login') {
-        const { error } = await supabase.auth.signInWithPassword({ email, password })
-        if (error) {
-          btn.disabled = false
-          btn.textContent = 'Entrar'
-          errMsg.textContent = error.message.includes('Invalid')
-            ? 'E-mail ou senha incorretos.'
-            : error.message
-          errMsg.classList.remove('hidden')
-          return
-        }
-      } else {
-        const { error } = await supabase.auth.signUp({ email, password })
-        if (error) {
-          btn.disabled = false
-          btn.textContent = 'Criar conta'
-          errMsg.textContent = error.message.includes('already registered')
-            ? 'Este e-mail já tem conta. Tente entrar.'
-            : error.message
-          errMsg.classList.remove('hidden')
-          return
-        }
+      const { error } = await supabase.auth.signInWithPassword({ email, password })
+      if (error) {
+        btn.disabled = false
+        btn.textContent = 'Entrar'
+        errMsg.textContent = error.message.includes('Invalid')
+          ? 'E-mail ou senha incorretos.'
+          : error.message
+        errMsg.classList.remove('hidden')
+        return
       }
 
       const { data: { user } } = await supabase.auth.getUser()
       const { data: profile } = await supabase
         .from('profiles').select('id').eq('id', user.id).maybeSingle()
-      location.replace(profile ? 'dashboard.html' : 'onboarding.html')
+      if (profile) {
+        location.replace('dashboard.html')
+      } else {
+        // Conta sem perfil: acesso ainda não liberado pelo organizador.
+        await supabase.auth.signOut()
+        btn.disabled = false
+        btn.textContent = 'Entrar'
+        errMsg.textContent = 'Acesso ainda não liberado. Fale com o organizador.'
+        errMsg.classList.remove('hidden')
+      }
     })
   </script>
 </body>

@@ -31,7 +31,9 @@ export async function requireAuthWithProfile(redirectTo = 'login.html') {
   const user = await requireAuth(redirectTo)
   if (!user) return null
   const profile = await getProfile(user.id)
-  if (!profile) { location.href = 'onboarding.html'; return null }
+  // No novo modelo, a conta e o perfil são criados juntos pelo admin.
+  // Uma conta sem perfil é um estado anômalo: encerra a sessão e volta ao login.
+  if (!profile) { await supabase.auth.signOut(); location.href = 'login.html'; return null }
   return { user, profile }
 }
 
@@ -47,6 +49,24 @@ export async function signOut() {
   location.href = 'login.html'
 }
 
+/* ── Painel admin (Edge Function) ──────────────────────────── */
+// Chama a Edge Function `admin`, que guarda a service_role no servidor e confere
+// is_admin do chamador. O JWT do usuário é anexado automaticamente pelo invoke.
+// Lança Error com mensagem amigável em caso de falha.
+export async function callAdmin(action, payload = {}) {
+  const { data, error } = await supabase.functions.invoke('admin', {
+    body: { action, ...payload }
+  })
+  if (error) {
+    // Erros HTTP (4xx/5xx) trazem o corpo em error.context
+    let msg = error.message
+    try { msg = (await error.context?.json())?.error ?? msg } catch {}
+    throw new Error(msg)
+  }
+  if (data?.error) throw new Error(data.error)
+  return data
+}
+
 /* ── UI helpers ────────────────────────────────────────────── */
 
 export function renderHeader(profile, showAdmin = false) {
@@ -57,7 +77,7 @@ export function renderHeader(profile, showAdmin = false) {
   return `
     <header class="header">
       <div class="header-inner">
-        <a href="dashboard.html" class="header-brand">Bolão<span>⚽</span></a>
+        <a href="dashboard.html" class="header-brand"><img class="header-logo" src="logo_bolao_novo.png" alt="">Bolão</a>
         <div class="header-right">
           ${adminLink}
           <a href="profile.html" class="header-user-link" title="Meu perfil">
@@ -107,16 +127,23 @@ export function fmtDateTime(iso) {
   return `${fmtDate(iso)} · ${fmtTime(iso)}`
 }
 
+// Apostas dos jogos fecham 2h antes do horário previsto da partida.
+export const BETTING_LOCK_MS = 2 * 60 * 60 * 1000
+
 export function matchStatus(match) {
-  const kickoff = new Date(match.match_date)
+  const kickoff = new Date(match.match_date).getTime()
+  const now = Date.now()
   if (match.status === 'finished') return 'closed'
   if (match.status === 'live')     return 'live'
-  if (kickoff <= new Date())       return 'live'
+  if (now >= kickoff)              return 'live'
+  // Janela entre 2h antes e o início: apostas encerradas, jogo ainda não começou.
+  if (now >= kickoff - BETTING_LOCK_MS) return 'locked'
   return 'open'
 }
 
 export function statusBadge(status) {
   if (status === 'open')   return '<span class="badge badge-open">Aberto</span>'
+  if (status === 'locked') return '<span class="badge badge-closed">Apostas encerradas</span>'
   if (status === 'live')   return '<span class="badge badge-live">Ao vivo</span>'
   return '<span class="badge badge-closed">Encerrado</span>'
 }
@@ -172,6 +199,7 @@ export const RULE_LABELS = { ...MATCH_RULE_LABELS, ...CLS_RULE_LABELS }
 /* ── Simulação de classificação do grupo ───────────────────── */
 export function simulateGroupStandings(groupMatches, predsMap) {
   const teams = {}
+  const played = []   // jogos com placar, para calcular o confronto direto
   for (const m of groupMatches) {
     for (const t of [m.home_team, m.away_team]) {
       if (!teams[t]) teams[t] = { team: t, pts: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, gd: 0, played: 0 }
@@ -188,10 +216,52 @@ export function simulateGroupStandings(groupMatches, predsMap) {
     if (h > a)      { ht.pts += 3; ht.w++; at.l++ }
     else if (h < a) { at.pts += 3; at.w++; ht.l++ }
     else            { ht.pts += 1; ht.d++; at.pts += 1; at.d++ }
+    played.push({ home: m.home_team, away: m.away_team, hs: h, as: a })
   }
-  return Object.values(teams).sort((a, b) =>
-    b.pts - a.pts || b.gd - a.gd || b.gf - a.gf || a.team.localeCompare(b.team)
-  )
+  return rankGroupFifa(Object.values(teams), played)
+}
+
+// Ordena as equipes de um grupo pelos critérios de desempate da FIFA 2026:
+//   1) pontos no total
+//   2) confronto direto entre as EMPATADAS: pontos → saldo → gols nos jogos entre elas
+//   3) saldo de gols geral
+//   4) gols marcados geral
+//   (fair play não é simulado — exigiria dados de cartões)
+//   5) nome da equipe — desempate final determinístico, no lugar do sorteio
+// `played` é a lista de jogos com placar: { home, away, hs, as }.
+export function rankGroupFifa(teamList, played) {
+  // Estatísticas de confronto direto restritas a um subconjunto de equipes
+  // (só contam os jogos em que AMBOS os times estão no subconjunto).
+  const h2hStats = (subset) => {
+    const names = new Set(subset.map(t => t.team))
+    const acc = {}
+    for (const t of subset) acc[t.team] = { pts: 0, gd: 0, gf: 0 }
+    for (const g of played) {
+      if (!names.has(g.home) || !names.has(g.away)) continue
+      const H = acc[g.home], A = acc[g.away]
+      H.gf += g.hs; A.gf += g.as
+      H.gd += g.hs - g.as; A.gd += g.as - g.hs
+      if (g.hs > g.as) H.pts += 3
+      else if (g.hs < g.as) A.pts += 3
+      else { H.pts += 1; A.pts += 1 }
+    }
+    return acc
+  }
+  return [...teamList].sort((a, b) => {
+    if (b.pts !== a.pts) return b.pts - a.pts
+    // Empate em pontos: aplica confronto direto entre TODAS as equipes empatadas.
+    const tied = teamList.filter(t => t.pts === a.pts)
+    if (tied.length > 1) {
+      const hh = h2hStats(tied)
+      const ha = hh[a.team], hb = hh[b.team]
+      if (hb.pts !== ha.pts) return hb.pts - ha.pts
+      if (hb.gd  !== ha.gd ) return hb.gd  - ha.gd
+      if (hb.gf  !== ha.gf ) return hb.gf  - ha.gf
+    }
+    if (b.gd !== a.gd) return b.gd - a.gd
+    if (b.gf !== a.gf) return b.gf - a.gf
+    return a.team.localeCompare(b.team)
+  })
 }
 
 export async function saveGroupStandings(poolId, userId, groupName, groupMatches, predsMap) {
