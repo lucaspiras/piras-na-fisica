@@ -275,9 +275,9 @@
       const btn = form.querySelector('button[type=submit]')
       btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>'
       msg.innerHTML = ''
-      let error = null
-      try { await callAdmin('set_match_result', { match_id: matchId, home_score: home, away_score: away }) }
-      catch (e) { error = e }
+      const { error } = await supabase.rpc('set_match_result', {
+        p_match_id: matchId, p_home_score: home, p_away_score: away
+      })
       btn.disabled = false; btn.textContent = 'Salvar'
       if (error) {
         msg.innerHTML = `<span style="color:var(--flare)">${escHtml(error.message)}</span>`
@@ -434,8 +434,7 @@
         ])
 
         // Score all pools
-        let error = null
-        try { await callAdmin('score_tournament_all_pools') } catch (e) { error = e }
+        const { error } = await supabase.rpc('score_tournament_all_pools')
         btn.disabled = false; btn.textContent = 'Salvar e pontuar todos os bolões'
         msg.textContent = error ? error.message : '✓ Pódio salvo e pontos calculados em todos os bolões.'
         msg.style.color = error ? 'var(--flare)' : 'var(--pitch-deep)'
@@ -497,7 +496,7 @@
         }
 
         // Score best 3rd for all pools
-        try { await callAdmin('score_best_3rd_all_pools') } catch (e) {}
+        await supabase.rpc('score_best_3rd_all_pools')
         btn.disabled = false; btn.textContent = 'Salvar e pontuar melhores 3ºs'
         msg.textContent = '✓ Melhores 3ºs salvos e pontos calculados em todos os bolões.'
         msg.style.color = 'var(--pitch-deep)'; msg.classList.remove('hidden')
@@ -510,8 +509,7 @@
         msg.classList.add('hidden')
         let count = 0, errors = []
         for (const g of groups) {
-          let error = null
-          try { await callAdmin('score_group_all_pools', { group_name: g }) } catch (e) { error = e }
+          const { error } = await supabase.rpc('score_group_all_pools', { p_group_name: g })
           if (error) errors.push(g)
           else count++
         }
