@@ -166,18 +166,18 @@ export async function getRules(poolId) {
 }
 
 export const MATCH_RULE_LABELS = {
-  exact_home:     'Placar do time da casa (exato)',
-  exact_away:     'Placar do visitante (exato)',
+  exact_home:     'Acertar o número de gols da equipe 1',
+  exact_away:     'Acertar o número de gols da equipe 2',
   correct_result: 'Resultado correto (vitória / empate)',
   correct_diff:   'Saldo de gols correto',
-  exact_score:    'Bônus placar exato (os dois)',
+  exact_score:    'Bônus: placar exato (as duas equipes)',
 }
 export const KO_RULE_LABELS = {
-  ko_exact_home:     'Placar do time da casa (exato)',
-  ko_exact_away:     'Placar do visitante (exato)',
+  ko_exact_home:     'Acertar o número de gols da equipe 1',
+  ko_exact_away:     'Acertar o número de gols da equipe 2',
   ko_correct_result: 'Resultado correto (quem avança)',
   ko_correct_diff:   'Saldo de gols correto',
-  ko_exact_score:    'Bônus placar exato (os dois)',
+  ko_exact_score:    'Bônus: placar exato (as duas equipes)',
 }
 export const CLS_RULE_LABELS = {
   cls_1st:     '1º colocado do grupo correto',
