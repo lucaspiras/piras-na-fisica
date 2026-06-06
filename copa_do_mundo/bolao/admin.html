@@ -29,6 +29,7 @@
       <button class="tab" data-tab="participants">Participantes</button>
       <button class="tab" data-tab="pools">Bolões</button>
       <button class="tab" data-tab="audit">Auditoria</button>
+      <button class="tab" data-tab="export">Exportar</button>
     </div>
 
     <!-- Resultados -->
@@ -171,6 +172,34 @@
       <div id="standings-content" class="mt-16"></div>
     </div>
 
+    <!-- Exportar -->
+    <div id="tab-export" class="hidden">
+      <div class="card mt-16">
+        <h3>Exportar perfis</h3>
+        <p class="muted mt-8" style="font-size:.85rem">
+          Todos os participantes: apelido, e-mail, avatar e se é administrador.
+        </p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px">
+          <button class="btn btn-primary btn-sm" data-export="profiles-csv">⬇ Perfis (CSV)</button>
+          <button class="btn btn-ghost btn-sm" data-export="profiles-json">⬇ Perfis (JSON)</button>
+        </div>
+      </div>
+
+      <div class="card mt-12">
+        <h3>Exportar apostas — todos os bolões</h3>
+        <p class="muted mt-8" style="font-size:.85rem">
+          Palpites de placar (com os pontos calculados) e a classificação de grupos
+          apostada por cada jogador, em todos os bolões. O JSON traz tudo num arquivo só.
+        </p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px">
+          <button class="btn btn-primary btn-sm" data-export="bets-scores-csv">⬇ Placares (CSV)</button>
+          <button class="btn btn-primary btn-sm" data-export="bets-groups-csv">⬇ Classificação de grupos (CSV)</button>
+          <button class="btn btn-ghost btn-sm" data-export="bets-json">⬇ Tudo (JSON)</button>
+        </div>
+        <p id="export-msg" class="hidden mt-8" style="font-size:.85rem"></p>
+      </div>
+    </div>
+
   </main>
 
   <script type="module">
@@ -189,8 +218,8 @@
     bindSignOut()
 
     // ── Tabs ──────────────────────────────────────────────────
-    const TABS = ['matches', 'third', 'standings', 'tournament', 'participants', 'pools', 'audit']
-    let thirdLoaded = false, tournLoaded = false, partLoaded = false, poolsLoaded = false, auditLoaded = false, standingsLoaded = false
+    const TABS = ['matches', 'third', 'standings', 'tournament', 'participants', 'pools', 'audit', 'export']
+    let thirdLoaded = false, tournLoaded = false, partLoaded = false, poolsLoaded = false, auditLoaded = false, standingsLoaded = false, exportLoaded = false
     document.querySelectorAll('.tab').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'))
@@ -205,6 +234,7 @@
         if (tab === 'pools' && !poolsLoaded)        { poolsLoaded = true;  loadPoolsAdmin() }
         if (tab === 'audit' && !auditLoaded)        { auditLoaded = true;  loadAudit() }
         if (tab === 'standings' && !standingsLoaded) { standingsLoaded = true; loadStandings() }
+        if (tab === 'export' && !exportLoaded)       { exportLoaded = true;  loadExport() }
       })
     })
 
@@ -1282,6 +1312,116 @@
         const { error } = await supabase.from('third_place_ranking_override').delete().neq('group_name', '')
         if (error) alert('Erro: ' + error.message); else await loadStandings()
         return
+      }
+    })
+
+    // ── Exportar ──────────────────────────────────────────────
+    let exportData = null
+
+    // Excel pt-BR usa ';' como separador de lista; o BOM garante acentos corretos.
+    const CSV_SEP = ';'
+    function buildCsv(headers, rows) {
+      const esc = (v) => {
+        const s = v == null ? '' : String(v)
+        return /["\n\r;]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s
+      }
+      return '﻿' + [headers, ...rows].map(r => r.map(esc).join(CSV_SEP)).join('\r\n')
+    }
+    function downloadFile(name, content, mime) {
+      const blob = new Blob([content], { type: `${mime};charset=utf-8` })
+      const a = document.createElement('a')
+      a.href = URL.createObjectURL(blob)
+      a.download = name
+      document.body.appendChild(a); a.click(); a.remove()
+      setTimeout(() => URL.revokeObjectURL(a.href), 1000)
+    }
+    const today = () => new Date().toISOString().slice(0, 10)
+    const byPtBr = (a, b) => String(a ?? '').localeCompare(String(b ?? ''), 'pt-BR')
+
+    async function loadExport() {
+      const msg = document.getElementById('export-msg')
+      try {
+        exportData = await callAdmin('export_data')
+      } catch (e) {
+        msg.textContent = 'Erro ao carregar dados: ' + e.message
+        msg.style.color = 'var(--flare)'; msg.classList.remove('hidden')
+      }
+    }
+
+    document.getElementById('tab-export').addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-export]')
+      if (!btn) return
+      const msg = document.getElementById('export-msg')
+      if (!exportData) {
+        msg.textContent = 'Os dados ainda estão carregando. Tente de novo em instantes.'
+        msg.style.color = 'var(--flare)'; msg.classList.remove('hidden'); return
+      }
+      msg.classList.add('hidden')
+
+      const { profiles, pools, matches, predictions, group_standings } = exportData
+      const poolName  = Object.fromEntries(pools.map(p => [p.id, p.name]))
+      const prof      = Object.fromEntries(profiles.map(p => [p.id, p]))
+      const matchById = Object.fromEntries(matches.map(m => [m.id, m]))
+
+      switch (btn.dataset.export) {
+        case 'profiles-csv': {
+          const rows = profiles.slice()
+            .sort((a, b) => byPtBr(a.display_name, b.display_name))
+            .map(p => [p.id, p.display_name, p.email ?? '', p.avatar ?? '', p.is_admin ? 'sim' : 'não'])
+          downloadFile(`perfis_${today()}.csv`,
+            buildCsv(['ID', 'Apelido', 'E-mail', 'Avatar', 'Admin'], rows), 'text/csv')
+          break
+        }
+        case 'profiles-json':
+          downloadFile(`perfis_${today()}.json`, JSON.stringify(profiles, null, 2), 'application/json')
+          break
+
+        case 'bets-scores-csv': {
+          const rows = predictions.map(pr => {
+            const m = matchById[pr.match_id] ?? {}
+            const u = prof[pr.user_id] ?? {}
+            const jogo = m.home_team
+              ? `${translateTeam(m.home_team)} x ${translateTeam(m.away_team)}` : pr.match_id
+            const oficial = (m.home_score != null && m.away_score != null)
+              ? `${m.home_score}-${m.away_score}` : ''
+            return {
+              pool: poolName[pr.pool_id] ?? '', name: u.display_name ?? '', date: m.match_date ?? '',
+              cells: [
+                poolName[pr.pool_id] ?? pr.pool_id, u.display_name ?? '—', u.email ?? '',
+                m.phase === 'group' ? 'Grupos' : m.phase ? 'Mata-mata' : '',
+                m.group_name ?? '', jogo, oficial,
+                `${pr.home_score}-${pr.away_score}`, pr.points ?? '',
+              ],
+            }
+          }).sort((a, b) =>
+            byPtBr(a.pool, b.pool) || byPtBr(a.name, b.name) || byPtBr(a.date, b.date))
+          downloadFile(`apostas_placares_${today()}.csv`, buildCsv(
+            ['Bolão', 'Jogador', 'E-mail', 'Fase', 'Grupo', 'Jogo', 'Placar oficial', 'Placar apostado', 'Pontos'],
+            rows.map(r => r.cells)), 'text/csv')
+          break
+        }
+        case 'bets-groups-csv': {
+          const rows = group_standings.map(g => {
+            const u = prof[g.user_id] ?? {}
+            return {
+              pool: poolName[g.pool_id] ?? '', name: u.display_name ?? '',
+              group: g.group_name, pos: g.position,
+              cells: [
+                poolName[g.pool_id] ?? g.pool_id, u.display_name ?? '—', u.email ?? '',
+                g.group_name, g.position, translateTeam(g.team_name),
+              ],
+            }
+          }).sort((a, b) =>
+            byPtBr(a.pool, b.pool) || byPtBr(a.name, b.name) ||
+            byPtBr(a.group, b.group) || (a.pos - b.pos))
+          downloadFile(`apostas_grupos_${today()}.csv`, buildCsv(
+            ['Bolão', 'Jogador', 'E-mail', 'Grupo', 'Posição', 'Time apostado'],
+            rows.map(r => r.cells)), 'text/csv')
+          break
+        }
+        case 'bets-json':
+          downloadFile(`apostas_${today()}.json`, JSON.stringify(exportData, null, 2), 'application/json')
+          break
       }
     })
   </script>

@@ -264,6 +264,44 @@ Deno.serve(async (req) => {
         return json({ history: history ?? [], names })
       }
 
+      /* ---- Exportação de dados ---- */
+      // Conjunto completo para exportar (perfis + apostas de todos os bolões).
+      // Usa service_role para passar por cima do RLS; o front (admin.html) monta
+      // os CSV/JSON. Inclui palpites de placar e classificação de grupos apostada.
+      case 'export_data': {
+        const [
+          { data: profiles },
+          { data: list },
+          { data: pools },
+          { data: members },
+          { data: matches },
+          { data: preds },
+          { data: gstand },
+        ] = await Promise.all([
+          admin.from('profiles').select('id, display_name, avatar, is_admin'),
+          admin.auth.admin.listUsers({ perPage: 1000 }),
+          admin.from('pools').select('id, name').order('name'),
+          admin.from('pool_members').select('pool_id, user_id'),
+          admin.from('matches')
+            .select('id, match_number, group_name, home_team, away_team, home_score, away_score, status, phase, match_date')
+            .order('match_date'),
+          admin.from('predictions')
+            .select('pool_id, user_id, match_id, home_score, away_score, points, updated_at'),
+          admin.from('predicted_group_standings')
+            .select('pool_id, user_id, group_name, position, team_name'),
+        ])
+        const emailById: Record<string, string | undefined> = {}
+        for (const u of list?.users ?? []) emailById[u.id] = u.email
+        return json({
+          profiles: (profiles ?? []).map((pr) => ({ ...pr, email: emailById[pr.id] ?? null })),
+          pools: pools ?? [],
+          pool_members: members ?? [],
+          matches: matches ?? [],
+          predictions: preds ?? [],
+          group_standings: gstand ?? [],
+        })
+      }
+
       default:
         return json({ error: `Ação desconhecida: ${action}` }, 400)
     }
