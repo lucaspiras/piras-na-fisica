@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Classificações · Bolão Copa 2026</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-TY56KM22X8');
+  </script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -49,7 +58,7 @@
     import {
       supabase, requireAuthWithProfile,
       renderHeader, renderPoolNav, bindSignOut,
-      escHtml, translateTeam,
+      escHtml, translateTeam, teamFlag,
       simulateGroupStandings, getRules
     } from './supabase.js'
 
@@ -137,7 +146,12 @@
       container.innerHTML = toRender.map(g => {
         const { matches: gMatches, actual } = groups[g] ?? { matches: [], actual: [] }
         const predicted  = simulateGroupStandings(gMatches, predsMap)
-        const isComplete = actual.length === 4
+        // Grupo encerrado = todos os jogos do grupo terminaram (a view real
+        // retorna os 4 times sempre, então não dá pra usar actual.length).
+        const isComplete = gMatches.length > 0 && gMatches.every(m => m.status === 'finished')
+        // Classificação real ao vivo: mostra a coluna assim que houver ao menos
+        // um jogo encerrado no grupo.
+        const hasReal    = gMatches.some(m => m.status === 'finished')
 
         let clsBadge = ''
         if (clsScore && (clsScore.classification_pts > 0 || clsScore.best3rd_pts > 0)) {
@@ -165,7 +179,7 @@
                     <th class="left" colspan="2">Equipe</th>
                     <th>J</th><th>V</th><th>E</th><th>D</th>
                     <th>GP</th><th>GC</th><th>SG</th><th>PTS</th>
-                    ${isComplete ? '<th>Real</th>' : ''}
+                    ${hasReal ? '<th>Real</th>' : ''}
                   </tr></thead>
                   <tbody>
                     ${predicted.map((s, i) => {
@@ -175,10 +189,10 @@
                       const name      = translateTeam(s.team)
                       const best3rdTag = isBest3rd ? `<span style="font-size:.62rem;font-weight:700;color:#9a6800;background:rgba(240,165,0,.2);padding:1px 5px;border-radius:3px;margin-left:5px;white-space:nowrap">→ avança</span>` : ''
                       let realCell = ''
-                      if (isComplete) {
+                      if (hasReal) {
                         const actualPos = actual.find(r => r.team === s.team)?.position ?? '?'
                         const match = actualPos === pos
-                        realCell = `<td style="font-weight:700;color:${match ? 'var(--pitch-deep)' : 'var(--flare)'}">${actualPos}º ${match ? '✓' : '✗'}</td>`
+                        realCell = `<td style="font-weight:700;color:${match ? 'var(--pitch-deep)' : 'var(--flare)'}">${actualPos}º</td>`
                       }
                       return `
                         <tr class="${rowCls}">
@@ -186,7 +200,7 @@
                             <span class="pos-num pos-num-${pos}">${pos}</span>
                           </td>
                           <td class="left">
-                            <span style="display:flex;align-items:center;flex-wrap:wrap">${escHtml(name)}${best3rdTag}</span>
+                            <span style="display:flex;align-items:center;flex-wrap:wrap">${teamFlag(s.team)}${escHtml(name)}${best3rdTag}</span>
                           </td>
                           <td>${s.played}</td>
                           <td>${s.w}</td><td>${s.d}</td><td>${s.l}</td>
@@ -201,10 +215,9 @@
               </div>
             </div>
             ${noteHtml}
-            ${isComplete ? `
-              <p style="font-size:.78rem;color:var(--pitch-deep);font-weight:600;margin-top:6px">
-                ✓ Grupo encerrado — classificação real disponível
-                ${qualifiedGroups.has(g) ? '· <span style="color:var(--gold)">★ 3º colocado avançou como melhor 3º</span>' : ''}
+            ${isComplete && qualifiedGroups.has(g) ? `
+              <p style="font-size:.78rem;color:var(--gold);font-weight:600;margin-top:6px">
+                ★ 3º colocado avançou como melhor 3º
               </p>` : ''}
             ${clsBadge}
           </div>`

@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bolão · Copa 2026</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-TY56KM22X8');
+  </script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -176,7 +185,7 @@
       supabase, requireAuthWithProfile,
       renderHeader, bindSignOut,
       escHtml, fmtDate, fmtTime,
-      matchStatus, statusBadge, medalIcon, translateTeam,
+      matchStatus, statusBadge, medalIcon, translateTeam, teamFlag,
       getRules, MATCH_RULE_LABELS, KO_RULE_LABELS, CLS_RULE_LABELS, TOURN_RULE_LABELS,
       simulateGroupStandings, saveGroupStandings
     } from './supabase.js'
@@ -478,7 +487,7 @@
       else if (!isOpen&&!pred) footer = `<span style="color:var(--flare)">Apostas encerradas — sem palpite</span>`
       return `<div class="match-card ${status}" id="card-${m.id}">
         <div class="match-meta"><strong>Grupo ${escHtml(m.group_name??'?')}</strong><span>·</span><span>${fmtDate(m.match_date)} · ${fmtTime(m.match_date)}</span>${statusBadge(status)}</div>
-        <div class="match-row"><span class="team-name team-home">${escHtml(home)}</span>${scoreArea}<span class="team-name team-away">${escHtml(away)}</span></div>
+        <div class="match-row"><span class="team-name team-home">${escHtml(home)}${teamFlag(m.home_team)}</span>${scoreArea}<span class="team-name team-away">${teamFlag(m.away_team)}${escHtml(away)}</span></div>
         <div class="match-footer" id="footer-${m.id}">${footer}</div>
       </div>`
     }
@@ -522,7 +531,7 @@
             const pos=i+1
             return `<div class="group-mini-team">
               <span class="group-mini-pos gmp-${pos}">${pos}</span>
-              <span style="flex:1;font-size:.82rem">${escHtml(translateTeam(s.team))}</span>
+              <span style="flex:1;font-size:.82rem">${teamFlag(s.team)}${escHtml(translateTeam(s.team))}</span>
               <span class="group-mini-pts">${s.pts}</span>
             </div>`
           }).join('')}
@@ -554,7 +563,7 @@
 
       if (results?.length===3) {
         const resultMap={}; for (const r of results) resultMap[r.position]=r.team_name
-        document.getElementById('result-content-pod').innerHTML=['🥇','🥈','🥉'].map((m,i)=>`<div style="font-size:.88rem;font-weight:600;margin-bottom:3px">${m} ${escHtml(translateTeam(resultMap[i+1]))}</div>`).join('')
+        document.getElementById('result-content-pod').innerHTML=['🥇','🥈','🥉'].map((m,i)=>`<div style="font-size:.88rem;font-weight:600;margin-bottom:3px">${m} ${teamFlag(resultMap[i+1])}${escHtml(translateTeam(resultMap[i+1]))}</div>`).join('')
         document.getElementById('result-banner-pod').classList.remove('hidden')
       }
 

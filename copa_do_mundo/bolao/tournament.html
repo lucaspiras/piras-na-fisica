@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pódio · Bolão Copa 2026</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-TY56KM22X8');
+  </script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -96,7 +105,7 @@
     import {
       supabase, requireAuthWithProfile,
       renderHeader, renderPoolNav, bindSignOut,
-      escHtml, translateTeam, getRules
+      escHtml, translateTeam, teamFlag, getRules
     } from './supabase.js'
 
     const poolId = new URLSearchParams(location.search).get('pool')
@@ -173,7 +182,7 @@
       const medals = ['🥇', '🥈', '🥉']
       document.getElementById('result-content').innerHTML = results.map(r =>
         `<div style="font-size:.9rem;font-weight:600;margin-bottom:4px">
-          ${medals[r.position-1]} ${escHtml(translateTeam(r.team_name))}
+          ${medals[r.position-1]} ${teamFlag(r.team_name)}${escHtml(translateTeam(r.team_name))}
         </div>`).join('')
       document.getElementById('result-banner').classList.remove('hidden')
     }

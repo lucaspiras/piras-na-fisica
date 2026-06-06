@@ -333,6 +333,17 @@ h3 {
 }
 .team-home { text-align: right; }
 .team-away { text-align: left; }
+.flag {
+  width: 21px;
+  height: 14px;
+  object-fit: cover;          /* mesmo tamanho pra todas, sem distorcer */
+  border-radius: 2px;
+  vertical-align: middle;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.12);
+  margin-right: 6px;          /* padrão: bandeira antes do nome */
+}
+.team-home .flag { margin-right: 0; margin-left: 6px; }  /* mandante: depois do nome */
+.team-away .flag { margin-right: 6px; margin-left: 0; }
 
 .score-area {
   display: flex;

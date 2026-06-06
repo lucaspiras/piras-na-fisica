@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin · Bolão da Copa 2026</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-TY56KM22X8');
+  </script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -168,7 +177,7 @@
     import {
       supabase, requireAdmin, callAdmin,
       renderHeader, bindSignOut,
-      escHtml, fmtDate, fmtTime, fmtDateTime, statusBadge, matchStatus, translateTeam,
+      escHtml, fmtDate, fmtTime, fmtDateTime, statusBadge, matchStatus, translateTeam, teamFlag,
       getRules, RULE_LABELS,
       MATCH_RULE_LABELS, KO_RULE_LABELS, CLS_RULE_LABELS, TOURN_RULE_LABELS
     } from './supabase.js'
@@ -237,7 +246,7 @@
           </div>
           <form id="form-${m.id}" class="match-row" style="gap:8px;align-items:center">
             <span class="team-name team-home" style="font-size:.85rem">
-              ${escHtml(translateTeam(m.home_team))}
+              ${escHtml(translateTeam(m.home_team))}${teamFlag(m.home_team)}
             </span>
             <span class="score-area">
               <input name="home" class="score-input" type="number" min="0" max="20"
@@ -255,7 +264,7 @@
                 : ''}
             </span>
             <span class="team-name team-away" style="font-size:.85rem">
-              ${escHtml(translateTeam(m.away_team))}
+              ${teamFlag(m.away_team)}${escHtml(translateTeam(m.away_team))}
             </span>
           </form>
           <div class="match-footer" id="save-msg-${m.id}"></div>
@@ -468,7 +477,7 @@
             style="width:16px;height:16px;cursor:pointer;accent-color:var(--pitch)">
           <span>
             <strong>Grupo ${escHtml(g)}</strong>
-            ${third3rd[g] ? ` — 3º: <span style="color:var(--ink)">${escHtml(translateTeam(third3rd[g]))}</span>` : ' — grupo incompleto'}
+            ${third3rd[g] ? ` — 3º: <span style="color:var(--ink)">${teamFlag(third3rd[g])}${escHtml(translateTeam(third3rd[g]))}</span>` : ' — grupo incompleto'}
           </span>
         </label>`).join('')
 
@@ -978,7 +987,7 @@
     function podioStr(data) {
       if (!data) return '—'
       return [data.pred_1st, data.pred_2nd, data.pred_3rd]
-        .map(t => t ? translateTeam(t) : '—').join(' · ')
+        .map(t => t ? teamFlag(t) + translateTeam(t) : '—').join(' · ')
     }
 
     function renderPlayerSheet(userId) {
@@ -1018,7 +1027,7 @@
           : '<span style="color:var(--muted)">—</span>'
         return `<tr style="border-top:1px solid var(--line)">
             <td style="padding:8px">
-              <div style="font-weight:600">${escHtml(translateTeam(m.home_team))} × ${escHtml(translateTeam(m.away_team))}</div>
+              <div style="font-weight:600">${teamFlag(m.home_team)}${escHtml(translateTeam(m.home_team))} × ${teamFlag(m.away_team)}${escHtml(translateTeam(m.away_team))}</div>
               <div style="font-size:.74rem;color:var(--muted)">Grupo ${escHtml(m.group_name ?? '?')} · ${fmtDate(m.match_date)} ${statusBadge(st)}</div>
             </td>
             <td style="padding:8px;text-align:center">${oficial}</td>
@@ -1159,7 +1168,7 @@
       return `
         <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-top:${i ? '1px solid var(--line)' : 'none'}">
           <span style="width:26px;text-align:center;font-weight:800;color:var(--pitch-deep)">${i + 1}º</span>
-          <span style="flex:1;font-weight:600">${escHtml(translateTeam(t.team))}${scope === 'third' ? ` <span style="font-size:.74rem;color:var(--muted)">(Grupo ${escHtml(t.group_name)})</span>` : ''}</span>
+          <span style="flex:1;font-weight:600">${teamFlag(t.team)}${escHtml(translateTeam(t.team))}${scope === 'third' ? ` <span style="font-size:.74rem;color:var(--muted)">(Grupo ${escHtml(t.group_name)})</span>` : ''}</span>
           ${scope === 'third' && t.qualified ? '<span class="pool-card-badge" style="background:var(--pitch-light);color:var(--pitch-deep)">classificado</span>' : ''}
           <span style="font-size:.76rem;color:var(--muted)">${t.pts} pts · ${t.gd >= 0 ? '+' : ''}${t.gd} · ${t.gf} GP</span>
           <span style="display:flex;gap:4px">

@@ -292,6 +292,9 @@ const TEAM_PT = {
   'Belgium': 'Bélgica',
   'Bolivia': 'Bolívia',
   'Bosnia and Herzegovina': 'Bósnia e Herzegovina',
+  'Bosnia & Herzegovina': 'Bósnia e Herzegovina',
+  'Bosnia-Herzegovina': 'Bósnia e Herzegovina',
+  'Bosnia': 'Bósnia e Herzegovina',
   'Brazil': 'Brasil',
   'Bulgaria': 'Bulgária',
   'Cameroon': 'Camarões',
@@ -402,11 +405,62 @@ const TEAM_PT = {
   'Wales': 'País de Gales',
   'Zambia': 'Zâmbia',
   'Zimbabwe': 'Zimbábue',
+  'Cape Verde Islands': 'Cabo Verde',
+  'Cape Verde': 'Cabo Verde',
+  'Curaçao': 'Curaçao',
+  'Curacao': 'Curaçao',
+  'Haiti': 'Haiti',
+  'Suriname': 'Suriname',
   'TBD': 'A definir',
 }
 
 export function translateTeam(name) {
   return TEAM_PT[name] ?? name
+}
+
+/* ── Bandeiras (código ISO 3166-1 alpha-2 para flagcdn.com) ─────────────────
+   Usamos imagens (não emoji), porque emoji de bandeira não renderiza no
+   Windows. As seleções do Reino Unido usam os códigos gb-eng/sct/wls/nir. */
+const TEAM_ISO = {
+  'Afghanistan': 'af', 'Albania': 'al', 'Algeria': 'dz', 'Angola': 'ao',
+  'Argentina': 'ar', 'Armenia': 'am', 'Australia': 'au', 'Austria': 'at',
+  'Azerbaijan': 'az', 'Bahrain': 'bh', 'Bangladesh': 'bd', 'Belgium': 'be',
+  'Bolivia': 'bo', 'Bosnia and Herzegovina': 'ba', 'Bosnia & Herzegovina': 'ba',
+  'Bosnia-Herzegovina': 'ba', 'Bosnia': 'ba', 'Brazil': 'br', 'Bulgaria': 'bg',
+  'Cameroon': 'cm', 'Canada': 'ca', 'Cape Verde Islands': 'cv', 'Cape Verde': 'cv',
+  'Chile': 'cl', 'China PR': 'cn', 'China': 'cn', 'Colombia': 'co', 'Congo DR': 'cd',
+  'Costa Rica': 'cr', "Côte d'Ivoire": 'ci', 'Ivory Coast': 'ci', 'Croatia': 'hr',
+  'Cuba': 'cu', 'Curaçao': 'cw', 'Curacao': 'cw', 'Czechia': 'cz', 'Czech Republic': 'cz',
+  'Denmark': 'dk', 'Ecuador': 'ec', 'Egypt': 'eg', 'El Salvador': 'sv',
+  'England': 'gb-eng', 'Estonia': 'ee', 'Ethiopia': 'et', 'Finland': 'fi',
+  'France': 'fr', 'Georgia': 'ge', 'Germany': 'de', 'Ghana': 'gh', 'Greece': 'gr',
+  'Guatemala': 'gt', 'Guinea': 'gn', 'Haiti': 'ht', 'Honduras': 'hn', 'Hungary': 'hu',
+  'Iceland': 'is', 'India': 'in', 'Indonesia': 'id', 'Iran': 'ir', 'Iraq': 'iq',
+  'Ireland': 'ie', 'Israel': 'il', 'Italy': 'it', 'Jamaica': 'jm', 'Japan': 'jp',
+  'Jordan': 'jo', 'Kazakhstan': 'kz', 'Kenya': 'ke', 'Kosovo': 'xk', 'Kuwait': 'kw',
+  'Latvia': 'lv', 'Lebanon': 'lb', 'Libya': 'ly', 'Lithuania': 'lt', 'Luxembourg': 'lu',
+  'Malaysia': 'my', 'Mali': 'ml', 'Malta': 'mt', 'Mexico': 'mx', 'Moldova': 'md',
+  'Montenegro': 'me', 'Morocco': 'ma', 'Mozambique': 'mz', 'Netherlands': 'nl',
+  'New Caledonia': 'nc', 'New Zealand': 'nz', 'Nigeria': 'ng', 'North Korea': 'kp',
+  'North Macedonia': 'mk', 'Northern Ireland': 'gb-nir', 'Norway': 'no', 'Oman': 'om',
+  'Palestine': 'ps', 'Panama': 'pa', 'Paraguay': 'py', 'Peru': 'pe', 'Philippines': 'ph',
+  'Poland': 'pl', 'Portugal': 'pt', 'Qatar': 'qa', 'Romania': 'ro', 'Russia': 'ru',
+  'Saudi Arabia': 'sa', 'Scotland': 'gb-sct', 'Senegal': 'sn', 'Serbia': 'rs',
+  'Slovakia': 'sk', 'Slovenia': 'si', 'South Africa': 'za', 'South Korea': 'kr',
+  'Spain': 'es', 'Suriname': 'sr', 'Sweden': 'se', 'Switzerland': 'ch', 'Syria': 'sy',
+  'Taiwan': 'tw', 'Thailand': 'th', 'Togo': 'tg', 'Trinidad and Tobago': 'tt',
+  'Tunisia': 'tn', 'Turkey': 'tr', 'Türkiye': 'tr', 'Uganda': 'ug', 'Ukraine': 'ua',
+  'United Arab Emirates': 'ae', 'United States': 'us', 'Uruguay': 'uy',
+  'Uzbekistan': 'uz', 'Venezuela': 've', 'Vietnam': 'vn', 'Wales': 'gb-wls',
+  'Zambia': 'zm', 'Zimbabwe': 'zw',
+}
+
+// Retorna a tag <img> da bandeira do time, ou '' se desconhecido (ex.: 'TBD').
+export function teamFlag(name) {
+  const code = TEAM_ISO[name]
+  if (!code) return ''
+  return `<img class="flag" src="https://flagcdn.com/h20/${code}.png" `
+    + `srcset="https://flagcdn.com/h40/${code}.png 2x" alt="" loading="lazy">`
 }
 
 export function medalIcon(pos) {
