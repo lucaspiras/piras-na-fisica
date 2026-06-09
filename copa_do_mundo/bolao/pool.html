@@ -33,7 +33,6 @@
         <a id="link-rules" href="rules.html" class="pool-action-btn" style="text-decoration:none">📋 Regras</a>
         <div class="pool-actions-spacer"></div>
         <button id="btn-config" class="pool-action-btn hidden">⚙ Configurações</button>
-        <button id="btn-leave" class="pool-action-btn danger">Sair do bolão</button>
       </div>
 
       <!-- Ranking banner (expansível) -->
@@ -237,14 +236,6 @@
 
     document.getElementById('loading').classList.add('hidden')
     document.getElementById('content').classList.remove('hidden')
-
-    // Sair
-    document.getElementById('btn-leave').addEventListener('click', async () => {
-      if (isOwner) { alert('Você é o dono deste bolão e não pode sair.'); return }
-      if (!confirm(`Sair do bolão "${pool.name}"?`)) return
-      await supabase.from('pool_members').delete().eq('pool_id', poolId).eq('user_id', user.id)
-      location.replace('dashboard.html')
-    })
 
     // ── Ranking banner ────────────────────────────────────────
     let rankingOpen = false, rankingLoaded = false
