@@ -89,10 +89,10 @@ $anchor
   <meta property="og:type" content="website">
   <meta property="og:title" content="$title">
   <meta property="og:description" content="$desc">
-  <meta property="og:image" content="$base/img/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/png">
+  <meta property="og:image" content="$base/img/og-logo.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:type" content="image/jpeg">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:url" content="$url">
   <meta name="twitter:card" content="summary_large_image">
