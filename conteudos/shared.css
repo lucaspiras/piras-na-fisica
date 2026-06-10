@@ -1044,3 +1044,23 @@
 
 /* ---- SCRIPT DE SCROLL ATIVO NA TOC ---- */
 /* Controlado via JS, mas a classe .active é aplicada por JS */
+
+/* ── Simulações embutidas (iframe) ── */
+.sim-embed {
+  margin: 2.5rem 0 1.8rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.sim-embed-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  padding: 0.75rem 1rem 0.75rem;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--border);
+}
+@media (max-width: 520px) {
+  .sim-embed iframe { height: 650px; }
+}
+

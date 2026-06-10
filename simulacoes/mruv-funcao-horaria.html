@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulação MRUV — Função Horária</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #f9fafb;
+      --surface: #ffffff;
+      --border:  #e5e7eb;
+      --texto:   #1f2933;
+      --muted:   #5b6573;
+      --primary: #2f5bea;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:      #0b0e14;
+        --surface: #13181f;
+        --border:  #232d3d;
+        --texto:   #e2e8f0;
+        --muted:   #7a8fa6;
+      }
+    }
+
+    body {
+      background: transparent;
+      color: var(--texto);
+      font-family: 'DM Sans', 'Segoe UI', sans-serif;
+      font-size: 14px;
+      padding: 8px 12px;
+      box-sizing: border-box;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── Header ── */
+    .sim-header {
+      padding: 12px 16px 10px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .sim-header-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+    .sim-header-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .sim {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 640px;
+    }
+
+    /* ── Road ── */
+    #c-road {
+      display: block; width: 100%; height: 160px; background: #dbeafe;
+    }
+    @media (prefers-color-scheme: dark) { #c-road { background: #1e3a5f; } }
+
+    /* ── Main panel ── */
+    .panel {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .speedo-wrap {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 8px 10px 12px;
+      border-right: 1px solid var(--border);
+    }
+    #c-speedo { display: block; }
+
+    /* values: 3 equal cards filling the rest */
+    .vals {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .val {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 6px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .val:last-child { border-right: none; }
+    .val-lbl {
+      font-size: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 4px;
+    }
+    .val-num {
+      font-size: 20px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+    }
+    .val-unit {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    /* ── Controls ── */
+    .controls {
+      padding: 10px 16px;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .sl-row { display: flex; align-items: center; gap: 10px; }
+    .sl-lbl {
+      width: 130px; flex-shrink: 0;
+      font-size: 13px;
+      font-family: 'Space Mono', 'Courier New', monospace;
+    }
+    .sl-lbl b { color: var(--primary); }
+    input[type=range] { flex: 1; accent-color: var(--primary); cursor: pointer; }
+
+    /* ── Buttons ── */
+    .buttons { display: flex; gap: 10px; padding: 0 16px 12px; }
+    .btn {
+      flex: 1; padding: 8px; border: none; border-radius: 8px;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      transition: opacity .15s, transform .1s;
+    }
+    .btn:hover  { opacity: .85; }
+    .btn:active { transform: scale(.97); }
+    .btn-play  { background: var(--primary); color: #fff; }
+    .btn-reset { background: var(--border);  color: var(--texto); }
+
+    /* ── Equations ── */
+    .eqs-section {
+      border-top: 1px solid var(--border);
+      padding: 10px 6px 14px;
+      background: var(--bg);
+    }
+    .eqs-header {
+      display: flex; align-items: center;
+      justify-content: space-between; margin-bottom: 8px;
+    }
+    .eqs-title {
+      font-size: 11px; font-weight: 600; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .06em;
+    }
+    .state-badge {
+      display: inline-block; padding: 2px 9px; border-radius: 20px;
+      font-size: 11px; font-weight: 600;
+      background: var(--border); color: var(--muted);
+    }
+    .state-badge.acelerado { background: #dbeafe; color: #1e3a8a; }
+    .state-badge.freiando  { background: #fee2e2; color: #7f1d1d; }
+    .state-badge.parado    { background: #f0fdf4; color: #166534; }
+    @media (prefers-color-scheme: dark) {
+      .state-badge.acelerado { background: #1e3a5f; color: #93c5fd; }
+      .state-badge.freiando  { background: #450a0a; color: #fca5a5; }
+      .state-badge.parado    { background: #052e16; color: #86efac; }
+    }
+    .eqs-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    }
+    @media (max-width: 440px) { .eqs-grid { grid-template-columns: 1fr; } }
+    .eq-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: 8px 10px;
+    }
+    .eq-formula {
+      font-size: 10px; color: var(--muted);
+      font-family: 'Space Mono', 'Courier New', monospace; margin-bottom: 4px;
+    }
+    .eq-live {
+      font-size: 11px; font-weight: 700; color: var(--primary);
+      font-family: 'Space Mono', 'Courier New', monospace;
+      line-height: 1.5; overflow-wrap: break-word; word-break: normal;
+    }
+  </style>
+</head>
+<body>
+<div class="sim">
+
+  <div class="sim-header">
+    <div class="sim-header-title">Simulador de MRUV</div>
+    <div class="sim-header-sub">Movimento Retilíneo Uniformemente Variado — ajuste os parâmetros e inicie</div>
+  </div>
+
+  <canvas id="c-road" width="640" height="160"></canvas>
+
+  <div class="panel">
+    <div class="speedo-wrap">
+      <canvas id="c-speedo" width="160" height="125"></canvas>
+    </div>
+    <div class="vals">
+      <div class="val">
+        <span class="val-lbl">Tempo</span>
+        <span class="val-num" id="vt">0,0</span>
+        <span class="val-unit">s</span>
+      </div>
+      <div class="val">
+        <span class="val-lbl">Posição</span>
+        <span class="val-num" id="vs">0,0</span>
+        <span class="val-unit">m</span>
+      </div>
+      <div class="val">
+        <span class="val-lbl">Velocidade</span>
+        <span class="val-num" id="vv">–</span>
+        <span class="val-unit">m/s</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="sl-row">
+      <span class="sl-lbl">v₀ = <b id="dv0">5</b> m/s</span>
+      <input type="range" id="sl-v0" min="-30" max="30" value="5" step="1">
+    </div>
+    <div class="sl-row">
+      <span class="sl-lbl">a = <b id="da">2</b> m/s²</span>
+      <input type="range" id="sl-a" min="-8" max="8" value="2" step="0.5">
+    </div>
+    <div class="sl-row">
+      <span class="sl-lbl">s₀ = <b id="ds0">0</b> m</span>
+      <input type="range" id="sl-s0" min="-50" max="50" value="0" step="5">
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="btn btn-play"  id="btn-play">▶ Iniciar</button>
+    <button class="btn btn-reset" id="btn-reset">↺ Reiniciar</button>
+  </div>
+
+  <div class="eqs-section">
+    <div class="eqs-header">
+      <span class="eqs-title">Cálculos em tempo real</span>
+      <span class="state-badge" id="badge">Em repouso</span>
+    </div>
+    <div class="eqs-grid">
+      <div class="eq-card">
+        <div class="eq-formula">v = v₀ + a · t</div>
+        <div class="eq-live" id="eq-v">–</div>
+      </div>
+      <div class="eq-card">
+        <div class="eq-formula">s = s₀ + v₀ · t + ½ · a · t²</div>
+        <div class="eq-live" id="eq-s">–</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>
+(function () {
+  const VMAX   = 35;
+  const TMAX   = 30;
+  const SCALE  = 2.8;
+  const MARKER = 50;
+  const DARK   = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  let running = false, rafId = null, lastTs = null;
+  let t = 0, s = 0, v = 0, v0 = 5, a = 2, s0 = 0;
+
+  const roadC   = document.getElementById('c-road');
+  const speedC  = document.getElementById('c-speedo');
+  const rCtx    = roadC.getContext('2d');
+  const sCtx    = speedC.getContext('2d');
+  const elT     = document.getElementById('vt');
+  const elS     = document.getElementById('vs');
+  const elV     = document.getElementById('vv');
+  const elEqV   = document.getElementById('eq-v');
+  const elEqS   = document.getElementById('eq-s');
+  const elBadge = document.getElementById('badge');
+  const btnPlay = document.getElementById('btn-play');
+
+  const C = DARK ? {
+    sky1:'#1e3a5f', sky2:'#0b1a2e', g1:'#14532d', g2:'#052e16',
+    road:'#374151', edge:'#4b5563', dash:'#d97706',
+    carBody:'#2f5bea', carRoof:'#1e2a78', win:'#93c5fd',
+    wheel:'#1f2937', hub:'#9ca3af', hl:'#fef08a', tl:'#fca5a5',
+    shadow:'rgba(0,0,0,.35)',
+    signBg:'#1a2130', signBorder:'#374151', signText:'#e2e8f0', pole:'#6b7280',
+    speedoBg:'#0f1623', speedoTrack:'#2d3748',
+    tickMajor:'#e2e8f0', tickMinor:'#4b5563', tickLabel:'#9ca3af',
+    needle:'#ef4444', pivot:'#374151', pivotDot:'#ef4444',
+    readout:'#e2e8f0', unit:'#7a8fa6',
+  } : {
+    sky1:'#93c5fd', sky2:'#dbeafe', g1:'#86efac', g2:'#4ade80',
+    road:'#6b7280', edge:'#f3f4f6', dash:'#fbbf24',
+    carBody:'#2f5bea', carRoof:'#1e2a78', win:'#bfdbfe',
+    wheel:'#1f2937', hub:'#d1d5db', hl:'#fef9c3', tl:'#fecaca',
+    shadow:'rgba(0,0,0,.15)',
+    signBg:'#ffffff', signBorder:'#374151', signText:'#1f2933', pole:'#4b5563',
+    speedoBg:'#f8faff', speedoTrack:'#e2e8f0',
+    tickMajor:'#374151', tickMinor:'#d1d5db', tickLabel:'#6b7280',
+    needle:'#dc2626', pivot:'#6b7280', pivotDot:'#dc2626',
+    readout:'#1f2933', unit:'#5b6573',
+  };
+
+  /* ─── rounded rect ─────────────────────────────────────────── */
+  function rr(ctx, x, y, w, h, r) {
+    const [tl,tr,br,bl] = Array.isArray(r) ? r : [r,r,r,r];
+    ctx.beginPath();
+    ctx.moveTo(x+tl,y);
+    ctx.lineTo(x+w-tr,y);    ctx.quadraticCurveTo(x+w,y,   x+w,y+tr);
+    ctx.lineTo(x+w,y+h-br);  ctx.quadraticCurveTo(x+w,y+h, x+w-br,y+h);
+    ctx.lineTo(x+bl,y+h);    ctx.quadraticCurveTo(x,y+h,   x,y+h-bl);
+    ctx.lineTo(x,y+tl);      ctx.quadraticCurveTo(x,y,     x+tl,y);
+    ctx.closePath();
+  }
+
+  /* ─── speedometer ───────────────────────────────────────────── */
+  function drawSpeedo(vel) {
+    const W = 160, H = 125;
+    const cx = 80, cy = 88, r = 62;
+    sCtx.clearRect(0, 0, W, H);
+
+    const absVel = Math.abs(vel);
+    const frac   = Math.min(absVel / VMAX, 1);
+    const toAng  = f => Math.PI + f * Math.PI;
+
+    /* background disc */
+    sCtx.beginPath();
+    sCtx.arc(cx, cy, r + 8, 0, Math.PI * 2);
+    sCtx.fillStyle = C.speedoBg;
+    sCtx.fill();
+
+    /* colored zone arcs (behind track) */
+    const zones = [
+      [0,       12/VMAX, 'rgba(34,197,94,0.18)' ],
+      [12/VMAX, 24/VMAX, 'rgba(245,158,11,0.18)'],
+      [24/VMAX, 1,       'rgba(239,68,68,0.18)' ],
+    ];
+    zones.forEach(([from, to, col]) => {
+      sCtx.beginPath();
+      sCtx.arc(cx, cy, r, toAng(from), toAng(to), false);
+      sCtx.strokeStyle = col;
+      sCtx.lineWidth = 14; sCtx.lineCap = 'butt'; sCtx.stroke();
+    });
+
+    /* full-range background track */
+    sCtx.beginPath();
+    sCtx.arc(cx, cy, r, Math.PI, 2 * Math.PI, false);
+    sCtx.strokeStyle = C.speedoTrack;
+    sCtx.lineWidth = 10; sCtx.lineCap = 'butt'; sCtx.stroke();
+
+    /* colored fill arc (speed progress) */
+    if (frac > 0.005) {
+      const gFrac = Math.min(frac, 12/VMAX);
+      const yFrac = frac > 12/VMAX ? Math.min(frac, 24/VMAX) : null;
+      const rFrac = frac > 24/VMAX ? frac : null;
+
+      const drawArc = (from, to, color) => {
+        sCtx.beginPath();
+        sCtx.arc(cx, cy, r, toAng(from), toAng(to), false);
+        sCtx.strokeStyle = color;
+        sCtx.lineWidth = 10;
+        sCtx.lineCap = to === frac ? 'round' : 'butt';
+        sCtx.stroke();
+      };
+      drawArc(0,       gFrac, '#22c55e');
+      if (yFrac) drawArc(12/VMAX, yFrac, '#f59e0b');
+      if (rFrac) drawArc(24/VMAX, rFrac, '#ef4444');
+    }
+
+    /* minor ticks (every 1 m/s) */
+    sCtx.strokeStyle = C.tickMinor;
+    sCtx.lineWidth = 1;
+    for (let val = 0; val <= VMAX; val++) {
+      if (val % 5 === 0) continue;
+      const ang = toAng(val / VMAX);
+      const i = r - 7, o = r + 3;
+      sCtx.beginPath();
+      sCtx.moveTo(cx + i * Math.cos(ang), cy + i * Math.sin(ang));
+      sCtx.lineTo(cx + o * Math.cos(ang), cy + o * Math.sin(ang));
+      sCtx.stroke();
+    }
+
+    /* major ticks (every 5 m/s) with labels */
+    for (let val = 0; val <= VMAX; val += 5) {
+      const ang = toAng(val / VMAX);
+      const i = r - 13, o = r + 3;
+
+      sCtx.beginPath();
+      sCtx.moveTo(cx + i * Math.cos(ang), cy + i * Math.sin(ang));
+      sCtx.lineTo(cx + o * Math.cos(ang), cy + o * Math.sin(ang));
+      sCtx.strokeStyle = C.tickMajor;
+      sCtx.lineWidth = 2; sCtx.stroke();
+
+      /* label position: inside the tick, toward center */
+      const lr = r - 24;
+      const lx = cx + lr * Math.cos(ang);
+      const ly = cy + lr * Math.sin(ang);
+      sCtx.fillStyle = C.tickLabel;
+      sCtx.font = '8px DM Sans, sans-serif';
+      sCtx.textAlign = 'center';
+      sCtx.textBaseline = 'middle';
+      sCtx.fillText(String(val), lx, ly);
+    }
+
+    /* needle shadow */
+    const needleAng = toAng(frac);
+    const tipR = r - 10;
+    const ctR  = 12;
+    const tipX = cx + tipR  * Math.cos(needleAng);
+    const tipY = cy + tipR  * Math.sin(needleAng);
+    const ctX  = cx - ctR   * Math.cos(needleAng);
+    const ctY  = cy - ctR   * Math.sin(needleAng);
+
+    sCtx.shadowColor = 'rgba(0,0,0,0.35)';
+    sCtx.shadowBlur  = 5;
+    sCtx.shadowOffsetX = 1; sCtx.shadowOffsetY = 1;
+
+    /* needle body */
+    sCtx.beginPath();
+    sCtx.moveTo(ctX, ctY);
+    sCtx.lineTo(tipX, tipY);
+    sCtx.strokeStyle = C.needle;
+    sCtx.lineWidth = 2.5; sCtx.lineCap = 'round'; sCtx.stroke();
+
+    /* counter-weight (stub at opposite end) */
+    sCtx.beginPath();
+    sCtx.moveTo(cx, cy);
+    sCtx.lineTo(ctX, ctY);
+    sCtx.strokeStyle = DARK ? '#6b7280' : '#9ca3af';
+    sCtx.lineWidth = 4; sCtx.lineCap = 'round'; sCtx.stroke();
+
+    sCtx.shadowColor = 'transparent';
+    sCtx.shadowBlur  = 0;
+    sCtx.shadowOffsetX = 0; sCtx.shadowOffsetY = 0;
+
+    /* pivot rings */
+    sCtx.beginPath();
+    sCtx.arc(cx, cy, 8, 0, Math.PI*2);
+    sCtx.fillStyle = C.pivot; sCtx.fill();
+    sCtx.beginPath();
+    sCtx.arc(cx, cy, 4, 0, Math.PI*2);
+    sCtx.fillStyle = C.pivotDot; sCtx.fill();
+
+    /* digital readout (below arc endpoints, outside the gauge arc) */
+    sCtx.textAlign = 'center';
+    sCtx.textBaseline = 'alphabetic';
+    sCtx.fillStyle = C.readout;
+    sCtx.font = 'bold 22px DM Sans, sans-serif';
+    sCtx.fillText(absVel.toFixed(1), cx, cy + 22);
+    sCtx.fillStyle = C.unit;
+    sCtx.font = '10px DM Sans, sans-serif';
+    sCtx.textBaseline = 'alphabetic';
+    sCtx.fillText('|v|  m/s', cx, cy + 33);
+  }
+
+  /* ─── position markers ──────────────────────────────────────── */
+  function drawMarkers(pos) {
+    const W = 640, H = 160;
+    const roadTop = H * 0.64;
+    const poleH = 22, signH = 15, signW = 38;
+    const poleTopY = roadTop - poleH;
+    const signTopY = poleTopY - signH;
+    const visL  = pos - (W/2) / SCALE;
+    const visR  = pos + (W/2) / SCALE;
+    const first = Math.ceil(visL / MARKER) * MARKER;
+
+    for (let p = first; p <= visR + MARKER; p += MARKER) {
+      const sx = Math.round(W/2 + (p - pos) * SCALE);
+      if (sx < -signW || sx > W + signW) continue;
+
+      rCtx.fillStyle = C.pole;
+      rCtx.fillRect(sx - 1, poleTopY, 2, poleH);
+
+      rCtx.fillStyle = C.signBg;
+      rr(rCtx, sx - signW/2, signTopY, signW, signH, 3); rCtx.fill();
+      rCtx.strokeStyle = C.signBorder; rCtx.lineWidth = 1;
+      rr(rCtx, sx - signW/2, signTopY, signW, signH, 3); rCtx.stroke();
+
+      rCtx.fillStyle = C.signText;
+      rCtx.font = 'bold 9px DM Sans, sans-serif';
+      rCtx.textAlign = 'center';
+      rCtx.textBaseline = 'alphabetic';
+      rCtx.fillText(p + ' m', sx, signTopY + signH - 3);
+    }
+  }
+
+  /* ─── velocity arrow ────────────────────────────────────────── */
+  function drawVelocityArrow(carX, groundY, vel) {
+    const arrowY = groundY - 64;
+    if (Math.abs(vel) < 0.15) {
+      rCtx.beginPath();
+      rCtx.arc(carX, arrowY, 3, 0, Math.PI*2);
+      rCtx.fillStyle = DARK ? '#7a8fa6' : '#6b7280'; rCtx.fill();
+      rCtx.fillStyle = DARK ? '#e2e8f0' : '#374151';
+      rCtx.font = 'bold 9px DM Sans, sans-serif';
+      rCtx.textAlign = 'center'; rCtx.textBaseline = 'alphabetic';
+      rCtx.fillText('v = 0', carX, arrowY - 7);
+      return;
+    }
+    const dir   = vel > 0 ? 1 : -1;
+    const color = vel > 0 ? '#2f5bea' : '#ef4444';
+    const len   = 14 + (Math.min(Math.abs(vel), VMAX) / VMAX) * 36;
+    const headL = 9;
+    const x0    = carX - dir * len / 2;
+    const tip   = carX + dir * len / 2;
+
+    rCtx.beginPath();
+    rCtx.moveTo(x0, arrowY); rCtx.lineTo(tip - dir * headL, arrowY);
+    rCtx.strokeStyle = color; rCtx.lineWidth = 2.5; rCtx.lineCap = 'round'; rCtx.stroke();
+
+    rCtx.beginPath();
+    rCtx.moveTo(tip, arrowY);
+    rCtx.lineTo(tip - dir * headL, arrowY - 5);
+    rCtx.lineTo(tip - dir * headL, arrowY + 5);
+    rCtx.closePath(); rCtx.fillStyle = color; rCtx.fill();
+
+    rCtx.fillStyle = color;
+    rCtx.font = 'bold 10px DM Sans, sans-serif';
+    rCtx.textAlign = 'center'; rCtx.textBaseline = 'alphabetic';
+    rCtx.fillText('v', carX, arrowY - 8);
+  }
+
+  /* ─── car ───────────────────────────────────────────────────── */
+  function drawCar(cx, groundY, dir) {
+    rCtx.save();
+    rCtx.translate(cx, groundY);
+    if (dir < 0) rCtx.scale(-1, 1);
+
+    rCtx.fillStyle = C.shadow;
+    rCtx.beginPath(); rCtx.ellipse(0, 3, 38, 5, 0, 0, Math.PI*2); rCtx.fill();
+
+    rCtx.fillStyle = C.carBody;   rr(rCtx,-38,-28,76,28,5);     rCtx.fill();
+    rCtx.fillStyle = C.carRoof;   rr(rCtx,-20,-48,46,22,[6,6,0,0]); rCtx.fill();
+    rCtx.fillStyle = C.win;
+    rr(rCtx,-16,-45,16,14,3); rCtx.fill();
+    rr(rCtx,  4,-45,14,14,3); rCtx.fill();
+    rCtx.fillStyle = C.hl;  rr(rCtx, 30,-22,7,9,2); rCtx.fill();
+    rCtx.fillStyle = C.tl;  rr(rCtx,-37,-22,6,9,2); rCtx.fill();
+
+    [-23,23].forEach(wx => {
+      rCtx.fillStyle = C.wheel;
+      rCtx.beginPath(); rCtx.arc(wx,1,11,0,Math.PI*2); rCtx.fill();
+      rCtx.fillStyle = C.hub;
+      rCtx.beginPath(); rCtx.arc(wx,1, 4,0,Math.PI*2); rCtx.fill();
+    });
+    rCtx.restore();
+  }
+
+  /* ─── road scene ─────────────────────────────────────────────── */
+  function drawRoad(pos) {
+    const W = 640, H = 160;
+    rCtx.clearRect(0, 0, W, H);
+
+    const sg = rCtx.createLinearGradient(0,0,0,H*.52);
+    sg.addColorStop(0,C.sky1); sg.addColorStop(1,C.sky2);
+    rCtx.fillStyle = sg; rCtx.fillRect(0,0,W,H*.52);
+
+    rCtx.fillStyle = C.g1; rCtx.fillRect(0,H*.52,W,H*.12);
+    rCtx.fillStyle = C.g2; rCtx.fillRect(0,H*.88,W,H*.12);
+    rCtx.fillStyle = C.road; rCtx.fillRect(0,H*.64,W,H*.24);
+
+    rCtx.fillStyle = C.edge;
+    rCtx.fillRect(0,H*.64,W,3);
+    rCtx.fillRect(0,H*.88-3,W,3);
+
+    const dashLen = 34, period = 58;
+    const off = ((-pos*SCALE)%period+period)%period;
+    rCtx.fillStyle = C.dash;
+    for (let x = off-period; x < W+period; x += period)
+      rCtx.fillRect(x, H*.76-2, dashLen, 4);
+
+    drawMarkers(pos);
+    const groundY = H * 0.64;
+    drawCar(W/2, groundY, v >= 0 ? 1 : -1);
+    drawVelocityArrow(W/2, groundY, v);
+  }
+
+  /* ─── HUD & equations ───────────────────────────────────────── */
+  function fmt(n, dec) { return n.toFixed(dec).replace('.', ','); }
+
+  function buildEqV() {
+    const ts = fmt(t, 1);
+    const [sg, ab] = a >= 0 ? [' + ', a] : [' − ', Math.abs(a)];
+    return `v(${ts}) = ${v0}${sg}${ab}·${ts} = ${fmt(v,1)} m/s`;
+  }
+
+  function buildEqS() {
+    const ts = fmt(t, 1);
+    const [vsg, vab] = v0 >= 0 ? [' + ', v0] : [' − ', Math.abs(v0)];
+    const [asg, aab] = a  >= 0 ? [' + ½·', a] : [' − ½·', Math.abs(a)];
+    return `s(${ts}) = ${s0}${vsg}${vab}·${ts}${asg}${aab}·${ts}² = ${fmt(s,1)} m`;
+  }
+
+  function updateHUD() {
+    elT.textContent = fmt(t, 1);
+    elS.textContent = fmt(s, 1);
+    elV.textContent = fmt(v, 1);
+    elEqV.textContent = buildEqV();
+    elEqS.textContent = buildEqS();
+
+    let label = 'Em repouso', cls = '';
+    if (Math.abs(v) > 0.1) {
+      if (a === 0)                            { label = 'Uniforme (MRU)'; }
+      else if (Math.sign(v) === Math.sign(a)) { label = 'Acelerado';  cls = 'acelerado'; }
+      else                                    { label = 'Freiando';   cls = 'freiando';  }
+    } else if (running)                       { label = 'Parado';     cls = 'parado';    }
+    elBadge.textContent = label;
+    elBadge.className = 'state-badge ' + cls;
+  }
+
+  /* ─── animation ─────────────────────────────────────────────── */
+  function frame(ts) {
+    if (!running) return;
+    if (lastTs === null) lastTs = ts;
+    const dt = Math.min((ts - lastTs) / 1000, 0.05);
+    lastTs = ts;
+    t += dt;
+    v = v0 + a * t;
+    s = s0 + v0 * t + 0.5 * a * t * t;
+    if (t >= TMAX) { stop(); render(); return; }
+    render();
+    rafId = requestAnimationFrame(frame);
+  }
+
+  function render() { drawRoad(s); drawSpeedo(v); updateHUD(); }
+
+  function stop() {
+    running = false;
+    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    lastTs = null;
+    btnPlay.textContent = '▶ Iniciar';
+  }
+
+  function resetSim(reloadParams = true) {
+    stop();
+    if (reloadParams) {
+      v0 = parseFloat(document.getElementById('sl-v0').value);
+      a  = parseFloat(document.getElementById('sl-a').value);
+      s0 = parseFloat(document.getElementById('sl-s0').value);
+    }
+    t = 0; v = v0; s = s0;
+    render();
+  }
+
+  ['sl-v0','sl-a','sl-s0'].forEach(id => {
+    document.getElementById(id).addEventListener('input', () => {
+      document.getElementById('dv0').textContent = document.getElementById('sl-v0').value;
+      document.getElementById('da').textContent  = document.getElementById('sl-a').value;
+      document.getElementById('ds0').textContent = document.getElementById('sl-s0').value;
+      if (!running) resetSim(true);
+    });
+  });
+
+  btnPlay.addEventListener('click', () => {
+    if (running) { stop(); }
+    else { running = true; btnPlay.textContent = '⏸ Pausar'; rafId = requestAnimationFrame(frame); }
+  });
+  document.getElementById('btn-reset').addEventListener('click', () => resetSim(true));
+
+  resetSim(true);
+})();
+</script>
+</body>
+</html>
