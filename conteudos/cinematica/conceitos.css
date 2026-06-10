@@ -6,7 +6,7 @@
 }
 
 p.equation-line {
-  color: #1e2a78;
+  color: var(--titulo);
   font-weight: 700;
   text-align: center;
   overflow: visible;
@@ -20,7 +20,7 @@ p.equation-line {
 
 .equation-line mjx-container,
 .formula-expr mjx-container {
-  color: #1e2a78;
+  color: var(--titulo);
   display: inline-block;
   margin: 0 auto;
 }
@@ -34,9 +34,9 @@ p.equation-line {
 }
 
 .displacement-1d-card {
-  border: 1.5px solid #e0e7ff;
+  border: 1.5px solid var(--border);
   border-radius: 12px;
-  background: #f8f9ff;
+  background: var(--surface-2);
   overflow: hidden;
 }
 
@@ -44,13 +44,13 @@ p.equation-line {
   padding: 0.7rem 0.9rem 0;
   font-size: 0.9rem;
   font-weight: 700;
-  color: #1e2a78;
+  color: var(--titulo);
 }
 
 .displacement-1d-card p {
   margin: 0;
   padding: 0 0.9rem 0.85rem;
-  color: #4b5563;
+  color: var(--text-muted);
   font-size: 0.9rem;
   line-height: 1.45;
 }
@@ -116,7 +116,7 @@ p.equation-line {
 
 .line-diagram .diagram-label {
   position: absolute;
-  color: #1e2a78;
+  color: var(--titulo);
   font-size: 0.76rem;
   font-weight: 700;
   line-height: 1;
@@ -300,9 +300,9 @@ p.equation-line {
 
 /* ---- DIAGRAMA DE DESLOCAMENTO EM 2D ---- */
 .displacement-2d-card {
-  border: 1.5px solid #e0e7ff;
+  border: 1.5px solid var(--border);
   border-radius: 12px;
-  background: #f8f9ff;
+  background: var(--surface-2);
   overflow: hidden;
   margin: 1.35rem 0 1.6rem;
 }
@@ -318,7 +318,7 @@ p.equation-line {
     linear-gradient(90deg, rgba(47, 91, 234, 0.08) 1px, transparent 1px),
     #ffffff;
   background-size: 20% 20%;
-  border: 1px solid #dbe4ff;
+  border: 1px solid var(--border);
 }
 
 .plane-diagram .grid-line,
@@ -494,7 +494,7 @@ p.equation-line {
   padding: 0.2rem 0.38rem;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.94);
-  color: #1e2a78;
+  color: var(--titulo);
   font-size: clamp(0.68rem, 1.7vw, 0.84rem);
   font-weight: 700;
   line-height: 1.1;
@@ -603,23 +603,23 @@ p.equation-line {
 /* ---- SIMULADOR 2D ---- */
 .graph-desc {
   margin: 0 0 1rem;
-  color: #4b5563;
+  color: var(--text-muted);
   font-size: 0.92rem;
   text-align: center;
 }
 
 .sim-group {
-  border: 1.5px solid #e0e7ff;
+  border: 1.5px solid var(--border);
   border-radius: 10px;
   padding: 0.65rem 0.8rem 0.5rem;
   margin-bottom: 0.75rem;
-  background: #f8f9ff;
+  background: var(--surface-2);
 }
 
 .sim-group-label {
   font-size: 0.82rem;
   font-weight: 700;
-  color: #1e2a78;
+  color: var(--titulo);
   margin-bottom: 0.4rem;
   letter-spacing: 0.01em;
 }
@@ -634,7 +634,7 @@ p.equation-line {
 
 .sim-eq {
   text-align: center;
-  color: #1e2a78;
+  color: var(--titulo);
   font-size: 1rem;
   padding: 0.2rem 0;
 }

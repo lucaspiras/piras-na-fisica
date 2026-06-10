@@ -61,7 +61,7 @@
   border-radius: 8px;
   padding: 0.5rem 1.2rem;
   font-size: 1.2rem;
-  font-family: "Courier New", monospace;
+  font-family: var(--font-mono);
   letter-spacing: 0.5px;
   color: #facc15;
   font-weight: 700;
@@ -82,9 +82,9 @@
 .content-toc {
   position: sticky;
   top: 84px;
-  background: #fff;
+  background: var(--surface);
   border-radius: 14px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 18px var(--shadow);
   overflow: hidden;
 }
 
@@ -127,7 +127,7 @@
   display: block;
   padding: 0.5rem 1.2rem;
   font-size: 0.88rem;
-  color: #444;
+  color: var(--text-muted);
   text-decoration: none;
   line-height: 1.4;
   transition: color 0.2s;
@@ -140,7 +140,7 @@
 }
 
 .toc-nav {
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--border);
   padding: 0.75rem 1rem;
   display: flex;
   gap: 0.5rem;
@@ -149,11 +149,11 @@
 
 .toc-nav a {
   font-size: 0.82rem;
-  color: #555;
+  color: var(--text-muted);
   text-decoration: none;
   padding: 0.35rem 0.6rem;
   border-radius: 6px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border);
   transition: border-color 0.2s, color 0.2s, background 0.2s;
   text-align: center;
 }
@@ -176,10 +176,10 @@
 .content-section h2 {
   font-size: 1.65rem;
   font-weight: 700;
-  color: #1e2a78;
+  color: var(--titulo);
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #e8eaf6;
+  border-bottom: 2px solid var(--border);
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -202,14 +202,14 @@
 .content-section h3 {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #2f5bea;
+  color: var(--subtitulo);
   margin: 1.8rem 0 0.8rem;
 }
 
 .content-section p {
   font-size: 1rem;
   line-height: 1.75;
-  color: #333;
+  color: var(--texto);
   margin-bottom: 0.9rem;
   text-align: justify;
   hyphens: auto;
@@ -217,8 +217,8 @@
 
 /* ---- CAIXA DE FÓRMULA ---- */
 .formula-box {
-  background: #fff;
-  border: 2px solid #e8eaf6;
+  background: var(--surface);
+  border: 2px solid var(--border);
   border-left: 5px solid #2f5bea;
   border-radius: 10px;
   padding: 1.2rem 1.5rem;
@@ -233,20 +233,20 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #2f5bea;
+  color: var(--subtitulo);
 }
 
 .formula-box .formula-expr {
   font-size: 1.5rem;
-  font-family: "Courier New", monospace;
+  font-family: var(--font-mono);
   font-weight: 700;
-  color: #1e2a78;
+  color: var(--titulo);
   letter-spacing: 1px;
 }
 
 .formula-box .formula-legend {
   font-size: 0.88rem;
-  color: #666;
+  color: var(--text-muted);
   line-height: 1.5;
 }
 
@@ -278,10 +278,10 @@
   position: relative;
   overflow: hidden;
   margin: 0;
-  border: 1.5px solid #dbe4ff;
+  border: 1.5px solid var(--border);
   border-radius: 12px;
-  background: #f8f9ff;
-  box-shadow: 0 10px 24px rgba(30, 42, 120, 0.08);
+  background: var(--surface-2);
+  box-shadow: 0 10px 24px var(--shadow);
 }
 
 .position-visual img {
@@ -295,8 +295,8 @@
   padding: 0.75rem 0.95rem 0.85rem;
   font-size: 0.92rem;
   line-height: 1.5;
-  color: #26326f;
-  background: #ffffff;
+  color: var(--titulo);
+  background: var(--surface);
 }
 
 @media (min-width: 860px) {
@@ -307,8 +307,8 @@
 
 /* ---- CAIXA DE DESTAQUE / DICA ---- */
 .highlight-box {
-  background: #fffbeb;
-  border: 1.5px solid #fde68a;
+  background: var(--warn-bg);
+  border: 1.5px solid var(--warn-border);
   border-left: 5px solid #facc15;
   border-radius: 10px;
   padding: 1rem 1.3rem;
@@ -327,7 +327,7 @@
 .highlight-box p {
   margin: 0;
   font-size: 0.97rem;
-  color: #78350f;
+  color: var(--warn-text);
   line-height: 1.6;
 }
 
@@ -345,15 +345,15 @@
   flex: 1;
   font-size: 0.98rem;
   font-weight: 700;
-  color: #1e3a8a;
+  color: var(--info-text);
   line-height: 1.4;
 }
 
 .curiosity-toggle {
-  border: 1px solid #93c5fd;
+  border: 1px solid var(--info-border);
   border-radius: 999px;
-  background: #ffffff;
-  color: #1e3a8a;
+  background: var(--surface);
+  color: var(--info-text);
   cursor: pointer;
   font-family: inherit;
   font-size: 0.78rem;
@@ -365,7 +365,7 @@
 
 .curiosity-toggle:hover,
 .curiosity-toggle:focus-visible {
-  background: #dbeafe;
+  background: var(--surface-2);
   outline: none;
 }
 
@@ -376,7 +376,7 @@
 
 .curiosity-content p,
 .curiosity-content li {
-  color: #1e3a8a;
+  color: var(--info-text);
 }
 
 .curiosity-content p + p,
@@ -387,29 +387,29 @@
 }
 
 .highlight-box.info {
-  background: #eff6ff;
-  border-color: #bfdbfe;
-  border-left-color: #2f5bea;
+  background: var(--info-bg);
+  border-color: var(--info-border);
+  border-left-color: var(--subtitulo);
 }
 
 .highlight-box.info p {
-  color: #1e3a8a;
+  color: var(--info-text);
 }
 
 .highlight-box.danger {
-  background: #fff1f2;
-  border-color: #fecdd3;
+  background: var(--danger-bg);
+  border-color: var(--danger-border);
   border-left-color: #ef4444;
 }
 
 .highlight-box.danger p {
-  color: #7f1d1d;
+  color: var(--danger-text);
 }
 
 /* ---- CAIXA DE EXEMPLO ---- */
 .example-box {
-  background: #f8f9ff;
-  border: 1.5px solid #e0e7ff;
+  background: var(--surface-2);
+  border: 1.5px solid var(--border);
   border-radius: 12px;
   padding: 1.4rem 1.6rem;
   margin: 1.5rem 0;
@@ -429,7 +429,7 @@
 
 .example-box .ex-body {
   font-size: 0.97rem;
-  color: #333;
+  color: var(--texto);
   line-height: 1.7;
 }
 
@@ -439,7 +439,7 @@
 }
 
 .example-box .ex-body .equation-line {
-  color: #1e2a78;
+  color: var(--titulo);
   font-weight: 700;
   text-align: center;
 }
@@ -447,9 +447,9 @@
 .example-box .ex-result {
   margin-top: 0.8rem;
   font-weight: 700;
-  color: #1e2a78;
+  color: var(--titulo);
   font-size: 1rem;
-  background: #e8eaf6;
+  background: var(--surface-2);
   display: inline-block;
   padding: 0.3rem 0.8rem;
   border-radius: 6px;
@@ -464,8 +464,8 @@
 }
 
 .example-box .ex-item {
-  background: #fff;
-  border: 1px solid #dde3ff;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 0.9rem 1rem;
 }
@@ -476,7 +476,7 @@
   color: #6a2fe8;
   margin-bottom: 0.55rem;
   padding-bottom: 0.4rem;
-  border-bottom: 1px solid #e0e7ff;
+  border-bottom: 1px solid var(--border);
 }
 
 .example-box .ex-item p {
@@ -489,9 +489,9 @@
   margin-bottom: 0;
   margin-top: 0.45rem;
   padding-top: 0.45rem;
-  border-top: 1px dashed #dde3ff;
+  border-top: 1px dashed var(--border);
   font-weight: 700;
-  color: #1e2a78;
+  color: var(--titulo);
 }
 
 /* ---- IMAGEM DE CONTEÚDO ---- */
@@ -502,14 +502,14 @@
   border-radius: 10px;
   margin: 1.5rem auto;
   display: block;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px var(--shadow);
 }
 
 /* ---- PLACEHOLDER DE IMAGEM ---- */
 .img-placeholder {
-  background: #f3f4f6;
-  border: 2px dashed #d1d5db;
+  background: var(--surface-2);
+  border: 2px dashed var(--border);
   border-radius: 12px;
   padding: 2.5rem 1.5rem;
   margin: 1.5rem 0;
@@ -528,14 +528,14 @@
 .img-placeholder .ph-title {
   font-weight: 700;
   font-size: 0.9rem;
-  color: #6b7280;
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.4px;
 }
 
 .img-placeholder .ph-desc {
   font-size: 0.88rem;
-  color: #9ca3af;
+  color: var(--text-muted);
   max-width: 480px;
   line-height: 1.5;
   margin: 0;
@@ -554,11 +554,11 @@
 }
 
 .concept-card {
-  background: #fff;
-  border: 1.5px solid #e5e7eb;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
   border-radius: 12px;
   padding: 1.2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px var(--shadow);
   transition: box-shadow 0.2s, transform 0.2s;
 }
 
@@ -576,31 +576,31 @@
 .concept-card .cc-title {
   font-weight: 700;
   font-size: 0.95rem;
-  color: #1e2a78;
+  color: var(--titulo);
   margin-bottom: 0.4rem;
 }
 
 .concept-card .cc-desc {
   font-size: 0.88rem;
-  color: #555;
+  color: var(--text-muted);
   line-height: 1.5;
   margin: 0;
 }
 
 /* ---- CALCULADORA INTERATIVA ---- */
 .calc-box {
-  background: #fff;
-  border: 1.5px solid #e5e7eb;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
   border-radius: 14px;
   padding: 1.5rem;
   margin: 1.5rem 0;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 14px var(--shadow);
 }
 
 .calc-box h4 {
   font-size: 1rem;
   font-weight: 700;
-  color: #1e2a78;
+  color: var(--titulo);
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
@@ -623,31 +623,31 @@
 .calc-field label {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #555;
+  color: var(--text-muted);
 }
 
 .calc-field input {
   padding: 0.5rem 0.75rem;
-  border: 1.5px solid #d1d5db;
+  border: 1.5px solid var(--border);
   border-radius: 8px;
   font-size: 0.95rem;
   font-family: inherit;
   transition: border-color 0.2s, box-shadow 0.2s;
-  background: #f9fafb;
+  background: var(--bg);
 }
 
 .calc-field input:focus {
   outline: none;
-  border-color: #2f5bea;
+  border-color: var(--subtitulo);
   box-shadow: 0 0 0 3px rgba(47,91,234,0.12);
-  background: #fff;
+  background: var(--surface);
 }
 
 .calc-field input.calc-result-field {
-  background: #f0f4ff;
-  border-color: #bfdbfe;
+  background: var(--info-bg);
+  border-color: var(--info-border);
   font-weight: 700;
-  color: #1e3a8a;
+  color: var(--info-text);
 }
 
 .calc-btn {
@@ -679,32 +679,32 @@
 
 .calc-result.ok {
   display: block;
-  background: #f0fdf4;
-  border: 1.5px solid #86efac;
-  color: #166534;
+  background: var(--ok-bg);
+  border: 1.5px solid var(--ok-border);
+  color: var(--ok-text);
 }
 
 .calc-result.erro {
   display: block;
-  background: #fff1f2;
-  border: 1.5px solid #fecdd3;
-  color: #9f1239;
+  background: var(--danger-bg);
+  border: 1.5px solid var(--danger-border);
+  color: var(--danger-text);
 }
 
 /* ---- GRÁFICO INTERATIVO ---- */
 .graph-box {
-  background: #fff;
-  border: 1.5px solid #e5e7eb;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
   border-radius: 14px;
   padding: 1.5rem;
   margin: 1.5rem 0;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 14px var(--shadow);
 }
 
 .graph-box h4 {
   font-size: 1rem;
   font-weight: 700;
-  color: #1e2a78;
+  color: var(--titulo);
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
@@ -720,9 +720,9 @@
 }
 
 .graph-canvases canvas {
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   border-radius: 8px;
-  background: #fafafa;
+  background: #ffffff;
 }
 
 .graph-controls {
@@ -740,7 +740,7 @@
 
 .slider-row label {
   font-size: 0.88rem;
-  color: #555;
+  color: var(--text-muted);
   min-width: 180px;
   font-weight: 600;
 }
@@ -757,10 +757,10 @@
   border-collapse: collapse;
   margin: 1.5rem 0;
   font-size: 0.95rem;
-  background: #fff;
+  background: var(--surface);
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 14px var(--shadow);
 }
 
 .content-table thead {
@@ -777,12 +777,12 @@
 
 .content-table tbody td {
   padding: 0.75rem 1.1rem;
-  border-bottom: 1px solid #f0f0f0;
-  color: #333;
+  border-bottom: 1px solid var(--border);
+  color: var(--texto);
 }
 
 .content-table tbody tr:nth-child(even) {
-  background: #f9fafb;
+  background: var(--bg);
 }
 
 .content-table tbody tr:last-child td {
@@ -796,7 +796,7 @@
   align-items: center;
   margin-top: 3rem;
   padding-top: 1.5rem;
-  border-top: 2px solid #e8eaf6;
+  border-top: 2px solid var(--border);
   gap: 1rem;
   flex-wrap: wrap;
 }
@@ -806,11 +806,11 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.7rem 1.3rem;
-  background: #fff;
-  border: 1.5px solid #e5e7eb;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
   border-radius: 10px;
   text-decoration: none;
-  color: #555;
+  color: var(--text-muted);
   font-weight: 600;
   font-size: 0.92rem;
   transition: border-color 0.2s, color 0.2s, background 0.2s;
@@ -829,7 +829,7 @@
 /* ---- SUMÁRIO (seção de resumo final) ---- */
 .summary-box {
   background: linear-gradient(135deg, rgba(47,91,234,0.06), rgba(106,47,232,0.06));
-  border: 1.5px solid #e0e7ff;
+  border: 1.5px solid var(--border);
   border-radius: 14px;
   padding: 1.6rem;
   margin: 2rem 0;
@@ -838,7 +838,7 @@
 .summary-box h3 {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #1e2a78;
+  color: var(--titulo);
   margin: 0 0 1rem;
 }
 
@@ -857,7 +857,7 @@
   padding-left: 1.4rem;
   position: relative;
   font-size: 0.95rem;
-  color: #333;
+  color: var(--texto);
   line-height: 1.5;
   margin-bottom: 0;
 }
@@ -880,12 +880,12 @@
 }
 
 .daily-card {
-  background: #fff;
+  background: var(--surface);
   border-radius: 12px;
   padding: 1.2rem;
   text-align: center;
-  border: 1.5px solid #e5e7eb;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 2px 8px var(--shadow);
 }
 
 .daily-card .dc-icon {
@@ -897,13 +897,13 @@
 .daily-card .dc-title {
   font-weight: 700;
   font-size: 0.9rem;
-  color: #1e2a78;
+  color: var(--titulo);
   margin-bottom: 0.3rem;
 }
 
 .daily-card .dc-desc {
   font-size: 0.82rem;
-  color: #666;
+  color: var(--text-muted);
   line-height: 1.4;
   margin: 0;
 }
@@ -930,7 +930,7 @@
   .toc-list li {
     border-left: none;
     border-radius: 6px;
-    background: #f5f5f5;
+    background: var(--surface-2);
   }
 
   .toc-list li.active,
@@ -1001,9 +1001,9 @@
 .content-footnotes {
   margin-top: 2.5rem;
   padding-top: 1rem;
-  border-top: 1px solid #dde3f0;
+  border-top: 1px solid var(--border);
   font-size: 0.82rem;
-  color: #555;
+  color: var(--text-muted);
   line-height: 1.6;
 }
 .content-footnotes ol {
