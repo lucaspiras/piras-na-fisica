@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /feedback/admin.html
+
+Sitemap: https://pirasnafisica.com.br/sitemap.xml
