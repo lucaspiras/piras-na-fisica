@@ -90,11 +90,11 @@
       },
       {
         type: 'numeric',
-        text: 'Um objeto parte do repouso (v₀ = 0) com a = −10 m/s² (desacelera). Qual é a posição em t = 2 s? (S₀ = 0)',
+        text: 'Um objeto parte do repouso (v₀ = 0) com a = −10 m/s². Qual é a posição em t = 2 s? (S₀ = 0)',
         answer: -20,
         tolerance: 1,
         unit: 'm',
-        explanation: 'S = 0 + 0×2 + ½×(−10)×4 = −20 m. A posição ficou negativa porque a aceleração é negativa.'
+        explanation: 'S = 0 + 0×2 + ½×(−10)×4 = −20 m. Atenção: como o objeto parte do repouso, a aceleração negativa não representa uma desaceleração — ela faz o objeto acelerar no sentido negativo do eixo S. Por isso o objeto ganha velocidade nesse sentido e a posição fica negativa.'
       }
     ],
 
@@ -227,26 +227,31 @@
     quiz8: [
       {
         type: 'objective',
-        text: 'Na queda livre, qual é a aceleração do objeto (usando g ≈ 10 m/s²)?',
-        options: ['0 m/s²', '5 m/s²', '10 m/s²', '20 m/s²'],
+        text: 'Um estudante larga, do repouso e de uma mesma altura, uma bola de 1 kg e outra de 10 kg, simultaneamente, em um ambiente sem resistência do ar. O que acontece?',
+        options: [
+          'A bola de 10 kg chega ao solo primeiro, pois sofre maior força gravitacional',
+          'A bola de 1 kg chega ao solo primeiro, pois tem menor massa',
+          'Ambas chegam ao solo ao mesmo tempo, pois a aceleração gravitacional não depende da massa',
+          'Não é possível determinar sem conhecer a altura inicial'
+        ],
         correct: 2,
-        explanation: 'Na queda livre, a única força é a gravidade. A aceleração gravitacional g ≈ 9,8 m/s² ≈ 10 m/s² (aproximação usada no ensino médio).'
+        explanation: 'Galileu demonstrou que, na ausência de ar, todos os objetos caem com a mesma aceleração g, independentemente da massa. A maior força gravitacional sobre a bola de 10 kg é exatamente compensada por sua maior inércia — por isso as duas chegam ao mesmo tempo.'
       },
       {
         type: 'numeric',
-        text: 'Um objeto é largado do repouso (v₀ = 0) e cai livremente durante t = 3 s. Qual é a velocidade atingida? (g = 10 m/s²)',
+        text: 'Um objeto é largado do repouso e cai livremente por 3 s antes de atingir o chão. Qual o módulo da velocidade deste objeto imediatamente antes de tocar o chão? (considere g = 10 m/s²)',
         answer: 30,
         tolerance: 1,
         unit: 'm/s',
-        explanation: 'v = g·t = 10 × 3 = 30 m/s'
+        explanation: 'v = g·t = 10 × 3 = 30 m/s. Como o objeto parte do repouso (v₀ = 0), toda a velocidade vem da aceleração gravitacional.'
       },
       {
         type: 'numeric',
-        text: 'Um objeto cai livremente durante 4 s (v₀ = 0, g = 10 m/s²). Qual é a altura percorrida (em metros)?',
+        text: 'Uma pedra é solta do repouso e cai livremente. Passados 4 s, qual a distância percorrida pela pedra durante essa queda? (considere g = 10 m/s²)',
         answer: 80,
         tolerance: 2,
         unit: 'm',
-        explanation: 'h = ½·g·t² = ½ × 10 × 16 = 80 m'
+        explanation: 'h = ½·g·t² = ½ × 10 × 4² = ½ × 10 × 16 = 80 m'
       }
     ],
 
@@ -307,7 +312,7 @@
     questions.forEach((q, i) => {
       const qid = containerId + '_q' + i;
       html += '<div class="question-block" id="qblock_' + qid + '">';
-      html += '<span class="question-num">Questão ' + (i + 1) + '</span>';
+      html += '<span class="question-num">Questão ' + ((_numBase[containerId] || 0) + i + 1) + '</span>';
       html += '<p class="question-text">' + q.text + '</p>';
 
       if (q.type === 'objective') {
@@ -452,7 +457,63 @@
   // ================================================================
   // INIT
   // ================================================================
+  // ================================================================
+  // NUMERAÇÃO SEQUENCIAL (segue a ordem no DOM, não a das chaves)
+  // ================================================================
+  let _numBase = {};
+  function computeNumbering() {
+    _numBase = {};
+    const present = Object.keys(QUIZZES).filter(id => document.getElementById(id));
+    present.sort((a, b) => {
+      const ea = document.getElementById(a), eb = document.getElementById(b);
+      return (ea.compareDocumentPosition(eb) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1;
+    });
+    let acc = 0;
+    present.forEach(id => { _numBase[id] = acc; acc += QUIZZES[id].length; });
+  }
+
+  // ================================================================
+  // DISTRIBUIÇÃO BALANCEADA DA ALTERNATIVA CORRETA ENTRE AS LETRAS
+  // Reposiciona apenas a opção correta (distratores mantêm a ordem),
+  // de forma determinística e estável entre recarregamentos.
+  // ================================================================
+  function _seededShuffle(arr, seed) {
+    let s = seed >>> 0;
+    for (let i = arr.length - 1; i > 0; i--) {
+      s = (s * 1664525 + 1013904223) >>> 0;
+      const j = s % (i + 1);
+      const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+    return arr;
+  }
+  function _isPinnedOpt(opt) { return /nenhuma das|todas as alternativas|n\.d\.a\./i.test(opt); }
+  let _answersArranged = false;
+  function arrangeAnswers() {
+    if (_answersArranged) return;
+    _answersArranged = true;
+    const objs = [];
+    Object.keys(QUIZZES).forEach(id => QUIZZES[id].forEach(q => {
+      if (q.type === 'objective' && Array.isArray(q.options)
+          && !q.options.some(o => _isPinnedOpt(String(o)))) objs.push(q);
+    }));
+    const targets = objs.map((_, i) => i % 4);
+    _seededShuffle(targets, 20260609);
+    objs.forEach((q, i) => {
+      const n = q.options.length;
+      const target = targets[i] % n;
+      const correctOpt = q.options[q.correct];
+      const rest = q.options.filter((_, idx) => idx !== q.correct);
+      const out = [];
+      let r = 0;
+      for (let p = 0; p < n; p++) out.push(p === target ? correctOpt : rest[r++]);
+      q.options = out;
+      q.correct = target;
+    });
+  }
+
   function initAllQuizzes() {
+    arrangeAnswers();
+    computeNumbering();
     Object.keys(QUIZZES).forEach(id => renderQuiz(id, QUIZZES[id]));
   }
 

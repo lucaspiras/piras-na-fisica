@@ -1223,12 +1223,129 @@ footer {
     font-size: 1.8rem;
   }
 }
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.5;
+
+/* ===== HUB DE ATIVIDADES (2 cards grandes) ===== */
+.hub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 680px;
+  margin: 0 auto;
 }
 
+.hub-card {
+  text-decoration: none;
+  color: var(--texto);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1.5px solid #dde1ef;
+  box-shadow: 0 4px 18px rgba(0,0,0,.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
 
+.hub-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(47,91,234,.18);
+  border-color: var(--roxo);
+}
+
+.hub-preview {
+  height: 200px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hub-icon-area {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .7rem;
+  text-align: center;
+  padding: 1.2rem;
+}
+
+.hub-formulas {
+  font-family: 'Space Mono', 'Courier New', monospace;
+  font-size: .82rem;
+  line-height: 2;
+  display: block;
+  text-align: center;
+}
+
+.hub-card-footer {
+  background: #fff;
+  padding: 1rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #eef0f6;
+  flex: 1;
+}
+
+.hub-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.hub-card-label {
+  font-size: .65rem;
+  font-weight: 600;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.hub-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--texto);
+  line-height: 1.2;
+}
+
+.hub-card-desc {
+  font-size: .8rem;
+  color: #777;
+  margin-top: .15rem;
+  line-height: 1.4;
+}
+
+.hub-arrow {
+  color: var(--laranja);
+  font-weight: 800;
+  font-size: 1.2rem;
+  transition: transform .25s ease;
+  flex-shrink: 0;
+}
+
+.hub-card:hover .hub-arrow { transform: translateX(5px); }
+
+/* Breadcrumb de volta */
+.atividades-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--azul);
+  text-decoration: none;
+  margin-bottom: 1.4rem;
+  transition: color .2s;
+}
+.atividades-back:hover { color: var(--roxo); }
+
+@media (max-width: 560px) {
+  .hub-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================= */
 .pagina-larga {
   max-width: 1400px;
   margin: 0 auto;

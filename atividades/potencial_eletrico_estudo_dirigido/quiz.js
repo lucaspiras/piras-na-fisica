@@ -317,7 +317,7 @@
     questions.forEach((q, i) => {
       const qid = containerId + '_q' + i;
       html += '<div class="q-block" id="qblock_' + qid + '">';
-      html += '<span class="q-num">Questão ' + (i + 1) + '</span>';
+      html += '<span class="q-num">Questão ' + ((_numBase[containerId] || 0) + i + 1) + '</span>';
       html += '<p class="q-text">' + q.text + '</p>';
 
       if (q.type === 'objective') {
@@ -471,7 +471,63 @@
   // ================================================================
   // INIT
   // ================================================================
+  // ================================================================
+  // NUMERAÇÃO SEQUENCIAL (segue a ordem no DOM, não a das chaves)
+  // ================================================================
+  let _numBase = {};
+  function computeNumbering() {
+    _numBase = {};
+    const present = Object.keys(QUIZZES).filter(id => document.getElementById(id));
+    present.sort((a, b) => {
+      const ea = document.getElementById(a), eb = document.getElementById(b);
+      return (ea.compareDocumentPosition(eb) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1;
+    });
+    let acc = 0;
+    present.forEach(id => { _numBase[id] = acc; acc += QUIZZES[id].length; });
+  }
+
+  // ================================================================
+  // DISTRIBUIÇÃO BALANCEADA DA ALTERNATIVA CORRETA ENTRE AS LETRAS
+  // Reposiciona apenas a opção correta (distratores mantêm a ordem),
+  // de forma determinística e estável entre recarregamentos.
+  // ================================================================
+  function _seededShuffle(arr, seed) {
+    let s = seed >>> 0;
+    for (let i = arr.length - 1; i > 0; i--) {
+      s = (s * 1664525 + 1013904223) >>> 0;
+      const j = s % (i + 1);
+      const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+    return arr;
+  }
+  function _isPinnedOpt(opt) { return /nenhuma das|todas as alternativas|n\.d\.a\./i.test(opt); }
+  let _answersArranged = false;
+  function arrangeAnswers() {
+    if (_answersArranged) return;
+    _answersArranged = true;
+    const objs = [];
+    Object.keys(QUIZZES).forEach(id => QUIZZES[id].forEach(q => {
+      if (q.type === 'objective' && Array.isArray(q.options)
+          && !q.options.some(o => _isPinnedOpt(String(o)))) objs.push(q);
+    }));
+    const targets = objs.map((_, i) => i % 4);
+    _seededShuffle(targets, 20260609);
+    objs.forEach((q, i) => {
+      const n = q.options.length;
+      const target = targets[i] % n;
+      const correctOpt = q.options[q.correct];
+      const rest = q.options.filter((_, idx) => idx !== q.correct);
+      const out = [];
+      let r = 0;
+      for (let p = 0; p < n; p++) out.push(p === target ? correctOpt : rest[r++]);
+      q.options = out;
+      q.correct = target;
+    });
+  }
+
   function initAllQuizzes() {
+    arrangeAnswers();
+    computeNumbering();
     Object.keys(QUIZZES).forEach(id => renderQuiz(id, QUIZZES[id]));
   }
 

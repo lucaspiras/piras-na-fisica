@@ -35,17 +35,13 @@
       ctx.beginPath(); ctx.moveTo(ox, y); ctx.lineTo(ox + plotW, y); ctx.stroke();
     }
 
+    // Eixo vertical (y). O eixo horizontal (t) é desenhado por cada
+    // gráfico na posição do zero do eixo vertical (ver drawTimeAxis).
     ctx.strokeStyle = C.axis;
     ctx.lineWidth = 1.5;
-    ctx.beginPath(); ctx.moveTo(ox, oy + plotH); ctx.lineTo(ox + plotW + 10, oy + plotH); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(ox, oy + plotH); ctx.lineTo(ox, oy - 10); ctx.stroke();
 
     ctx.fillStyle = C.axis;
-    ctx.beginPath();
-    ctx.moveTo(ox + plotW + 10, oy + plotH - 5);
-    ctx.lineTo(ox + plotW + 18, oy + plotH);
-    ctx.lineTo(ox + plotW + 10, oy + plotH + 5);
-    ctx.fill();
     ctx.beginPath();
     ctx.moveTo(ox - 5, oy - 10);
     ctx.lineTo(ox, oy - 18);
@@ -54,56 +50,117 @@
 
     ctx.fillStyle = C.text;
     ctx.font = '11px Space Mono, monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText(xLabel, ox + plotW + 22, oy + plotH + 4);
     ctx.textAlign = 'left';
     ctx.fillText(yLabel, ox + 8, oy - 20);
 
     return { plotW, plotH, ox, oy };
   }
 
-  // ── linha zero tracejada ──────────────────────────────────────────
-  function drawZeroLine(ctx, ox, plotW, toY, yZero) {
-    ctx.strokeStyle = C.zero;
-    ctx.lineWidth = 1;
-    ctx.setLineDash([4, 4]);
+  // ── eixo do tempo (horizontal), alinhado ao zero do eixo vertical ──
+  function drawTimeAxis(ctx, ox, oy, plotW, plotH, toX, yZeroPx, tMax, xLabel) {
+    const y = Math.max(oy, Math.min(oy + plotH, yZeroPx));  // recorta à área
+    ctx.strokeStyle = C.axis;
+    ctx.lineWidth = 1.5;
     ctx.beginPath();
-    ctx.moveTo(ox, toY(yZero));
-    ctx.lineTo(ox + plotW, toY(yZero));
+    ctx.moveTo(ox, y);
+    ctx.lineTo(ox + plotW + 10, y);
     ctx.stroke();
-    ctx.setLineDash([]);
+    // seta
+    ctx.fillStyle = C.axis;
+    ctx.beginPath();
+    ctx.moveTo(ox + plotW + 10, y - 5);
+    ctx.lineTo(ox + plotW + 18, y);
+    ctx.lineTo(ox + plotW + 10, y + 5);
+    ctx.fill();
+    // rótulo do eixo
+    ctx.fillStyle = C.text;
+    ctx.font = '11px Space Mono, monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText(xLabel, ox + plotW + 22, y + 4);
+    // marcações de t logo abaixo do eixo (pula t=0 p/ não colidir com a origem)
+    ctx.font = '9px Space Mono, monospace';
+    for (let t = 2; t <= tMax; t += 2) ctx.fillText(t, toX(t), y + 14);
+  }
+
+  // ── escala "bonita": arredonda min/max e passo para valores redondos ──
+  function niceNum(range, round) {
+    const exp = Math.floor(Math.log10(range));
+    const f = range / Math.pow(10, exp);
+    let nf;
+    if (round) {
+      nf = f < 1.5 ? 1 : f < 3 ? 2 : f < 7 ? 5 : 10;
+    } else {
+      nf = f <= 1 ? 1 : f <= 2 ? 2 : f <= 5 ? 5 : 10;
+    }
+    return nf * Math.pow(10, exp);
+  }
+  function niceAxis(min, max, maxTicks) {
+    if (max - min < 1e-9) { min -= 10; max += 10; }   // evita intervalo degenerado
+    const range = niceNum(max - min, false);
+    const step = niceNum(range / (maxTicks - 1), true);
+    return {
+      min: Math.floor(min / step) * step,
+      max: Math.ceil(max / step) * step,
+      step,
+    };
+  }
+
+  // ── monta texto da equação S(t) (usado no gráfico e no aria-label) ──
+  function buildSTLabel(s0, v0, a) {
+    const parts = [];
+    if (s0 !== 0) parts.push(String(s0));
+    if (v0 !== 0) {
+      const sign = (v0 > 0 && parts.length > 0) ? '+' : '';
+      parts.push(sign + v0 + 't');
+    }
+    if (a !== 0) {
+      const coef = a / 2;
+      const sign = (coef > 0 && parts.length > 0) ? '+' : '';
+      const coefStr = Number.isInteger(coef) ? String(coef) : coef.toFixed(1);
+      parts.push(sign + coefStr + 't²');
+    }
+    return 'S = ' + (parts.length ? parts.join('') : '0');
   }
 
   // ── S × t  (parábola) ────────────────────────────────────────────
-  function drawST(canvas, v0, a, tAnim) {
+  function drawST(canvas, v0, a, s0, tAnim) {
     const ctx = canvas.getContext('2d');
     const w = canvas.width, h = canvas.height;
-    const padL = 44, padB = 28, padT = 28, padR = 30;
+    const padL = 44, padB = 28, padT = 38, padR = 52;
     ctx.clearRect(0, 0, w, h);
 
     const { plotW, plotH, ox, oy } = drawAxes(ctx, w, h, padL, padB, padT, padR, 't(s)', 'S(m)');
 
     const tMax = 10;
-    const sMin = -150, sMax = 200;
+    const sOf = t => s0 + v0 * t + 0.5 * a * t * t;
+
+    // Faixa de S adaptativa: cobre os extremos da curva em [0, tMax]
+    // (início, fim e o vértice, se estiver no intervalo), com folga.
+    let sLo = Math.min(s0, sOf(tMax)), sHi = Math.max(s0, sOf(tMax));
+    if (a !== 0) {
+      const tv = -v0 / a;
+      if (tv > 0 && tv < tMax) {
+        const sv = sOf(tv);
+        sLo = Math.min(sLo, sv); sHi = Math.max(sHi, sv);
+      }
+    }
+    const sPad = (sHi - sLo) * 0.12 || 10;
+    const { min: sMin, max: sMax, step: sStep } = niceAxis(sLo - sPad, sHi + sPad, 6);
     const sRange = sMax - sMin;
 
     const toX = t => ox + (t / tMax) * plotW;
     const toY = s => oy + plotH - ((s - sMin) / sRange) * plotH;
-    const sOf = t => v0 * t + 0.5 * a * t * t;
 
-    drawZeroLine(ctx, ox, plotW, toY, 0);
-
-    // Ticks eixo t
-    ctx.fillStyle = C.text;
-    ctx.font = '9px Space Mono, monospace';
-    ctx.textAlign = 'center';
-    for (let t = 0; t <= tMax; t += 2) ctx.fillText(t, toX(t), oy + plotH + 14);
+    // Eixo do tempo alinhado ao zero do eixo S
+    drawTimeAxis(ctx, ox, oy, plotW, plotH, toX, toY(0), tMax, 't(s)');
 
     // Ticks eixo S
+    ctx.fillStyle = C.text;
     ctx.textAlign = 'right';
-    for (let s = sMin; s <= sMax; s += 50) {
-      ctx.fillStyle = s === 0 ? 'rgba(226,232,240,0.5)' : C.text;
-      ctx.fillText(s, ox - 5, toY(s) + 4);
+    for (let s = sMin; s <= sMax + sStep * 0.5; s += sStep) {
+      const sv = Math.round(s);
+      ctx.fillStyle = sv === 0 ? 'rgba(226,232,240,0.5)' : C.text;
+      ctx.fillText(sv, ox - 5, toY(s) + 4);
     }
 
     // Parábola
@@ -152,20 +209,18 @@
       ctx.shadowBlur = 0;
     }
 
-    // Label equação
-    const sign0 = v0 >= 0 ? (v0 === 0 ? '' : '+' + v0 + 't') : v0 + 't';
-    const signA = a >= 0 ? '+' + (a / 2).toFixed(1) : (a / 2).toFixed(1);
+    // Label equação — alinhado ao título do eixo, à direita
     ctx.fillStyle = 'rgba(249,115,22,0.8)';
     ctx.font = '10px Space Mono, monospace';
-    ctx.textAlign = 'left';
-    ctx.fillText('S = ' + (v0 !== 0 ? (v0 > 0 ? '' : '') + v0 + 't' : '0') + (a !== 0 ? (a > 0 ? '+' : '') + (a / 2).toFixed(1) + 't²' : ''), ox + 6, oy + 16);
+    ctx.textAlign = 'right';
+    ctx.fillText(buildSTLabel(s0, v0, a), ox + plotW - 6, oy - 22);
   }
 
   // ── v × t  (reta inclinada) ──────────────────────────────────────
   function drawVT(canvas, v0, a, tAnim) {
     const ctx = canvas.getContext('2d');
     const w = canvas.width, h = canvas.height;
-    const padL = 44, padB = 28, padT = 28, padR = 30;
+    const padL = 44, padB = 28, padT = 38, padR = 52;
     ctx.clearRect(0, 0, w, h);
 
     const { plotW, plotH, ox, oy } = drawAxes(ctx, w, h, padL, padB, padT, padR, 't(s)', 'v(m/s)');
@@ -178,13 +233,12 @@
     const toY = v => oy + plotH - ((v - vMin) / vRange) * plotH;
     const vOf = t => v0 + a * t;
 
-    drawZeroLine(ctx, ox, plotW, toY, 0);
+    // Eixo do tempo alinhado ao zero do eixo v
+    drawTimeAxis(ctx, ox, oy, plotW, plotH, toX, toY(0), tMax, 't(s)');
 
-    // Ticks
+    // Ticks eixo v
     ctx.fillStyle = C.text;
     ctx.font = '9px Space Mono, monospace';
-    ctx.textAlign = 'center';
-    for (let t = 0; t <= tMax; t += 2) ctx.fillText(t, toX(t), oy + plotH + 14);
     ctx.textAlign = 'right';
     for (let v = -40; v <= 40; v += 20) {
       ctx.fillStyle = v === 0 ? 'rgba(226,232,240,0.5)' : C.text;
@@ -224,18 +278,22 @@
       ctx.fill();
     }
 
-    // Reta v(t)
-    const vS = Math.max(vMin - 5, Math.min(vMax + 5, vOf(0)));
-    const vE = Math.max(vMin - 5, Math.min(vMax + 5, vOf(tMax)));
+    // Reta v(t) — desenhada com a inclinação real e recortada à área
+    // do gráfico (clampear o valor distorceria a inclinação).
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(ox, oy, plotW, plotH);
+    ctx.clip();
     ctx.strokeStyle = C.accent2;
     ctx.lineWidth = 2.5;
     ctx.shadowColor = C.accent2;
     ctx.shadowBlur = 8;
     ctx.beginPath();
-    ctx.moveTo(toX(0), toY(vS));
-    ctx.lineTo(toX(tMax), toY(vE));
+    ctx.moveTo(toX(0), toY(vOf(0)));
+    ctx.lineTo(toX(tMax), toY(vOf(tMax)));
     ctx.stroke();
     ctx.shadowBlur = 0;
+    ctx.restore();
 
     // Ponto animado
     const vAnim = vOf(tAnim);
@@ -249,19 +307,19 @@
       ctx.shadowBlur = 0;
     }
 
-    // Label
+    // Label — alinhado ao título do eixo, à direita
     ctx.fillStyle = 'rgba(61,214,245,0.8)';
     ctx.font = '10px Space Mono, monospace';
-    ctx.textAlign = 'left';
+    ctx.textAlign = 'right';
     const labelA = a >= 0 ? '+' + a : '' + a;
-    ctx.fillText('v = ' + v0 + (a !== 0 ? labelA + 't' : ''), ox + 6, oy + 16);
+    ctx.fillText('v = ' + v0 + (a !== 0 ? labelA + 't' : ''), ox + plotW - 6, oy - 22);
   }
 
   // ── a × t  (constante) ───────────────────────────────────────────
   function drawAT(canvas, a, tAnim) {
     const ctx = canvas.getContext('2d');
     const w = canvas.width, h = canvas.height;
-    const padL = 44, padB = 28, padT = 28, padR = 30;
+    const padL = 44, padB = 28, padT = 38, padR = 52;
     ctx.clearRect(0, 0, w, h);
 
     const { plotW, plotH, ox, oy } = drawAxes(ctx, w, h, padL, padB, padT, padR, 't(s)', 'a(m/s²)');
@@ -273,13 +331,12 @@
     const toX = t => ox + (t / tMax) * plotW;
     const toY = v => oy + plotH - ((v - aMin) / aRange) * plotH;
 
-    drawZeroLine(ctx, ox, plotW, toY, 0);
+    // Eixo do tempo alinhado ao zero do eixo a
+    drawTimeAxis(ctx, ox, oy, plotW, plotH, toX, toY(0), tMax, 't(s)');
 
-    // Ticks
+    // Ticks eixo a
     ctx.fillStyle = C.text;
     ctx.font = '9px Space Mono, monospace';
-    ctx.textAlign = 'center';
-    for (let t = 0; t <= tMax; t += 2) ctx.fillText(t, toX(t), oy + plotH + 14);
     ctx.textAlign = 'right';
     for (let av = -10; av <= 10; av += 5) {
       ctx.fillStyle = av === 0 ? 'rgba(226,232,240,0.5)' : C.text;
@@ -318,15 +375,15 @@
       ctx.shadowBlur = 0;
     }
 
-    // Label
+    // Label — alinhado ao título do eixo, à direita
     ctx.fillStyle = a >= 0 ? 'rgba(249,115,22,0.8)' : 'rgba(61,214,245,0.8)';
     ctx.font = '10px Space Mono, monospace';
-    ctx.textAlign = 'left';
-    ctx.fillText('a = ' + a + ' m/s²', ox + 6, oy + 16);
+    ctx.textAlign = 'right';
+    ctx.fillText('a = ' + a + ' m/s²', ox + plotW - 6, oy - 22);
   }
 
   // ── atualiza aria-labels dos canvas ──────────────────────────────
-  function updateCanvasLabels(v0, a) {
+  function updateCanvasLabels(v0, a, s0 = 0) {
     const cST = document.getElementById('grafico-st');
     const cVT = document.getElementById('grafico-vt');
     const cAT = document.getElementById('grafico-at');
@@ -337,7 +394,7 @@
     const tVertice = a !== 0 ? (-v0 / a).toFixed(2) : null;
 
     if (cST) {
-      let label = `Gráfico S por t: parábola com equação S = ${v0}t ${signA}${(a / 2).toFixed(1)}t². `;
+      let label = `Gráfico S por t: parábola com equação ${buildSTLabel(s0, v0, a)}. `;
       label += `Movimento ${tipo}. `;
       if (tVertice !== null && parseFloat(tVertice) > 0 && parseFloat(tVertice) < 10)
         label += `Ponto onde a velocidade é zero: t = ${tVertice} s.`;
@@ -355,24 +412,31 @@
   }
 
   // ── estado e sliders ─────────────────────────────────────────────
-  let currentV0 = 5, currentA = 3;
+  let currentV0 = 5, currentA = 3, currentS0 = 0;
 
   function updateSliders() {
     const slV0  = document.getElementById('sl-v0');
     const slA   = document.getElementById('sl-a');
+    const slS0  = document.getElementById('sl-s0');
     const lblV0 = document.getElementById('v0-val');
     const lblA  = document.getElementById('a-val');
+    const lblS0 = document.getElementById('s0-val');
     if (!slV0 || !slA) return;
 
     slV0.addEventListener('input', () => {
       currentV0 = parseInt(slV0.value);
       lblV0.textContent = currentV0;
-      updateCanvasLabels(currentV0, currentA);
+      updateCanvasLabels(currentV0, currentA, currentS0);
     });
     slA.addEventListener('input', () => {
       currentA = parseInt(slA.value);
       lblA.textContent = currentA;
-      updateCanvasLabels(currentV0, currentA);
+      updateCanvasLabels(currentV0, currentA, currentS0);
+    });
+    if (slS0) slS0.addEventListener('input', () => {
+      currentS0 = parseInt(slS0.value);
+      lblS0.textContent = currentS0;
+      updateCanvasLabels(currentV0, currentA, currentS0);
     });
   }
 
@@ -385,7 +449,7 @@
     const cST = document.getElementById('grafico-st');
     const cVT = document.getElementById('grafico-vt');
     const cAT = document.getElementById('grafico-at');
-    if (cST) drawST(cST, currentV0, currentA, tAnim);
+    if (cST) drawST(cST, currentV0, currentA, currentS0, tAnim);
     if (cVT) drawVT(cVT, currentV0, currentA, tAnim);
     if (cAT) drawAT(cAT, currentA, tAnim);
     animFrameId = requestAnimationFrame(animate);
@@ -398,7 +462,7 @@
       if (!canvas) return;
       const w = Math.max(200, canvas.parentElement.clientWidth - 24);
       canvas.width  = w;
-      canvas.height = Math.round(w * 0.56);
+      canvas.height = Math.round(w * 0.63);
     });
   }
 
@@ -406,7 +470,7 @@
   function init() {
     resizeCanvases();
     updateSliders();
-    updateCanvasLabels(currentV0, currentA);
+    updateCanvasLabels(currentV0, currentA, currentS0);
     animate();
     window.addEventListener('resize', resizeCanvases);
   }

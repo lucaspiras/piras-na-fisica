@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avaliação 1 — MRUV: Velocidade e Aceleração · Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/style.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a href="#quiz-container" class="skip-link">Ir para as questões</a>
+
+  <div id="header"></div>
+  <script src="../../../js/include.js"></script>
+
+  <div class="content-hero">
+    <div class="content-hero-inner">
+      <nav class="breadcrumb">
+        <a href="../../../atividades.html">Atividades</a>
+        <span>/</span>
+        <a href="../../../lista_de_exercicios.html">Listas de Exercícios</a>
+        <span>/</span>
+        <span>Avaliação 1 — Velocidade e Aceleração</span>
+      </nav>
+      <h1 class="content-title">Avaliação 1 — MRUV<br><em>Velocidade e Aceleração</em></h1>
+      <p class="content-subtitle">
+        Responda todas as questões e clique em <strong>Finalizar</strong> para ver o resultado.
+        Use <strong>v = v₀ + a·t</strong> e analise os sinais de v e a.
+      </p>
+      <div class="lista-meta">
+        <span class="lista-badge azul">MRUV</span>
+        <span class="lista-badge roxo">16 questões</span>
+        <span class="lista-badge muted">Sem gabarito imediato</span>
+      </div>
+      <div class="avaliacao-aviso">
+        <div>
+          <strong>Modo avaliação</strong>
+          O gabarito não é revelado durante a resolução. Ao finalizar, você verá sua pontuação
+          e poderá exportar o relatório com suas respostas.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="main">
+    <div id="quiz-container"></div>
+  </main>
+
+  <section class="score-section">
+    <div class="score-inner">
+      <h2>Finalizar Avaliação</h2>
+      <p class="score-intro">Responda as questões e clique abaixo para ver seu resultado.</p>
+      <p class="score-progress" id="progress-msg">0 de 16 questões respondidas.</p>
+      <button class="finalizar-btn" id="finalizarBtn">Finalizar e Ver Resultado</button>
+
+      <div id="resultado-box" hidden>
+        <div class="score-display">
+          <span id="score-num">0</span>
+          <span class="score-sep">/</span>
+          <span id="score-total">14</span>
+        </div>
+        <p id="score-msg"></p>
+
+        <div class="report-area">
+          <p class="report-intro">Exporte seu relatório com nome e data:</p>
+          <div class="name-row">
+            <label class="name-label" for="studentName">Seu nome:</label>
+            <input class="name-input" id="studentName" type="text" placeholder="Nome opcional" maxlength="80" autocomplete="name" />
+          </div>
+          <div class="report-btns">
+            <button class="report-btn" id="downloadBtn">↓ Baixar .txt</button>
+            <button class="report-btn" id="copyBtn">⎘ Copiar</button>
+            <button class="report-btn" id="emailBtn">✉ E-mail</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="reset-btn" id="resetAll">↺ Reiniciar avaliação</button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Física · Ensino Médio · MRUV · Avaliação 1 — Velocidade e Aceleração</p>
+  </footer>
+
+  <script>
+    window.QUIZ_MODE  = 'avaliacao';
+    window.LISTA_NOME = 'Lista 1 — MRUV: Velocidade e Aceleração (Avaliação)';
+  </script>
+  <script src="questions1.js"></script>
+  <script src="quiz_engine.js"></script>
+</body>
+</html>

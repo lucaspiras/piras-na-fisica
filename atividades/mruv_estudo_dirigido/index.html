@@ -317,6 +317,11 @@
             <input type="range" min="-10" max="10" value="3" id="sl-a" class="slider"
               aria-label="Aceleração a em metros por segundo ao quadrado (de -10 a 10)" />
           </div>
+          <div class="slider-row">
+            <label>S₀ = <span id="s0-val">0</span> m</label>
+            <input type="range" min="-100" max="100" value="0" step="10" id="sl-s0" class="slider"
+              aria-label="Posição inicial S₀ em metros (de -100 a 100, passo 10)" />
+          </div>
         </div>
 
         <div class="concept-card">
@@ -403,9 +408,9 @@
         <p>A <strong>queda livre</strong> é um caso especial de MRUV em que o único agente é a gravidade, sem resistência do ar. Qualquer objeto — seja pesado ou leve — cai com a mesma aceleração.</p>
 
         <div class="formula-box">
-          <span class="formula-label">Aceleração gravitacional</span>
+          <span class="formula-label">Aceleração gravitacional — próximo à superfície da Terra</span>
           <span class="formula-tex">g ≈ 9,8 m/s² &nbsp;≈&nbsp; 10 m/s² (aproximação adotada no EM)</span>
-          <span class="formula-unit">Sempre dirigida para baixo — sentido negativo se tomarmos ↑ como positivo</span>
+          <span class="formula-unit">Valor específico da Terra, medido em regiões próximas à sua superfície — cada astro tem o seu próprio g</span>
         </div>
 
         <div class="highlight-box">
@@ -413,10 +418,30 @@
           <p>Galileu Galilei demonstrou experimentalmente que objetos de massas diferentes caem igualmente — derrubando a ideia aristotélica de que objetos pesados caem mais rápido. Na ausência de ar, uma pena e um martelo chegam ao chão ao mesmo tempo!</p>
         </div>
 
+        <div class="concept-card">
+          <h4>g em outros corpos celestes:</h4>
+          <table class="mruv-table" aria-label="Valores de g em diferentes corpos celestes">
+            <thead>
+              <tr><th>Corpo celeste</th><th>g (m/s²)</th><th>Comparação com a Terra</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Terra</td><td>≈ 9,8</td><td>referência</td></tr>
+              <tr><td>Lua</td><td>≈ 1,6</td><td>≈ 1/6 da Terra</td></tr>
+              <tr><td>Júpiter</td><td>≈ 24,8</td><td>≈ 2,5× a Terra</td></tr>
+            </tbody>
+          </table>
+          <p>Na Lua, um astronauta consegue saltar cerca de 6 vezes mais alto com o mesmo esforço. Em Júpiter, a mesma pessoa pesaria aproximadamente 2,5 vezes mais do que na Terra.</p>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🧭</span>
+          <p>O sinal de g depende do <strong>referencial adotado</strong>. Se o eixo positivo aponta para cima (↑), a gravidade atua no sentido negativo: a = −g ≈ −9,8 m/s². Se o eixo positivo aponta para baixo (↓), a = +g ≈ +9,8 m/s². Nas equações a seguir usamos g como grandeza positiva (em módulo), com h indicando a distância percorrida em queda.</p>
+        </div>
+
         <div class="formula-box">
           <span class="formula-label">Equações da queda livre (partindo do repouso, v₀ = 0)</span>
           <span class="formula-tex">v = g · t &nbsp;&nbsp;|&nbsp;&nbsp; h = ½ · g · t² &nbsp;&nbsp;|&nbsp;&nbsp; v² = 2 · g · h</span>
-          <span class="formula-unit">h = altura percorrida em queda (positiva para baixo)</span>
+          <span class="formula-unit">h = distância percorrida em queda (grandeza positiva em módulo)</span>
         </div>
 
         <div class="example-box">
@@ -431,7 +456,7 @@
           <ul>
             <li>Sem resistência do ar (vácuo ou aproximação).</li>
             <li>Objeto largado <strong>do repouso</strong> (v₀ = 0).</li>
-            <li>Aceleração g constante e vertical.</li>
+            <li>Aceleração g constante, vertical e de valor local (depende do astro).</li>
             <li>Na prática, objetos densos (bola de metal) aproximam bem o ideal.</li>
           </ul>
         </div>
@@ -499,6 +524,7 @@
         <div class="calc-box">
           <h4>🧮 Calculadora MRUV</h4>
           <p class="calc-hint">Preencha 3 campos e deixe 2 em branco para calcular:</p>
+          <p class="calc-hint">💡 Explore à vontade: verifique suas respostas, invente situações do cotidiano ou veja o que acontece ao variar os valores. Não há resposta errada aqui — é uma ferramenta de descoberta!</p>
           <div class="calc-grid">
             <label>v₀ (m/s): <input type="number" id="calc-v0" class="calc-inp" placeholder="vel. inicial" /></label>
             <label>v (m/s): <input type="number" id="calc-v" class="calc-inp" placeholder="vel. final" /></label>

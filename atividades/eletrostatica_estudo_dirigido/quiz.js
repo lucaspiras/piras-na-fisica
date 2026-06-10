@@ -31,8 +31,8 @@
       {
         tipo: 'num',
         texto: 'Um corpo tem excesso de 5 × 10¹² elétrons. Sabendo que e = 1,6 × 10⁻¹⁹ C, qual é a carga elétrica desse corpo (em µC — microcoulombs)? Dê o valor como número negativo.',
-        resposta: -800,
-        tolerancia: 5,
+        resposta: -0.8,
+        tolerancia: 0.05,
         unidade: 'µC',
         explicacao: 'q = n · e = 5×10¹² × 1,6×10⁻¹⁹ = 8×10⁻⁷ C = −0,8 µC ≈ −800 nC. Atenção: 1 µC = 10⁻⁶ C → q = −0,8 µC. Se sua resposta foi −0,8 (em µC), está correto!'
       }
@@ -301,7 +301,7 @@
     questoes.forEach((q, i) => {
       const qid = `${id}_q${i}`;
       html += `<div class="q-block" id="qb_${qid}">`;
-      html += `<span class="q-num">Questão ${i + 1}</span>`;
+      html += `<span class="q-num">Questão ${(_numBase[id] || 0) + i + 1}</span>`;
       html += `<p class="q-text">${q.texto}</p>`;
 
       if (q.tipo === 'obj') {
@@ -454,7 +454,64 @@
   /* ══════════════════════════════════════════════
      INIT
   ══════════════════════════════════════════════ */
+  /* ══════════════════════════════════════════════
+     NUMERAÇÃO SEQUENCIAL (segue a ordem no DOM)
+  ══════════════════════════════════════════════ */
+  let _numBase = {};
+  function computeNumbering() {
+    _numBase = {};
+    const present = Object.keys(BANCO).filter(id => document.getElementById(id));
+    present.sort((a, b) => {
+      const ea = document.getElementById(a), eb = document.getElementById(b);
+      return (ea.compareDocumentPosition(eb) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1;
+    });
+    let acc = 0;
+    present.forEach(id => { _numBase[id] = acc; acc += BANCO[id].length; });
+  }
+
+  /* ══════════════════════════════════════════════
+     DISTRIBUIÇÃO BALANCEADA DA ALTERNATIVA CORRETA
+     Reposiciona apenas a opção correta (distratores
+     mantêm a ordem). Opções do tipo "Nenhuma das
+     alternativas" são preservadas onde estão.
+  ══════════════════════════════════════════════ */
+  function _seededShuffle(arr, seed) {
+    let s = seed >>> 0;
+    for (let i = arr.length - 1; i > 0; i--) {
+      s = (s * 1664525 + 1013904223) >>> 0;
+      const j = s % (i + 1);
+      const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+    return arr;
+  }
+  function _isPinnedOpt(opt) { return /nenhuma das|todas as alternativas|n\.d\.a\./i.test(opt); }
+  let _answersArranged = false;
+  function arrangeAnswers() {
+    if (_answersArranged) return;
+    _answersArranged = true;
+    const objs = [];
+    Object.keys(BANCO).forEach(id => BANCO[id].forEach(q => {
+      if (q.tipo === 'obj' && Array.isArray(q.opts)
+          && !q.opts.some(o => _isPinnedOpt(String(o)))) objs.push(q);
+    }));
+    const targets = objs.map((_, i) => i % 4);
+    _seededShuffle(targets, 20260609);
+    objs.forEach((q, i) => {
+      const n = q.opts.length;
+      const target = targets[i] % n;
+      const correctOpt = q.opts[q.certa];
+      const rest = q.opts.filter((_, idx) => idx !== q.certa);
+      const out = [];
+      let r = 0;
+      for (let p = 0; p < n; p++) out.push(p === target ? correctOpt : rest[r++]);
+      q.opts = out;
+      q.certa = target;
+    });
+  }
+
   function initAll() {
+    arrangeAnswers();
+    computeNumbering();
     Object.keys(BANCO).forEach(id => renderQuiz(id, BANCO[id]));
   }
 
