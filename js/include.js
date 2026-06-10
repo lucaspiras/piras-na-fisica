@@ -10,3 +10,10 @@ fetch(base + "header/header.html")
     s.src = base + 'js/feedback-modal.js';
     document.head.appendChild(s);
   });
+
+fetch(base + "footer/footer.html")
+  .then(response => response.text())
+  .then(data => {
+    const footer = document.querySelector('footer');
+    if (footer) footer.innerHTML = data;
+  });

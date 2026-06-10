@@ -662,12 +662,28 @@ nav .theme-toggle:hover {
    FOOTER
 ========================= */
 footer {
-  height: 56px;
   background: var(--fundo-claro);
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 1.5rem 1rem;
   font-size: 0.9rem;
   color: var(--text-muted);
+}
+
+.footer-license {
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+}
+
+.footer-license a {
+  color: var(--text-muted);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-license a:hover {
+  color: var(--accent);
 }
 
 /* =========================
