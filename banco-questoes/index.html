@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <script src="/js/theme.js"></script>
+  <meta name="description" content="Banco de questões de Física do vestibular UFRGS 2022–2026, organizadas por área e subárea.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Banco de Questões UFRGS — Piras na Física">
+  <meta property="og:description" content="Questões de Física do vestibular UFRGS 2022–2026, organizadas por área e subárea.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:locale" content="pt_BR">
+  <title>Banco de Questões UFRGS — Piras na Física</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* ── layout ── */
+    .bq-page {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    .bq-header {
+      margin-bottom: 2rem;
+    }
+
+    .bq-header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--titulo);
+      margin-bottom: 0.4rem;
+    }
+
+    .bq-header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* ── filtros ── */
+    .bq-filtros {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .bq-filtros select,
+    .bq-filtros input {
+      background: var(--surface);
+      color: var(--texto);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 0.5rem 0.85rem;
+      font-size: 0.9rem;
+      font-family: var(--font-body);
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .bq-filtros select:focus,
+    .bq-filtros input:focus {
+      border-color: var(--azul);
+    }
+
+    .bq-filtros input[type="text"] {
+      min-width: 220px;
+      flex: 1;
+    }
+
+    .bq-count {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .bq-count strong {
+      color: var(--texto);
+    }
+
+    /* ── lista de questões ── */
+    .bq-lista {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .bq-card {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 1.1rem 1.4rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .bq-card:hover {
+      border-color: var(--azul);
+      box-shadow: 0 4px 16px var(--shadow);
+    }
+
+    .bq-card-topo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.6rem;
+    }
+
+    .bq-num {
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      white-space: nowrap;
+    }
+
+    .bq-tag {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .bq-tag-ano {
+      background: var(--surface-2);
+      color: var(--subtitulo);
+      border: 1px solid var(--info-border);
+    }
+
+    .bq-tag-area {
+      background: var(--ok-bg);
+      color: var(--ok-text);
+      border: 1px solid var(--ok-border);
+    }
+
+    .bq-tag-subarea {
+      background: var(--warn-bg);
+      color: var(--warn-text);
+      border: 1px solid var(--warn-border);
+    }
+
+    .bq-enunciado {
+      font-size: 0.93rem;
+      color: var(--texto);
+      line-height: 1.6;
+    }
+
+    .bq-imagem {
+      margin: 0.8rem 0;
+      max-width: 100%;
+    }
+
+    .bq-imagem img {
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .bq-opcoes {
+      list-style: none;
+      margin: 0.75rem 0 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .bq-opcoes li {
+      display: flex;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--texto);
+      line-height: 1.5;
+    }
+
+    .bq-opcao-letra {
+      font-weight: 700;
+      color: var(--azul);
+      min-width: 1.1rem;
+      font-family: var(--font-mono);
+    }
+
+    /* ── vazio ── */
+    .bq-vazio {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-muted);
+    }
+
+    .bq-vazio p {
+      font-size: 1rem;
+    }
+
+    /* ── responsive ── */
+    @media (max-width: 600px) {
+      .bq-header h1 { font-size: 1.5rem; }
+      .bq-filtros input[type="text"] { min-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+
+  <main class="bq-page">
+
+    <div class="bq-header">
+      <h1>Banco de Questões — Física UFRGS</h1>
+      <p>Questões 16 a 30 (seção de Física) dos vestibulares UFRGS 2022–2026, organizadas por área e subárea.</p>
+    </div>
+
+    <div class="bq-filtros">
+      <input type="text" id="busca" placeholder="Buscar no enunciado ou subárea…" autocomplete="off">
+      <select id="filtro-ano">
+        <option value="">Todos os anos</option>
+        <option>2022</option>
+        <option>2023</option>
+        <option>2024</option>
+        <option>2025</option>
+        <option>2026</option>
+      </select>
+      <select id="filtro-area">
+        <option value="">Todas as áreas</option>
+      </select>
+    </div>
+
+    <p class="bq-count" id="contagem">Carregando…</p>
+
+    <div class="bq-lista" id="lista"></div>
+
+  </main>
+
+  <footer>
+    <p>© 2025 — Piras na Física</p>
+  </footer>
+
+  <script src="/js/include.js"></script>
+  <script>
+    let questoes = [];
+
+    async function carregar() {
+      const resp = await fetch('/banco-questoes/fisica_ufrgs.json');
+      const dados = await resp.json();
+      questoes = dados.banco_questoes;
+
+      // popular filtro de áreas (ordem de aparecimento único)
+      const areas = [...new Set(questoes.map(q => q.area))].sort();
+      const sel = document.getElementById('filtro-area');
+      areas.forEach(a => {
+        const opt = document.createElement('option');
+        opt.value = a;
+        opt.textContent = a;
+        sel.appendChild(opt);
+      });
+
+      renderizar();
+    }
+
+    function renderizar() {
+      const busca  = document.getElementById('busca').value.toLowerCase().trim();
+      const ano    = document.getElementById('filtro-ano').value;
+      const area   = document.getElementById('filtro-area').value;
+
+      const filtradas = questoes.filter(q => {
+        if (ano  && String(q.ano)  !== ano)  return false;
+        if (area && q.area         !== area)  return false;
+        if (busca && !q.enunciado.toLowerCase().includes(busca)
+                  && !q.subarea.toLowerCase().includes(busca)
+                  && !q.area.toLowerCase().includes(busca)) return false;
+        return true;
+      });
+
+      const lista = document.getElementById('lista');
+      const contagem = document.getElementById('contagem');
+
+      contagem.innerHTML = `<strong>${filtradas.length}</strong> questão${filtradas.length !== 1 ? 'ões' : ''} encontrada${filtradas.length !== 1 ? 's' : ''} de <strong>${questoes.length}</strong> no total`;
+
+      if (filtradas.length === 0) {
+        lista.innerHTML = '<div class="bq-vazio"><p>Nenhuma questão encontrada com esses filtros.</p></div>';
+        return;
+      }
+
+      lista.innerHTML = filtradas.map(q => {
+        const imagemHtml = q.imagem
+          ? `<div class="bq-imagem"><img src="/banco-questoes/img/${q.imagem}" alt="Figura da questão ${q.numero}" loading="lazy"></div>`
+          : '';
+        const opcoesHtml = Object.entries(q.opcoes)
+          .map(([letra, texto]) => `<li><span class="bq-opcao-letra">${letra}</span>${texto}</li>`)
+          .join('');
+        return `
+        <div class="bq-card">
+          <div class="bq-card-topo">
+            <span class="bq-num">Q${q.numero}</span>
+            <span class="bq-tag bq-tag-ano">UFRGS ${q.ano}</span>
+            <span class="bq-tag bq-tag-area">${q.area}</span>
+            <span class="bq-tag bq-tag-subarea">${q.subarea}</span>
+          </div>
+          <p class="bq-enunciado">${q.enunciado}</p>
+          ${imagemHtml}
+          <ul class="bq-opcoes">${opcoesHtml}</ul>
+        </div>`;
+      }).join('');
+    }
+
+    document.getElementById('busca').addEventListener('input', renderizar);
+    document.getElementById('filtro-ano').addEventListener('change', renderizar);
+    document.getElementById('filtro-area').addEventListener('change', renderizar);
+
+    carregar();
+  </script>
+</body>
+</html>

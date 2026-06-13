@@ -1,0 +1,1283 @@
+{
+  "banco_questoes": [
+    {
+      "id": "UFRGS-2022-F-16",
+      "ano": 2022,
+      "instituicao": "UFRGS",
+      "numero": 16,
+      "area": "Cinemática",
+      "subarea": "Referencial inercial / Lançamento horizontal",
+      "imagem": "2022_UFRGS_Q16.png",
+      "enunciado": "Um avião, viajando paralelamente ao solo com velocidade constante de módulo V0, solta uma carga desde uma altitude h, conforme representa o painel esquerdo da figura abaixo.\n\nSendo V0 = 80 m/s o módulo da velocidade do avião e h = 300 m, qual será, depois de 5 s, o módulo da velocidade da carga em relação ao avião, desprezando-se a resistência do ar?\n\nConsidere o módulo da aceleração da gravidade igual a 10 m/s².",
+      "opcoes": {
+        "A": "0 m/s.",
+        "B": "30 m/s.",
+        "C": "50 m/s.",
+        "D": "90 m/s.",
+        "E": "130 m/s."
+      }
+    },
+    {
+      "id": "UFRGS-2022-F-17",
+      "ano": 2022,
+      "instituicao": "UFRGS",
+      "numero": 17,
+      "area": "Dinâmica",
+      "subarea": "Leis de Newton / Sistema de blocos",
+      "imagem": "2022_UFRGS_Q17.png",
+      "enunciado": "A figura abaixo representa três blocos, A, B e C, que deslizam sobre um plano horizontal e liso, empurrados por uma força também horizontal e constante, F, atuando sobre o bloco A.\n\nSendo o módulo de F igual a 18 N, e as massas dos blocos mA = 3 kg, mB = 2 kg e mC = 1 kg, considere as seguintes afirmações.\n\nI - Todas as forças que agem sobre os blocos A, B e C dissipam energia do sistema.\nII - Os módulos das forças de contato entre os blocos A e B, e B e C, são FAB = 9 N e FCB = 3 N.\nIII - Os módulos das forças resultantes sobre cada um dos blocos A, B e C são, respectivamente, FA = 9 N, FB = 6 N e FC = 3 N.\n\nQuais estão corretas?",
+      "opcoes": {
+        "A": "Apenas I.",
+        "B": "Apenas II.",
+        "C": "Apenas III.",
+        "D": "Apenas II e III.",
+        "E": "I, II e III."
+      }
+    },
+    {
+      "id": "UFRGS-2022-F-18",
+      "ano": 2022,
+      "instituicao": "UFRGS",
+      "numero": 18,
+      "area": "Gravitação",
+      "subarea": "Lei da Gravitação Universal",
+      "imagem": null,
+      "enunciado": "Considerando órbitas circunferenciais em torno do Sol, o planeta Saturno está aproximadamente 10 vezes mais longe do Sol do que a Terra, e sua massa é cerca de 100 vezes maior do que a massa da Terra.\n\nAssinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nCom essas considerações, o módulo da força que o Sol exerce sobre Saturno é ........ módulo da força que ele exerce sobre a Terra. O módulo da aceleração de Saturno é ........ módulo da aceleração da Terra.",
+      "opcoes": {
+        "A": "menor do que o – menor do que o",
+        "B": "maior do que o – maior do que o",
+        "C": "maior do que o – aproximadamente igual ao",
+        "D": "aproximadamente igual ao – aproximadamente igual ao",
+        "E": "aproximadamente igual ao – menor do que o"
+      }
+    },
+    {
+      "id": "UFRGS-2022-F-19",
+      "ano": 2022,
+      "instituicao": "UFRGS",
+      "numero": 19,
+      "area": "Dinâmica",
+      "subarea": "Conservação do momento linear / Colisão 2D",
+      "imagem": "2022_UFRGS_Q19.png",
+      "enunciado": "A figura abaixo representa dois objetos, A e B, que deslizam sobre uma superfície horizontal sem atrito.\n\nO objeto A tem massa igual a 1/3 kg, e sua velocidade, indicada pela seta vertical, tem módulo de 3 m/s. O objeto B tem massa igual a 1/2 kg, e sua velocidade, indicada pela seta horizontal, tem módulo de 2 m/s. Os objetos colidem, permanecendo \"colados\" após a colisão.\n\nNesse processo,",
+      "opcoes": {
+        "A": "a energia cinética e o momentum linear do sistema foram conservados.",
+        "B": "apenas a energia cinética do sistema foi conservada.",
+        "C": "o módulo do momentum linear do sistema é de 2 kg m/s.",
+        "D": "o módulo da velocidade final dos objetos é de 2,4 m/s.",
+        "E": "a energia cinética final do sistema é de 6/5 J."
+      }
+    },
+    {
+      "id": "UFRGS-2022-F-20",
+      "ano": 2022,
+      "instituicao": "UFRGS",
+      "numero": 20,
+      "area": "Oscilações",
+      "subarea": "Sistema massa-mola / Energia mecânica",
+      "imagem": "2022_UFRGS_Q20.png",
+      "enunciado": "Considere o sistema massa-mola representado na figura abaixo.\n\nA massa de 0,5 kg é deslocada de x = 0,02 m, a partir da posição de equilíbrio, e então liberada. Considerando que não há atrito entre as superfícies em contato, o bloco passa pela posição de equilíbrio com velocidade de módulo 0,04 m/s.\n\nA constante elástica da mola e a energia mecânica total do sistema são, respectivamente,",
+      "opcoes": {
+        "A": "1 N/m e 0,4 mJ.",
+        "B": "1 N/m e 0,8 mJ.",
+        "C": "2 N/m e 0,4 mJ.",
+        "D": "2 N/m e 0,6 mJ.",
+        "E": "2 N/m e 0,8 mJ."
+      }
+    },
+    {
+      "id": "UFRGS-2022-F-21",
+      "ano": 2022,
+      "instituicao": "UFRGS",
+      "numero": 21,
+      "area": "Fluidos",
+      "subarea": "Empuxo / Flutuação em dois líquidos",
+      "imagem": "2022_UFRGS_Q21.png",
+      "enunciado": "A figura abaixo representa um bloco B de densidade 900 kg/m³, flutuando na interface entre dois líquidos: água e óleo.\n\nConsiderando que 4/5 do volume do bloco estão submersos na água, cuja densidade é de 1000 kg/m³, a densidade do óleo é, em kg/m³, de",
+      "opcoes": {
+        "A": "200.",
+        "B": "400.",
+        "C": "500.",
+        "D": "800.",
+        "E": "1900."
+      }
+    },
+    {
+      "id": "UFRGS-2022-F-22",
+      "ano": 2022,
+      "instituicao": "UFRGS",
+      "numero": 22,
+      "area": "Termodinâmica",
+      "subarea": "Ciclos termodinâmicos / Diagrama P-V",
+      "imagem": "2022_UFRGS_Q22.png",
+      "enunciado": "Na figura abaixo, estão representados quatro diagramas pV para processos termodinâmicos cíclicos de um gás.\n\nAssinale a alternativa que indica corretamente em quais processos o gás absorve mais calor do que perde em um ciclo completo.",
+      "opcoes": {
+        "A": "1 e 2.",
+        "B": "1 e 3.",
+        "C": "2 e 3.",
+        "D": "2 e 4.",
+        "E": "1, 2, 3 e 4."
+      }
+    },
+    {
+      "id": "UFRGS-2022-F-23",
+      "ano": 2022,
+      "instituicao": "UFRGS",
+      "numero": 23,
+      "area": "Termodinâmica",
+      "subarea": "Máquinas térmicas / Leis da Termodinâmica",
+      "imagem": "2022_UFRGS_Q23.png",
+      "enunciado": "Considere a máquina térmica representada na figura abaixo.\n\nEm um ciclo da máquina, Q1 e Q2 são, respectivamente, as quantidades de calor adicionadas ao banho térmico T1 e retiradas do banho térmico T2 > T1, e W é o trabalho realizado pela máquina. Se o trabalho é positivo, então algumas das possibilidades para as quantidades de calor envolvidas são\n1. Q2 > Q1 > 0\n2. Q1 > Q2 > 0\n3. Q1 < 0 ; Q2 > 0\n\nAssinale a alternativa que descreve as possibilidades fisicamente corretas.",
+      "opcoes": {
+        "A": "Apenas 1.",
+        "B": "Apenas 2.",
+        "C": "Apenas 3.",
+        "D": "Apenas 1 e 2.",
+        "E": "1, 2 e 3."
+      }
+    },
+    {
+      "id": "UFRGS-2022-F-24",
+      "ano": 2022,
+      "instituicao": "UFRGS",
+      "numero": 24,
+      "area": "Ondulatória",
+      "subarea": "Ondas estacionárias em cordas / Comprimento de onda",
+      "imagem": "2022_UFRGS_Q24.png",
+      "enunciado": "Em uma corda esticada com certa tensão constante, três ondas são enviadas separadamente. A figura abaixo representa as ondas, identificadas por 1, 2 e 3.\n\nAs razões entre os comprimentos de onda λ1/λ2, λ1/λ3 e λ2/λ3 dessas ondas são, respectivamente,",
+      "opcoes": {
+        "A": "4/3, 2/3, 1/2.",
+        "B": "4/3, 3/2, 1/2.",
+        "C": "3/4, 2/3, 2.",
+        "D": "3/4, 3/2, 2.",
+        "E": "3/4, 3/2, 1/2."
+      }
+    },
+    {
+      "id": "UFRGS-2022-F-25",
+      "ano": 2022,
+      "instituicao": "UFRGS",
+      "numero": 25,
+      "area": "Óptica",
+      "subarea": "Óptica Geométrica / Sistema de lentes convergentes",
+      "imagem": "2022_UFRGS_Q25.png",
+      "enunciado": "Duas lentes convergentes finas, de distâncias focais f1 = 20 cm e f2 = 10 cm, estão separadas pela distância d2 = 10 cm. Um objeto O está colocado à distância d1 = 40 cm à esquerda da lente f1, conforme representado na figura abaixo.\n\nAssinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nA imagem do objeto é ........, ........ e localiza-se 15 cm ........ da lente f2.",
+      "opcoes": {
+        "A": "virtual – direta – à esquerda",
+        "B": "virtual – invertida – à esquerda",
+        "C": "virtual – direta – à direita",
+        "D": "real – invertida – à esquerda",
+        "E": "real – direta – à direita"
+      }
+    },
+    {
+      "id": "UFRGS-2022-F-26",
+      "ano": 2022,
+      "instituicao": "UFRGS",
+      "numero": 26,
+      "area": "Óptica",
+      "subarea": "Óptica Física / Interferência em fenda dupla",
+      "imagem": "2022_UFRGS_Q26.png",
+      "enunciado": "Na figura abaixo, está representado um experimento de interferência em fenda dupla.\n\nUm feixe de laser incide sobre duas fendas separadas por d = 0,16 mm. Em uma tela, colocada a uma distância L = 5,0 m das fendas, um padrão de interferência é formado, apresentando máximos separados por h = 2 cm. Na figura, os máximos aparecem como linhas tracejadas.\n\nCom esses dados, assinale a alternativa que apresenta o comprimento de onda do laser incidente.\n\nDado: para ângulos muito pequenos, pode-se usar a aproximação sen ≈ tan.",
+      "opcoes": {
+        "A": "320 nm.",
+        "B": "360 nm.",
+        "C": "580 nm.",
+        "D": "640 nm.",
+        "E": "1280 nm."
+      }
+    },
+    {
+      "id": "UFRGS-2022-F-27",
+      "ano": 2022,
+      "instituicao": "UFRGS",
+      "numero": 27,
+      "area": "Eletrostática",
+      "subarea": "Distribuição de cargas em condutores esféricos",
+      "imagem": "2022_UFRGS_Q27.png",
+      "enunciado": "A figura abaixo representa 3 esferas, a, b e c, com raios R, 2R e 3R, perfeitamente condutoras e eletricamente carregadas, e um fio f, também perfeitamente condutor e neutro, suspenso por uma corda isolante, em dois momentos distintos (I) e (II). As esferas estão em suportes isolantes e separadas por grandes distâncias.\n\nDe início, no painel (I), a esfera a tem carga elétrica +2Q, a esfera b tem carga elétrica –3Q, a esfera c tem carga elétrica –2Q, e o fio está afastado das esferas. O fio f é então posto simultaneamente em contato com as três esferas, como mostra o painel (II). Após longo tempo nessa situação, o fio suspenso é afastado. As cargas elétricas nas esferas a, b e c são, aproximadamente,",
+      "opcoes": {
+        "A": "–3Q, –2Q, +2Q.",
+        "B": "–3Q, +Q, –Q.",
+        "C": "–2Q, +2Q, –3Q.",
+        "D": "–Q, –Q, –Q.",
+        "E": "–Q/2, –Q, –3Q/2."
+      }
+    },
+    {
+      "id": "UFRGS-2022-F-28",
+      "ano": 2022,
+      "instituicao": "UFRGS",
+      "numero": 28,
+      "area": "Eletricidade",
+      "subarea": "Circuitos elétricos / Resistores em série e paralelo",
+      "imagem": "2022_UFRGS_Q28.png",
+      "enunciado": "Considere o circuito resistivo, representado na figura abaixo.\n\nSendo R1 = R3 = 2 Ω e R2 = 1 Ω, a corrente elétrica i, em R2, é de",
+      "opcoes": {
+        "A": "3 A.",
+        "B": "4,8 A.",
+        "C": "6 A.",
+        "D": "8 A.",
+        "E": "14,4 A."
+      }
+    },
+    {
+      "id": "UFRGS-2022-F-29",
+      "ano": 2022,
+      "instituicao": "UFRGS",
+      "numero": 29,
+      "area": "Eletromagnetismo",
+      "subarea": "Indução eletromagnética / Lei de Lenz",
+      "imagem": "2022_UFRGS_Q29.png",
+      "enunciado": "A figura abaixo representa um ímã que se move ao longo do eixo de uma bobina, que se encontra conectada a um resistor R.\n\nConsidere as seguintes afirmações.\n\nI - A corrente elétrica em R só existe, se o ímã estiver acelerando.\nII - A corrente elétrica flui de a para b, quando o ímã se move para a esquerda.\nIII - A corrente elétrica em R é máxima, quando o ímã estiver completamente inserido na bobina.\n\nQuais estão corretas?",
+      "opcoes": {
+        "A": "Apenas I.",
+        "B": "Apenas II.",
+        "C": "Apenas I e III.",
+        "D": "Apenas II e III.",
+        "E": "I, II e III."
+      }
+    },
+    {
+      "id": "UFRGS-2022-F-30",
+      "ano": 2022,
+      "instituicao": "UFRGS",
+      "numero": 30,
+      "area": "Física Moderna",
+      "subarea": "Dualidade onda-partícula / Hipótese de De Broglie",
+      "imagem": null,
+      "enunciado": "Em seu postulado sobre \"ondas de matéria\", Louis De Broglie afirma que qualquer partícula massiva que tenha momentum linear tem, também, um comportamento ondulatório.\n\nO comprimento de onda dessa onda está relacionado com o momentum linear da partícula através",
+      "opcoes": {
+        "A": "da constante de Planck.",
+        "B": "da constante de Boltzmann.",
+        "C": "do número de Avogadro.",
+        "D": "da constante de Stefan-Boltzmann.",
+        "E": "da velocidade da luz."
+      }
+    },
+
+    {
+      "id": "UFRGS-2023-F-16",
+      "ano": 2023,
+      "instituicao": "UFRGS",
+      "numero": 16,
+      "area": "Física Moderna",
+      "subarea": "Energia cinética / Unidades de energia",
+      "imagem": null,
+      "enunciado": "A Terra é constantemente atingida por raios cósmicos, que chegam a alcançar energias da ordem de 10²⁰ eV (1 eV = 1 elétron-volt = 1,6 × 10⁻¹⁹ J).\n\nAssinale a alternativa abaixo que melhor representa a velocidade com a qual uma bolinha de gude, de 5 gramas de massa, deve se mover para que sua energia cinética seja igual a 10²⁰ eV.",
+      "opcoes": {
+        "A": "2,5 m/s.",
+        "B": "6,4 m/s.",
+        "C": "80 m/s.",
+        "D": "8,0 m/s.",
+        "E": "64 m/s."
+      }
+    },
+    {
+      "id": "UFRGS-2023-F-17",
+      "ano": 2023,
+      "instituicao": "UFRGS",
+      "numero": 17,
+      "area": "Cinemática",
+      "subarea": "Movimento Uniformemente Acelerado (MRUV)",
+      "imagem": null,
+      "enunciado": "Um móvel desloca-se em linha reta com aceleração constante. Sua velocidade no instante t₀ = 0 é não nula. Entre t₀ = 0 e t₁ = 5 segundos, o móvel percorre 100 metros. Entre t₁ = 5 segundos e t₂ = 8 segundos, o móvel percorre 100 metros adicionais.\n\nQual das alternativas abaixo representa corretamente, com algarismos até a primeira casa decimal, o módulo da aceleração desse móvel?",
+      "opcoes": {
+        "A": "2,1 m/s².",
+        "B": "3,3 m/s².",
+        "C": "3,7 m/s².",
+        "D": "9,7 m/s².",
+        "E": "7,6 m/s²."
+      }
+    },
+    {
+      "id": "UFRGS-2023-F-18",
+      "ano": 2023,
+      "instituicao": "UFRGS",
+      "numero": 18,
+      "area": "Dinâmica",
+      "subarea": "Sistema com roldana / Plano horizontal e suspenso",
+      "imagem": "ufrgs-2023-q18.png",
+      "enunciado": "Um bloco de 6 kg desliza, sem atrito, sobre uma superfície plana horizontal, tracionado por um bloco de 4 kg que está suspenso por uma corda inextensível e de massa desprezível, que passa por uma roldana, conforme mostra a figura.\n\nDados: Use g = 10 m/s² (módulo da aceleração da gravidade). Considere a roldana sem massa e girando sem atrito.\n\nDe quanto é a força de tração na corda?",
+      "opcoes": {
+        "A": "24,0 N.",
+        "B": "30,0 N.",
+        "C": "20,0 N.",
+        "D": "28,5 N.",
+        "E": "14,5 N."
+      }
+    },
+    {
+      "id": "UFRGS-2023-F-19",
+      "ano": 2023,
+      "instituicao": "UFRGS",
+      "numero": 19,
+      "area": "Dinâmica",
+      "subarea": "Conservação do momento linear / Colisão",
+      "imagem": null,
+      "enunciado": "Dídimo e Dimorfo são um par de asteroides que estão ligados gravitacionalmente, orbitando em torno de seu centro de massa. Recentemente, a NASA fez colidir contra Dimorfo a sonda Dart, em um experimento para testar a viabilidade de desviar a trajetória de asteroides potencialmente perigosos para nosso planeta. Como resultado do impacto, a sonda Dart aderiu à superfície de Dimorfo, que teve sua trajetória alterada.\n\nA respeito dessa colisão, considere as seguintes afirmações.\n\nI - A colisão foi inelástica.\nII - A trajetória de Dídimo também foi alterada pela colisão.\nIII - A trajetória do centro de massa do sistema binário original de asteroides foi alterada pela colisão.\n\nQuais estão corretas?",
+      "opcoes": {
+        "A": "Apenas I.",
+        "B": "Apenas II.",
+        "C": "Apenas III.",
+        "D": "Apenas I e III.",
+        "E": "I, II e III."
+      }
+    },
+    {
+      "id": "UFRGS-2023-F-20",
+      "ano": 2023,
+      "instituicao": "UFRGS",
+      "numero": 20,
+      "area": "Ondulatória",
+      "subarea": "Ressonância / Harmônicos",
+      "imagem": null,
+      "enunciado": "Uma determinada corda esticada apresenta ressonâncias nas frequências de 1005 Hz e 1675 Hz.\n\nQual, entre as opções abaixo, também é frequência ressonante dessa corda?",
+      "opcoes": {
+        "A": "697 Hz.",
+        "B": "1507 Hz.",
+        "C": "2033 Hz.",
+        "D": "2345 Hz.",
+        "E": "2584 Hz."
+      }
+    },
+    {
+      "id": "UFRGS-2023-F-21",
+      "ano": 2023,
+      "instituicao": "UFRGS",
+      "numero": 21,
+      "area": "Termologia",
+      "subarea": "Dilatação linear",
+      "imagem": null,
+      "enunciado": "Sejam dois bastões, A e B, feitos de metais diferentes. Seus coeficientes de dilatação térmica linear são tais que o coeficiente de A vale o dobro do coeficiente de B. Inicialmente, A e B têm o mesmo comprimento.\n\nApós sofrerem, simultaneamente, o mesmo aumento de temperatura, a razão entre o novo comprimento de A e o novo comprimento de B será",
+      "opcoes": {
+        "A": "igual a 2.",
+        "B": "igual a 0,5.",
+        "C": "igual a 1.",
+        "D": "dependente do comprimento inicial dos dois bastões.",
+        "E": "maior do que 1 e menor do que 2."
+      }
+    },
+    {
+      "id": "UFRGS-2023-F-22",
+      "ano": 2023,
+      "instituicao": "UFRGS",
+      "numero": 22,
+      "area": "Termodinâmica",
+      "subarea": "Transformação isocórica / Lei dos gases ideais",
+      "imagem": null,
+      "enunciado": "Em um dia de primavera, em um laboratório de ciências, um gás que se comporta como gás ideal é mantido confinado em um recipiente de volume constante. Dentro do recipiente, a pressão é de 1 atm, e a temperatura é de 13 °C. Nessas condições, o laboratorista fecha o laboratório e vai para casa. Ao retornar, no dia seguinte, o ambiente está mais aquecido, e o mesmo gás encontra-se a uma temperatura de 26 °C.\n\nNesse momento, a pressão dentro do recipiente é",
+      "opcoes": {
+        "A": "maior do que 1 atm e menor do que 2 atm.",
+        "B": "menor do que 1 atm.",
+        "C": "igual a 1 atm.",
+        "D": "igual a 2 atm.",
+        "E": "maior do que 2 atm."
+      }
+    },
+    {
+      "id": "UFRGS-2023-F-23",
+      "ano": 2023,
+      "instituicao": "UFRGS",
+      "numero": 23,
+      "area": "Termodinâmica",
+      "subarea": "Ciclos termodinâmicos / Diagrama P-V",
+      "imagem": "ufrgs-2023-q23.png",
+      "enunciado": "Determinado gás sofre as transformações indicadas nos ciclos abaixo, efetuados no sentido horário. Nos gráficos, p designa pressão e V designa volume. As figuras estão na mesma escala.\n\nSeja W o trabalho total, efetivo, realizado pelo gás ao longo de um ciclo, isto é, todo o trabalho realizado pelo gás sobre a vizinhança, descontado todo o trabalho realizado sobre o gás pela vizinhança, ao se fechar um ciclo. Assim, W pode, em princípio, ter valor positivo, negativo ou nulo.\n\nSeja Q a quantidade total, efetiva, de calor transferido para o gás pela vizinhança ao longo de um ciclo, isto é, todo o calor transferido para o gás pela vizinhança, descontado todo o calor transferido para a vizinhança pelo gás, ao se fechar um ciclo. Assim, Q pode, em princípio, ter valor positivo, negativo ou nulo.\n\nAo se fechar um ciclo, é correto afirmar que",
+      "opcoes": {
+        "A": "W é maior em (II) do que em (I).",
+        "B": "Q é maior em (I) do que em (II).",
+        "C": "Q é o mesmo para (I) e para (II).",
+        "D": "Q é menor em (I) do que em (II).",
+        "E": "W não depende do caminho."
+      }
+    },
+    {
+      "id": "UFRGS-2023-F-24",
+      "ano": 2023,
+      "instituicao": "UFRGS",
+      "numero": 24,
+      "area": "Óptica",
+      "subarea": "Lentes convergentes / Lupa",
+      "imagem": "ufrgs-2023-q24.png",
+      "enunciado": "Um instrumento óptico muito simples e comum é a lupa, também conhecida como lente de aumento, utilizada para visualização de, por exemplo, textos grafados em letras muito pequenas.\n\nAssinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nA lupa é um instrumento óptico que consiste de uma lente ........ que conjuga com eficiência uma imagem direita e ........ de um objeto colocado entre o foco e o centro óptico.",
+      "opcoes": {
+        "A": "convexa – virtual",
+        "B": "convexa – real",
+        "C": "côncava – virtual",
+        "D": "côncava – real",
+        "E": "côncava – ampliada"
+      }
+    },
+    {
+      "id": "UFRGS-2023-F-25",
+      "ano": 2023,
+      "instituicao": "UFRGS",
+      "numero": 25,
+      "area": "Eletrostática",
+      "subarea": "Campo elétrico em esferas condutoras / Equilíbrio eletrostático",
+      "imagem": null,
+      "enunciado": "Duas esferas condutoras, carregadas, são colocadas em contato, de modo que o potencial elétrico nas suas superfícies fica não nulo e com o mesmo valor em todos os pontos das superfícies. A esfera 1 tem raio R e a esfera 2 tem raio 2R. A seguir, as esferas são separadas até ficarem a grande distância uma da outra.\n\nQual é a razão E₁/E₂, entre o módulo do campo elétrico na superfície da esfera 1 e o módulo do campo elétrico na superfície da esfera 2, depois da separação?",
+      "opcoes": {
+        "A": "√2.",
+        "B": "√3.",
+        "C": "2.",
+        "D": "3.",
+        "E": "3/2."
+      }
+    },
+    {
+      "id": "UFRGS-2023-F-26",
+      "ano": 2023,
+      "instituicao": "UFRGS",
+      "numero": 26,
+      "area": "Eletricidade",
+      "subarea": "Circuito com fonte real / Resistência interna",
+      "imagem": "ufrgs-2023-q26.png",
+      "enunciado": "Uma fonte possui tensão nominal (de circuito aberto) V e resistência interna Ri, e é colocada como componente do circuito indicado na figura. A tabela apresenta valores da corrente I que percorre o circuito, para dois valores da resistência R.\n\nR = 2,5 Ω → I = 4 A; R = 3,5 Ω → I = 3 A.\n\nA partir desses dados, assinale a alternativa que melhor representa os valores de V (em volts) e de Ri (em ohms), respectivamente.",
+      "opcoes": {
+        "A": "6 e 12.",
+        "B": "12 e 0,5.",
+        "C": "24 e 1.",
+        "D": "8 e 2.",
+        "E": "10 e 4."
+      }
+    },
+    {
+      "id": "UFRGS-2023-F-27",
+      "ano": 2023,
+      "instituicao": "UFRGS",
+      "numero": 27,
+      "area": "Eletromagnetismo",
+      "subarea": "Força magnética / Movimento circular de partículas carregadas",
+      "imagem": "ufrgs-2023-q27.png",
+      "enunciado": "Um próton é acelerado, a partir do repouso, por um campo elétrico uniforme, ao longo da distância L, conforme indicado na figura. A seguir, o próton entra em uma região do espaço onde há um campo magnético uniforme, ortogonal à velocidade e com a direção perpendicular à figura e entrando na página. Como consequência da interação com o campo magnético, o próton percorre um arco circular de raio r. Todo o sistema encontra-se em ambiente de vácuo.\n\nSe, no lugar do próton, a partícula acelerada a partir do repouso fosse um núcleo de hélio (partícula alfa), a trajetória circular na presença do campo magnético teria, como valor mais próximo para seu raio,",
+      "opcoes": {
+        "A": "1,00 r.",
+        "B": "2,00 r.",
+        "C": "0,71 r.",
+        "D": "1,41 r.",
+        "E": "0,50 r."
+      }
+    },
+    {
+      "id": "UFRGS-2023-F-28",
+      "ano": 2023,
+      "instituicao": "UFRGS",
+      "numero": 28,
+      "area": "Física Moderna",
+      "subarea": "Propriedades do fóton",
+      "imagem": null,
+      "enunciado": "Assinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nO fóton, manifestação da luz como partícula, também chamado de quantum da radiação eletromagnética, tem massa ........ e carga ........ .",
+      "opcoes": {
+        "A": "igual à massa do elétron – nula",
+        "B": "igual à massa do elétron – positiva",
+        "C": "igual a zero – negativa",
+        "D": "igual a zero – nula",
+        "E": "igual à massa do elétron – negativa"
+      }
+    },
+    {
+      "id": "UFRGS-2023-F-29",
+      "ano": 2023,
+      "instituicao": "UFRGS",
+      "numero": 29,
+      "area": "Física Nuclear",
+      "subarea": "Energia de ligação nuclear / Fissão e fusão",
+      "imagem": "ufrgs-2023-q29.png",
+      "enunciado": "O gráfico abaixo indica o valor da energia de ligação média por núcleon versus o número de núcleons (número de massa), para núcleos atômicos. Por núcleon, entende-se um componente do núcleo atômico, próton ou nêutron. A energia (nas ordenadas) é informada em MeV (10⁶ elétron-volts).\n\nObservando o gráfico, pode-se chegar a conclusões sobre reações nucleares que liberam grande quantidade de energia potencialmente aproveitável, as chamadas fissão e fusão nucleares.\n\nAssinale a alternativa que apresenta uma afirmação correta a respeito dessas reações.",
+      "opcoes": {
+        "A": "A fusão nuclear ocorre pela união de determinados núcleos localizados no final da curva (à direita).",
+        "B": "A fissão nuclear ocorre pela quebra de determinados núcleos localizados no início da curva (à esquerda).",
+        "C": "A fusão nuclear ocorre pela quebra de determinados núcleos localizados no final da curva (à direita).",
+        "D": "A fissão nuclear ocorre pela união de determinados núcleos localizados no início da curva (à esquerda).",
+        "E": "A fusão nuclear ocorre pela união de determinados núcleos localizados no início da curva (à esquerda)."
+      }
+    },
+    {
+      "id": "UFRGS-2023-F-30",
+      "ano": 2023,
+      "instituicao": "UFRGS",
+      "numero": 30,
+      "area": "Fluidos",
+      "subarea": "Empuxo / Flutuação",
+      "imagem": null,
+      "enunciado": "Há uma diferença importante entre as naturezas das duas calotas polares do planeta Terra. Enquanto a maior parte da calota austral está apoiada sobre o vasto continente antártico, a maior parte da calota boreal flutua sobre o oceano Ártico. Uma grande preocupação ambiental, atualmente, é o aquecimento global que, entre outras coisas, poderia provocar o derretimento das calotas polares.\n\nA respeito do possível derretimento das calotas polares, examine as afirmações abaixo, considerando que se possa desprezar o efeito das diferenças de salinidade das águas.\n\nI - O derretimento da calota austral contribuiria mais para a elevação do nível dos oceanos do que o derretimento da calota boreal.\nII - O derretimento do gelo flutuante não contribui para a elevação do nível dos oceanos.\nIII - A suposição de que o derretimento das calotas polares seria uma das causas para a elevação do nível dos oceanos independe da diferença entre as massas específicas das fases líquida e sólida da água.\n\nQuais estão corretas?",
+      "opcoes": {
+        "A": "Apenas I.",
+        "B": "Apenas II.",
+        "C": "Apenas III.",
+        "D": "Apenas I e III.",
+        "E": "I, II e III."
+      }
+    },
+
+    {
+      "id": "UFRGS-2024-F-16",
+      "ano": 2024,
+      "instituicao": "UFRGS",
+      "numero": 16,
+      "area": "Cinemática",
+      "subarea": "Gráficos de movimento / Integração gráfica",
+      "imagem": "ufrgs-2024-q16.png",
+      "enunciado": "Um móvel percorre uma trajetória retilínea sobre uma superfície horizontal, durante 1 minuto. O móvel parte do repouso e é submetido à aceleração, cuja componente a, na direção do movimento, varia com o tempo t, conforme mostra a figura abaixo.\n\nQual dos gráficos abaixo melhor representa a componente v, da velocidade do móvel, na mesma direção, no intervalo de tempo de 0 a 60 s?",
+      "opcoes": {
+        "A": "[Gráfico A]",
+        "B": "[Gráfico B]",
+        "C": "[Gráfico C]",
+        "D": "[Gráfico D]",
+        "E": "[Gráfico E]"
+      }
+    },
+    {
+      "id": "UFRGS-2024-F-17",
+      "ano": 2024,
+      "instituicao": "UFRGS",
+      "numero": 17,
+      "area": "Dinâmica",
+      "subarea": "Máquina de Atwood",
+      "imagem": "ufrgs-2024-q17.png",
+      "enunciado": "Na figura abaixo, estão representados dois corpos de massas M e m, com M > m, unidos por um fio inextensível e de massa desprezível que passa por uma polia, também de massa desprezível e sem atrito.\n\nSendo g o módulo da aceleração da gravidade local, o módulo da aceleração de qualquer um dos dois corpos é dado por",
+      "opcoes": {
+        "A": "(M – m)g / (M + m)",
+        "B": "(M – m)g / m",
+        "C": "Mg / m",
+        "D": "mg / (M + m)",
+        "E": "Mg / (M + m)"
+      }
+    },
+    {
+      "id": "UFRGS-2024-F-18",
+      "ano": 2024,
+      "instituicao": "UFRGS",
+      "numero": 18,
+      "area": "Oscilações",
+      "subarea": "Sistema massa-mola / Amplitude e impulso",
+      "imagem": "ufrgs-2024-q18.png",
+      "enunciado": "Um corpo com massa M = 1 kg, inicialmente em repouso sobre uma superfície horizontal sem atrito, está preso a uma mola de massa desprezível e de constante elástica k = 16 N/m, conforme representado na figura abaixo.\n\nO corpo recebe um impulso para a direita de módulo I = 2 N·s e passa a descrever um movimento oscilatório.\n\nA amplitude de oscilação, em m, é",
+      "opcoes": {
+        "A": "1/8.",
+        "B": "1/4.",
+        "C": "1/2.",
+        "D": "1.",
+        "E": "2."
+      }
+    },
+    {
+      "id": "UFRGS-2024-F-19",
+      "ano": 2024,
+      "instituicao": "UFRGS",
+      "numero": 19,
+      "area": "Fluidos",
+      "subarea": "Empuxo / Princípio de Arquimedes",
+      "imagem": null,
+      "enunciado": "O peso de uma pedra no ar, medido com um dinamômetro, é 50 N. Quando a pedra está totalmente mergulhada em água, o dinamômetro indica 30 N.\n\nConsiderando o módulo da aceleração da gravidade igual a 10 m/s² e a massa específica da água igual a 10³ kg/m³, o volume e a massa específica da pedra valem, respectivamente,",
+      "opcoes": {
+        "A": "5 dm³ e 1,0×10³ kg/m³.",
+        "B": "3 dm³ e 1,5×10³ kg/m³.",
+        "C": "3 dm³ e 2,0×10³ kg/m³.",
+        "D": "2 dm³ e 2,0×10³ kg/m³.",
+        "E": "2 dm³ e 2,5×10³ kg/m³."
+      }
+    },
+    {
+      "id": "UFRGS-2024-F-20",
+      "ano": 2024,
+      "instituicao": "UFRGS",
+      "numero": 20,
+      "area": "Termologia",
+      "subarea": "Calorimetria / Capacidade calorífica",
+      "imagem": "ufrgs-2024-q20.png",
+      "enunciado": "A figura abaixo apresenta as quantidades de calor Q, em joules (J), absorvidas por dois corpos, X e Y, de mesma massa, em função da temperatura T, medida na escala absoluta (K).\n\nAssinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nOs valores das capacidades caloríficas C_X e C_Y dos corpos X e Y em J/K valem, respectivamente, ........ e ........ . A razão entre os respectivos calores específicos c_X e c_Y, é c_X/c_Y = ........ .",
+      "opcoes": {
+        "A": "42 – 14 – 3",
+        "B": "42 – 21 – 2",
+        "C": "21 – 42 – 1/2",
+        "D": "21 – 42 – 2",
+        "E": "14 – 42 – 3"
+      }
+    },
+    {
+      "id": "UFRGS-2024-F-21",
+      "ano": 2024,
+      "instituicao": "UFRGS",
+      "numero": 21,
+      "area": "Termodinâmica",
+      "subarea": "Ciclo termodinâmico / Diagrama P-V",
+      "imagem": "ufrgs-2024-q21.png",
+      "enunciado": "A pressão de um litro (1 L) de um gás ideal contido em um recipiente é 3 atm, e sua temperatura é de 300 K.\n\nA figura abaixo mostra que o gás, partindo do estado inicial p, de temperatura igual a 300 K, é submetido a um ciclo de transformações reversíveis, nos sentidos indicados pelas setas, e retorna ao estado inicial.\n\nConsidere 1 L × 1 atm = 101,3 J.\n\nAssinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nO trabalho líquido realizado pelo gás no ciclo completo vale ........ , e a temperatura do gás no estado r é ........ .",
+      "opcoes": {
+        "A": "303,9 J – 600 K",
+        "B": "202,6 J – 200 K",
+        "C": "101,3 J – 200 K",
+        "D": "101,3 J – 400 K",
+        "E": "−202,6 J – 400 K"
+      }
+    },
+    {
+      "id": "UFRGS-2024-F-22",
+      "ano": 2024,
+      "instituicao": "UFRGS",
+      "numero": 22,
+      "area": "Termologia",
+      "subarea": "Propriedades térmicas dos materiais",
+      "imagem": null,
+      "enunciado": "Considere as afirmações abaixo, sobre propriedades térmicas e processos térmicos.\n\nI - A energia interna de um gás ideal depende apenas da temperatura e do número de partículas do gás.\nII - Todos os materiais expandem-se quando aquecidos.\nIII - Um aumento de pressão acarreta um aumento na temperatura de ebulição, no processo de vaporização de uma substância.\n\nQuais estão corretas?",
+      "opcoes": {
+        "A": "Apenas I.",
+        "B": "Apenas II.",
+        "C": "Apenas I e III.",
+        "D": "Apenas II e III.",
+        "E": "I, II e III."
+      }
+    },
+    {
+      "id": "UFRGS-2024-F-23",
+      "ano": 2024,
+      "instituicao": "UFRGS",
+      "numero": 23,
+      "area": "Ondulatória",
+      "subarea": "Pulso transversal em corda",
+      "imagem": "ufrgs-2024-q23.png",
+      "enunciado": "A figura abaixo representa, em dado instante, um pulso que se desloca para a direita em uma corda.\n\nEntre os pares de setas nas alternativas abaixo, qual deles melhor representa a direção e o sentido dos movimentos dos pontos 1 e 2, respectivamente, nesse instante?",
+      "opcoes": {
+        "A": "[Par de setas A]",
+        "B": "[Par de setas B]",
+        "C": "[Par de setas C]",
+        "D": "[Par de setas D]",
+        "E": "[Par de setas E]"
+      }
+    },
+    {
+      "id": "UFRGS-2024-F-24",
+      "ano": 2024,
+      "instituicao": "UFRGS",
+      "numero": 24,
+      "area": "Óptica",
+      "subarea": "Reflexão total interna / Ângulo crítico",
+      "imagem": "ufrgs-2024-q24.png",
+      "enunciado": "A figura abaixo mostra um raio i de luz monocromática que, propagando-se no ar, incide radialmente na superfície circular de um semicilindro de vidro transparente.\n\nAo penetrar no semicilindro, a luz é parcialmente refletida na superfície plana interna, raio r, e parcialmente refratada para o ar.\n\nO raio r refletido, ao atingir a superfície circular, também emerge para o ar.\n\nEntre os raios representados na figura acima, quais deles melhor representam, respectivamente, os raios refratados na superfície plana e na superfície circular?",
+      "opcoes": {
+        "A": "1 – 4.",
+        "B": "2 – 5.",
+        "C": "2 – 4.",
+        "D": "3 – 5.",
+        "E": "3 – 6."
+      }
+    },
+    {
+      "id": "UFRGS-2024-F-25",
+      "ano": 2024,
+      "instituicao": "UFRGS",
+      "numero": 25,
+      "area": "Ondulatória",
+      "subarea": "Efeito Doppler",
+      "imagem": "ufrgs-2024-q25.png",
+      "enunciado": "A figura abaixo representa um carro movendo-se com velocidade constante e com a buzina tocando. Três observadores, O₁, O₂ e O₃, parados nas calçadas, experenciam o efeito Doppler na frequência do som da buzina.\n\nSendo f₁, f₂ e f₃ as frequências percebidas pelos observadores O₁, O₂ e O₃, respectivamente, assinale a alternativa que ordena corretamente as frequências, começando pela menor.",
+      "opcoes": {
+        "A": "f₃ < f₂ < f₁.",
+        "B": "f₁ < f₂ < f₃.",
+        "C": "f₂ < f₃ < f₁.",
+        "D": "f₃ < f₁ < f₂.",
+        "E": "f₂ < f₁ < f₃."
+      }
+    },
+    {
+      "id": "UFRGS-2024-F-26",
+      "ano": 2024,
+      "instituicao": "UFRGS",
+      "numero": 26,
+      "area": "Eletrostática",
+      "subarea": "Equilíbrio de cargas elétricas / Lei de Coulomb",
+      "imagem": "ufrgs-2024-q26.png",
+      "enunciado": "Duas cargas elétricas puntiformes e iguais, mas de sinais contrários, estão colocadas fixas e separadas, conforme representa a figura.\n\nDesconsiderando posições no infinito, é possível encontrar uma posição onde uma terceira carga, de prova, seja colocada e sobre a qual a força resultante seja nula?",
+      "opcoes": {
+        "A": "Sim, à direita da carga negativa.",
+        "B": "Sim, entre as cargas, mas próxima da carga negativa.",
+        "C": "Sim, no ponto médio entre as cargas.",
+        "D": "Sim, à esquerda da carga positiva.",
+        "E": "Não, inexiste tal posição."
+      }
+    },
+    {
+      "id": "UFRGS-2024-F-27",
+      "ano": 2024,
+      "instituicao": "UFRGS",
+      "numero": 27,
+      "area": "Eletromagnetismo",
+      "subarea": "Lei de Faraday / Indução eletromagnética",
+      "imagem": "ufrgs-2024-q27.png",
+      "enunciado": "O gráfico abaixo mostra a variação temporal do fluxo magnético que atravessa uma espira metálica.\n\nAssinale a alternativa que melhor representa a força eletromotriz induzida na espira, decorrente da variação do fluxo magnético no seu interior.",
+      "opcoes": {
+        "A": "[Gráfico A]",
+        "B": "[Gráfico B]",
+        "C": "[Gráfico C]",
+        "D": "[Gráfico D]",
+        "E": "[Gráfico E]"
+      }
+    },
+    {
+      "id": "UFRGS-2024-F-28",
+      "ano": 2024,
+      "instituicao": "UFRGS",
+      "numero": 28,
+      "area": "Eletromagnetismo",
+      "subarea": "Força magnética sobre cargas em movimento",
+      "imagem": null,
+      "enunciado": "Três partículas eletricamente carregadas movem-se, separadamente, em regiões distintas onde existem campos magnéticos perpendiculares às suas velocidades. Complete as lacunas na tabela abaixo, que indica os sentidos das quantidades listadas (usando o referencial cartesiano +x, +y, +z).\n\nPartícula 1: carga negativa, velocidade +z, campo magnético +y, força resultante = ?\nPartícula 2: carga positiva, velocidade ?, campo magnético [dado], força resultante = ?\nPartícula 3: carga negativa, velocidade ?, campo magnético −x, força resultante +z\n\nAssinale a alternativa que preenche corretamente a tabela.",
+      "opcoes": {
+        "A": "1: −x ; 2: −x ; 3: −y",
+        "B": "1: +y ; 2: −x ; 3: +z",
+        "C": "1: +x ; 2: +x ; 3: +y",
+        "D": "1: +z ; 2: −x ; 3: −y",
+        "E": "1: −y ; 2: −x ; 3: +z"
+      }
+    },
+    {
+      "id": "UFRGS-2024-F-29",
+      "ano": 2024,
+      "instituicao": "UFRGS",
+      "numero": 29,
+      "area": "Física Moderna",
+      "subarea": "Relatividade Especial / Equivalência massa-energia",
+      "imagem": null,
+      "enunciado": "A energia produzida pelo Sol provém da conversão de sua massa em energia nas reações de fusão dos átomos de H que o formam. Sabendo que a luminosidade do Sol, isto é, a energia que ele irradia por segundo, é da ordem de 3,8 × 10²⁶ W e que a velocidade da luz é da ordem de 3,0 × 10⁸ m/s, a massa solar consumida diariamente é de, aproximadamente,",
+      "opcoes": {
+        "A": "1,5 × 10¹² kg.",
+        "B": "3,6 × 10¹⁴ kg.",
+        "C": "2,4 × 10²⁰ kg.",
+        "D": "1,1 × 10²³ kg.",
+        "E": "4,0 × 10³⁸ kg."
+      }
+    },
+    {
+      "id": "UFRGS-2024-F-30",
+      "ano": 2024,
+      "instituicao": "UFRGS",
+      "numero": 30,
+      "area": "Física Moderna",
+      "subarea": "Efeito fotoelétrico / Modelo atômico de Bohr",
+      "imagem": null,
+      "enunciado": "Considere as afirmações abaixo, acerca das teorias da Física moderna.\n\nI - As energias dos elétrons emitidos variam com a frequência da luz incidente, quando luz incide sobre uma superfície metálica.\nII - A massa de um fóton depende de sua frequência.\nIII - Um fóton é emitido por um átomo, quando um de seus elétrons orbitais salta de um nível de energia maior para um de energia menor.\n\nQuais estão corretas?",
+      "opcoes": {
+        "A": "Apenas I.",
+        "B": "Apenas II.",
+        "C": "Apenas I e III.",
+        "D": "Apenas II e III.",
+        "E": "I, II e III."
+      }
+    },
+
+    {
+      "id": "UFRGS-2025-F-16",
+      "ano": 2025,
+      "instituicao": "UFRGS",
+      "numero": 16,
+      "area": "Cinemática",
+      "subarea": "Referencial inercial / Lançamento oblíquo",
+      "imagem": "ufrgs-2025-q16.png",
+      "enunciado": "Enquanto percorre um trecho de trajetória horizontal e retilínea com velocidade constante de 3,0 m/s, medida por um observador em repouso, um garoto, andando de skate, joga verticalmente para cima uma bolinha de tênis com velocidade inicial de 5,0 m/s, medida em seu referencial. Mantendo a mão na mesma posição em que a lançou, o garoto a pega de volta na queda.\n\nConsidere o módulo da aceleração da gravidade igual a 10,0 m/s² e despreze o atrito com o ar.\n\nQual dos gráficos abaixo melhor representa a trajetória percorrida pela bolinha, como vista pelo observador em repouso?",
+      "opcoes": {
+        "A": "[Gráfico A]",
+        "B": "[Gráfico B]",
+        "C": "[Gráfico C]",
+        "D": "[Gráfico D]",
+        "E": "[Gráfico E]"
+      }
+    },
+    {
+      "id": "UFRGS-2025-F-17",
+      "ano": 2025,
+      "instituicao": "UFRGS",
+      "numero": 17,
+      "area": "Dinâmica",
+      "subarea": "Peso aparente / Elevador",
+      "imagem": "ufrgs-2025-q17.png",
+      "enunciado": "Um estudante de peso P, interessado em verificar a segunda Lei de Newton, coloca uma balança calibrada em newtons no chão de um elevador, que está inicialmente parado. Ele se posiciona sobre a balança e aciona o elevador para subir.\n\nA figura abaixo representa a situação descrita.\n\nNo movimento ascendente do elevador, o estudante constata que:\n\n– no intervalo de tempo 0 ≤ t ≤ t₁, o elevador sobe com aceleração constante de módulo a < g, onde g é o módulo da aceleração da gravidade, e a balança indica um valor F₁;\n– no intervalo de tempo t₁ < t < t₂, o elevador sobe com movimento uniforme, e a balança indica um valor F₂;\n– no intervalo de tempo t₂ ≤ t ≤ t₃, o elevador continua subindo, freando até parar, com uma aceleração constante de módulo a, e a balança indica um valor F₃;\n– para t > t₃, o elevador está parado.\n\nQual dos gráficos abaixo melhor representa os valores de F₁, F₂ e F₃ em função do tempo t, comparativamente ao peso P do estudante?",
+      "opcoes": {
+        "A": "[Gráfico A]",
+        "B": "[Gráfico B]",
+        "C": "[Gráfico C]",
+        "D": "[Gráfico D]",
+        "E": "[Gráfico E]"
+      }
+    },
+    {
+      "id": "UFRGS-2025-F-18",
+      "ano": 2025,
+      "instituicao": "UFRGS",
+      "numero": 18,
+      "area": "Gravitação",
+      "subarea": "Comparação Terra-Lua / Energia mecânica",
+      "imagem": null,
+      "enunciado": "Um objeto é lançado verticalmente com velocidade de módulo v, a partir da superfície terrestre, e atinge uma altura máxima h_T.\n\nEsse mesmo objeto, quando lançado verticalmente com velocidade de igual módulo v, a partir da superfície lunar, atinge uma altura máxima h_L.\n\nSabendo que a aceleração da gravidade na superfície lunar é aproximadamente um sexto da aceleração da gravidade na Terra e desprezando atritos de qualquer natureza, considere as afirmações abaixo.\n\nI - A altura máxima h_L na Lua é maior que a altura máxima h_T na Terra.\nII - A variação da energia potencial gravitacional na experiência realizada na Lua é maior que a variação da energia potencial gravitacional na experiência realizada na Terra.\nIII - A variação da energia mecânica na experiência realizada na Lua é igual à variação da energia mecânica na experiência realizada na Terra.\n\nQuais estão corretas?",
+      "opcoes": {
+        "A": "Apenas I.",
+        "B": "Apenas II.",
+        "C": "Apenas I e III.",
+        "D": "Apenas II e III.",
+        "E": "I, II e III."
+      }
+    },
+    {
+      "id": "UFRGS-2025-F-19",
+      "ano": 2025,
+      "instituicao": "UFRGS",
+      "numero": 19,
+      "area": "Dinâmica",
+      "subarea": "Conservação do momento linear / Colisão elástica e inelástica",
+      "imagem": null,
+      "enunciado": "Assinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nUm objeto de massa 5,0 kg, movendo-se com velocidade constante de 8,0 m/s ao longo de uma trajetória horizontal e retilínea sem atrito, choca-se frontalmente com um objeto de 10,0 kg de massa, parado. Após o choque, o primeiro objeto recua com uma velocidade de 2,0 m/s e o segundo objeto passa a mover-se com uma velocidade de módulo ........ . A colisão entre os dois objetos é ........ .",
+      "opcoes": {
+        "A": "3,0 m/s − elástica",
+        "B": "3,0 m/s − inelástica",
+        "C": "5,0 m/s − elástica",
+        "D": "5,0 m/s − inelástica",
+        "E": "6,0 m/s – elástica"
+      }
+    },
+    {
+      "id": "UFRGS-2025-F-20",
+      "ano": 2025,
+      "instituicao": "UFRGS",
+      "numero": 20,
+      "area": "Fluidos",
+      "subarea": "Pressão hidrostática",
+      "imagem": null,
+      "enunciado": "A pressão na superfície de uma piscina, com 3 m de profundidade e com água até a borda, é a pressão atmosférica P_atm = 101 kPa. Considere o módulo da aceleração da gravidade, g, igual a 10 m/s² e a massa específica da água ϱ = 10³ kg/m³.\n\nAssinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nA pressão absoluta em um ponto a uma profundidade de 2 m vale ........ kPa, e o valor da pressão manométrica nesse mesmo ponto é ........ kPa.",
+      "opcoes": {
+        "A": "111 − 101",
+        "B": "121 − 20",
+        "C": "121 − 101",
+        "D": "141 − 20",
+        "E": "141 – 101"
+      }
+    },
+    {
+      "id": "UFRGS-2025-F-21",
+      "ano": 2025,
+      "instituicao": "UFRGS",
+      "numero": 21,
+      "area": "Termologia",
+      "subarea": "Dilatação linear",
+      "imagem": "ufrgs-2025-q21.png",
+      "enunciado": "Duas barras metálicas, X e Y, com comprimentos respectivamente iguais a L₀ e 1,5 L₀, são submetidas à mesma variação de temperatura ΔT, conforme figura abaixo.\n\nSendo α_X e α_Y, respectivamente, os coeficientes de dilatação linear de X e Y, a razão α_X/α_Y é igual a",
+      "opcoes": {
+        "A": "1/2.",
+        "B": "2/3.",
+        "C": "1.",
+        "D": "3/2.",
+        "E": "2."
+      }
+    },
+    {
+      "id": "UFRGS-2025-F-22",
+      "ano": 2025,
+      "instituicao": "UFRGS",
+      "numero": 22,
+      "area": "Termodinâmica",
+      "subarea": "Ciclo de Carnot / Eficiência",
+      "imagem": null,
+      "enunciado": "Uma máquina térmica, operando no ciclo de Carnot, extrai 1500 J de energia do reservatório quente, cuja temperatura é de 250 K. A eficiência máxima da máquina, o trabalho realizado e a energia liberada para o reservatório frio a 150 K, por ciclo de operação da máquina, são, respectivamente,",
+      "opcoes": {
+        "A": "2/5 − 600 J − 900 J.",
+        "B": "2/5 − 900 J − 600 J.",
+        "C": "2/3 − 500 J − 1000 J.",
+        "D": "2/3 − 600 J − 900 J.",
+        "E": "2/3 − 1000 J − 500 J."
+      }
+    },
+    {
+      "id": "UFRGS-2025-F-23",
+      "ano": 2025,
+      "instituicao": "UFRGS",
+      "numero": 23,
+      "area": "Termodinâmica",
+      "subarea": "Leis da Termodinâmica",
+      "imagem": null,
+      "enunciado": "No bloco superior abaixo, são listadas Leis da Termodinâmica; no bloco inferior, frases que caracterizam cada uma dessas leis.\n\nAssocie adequadamente o bloco inferior ao superior.\n\n1 - Lei Zero da Termodinâmica\n2 - 1ª Lei da Termodinâmica\n3 - 2ª Lei da Termodinâmica\n\n( ) O calor não flui espontaneamente de uma região mais fria para uma região mais quente.\n( ) O calor fornecido a um sistema termodinâmico é consumido na variação da energia interna deste sistema e na realização de trabalho contra forças externas que agem sobre ele.\n( ) Se dois sistemas termodinâmicos estão em equilíbrio térmico com um terceiro, então eles estão em equilíbrio térmico entre si.\n\nA sequência correta de preenchimento dos parênteses, de cima para baixo, é",
+      "opcoes": {
+        "A": "1 – 2 – 3.",
+        "B": "1 – 3 – 2.",
+        "C": "2 – 1 – 3.",
+        "D": "3 – 1 – 2.",
+        "E": "3 – 2 – 1."
+      }
+    },
+    {
+      "id": "UFRGS-2025-F-24",
+      "ano": 2025,
+      "instituicao": "UFRGS",
+      "numero": 24,
+      "area": "Ondulatória",
+      "subarea": "Ondas estacionárias em cordas e tubos sonoros",
+      "imagem": "ufrgs-2025-q24.png",
+      "enunciado": "A figura abaixo mostra duas configurações de cada uma de duas ondas estacionárias em duas cordas idênticas, X e Y, fixas nas duas extremidades e igualmente tensionadas.\n\nConsidere f_X e f_Y, respectivamente, as frequências das ondas nas cordas X e Y.\n\nAs figuras seguintes mostram duas configurações de cada uma de duas ondas estacionárias de frequências f_X' e f_Y' em tubos sonoros abertos e idênticos.\n\nAssinale a alternativa em que a razão f_X'/f_Y' é igual à razão f_X/f_Y.",
+      "opcoes": {
+        "A": "[Figura A]",
+        "B": "[Figura B]",
+        "C": "[Figura C]",
+        "D": "[Figura D]",
+        "E": "[Figura E]"
+      }
+    },
+    {
+      "id": "UFRGS-2025-F-25",
+      "ano": 2025,
+      "instituicao": "UFRGS",
+      "numero": 25,
+      "area": "Óptica",
+      "subarea": "Espelhos côncavos / Raios notáveis",
+      "imagem": null,
+      "enunciado": "Um método útil de localizar as imagens formadas por um espelho esférico é utilizar a construção geométrica de um diagrama de raios luminosos.\n\nConsidere as afirmações abaixo, para um espelho côncavo.\n\nI - Raios luminosos que atingem o espelho paralelamente ao seu eixo principal são refletidos através do ponto focal.\nII - Raios luminosos que divergem de uma fonte puntiforme colocada no ponto focal do espelho são refletidos pelo espelho como raios paralelos ao seu eixo principal.\nIII - Raios luminosos que atingem o espelho, passando pelo seu centro de curvatura, são refletidos paralelamente ao eixo principal do espelho.\n\nQuais estão corretas?",
+      "opcoes": {
+        "A": "Apenas I.",
+        "B": "Apenas III.",
+        "C": "Apenas I e II.",
+        "D": "Apenas II e III.",
+        "E": "I, II e III."
+      }
+    },
+    {
+      "id": "UFRGS-2025-F-26",
+      "ano": 2025,
+      "instituicao": "UFRGS",
+      "numero": 26,
+      "area": "Eletrostática",
+      "subarea": "Equilíbrio de cargas / Lei de Coulomb",
+      "imagem": "ufrgs-2025-q26.png",
+      "enunciado": "Duas cargas elétricas puntiformes iguais a q, e de mesma massa m, são colocadas em um recipiente isolante hemisférico liso de raio R. Depois que o equilíbrio de forças é atingido, as cargas elétricas, representadas por círculos cinza na figura abaixo, arranjam-se conforme mostrado.\n\nA partir da figura, assinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nA geometria do arranjo nos permite calcular o ângulo θ como sendo dado por ........ . Em particular, para um arranjo que resultasse em θ = 45º, a separação 2L entre as cargas elétricas seria igual a ........ .\n\nConsidere g como o módulo da aceleração da gravidade local e k a constante elétrica de Coulomb.",
+      "opcoes": {
+        "A": "arctan(4mgL²/(kq²)) – g(kq/m)^(1/2)",
+        "B": "arctan(kq²/(4mgL²)) – g(m/kq)^(1/2)",
+        "C": "arctan(mg/(4kq²L²)) – q(k/(mg))^(1/2)",
+        "D": "arctan(kq²/(4mgL²)) – q(kg/m)^(1/2)",
+        "E": "arctan(4mgL²/(kq²)) – q(k/(mg))^(1/2)"
+      }
+    },
+    {
+      "id": "UFRGS-2025-F-27",
+      "ano": 2025,
+      "instituicao": "UFRGS",
+      "numero": 27,
+      "area": "Eletromagnetismo",
+      "subarea": "Espectrômetro de massa / Força magnética",
+      "imagem": "ufrgs-2025-q27.png",
+      "enunciado": "Um feixe contendo partículas com cargas de mesmo módulo, mesma velocidade v e com massas m₁ e m₂ = 2m₁ penetra em uma região onde existe um campo magnético B, perpendicularmente a ele.\n\nA figura abaixo representa a situação descrita.\n\nAs semicircunferências a e b representam as trajetórias seguidas pelas cargas. Com base na figura, pode-se afirmar que",
+      "opcoes": {
+        "A": "a trajetória a pertence à partícula de menor massa, que tem carga negativa.",
+        "B": "a trajetória b pertence à partícula de menor massa, que tem carga positiva.",
+        "C": "a trajetória a pertence à partícula de maior massa, que tem carga negativa.",
+        "D": "a trajetória b pertence à partícula de maior massa, que tem carga negativa.",
+        "E": "a trajetória a pertence à partícula de maior massa, que tem carga positiva."
+      }
+    },
+    {
+      "id": "UFRGS-2025-F-28",
+      "ano": 2025,
+      "instituicao": "UFRGS",
+      "numero": 28,
+      "area": "Eletromagnetismo",
+      "subarea": "Transformador elétrico / Lei de Faraday",
+      "imagem": "ufrgs-2025-q28.png",
+      "enunciado": "A figura abaixo esquematiza um transformador elétrico ideal: duas bobinas, 1 e 2, com diferentes números de espiras enroladas em um núcleo de ferro.\n\nConsidere as seguintes afirmações sobre os transformadores elétricos.\n\nI - Os transformadores elétricos são dispositivos que transferem energia elétrica de uma bobina para outra.\nII - O princípio físico básico de funcionamento dos transformadores é a lei da indução eletromagnética de Faraday.\nIII - Os transformadores elétricos podem funcionar com tensões elétricas tanto contínuas quanto alternadas.\n\nQuais estão corretas?",
+      "opcoes": {
+        "A": "Apenas I.",
+        "B": "Apenas III.",
+        "C": "Apenas I e II.",
+        "D": "Apenas II e III.",
+        "E": "I, II e III."
+      }
+    },
+    {
+      "id": "UFRGS-2025-F-29",
+      "ano": 2025,
+      "instituicao": "UFRGS",
+      "numero": 29,
+      "area": "Física Moderna",
+      "subarea": "Decaimento radioativo",
+      "imagem": null,
+      "enunciado": "As equações abaixo apresentam algumas reações de decaimento espontâneo de alguns isótopos do elemento Plutônio ⁹⁴Pu:\n\n1. ⁹⁴Pu²³⁵ → [lacuna] + e⁺ + ν\n2. ⁹⁴Pu²³⁷ + e⁻ → [lacuna] + ν\n3. ⁹⁴Pu²⁴¹ → [lacuna] + e⁻ + ν̄\n\nonde e⁻ (e⁺) representa um elétron (pósitron) e ν (ν̄) representa um neutrino (antineutrino).\n\nAs reações contêm lacunas sobre os produtos das reações. A lista abaixo apresenta eventuais possibilidades para preencher as lacunas:\n\n⁹³Np²³⁵, ⁹³Np²³⁶, ⁹³Np²³⁷, ⁹³Np²⁴¹, ⁹³Np²⁴², ⁹⁵Am²³⁵, ⁹⁵Am²³⁶, ⁹⁵Am²³⁷, ⁹⁵Am²⁴¹, ⁹⁵Am²⁴².\n\nAssinale a alternativa em que os elementos da lista acima preenchem corretamente as lacunas das equações, na ordem em que aparecem.",
+      "opcoes": {
+        "A": "1 – ⁹⁵Am²³⁶ ; 2 – ⁹³Np²³⁷ ; 3 – ⁹³Np²⁴¹",
+        "B": "1 – ⁹³Np²³⁵ ; 2 – ⁹³Np²³⁷ ; 3 – ⁹⁵Am²⁴¹",
+        "C": "1 – ⁹⁵Am²³⁵ ; 2 – ⁹⁵Am²³⁷ ; 3 – ⁹⁵Am²⁴¹",
+        "D": "1 – ⁹⁵Am²³⁵ ; 2 – ⁹⁵Am²³⁷ ; 3 – ⁹³Np²⁴¹",
+        "E": "1 – ⁹³Np²³⁵ ; 2 – ⁹³Np²³⁶ ; 3 – ⁹⁵Am²⁴²"
+      }
+    },
+    {
+      "id": "UFRGS-2025-F-30",
+      "ano": 2025,
+      "instituicao": "UFRGS",
+      "numero": 30,
+      "area": "Física Moderna",
+      "subarea": "Radiação térmica / Lei de Stefan-Boltzmann",
+      "imagem": null,
+      "enunciado": "Com boa aproximação, a lei da irradiação de Stefan-Boltzmann, I = σT⁴, medida em W/m², permite calcular a temperatura média da Terra. Supondo-a sem atmosfera e como um corpo negro ideal à temperatura T, o balanço energético entre a irradiação recebida do Sol e a transmitida pela Terra de volta ao espaço fornece T ~ 255 K (~ −18 ºC) para a temperatura média da Terra.\n\nEntretanto, sabe-se que a temperatura média da Terra é de ~ 288 K (~ 15 ºC), ou seja, 33 ºC mais quente do que a hipótese da inexistência da atmosfera. Esse aquecimento adicional é o que se chama de \"efeito estufa\", no qual alguns gases da atmosfera, como por exemplo o dióxido de carbono e o metano, absorvem e reemitem radiação infravermelha.\n\nSabendo que a constante de Stefan-Boltzmann σ = 5,67 × 10⁻⁸ W/(m²K⁴), a irradiação infravermelha emitida pela atmosfera é, em W/m², aproximadamente",
+      "opcoes": {
+        "A": "150.",
+        "B": "240.",
+        "C": "308.",
+        "D": "390.",
+        "E": "602."
+      }
+    },
+
+    {
+      "id": "UFRGS-2026-F-16",
+      "ano": 2026,
+      "instituicao": "UFRGS",
+      "numero": 16,
+      "area": "Cinemática",
+      "subarea": "Lançamento oblíquo",
+      "imagem": "ufrgs-2026-q16.png",
+      "enunciado": "A figura abaixo representa a trajetória parabólica de um objeto lançado obliquamente ao ar, com velocidade inicial v⃗₀ e ângulo θ₀ com a direção horizontal.\n\nAs posições indicadas por A e C têm a mesma coordenada vertical, e a posição B assinala o ponto mais alto da trajetória.\n\nDesprezando a resistência do ar, assinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nNos pontos A e C, o objeto possui velocidades com o mesmo ........ . No ponto B, o módulo da velocidade é ........ , e o módulo da aceleração é ........ . A componente ........ da velocidade permanece constante durante todo o movimento. No ponto C, o vetor aceleração aponta ........ .",
+      "opcoes": {
+        "A": "módulo – mínimo – não nulo – horizontal – para baixo",
+        "B": "módulo – constante – nulo – horizontal – para baixo",
+        "C": "módulo – mínimo – não nulo – vertical – para baixo",
+        "D": "sentido – mínimo – nulo – vertical – tangencialmente à trajetória",
+        "E": "sentido – constante – nulo – vertical – tangencialmente à trajetória"
+      }
+    },
+    {
+      "id": "UFRGS-2026-F-17",
+      "ano": 2026,
+      "instituicao": "UFRGS",
+      "numero": 17,
+      "area": "Gravitação",
+      "subarea": "Terceira Lei de Kepler / Período orbital",
+      "imagem": "ufrgs-2026-q17.png",
+      "enunciado": "A figura a seguir representa um sistema solar alternativo com dois planetas A e B. O planeta A está a 1,0 × 10⁸ km do astro central S e realiza uma órbita circunferencial completa em 1 ano. O planeta B orbita o mesmo astro a uma distância de 4,0 × 10⁸ km, também descrevendo uma órbita circunferencial.\n\nSabendo que os dois planetas estão hoje alinhados com S, o tempo mínimo para que eles voltem a estar alinhados com S na mesma sequência S – A – B é de",
+      "opcoes": {
+        "A": "7/8 anos.",
+        "B": "8/7 anos.",
+        "C": "14/8 anos.",
+        "D": "15/7 anos.",
+        "E": "8 anos."
+      }
+    },
+    {
+      "id": "UFRGS-2026-F-18",
+      "ano": 2026,
+      "instituicao": "UFRGS",
+      "numero": 18,
+      "area": "Dinâmica",
+      "subarea": "Centro de massa / Conservação do momento linear",
+      "imagem": "ufrgs-2026-q18.png",
+      "enunciado": "Considere duas partículas, A e B, de massas diferentes, localizadas sobre uma superfície horizontal sem atrito. No instante inicial, a partícula A está em repouso em x = 0, enquanto a partícula B, em x = –1 m, se move com velocidade constante de módulo V para a direita. A situação está esquematizada na figura abaixo.\n\nDesprezando forças externas, assinale a alternativa correta sobre o movimento do centro de massa do sistema formado por A e B no referencial apresentado.",
+      "opcoes": {
+        "A": "O centro de massa está em repouso, pois a partícula A está parada.",
+        "B": "O centro de massa move-se com velocidade constante, igual à de B.",
+        "C": "O centro de massa move-se com velocidade de módulo constante inferior a V, no mesmo sentido de movimento de B.",
+        "D": "O centro de massa oscila entre as partículas A e B.",
+        "E": "O centro de massa acelera, pois apenas uma partícula está em movimento."
+      }
+    },
+    {
+      "id": "UFRGS-2026-F-19",
+      "ano": 2026,
+      "instituicao": "UFRGS",
+      "numero": 19,
+      "area": "Dinâmica",
+      "subarea": "Trabalho / Teorema trabalho-energia",
+      "imagem": "ufrgs-2026-q19.png",
+      "enunciado": "Uma força F⃗ de módulo constante igual a 10 N é aplicada sobre uma caixa de massa 1 kg, paralelamente à superfície de um plano inclinado sem atrito, como representado na figura abaixo.\n\nConsiderando o módulo da aceleração da gravidade g = 10 m/s², quando a caixa chega ao topo do plano, os trabalhos realizados pela força F⃗ e pela força da gravidade durante o percurso terão sido, respectivamente,",
+      "opcoes": {
+        "A": "50 J e 0 J.",
+        "B": "50 J e −30 J.",
+        "C": "50 J e −50 J.",
+        "D": "30 J e −50 J.",
+        "E": "30 J e −30 J."
+      }
+    },
+    {
+      "id": "UFRGS-2026-F-20",
+      "ano": 2026,
+      "instituicao": "UFRGS",
+      "numero": 20,
+      "area": "Fluidos",
+      "subarea": "Princípio de Pascal / Elevador hidráulico",
+      "imagem": "ufrgs-2026-q20.png",
+      "enunciado": "Um elevador hidráulico é composto por dois êmbolos interligados por vasos comunicantes contendo fluido incompressível, como representa a figura abaixo.\n\nUm automóvel com peso P encontra-se sobre o êmbolo 2, de área de seção reta A₂. Para levantar esse automóvel, aplica-se uma força sobre o êmbolo 1, de área de seção reta A₁, fazendo com que ele desça uma altura h₁.\n\nCom base nessas informações, assinale a alternativa que apresenta, correta e respectivamente, a pressão p₁ que deve ser aplicada no êmbolo 1 para que o automóvel se eleve de uma altura h₂.",
+      "opcoes": {
+        "A": "p₁ = P/A₁ ; h₂ = (A₂/A₁) h₁",
+        "B": "p₁ = P/A₂ ; h₂ = (A₁/A₂) h₁",
+        "C": "p₁ = P/A₂ ; h₂ = h₁",
+        "D": "p₁ = P/A₂ ; h₂ = (A₂/A₁) h₁",
+        "E": "p₁ = P/A₁ ; h₂ = (A₁/A₂) h₁"
+      }
+    },
+    {
+      "id": "UFRGS-2026-F-21",
+      "ano": 2026,
+      "instituicao": "UFRGS",
+      "numero": 21,
+      "area": "Termodinâmica",
+      "subarea": "Gás ideal / Diagrama P-V / Temperatura",
+      "imagem": "ufrgs-2026-q21.png",
+      "enunciado": "A figura a seguir, em que P é pressão e V é volume, representa um processo termodinâmico onde um gás ideal passa por duas transformações sucessivas A → B → C. No estado A, a temperatura é T_A = 300 K. [Diagrama P-V: A(P=3 atm, V=2 L) →isobárica→ B(P=3 atm, V=6 L) →isocórica→ C(P=6 atm, V=6 L)]\n\nSabendo que a quantidade de gás permanece constante durante o processo, a temperatura final, T_C, é de",
+      "opcoes": {
+        "A": "900 K.",
+        "B": "1200 K.",
+        "C": "1500 K.",
+        "D": "1800 K.",
+        "E": "2400 K."
+      }
+    },
+    {
+      "id": "UFRGS-2026-F-22",
+      "ano": 2026,
+      "instituicao": "UFRGS",
+      "numero": 22,
+      "area": "Termodinâmica",
+      "subarea": "Segunda Lei da Termodinâmica / Entropia",
+      "imagem": null,
+      "enunciado": "A Segunda Lei da Termodinâmica estabelece limitações fundamentais aos processos de conversão de energia e introduz o conceito de entropia como grandeza associada à irreversibilidade dos fenômenos naturais.\n\nCom base nessa lei e em suas aplicações, assinale com V (verdadeiro) ou F (falso) as afirmações abaixo.\n\n( ) A Segunda Lei da Termodinâmica proíbe a existência de qualquer processo que converta integralmente calor em trabalho útil, sem que haja outras transformações ou transferências de energia.\n( ) A entropia de um sistema isolado jamais pode diminuir, sendo constante apenas em processos reversíveis ideais.\n( ) Nenhuma máquina térmica real, operando entre duas fontes térmicas, pode ter eficiência maior do que a de uma máquina de Carnot operando entre as mesmas fontes.\n( ) A variação de entropia de um sistema isolado está diretamente relacionada ao caráter espontâneo e ao sentido natural dos processos termodinâmicos.\n\nA sequência correta de preenchimento dos parênteses, de cima para baixo, é",
+      "opcoes": {
+        "A": "V – V – V – V.",
+        "B": "V – V – F – F.",
+        "C": "V – F – F – V.",
+        "D": "F – V – V – V.",
+        "E": "F – F – V – F."
+      }
+    },
+    {
+      "id": "UFRGS-2026-F-23",
+      "ano": 2026,
+      "instituicao": "UFRGS",
+      "numero": 23,
+      "area": "Oscilações",
+      "subarea": "Pêndulo simples / Período e frequência",
+      "imagem": null,
+      "enunciado": "Assinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nUm pêndulo simples foi calibrado na Terra para funcionar como instrumento de marcação de tempo. Ao ser levado para a Lua, a frequência de oscilação do pêndulo ........ . Para que o pêndulo volte a oscilar com a mesma frequência que apresentava na Terra, o comprimento do seu fio deve ser ........ .",
+      "opcoes": {
+        "A": "aumenta – aumentado",
+        "B": "aumenta – diminuído",
+        "C": "mantém-se constante – aumentado",
+        "D": "diminui – aumentado",
+        "E": "diminui – diminuído"
+      }
+    },
+    {
+      "id": "UFRGS-2026-F-24",
+      "ano": 2026,
+      "instituicao": "UFRGS",
+      "numero": 24,
+      "area": "Ondulatória",
+      "subarea": "Características do som / Acústica",
+      "imagem": null,
+      "enunciado": "No bloco da esquerda abaixo, estão listadas algumas características das ondas sonoras; no da direita, algumas propriedades dessas características. Associe adequadamente os dois blocos.\n\n1. Intensidade\n2. Frequência\n3. Timbre\n4. Batimento\n\n( ) Relaciona-se à altura do som percebido.\n( ) Corresponde à variação periódica no volume do som.\n( ) Depende da presença de harmônicos além do tom fundamental.\n( ) Relaciona-se à amplitude da onda sonora.\n\nA sequência correta de preenchimento dos parênteses, de cima para baixo, é",
+      "opcoes": {
+        "A": "1 – 2 – 3 – 4.",
+        "B": "2 – 4 – 3 – 1.",
+        "C": "3 – 1 – 4 – 2.",
+        "D": "4 – 1 – 3 – 2.",
+        "E": "4 – 2 – 1 – 3."
+      }
+    },
+    {
+      "id": "UFRGS-2026-F-25",
+      "ano": 2026,
+      "instituicao": "UFRGS",
+      "numero": 25,
+      "area": "Óptica",
+      "subarea": "Refração da luz / Óptica Física",
+      "imagem": "ufrgs-2026-q25.png",
+      "enunciado": "A figura abaixo representa um raio de luz monocromática, que incide obliquamente do meio 1 para o meio 2, sofrendo refração de forma que θ₁ é maior do que θ₂.\n\nCom base na figura e nos princípios da óptica física, considere as afirmações abaixo.\n\nI - A velocidade da luz no meio 2 é menor do que no meio 1.\nII - O índice de refração do meio 2 é maior do que o do meio 1.\nIII - A frequência da luz no meio 2 é menor do que no meio 1.\n\nQuais estão corretas?",
+      "opcoes": {
+        "A": "Apenas I.",
+        "B": "Apenas II.",
+        "C": "Apenas III.",
+        "D": "Apenas I e II.",
+        "E": "I, II e III."
+      }
+    },
+    {
+      "id": "UFRGS-2026-F-26",
+      "ano": 2026,
+      "instituicao": "UFRGS",
+      "numero": 26,
+      "area": "Eletrostática",
+      "subarea": "Distribuição de cargas em condutores / Equilíbrio eletrostático",
+      "imagem": "ufrgs-2026-q26.png",
+      "enunciado": "Duas esferas metálicas condutoras estão eletricamente isoladas e são colocadas próximas uma da outra, conforme representa a figura abaixo.\n\nA esfera A tem raio R e carga elétrica −7e, e a esfera B tem raio R/2 e carga elétrica −5e, em que e é o valor da carga elementar.\n\nAs esferas são colocadas em contato elétrico e, após atingirem o equilíbrio eletrostático, são afastadas.\n\nAssinale a alternativa que apresenta, correta e respectivamente, a carga final das esferas A e B.",
+      "opcoes": {
+        "A": "−9e ; −3e.",
+        "B": "−8e ; −4e.",
+        "C": "−7e ; −5e.",
+        "D": "−6e ; −6e.",
+        "E": "−4e ; −8e."
+      }
+    },
+    {
+      "id": "UFRGS-2026-F-27",
+      "ano": 2026,
+      "instituicao": "UFRGS",
+      "numero": 27,
+      "area": "Eletromagnetismo",
+      "subarea": "Indução eletromagnética / Lei de Faraday e Lenz",
+      "imagem": null,
+      "enunciado": "Uma versão dos chamados \"pardais\" (radares de velocidade) pode utilizar bobinas instaladas sob o asfalto para medir a velocidade de veículos. Quando um carro passa sobre as bobinas, suas partes metálicas perturbam o campo magnético na região, fazendo variar o fluxo magnético através das espiras. Essa variação gera pulsos elétricos que permitem calcular a velocidade do automóvel.\n\nEm relação a esses equipamentos, assinale com V (verdadeiro) ou F (falso) as seguintes afirmações.\n\n( ) O funcionamento desse tipo de pardal depende de pressão mecânica sobre o asfalto.\n( ) A passagem do veículo provoca variação do fluxo magnético nas bobinas, o que induz uma força eletromotriz (fem) detectável, de acordo com a lei de Faraday.\n( ) A corrente induzida, segundo a Lei de Lenz, surge no mesmo sentido da variação do fluxo magnético que a originou.\n( ) O intervalo de tempo entre os pulsos gerados em duas bobinas, colocadas a uma distância conhecida, permite determinar o módulo da velocidade do veículo pela relação v = d/Δt.\n\nA sequência correta de preenchimento dos parênteses, de cima para baixo, é",
+      "opcoes": {
+        "A": "F – V – F – V.",
+        "B": "V – V – F – F.",
+        "C": "F – F – V – V.",
+        "D": "V – F – F – F.",
+        "E": "F – V – V – V."
+      }
+    },
+    {
+      "id": "UFRGS-2026-F-28",
+      "ano": 2026,
+      "instituicao": "UFRGS",
+      "numero": 28,
+      "area": "Física Moderna",
+      "subarea": "Física de partículas / Produção de pares",
+      "imagem": null,
+      "enunciado": "Um exemplo de produção de pares no mundo subatômico é o do decaimento de um fóton em um par elétron-pósitron nas proximidades de um núcleo atômico. Nesse processo, um fóton decai no par constituído por um elétron (partícula) e um pósitron (a antipartícula do elétron).\n\nConsiderando o processo do sistema isolado núcleo+fóton se transformando no sistema isolado núcleo+elétron+pósitron, pode-se afirmar que, durante sua ocorrência, existe",
+      "opcoes": {
+        "A": "conservação da quantidade de movimento linear e conservação da velocidade do núcleo.",
+        "B": "conservação da massa e da energia.",
+        "C": "conservação da carga e da energia.",
+        "D": "conservação da quantidade de movimento angular e conservação da massa.",
+        "E": "conservação da energia e conservação da velocidade do núcleo."
+      }
+    },
+    {
+      "id": "UFRGS-2026-F-29",
+      "ano": 2026,
+      "instituicao": "UFRGS",
+      "numero": 29,
+      "area": "Física Moderna",
+      "subarea": "Física Quântica / Velha Mecânica Quântica",
+      "imagem": null,
+      "enunciado": "O ano de 2025 foi proclamado pela ONU/UNESCO como o Ano Internacional da Ciência e Tecnologia Quânticas, pois marca o centenário da Mecânica Quântica, ciência que revolucionou o entendimento da matéria e da radiação através dos trabalhos de Werner Heisenberg, Max Born e Pascual Jordan. Já a chamada Velha Mecânica Quântica (1900–1925), com contribuições de Max Planck, Albert Einstein, Niels Bohr e Louis de Broglie, entre outros, introduziu as ideias fundamentais que culminaram no sucesso de 1925.\n\nEntre os conceitos propostos nesse primeiro período estão:\n- a quantização da energia por Planck, para descrever a radiação do corpo negro;\n- a explicação do efeito fotoelétrico por Einstein, com a ideia corpuscular de luz;\n- o modelo atômico de Bohr, com órbitas quantizadas para o elétron;\n- a dualidade onda-partícula proposta por de Broglie: elétrons podem comportar-se ou como partículas ou como ondas.\n\nCom base nessas ideias, assinale a alternativa correta.",
+      "opcoes": {
+        "A": "O elétron em um átomo, segundo Bohr, pode ocupar qualquer órbita ao redor do núcleo, emitindo energia continuamente.",
+        "B": "A explicação de Planck para a radiação do corpo negro baseou-se na emissão contínua de energia, proporcional à intensidade da luz.",
+        "C": "Einstein explicou o efeito fotoelétrico, sugerindo que a energia da luz depende de sua frequência e não de sua intensidade.",
+        "D": "A teoria clássica da radiação previa corretamente que a energia irradiada por um corpo negro diminuía para frequências da região ultravioleta, evitando o problema da \"catástrofe ultravioleta\".",
+        "E": "A ideia de quantização da energia surgiu inicialmente para explicar os espectros moleculares complexos, não tendo relação com radiação térmica."
+      }
+    },
+    {
+      "id": "UFRGS-2026-F-30",
+      "ano": 2026,
+      "instituicao": "UFRGS",
+      "numero": 30,
+      "area": "Física Moderna",
+      "subarea": "Relatividade Restrita / Dilatação temporal",
+      "imagem": null,
+      "enunciado": "O Sistema de Posicionamento Global (GPS) é um exemplo moderno de tecnologia cuja precisão depende diretamente da Teoria da Relatividade. Em particular, a relatividade restrita de Einstein prevê efeitos que afetam a medição do tempo nos relógios atômicos a bordo dos satélites em movimento.\n\nAssinale com V (verdadeiro) ou F (falso) as afirmações abaixo, sobre a relação entre o GPS e os princípios da relatividade restrita.\n\n( ) Os relógios dos satélites, devido à sua alta velocidade em relação a um observador na Terra (maior do que 3.800 m/s), marcam o tempo mais lentamente que os relógios na superfície terrestre, efeito conhecido como dilatação temporal.\n( ) A diferença de tempo entre satélites e Terra é pequena e pode ser tratada apenas por correções em solo, dispensando qualquer ajuste prévio nos relógios a bordo.\n( ) Os efeitos relativísticos previstos são compensados por ajustes prévios nos relógios dos satélites e por correções contínuas realizadas nos cálculos de posicionamento, para garantir a precisão do sistema.\n\nA sequência correta de preenchimento dos parênteses, de cima para baixo, é",
+      "opcoes": {
+        "A": "V – V – F.",
+        "B": "F – F – V.",
+        "C": "V – F – F.",
+        "D": "F – V – F.",
+        "E": "V – F – V."
+      }
+    }
+  ]
+}

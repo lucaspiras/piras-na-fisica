@@ -207,7 +207,7 @@
       supabase, requireAdmin, callAdmin,
       renderHeader, bindSignOut,
       escHtml, fmtDate, fmtTime, fmtDateTime, statusBadge, matchStatus, translateTeam, teamFlag,
-      getRules, RULE_LABELS,
+      getRules, RULE_LABELS, medalIcon,
       MATCH_RULE_LABELS, KO_RULE_LABELS, CLS_RULE_LABELS, TOURN_RULE_LABELS
     } from './supabase.js'
 
@@ -691,9 +691,11 @@
               <button class="btn btn-primary btn-sm" data-act="add">Adicionar</button>
             </div>
             <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+              <button class="btn btn-ghost btn-sm" data-act="ranking">📊 Ver ranking</button>
               <button class="btn btn-ghost btn-sm" data-act="rules">⚙ Configurar pontuação</button>
               <button class="btn btn-danger btn-sm" data-act="delete-pool">Excluir bolão</button>
             </div>
+            <div id="ranking-panel-${escHtml(pool.id)}" class="hidden" style="margin-top:8px"></div>
             <div id="rules-panel-${escHtml(pool.id)}" class="hidden" style="margin-top:6px"></div>
           </div>`
       }).join('')
@@ -724,6 +726,10 @@
           pool.members = (pool.members ?? []).filter(m => m.user_id !== uid)
           renderPoolsAdmin()
         } catch (err) { alert('Erro: ' + err.message) }
+      } else if (btn.dataset.act === 'ranking') {
+        const panel = document.getElementById(`ranking-panel-${poolId}`)
+        panel.classList.toggle('hidden')
+        if (!panel.classList.contains('hidden')) await loadPoolRanking(poolId, panel)
       } else if (btn.dataset.act === 'rules') {
         const panel = document.getElementById(`rules-panel-${poolId}`)
         panel.classList.toggle('hidden')
@@ -761,6 +767,38 @@
       } catch (err) { flash(msg, err.message, false) }
       btn.disabled = false; btn.textContent = 'Criar bolão'
     })
+
+    // ── Ranking por bolão ─────────────────────────────────────
+    async function loadPoolRanking(poolId, panel) {
+      panel.innerHTML = `<div class="empty" style="padding:12px"><strong>Carregando ranking…</strong></div>`
+      const { data, error } = await supabase.rpc('pool_ranking', { p: poolId })
+      if (error) {
+        panel.innerHTML = `<div class="empty" style="padding:12px;color:var(--flare)"><strong>Erro ao carregar</strong><br>${escHtml(error.message)}</div>`
+        return
+      }
+      if (!data?.length) {
+        panel.innerHTML = `<div class="empty" style="padding:12px"><strong>Sem participantes ainda</strong></div>`
+        return
+      }
+      const rows = data.map(r => `
+        <div style="display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--line)">
+          <span style="font-size:1.1rem;min-width:28px;text-align:center">${medalIcon(r.placement)}</span>
+          <span style="flex:1;font-size:.88rem;font-weight:600">${escHtml(r.display_name)}</span>
+          <span style="text-align:right">
+            <span style="font-family:var(--font-display);font-weight:800;font-size:.95rem;color:var(--pitch-deep)">${r.total_points}</span>
+            ${r.class_points > 0
+              ? `<span style="display:block;font-size:.68rem;color:var(--muted)">${r.match_points}+${r.class_points}</span>`
+              : ''}
+          </span>
+        </div>`).join('')
+      panel.innerHTML = `
+        <div style="border:1px solid var(--line);border-radius:var(--radius);overflow:hidden">
+          <div style="padding:8px 14px 6px;font-size:.72rem;font-weight:700;color:var(--muted);border-bottom:1px solid var(--line);display:flex;justify-content:space-between">
+            <span>JOGADOR</span><span>PONTOS</span>
+          </div>
+          ${rows}
+        </div>`
+    }
 
     // ── Pontuação por bolão ───────────────────────────────────
     const RULE_CATEGORIES = [
