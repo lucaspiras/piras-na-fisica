@@ -150,12 +150,22 @@
       line-height: 1.6;
     }
 
-    .bq-imagem {
-      margin: 0.8rem 0;
-      max-width: 100%;
+    .bq-enunciado p {
+      margin: 0 0 0.5rem;
     }
 
-    .bq-imagem img {
+    .bq-enunciado p:last-child {
+      margin-bottom: 0;
+    }
+
+    .bq-imgs-enunciado {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 0.8rem 0;
+    }
+
+    .bq-imgs-enunciado img {
       max-width: 100%;
       border-radius: 8px;
       border: 1px solid var(--border);
@@ -167,11 +177,12 @@
       padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 0.3rem;
+      gap: 0.5rem;
     }
 
     .bq-opcoes li {
       display: flex;
+      align-items: flex-start;
       gap: 0.5rem;
       font-size: 0.9rem;
       color: var(--texto);
@@ -183,6 +194,85 @@
       color: var(--azul);
       min-width: 1.1rem;
       font-family: var(--font-mono);
+      flex-shrink: 0;
+    }
+
+    .bq-opcao-img {
+      display: block;
+      max-width: 260px;
+      margin-top: 0.2rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    /* ── gabarito ── */
+    .bq-gabarito-area {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-top: 0.85rem;
+    }
+
+    .bq-gabarito-btn {
+      background: none;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 0.28rem 0.75rem;
+      font-size: 0.8rem;
+      font-family: var(--font-body);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .bq-gabarito-btn:hover {
+      border-color: var(--azul);
+      color: var(--azul);
+    }
+
+    .bq-gabarito-resp {
+      display: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 6px;
+      background: var(--ok-bg);
+      color: var(--ok-text);
+      border: 1px solid var(--ok-border);
+      font-family: var(--font-mono);
+    }
+
+    .bq-gabarito-resp.anulada {
+      background: var(--warn-bg);
+      color: var(--warn-text);
+      border-color: var(--warn-border);
+      font-family: var(--font-body);
+      font-weight: 600;
+    }
+
+    .bq-card.bq-gabarito-visivel .bq-gabarito-resp {
+      display: inline-block;
+    }
+
+    .bq-card.bq-gabarito-visivel .bq-gabarito-btn {
+      border-color: var(--ok-border);
+      color: var(--ok-text);
+    }
+
+    .bq-card.bq-gabarito-visivel .bq-gabarito-btn.anulada {
+      border-color: var(--warn-border);
+      color: var(--warn-text);
+    }
+
+    .bq-opcoes li.bq-correto {
+      background: var(--ok-bg);
+      border: 1px solid var(--ok-border);
+      border-radius: 6px;
+      padding: 0.15rem 0.4rem;
+    }
+
+    .bq-opcoes li.bq-correto .bq-opcao-letra {
+      color: var(--ok-text);
     }
 
     /* ── vazio ── */
@@ -210,13 +300,18 @@
 
     <div class="bq-header">
       <h1>Banco de Questões — Física UFRGS</h1>
-      <p>Questões 16 a 30 (seção de Física) dos vestibulares UFRGS 2022–2026, organizadas por área e subárea.</p>
+      <p>Questões de Física dos vestibulares UFRGS 2016–2020 e 2022–2026, organizadas por área e subárea.</p>
     </div>
 
     <div class="bq-filtros">
       <input type="text" id="busca" placeholder="Buscar no enunciado ou subárea…" autocomplete="off">
       <select id="filtro-ano">
         <option value="">Todos os anos</option>
+        <option>2016</option>
+        <option>2017</option>
+        <option>2018</option>
+        <option>2019</option>
+        <option>2020</option>
         <option>2022</option>
         <option>2023</option>
         <option>2024</option>
@@ -260,6 +355,49 @@
       renderizar();
     }
 
+    const BASE = '/banco-questoes/img/';
+    const RE_FIGURA = /figura|imagem|painel|gr[áa]fico|tabela|diagrama/i;
+
+    function fixSubscripts(t) {
+      // 1. notação sublinhado: X_abc → X<sub>abc</sub>
+      t = t.replace(/([A-Za-zα-ωΑ-Ω])_([A-Za-z0-9]+)/g, '$1<sub>$2</sub>');
+      // 2. letra ASCII + dígito(s): V0, T1, R2, f1, d2, Q1…
+      t = t.replace(/\b([A-Za-z])(\d+)\b/g, '$1<sub>$2</sub>');
+      // 3. letra grega + dígito(s): λ1, λ2, λ3
+      t = t.replace(/(λ|μ|ν|α|β|γ|δ|θ|ε|ω|φ|σ)(\d+)/g, '$1<sub>$2</sub>');
+      // 4. massa + rótulo de objeto maiúsculo: mA, mB, mC
+      //    excluindo prefixos SI: mJ (milijoule), mN, mW, mV, mK, mH
+      t = t.replace(/\bm([A-Z])\b/g, (_, ch) =>
+        'JNWVKH'.includes(ch) ? `m${ch}` : `m<sub>${ch}</sub>`);
+      // 5. força + rótulo(s) de objeto maiúsculo: FA, FB, FAB, FCB
+      t = t.replace(/\bF([A-Z]{1,3})\b/g, 'F<sub>$1</sub>');
+      // 6. resistência interna Ri
+      t = t.replace(/\bRi\b/g, 'R<sub>i</sub>');
+      return t;
+    }
+
+    function renderEnunciado(q) {
+      const imgs = q.imagens;
+      const paragrafos = q.enunciado.split('\n\n').filter(p => p.trim());
+
+      const imgHtml = imgs && imgs.enunciado && imgs.enunciado.length
+        ? `<div class="bq-imgs-enunciado">${imgs.enunciado.map(f =>
+            `<img src="${BASE}${f}" alt="Figura" loading="lazy">`).join('')}</div>`
+        : '';
+
+      let imgInserida = false;
+      const html = paragrafos.map(p => {
+        const pHtml = `<p>${fixSubscripts(p).replace(/\n/g, '<br>')}</p>`;
+        if (!imgInserida && imgHtml && RE_FIGURA.test(p)) {
+          imgInserida = true;
+          return pHtml + imgHtml;
+        }
+        return pHtml;
+      }).join('');
+
+      return `<div class="bq-enunciado">${html}${!imgInserida ? imgHtml : ''}</div>`;
+    }
+
     function renderizar() {
       const busca  = document.getElementById('busca').value.toLowerCase().trim();
       const ano    = document.getElementById('filtro-ano').value;
@@ -277,20 +415,29 @@
       const lista = document.getElementById('lista');
       const contagem = document.getElementById('contagem');
 
-      contagem.innerHTML = `<strong>${filtradas.length}</strong> questão${filtradas.length !== 1 ? 'ões' : ''} encontrada${filtradas.length !== 1 ? 's' : ''} de <strong>${questoes.length}</strong> no total`;
+      contagem.innerHTML = `<strong>${filtradas.length}</strong> ${filtradas.length !== 1 ? 'questões' : 'questão'} encontrada${filtradas.length !== 1 ? 's' : ''} de <strong>${questoes.length}</strong> no total`;
 
       if (filtradas.length === 0) {
         lista.innerHTML = '<div class="bq-vazio"><p>Nenhuma questão encontrada com esses filtros.</p></div>';
         return;
       }
 
+      const altImgs = (q) => q.imagens && q.imagens.alternativas ? q.imagens.alternativas : {};
+
       lista.innerHTML = filtradas.map(q => {
-        const imagemHtml = q.imagem
-          ? `<div class="bq-imagem"><img src="/banco-questoes/img/${q.imagem}" alt="Figura da questão ${q.numero}" loading="lazy"></div>`
-          : '';
-        const opcoesHtml = Object.entries(q.opcoes)
-          .map(([letra, texto]) => `<li><span class="bq-opcao-letra">${letra}</span>${texto}</li>`)
-          .join('');
+        const opcoesHtml = Object.entries(q.opcoes).map(([letra, texto]) => {
+          const ai = altImgs(q)[letra];
+          const imgAlt = ai ? `<img class="bq-opcao-img" src="${BASE}${ai}" alt="Alternativa ${letra}" loading="lazy">` : '';
+          return `<li><span class="bq-opcao-letra">${letra}</span><span>${fixSubscripts(texto)}${imgAlt}</span></li>`;
+        }).join('');
+
+        const anulada = q.gabarito === 'ANULADA';
+        const gabaritoHtml = q.gabarito ? `
+          <div class="bq-gabarito-area">
+            <button class="bq-gabarito-btn${anulada ? ' anulada' : ''}" data-gabarito="${q.gabarito}">Ver gabarito</button>
+            <span class="bq-gabarito-resp${anulada ? ' anulada' : ''}">${anulada ? 'Anulada' : q.gabarito}</span>
+          </div>` : '';
+
         return `
         <div class="bq-card">
           <div class="bq-card-topo">
@@ -299,9 +446,9 @@
             <span class="bq-tag bq-tag-area">${q.area}</span>
             <span class="bq-tag bq-tag-subarea">${q.subarea}</span>
           </div>
-          <p class="bq-enunciado">${q.enunciado}</p>
-          ${imagemHtml}
+          ${renderEnunciado(q)}
           <ul class="bq-opcoes">${opcoesHtml}</ul>
+          ${gabaritoHtml}
         </div>`;
       }).join('');
     }
@@ -309,6 +456,22 @@
     document.getElementById('busca').addEventListener('input', renderizar);
     document.getElementById('filtro-ano').addEventListener('change', renderizar);
     document.getElementById('filtro-area').addEventListener('change', renderizar);
+
+    document.getElementById('lista').addEventListener('click', e => {
+      const btn = e.target.closest('.bq-gabarito-btn');
+      if (!btn) return;
+      const card = btn.closest('.bq-card');
+      const visivel = card.classList.toggle('bq-gabarito-visivel');
+      btn.textContent = visivel ? 'Ocultar gabarito' : 'Ver gabarito';
+      const gabarito = btn.dataset.gabarito;
+      card.querySelectorAll('.bq-opcoes li').forEach(li => {
+        li.classList.remove('bq-correto');
+        if (visivel && gabarito !== 'ANULADA') {
+          const letra = li.querySelector('.bq-opcao-letra')?.textContent.trim();
+          if (letra === gabarito) li.classList.add('bq-correto');
+        }
+      });
+    });
 
     carregar();
   </script>
