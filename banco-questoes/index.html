@@ -286,6 +286,88 @@
       font-size: 1rem;
     }
 
+    /* ── fração inline ── */
+    .bq-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      font-size: 0.88em;
+      line-height: 1.25;
+      padding: 0 0.15em;
+    }
+    .bq-frac span:first-child {
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 1px;
+      min-width: 1em;
+      text-align: center;
+    }
+    .bq-frac span:last-child {
+      padding-top: 1px;
+      min-width: 1em;
+      text-align: center;
+    }
+
+    /* ── tabela em enunciado ── */
+    .bq-tabela {
+      border-collapse: collapse;
+      margin: 0.5rem 0;
+      font-size: 0.88rem;
+      width: 100%;
+    }
+    .bq-tabela th, .bq-tabela td {
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.75rem;
+      text-align: left;
+    }
+    .bq-tabela th {
+      background: var(--surface-2, var(--surface));
+      font-weight: 600;
+      color: var(--subtitulo);
+    }
+
+    /* ── tag extra ── */
+    .bq-tag-extra {
+      background: var(--info-bg, var(--surface));
+      color: var(--info-text, var(--azul));
+      border: 1px solid var(--info-border);
+    }
+
+    /* ── resolução ── */
+    .bq-resolucao-btn {
+      background: none;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 0.28rem 0.75rem;
+      font-size: 0.8rem;
+      font-family: var(--font-body);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .bq-resolucao-btn:hover {
+      border-color: var(--azul);
+      color: var(--azul);
+    }
+    .bq-card.bq-resolucao-visivel .bq-resolucao-btn {
+      border-color: var(--azul);
+      color: var(--azul);
+    }
+    .bq-resolucao-texto {
+      display: none;
+      margin-top: 0.75rem;
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.86rem;
+      line-height: 1.65;
+      color: var(--text-muted);
+      background: var(--bg, var(--surface));
+    }
+    .bq-card.bq-resolucao-visivel .bq-resolucao-texto {
+      display: block;
+    }
+
     /* ── responsive ── */
     @media (max-width: 600px) {
       .bq-header h1 { font-size: 1.5rem; }
@@ -387,12 +469,32 @@
 
       let imgInserida = false;
       const html = paragrafos.map(p => {
-        const pHtml = `<p>${fixSubscripts(p).replace(/\n/g, '<br>')}</p>`;
+        // marcadores [[IMG:filename]] viram <img> inline após o parágrafo
+        let inlineImgHtml = '';
+        p = p.replace(/\[\[IMG:([^\]]+)\]\]/g, (_, f) => {
+          inlineImgHtml += `<img src="${BASE}${f}" alt="Figura" loading="lazy">`;
+          return '';
+        });
+        if (inlineImgHtml) inlineImgHtml = `<div class="bq-imgs-enunciado">${inlineImgHtml}</div>`;
+
+        // marcadores [[FRAC:num|den]] viram frações verticais
+        p = p.replace(/\[\[FRAC:([^|]+)\|([^\]]+)\]\]/g,
+          (_, num, den) => `<span class="bq-frac"><span>${num}</span><span>${den}</span></span>`);
+
+        // parágrafos que são elementos bloco HTML (tabela, div…) não recebem <p>
+        const trimmed = p.trimStart();
+        let pHtml;
+        if (/^<(table|div|ul|ol)[\s>]/.test(trimmed)) {
+          pHtml = fixSubscripts(trimmed);
+        } else {
+          pHtml = `<p>${fixSubscripts(p).replace(/\n/g, '<br>')}</p>`;
+        }
+
         if (!imgInserida && imgHtml && RE_FIGURA.test(p)) {
           imgInserida = true;
-          return pHtml + imgHtml;
+          return pHtml + imgHtml + inlineImgHtml;
         }
-        return pHtml;
+        return pHtml + inlineImgHtml;
       }).join('');
 
       return `<div class="bq-enunciado">${html}${!imgInserida ? imgHtml : ''}</div>`;
@@ -436,7 +538,12 @@
           <div class="bq-gabarito-area">
             <button class="bq-gabarito-btn${anulada ? ' anulada' : ''}" data-gabarito="${q.gabarito}">Ver gabarito</button>
             <span class="bq-gabarito-resp${anulada ? ' anulada' : ''}">${anulada ? 'Anulada' : q.gabarito}</span>
-          </div>` : '';
+            ${q.resolucao ? `<button class="bq-resolucao-btn">Ver resolução</button>` : ''}
+          </div>
+          ${q.resolucao ? `<div class="bq-resolucao-texto">${fixSubscripts(q.resolucao)}</div>` : ''}` : '';
+
+        const tagsExtras = (q.tags || []).map(t =>
+          `<span class="bq-tag bq-tag-extra">${t}</span>`).join('');
 
         return `
         <div class="bq-card">
@@ -445,6 +552,7 @@
             <span class="bq-tag bq-tag-ano">UFRGS ${q.ano}</span>
             <span class="bq-tag bq-tag-area">${q.area}</span>
             <span class="bq-tag bq-tag-subarea">${q.subarea}</span>
+            ${tagsExtras}
           </div>
           ${renderEnunciado(q)}
           <ul class="bq-opcoes">${opcoesHtml}</ul>
@@ -458,19 +566,27 @@
     document.getElementById('filtro-area').addEventListener('change', renderizar);
 
     document.getElementById('lista').addEventListener('click', e => {
-      const btn = e.target.closest('.bq-gabarito-btn');
-      if (!btn) return;
-      const card = btn.closest('.bq-card');
-      const visivel = card.classList.toggle('bq-gabarito-visivel');
-      btn.textContent = visivel ? 'Ocultar gabarito' : 'Ver gabarito';
-      const gabarito = btn.dataset.gabarito;
-      card.querySelectorAll('.bq-opcoes li').forEach(li => {
-        li.classList.remove('bq-correto');
-        if (visivel && gabarito !== 'ANULADA') {
-          const letra = li.querySelector('.bq-opcao-letra')?.textContent.trim();
-          if (letra === gabarito) li.classList.add('bq-correto');
-        }
-      });
+      const gabBtn = e.target.closest('.bq-gabarito-btn');
+      if (gabBtn) {
+        const card = gabBtn.closest('.bq-card');
+        const visivel = card.classList.toggle('bq-gabarito-visivel');
+        gabBtn.textContent = visivel ? 'Ocultar gabarito' : 'Ver gabarito';
+        const gabarito = gabBtn.dataset.gabarito;
+        card.querySelectorAll('.bq-opcoes li').forEach(li => {
+          li.classList.remove('bq-correto');
+          if (visivel && gabarito !== 'ANULADA') {
+            const letra = li.querySelector('.bq-opcao-letra')?.textContent.trim();
+            if (letra === gabarito) li.classList.add('bq-correto');
+          }
+        });
+        return;
+      }
+      const resBtn = e.target.closest('.bq-resolucao-btn');
+      if (resBtn) {
+        const card = resBtn.closest('.bq-card');
+        const visivel = card.classList.toggle('bq-resolucao-visivel');
+        resBtn.textContent = visivel ? 'Ocultar resolução' : 'Ver resolução';
+      }
     });
 
     carregar();

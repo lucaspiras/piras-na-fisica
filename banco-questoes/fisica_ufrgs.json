@@ -7,12 +7,9 @@
       "numero": 1,
       "area": "Gravitação",
       "subarea": "Unidades astronômicas / Conversão de unidades",
-      "imagens": {
-        "enunciado": [
-          "2020/2020_UFRGS_01_Tabela.png"
-        ]
-      },
-      "enunciado": "No Sistema Internacional de Unidades (SI), utiliza-se o metro (m), o quilograma (kg) e o segundo (s), respectivamente, como unidades de comprimento, massa e tempo.\n\nEm Astronomia, são definidas unidades de medida mais apropriadas para o estudo de objetos astronômicos no Sistema Solar.\n\nA tabela abaixo mostra a equivalência entre as duas notações.\n\nSI | Sistema de Unidades Astronômicas (aproximadamente)\nDistância (m) | 1 UA = 1,5 × 10¹¹ m\nMassa (kg) | Massa do Sol (MSol) = 2 × 10³⁰ kg\nTempo (s) | 1 ano = 3,15 × 10⁷ s\n\nAssinale a alternativa que preenche corretamente as lacunas abaixo, na ordem em que aparecem.\n\nA órbita do planeta Netuno em torno do Sol tem um raio médio de 4,5 × 10⁹ km. Essa distância corresponde, aproximadamente, a ........ UA.\n\nJúpiter, o planeta mais massivo do Sistema Solar, tem massa MJ aproximadamente igual a 2 × 10²² kg, o que corresponde a ........ MSol.\n\nO módulo da velocidade da luz, c = 3 × 10⁵ km/s, corresponde a, aproximadamente, ........ UA/ano.",
+      "tags": ["Unidades de Medida", "Astronomia", "Sistema Internacional"],
+      "imagens": null,
+      "enunciado": "No Sistema Internacional de Unidades (SI), utiliza-se o metro (m), o quilograma (kg) e o segundo (s), respectivamente, como unidades de comprimento, massa e tempo.\n\nEm Astronomia, são definidas unidades de medida mais apropriadas para o estudo de objetos astronômicos no Sistema Solar.\n\nA tabela abaixo mostra a equivalência entre as duas notações.\n\n<table class=\"bq-tabela\"><thead><tr><th>SI</th><th>Unidades Astronômicas (aprox.)</th></tr></thead><tbody><tr><td>Comprimento (m)</td><td>1 UA = 1,5 × 10¹¹ m</td></tr><tr><td>Massa (kg)</td><td>M<sub>Sol</sub> = 2 × 10³⁰ kg</td></tr><tr><td>Tempo (s)</td><td>1 ano = 3,15 × 10⁷ s</td></tr></tbody></table>\n\nAssinale a alternativa que preenche corretamente as lacunas abaixo, na ordem em que aparecem.\n\nA órbita do planeta Netuno em torno do Sol tem um raio médio de 4,5 × 10⁹ km. Essa distância corresponde, aproximadamente, a ........ UA.\n\nJúpiter, o planeta mais massivo do Sistema Solar, tem massa M_J aproximadamente igual a 2 × 10²² kg, o que corresponde a ........ M_Sol.\n\nO módulo da velocidade da luz, c = 3 × 10⁵ km/s, corresponde a, aproximadamente, ........ UA/ano.",
       "opcoes": {
         "A": "30 – 1,0 × 10⁸ – 1,4 × 10⁹",
         "B": "30 – 1,0 × 10⁻⁸ – 6,3 × 10⁴",
@@ -20,7 +17,8 @@
         "D": "0,03 – 1,0 × 10⁻⁸ – 6,3 × 10⁴",
         "E": "0,03 – 1,0 × 10⁸ – 1,4 × 10⁹"
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "Netuno: 4,5e9 km = 4,5e12 m / 1,5e11 m/UA = 30 UA. Jupiter: 2e22 / 2e30 = 1,0e-8 MSol. Luz: (3e8 m/s x 3,15e7 s/ano) / 1,5e11 m/UA = 6,3e4 UA/ano. Resposta: 30 - 1,0e-8 - 6,3e4. Alternativa B."
     },
     {
       "id": "UFRGS-2020-F-02",
@@ -31,11 +29,10 @@
       "subarea": "Lançamento oblíquo / Análise de gráficos",
       "imagens": {
         "enunciado": [
-          "2020/2020_UFRGS_02_1.png",
-          "2020/2020_UFRGS_02_2.png"
+          "2020/2020_UFRGS_02_1.png"
         ]
       },
-      "enunciado": "Dois projéteis são disparados simultaneamente no vácuo, a partir da mesma posição no solo, com ângulos de lançamento diferentes, θ₁ < θ₂, conforme representa a figura abaixo.\n\nOs gráficos a seguir mostram, respectivamente, as posições verticais y como função do tempo t, as posições horizontais x como função do tempo t e as posições verticais y como função das posições horizontais x, dos dois projéteis.\n\nAnalisando os gráficos, pode-se afirmar que\n\nI - o valor inicial da componente vertical da velocidade do projétil 2 é maior do que o valor inicial da componente vertical da velocidade do projétil 1.\n\nII - o valor inicial da componente horizontal da velocidade do projétil 2 é maior do que o valor inicial da componente horizontal da velocidade do projétil 1.\n\nIII - os dois projéteis atingem o solo no mesmo instante.\n\nQuais estão corretas?",
+      "enunciado": "Dois projéteis são disparados simultaneamente no vácuo, a partir da mesma posição no solo, com ângulos de lançamento diferentes, θ₁ < θ₂, conforme representa a figura abaixo.\n\nOs gráficos a seguir mostram, respectivamente, as posições verticais y como função do tempo t, as posições horizontais x como função do tempo t e as posições verticais y como função das posições horizontais x, dos dois projéteis.[[IMG:2020/2020_UFRGS_02_2.png]]\n\nAnalisando os gráficos, pode-se afirmar que\n\nI - o valor inicial da componente vertical da velocidade do projétil 2 é maior do que o valor inicial da componente vertical da velocidade do projétil 1.\n\nII - o valor inicial da componente horizontal da velocidade do projétil 2 é maior do que o valor inicial da componente horizontal da velocidade do projétil 1.\n\nIII - os dois projéteis atingem o solo no mesmo instante.\n\nQuais estão corretas?",
       "opcoes": {
         "A": "Apenas I.",
         "B": "Apenas II.",
@@ -43,7 +40,8 @@
         "D": "Apenas II e III.",
         "E": "I, II e III."
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Pelos graficos: y2(t) tem altura maxima maior que y1(t), logo vy02 \u003e vy01 (I verdadeira). Inclinacao de x1(t) \u003e x2(t), logo vx01 \u003e vx02 (II falsa). Tempos de queda diferentes: t1 ~12 s, t2 ~18 s (III falsa). Apenas I correta. Alternativa A."
     },
     {
       "id": "UFRGS-2020-F-03",
@@ -72,7 +70,8 @@
         "D": "Gráfico D",
         "E": "Gráfico E"
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "Forca de atrito estatico maxima: fe_max = 0,25 x 2,0 x 10 = 5 N. Enquanto em repouso, fe = F (proporcional, linha reta a 45 graus ate 5 N). Grafico C. Alternativa C."
     },
     {
       "id": "UFRGS-2020-F-04",
@@ -86,7 +85,7 @@
           "2020/2020_UFRGS_04.png"
         ]
       },
-      "enunciado": "A figura abaixo mostra a imagem de um buraco negro na galáxia elíptica Messier 87, obtida através do uso de um conjunto de telescópios espalhados ao redor da Terra.\n\nNo centro da nossa galáxia, também há um buraco negro, chamado Sagittarius A*.\n\nUsando o Sistema Internacional de unidades, a relação entre o raio da órbita R e o período de revolução T de um corpo que orbita em torno de um astro de massa M é dada pela 3ª Lei de Kepler R³ = G M T² / (4π²), em que G = 6,67 × 10⁻¹¹ N m²/kg² é a constante de gravitação universal.\n\nQuando M e T são expressos, respectivamente, em anos e em unidades astronômicas (UA), a 3ª Lei de Kepler pode ser escrita como T² = R³/M, em que a massa M é expressa em unidades de massa do Sol, MSol.\n\nTendo sido observada uma estrela em órbita circular com R ≅ 800 UA e T ≅ 16 anos, conclui-se que a massa do buraco negro na nossa galáxia é, aproximadamente,",
+      "enunciado": "A figura abaixo mostra a imagem de um buraco negro na galáxia elíptica Messier 87, obtida através do uso de um conjunto de telescópios espalhados ao redor da Terra.\n\nNo centro da nossa galáxia, também há um buraco negro, chamado Sagittarius A*.\n\nUsando o Sistema Internacional de unidades, a relação entre o raio da órbita R e o período de revolução T de um corpo que orbita em torno de um astro de massa M é dada pela 3ª Lei de Kepler R³ = [[FRAC:GMT²|4π²]], em que G = 6,67 × 10⁻¹¹ N m²/kg² é a constante de gravitação universal.\n\nQuando M e T são expressos, respectivamente, em anos e em unidades astronômicas (UA), a 3ª Lei de Kepler pode ser escrita como [[FRAC:T²|R³]] = M, em que a massa M é expressa em unidades de massa do Sol, M_Sol.\n\nTendo sido observada uma estrela em órbita circular com R ≅ 800 UA e T ≅ 16 anos, conclui-se que a massa do buraco negro na nossa galáxia é, aproximadamente,",
       "opcoes": {
         "A": "2,0 × 10⁶ MSol.",
         "B": "6,4 × 10⁴ MSol.",
@@ -94,7 +93,8 @@
         "D": "6,4 × 10³ MSol.",
         "E": "2,0 × 10² MSol."
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Pela 3a Lei de Kepler T^2 = R^3/M: M = R^3/T^2 = 800^3/16^2 = 5,12e8/256 = 2,0e6 MSol. Alternativa A."
     },
     {
       "id": "UFRGS-2020-F-05",
@@ -103,13 +103,13 @@
       "numero": 5,
       "area": "Gravitação",
       "subarea": "Equilíbrio gravitacional Terra-Lua",
+      "tags": ["Dinâmica", "Lei da Gravitação Universal"],
       "imagens": {
         "enunciado": [
-          "2020/2020_UFRGS_05_06_e_07-Imagemunica.png",
           "2020/2020_UFRGS_05.png"
         ]
       },
-      "enunciado": "Instrução: As questões 05, 06 e 07 referem-se ao enunciado abaixo.\n\nEm 16 de julho de 1969, o foguete Saturno V, com aproximadamente 3.000 toneladas de massa, foi lançado carregando a cápsula tripulada Apollo 11, que pousaria na Lua quatro dias depois.\n\nEm sua trajetória rumo à Lua, a espaçonave Apollo 11 esteve sujeita às forças de atração gravitacional exercidas pela Terra e pela Lua, com preponderância de uma ou de outra, dependendo da sua distância à Terra ou à Lua.\n\nConsidere ML = MT/81, em que ML e MT são, respectivamente, as massas da Lua e da Terra.\n\nNa figura abaixo, a distância do centro da Terra ao centro da Lua está representada pelo segmento de reta, dividido em 10 partes iguais.\n\nAssinale a alternativa que preenche corretamente a lacuna do enunciado abaixo.\n\nEm sua viagem para a Lua, quando a Apollo 11 ultrapassa o ponto ........, o módulo da força gravitacional da Lua sobre a espaçonave passa a ser maior do que o módulo da força gravitacional que a Terra exerce sobre essa espaçonave.",
+      "enunciado": "Instrução: As questões 05, 06 e 07 referem-se ao enunciado abaixo.\n\nEm 16 de julho de 1969, o foguete Saturno V, com aproximadamente 3.000 toneladas de massa, foi lançado carregando a cápsula tripulada Apollo 11, que pousaria na Lua quatro dias depois.[[IMG:2020/2020_UFRGS_05_06_e_07-Imagemunica.png]]\n\nEm sua trajetória rumo à Lua, a espaçonave Apollo 11 esteve sujeita às forças de atração gravitacional exercidas pela Terra e pela Lua, com preponderância de uma ou de outra, dependendo da sua distância à Terra ou à Lua.\n\nConsidere M_L = [[FRAC:M_T|81]], em que M_L e M_T são, respectivamente, as massas da Lua e da Terra.\n\nNa figura abaixo, a distância do centro da Terra ao centro da Lua está representada pelo segmento de reta, dividido em 10 partes iguais.\n\nAssinale a alternativa que preenche corretamente a lacuna do enunciado abaixo.\n\nEm sua viagem para a Lua, quando a Apollo 11 ultrapassa o ponto ........, o módulo da força gravitacional da Lua sobre a espaçonave passa a ser maior do que o módulo da força gravitacional que a Terra exerce sobre essa espaçonave.",
       "opcoes": {
         "A": "I.",
         "B": "II.",
@@ -117,7 +117,8 @@
         "D": "IV.",
         "E": "V."
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "Equilibrio gravitacional: F_Terra = F_Lua. Com ML = MT/81: x^2 = 81(10-x)^2, x = 9(10-x), x = 9. O ponto de equilibrio esta a 9/10 da distancia Terra-Lua, correspondendo ao ponto V. Alem de V a forca da Lua domina. Alternativa E."
     },
     {
       "id": "UFRGS-2020-F-06",
@@ -128,11 +129,10 @@
       "subarea": "Movimento Uniformemente Acelerado / Energia cinética",
       "imagens": {
         "enunciado": [
-          "2020/2020_UFRGS_05_06_e_07-Imagemunica.png",
           "2020/2020_UFRGS_06.png"
         ]
       },
-      "enunciado": "Instrução: As questões 05, 06 e 07 referem-se ao enunciado abaixo.\n\nEm 16 de julho de 1969, o foguete Saturno V, com aproximadamente 3.000 toneladas de massa, foi lançado carregando a cápsula tripulada Apollo 11, que pousaria na Lua quatro dias depois.\n\nO gráfico abaixo apresenta a posição vertical y do foguete Saturno V durante os 15 primeiros segundos após o lançamento (símbolos +). A linha contínua ajusta esses pontos com a função y(t) = 1,25 t².\n\nCom base nesse gráfico, a energia cinética adquirida pelo foguete após 10 s de voo é de, aproximadamente,",
+      "enunciado": "Instrução: As questões 05, 06 e 07 referem-se ao enunciado abaixo.\n\nEm 16 de julho de 1969, o foguete Saturno V, com aproximadamente 3.000 toneladas de massa, foi lançado carregando a cápsula tripulada Apollo 11, que pousaria na Lua quatro dias depois.[[IMG:2020/2020_UFRGS_05_06_e_07-Imagemunica.png]]\n\nO gráfico abaixo apresenta a posição vertical y do foguete Saturno V durante os 15 primeiros segundos após o lançamento (símbolos +). A linha contínua ajusta esses pontos com a função y(t) = 1,25 t².\n\nCom base nesse gráfico, a energia cinética adquirida pelo foguete após 10 s de voo é de, aproximadamente,",
       "opcoes": {
         "A": "937,5 MJ.",
         "B": "375,0 MJ.",
@@ -140,7 +140,8 @@
         "D": "187,5 MJ.",
         "E": "93,8 MJ."
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "De y(t) = 1,25t^2: a = 2 x 1,25 = 2,5 m/s^2. Em t = 10 s: v = 25 m/s. Ec = (1/2) x 3e6 x 25^2 = 937,5 MJ. Alternativa A."
     },
     {
       "id": "UFRGS-2020-F-07",
@@ -149,12 +150,8 @@
       "numero": 7,
       "area": "Fluidos",
       "subarea": "Empuxo / Peso aparente",
-      "imagens": {
-        "enunciado": [
-          "2020/2020_UFRGS_05_06_e_07-Imagemunica.png"
-        ]
-      },
-      "enunciado": "Instrução: As questões 05, 06 e 07 referem-se ao enunciado abaixo.\n\nEm 16 de julho de 1969, o foguete Saturno V, com aproximadamente 3.000 toneladas de massa, foi lançado carregando a cápsula tripulada Apollo 11, que pousaria na Lua quatro dias depois.\n\nNa preparação para executarem tarefas na Lua, onde o módulo da aceleração da gravidade é cerca de 1/6 do módulo da aceleração da gravidade na superfície da Terra, astronautas em trajes espaciais praticam totalmente submersos em uma piscina, em um centro de treinamento.\n\nComo um astronauta com um traje espacial tem peso de módulo P na Terra, qual deve ser o módulo da força de empuxo para que seu peso aparente na água seja igual ao peso na Lua?",
+      "imagens": null,
+      "enunciado": "Instrução: As questões 05, 06 e 07 referem-se ao enunciado abaixo.\n\nEm 16 de julho de 1969, o foguete Saturno V, com aproximadamente 3.000 toneladas de massa, foi lançado carregando a cápsula tripulada Apollo 11, que pousaria na Lua quatro dias depois.[[IMG:2020/2020_UFRGS_05_06_e_07-Imagemunica.png]]\n\nNa preparação para executarem tarefas na Lua, onde o módulo da aceleração da gravidade é cerca de 1/6 do módulo da aceleração da gravidade na superfície da Terra, astronautas em trajes espaciais praticam totalmente submersos em uma piscina, em um centro de treinamento.\n\nComo um astronauta com um traje espacial tem peso de módulo P na Terra, qual deve ser o módulo da força de empuxo para que seu peso aparente na água seja igual ao peso na Lua?",
       "opcoes": {
         "A": "P/6.",
         "B": "P/3.",
@@ -162,7 +159,8 @@
         "D": "2P/3.",
         "E": "5P/6."
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "Peso na Lua = P/6. Na piscina: P - E = P/6, logo E = 5P/6. Alternativa E."
     },
     {
       "id": "UFRGS-2020-F-08",
@@ -184,7 +182,8 @@
         "D": "Apenas II e III.",
         "E": "I, II e III."
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "No MCU horizontal: I - T*cos(theta) e perpendicular ao deslocamento -\u003e W = 0 (V). II - T*sen(theta) e centripeta, perpendicular a velocidade -\u003e W = 0 (V). III - Peso vertical, deslocamento horizontal -\u003e W = 0 (V). Todas corretas. Alternativa E."
     },
     {
       "id": "UFRGS-2020-F-09",
@@ -198,7 +197,7 @@
           "2020/2020_UFRGS_09.png"
         ]
       },
-      "enunciado": "A figura abaixo mostra dois corpos, identificados como X e Y, cada um de massa 1 kg, movendo-se sobre uma superfície horizontal sem atrito. Os módulos de suas velocidades são vX = 4 m/s e vY = 6 m/s.\n\nAssinale a alternativa que preenche corretamente as lacunas abaixo, na ordem em que aparecem.\n\nSe os corpos X e Y sofrem uma colisão elástica, a energia cinética final do sistema é ........ .\n\nSe os corpos X e Y sofrem uma colisão perfeitamente inelástica, a energia cinética final do sistema vale ........ .\n\nQualquer que seja o tipo de colisão, o módulo da velocidade do centro de massa do sistema é ........ .",
+      "enunciado": "A figura abaixo mostra dois corpos, identificados como X e Y, cada um de massa 1 kg, movendo-se sobre uma superfície horizontal sem atrito. Os módulos de suas velocidades são v_X = 4 m/s e v_Y = 6 m/s.\n\nAssinale a alternativa que preenche corretamente as lacunas abaixo, na ordem em que aparecem.\n\nSe os corpos X e Y sofrem uma colisão elástica, a energia cinética final do sistema é ........ .\n\nSe os corpos X e Y sofrem uma colisão perfeitamente inelástica, a energia cinética final do sistema vale ........ .\n\nQualquer que seja o tipo de colisão, o módulo da velocidade do centro de massa do sistema é ........ .",
       "opcoes": {
         "A": "10 J – 4 J – 2 m/s",
         "B": "10 J – 2 J – 1 m/s",
@@ -206,7 +205,8 @@
         "D": "26 J – 1 J – 2 m/s",
         "E": "26 J – 2 J – 1 m/s"
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "Positivo: direita. v_X = +4 m/s, v_Y = -6 m/s, m = 1 kg. Elastica: massas iguais trocam velocidades; Ec = (1/2)(4^2 + 6^2) = 26 J. Inelastica: v\u0027 = (4-6)/2 = -1 m/s; Ec = (1/2)(2)(1)^2 = 1 J. v_CM = |(4-6)/2| = 1 m/s. Resultado: 26 J - 1 J - 1 m/s. Alternativa C."
     },
     {
       "id": "UFRGS-2020-F-10",
@@ -228,7 +228,8 @@
         "D": "460 N.",
         "E": "530 N."
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "Torques em relacao ao cotovelo: FB x 4 = Pa x 16 + P x 36 =\u003e FB x 4 = 20 x 16 + 50 x 36 = 320 + 1800 = 2120 N.cm =\u003e FB = 530 N. Alternativa E."
     },
     {
       "id": "UFRGS-2020-F-11",
@@ -246,7 +247,8 @@
         "D": "22 × 10⁻⁶/°C.",
         "E": "11 × 10⁻⁶/°C."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "alfa = DeltaL / (L0 x DeltaT) = 0,0022 / 100 = 22e-6 /grC. Alternativa D."
     },
     {
       "id": "UFRGS-2020-F-12",
@@ -264,7 +266,8 @@
         "D": "380,4 kJ/kg",
         "E": "384,6 kJ/kg"
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "Gelo a -2 grC -\u003e agua a 10 grC: Q1 (aquece gelo 2 grC): 2,1 x 2 = 4,2 kJ/kg. Q2 (fusao): 330 kJ/kg. Q3 (aquece agua 10 grC, c_agua = 4,2): 4,2 x 10 = 42 kJ/kg. Total: 376,2 kJ/kg. Alternativa C."
     },
     {
       "id": "UFRGS-2020-F-13",
@@ -290,7 +293,8 @@
         "D": "Diagrama D",
         "E": "Diagrama E"
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "Ciclo: 1-\u003e2 compressao adiabatica (V cai, T sobe: curva de sup-esq para inf-dir no diagrama VxT). 2-\u003e3 isocoria (V constante, T cai: horizontal para esquerda). 3-\u003e1 expansao isotermica (T constante, V sobe: vertical para cima). Diagrama C representa este ciclo. Alternativa C."
     },
     {
       "id": "UFRGS-2020-F-14",
@@ -308,7 +312,8 @@
         "D": "300 K – 42 J.",
         "E": "300 K – 420 J."
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "T_fria = T_quente x (1 - eta) = 500 x 0,6 = 300 K. Trabalho por ciclo: W = P/n = 4200/10 = 420 J. Alternativa E."
     },
     {
       "id": "UFRGS-2020-F-15",
@@ -330,7 +335,8 @@
         "D": "U(1) < U(2) < U(3)",
         "E": "U(1) < U(2) = U(3)"
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "Config (1): +q na esq (pos 0), -q no centro (pos a), -q na dir (pos 2a). U(1) = kq^2(-1 - 1/2 + 1)/a = -kq^2/(2a) = -3kq^2/(6a). Config (3): -q na esq (pos 0), +q no centro (pos a), -q na dir (pos 2a). U(3) = kq^2(-1 - 1 + 1/2)/a = -3kq^2/(2a) = -9kq^2/(6a). Config (2): -q na esq (pos 0), +q no centro (pos a), -q na dir (pos 3a, espacamentos a e 2a). U(2) = k(-1 - 1/2 + 1/3)q^2/a = -7kq^2/(6a). Ordem: -3/6 > -7/6 > -9/6, portanto U(1) > U(2) > U(3). Alternativa B."
     },
     {
       "id": "UFRGS-2020-F-16",
@@ -352,7 +358,8 @@
         "D": "4.",
         "E": "5."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "Com a chave C fechada, analise de malhas: a corrente no resistor R e I = 1 A. Potencia dissipada: P = I^2 x R = 1^2 x 4 = 4 W. Alternativa D."
     },
     {
       "id": "UFRGS-2020-F-17",
@@ -374,7 +381,8 @@
         "D": "|B| × |E| ; −z",
         "E": "|E|/|B| ; −z"
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "B em +y, E em +x. Para carga positiva sem desvio: F_E + F_B = 0. Com v em +z: F_B = q(v x B) = qvB(z x y) = -qvBx, cancela F_E. Condicao: v = |E|/|B|, sentido +z. Alternativa C."
     },
     {
       "id": "UFRGS-2020-F-18",
@@ -404,7 +412,8 @@
         "D": "Alternativa D",
         "E": "Alternativa E"
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Iman (N embaixo) cai em direcao a bobina. (1) N se aproxima: fluxo descendente aumenta -\u003e corrente induzida cria campo para cima (Lei de Lenz) -\u003e galvanometro desvia para esquerda. (2) Iman ao nivel da espira: variacao do fluxo ~0 -\u003e agulha ao centro. (3) N afasta-se abaixo: fluxo diminui -\u003e corrente inverte -\u003e agulha para direita. Padrao da alternativa A."
     },
     {
       "id": "UFRGS-2020-F-19",
@@ -426,7 +435,8 @@
         "D": "divergente − 3, 2 e 1",
         "E": "convergente − 3, 2 e 1"
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "As imagens formam-se no mesmo lado dos objetos (virtual): lente divergente. Objeto em O (longe) -\u003e imagem 1 (mais afastada da lente). Objeto em P -\u003e imagem 2. Objeto em Q (perto) -\u003e imagem 3 (mais proxima). Lente divergente, imagens O-\u003e1, P-\u003e2, Q-\u003e3. Alternativa B."
     },
     {
       "id": "UFRGS-2020-F-20",
@@ -444,7 +454,8 @@
         "D": "reflexão total.",
         "E": "refração."
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "A superposicao das duas reflexoes (superficie anterior e posterior da pelicula) resulta em interferencia construtiva e destrutiva para diferentes comprimentos de onda, originando as cores observadas. Fenomeno: interferencia. Alternativa B."
     },
     {
       "id": "UFRGS-2020-F-21",
@@ -462,7 +473,8 @@
         "D": "3.600 Hz.",
         "E": "18.000 Hz."
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "Distancia entre nos consecutivos = lambda/2 = 4,0 cm, logo lambda = 0,08 m. f = v/lambda = 1440/0,08 = 18.000 Hz. Alternativa E."
     },
     {
       "id": "UFRGS-2020-F-22",
@@ -473,11 +485,10 @@
       "subarea": "Superposição de ondas / Princípio da superposição",
       "imagens": {
         "enunciado": [
-          "2020/2020_UFRGS_22.png",
-          "2020/2020_UFRGS_22_2.png"
+          "2020/2020_UFRGS_22.png"
         ]
       },
-      "enunciado": "Na figura abaixo, a onda 1 consiste em um pulso retangular que se propaga horizontalmente para a direita. As ondas 2, 3 e 4 são ondas semelhantes que se propagam para a esquerda ao longo dessa mesma direção.\n\nAs figuras abaixo representam interferências que ocorrem quando a onda 1 passa por cada uma das outras ondas.\n\nAssinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nAs formas de ondas X, Y e Z resultam, respectivamente, da superposição da onda 1 com as ondas ........, ........ e ........ .",
+      "enunciado": "Na figura abaixo, a onda 1 consiste em um pulso retangular que se propaga horizontalmente para a direita. As ondas 2, 3 e 4 são ondas semelhantes que se propagam para a esquerda ao longo dessa mesma direção.\n\nAs figuras abaixo representam interferências que ocorrem quando a onda 1 passa por cada uma das outras ondas.[[IMG:2020/2020_UFRGS_22_2.png]]\n\nAssinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nAs formas de ondas X, Y e Z resultam, respectivamente, da superposição da onda 1 com as ondas ........, ........ e ........ .",
       "opcoes": {
         "A": "2 – 3 − 4",
         "B": "2 – 4 – 3",
@@ -485,7 +496,8 @@
         "D": "3 – 4 – 2",
         "E": "4 – 2 – 3"
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "Pulso (1) tem forma [+,-] indo para direita. Com (3) [-,+]: cancelamento completo -\u003e X (plano). Com (2) [+]: sobreposicao construtiva positiva -\u003e Y (pulso largo positivo). Com (4) [+,-]: somatorio das amplitudes -\u003e Z (assimetrico). X=1+3, Y=1+2, Z=1+4. Alternativa C."
     },
     {
       "id": "UFRGS-2020-F-23",
@@ -503,7 +515,8 @@
         "D": "a radiação do corpo negro, o efeito fotoelétrico e a radioatividade.",
         "E": "a radiação do corpo negro, o efeito fotoelétrico e a indução eletromagnética."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "No inicio do sec. XX: radiacao do corpo negro (Planck), efeito fotoeletrico (Einstein) e radioatividade exigiram novos conceitos. Inducao eletromagnetica e 1a lei da Termodinamica ja eram explicadas classicamente. Alternativa D."
     },
     {
       "id": "UFRGS-2020-F-24",
@@ -525,7 +538,8 @@
         "D": "β⁻, β⁻ e β⁺.",
         "E": "β⁺, β⁺ e γ."
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "137Cs (Z=55) -\u003e 137Ba (Z=56): Z aumenta 1, A nao muda -\u003e decaimento beta- para (1) e (2). 137Ba* -\u003e 137Ba: estado excitado emite foton sem mudar Z ou A -\u003e decaimento gama para (3). Processos: beta-, beta- e gama. Alternativa A."
     },
     {
       "id": "UFRGS-2020-F-25",
@@ -536,12 +550,10 @@
       "subarea": "Relatividade Geral / Desvio gravitacional da luz",
       "imagens": {
         "enunciado": [
-          "2020/2020_UFRGS_25.png",
-          "2020/2020_UFRGS_25_2.png",
-          "2020/2020_UFRGS_25_3.png"
+          "2020/2020_UFRGS_25.png"
         ]
       },
-      "enunciado": "Em maio de 2019, comemorou-se o centenário do eclipse solar total observado desde a cidade de Sobral, no Ceará, por diversos cientistas de todo o mundo.\n\nNo momento em que a Lua encobriu o Sol, câmeras acopladas a telescópios registraram, em chapas fotográficas, posições de estrelas que apareciam próximas ao Sol, destacando-se as duas mais próximas, uma de cada lado, conforme figura 1 abaixo.\n\nAlguns meses após o eclipse, novas fotografias foram tiradas da mesma região do céu. Nelas as duas estrelas estavam mais próximas uma da outra, conforme figura 2 abaixo.\n\nA comparação entre as duas imagens mostrou que a presença do Sol havia desviado a trajetória da luz proveniente das estrelas, conforme esquematizado na figura 3 abaixo.\n\nOs desvios observados, durante o eclipse, serviram para comprovar uma previsão",
+      "enunciado": "Em maio de 2019, comemorou-se o centenário do eclipse solar total observado desde a cidade de Sobral, no Ceará, por diversos cientistas de todo o mundo.\n\nNo momento em que a Lua encobriu o Sol, câmeras acopladas a telescópios registraram, em chapas fotográficas, posições de estrelas que apareciam próximas ao Sol, destacando-se as duas mais próximas, uma de cada lado, conforme figura 1 abaixo.\n\nAlguns meses após o eclipse, novas fotografias foram tiradas da mesma região do céu. Nelas as duas estrelas estavam mais próximas uma da outra, conforme figura 2 abaixo.[[IMG:2020/2020_UFRGS_25_2.png]]\n\nA comparação entre as duas imagens mostrou que a presença do Sol havia desviado a trajetória da luz proveniente das estrelas, conforme esquematizado na figura 3 abaixo.[[IMG:2020/2020_UFRGS_25_3.png]]\n\nOs desvios observados, durante o eclipse, serviram para comprovar uma previsão",
       "opcoes": {
         "A": "das Leis de Kepler.",
         "B": "da Lei da Gravitação Universal.",
@@ -549,7 +561,8 @@
         "D": "da Relatividade de Einstein.",
         "E": "da Mecânica Quântica."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "O eclipse de 1919 registrou o desvio da luz das estrelas pelo campo gravitacional do Sol, confirmando a previsao da Relatividade Geral de Einstein. Alternativa D."
     },
     {
       "id": "UFRGS-2019-F-01",
@@ -578,7 +591,8 @@
         "D": "Gráfico D",
         "E": "Gráfico E"
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Grafico a-t: intervalo 1 (a negativa), intervalo 2 (a=0), intervalo 3 (a positiva). No grafico d-t: curva concava para baixo (desacelera), segmento reto com menor inclinacao (v constante), curva concava para cima (acelera). Alternativa A."
     },
     {
       "id": "UFRGS-2019-F-02",
@@ -600,7 +614,8 @@
         "D": "2,5.",
         "E": "4."
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "Aceleracao de A: aA = FA/m = 20/m. Componente horizontal de FB: FB*cos(theta) = 50*0,8 = 40 N. Aceleracao de B: aB = 40/m. Razao aB/aA = 40/20 = 2. Alternativa C."
     },
     {
       "id": "UFRGS-2019-F-03",
@@ -618,7 +633,8 @@
         "D": "144.",
         "E": "576."
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "Lei da gravitacao: F proporcional a 1/r^2. Sonda a rS = rT/24. Razao FS/FT = (rT/rS)^2 = 24^2 = 576. Alternativa E."
     },
     {
       "id": "UFRGS-2019-F-04",
@@ -640,7 +656,8 @@
         "D": "RP FP / (RE RD).",
         "E": "RE FP / (RP RD)."
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Torque do pedal: tau_pedal = FP*RP. Tensao na correia: T = FP*RP/RD (equilibrio de torques na coroa dianteira). Torque transmitido a roda traseira: tau = T*RE = RE*RP*FP/RD. Alternativa A."
     },
     {
       "id": "UFRGS-2019-F-05",
@@ -662,7 +679,8 @@
         "D": "2h.",
         "E": "4h."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "Energia da mola: (1/2)kX^2 = mgh. Para massa 2m e compressao 2X: (1/2)k(2X)^2 = 2m*g*H -\u003e 4*(1/2)kX^2 = 2mgH -\u003e 4mgh = 2mgH -\u003e H = 2h. Alternativa D."
     },
     {
       "id": "UFRGS-2019-F-06",
@@ -684,7 +702,8 @@
         "D": "Mgh sen θ − Mgh cos θ",
         "E": "Mgh cos θ − Mgh sen θ"
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "Velocidade constante implica equilibrio de forcas: forca de atrito = Mg*sen(theta). Descendo altura h, percurso no plano = h/sen(theta). Trabalho da forca peso: W_P = +Mgh. Trabalho do atrito: W_at = -Mg*sen(theta)*(h/sen(theta)) = -Mgh. Alternativa B."
     },
     {
       "id": "UFRGS-2019-F-07",
@@ -713,7 +732,8 @@
         "D": "Alternativa D",
         "E": "Alternativa E"
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "Cortado o fio, bloco B desliza pelo plano inclinado: trajetoria diagonal (para baixo e lateralmente). Para o sistema B+P, forca horizontal externa = 0 (piso sem atrito), logo CM do sistema desce verticalmente. Alternativa E."
     },
     {
       "id": "UFRGS-2019-F-08",
@@ -735,7 +755,8 @@
         "D": "MgT.",
         "E": "MhT."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "Queda livre: v = g*T (com T = tempo de queda). Quantidade de movimento ao atingir o solo: p = M*v = M*g*T. Alternativa D."
     },
     {
       "id": "UFRGS-2019-F-09",
@@ -757,7 +778,8 @@
         "D": "1375 kg.",
         "E": "2750 kg."
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "Impulso = area sob F-t: triangulo (0-10 s) = (1/2)*10*100000 = 500000 N*s; retangulo (10-20 s) = 10*100000 = 1000000 N*s; trapezio (20-30 s) = (1/2)*(100000+150000)*10 = 1250000 N*s. Total I = 2750000 N*s. Peso do combustivel: Pc = I/Isp = 2750000/2000 = 1375 N. Massa: m = Pc/g = 1375/10 = 137,5 kg. Alternativa B."
     },
     {
       "id": "UFRGS-2019-F-10",
@@ -779,7 +801,8 @@
         "D": "0,7.",
         "E": "0,5."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "Equilibrio de pressoes na base do tubo em U: rho_agua*6 = rho_liquido*9 (alturas em cm). rho_liquido = 6/9 = 0,67 g/cm3, aproximadamente 0,7 g/cm3. Alternativa D."
     },
     {
       "id": "UFRGS-2019-F-11",
@@ -797,7 +820,8 @@
         "D": "0,67.",
         "E": "1,50."
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "Energia absorvida: SAR*t = 1,5 * (6*60) = 1,5*360 = 540 J/kg. Variacao de temperatura: DeltaT = 540/3600 = 0,15 grC. Alternativa B."
     },
     {
       "id": "UFRGS-2019-F-12",
@@ -815,7 +839,8 @@
         "D": "Apenas II e III.",
         "E": "I, II e III."
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "I: volumes iguais, mesma T e mesmo DeltaT sob P constante -\u003e DeltaV = V*(DeltaT/T) igual -\u003e verdadeira. II: mesma T e P -\u003e PV = nRT -\u003e mesmo n (Avogadro) -\u003e verdadeira. III: P constante -\u003e V/T = nR/P = const -\u003e V proporcional a T -\u003e verdadeira. Todas corretas. Alternativa E."
     },
     {
       "id": "UFRGS-2019-F-13",
@@ -837,7 +862,8 @@
         "D": "30 J e 10 J.",
         "E": "30 J e 20 J."
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "Estado i: P=1e4 N/m2, V=2e-3 m3. Estado f: P=2e4 N/m2, V=4e-3 m3. Processo I (isobarico P=1e4 ate V=4e-3, depois isochorico): WI = 1e4*(4e-3-2e-3) = 20 J. Processo II (diagonal): WII = (1e4+2e4)/2*(4e-3-2e-3) = 30 J. Alternativa C."
     },
     {
       "id": "UFRGS-2019-F-14",
@@ -859,7 +885,8 @@
         "D": "isobárica − isocórica − igual à",
         "E": "isocórica − isobárica − menor do que a"
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "Processo I: primeiro isobarico (P constante, V cresce de 2e-3 a 4e-3), depois isochorico (V constante, P cresce). Energia interna do gas ideal depende so da temperatura; estados i e f sao iguais para os dois processos, logo Delta_UI = Delta_UII. Alternativa D."
     },
     {
       "id": "UFRGS-2019-F-15",
@@ -881,7 +908,8 @@
         "D": "Fe − P = N.",
         "E": "P + Fe = N."
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Paredes do perfil a 45 graus. Equilibrio da esfera: componente vertical N*cos45 = P e componente horizontal N*sen45 = Fe. Dividindo: Fe/P = sen45/cos45 = 1, logo Fe = P. Alternativa A."
     },
     {
       "id": "UFRGS-2019-F-16",
@@ -903,7 +931,8 @@
         "D": "2 e 3 – opostos – q₁ > q₂ > q₃",
         "E": "2 e 3 – iguais – q₁ > q₂ > q₃"
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Equipotenciais com linhas fechadas mais densas indicam carga maior. Cargas 1 e 2 tem equipotenciais com topologia de repulsao (mesmo sinal). Carga 3 apresenta maior numero de linhas (maior modulo). Ordem: q1 \u003c q2 \u003c q3. Alternativa A."
     },
     {
       "id": "UFRGS-2019-F-17",
@@ -932,7 +961,8 @@
         "D": "Alternativa D",
         "E": "Alternativa E"
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "Campo externo de N para S (para a direita). Corrente no fio entrando na pagina. Campo do fio: sentido horario ao redor do fio. Acima do fio: campos somam (linhas mais densas). Abaixo: campos se opoem (ponto neutro, linhas fechadas ao redor). Configuracao da alternativa B. Alternativa B."
     },
     {
       "id": "UFRGS-2019-F-18",
@@ -954,7 +984,8 @@
         "D": "radiação – Gauss",
         "E": "radiação – Ampère"
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "O aquecimento das panelas por campos magneticos alternados e inducao eletromagnetica, regida pela lei de Faraday-Lenz. Alternativa B."
     },
     {
       "id": "UFRGS-2019-F-19",
@@ -976,7 +1007,8 @@
         "D": "1/2 e 1.",
         "E": "1/2 e 2."
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "Tubo aberto, modo fundamental: comprimento = lambda/2. Tubo 1 (L): lambda1 = 2L. Tubo 2 (L/2): lambda2 = 2*(L/2) = L. Razao lambda1/lambda2 = 2. Razao f1/f2 = lambda2/lambda1 = 1/2. Alternativa C."
     },
     {
       "id": "UFRGS-2019-F-20",
@@ -994,7 +1026,8 @@
         "D": "perpendicularmente – paralela – não ocorre",
         "E": "perpendicularmente – perpendicular – não ocorre"
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "Em onda mecanica longitudinal, o meio oscila paralelamente a direcao de propagacao. O transporte de energia ocorre na mesma direcao (paralela). Nao ha transporte de materia. Alternativa C."
     },
     {
       "id": "UFRGS-2019-F-21",
@@ -1016,7 +1049,8 @@
         "D": "4.",
         "E": "5."
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Imagem em espelho plano e simetrica ao objeto em relacao ao espelho. Espelho horizontal; objeto O esta acima e a esquerda. Imagem fica abaixo do espelho na mesma posicao horizontal de O, correspondendo ao ponto 1. Alternativa A."
     },
     {
       "id": "UFRGS-2019-F-22",
@@ -1034,7 +1068,8 @@
         "D": "Apenas II e III.",
         "E": "I, II e III."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "I: falsa (difracao ocorre em todos os tipos de onda, nao apenas sonoras). II: verdadeira (fenda mais estreita -\u003e difracao mais acentuada). III: verdadeira (comprimento de onda maior -\u003e difracao mais acentuada). Apenas II e III. Alternativa D."
     },
     {
       "id": "UFRGS-2019-F-23",
@@ -1052,7 +1087,8 @@
         "D": "radiação beta.",
         "E": "radiação gama."
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "Transicoes de eletrons entre niveis da eletrosfera resultam em emissao de fotons. Na faixa do visivel, isso corresponde a luz visivel. Alternativa B."
     },
     {
       "id": "UFRGS-2019-F-24",
@@ -1070,7 +1106,8 @@
         "D": "Apenas II e III.",
         "E": "I, II e III."
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "I: orbitas com N inteiros de comprimentos de onda de Broglie evidenciam dualidade onda-particula do eletron -\u003e verdadeira. II: orbitas nao precisam ser circulares -\u003e falsa. III: N e o numero quantico que identifica a orbita -\u003e verdadeira. Apenas I e III. Alternativa C."
     },
     {
       "id": "UFRGS-2019-F-25",
@@ -1088,7 +1125,8 @@
         "D": "1(c), 2(a) e 3(b).",
         "E": "1(c), 2(b) e 3(a)."
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "1. Velocidades proximas da luz: Fisica Relativistica (c). 2. Dimensoes atomicas: Fisica Quantica (b). 3. Unificacao eletricidade e magnetismo por Maxwell: Fisica Classica (a). Correspondencia: 1(c), 2(b), 3(a). Alternativa E."
     },
     {
       "id": "UFRGS-2018-F-01",
@@ -1097,7 +1135,18 @@
       "numero": 1,
       "area": "Cinemática",
       "subarea": "Queda livre e lançamento horizontal / Gráficos posição × tempo",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2018/2018_UFRGS_01.png"
+        ],
+        "alternativas": {
+          "A": "2018/2018_UFRGS_01_A.png",
+          "B": "2018/2018_UFRGS_01_B.png",
+          "C": "2018/2018_UFRGS_01_C.png",
+          "D": "2018/2018_UFRGS_01_D.png",
+          "E": "2018/2018_UFRGS_01_E.png"
+        }
+      },
       "enunciado": "Dois objetos de massas m₁ e m₂ (= 2m₁) encontram-se na borda de uma mesa de altura h em relação ao solo, conforme representa a figura abaixo.\n\nO objeto 1 é lentamente deslocado até começar a cair verticalmente. No instante em que o objeto 1 começa a cair, o objeto 2 é lançado horizontalmente com velocidade V₀. A resistência do ar é desprezível.\n\nAssinale a alternativa que melhor representa os gráficos de posição vertical dos objetos 1 e 2, em função do tempo. Nos gráficos, q representa o tempo de queda do objeto 1. Em cada alternativa, o gráfico da esquerda representa o objeto 1 e o da direita representa o objeto 2.",
       "opcoes": {
         "A": "Gráfico A",
@@ -1106,7 +1155,8 @@
         "D": "Gráfico D",
         "E": "Gráfico E"
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Objeto 1 e objeto 2 iniciam queda simultaneamente. Verticalmente, ambos sofrem queda livre: y(t) = h - (1/2)g*t^2. Os graficos de posicao vertical versus tempo sao identicos: parabola partindo de h e chegando a 0 no instante t = q. Alternativa A."
     },
     {
       "id": "UFRGS-2018-F-02",
@@ -1124,7 +1174,8 @@
         "D": "0,8.",
         "E": "0,6."
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "Velocidade em relacao ao chao: v_total = 48 m / 30 s = 1,6 m/s. Velocidade da esteira: 1,0 m/s. Velocidade da pessoa em relacao a esteira: 1,6 - 1,0 = 0,6 m/s. Alternativa E."
     },
     {
       "id": "UFRGS-2018-F-03",
@@ -1133,7 +1184,11 @@
       "numero": 3,
       "area": "Dinâmica",
       "subarea": "Leis de Newton / Cabo de guerra",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2018/2018_UFRGS_03.png"
+        ]
+      },
       "enunciado": "O cabo-de-guerra é uma atividade esportiva na qual duas equipes, A e B, puxam uma corda pelas extremidades opostas, conforme representa a figura abaixo.\n\nConsidere que a corda é puxada pela equipe A com uma força horizontal de módulo 780 N e pela equipe B com uma força horizontal de módulo 720 N. Em dado instante, a corda arrebenta.\n\nAssinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nA força resultante sobre a corda, no instante imediatamente anterior ao rompimento, tem módulo 60 N e aponta para a ........ . Os módulos das acelerações das equipes A e B, no instante imediatamente posterior ao rompimento da corda, são, respectivamente, ........, supondo que cada equipe tem massa de 300 kg.",
       "opcoes": {
         "A": "esquerda – 2,5 m/s² e 2,5 m/s²",
@@ -1142,7 +1197,8 @@
         "D": "direita – 2,6 m/s² e 2,4 m/s²",
         "E": "direita – 2,4 m/s² e 2,6 m/s²"
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "Forca resultante sobre a corda: 780 - 720 = 60 N, apontando para o lado da equipe A (esquerda). Apos ruptura, as equipes sao aceleradas pela propria forca de puxada: aA = 780/300 = 2,6 m/s^2; aB = 720/300 = 2,4 m/s^2. Alternativa B."
     },
     {
       "id": "UFRGS-2018-F-04",
@@ -1160,7 +1216,8 @@
         "D": "Apenas II e III.",
         "E": "I, II e III."
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "I: eclipse lunar ocorre com Lua cheia (Terra entre Sol e Lua) -\u003e verdadeira. II: eclipse solar ocorre com Lua entre Sol e Terra, nao a Terra entre Sol e Lua -\u003e falsa. III: a Lua tem periodo de rotacao igual ao de translacao (rotacao sincrona), por isso vemos sempre a mesma face -\u003e verdadeira. Apenas I e III. Alternativa C."
     },
     {
       "id": "UFRGS-2018-F-05",
@@ -1169,7 +1226,11 @@
       "numero": 5,
       "area": "Dinâmica",
       "subarea": "Movimento circular / Velocidade tangencial e força centrípeta",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2018/2018_UFRGS_05_e_06.png"
+        ]
+      },
       "enunciado": "Instrução: O enunciado a seguir refere-se às questões 05 e 06.\n\nA figura abaixo representa duas esferas, 1 e 2, de massas iguais a m, presas nas extremidades de uma barra rígida de comprimento L e de massa desprezível. O sistema formado é posto a girar com velocidade angular constante em torno de um eixo, perpendicular à página, que passa pelo ponto P.\n\nSendo vi a velocidade tangencial da esfera i (i = 1, 2) e Fi a força centrípeta nela resultante, as razões v₁/v₂ e F₁/F₂ entre os módulos dos respectivos vetores são, nessa ordem,",
       "opcoes": {
         "A": "1/3 e 1/2.",
@@ -1178,7 +1239,8 @@
         "D": "1/2 e 3/2.",
         "E": "3/2 e 1/2."
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "P esta a L/3 da esfera 1 e a 2L/3 da esfera 2. v = omega*r (mesma omega): v1/v2 = (L/3)/(2L/3) = 1/2. F = m*omega^2*r (mesma m e omega): F1/F2 = r1/r2 = 1/2. Razoes: 1/2 e 1/2. Alternativa C."
     },
     {
       "id": "UFRGS-2018-F-06",
@@ -1187,7 +1249,11 @@
       "numero": 6,
       "area": "Dinâmica",
       "subarea": "Centro de massa / Sistema em rotação",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2018/2018_UFRGS_05_e_06.png"
+        ]
+      },
       "enunciado": "Instrução: O enunciado a seguir refere-se às questões 05 e 06.\n\nA figura abaixo representa duas esferas, 1 e 2, de massas iguais a m, presas nas extremidades de uma barra rígida de comprimento L e de massa desprezível. O sistema formado é posto a girar com velocidade angular constante em torno de um eixo, perpendicular à página, que passa pelo ponto P.\n\nEm relação ao eixo de rotação em P, o centro de massa do sistema descreve uma trajetória circunferencial de raio",
       "opcoes": {
         "A": "L/2.",
@@ -1196,7 +1262,8 @@
         "D": "L/6.",
         "E": "L/9."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "Posicao do CM em relacao a P (origem): xCM = (m*(-L/3) + m*(2L/3))/(2m) = (L/3)/2 = L/6. O CM descreve circunferencia de raio L/6. Alternativa D."
     },
     {
       "id": "UFRGS-2018-F-07",
@@ -1205,7 +1272,11 @@
       "numero": 7,
       "area": "Dinâmica",
       "subarea": "Trabalho da força gravitacional / Independência da trajetória",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2018/2018_UFRGS_07.png"
+        ]
+      },
       "enunciado": "A figura mostra três trajetórias, 1, 2 e 3, através das quais um corpo de massa m, no campo gravitacional terrestre, é levado da posição inicial i para a posição final f, mais abaixo.\n\nSejam W₁, W₂ e W₃, respectivamente, os trabalhos realizados pela força gravitacional nas trajetórias mostradas.\n\nAssinale a alternativa que correlaciona corretamente os trabalhos realizados.",
       "opcoes": {
         "A": "W₁ < W₂ < W₃",
@@ -1214,7 +1285,8 @@
         "D": "W₁ = W₂ > W₃",
         "E": "W₁ > W₂ > W₃"
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "A forca gravitacional e conservativa: o trabalho realizado depende apenas das posicoes inicial i e final f, nao da trajetoria percorrida. Logo W1 = W2 = W3. Alternativa C."
     },
     {
       "id": "UFRGS-2018-F-08",
@@ -1223,7 +1295,11 @@
       "numero": 8,
       "area": "Oscilações",
       "subarea": "Energia elástica / Arco e flecha",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2018/2018_UFRGS_08.png"
+        ]
+      },
       "enunciado": "O uso de arco e flecha remonta a tempos anteriores à história escrita. Em um arco, a força da corda sobre a flecha é proporcional ao deslocamento x, ilustrado na figura abaixo, a qual representa o arco nas suas formas relaxada I e distendida II.\n\nUma força horizontal de 200 N, aplicada na corda com uma flecha de massa m = 40 g, provoca um deslocamento x = 0,5 m.\n\nSupondo que toda a energia armazenada no arco seja transferida para a flecha, qual a velocidade que a flecha atingiria, em m/s, ao abandonar a corda?",
       "opcoes": {
         "A": "5 × 10³.",
@@ -1232,7 +1308,8 @@
         "D": "5.",
         "E": "10^(1/2)."
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "F = k*x, k = 200/0,5 = 400 N/m. Energia elastica: E = (1/2)*400*0,5^2 = 50 J. Toda convertida em Ec: (1/2)*m*v^2 = 50 J. v = sqrt(2*50/0,04) = sqrt(2500) = 50 m/s. Alternativa C."
     },
     {
       "id": "UFRGS-2018-F-09",
@@ -1250,7 +1327,8 @@
         "D": "Apenas I e II.",
         "E": "I, II e III."
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "I: em colisoes inelasticas a Ec nao e conservada -\u003e falsa. II: objeto com quantidade de movimento p tem Ec = p^2/(2m) \u003e 0, logo tem energia mecanica -\u003e verdadeira. III: objeto de menor massa pode ter maior p se sua velocidade for suficientemente maior -\u003e falsa. Apenas II. Alternativa B."
     },
     {
       "id": "UFRGS-2018-F-10",
@@ -1259,7 +1337,11 @@
       "numero": 10,
       "area": "Fluidos",
       "subarea": "Empuxo / Volume e densidade do corpo",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2018/2018_UFRGS_10.png"
+        ]
+      },
       "enunciado": "A figura I representa um corpo metálico maciço, suspenso no ar por um dinamômetro, que registra o valor 16 N.\n\nA figura II representa o mesmo corpo totalmente submerso na água, e o dinamômetro registra 14 N.\n\nDesprezando o empuxo do ar e considerando a densidade da água ρ_a = 1,0 × 10³ kg/m³ e a aceleração da gravidade g = 10 m/s², o volume e a densidade do corpo são, respectivamente,",
       "opcoes": {
         "A": "2,0 × 10⁻⁴ m³ e 10,0 × 10³ kg/m³.",
@@ -1268,7 +1350,8 @@
         "D": "1,5 × 10⁻³ m³ e 8,0 × 10³ kg/m³.",
         "E": "1,5 × 10⁻³ m³ e 7,0 × 10³ kg/m³."
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "Empuxo E = P_ar - T_agua = 16 - 14 = 2 N. Volume: V = E/(rho_a*g) = 2/(1000*10) = 2*10^-4 m^3. Densidade: rho = m/V = (16/10)/(2*10^-4) = 1,6/(2*10^-4) = 8,0*10^3 kg/m^3. Alternativa B."
     },
     {
       "id": "UFRGS-2018-F-11",
@@ -1277,7 +1360,11 @@
       "numero": 11,
       "area": "Termologia",
       "subarea": "Dilatação linear / Coeficiente de dilatação e gráfico",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2018/2018_UFRGS_11.png"
+        ]
+      },
       "enunciado": "Uma barra metálica de 1 m de comprimento é submetida a um processo de aquecimento e sofre uma variação de temperatura.\n\nO gráfico abaixo representa a variação Δl, em mm, no comprimento da barra, em função da variação de temperatura ΔT, em °C.\n\nQual é o valor do coeficiente de dilatação térmica linear do material de que é feita a barra, em unidades 10⁻⁶/°C?",
       "opcoes": {
         "A": "0,2.",
@@ -1286,7 +1373,8 @@
         "D": "20.",
         "E": "50."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "Grafico: DeltaL = 0,8 mm para DeltaT = 40 grC. alfa = DeltaL/(L0*DeltaT) = 0,8 mm/(1000 mm * 40 grC) = 2*10^-5 /grC = 20*10^-6 /grC. Alternativa D."
     },
     {
       "id": "UFRGS-2018-F-12",
@@ -1304,7 +1392,8 @@
         "D": "50,0.",
         "E": "37,7."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "Aquecimento do gelo de -10 a 0 grC: Q1 = 100*2,1*10 = 2100 J. Fusao: Q2 = 100*330 = 33000 J. Calor restante: Q3 = 56100 - 2100 - 33000 = 21000 J. Aquecimento da agua: DeltaT = 21000/(100*4,2) = 50 grC. Temperatura final = 50 grC. Alternativa D."
     },
     {
       "id": "UFRGS-2018-F-13",
@@ -1322,7 +1411,8 @@
         "D": "Apenas I e II.",
         "E": "I, II e III."
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "Vmax^2 = ((T_oce - T_atm)/T_atm)*E. I: diminuir T_oce reduz o numerador -\u003e Vmax diminui. II: aumentar a diferenca (T_oce - T_atm) -\u003e Vmax aumenta (contribui). III: diminuir E -\u003e Vmax diminui. Apenas o processo II contribui para o aumento. Alternativa B."
     },
     {
       "id": "UFRGS-2018-F-14",
@@ -1340,7 +1430,8 @@
         "D": "167.",
         "E": "17."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "Gas ideal: Vf/Vi = (Pi/Pf)*(Tf/Ti). Ti = 300 K, Tf = 250 K, Pf/Pi = 0,005. Vf/Vi = (1/0,005)*(250/300) = 200*(5/6) = 166,7 â‰ˆ 167. Alternativa D."
     },
     {
       "id": "UFRGS-2018-F-15",
@@ -1358,7 +1449,8 @@
         "D": "positivamente carregada – negativamente carregada",
         "E": "negativamente carregada – positivamente carregada"
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Caso 1: com Q proxima e esfera aterrada, Q e afastada -\u003e esfera retorna ao equilibrio com a terra e fica neutra; aterramento desfeito: neutra. Caso 2: aterramento desfeito enquanto Q esta proxima (carga positiva induzida presa na esfera); Q afastada: esfera permanece positivamente carregada. Alternativa A."
     },
     {
       "id": "UFRGS-2018-F-16",
@@ -1376,7 +1468,8 @@
         "D": "20 Ω e 55 Ω.",
         "E": "20 Ω e 70 Ω."
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "Circuito em serie: I = 0,20 A. R_lampada = V_lampada/I = 4/0,20 = 20 Ohm. Queda na resistencia interna: V_r = 0,20*5 = 1 V. V_resistor = 15 - 1 - 4 = 10 V. R_resistor = 10/0,20 = 50 Ohm. Alternativa B."
     },
     {
       "id": "UFRGS-2018-F-17",
@@ -1385,7 +1478,11 @@
       "numero": 17,
       "area": "Eletromagnetismo",
       "subarea": "Força magnética / Trajetória de carga negativa em campo magnético",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2018/2018_UFRGS_17.png"
+        ]
+      },
       "enunciado": "Na figura abaixo, está representada a trajetória de uma partícula de carga negativa que atravessa três regiões onde existem campos magnéticos uniformes e perpendiculares à trajetória da partícula.\n\nNas regiões I e III, as trajetórias são quartos de circunferências e, na região II, a trajetória é uma semicircunferência. A partir da trajetória representada, pode-se afirmar corretamente que os campos magnéticos nas regiões I, II e III, em relação à página, estão, respectivamente,",
       "opcoes": {
         "A": "entrando, saindo e entrando.",
@@ -1394,7 +1491,8 @@
         "D": "entrando, entrando e entrando.",
         "E": "saindo, entrando e saindo."
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Carga negativa. Regiao I: curva para baixo ao entrar -\u003e campo entrando na pagina. Regiao II: semicirculo na parte inferior -\u003e campo saindo da pagina. Regiao III: curva para cima e sai horizontalmente -\u003e campo entrando na pagina. Alternativa A."
     },
     {
       "id": "UFRGS-2018-F-18",
@@ -1403,7 +1501,12 @@
       "numero": 18,
       "area": "Eletromagnetismo",
       "subarea": "Indução eletromagnética / Ímã e bobina",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2018/2018_UFRGS_18.png",
+          "2018/2018_UFRGS_18_2.png"
+        ]
+      },
       "enunciado": "A figura abaixo representa um experimento em que um ímã está sendo aproximado com velocidade V de uma bobina em repouso, ligada em série com um galvanômetro G.\n\nA seguir, três variantes do mesmo experimento estão representadas nas figuras I, II e III.\n\nI - ímã em repouso, bobina movendo-se em direção ao ímã com velocidade V.\nII - bobina e ímã em repouso, mas com corrente crescente em outra bobina próxima.\nIII - ímã se aproximando com velocidade V/2.\n\nAssinale a alternativa que indica corretamente as variantes que possuem corrente elétrica induzida igual àquela produzida no experimento original.",
       "opcoes": {
         "A": "Apenas I.",
@@ -1412,7 +1515,8 @@
         "D": "Apenas I e II.",
         "E": "I, II e III."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "Variante I: iman em repouso, bobina se aproximando com velocidade V -\u003e variacao de fluxo identica -\u003e mesma corrente (verdadeira). Variante II: corrente crescente em bobina proxima gera campo magnetico variavel -\u003e induz corrente (verdadeira). Variante III: velocidade V/2 -\u003e taxa de variacao diferente -\u003e corrente diferente (falsa). Apenas I e II. Alternativa D."
     },
     {
       "id": "UFRGS-2018-F-19",
@@ -1430,7 +1534,8 @@
         "D": "n₁ > n₂ − sen θ₁ < n₂/n₁",
         "E": "n₁ > n₂ − sen θ₁ > n₂/n₁"
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "Reflexao total interna exige: (1) n1 \u003e n2 (luz vai de meio mais denso para menos denso). (2) sen(theta1) \u003e n2/n1 (angulo de incidencia maior que o angulo critico). Alternativa E."
     },
     {
       "id": "UFRGS-2018-F-20",
@@ -1439,7 +1544,12 @@
       "numero": 20,
       "area": "Óptica",
       "subarea": "Defeitos de visão / Lentes corretivas",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2018/2018_UFRGS_20.png",
+          "2018/2018_UFRGS_20_2.png"
+        ]
+      },
       "enunciado": "Muitas pessoas não enxergam nitidamente objetos em decorrência de deformação no globo ocular ou de acomodação defeituosa do cristalino.\n\nAssinale a alternativa que preenche corretamente as lacunas dos enunciados a seguir, na ordem em que aparecem.\n\nPara algumas pessoas a imagem de um objeto forma-se à frente da retina, conforme ilustrado na figura I abaixo. Esse defeito de visão é chamado de ........, e sua correção é feita com lentes ........ .\n\nEm outras pessoas, os raios luminosos são interceptados pela retina antes de se formar a imagem, conforme representado na figura II abaixo. Esse defeito de visão é chamado de ........, e sua correção é feita com lentes ........ .",
       "opcoes": {
         "A": "presbiopia − divergentes − hipermetropia − convergentes",
@@ -1448,7 +1558,8 @@
         "D": "miopia − convergentes − hipermetropia − divergentes",
         "E": "miopia − divergentes − hipermetropia − convergentes"
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "Figura I (imagem formada a frente da retina): miopia; correcao com lentes divergentes. Figura II (raios interceptados antes de formar imagem, ou seja, imagem atras da retina): hipermetropia; correcao com lentes convergentes. Alternativa E."
     },
     {
       "id": "UFRGS-2018-F-21",
@@ -1466,7 +1577,8 @@
         "D": "Magnus.",
         "E": "Zeeman."
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "A alteracao de frequencia de onda por reflexao em superficie em movimento e o efeito Doppler, utilizado pelos radares. Alternativa A."
     },
     {
       "id": "UFRGS-2018-F-22",
@@ -1475,7 +1587,11 @@
       "numero": 22,
       "area": "Ondulatória",
       "subarea": "Interferência / Experimento de Young e franjas",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2018/2018_UFRGS_22.png"
+        ]
+      },
       "enunciado": "A figura I, abaixo, representa esquematicamente o experimento de Young. A luz emitida pela fonte F, ao passar por dois orifícios, dá origem a duas fontes de luz F₁ e F₂, idênticas, produzindo um padrão de interferência no anteparo A. São franjas de interferência, compostas de faixas claras e escuras, decorrentes da superposição de ondas que chegam no anteparo.\n\nA figura II, abaixo, representa dois raios de luz que atingem o anteparo no ponto P. A onda oriunda do orifício F₁ percorre uma distância maior que a onda proveniente do orifício F₂. A diferença entre as duas distâncias é ΔL.\n\nAssinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nSe, no ponto P, há uma franja escura, a diferença ΔL deve ser igual a um número ........ de comprimentos de onda.\n\nNo ponto central O, forma-se uma franja ........ decorrente da interferência ........ das ondas.",
       "opcoes": {
         "A": "inteiro − escura − destrutiva",
@@ -1484,7 +1600,8 @@
         "D": "semi-inteiro − escura − destrutiva",
         "E": "semi-inteiro − clara − construtiva"
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "Franja escura: interferencia destrutiva, DeltaL = (n + 1/2)*lambda -\u003e numero semi-inteiro de comprimentos de onda. Ponto central O: DeltaL = 0 -\u003e interferencia construtiva -\u003e franja clara. Alternativa E."
     },
     {
       "id": "UFRGS-2018-F-23",
@@ -1502,7 +1619,8 @@
         "D": "1(a) − 2(b) − 3(c) − 4(d)",
         "E": "1(a) − 2(d) − 3(b) − 4(c)"
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "1 gravitacional: mareas (c). 2 eletromagnetica: estabilidade do atomo, eletrons orbitando nucleo (d). 3 nuclear forte: coesao do nucleo (b). 4 nuclear fraca: decaimento beta (a). Associacao: 1(c)-2(d)-3(b)-4(a). Alternativa C."
     },
     {
       "id": "UFRGS-2018-F-24",
@@ -1520,7 +1638,8 @@
         "D": "β − β",
         "E": "β − γ"
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "U-239 -\u003e Np-239: Z aumenta 1 (92 para 93), A invariavel -\u003e decaimento beta-. Np-239 -\u003e Pu-239: Z aumenta 1 (93 para 94), A invariavel -\u003e decaimento beta-. Ambas sao emissoes beta. Alternativa D."
     },
     {
       "id": "UFRGS-2018-F-25",
@@ -1538,7 +1657,8 @@
         "D": "Teoria Atômica de Bohr.",
         "E": "Mecânica Quântica."
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Dilatacao temporal e contracao espacial (do espaco) sao consequencias diretas dos postulados da Teoria Especial da Relatividade (Einstein, 1905). Alternativa A."
     },
     {
       "id": "UFRGS-2017-F-01",
@@ -1547,7 +1667,15 @@
       "numero": 1,
       "area": "Cinemática",
       "subarea": "Lançamento vertical / Gráfico aceleração × tempo",
-      "imagens": null,
+      "imagens": {
+        "alternativas": {
+          "A": "2017/2017_UFRGS_01_A.png",
+          "B": "2017/2017_UFRGS_01_B.png",
+          "C": "2017/2017_UFRGS_01_C.png",
+          "D": "2017/2017_UFRGS_01_D.png",
+          "E": "2017/2017_UFRGS_01_E.png"
+        }
+      },
       "enunciado": "Considere que uma pedra é lançada verticalmente para cima e atinge uma altura máxima H. Despreze a resistência do ar e considere um referencial com origem no solo e sentido positivo do eixo vertical orientado para cima.\n\nAssinale o gráfico que melhor representa o valor da aceleração sofrida pela pedra, desde o lançamento até o retorno ao ponto de partida.",
       "opcoes": {
         "A": "Gráfico A",
@@ -1556,7 +1684,8 @@
         "D": "Gráfico D",
         "E": "Gráfico E"
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "Pedra lancada verticalmente sem resistencia do ar. A aceleracao e constante e igual a -g (para baixo) durante todo o movimento: subida, ponto mais alto e descida. Grafico a(t): linha horizontal constante em -g. Alternativa C."
     },
     {
       "id": "UFRGS-2017-F-02",
@@ -1574,7 +1703,8 @@
         "D": "Apenas I e II.",
         "E": "I, II e III."
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "MUA: a = 2s/t^2 = 2*100/100 = 2 m/s^2. v_med = 100/10 = 10 m/s = 36 km/h -\u003e I verdadeira. a = 2 m/s^2 (nao 10 m/s^2) -\u003e II falsa. v_max = a*t = 2*10 = 20 m/s (nao 10 m/s) -\u003e III falsa. Apenas I. Alternativa A."
     },
     {
       "id": "UFRGS-2017-F-03",
@@ -1592,7 +1722,8 @@
         "D": "2.",
         "E": "1."
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "Aceleracao: a = Delta_v / Delta_t = 10 m/s / 2 s = 5 m/s^2. 2a Lei de Newton: m = F/a = 20/5 = 4 kg. Alternativa B."
     },
     {
       "id": "UFRGS-2017-F-04",
@@ -1610,7 +1741,8 @@
         "D": "π/4 e π²/4.",
         "E": "π/4 e π²/16."
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "omega = 2*pi/T = 2*pi/4 = pi/2 rad/s. a_c = omega^2 * R = (pi/2)^2 * 6 = (pi^2/4)*6 = 3*pi^2/2 m/s^2. Alternativa B."
     },
     {
       "id": "UFRGS-2017-F-05",
@@ -1619,7 +1751,11 @@
       "numero": 5,
       "area": "Gravitação",
       "subarea": "Lei da Gravitação Universal / Equilíbrio gravitacional entre planetas",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2017/2017_UFRGS_05.png"
+        ]
+      },
       "enunciado": "A figura abaixo representa dois planetas, de massas m₁ e m₂, cujos centros estão separados por uma distância D, muito maior que os raios dos planetas.\n\nSabendo que é nula a força gravitacional sobre uma terceira massa colocada no ponto P, a uma distância D/3 de m₁, a razão m₁/m₂ entre as massas dos planetas é",
       "opcoes": {
         "A": "1/4.",
@@ -1628,7 +1764,8 @@
         "D": "2/3.",
         "E": "3/2."
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Forca gravitacional nula em P (a D/3 de m1 e 2D/3 de m2): G*m*m1/(D/3)^2 = G*m*m2/(2D/3)^2. Simplificando: m1*9 = m2*9/4. m1/m2 = 1/4. Alternativa A."
     },
     {
       "id": "UFRGS-2017-F-06",
@@ -1637,7 +1774,11 @@
       "numero": 6,
       "area": "Dinâmica",
       "subarea": "Colisão inelástica / Trajetória do centro de massa",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2017/2017_UFRGS_06_e_07.png"
+        ]
+      },
       "enunciado": "Instrução: O enunciado abaixo refere-se às questões 06 e 07.\n\nA figura (i) esquematiza a trajetória de duas partículas, 1 e 2, em rota de colisão inelástica, a ocorrer no ponto P; a figura (ii) representa cinco possibilidades de trajetória do centro de massa do sistema após a colisão.\n\nAs massas e módulos das velocidades das partículas 1 e 2 são, respectivamente, m e 2v₀, e 2m e v₀.\n\nNa figura (ii), a trajetória que melhor descreve o movimento final é a de número",
       "opcoes": {
         "A": "I.",
@@ -1646,7 +1787,8 @@
         "D": "IV.",
         "E": "V."
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "Momento linear do CM: p_cmx = (m*2v0*cos(theta) + 2m*v0*cos(theta))/(3m) = 4v0*cos(theta)/3. p_cmy = (m*(-2v0*sin(theta)) + 2m*v0*sin(theta))/(3m) = 0. CM se move horizontalmente para a direita: trajetoria III. Alternativa C."
     },
     {
       "id": "UFRGS-2017-F-07",
@@ -1655,7 +1797,11 @@
       "numero": 7,
       "area": "Dinâmica",
       "subarea": "Colisão perfeitamente inelástica / Velocidade final",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2017/2017_UFRGS_06_e_07.png"
+        ]
+      },
       "enunciado": "Instrução: O enunciado abaixo refere-se às questões 06 e 07.\n\nA figura (i) esquematiza a trajetória de duas partículas, 1 e 2, em rota de colisão inelástica, a ocorrer no ponto P.\n\nAs massas e módulos das velocidades das partículas 1 e 2 são, respectivamente, m e 2v₀, e 2m e v₀.\n\nSendo a colisão perfeitamente inelástica, o módulo da velocidade final das partículas é",
       "opcoes": {
         "A": "4v₀ sen θ.",
@@ -1664,7 +1810,8 @@
         "D": "(4/3)v₀ sen θ.",
         "E": "(4/3)v₀ cos θ."
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "Colisao perfeitamente inelastica: velocidade final = velocidade do CM. |v_cm| = 4*v0*cos(theta)/3 (componente horizontal; componente vertical e zero). Alternativa E."
     },
     {
       "id": "UFRGS-2017-F-08",
@@ -1673,7 +1820,11 @@
       "numero": 8,
       "area": "Dinâmica",
       "subarea": "Trabalho de força variável / Gráfico F × x",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2017/2017_UFRGS_08_e_09.png"
+        ]
+      },
       "enunciado": "Instrução: O enunciado abaixo refere-se às questões 08 e 09.\n\nUma partícula de 2 kg está inicialmente em repouso em x = 0 m. Sobre ela atua uma única força F que varia com a posição x, conforme mostra a figura abaixo.\n\nQual o trabalho realizado pela força F, em J, quando a partícula desloca-se desde x = 0 m até x = 4 m?",
       "opcoes": {
         "A": "24.",
@@ -1682,7 +1833,8 @@
         "D": "3.",
         "E": "0."
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "Trabalho = area sob o grafico F*x de 0 a 4 m: triangulo de base 4 m e altura 6 N. W = (1/2)*4*6 = 12 J. Alternativa B."
     },
     {
       "id": "UFRGS-2017-F-09",
@@ -1691,7 +1843,11 @@
       "numero": 9,
       "area": "Dinâmica",
       "subarea": "Energia cinética / Teorema trabalho-energia",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2017/2017_UFRGS_08_e_09.png"
+        ]
+      },
       "enunciado": "Instrução: O enunciado abaixo refere-se às questões 08 e 09.\n\nUma partícula de 2 kg está inicialmente em repouso em x = 0 m. Sobre ela atua uma única força F que varia com a posição x, conforme mostra a figura abaixo.\n\nOs valores da energia cinética da partícula, em J, quando ela está em x = 2 m e em x = 4 m, são, respectivamente,",
       "opcoes": {
         "A": "0 e 12.",
@@ -1700,7 +1856,8 @@
         "D": "6 e 6.",
         "E": "6 e 12."
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "Pelo teorema trabalho-energia, Ec = W acumulado. Em x=2m: area do triangulo de 0 a 2 = (1/2)*2*6 = 6 J. Em x=4m: area total = 12 J. Ec(2m)=6 J e Ec(4m)=12 J. Alternativa E."
     },
     {
       "id": "UFRGS-2017-F-10",
@@ -1709,7 +1866,11 @@
       "numero": 10,
       "area": "Fluidos",
       "subarea": "Equação de continuidade / Tubo com estrangulamento",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2017/2017_UFRGS_10.png"
+        ]
+      },
       "enunciado": "A figura abaixo mostra um fluido incompressível que escoa com velocidade v₁ através de um tubo horizontal de seção reta A₁ e atravessa, com velocidade v₂, um trecho estrangulado de seção reta A₂ = A₁/4.\n\nNessa situação, a razão entre os módulos das velocidades v₂/v₁ é",
       "opcoes": {
         "A": "4.",
@@ -1718,7 +1879,8 @@
         "D": "1/2.",
         "E": "1/4."
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Equacao de continuidade (fluido incompressivel): A1*v1 = A2*v2. A2 = A1/4 -\u003e v2 = 4*v1. v2/v1 = 4. Alternativa A."
     },
     {
       "id": "UFRGS-2017-F-11",
@@ -1736,7 +1898,8 @@
         "D": "Apenas II e III.",
         "E": "I, II e III."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "I: FALSA (agua se contrai de 0 a 4 grC; nem todos os materiais se expandem). II: VERDADEIRA (ponto de ebulicao depende da pressao). III: VERDADEIRA (calor latente de vaporizacao e a energia por unidade de massa no processo de ebulicao). Apenas II e III. Alternativa D."
     },
     {
       "id": "UFRGS-2017-F-12",
@@ -1745,7 +1908,15 @@
       "numero": 12,
       "area": "Termodinâmica",
       "subarea": "Gás ideal / Transformação isotérmica e gráfico p × V",
-      "imagens": null,
+      "imagens": {
+        "alternativas": {
+          "A": "2017/2017_UFRGS_12_A.png",
+          "B": "2017/2017_UFRGS_12_B.png",
+          "C": "2017/2017_UFRGS_12_C.png",
+          "D": "2017/2017_UFRGS_12_D.png",
+          "E": "2017/2017_UFRGS_12_E.png"
+        }
+      },
       "enunciado": "Considere que certa quantidade de gás ideal, mantida a temperatura constante, está contida em um recipiente cujo volume pode ser variado.\n\nAssinale a alternativa que melhor representa a variação da pressão (p) exercida pelo gás, em função da variação do volume (V) do recipiente.",
       "opcoes": {
         "A": "Gráfico A",
@@ -1754,7 +1925,8 @@
         "D": "Gráfico D",
         "E": "Gráfico E"
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Gas ideal a temperatura constante: pV = nRT = constante -\u003e p proporcional a 1/V. O grafico p*V e uma hiperbole decrescente. Alternativa A."
     },
     {
       "id": "UFRGS-2017-F-13",
@@ -1763,7 +1935,11 @@
       "numero": 13,
       "area": "Termodinâmica",
       "subarea": "Diagrama de fases / Mudanças de estado",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2017/2017_UFRGS_13.png"
+        ]
+      },
       "enunciado": "Qualquer substância pode ser encontrada nos estados (ou fases) sólido (S), líquido (L) ou gasoso (G), dependendo das condições de pressão (p) e temperatura (T) a que está sujeita. Esses estados podem ser representados em um gráfico p × T, conhecido como diagrama de fases, como o mostrado na figura abaixo, para uma substância qualquer.\n\nAs regiões de existência de cada fase estão identificadas por (S), (L) e (G), e os pontos a, b, c e d indicam quatro estados distintos de (p, T).\n\nConsidere as seguintes afirmações.\n\nI - A substância não pode sublimar, se submetida a pressões constantes maiores do que pa.\n\nII - A substância, se estiver no estado b, pode ser vaporizada por transformações isotérmicas ou isobáricas.\n\nIII - A mudança de estado c → d é isobárica e conhecida como solidificação.\n\nQuais estão corretas?",
       "opcoes": {
         "A": "Apenas I.",
@@ -1772,7 +1948,8 @@
         "D": "Apenas I e III.",
         "E": "I, II e III."
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "Diagrama de fases: ponto a e o ponto triplo (pa, Ta). I: p \u003e pa nao permite sublimacao (solido vai direto para liquido) -\u003e verdadeira. II: ponto b no estado liquido pode ser vaporizado por processo isotermico (diminuir P) ou isobarico (aumentar T) -\u003e verdadeira. III: c(L) -\u003e d(S) com mesma pressao (isobarico) e solidificacao -\u003e verdadeira. Todas corretas. Alternativa E."
     },
     {
       "id": "UFRGS-2017-F-14",
@@ -1781,7 +1958,11 @@
       "numero": 14,
       "area": "Termodinâmica",
       "subarea": "1ª Lei da Termodinâmica / Energia interna e trabalho em dois processos",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2017/2017_UFRGS_14.png"
+        ]
+      },
       "enunciado": "A figura mostra dois processos, I e II, em um diagrama pressão (P) × volume (V) ao longo dos quais um gás ideal pode ser levado do estado inicial i para o estado final f.\n\nAssinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nDe acordo com a 1ª Lei da Termodinâmica, a variação da energia interna é ........ nos dois processos. O trabalho WI realizado no processo I é ........ que o trabalho WII realizado no processo II.",
       "opcoes": {
         "A": "igual − maior",
@@ -1790,7 +1971,8 @@
         "D": "diferente − maior",
         "E": "diferente − menor"
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "Energia interna do gas ideal depende so da temperatura: mesmos estados i e f -\u003e DeltaU igual nos dois processos. No diagrama P*V, processo I ocorre pelo caminho abaixo (area menor sob a curva) -\u003e WI \u003c WII. Alternativa B."
     },
     {
       "id": "UFRGS-2017-F-15",
@@ -1799,7 +1981,11 @@
       "numero": 15,
       "area": "Eletrostática",
       "subarea": "Campo elétrico e potencial / Hexágono com cargas iguais",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2017/2017_UFRGS_15.png"
+        ]
+      },
       "enunciado": "Seis cargas elétricas iguais a Q estão dispostas, formando um hexágono regular de aresta R, conforme mostra a figura abaixo.\n\nCom base nesse arranjo, sendo k a constante eletrostática, considere as seguintes afirmações.\n\nI - O campo elétrico resultante no centro do hexágono tem módulo igual a 6kQ/R².\n\nII - O trabalho necessário para se trazer uma carga q, desde o infinito até o centro do hexágono, é igual a 6kQq/R.\n\nIII - A força resultante sobre uma carga de prova q, colocada no centro do hexágono, é nula.\n\nQuais estão corretas?",
       "opcoes": {
         "A": "Apenas I.",
@@ -1808,7 +1994,8 @@
         "D": "Apenas II e III.",
         "E": "I, II e III."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "Seis cargas iguais em vertices de hexagono regular. I: por simetria o campo resultante no centro e zero (cargas opostas se cancelam par a par) -\u003e FALSA. II: potencial V = 6kQ/R; trabalho = qV = 6kQq/R -\u003e VERDADEIRA. III: forca sobre carga de prova = qE = 0 -\u003e VERDADEIRA. Apenas II e III. Alternativa D."
     },
     {
       "id": "UFRGS-2017-F-16",
@@ -1817,7 +2004,11 @@
       "numero": 16,
       "area": "Eletricidade",
       "subarea": "Circuitos elétricos / Resistores em paralelo e série e potência",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2017/2017_UFRGS_16.png"
+        ]
+      },
       "enunciado": "A diferença de potencial entre os pontos (i) e (ii) do circuito abaixo é V.\n\nConsiderando que todos os cinco resistores têm resistência elétrica R, a potência total por eles dissipada é",
       "opcoes": {
         "A": "2V²/R.",
@@ -1826,7 +2017,8 @@
         "D": "4V²/R².",
         "E": "V²/(4R²)."
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Tres caminhos em paralelo entre (i) e (ii): superior 2R, medio R, inferior 2R. R_eq: 1/R_eq = 1/(2R) + 1/R + 1/(2R) = 1/R + 1/R = 2/R -\u003e R_eq = R/2. Potencia total: P = V^2/R_eq = V^2/(R/2) = 2V^2/R. Alternativa A."
     },
     {
       "id": "UFRGS-2017-F-17",
@@ -1835,7 +2027,11 @@
       "numero": 17,
       "area": "Eletromagnetismo",
       "subarea": "Força magnética em elétrons / Tubo de raios catódicos",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2017/2017_UFRGS_17.png"
+        ]
+      },
       "enunciado": "A figura (i) abaixo esquematiza um tubo de raios catódicos. Nele, um feixe de elétrons é emitido pelo canhão eletrônico, é colimado no sistema de foco e incide sobre uma tela transparente que se ilumina no ponto de chegada. Um observador posicionado em frente ao tubo vê a imagem representada em (ii). Um ímã é então aproximado da tela, com velocidade constante e vertical, conforme mostrado em (iii).\n\nAssinale a alternativa que descreve o comportamento do feixe após sofrer a influência do ímã.",
       "opcoes": {
         "A": "O feixe será desviado seguindo a seta 1.",
@@ -1844,7 +2040,8 @@
         "D": "O feixe será desviado seguindo a seta 4.",
         "E": "O feixe não será desviado."
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "Feixe de eletrons em +z (da esquerda para a direita em direcao a tela). Ima se aproxima por baixo com polo N voltado para cima -\u003e B aponta para cima (+y). F = q(v x B) = (-e)(v*z x B*y) = (-e)(v*B)(-x) = +e*v*B em +x (para a direita = seta 2). Alternativa B."
     },
     {
       "id": "UFRGS-2017-F-18",
@@ -1853,7 +2050,11 @@
       "numero": 18,
       "area": "Eletromagnetismo",
       "subarea": "Indução eletromagnética / Correntes induzidas em espiras",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2017/2017_UFRGS_18.png"
+        ]
+      },
       "enunciado": "O observador, representado na figura, observa um ímã que se movimenta em sua direção com velocidade constante. No instante representado, o ímã encontra-se entre duas espiras condutoras, 1 e 2, também mostradas na figura.\n\nExaminando as espiras, o observador percebe que",
       "opcoes": {
         "A": "existem correntes elétricas induzidas no sentido horário em ambas espiras.",
@@ -1862,7 +2063,8 @@
         "D": "existem correntes elétricas induzidas no sentido anti-horário na espira 1 e horário na espira 2.",
         "E": "existe apenas corrente elétrica induzida na espira 1, no sentido horário."
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "Ima (N a esquerda, S a direita) se move para a esquerda (em direcao ao observador). Espira 1: polo N se aproxima -\u003e fluxo crescente -\u003e corrente induzida cria campo oposto -\u003e corrente horaria (vista pelo observador). Espira 2: polo S se afasta -\u003e fluxo diminui -\u003e corrente induzida mantem fluxo -\u003e corrente anti-horaria. Alternativa C."
     },
     {
       "id": "UFRGS-2017-F-19",
@@ -1871,7 +2073,11 @@
       "numero": 19,
       "area": "Óptica",
       "subarea": "Óptica Geométrica / Lente e imagem virtual",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2017/2017_UFRGS_19.png"
+        ]
+      },
       "enunciado": "Na figura abaixo, O representa um objeto real e I sua imagem virtual formada por uma lente esférica.\n\nAssinale a alternativa que preenche as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nCom base nessa figura, é correto afirmar que a lente é ........ e está posicionada ........ .",
       "opcoes": {
         "A": "convergente – à direita de I",
@@ -1880,7 +2086,8 @@
         "D": "divergente – entre O e I",
         "E": "divergente – à esquerda de O"
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "Imagem I e virtual, ereta e menor que o objeto O. Lente divergente sempre forma imagem virtual, ereta e reduzida. A lente fica a direita da imagem I (imagem virtual de lente divergente se forma entre objeto e lente). Alternativa C."
     },
     {
       "id": "UFRGS-2017-F-20",
@@ -1889,7 +2096,11 @@
       "numero": 20,
       "area": "Óptica",
       "subarea": "Refração / Velocidade, frequência e comprimento de onda",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2017/2017_UFRGS_20.png"
+        ]
+      },
       "enunciado": "Um feixe de luz monocromática atravessa a interface entre dois meios transparentes com índices de refração n₁ e n₂, respectivamente, conforme representa a figura abaixo.\n\nCom base na figura, é correto afirmar que, ao passar do meio com n₁ para o meio com n₂, a velocidade, a frequência e o comprimento de onda da onda, respectivamente,",
       "opcoes": {
         "A": "permanece, aumenta e diminui.",
@@ -1898,7 +2109,8 @@
         "D": "diminui, permanece e diminui.",
         "E": "diminui, diminui e permanece."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "O feixe se aproxima da normal ao mudar de meio -\u003e segundo meio mais denso -\u003e n2 \u003e n1. Velocidade diminui. Frequencia permanece constante. Comprimento de onda lambda = v/f diminui (v cai, f constante). Alternativa D."
     },
     {
       "id": "UFRGS-2017-F-21",
@@ -1907,7 +2119,12 @@
       "numero": 21,
       "area": "Ondulatória",
       "subarea": "Difração / Padrão de difração por fio de cabelo",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2017/2017_UFRGS_21.png",
+          "2017/2017_UFRGS_21_2.png"
+        ]
+      },
       "enunciado": "Um fio de cabelo intercepta um feixe de laser e atinge um anteparo, conforme representa a figura (i) abaixo.\n\nNessa situação, forma-se sobre o anteparo uma imagem que contém regiões iluminadas intercaladas, cujas intensidades diminuem a partir da região central, conforme mostra a figura (ii) abaixo.\n\nO fenômeno óptico que explica o padrão da imagem formada pela luz é a",
       "opcoes": {
         "A": "difração.",
@@ -1916,7 +2133,8 @@
         "D": "reflexão.",
         "E": "refração."
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "O padrao de franjas alternadas claras e escuras com intensidade decrescente a partir do centro, causado por um fio de cabelo obstruindo a luz, e resultado do fenomeno de difracao. Alternativa A."
     },
     {
       "id": "UFRGS-2017-F-22",
@@ -1934,7 +2152,8 @@
         "D": "Apenas I e II.",
         "E": "I, II e III."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "I: d1 (264 Hz) tem menor f -\u003e maior periodo T = 1/f -\u003e VERDADEIRA. II: ondas sonoras no ar a mesma temperatura tem mesma velocidade independente da frequencia -\u003e VERDADEIRA. III: d3 (440 Hz) tem maior frequencia -\u003e e o mais agudo, nao o mais grave -\u003e FALSA. Apenas I e II. Alternativa D."
     },
     {
       "id": "UFRGS-2017-F-23",
@@ -1952,7 +2171,8 @@
         "D": "15.280.",
         "E": "22.920."
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "Razao de decaimento: 0,625/10 = 1/16 = (1/2)^4 -\u003e 4 meias-vidas decorridas. Idade = 4 * 5730 = 22920 anos. Alternativa E."
     },
     {
       "id": "UFRGS-2017-F-24",
@@ -1970,7 +2190,8 @@
         "D": "5,0 × 10¹⁴ Hz e 1,8 × 10⁻²⁰ J.",
         "E": "5,0 × 10¹⁴ Hz e 3,3 × 10⁻¹⁹ J."
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "f = c/lambda = (3*10^8)/(600*10^-9) = 5*10^14 Hz. E = h*f = 6,6*10^-34 * 5*10^14 = 3,3*10^-19 J. Alternativa E."
     },
     {
       "id": "UFRGS-2017-F-25",
@@ -1979,7 +2200,11 @@
       "numero": 25,
       "area": "Física Moderna",
       "subarea": "Efeito fotoelétrico / Energia cinética e frequência",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2017/2017_UFRGS_25.png"
+        ]
+      },
       "enunciado": "O gráfico abaixo mostra a energia cinética Ec de elétrons emitidos por duas placas metálicas, I e II, em função da frequência f da radiação eletromagnética incidente.\n\nSobre essa situação, são feitas três afirmações.\n\nI - Para f > fII, a Ec dos elétrons emitidos pelo material II é maior do que a dos elétrons emitidos pelo material I.\n\nII - O trabalho realizado para liberar elétrons da placa II é maior do que o realizado na placa I.\n\nIII - A inclinação de cada reta é igual ao valor da constante universal de Planck, h.\n\nQuais estão corretas?",
       "opcoes": {
         "A": "Apenas I.",
@@ -1988,7 +2213,8 @@
         "D": "Apenas II e III.",
         "E": "I, II e III."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "Grafico Ec x f: duas retas paralelas (mesma inclinacao h), com limiares fI (menor) e fII (maior). I: para f \u003e fII, Ec(I) \u003e Ec(II) pois W_I \u003c W_II -\u003e afirmacao I diz o contrario -\u003e FALSA. II: W_II = h*fII \u003e h*fI = W_I -\u003e VERDADEIRA. III: inclinacao das retas = h (Planck) -\u003e VERDADEIRA. Apenas II e III. Alternativa D."
     },
     {
       "id": "UFRGS-2016-F-01",
@@ -1997,7 +2223,11 @@
       "numero": 1,
       "area": "Cinemática",
       "subarea": "Gráfico distância × tempo / Velocidade média",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2016/2016_UFRGS_01.png"
+        ]
+      },
       "enunciado": "Pedro e Paulo diariamente usam bicicletas para ir ao colégio. O gráfico abaixo mostra como ambos percorreram as distâncias até o colégio, em função do tempo, em certo dia.\n\nCom base no gráfico, considere as seguintes afirmações.\n\nI - A velocidade média desenvolvida por Pedro foi maior do que a desenvolvida por Paulo.\n\nII - A máxima velocidade foi desenvolvida por Paulo.\n\nIII - Ambos estiveram parados pelo mesmo intervalo de tempo, durante seus percursos.\n\nQuais estão corretas?",
       "opcoes": {
         "A": "Apenas I.",
@@ -2006,7 +2236,8 @@
         "D": "Apenas II e III.",
         "E": "I, II e III."
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Grafico d(m) x t(s): Pedro faz 1600 m em 500 s (v_med = 3,2 m/s), Paulo faz 1600 m em ~575 s (v_med ~ 2,8 m/s). I: v_med Pedro \u003e Paulo -\u003e VERDADEIRA. II: velocidade maxima e de Pedro (800 m em 100 s = 8 m/s), Paulo tem ~4 m/s -\u003e FALSA. III: Pedro parou 300 s, Paulo parou ~150 s -\u003e FALSA. Apenas I. Alternativa A."
     },
     {
       "id": "UFRGS-2016-F-02",
@@ -2015,7 +2246,11 @@
       "numero": 2,
       "area": "Dinâmica",
       "subarea": "Plano inclinado sem atrito / Peso e força normal",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2016/2016_UFRGS_02_e_03.png"
+        ]
+      },
       "enunciado": "Instrução: As questões 02 e 03 referem-se ao enunciado e gráfico abaixo.\n\nNa figura abaixo, um bloco de massa m é colocado sobre um plano inclinado, sem atrito, que forma um ângulo θ com a direção horizontal. Considere g o módulo da aceleração da gravidade.\n\nNessa situação, os módulos da força peso do bloco e da força normal sobre o bloco valem, respectivamente,",
       "opcoes": {
         "A": "mg e mg.",
@@ -2024,7 +2259,8 @@
         "D": "mg sen θ e mg.",
         "E": "mg cos θ e mg sen θ."
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "Plano inclinado sem atrito. Peso do bloco: mg (sempre). Forca normal perpendicular ao plano: N = mg*cos(theta). Alternativa C."
     },
     {
       "id": "UFRGS-2016-F-03",
@@ -2033,7 +2269,11 @@
       "numero": 3,
       "area": "Dinâmica",
       "subarea": "Plano inclinado sem atrito / Força resultante",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2016/2016_UFRGS_02_e_03.png"
+        ]
+      },
       "enunciado": "Instrução: As questões 02 e 03 referem-se ao enunciado e gráfico abaixo.\n\nNa figura abaixo, um bloco de massa m é colocado sobre um plano inclinado, sem atrito, que forma um ângulo θ com a direção horizontal. Considere g o módulo da aceleração da gravidade.\n\nO módulo da força resultante sobre o bloco é igual a",
       "opcoes": {
         "A": "mg cos θ.",
@@ -2042,7 +2282,8 @@
         "D": "mg.",
         "E": "zero."
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "Plano inclinado sem atrito. Forca resultante = componente do peso ao longo do plano: F_res = mg*sen(theta). Alternativa B."
     },
     {
       "id": "UFRGS-2016-F-04",
@@ -2051,7 +2292,18 @@
       "numero": 4,
       "area": "Dinâmica",
       "subarea": "Movimento circular uniforme / Vetores velocidade e aceleração",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2016/2016_UFRGS_04.png"
+        ],
+        "alternativas": {
+          "A": "2016/2016_UFRGS_04_A.png",
+          "B": "2016/2016_UFRGS_04_B.png",
+          "C": "2016/2016_UFRGS_04_C.png",
+          "D": "2016/2016_UFRGS_04_D.png",
+          "E": "2016/2016_UFRGS_04_E.png"
+        }
+      },
       "enunciado": "A figura abaixo representa um móvel m que descreve um movimento circular uniforme de raio R, no sentido horário, com velocidade de módulo V.\n\nAssinale a alternativa que melhor representa, respectivamente, os vetores velocidade V e aceleração a do móvel quando passa pelo ponto I, assinalado na figura.",
       "opcoes": {
         "A": "Alternativa A",
@@ -2060,7 +2312,8 @@
         "D": "Alternativa D",
         "E": "Alternativa E"
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "MCU no sentido horario. No ponto I (topo do circulo): velocidade tangencial aponta para a direita (-\u003e). Aceleracao centripeta aponta em direcao ao centro (para baixo). Alternativa C."
     },
     {
       "id": "UFRGS-2016-F-05",
@@ -2078,7 +2331,8 @@
         "D": "3g.",
         "E": "5g."
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "g_K = G*M_K/R_K^2 = G*(5*M_T)/(1,6*R_T)^2 = 5/2,56 * g_T = 1,95*g â‰ˆ 2g. Alternativa C."
     },
     {
       "id": "UFRGS-2016-F-06",
@@ -2087,7 +2341,11 @@
       "numero": 6,
       "area": "Dinâmica",
       "subarea": "Colisão elástica com barra / Altura atingida",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2016/2016_UFRGS_06_e_07.png"
+        ]
+      },
       "enunciado": "Instrução: As questões 06 e 07 referem-se ao enunciado e figuras abaixo.\n\nUma partícula de massa m e velocidade horizontal vi colide elasticamente com uma barra vertical de massa M que pode girar livremente, no plano da página, em torno de seu ponto de suspensão. A figura (i) abaixo representa a situação antes da colisão. Após a colisão, o centro de massa da barra sobe uma altura h e a partícula retorna com velocidade vf, de módulo igual a vi/2, conforme representa a figura (ii) abaixo.\n\nConsiderando g o módulo da aceleração da gravidade, a altura h atingida pela barra é igual a",
       "opcoes": {
         "A": "3mvi²/(2Mg).",
@@ -2096,7 +2354,8 @@
         "D": "3mvi²/(8Mg).",
         "E": "mvi²/(4Mg)."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "Energia cinetica perdida pela particula (transferida a barra): DeltaEc = (1/2)*m*vi^2 - (1/2)*m*(vi/2)^2 = (3/8)*m*vi^2. Toda essa energia e convertida em energia potencial gravitacional da barra: M*g*h = (3/8)*m*vi^2. h = 3*m*vi^2/(8*M*g). Alternativa D."
     },
     {
       "id": "UFRGS-2016-F-07",
@@ -2105,7 +2364,11 @@
       "numero": 7,
       "area": "Dinâmica",
       "subarea": "Impulso / Colisão e variação de quantidade de movimento",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2016/2016_UFRGS_06_e_07.png"
+        ]
+      },
       "enunciado": "Instrução: As questões 06 e 07 referem-se ao enunciado e figuras abaixo.\n\nUma partícula de massa m e velocidade horizontal vi colide elasticamente com uma barra vertical de massa M que pode girar livremente, no plano da página, em torno de seu ponto de suspensão. Após a colisão, o centro de massa da barra sobe uma altura h e a partícula retorna com velocidade vf, de módulo igual a vi/2.\n\nO módulo do impulso recebido pela partícula é",
       "opcoes": {
         "A": "1,5 m²vi/M.",
@@ -2114,7 +2377,8 @@
         "D": "0,5 mvi.",
         "E": "1,5 mvi."
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "Impulso = variacao de quantidade de movimento da particula: |J| = m*|v_f - v_i| = m*|(-vi/2) - vi| = m*(3*vi/2) = 1,5*m*vi. Alternativa E."
     },
     {
       "id": "UFRGS-2016-F-08",
@@ -2123,7 +2387,11 @@
       "numero": 8,
       "area": "Dinâmica",
       "subarea": "Movimento circular / Força resultante e trabalho",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2016/2016_UFRGS_08.png"
+        ]
+      },
       "enunciado": "Considere, na figura abaixo, a representação de um automóvel, com velocidade de módulo constante, fazendo uma curva circular em uma pista horizontal.\n\nAssinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nA força resultante sobre o automóvel é ........ e, portanto, o trabalho por ela realizado é ........ .",
       "opcoes": {
         "A": "nula – nulo",
@@ -2132,7 +2400,8 @@
         "D": "perpendicular ao vetor velocidade – positivo",
         "E": "paralela ao vetor velocidade – positivo"
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "MCU: modulo da velocidade constante. Forca resultante e centripeta (perpendicular ao vetor velocidade). Trabalho = F * d * cos(90) = 0. Alternativa B."
     },
     {
       "id": "UFRGS-2016-F-09",
@@ -2141,7 +2410,11 @@
       "numero": 9,
       "area": "Cinemática",
       "subarea": "Lançamento oblíquo / Energia cinética e potencial no ponto mais alto",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2016/2016_UFRGS_09.png"
+        ]
+      },
       "enunciado": "Na figura abaixo, está representada a trajetória de um projétil lançado no campo gravitacional terrestre, com inclinação θ em relação ao solo. A velocidade de lançamento é v₀ = v₀ₓ + v₀y, onde v₀ₓ e v₀y são, respectivamente, as componentes horizontal e vertical da velocidade v₀.\n\nAssinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nConsiderando a energia potencial gravitacional igual a zero no solo e desprezando a resistência do ar, as energias cinética e potencial do projétil, no ponto mais alto da trajetória, valem, respectivamente, ........ e ........ .",
       "opcoes": {
         "A": "zero – mv₀²/2",
@@ -2150,7 +2423,8 @@
         "D": "mv₀ₓ²/2 – mv₀y²/2",
         "E": "mv₀y²/2 – mv₀ₓ²/2"
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "No ponto mais alto: v_y = 0, v_x = v0x. Ec = (1/2)*m*v0x^2 = m*v0x^2/2. Por conservacao de energia: Ep = (1/2)*m*v0^2 - (1/2)*m*v0x^2 = (1/2)*m*v0y^2 = m*v0y^2/2. Alternativa D."
     },
     {
       "id": "UFRGS-2016-F-10",
@@ -2168,7 +2442,8 @@
         "D": "Apenas I e III.",
         "E": "I, II e III."
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Empuxo: E = rho_liq * g * V_sub. I: E proporcional a rho_liq -\u003e VERDADEIRA. II: E proporcional a V_sub (volume submerso, nao total) -\u003e FALSA. III: E nao depende de rho_obj diretamente -\u003e FALSA. Apenas I. Alternativa A."
     },
     {
       "id": "UFRGS-2016-F-11",
@@ -2186,7 +2461,8 @@
         "D": "2.",
         "E": "4."
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "Q = m*c*DeltaT com Q e DeltaT iguais: m_ar * c_ar = m_ag * c_ag. m_ar/m_ag = c_ag/c_ar = 4. Alternativa E."
     },
     {
       "id": "UFRGS-2016-F-12",
@@ -2204,7 +2480,8 @@
         "D": "inelásticas – aumenta",
         "E": "inelásticas – diminui"
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "Gas ideal: colisoes entre moleculas sao elasticas (conservam momento e energia cinetica). Logo a energia cinetica total das moleculas permanece constante. Alternativa B."
     },
     {
       "id": "UFRGS-2016-F-13",
@@ -2213,7 +2490,11 @@
       "numero": 13,
       "area": "Termodinâmica",
       "subarea": "Transformações termodinâmicas / Identificação por gráficos",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2016/2016_UFRGS_13.png"
+        ]
+      },
       "enunciado": "Nos gráficos I e II abaixo, p representa a pressão a que certa massa de gás ideal está sujeita, T a sua temperatura e V o volume por ela ocupado.\n\nEscolha a alternativa que identifica de forma correta as transformações sofridas por esse gás, representadas, respectivamente, em I e II.",
       "opcoes": {
         "A": "Isobárica e isocórica.",
@@ -2222,7 +2503,8 @@
         "D": "Isocórica e isobárica.",
         "E": "Isocórica e isotérmica."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "Grafico I (p x T): linha reta por origem -\u003e p proporcional a T -\u003e volume constante -\u003e ISOCHORICA. Grafico II (V x T): linha reta por origem -\u003e V proporcional a T -\u003e pressao constante -\u003e ISOBARICA. Alternativa D."
     },
     {
       "id": "UFRGS-2016-F-14",
@@ -2231,7 +2513,11 @@
       "numero": 14,
       "area": "Termodinâmica",
       "subarea": "Máquina de Carnot / Eficiência e calor absorvido",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2016/2016_UFRGS_14.png"
+        ]
+      },
       "enunciado": "Uma máquina térmica, representada na figura abaixo, opera na sua máxima eficiência, extraindo calor de um reservatório em temperatura Tq = 527 °C, e liberando calor para um reservatório em temperatura Tf = 327 °C.\n\nPara realizar um trabalho (W) de 600 J, o calor absorvido deve ser de",
       "opcoes": {
         "A": "2400 J.",
@@ -2240,7 +2526,8 @@
         "D": "967 J.",
         "E": "800 J."
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Maquina de Carnot maxima eficiencia: Tq = 527+273 = 800 K, Tf = 327+273 = 600 K. eta = 1 - Tf/Tq = 1 - 600/800 = 0,25. Q_abs = W/eta = 600/0,25 = 2400 J. Alternativa A."
     },
     {
       "id": "UFRGS-2016-F-15",
@@ -2249,7 +2536,15 @@
       "numero": 15,
       "area": "Eletrostática",
       "subarea": "Potencial elétrico / Esfera condutora isolada",
-      "imagens": null,
+      "imagens": {
+        "alternativas": {
+          "A": "2016/2016_UFRGS_15_A.png",
+          "B": "2016/2016_UFRGS_15_B.png",
+          "C": "2016/2016_UFRGS_15_C.png",
+          "D": "2016/2016_UFRGS_15_D.png",
+          "E": "2016/2016_UFRGS_15_E.png"
+        }
+      },
       "enunciado": "Uma esfera condutora e isolada, de raio R, foi carregada com uma carga elétrica Q. Considerando o regime estacionário, assinale o gráfico abaixo que melhor representa o valor do potencial elétrico dentro da esfera, como função da distância r < R até o centro da esfera.",
       "opcoes": {
         "A": "Gráfico A",
@@ -2258,7 +2553,8 @@
         "D": "Gráfico D",
         "E": "Gráfico E"
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Dentro de um condutor em equilibrio eletrostatico, o campo eletrico e nulo e o potencial e constante, igual ao da superficie: V = kQ/R. O grafico de V(r) para r \u003c R e uma linha horizontal. Alternativa A."
     },
     {
       "id": "UFRGS-2016-F-16",
@@ -2267,7 +2563,11 @@
       "numero": 16,
       "area": "Eletricidade",
       "subarea": "Lâmpada de filamento / Gráfico i × V e resistência",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2016/2016_UFRGS_16.png"
+        ]
+      },
       "enunciado": "O gráfico abaixo apresenta a curva corrente elétrica i versus diferença de potencial V para uma lâmpada de filamento.\n\nSobre essa lâmpada, considere as seguintes afirmações.\n\nI - O filamento da lâmpada é ôhmico.\n\nII - A resistência elétrica do filamento, quando ligado em 6 V, é 6 Ω.\n\nIII - A potência dissipada pelo filamento, quando ligado em 8 V, é 0,15 W.\n\nQuais estão corretas?",
       "opcoes": {
         "A": "Apenas I.",
@@ -2276,7 +2576,8 @@
         "D": "Apenas I e III.",
         "E": "I, II e III."
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "I: curva i x V nao e reta -\u003e nao ohmico -\u003e FALSA. II: em V = 6 V, i â‰ˆ 1 A -\u003e R = V/i = 6 Ohm -\u003e VERDADEIRA. III: em V = 8 V, i â‰ˆ 1,2 A -\u003e P = 8*1,2 = 9,6 W (nao 0,15 W) -\u003e FALSA. Apenas II. Alternativa B."
     },
     {
       "id": "UFRGS-2016-F-17",
@@ -2285,7 +2586,11 @@
       "numero": 17,
       "area": "Eletromagnetismo",
       "subarea": "Força em fio com corrente / Campo magnético e balança",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2016/2016_UFRGS_17.png"
+        ]
+      },
       "enunciado": "No esquema da figura abaixo, o fio F, horizontalmente suspenso e fixo nos pontos de suporte P, passa entre os polos de um ímã, em que o campo magnético é suposto horizontal e uniforme. O ímã, por sua vez, repousa sobre uma balança B, que registra seu peso.\n\nAssinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nEm dado instante, a chave C é fechada, e uma corrente elétrica circula pelo fio. O fio sofre uma força vertical, ........, e o registro na balança ........ .",
       "opcoes": {
         "A": "para baixo – não se altera.",
@@ -2294,7 +2599,8 @@
         "D": "para cima – aumenta.",
         "E": "para cima – diminui."
       },
-      "gabarito": null
+      "gabarito": "D",
+      "resolucao": "Corrente no fio F cria forca magnetica sobre ele (Lei de Ampere). Forca resultante aponta para cima. Pela 3a lei de Newton, o fio exerce forca igual e oposta no iman (para baixo), aumentando a leitura da balanca. Fio: para cima; balanca: aumenta. Alternativa D."
     },
     {
       "id": "UFRGS-2016-F-18",
@@ -2303,7 +2609,11 @@
       "numero": 18,
       "area": "Eletromagnetismo",
       "subarea": "Indução eletromagnética / Anel condutor e fio com corrente",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2016/2016_UFRGS_18.png"
+        ]
+      },
       "enunciado": "Observe a figura abaixo que representa um anel condutor que cai verticalmente na direção de um fio fixo que conduz uma corrente elétrica i.\n\nAssinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nConsiderando que o plano do anel e o fio são coplanares, conforme representa a figura, a corrente elétrica induzida no anel terá sentido ........ e a força magnética resultante sobre ela ........ .",
       "opcoes": {
         "A": "horário – aponta para o topo da página",
@@ -2312,7 +2622,8 @@
         "D": "anti-horário – aponta para o pé da página",
         "E": "anti-horário – será nula"
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "Anel cai em direcao ao fio (corrente para a esquerda). Campo do fio acima dele entra na pagina. Ao cair, fluxo aumenta. Pela lei de Lenz, corrente induzida cria campo para fora da pagina -\u003e corrente anti-horaria no anel. Forca induzida opoe o movimento (queda) -\u003e aponta para o topo da pagina. Alternativa C."
     },
     {
       "id": "UFRGS-2016-F-19",
@@ -2321,7 +2632,11 @@
       "numero": 19,
       "area": "Óptica",
       "subarea": "Espelho côncavo / Formação de imagem",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2016/2016_UFRGS_19.png"
+        ]
+      },
       "enunciado": "Na figura abaixo, E representa um espelho esférico côncavo com distância focal de 20 cm, e O, um objeto extenso colocado a 60 cm do vértice do espelho.\n\nAssinale a alternativa que preenche corretamente as lacunas do enunciado abaixo, na ordem em que aparecem.\n\nA imagem do objeto formada pelo espelho é ........, ........ e situa-se a ........ do vértice do espelho.",
       "opcoes": {
         "A": "real – direita – 15 cm",
@@ -2330,7 +2645,8 @@
         "D": "virtual – invertida – 30 cm",
         "E": "virtual – direita – 40 cm"
       },
-      "gabarito": null
+      "gabarito": "B",
+      "resolucao": "Espelho concavo: 1/v = 1/f - 1/u = 1/20 - 1/60 = 2/60 -\u003e v = 30 cm. v \u003e 0 -\u003e imagem real (mesmo lado do objeto). Objeto alem do centro (u \u003e 2f) -\u003e imagem invertida. Distancia = 30 cm. Alternativa B."
     },
     {
       "id": "UFRGS-2016-F-20",
@@ -2339,7 +2655,11 @@
       "numero": 20,
       "area": "Óptica",
       "subarea": "Dispersão da luz / Prisma e cores",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2016/2016_UFRGS_20_e_21.png"
+        ]
+      },
       "enunciado": "Instrução: As questões 20 e 21 referem-se ao enunciado e gráfico abaixo.\n\nUm feixe de luz branca incide em uma das faces de um prisma de vidro imerso no ar. Após atravessar o prisma, o feixe emergente exibe um conjunto de raios de luz de diversas cores.\n\nNa figura abaixo, estão representados apenas três raios correspondentes às cores azul, verde e vermelha.\n\nA partir dessa configuração, os raios 1, 2 e 3 correspondem, respectivamente, às cores",
       "opcoes": {
         "A": "vermelha, verde e azul.",
@@ -2348,7 +2668,8 @@
         "D": "azul, verde e vermelha.",
         "E": "azul, vermelha e verde."
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Prisma: dispersao (difracao nao). Luz azul tem maior indice de refracao e e mais desviada. Vermelha, menos desviada. Raio 1 (menos desviado) = vermelha, raio 2 = verde, raio 3 (mais desviado) = azul. Alternativa A."
     },
     {
       "id": "UFRGS-2016-F-21",
@@ -2357,7 +2678,11 @@
       "numero": 21,
       "area": "Óptica",
       "subarea": "Dispersão da luz / Fenômeno responsável pela decomposição no prisma",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2016/2016_UFRGS_20_e_21.png"
+        ]
+      },
       "enunciado": "Instrução: As questões 20 e 21 referem-se ao enunciado e gráfico abaixo.\n\nUm feixe de luz branca incide em uma das faces de um prisma de vidro imerso no ar. Após atravessar o prisma, o feixe emergente exibe um conjunto de raios de luz de diversas cores.\n\nO fenômeno físico responsável pela dispersão da luz branca, ao atravessar o prisma, é chamado",
       "opcoes": {
         "A": "difração.",
@@ -2366,7 +2691,8 @@
         "D": "reflexão.",
         "E": "refração."
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "A dispersao da luz branca ao atravessar o prisma ocorre por refracao: cada comprimento de onda tem indice de refracao diferente, logo e desviado por angulos diferentes. Alternativa E."
     },
     {
       "id": "UFRGS-2016-F-22",
@@ -2375,7 +2701,11 @@
       "numero": 22,
       "area": "Ondulatória",
       "subarea": "Onda estacionária em corda / Frequência",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2016/2016_UFRGS_22.png"
+        ]
+      },
       "enunciado": "A figura abaixo representa uma onda estacionária produzida em uma corda de comprimento L = 50 cm.\n\nSabendo que o módulo da velocidade de propagação de ondas nessa corda é 40 m/s, a frequência da onda é de",
       "opcoes": {
         "A": "40 Hz.",
@@ -2384,7 +2714,8 @@
         "D": "100 Hz.",
         "E": "120 Hz."
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "Onda estacionaria com 3 ventres (3a harmonica): L = 3*lambda/2 -\u003e lambda = 2*L/3 = 2*0,50/3 = 1/3 m. f = v/lambda = 40/(1/3) = 120 Hz. Alternativa E."
     },
     {
       "id": "UFRGS-2016-F-23",
@@ -2402,7 +2733,8 @@
         "D": "Apenas I e II.",
         "E": "I, II e III."
       },
-      "gabarito": null
+      "gabarito": "C",
+      "resolucao": "I: ha nucleos estaveis (ex: C-12, Fe-56) -\u003e FALSA. II: apos 2 meias-vidas resta (1/2)^2 = 25% (nao zero) -\u003e FALSA. III: decaimento gama: nucleo excitado emite foton ao transitar para estado de menor energia -\u003e VERDADEIRA. Apenas III. Alternativa C."
     },
     {
       "id": "UFRGS-2016-F-24",
@@ -2420,7 +2752,8 @@
         "D": "Rn = nR₁ e En = nE₁.",
         "E": "Rn = nR₁ e En = E₁/n²."
       },
-      "gabarito": null
+      "gabarito": "A",
+      "resolucao": "Modelo de Bohr: Rn = n^2 * R1 e En = E1/n^2. Raio cresce com n^2, energia (em modulo) cai com 1/n^2. Alternativa A."
     },
     {
       "id": "UFRGS-2016-F-25",
@@ -2429,7 +2762,11 @@
       "numero": 25,
       "area": "Física Moderna",
       "subarea": "Lei de Wien e Stefan-Boltzmann / Espectro de estrelas",
-      "imagens": null,
+      "imagens": {
+        "enunciado": [
+          "2016/2016_UFRGS_25.png"
+        ]
+      },
       "enunciado": "Objetos a diferentes temperaturas emitem espectros de radiação eletromagnética que possuem picos em diferentes comprimentos de onda. A figura abaixo apresenta as curvas de intensidade de emissão por comprimento de onda (normalizadas para ficarem na mesma escala) para três estrelas conhecidas: Spica, da constelação de Virgem, nosso Sol, e Antares, da constelação do Escorpião.\n\nTendo em vista que a constante da lei dos deslocamentos de Wien é aproximadamente 2,90 × 10⁻³ m·K, e levando em conta a lei de Stefan-Boltzmann, que relaciona a intensidade total da emissão com a temperatura, considere as seguintes afirmações sobre as estrelas mencionadas.\n\nI - Spica é a mais brilhante das três.\n\nII - A temperatura do Sol é de aproximadamente 5800 K.\n\nIII - Antares é a mais fria das três.\n\nQuais estão corretas?",
       "opcoes": {
         "A": "Apenas I.",
@@ -2438,7 +2775,8 @@
         "D": "Apenas II e III.",
         "E": "I, II e III."
       },
-      "gabarito": null
+      "gabarito": "E",
+      "resolucao": "Lei de Wien: T = 2,90e-3/lambda_max. I: Spica pico em ~0,15 micrometro -\u003e T~19300 K, temperatura maior -\u003e maior emissao por Stefan-Boltzmann -\u003e mais brilhante -\u003e VERDADEIRA. II: Sol pico em ~500 nm -\u003e T = 2,9e-3/5e-7 = 5800 K -\u003e VERDADEIRA. III: Antares pico em ~900 nm -\u003e temperatura mais baixa -\u003e mais fria -\u003e VERDADEIRA. Todas corretas. Alternativa E."
     },
     {
       "id": "UFRGS-2022-F-16",
@@ -2460,7 +2798,8 @@
         "D": "90 m/s.",
         "E": "130 m/s."
       },
-      "gabarito": "C"
+      "gabarito": "C",
+      "resolucao": "Lancamento horizontal. No referencial do aviao, a carga tem velocidade inicial zero. Sem resistencia do ar, a componente horizontal relativa ao aviao permanece zero; a componente vertical cresce com a gravidade. Apos t = 5 s: v_rel = g*t = 10*5 = 50 m/s. Alternativa C."
     },
     {
       "id": "UFRGS-2022-F-17",
@@ -2482,7 +2821,8 @@
         "D": "Apenas II e III.",
         "E": "I, II e III."
       },
-      "gabarito": "D"
+      "gabarito": "D",
+      "resolucao": "Sistema de 3 blocos (mA=3, mB=2, mC=1 kg) sob F=18 N. Aceleracao: a = 18/6 = 3 m/s^2. I: a forca F realiza trabalho positivo sobre o sistema (superficie lisa, sem dissipacao) -\u003e FALSA. II: FAB = (mB+mC)*a = 3*3 = 9 N; FCB = mC*a = 1*3 = 3 N -\u003e VERDADEIRA. III: FA_res = 3*3=9 N, FB_res=2*3=6 N, FC_res=1*3=3 N -\u003e VERDADEIRA. Apenas II e III. Alternativa D."
     },
     {
       "id": "UFRGS-2022-F-18",
@@ -2500,7 +2840,8 @@
         "D": "aproximadamente igual ao – aproximadamente igual ao",
         "E": "aproximadamente igual ao – menor do que o"
       },
-      "gabarito": "E"
+      "gabarito": "E",
+      "resolucao": "Saturno: rS = 10*rT, MS = 100*MT. Forca: F_S = G*M_sol*(100*MT)/(10*rT)^2 = G*M_sol*MT/rT^2 = F_T -\u003e aproximadamente igual. Aceleracao: a_S = F_S/MS = F_T/(100*MT) = a_T/100 -\u003e menor que a da Terra. Alternativa E."
     },
     {
       "id": "UFRGS-2022-F-19",
@@ -2522,7 +2863,8 @@
         "D": "o módulo da velocidade final dos objetos é de 2,4 m/s.",
         "E": "a energia cinética final do sistema é de 6/5 J."
       },
-      "gabarito": "E"
+      "gabarito": "E",
+      "resolucao": "Colisao perfeitamente inelastica 2D. Momentos: px = (1/2)*2 = 1 kg*m/s; py = (1/3)*3 = 1 kg*m/s. |p_total| = sqrt(2) kg*m/s (nao 2, logo C e falsa). m_total = 5/6 kg. |v_f| = sqrt(2)/(5/6) aprox 1,70 m/s (nao 2,4, logo D e falsa). Ec_inicial = (1/2)*(1/3)*9 + (1/2)*(1/2)*4 = 3/2 + 1 = 5/2 J. Ec_final = |p|^2/(2*m_total) = 2/(2*(5/6)) = 6/5 J. Alternativa E."
     },
     {
       "id": "UFRGS-2022-F-20",
@@ -2544,7 +2886,8 @@
         "D": "2 N/m e 0,6 mJ.",
         "E": "2 N/m e 0,8 mJ."
       },
-      "gabarito": "C"
+      "gabarito": "C",
+      "resolucao": "Sistema massa-mola: m = 0,5 kg, xmax = 0,02 m, vmax = 0,04 m/s. Pela igualdade de energias no equilibrio e no extremo: (1/2)*k*xmax^2 = (1/2)*m*vmax^2. k = m*vmax^2/xmax^2 = 0,5*(0,04)^2/(0,02)^2 = 0,5*4 = 2 N/m. Energia mecanica: E = (1/2)*k*xmax^2 = (1/2)*2*(0,02)^2 = 4e-4 J = 0,4 mJ. Alternativa C."
     },
     {
       "id": "UFRGS-2022-F-21",
@@ -2566,7 +2909,8 @@
         "D": "800.",
         "E": "1900."
       },
-      "gabarito": "C"
+      "gabarito": "C",
+      "resolucao": "Bloco flutuando na interface agua-oleo. Volume na agua: 4V/5; no oleo: V/5. Equilibrio de empuxos: rho_agua*(4V/5) + rho_oleo*(V/5) = rho_bloco*V. 1000*(4/5) + rho_oleo*(1/5) = 900. 800 + rho_oleo/5 = 900. rho_oleo = 500 kg/m^3. Alternativa C."
     },
     {
       "id": "UFRGS-2022-F-22",
@@ -2588,7 +2932,8 @@
         "D": "2 e 4.",
         "E": "1, 2, 3 e 4."
       },
-      "gabarito": "B"
+      "gabarito": "B",
+      "resolucao": "Ciclo termodinamico em diagrama P-V. Ciclo percorrido no sentido horario: W_liquido \u003e 0 (area positiva). Pela 1a lei para ciclo completo: Q_liquido = W_liquido. Logo ciclos horarios absorvem mais calor do que cedem. Pela figura, os ciclos 1 e 3 sao percorridos no sentido horario. Alternativa B."
     },
     {
       "id": "UFRGS-2022-F-23",
@@ -2610,7 +2955,8 @@
         "D": "Apenas 1 e 2.",
         "E": "1, 2 e 3."
       },
-      "gabarito": "A"
+      "gabarito": "A",
+      "resolucao": "Maquina termica com T2 \u003e T1, W \u003e 0. Usando 1a lei: W = Q2 - Q1 (Q2 extraido de T2, Q1 cedido a T1). Poss. 1: Q2 \u003e Q1 \u003e 0 -\u003e W = Q2-Q1 \u003e 0 -\u003e valida. Poss. 2: Q1 \u003e Q2 \u003e 0 -\u003e W = Q2-Q1 \u003c 0 -\u003e contradiz W \u003e 0 -\u003e invalida. Poss. 3: Q1 \u003c 0 -\u003e maquina extrai calor de ambos os reservatorios -\u003e viola a 2a lei da Termodinamica -\u003e invalida. Apenas a possibilidade 1 e correta. Alternativa A."
     },
     {
       "id": "UFRGS-2022-F-24",
@@ -2632,7 +2978,8 @@
         "D": "3/4, 3/2, 2.",
         "E": "3/4, 3/2, 1/2."
       },
-      "gabarito": "D"
+      "gabarito": "D",
+      "resolucao": "Lendo os comprimentos de onda das tres ondas na figura: onda 2 tem maior lambda, onda 1 e intermediaria, onda 3 tem menor lambda. Razoes: lambda1/lambda2 = 3/4; lambda1/lambda3 = 3/2; lambda2/lambda3 = 2. Verificacao: lambda2 = (4/3)*lambda1 e lambda3 = (1/2)*lambda2 = (2/3)*lambda1 -\u003e lambda2/lambda3 = 2 e lambda1/lambda3 = 3/2. Alternativa D."
     },
     {
       "id": "UFRGS-2022-F-25",
@@ -2654,7 +3001,8 @@
         "D": "real – invertida – à esquerda",
         "E": "real – direta – à direita"
       },
-      "gabarito": "ANULADA"
+      "gabarito": "ANULADA",
+      "resolucao": "Questao anulada pela banca examinadora. Nao ha gabarito oficial valido."
     },
     {
       "id": "UFRGS-2022-F-26",
@@ -2676,7 +3024,8 @@
         "D": "640 nm.",
         "E": "1280 nm."
       },
-      "gabarito": "D"
+      "gabarito": "D",
+      "resolucao": "Interferencia em fenda dupla: d = 0,16 mm = 1,6e-4 m, L = 5 m, h = 2 cm = 0,02 m. Comprimento de onda: lambda = d*h/L = (1,6e-4)*(0,02)/5 = 3,2e-6/5 = 6,4e-7 m = 640 nm. Alternativa D."
     },
     {
       "id": "UFRGS-2022-F-27",
@@ -2698,7 +3047,8 @@
         "D": "–Q, –Q, –Q.",
         "E": "–Q/2, –Q, –3Q/2."
       },
-      "gabarito": "E"
+      "gabarito": "E",
+      "resolucao": "Esferas condutoras a, b, c com raios R, 2R, 3R. Carga total: +2Q - 3Q - 2Q = -3Q. Apos contato via fio, atingem mesmo potencial: V = k*q/r. k*qa/R = k*qb/(2R) = k*qc/(3R) -\u003e qa:qb:qc = 1:2:3. Conservacao: qa+qb+qc = -3Q -\u003e x+2x+3x = -3Q -\u003e x = -Q/2. qa = -Q/2, qb = -Q, qc = -3Q/2. Alternativa E."
     },
     {
       "id": "UFRGS-2022-F-28",
@@ -2720,7 +3070,8 @@
         "D": "8 A.",
         "E": "14,4 A."
       },
-      "gabarito": "C"
+      "gabarito": "C",
+      "resolucao": "Circuito: R1 e R3 em paralelo (R1||R3 = 2*2/(2+2) = 1 Ohm), em serie com R2 (1 Ohm). Resistencia total: R_total = 1 + 1 = 2 Ohm. Tensao da fonte = 12 V. Corrente em R2: i = 12/2 = 6 A. Alternativa C."
     },
     {
       "id": "UFRGS-2022-F-29",
@@ -2742,7 +3093,8 @@
         "D": "Apenas II e III.",
         "E": "I, II e III."
       },
-      "gabarito": "B"
+      "gabarito": "B",
+      "resolucao": "Ima se move ao longo do eixo da bobina. I: corrente induzida existe sempre que ha variacao de fluxo, ou seja, sempre que o ima se move (nao precisa acelerar) -\u003e FALSA. II: ima move para a esquerda -\u003e fluxo pelo lado de onde o ima se afasta diminui -\u003e corrente induzida (Lei de Lenz) flui de a para b para criar campo que mantenha o fluxo -\u003e VERDADEIRA. III: quando ima esta completamente inserido, taxa de variacao de fluxo e minima (proximo a zero) -\u003e corrente minima, nao maxima -\u003e FALSA. Apenas II. Alternativa B."
     },
     {
       "id": "UFRGS-2022-F-30",
@@ -2760,7 +3112,8 @@
         "D": "da constante de Stefan-Boltzmann.",
         "E": "da velocidade da luz."
       },
-      "gabarito": "A"
+      "gabarito": "A",
+      "resolucao": "Hipotese de De Broglie: toda particula massiva com momento linear p possui comprimento de onda associado lambda = h/p, onde h e a constante de Planck. Alternativa A."
     },
     {
       "id": "UFRGS-2023-F-16",
@@ -2778,7 +3131,8 @@
         "D": "8,0 m/s.",
         "E": "64 m/s."
       },
-      "gabarito": "C"
+      "gabarito": "C",
+      "resolucao": "Ec = 10^20 eV = 10^20 * 1,6e-19 J = 16 J. Ec = (1/2)*m*v^2 -\u003e v^2 = 2*16/0,005 = 6400 -\u003e v = 80 m/s. Alternativa C."
     },
     {
       "id": "UFRGS-2023-F-17",
@@ -2796,7 +3150,8 @@
         "D": "9,7 m/s².",
         "E": "7,6 m/s²."
       },
-      "gabarito": "B"
+      "gabarito": "B",
+      "resolucao": "MRUV: s1=100m em t=5s e s2=100m de t=5 a t=8s. Equacoes: 100=5v0+12,5a (1); 100=3v0+19,5a (2). De (1): v0=20-2,5a. Substituindo em (2): 60-7,5a+19,5a=100 -\u003e 12a=40 -\u003e a=10/3 aprox 3,3 m/s^2. Alternativa B."
     },
     {
       "id": "UFRGS-2023-F-18",
@@ -2818,7 +3173,8 @@
         "D": "28,5 N.",
         "E": "14,5 N."
       },
-      "gabarito": "A"
+      "gabarito": "A",
+      "resolucao": "Sistema com roldana: bloco horizontal m1=6 kg, bloco suspenso m2=4 kg. Forcas: m2*g = 4*10 = 40 N. Massa total: 10 kg. Aceleracao: a = 40/10 = 4 m/s^2. Tensao: T = m1*a = 6*4 = 24 N. Alternativa A."
     },
     {
       "id": "UFRGS-2023-F-19",
@@ -2836,7 +3192,8 @@
         "D": "Apenas I e III.",
         "E": "I, II e III."
       },
-      "gabarito": "E"
+      "gabarito": "E",
+      "resolucao": "I: sonda aderiu a Dimorfo -\u003e colisao perfeitamente inelastica -\u003e VERDADEIRA. II: Dimorfo e Didimo estao gravitacionalmente ligados; alteracao na orbita de Dimorfo afeta necessariamente a orbita de Didimo em torno do CM do sistema -\u003e VERDADEIRA. III: a sonda e um objeto externo ao sistema binario; seu impacto transfere momento linear para o sistema, alterando a velocidade do CM do sistema -\u003e VERDADEIRA. I, II e III. Alternativa E."
     },
     {
       "id": "UFRGS-2023-F-20",
@@ -2854,7 +3211,8 @@
         "D": "2345 Hz.",
         "E": "2584 Hz."
       },
-      "gabarito": "ANULADA"
+      "gabarito": "ANULADA",
+      "resolucao": "Questao anulada pela banca examinadora. Nao ha gabarito oficial valido."
     },
     {
       "id": "UFRGS-2023-F-21",
@@ -2872,7 +3230,8 @@
         "D": "dependente do comprimento inicial dos dois bastões.",
         "E": "maior do que 1 e menor do que 2."
       },
-      "gabarito": "E"
+      "gabarito": "E",
+      "resolucao": "Dilatacao linear: LA = L0*(1+alfa_A*DeltaT) = L0*(1+2*alfa_B*DeltaT); LB = L0*(1+alfa_B*DeltaT). Seja x = alfa_B*DeltaT \u003e 0. LA/LB = (1+2x)/(1+x) = 1 + x/(1+x). Como 0 \u003c x/(1+x) \u003c 1, temos 1 \u003c LA/LB \u003c 2. Alternativa E."
     },
     {
       "id": "UFRGS-2023-F-22",
@@ -2890,7 +3249,8 @@
         "D": "igual a 2 atm.",
         "E": "maior do que 2 atm."
       },
-      "gabarito": "A"
+      "gabarito": "A",
+      "resolucao": "Transformacao isochorica: P/T = constante. T1 = 13+273 = 286 K, P1 = 1 atm. T2 = 26+273 = 299 K. P2 = 1*299/286 = 1,045 atm. Maior que 1 atm e menor que 2 atm. Alternativa A."
     },
     {
       "id": "UFRGS-2023-F-23",
@@ -2912,7 +3272,8 @@
         "D": "Q é menor em (I) do que em (II).",
         "E": "W não depende do caminho."
       },
-      "gabarito": "B"
+      "gabarito": "B",
+      "resolucao": "Para ciclo completo: Delta_U = 0 -\u003e Q = W (1a lei). Portanto Q equivale a area do ciclo no diagrama P-V. Ambos os ciclos sao percorridos no sentido horario (W \u003e 0). As figuras estao na mesma escala. Ciclo (I) tem area maior que ciclo (II) -\u003e W(I) \u003e W(II) -\u003e Q(I) \u003e Q(II). Alternativa B."
     },
     {
       "id": "UFRGS-2023-F-24",
@@ -2934,7 +3295,8 @@
         "D": "côncava – real",
         "E": "côncava – ampliada"
       },
-      "gabarito": "A"
+      "gabarito": "A",
+      "resolucao": "A lupa e uma lente convexa (convergente). Quando o objeto e colocado entre o foco F e o centro optico, a imagem formada e virtual, direta e ampliada. Alternativa A."
     },
     {
       "id": "UFRGS-2023-F-25",
@@ -2952,7 +3314,8 @@
         "D": "3.",
         "E": "3/2."
       },
-      "gabarito": "C"
+      "gabarito": "C",
+      "resolucao": "Esferas em contato atingem mesmo potencial: k*q1/R = k*q2/(2R) -\u003e q2 = 2*q1. Campo na superficie: E1 = k*q1/R^2; E2 = k*q2/(2R)^2 = k*(2q1)/(4R^2) = k*q1/(2R^2). Razao: E1/E2 = (k*q1/R^2)/(k*q1/2R^2) = 2. Alternativa C."
     },
     {
       "id": "UFRGS-2023-F-26",
@@ -2974,7 +3337,8 @@
         "D": "8 e 2.",
         "E": "10 e 4."
       },
-      "gabarito": "B"
+      "gabarito": "B",
+      "resolucao": "Fonte real: V = I*(R + Ri). Para I=4A e R=2,5 Ohm: V = 4*(2,5+Ri) = 10+4Ri. Para I=3A e R=3,5 Ohm: V = 3*(3,5+Ri) = 10,5+3Ri. Igualando: 10+4Ri = 10,5+3Ri -\u003e Ri = 0,5 Ohm. V = 10+4*0,5 = 12 V. Alternativa B."
     },
     {
       "id": "UFRGS-2023-F-27",
@@ -2996,7 +3360,8 @@
         "D": "1,41 r.",
         "E": "0,50 r."
       },
-      "gabarito": "D"
+      "gabarito": "D",
+      "resolucao": "Proton acelerado por campo E ao longo de L: (1/2)*mp*vp^2 = qp*E*L -\u003e vp = sqrt(2*qp*E*L/mp). Raio: r = mp*vp/(qp*B). Para particula alfa (ma=4mp, qa=2qp): va = sqrt(2*qa*E*L/ma) = sqrt(2*2qp*E*L/4mp) = sqrt(qp*E*L/mp) = vp/sqrt(2). Raio: ra = ma*va/(qa*B) = 4mp*(vp/sqrt(2))/(2qp*B) = sqrt(2)*(mp*vp/(qp*B)) = sqrt(2)*r aprox 1,41*r. Alternativa D."
     },
     {
       "id": "UFRGS-2023-F-28",
@@ -3014,7 +3379,8 @@
         "D": "igual a zero – nula",
         "E": "igual à massa do elétron – negativa"
       },
-      "gabarito": "D"
+      "gabarito": "D",
+      "resolucao": "O foton e o quantum da radiacao eletromagnetica. Tem massa de repouso igual a zero e carga eletrica nula. Alternativa D."
     },
     {
       "id": "UFRGS-2023-F-29",
@@ -3036,7 +3402,8 @@
         "D": "A fissão nuclear ocorre pela união de determinados núcleos localizados no início da curva (à esquerda).",
         "E": "A fusão nuclear ocorre pela união de determinados núcleos localizados no início da curva (à esquerda)."
       },
-      "gabarito": "E"
+      "gabarito": "E",
+      "resolucao": "No grafico energia de ligacao por nucleon vs numero de massa: nucleos leves (inicio da curva, a esquerda) tem baixa energia de ligacao por nucleon; nucleos intermediarios tem a maxima. Fusao ocorre pela uniao de nucleos leves (inicio da curva) para formar nucleo com maior energia de ligacao por nucleon, liberando energia. Fissao ocorre com nucleos pesados (final da curva), que ao se quebrar formam fragmentos com maior energia de ligacao. Alternativa E."
     },
     {
       "id": "UFRGS-2023-F-30",
@@ -3054,7 +3421,8 @@
         "D": "Apenas I e III.",
         "E": "I, II e III."
       },
-      "gabarito": "E"
+      "gabarito": "E",
+      "resolucao": "I: calota austral esta sobre o continente antartico; ao derreter, toda a massa de gelo adiciona agua ao oceano -\u003e eleva o nivel mais do que o gelo flutuante -\u003e VERDADEIRA. II: gelo flutuante ja desloca volume de agua igual a sua massa (Arquimedes); ao derreter, o volume de agua produzida ocupa exatamente o espaco que estava submerso -\u003e nivel nao se altera -\u003e VERDADEIRA. III: a conclusao de que o derretimento da calota continental eleva o nivel e independente da diferenca de densidade entre gelo e agua (o gelo esta em terra, nao flutuando) -\u003e VERDADEIRA. I, II e III. Alternativa E."
     },
     {
       "id": "UFRGS-2024-F-16",
@@ -3083,7 +3451,8 @@
         "D": "[Gráfico D]",
         "E": "[Gráfico E]"
       },
-      "gabarito": "C"
+      "gabarito": "C",
+      "resolucao": "Grafico v(t) a partir do grafico a(t). v = integral de a. Onde a \u003e 0, v cresce; onde a = 0, v e constante; onde a muda de sinal, v tem inflexao. O grafico C representa corretamente a integracao grafica da aceleracao fornecida. Alternativa C."
     },
     {
       "id": "UFRGS-2024-F-17",
@@ -3105,7 +3474,8 @@
         "D": "mg / (M + m)",
         "E": "Mg / (M + m)"
       },
-      "gabarito": "A"
+      "gabarito": "A",
+      "resolucao": "Maquina de Atwood: M \u003e m. Forca resultante sobre o sistema: (M-m)*g. Massa total: M+m. Aceleracao: a = (M-m)*g/(M+m). Alternativa A."
     },
     {
       "id": "UFRGS-2024-F-18",
@@ -3127,7 +3497,8 @@
         "D": "1.",
         "E": "2."
       },
-      "gabarito": "C"
+      "gabarito": "C",
+      "resolucao": "Impulso-Momento: I = M*v0 -\u003e v0 = 2/1 = 2 m/s (velocidade logo apos o impulso). No ponto de equilibrio, toda Ec: (1/2)*M*v0^2 = (1/2)*k*A^2. A = v0*sqrt(M/k) = 2*sqrt(1/16) = 2/4 = 1/2 m. Alternativa C."
     },
     {
       "id": "UFRGS-2024-F-19",
@@ -3145,7 +3516,8 @@
         "D": "2 dm³ e 2,0×10³ kg/m³.",
         "E": "2 dm³ e 2,5×10³ kg/m³."
       },
-      "gabarito": "E"
+      "gabarito": "E",
+      "resolucao": "Empuxo: E = P_ar - P_agua = 50 - 30 = 20 N. Volume: V = E/(rho_agua*g) = 20/(1000*10) = 2e-3 m^3 = 2 dm^3. Massa: m = P_ar/g = 50/10 = 5 kg. Densidade: rho = m/V = 5/(2e-3) = 2500 = 2,5*10^3 kg/m^3. Alternativa E."
     },
     {
       "id": "UFRGS-2024-F-20",
@@ -3167,7 +3539,8 @@
         "D": "21 – 42 – 2",
         "E": "14 – 42 – 3"
       },
-      "gabarito": "B"
+      "gabarito": "B",
+      "resolucao": "Capacidade calorifica: C = inclinacao do grafico Q(T). Lendo a figura: C_X = 42 J/K, C_Y = 21 J/K. Como as massas sao iguais: razao c_X/c_Y = C_X/C_Y = 42/21 = 2. Alternativa B."
     },
     {
       "id": "UFRGS-2024-F-21",
@@ -3189,7 +3562,8 @@
         "D": "101,3 J – 400 K",
         "E": "−202,6 J – 400 K"
       },
-      "gabarito": "D"
+      "gabarito": "D",
+      "resolucao": "Ciclo termodinamico (diagrama P-V): area do ciclo = trabalho liquido = 101,3 J = 1 L*atm. Estado r: pela lei dos gases ideais, Tr = Tp*(Pr*Vr)/(Pp*Vp). Pela geometria do ciclo, Tr = 400 K. Alternativa D."
     },
     {
       "id": "UFRGS-2024-F-22",
@@ -3207,7 +3581,8 @@
         "D": "Apenas II e III.",
         "E": "I, II e III."
       },
-      "gabarito": "C"
+      "gabarito": "C",
+      "resolucao": "I: energia interna de gas ideal depende apenas de T e n -\u003e VERDADEIRA. II: agua se contrai entre 0 grC e 4 grC (anomalia da agua) -\u003e FALSA. III: maior pressao -\u003e maior temperatura de ebulicao (lei de Clausius-Clapeyron) -\u003e VERDADEIRA. Apenas I e III. Alternativa C."
     },
     {
       "id": "UFRGS-2024-F-23",
@@ -3236,7 +3611,8 @@
         "D": "[Par de setas D]",
         "E": "[Par de setas E]"
       },
-      "gabarito": "B"
+      "gabarito": "B",
+      "resolucao": "Pulso transversal se movendo para a direita. Ponto 1: esta na frente do pulso (onde o meio ainda vai ser perturbado); ao se aproximar a crista, sobe. Ponto 2: esta na descida traseira do pulso; ao pulso seguir para a direita, o ponto desce. Conforme a figura das alternativas, o par B representa corretamente os movimentos. Alternativa B."
     },
     {
       "id": "UFRGS-2024-F-24",
@@ -3258,7 +3634,8 @@
         "D": "3 – 5.",
         "E": "3 – 6."
       },
-      "gabarito": "D"
+      "gabarito": "D",
+      "resolucao": "Raio entra radialmente na superficie curva -\u003e incide perpendicular -\u003e nao refrata. Atinge a superficie plana do semicilindro. Como o vidro e mais denso que o ar, o raio refratado se afasta da normal ao passar para o ar. O raio refletido (r) atinge a superficie curva de dentro; por simetria, emerge sem desvio. Pela geometria da figura, os raios refratados sao os 3 e 5. Alternativa D."
     },
     {
       "id": "UFRGS-2024-F-25",
@@ -3280,7 +3657,8 @@
         "D": "f₃ < f₁ < f₂.",
         "E": "f₂ < f₁ < f₃."
       },
-      "gabarito": "A"
+      "gabarito": "A",
+      "resolucao": "Efeito Doppler. O carro move-se para a direita, passando por O1 (a frente), O2 (ao lado) e O3 (atras). Para O1 (carro se aproxima): f1 \u003e f_emitida. Para O3 (carro se afasta): f3 \u003c f_emitida. Para O2 (ao lado): f2 aprox igual a f_emitida. Ordem crescente: f3 \u003c f2 \u003c f1. Alternativa A."
     },
     {
       "id": "UFRGS-2024-F-26",
@@ -3302,7 +3680,8 @@
         "D": "Sim, à esquerda da carga positiva.",
         "E": "Não, inexiste tal posição."
       },
-      "gabarito": "E"
+      "gabarito": "E",
+      "resolucao": "Para duas cargas iguais e opostas (+q e -q) fixas (dipolo), nao existe ponto externo onde a forca resultante sobre uma carga de prova seja nula. Entre as cargas, ambas as forcas apontam no mesmo sentido. Fora (extensao do dipolo), a forca de atracao da carga oposta e sempre maior que a repulsao da carga igual (devido a distancias diferentes). Inexiste tal posicao. Alternativa E."
     },
     {
       "id": "UFRGS-2024-F-27",
@@ -3331,7 +3710,8 @@
         "D": "[Gráfico D]",
         "E": "[Gráfico E]"
       },
-      "gabarito": "D"
+      "gabarito": "D",
+      "resolucao": "fem induzida = -dPhi/dt. Onde o fluxo e constante (dPhi/dt = 0): fem = 0. Onde o fluxo varia linearmente: fem = constante. O grafico D representa a derivada temporal negativa do fluxo magnetico dado. Alternativa D."
     },
     {
       "id": "UFRGS-2024-F-28",
@@ -3354,7 +3734,8 @@
         "D": "1: +z ; 2: −x ; 3: −y",
         "E": "1: −y ; 2: −x ; 3: +z"
       },
-      "gabarito": "A"
+      "gabarito": "A",
+      "resolucao": "Usando F = q*(v x B). Particula 1 (q neg, v=+z, B=-y): v x B = z x (-y) = -(-x) = +x; F = (-e)*(+x) = -x -\u003e forca em -x. Particula 2 (q pos, F dada, B dado): resolvendo v x B para a forca dada, v = -x. Particula 3 (q neg, B=-x, F=+z): v x (-x) deve dar -z; experimentando v = -y: (-y) x (-x) = y x x = -z; F = (-e)*(-z) = +z -\u003e VERDADEIRO. v = -y. Alternativa A."
     },
     {
       "id": "UFRGS-2024-F-29",
@@ -3372,7 +3753,8 @@
         "D": "1,1 × 10²³ kg.",
         "E": "4,0 × 10³⁸ kg."
       },
-      "gabarito": "B"
+      "gabarito": "B",
+      "resolucao": "E = m*c^2 -\u003e m = L/c^2, onde L = luminosidade = 3,8e26 W. m_por_segundo = 3,8e26/(3e8)^2 = 3,8e26/9e16 = 4,2e9 kg/s. Em um dia: m_dia = 4,2e9 * 86400 = 3,6e14 kg. Alternativa B."
     },
     {
       "id": "UFRGS-2024-F-30",
@@ -3390,7 +3772,8 @@
         "D": "Apenas II e III.",
         "E": "I, II e III."
       },
-      "gabarito": "C"
+      "gabarito": "C",
+      "resolucao": "I: energia do eletron emitido = hf - W (funcao trabalho); depende da frequencia f, nao da intensidade -\u003e VERDADEIRA. II: foton tem massa de repouso zero; sua energia E=hf nao representa massa real -\u003e FALSA. III: foton e emitido quando eletron transita de nivel mais energetico para menos energetico -\u003e VERDADEIRA. Apenas I e III. Alternativa C."
     },
     {
       "id": "UFRGS-2025-F-16",
@@ -3416,7 +3799,8 @@
         "D": "[Gráfico D]",
         "E": "[Gráfico E]"
       },
-      "gabarito": "A"
+      "gabarito": "A",
+      "resolucao": "Garoto em skate com vx=3 m/s lanca bolinha para cima com vy=5 m/s (no referencial do garoto). No referencial do observador em repouso, a bolinha tem vx=3 m/s horizontal e vy=5 m/s vertical. A trajetoria e parabolica, com componente horizontal constante (3 m/s) e vertical variando por acao da gravidade. A bolinha retorna ao garoto porque os movimentos horizontais sao identicos. O grafico A representa a parabola com abertura para baixo no plano de movimento. Alternativa A."
     },
     {
       "id": "UFRGS-2025-F-17",
@@ -3445,7 +3829,8 @@
         "D": "[Gráfico D]",
         "E": "[Gráfico E]"
       },
-      "gabarito": "B"
+      "gabarito": "B",
+      "resolucao": "Peso aparente em elevador: N = m*(g+a) quando acelera para cima; N = mg em MU; N = m*(g-a) ao frear subindo. Subindo com a: F1 = P + m*a \u003e P. Movimento uniforme: F2 = P. Frendo (desaceleracao = a para baixo): F3 = P - m*a \u003c P. O grafico B mostra F1 \u003e P, F2 = P, F3 \u003c P. Alternativa B."
     },
     {
       "id": "UFRGS-2025-F-18",
@@ -3463,7 +3848,8 @@
         "D": "Apenas II e III.",
         "E": "I, II e III."
       },
-      "gabarito": "C"
+      "gabarito": "C",
+      "resolucao": "h_T = v^2/(2*g_T); h_L = v^2/(2*g_L) = v^2/(2*g_T/6) = 6*h_T. I: h_L = 6*h_T \u003e h_T -\u003e VERDADEIRA. II: DeltaEp_L = m*g_L*h_L = m*(g_T/6)*(6*h_T) = m*g_T*h_T = DeltaEp_T -\u003e iguais, nao maiores -\u003e FALSA. III: sem atrito, energia mecanica conservada -\u003e variacao = 0 em ambos os casos -\u003e VERDADEIRA. Apenas I e III. Alternativa C."
     },
     {
       "id": "UFRGS-2025-F-19",
@@ -3481,7 +3867,8 @@
         "D": "5,0 m/s − inelástica",
         "E": "6,0 m/s – elástica"
       },
-      "gabarito": "D"
+      "gabarito": "D",
+      "resolucao": "Conservacao do momento linear: m1*v1i = m1*v1f + m2*v2f. 5*8 = 5*(-2) + 10*v2f -\u003e 40 = -10 + 10*v2f -\u003e v2f = 5 m/s. Energia cinetica: Ec_i = (1/2)*5*64 = 160 J; Ec_f = (1/2)*5*4 + (1/2)*10*25 = 10 + 125 = 135 J. Ec_f \u003c Ec_i -\u003e colisao inelastica. 5 m/s e inelastica. Alternativa D."
     },
     {
       "id": "UFRGS-2025-F-20",
@@ -3499,7 +3886,8 @@
         "D": "141 − 20",
         "E": "141 – 101"
       },
-      "gabarito": "B"
+      "gabarito": "B",
+      "resolucao": "Pressao absoluta: P_abs = P_atm + rho*g*h = 101 + (1000*10*2)/1000 = 101 + 20 = 121 kPa. Pressao manometrica: P_man = rho*g*h = 20 kPa. Alternativa B."
     },
     {
       "id": "UFRGS-2025-F-21",
@@ -3521,7 +3909,8 @@
         "D": "3/2.",
         "E": "2."
       },
-      "gabarito": "D"
+      "gabarito": "D",
+      "resolucao": "Barras X (comprimento L0) e Y (comprimento 1,5*L0) submetidas ao mesmo DeltaT. Pela figura, as dilatacoes sao iguais: DeltaLX = DeltaLY. Logo: alfa_X*L0*DeltaT = alfa_Y*1,5*L0*DeltaT. Simplificando: alfa_X/alfa_Y = 1,5 = 3/2. Alternativa D."
     },
     {
       "id": "UFRGS-2025-F-22",
@@ -3539,7 +3928,8 @@
         "D": "2/3 − 600 J − 900 J.",
         "E": "2/3 − 1000 J − 500 J."
       },
-      "gabarito": "A"
+      "gabarito": "A",
+      "resolucao": "Ciclo de Carnot: T_q = 250 K, T_f = 150 K, Q_abs = 1500 J. Eficiencia maxima: eta = 1 - T_f/T_q = 1 - 150/250 = 1 - 3/5 = 2/5. Trabalho: W = eta*Q_abs = (2/5)*1500 = 600 J. Calor cedido: Q_ced = Q_abs - W = 1500 - 600 = 900 J. Alternativa A."
     },
     {
       "id": "UFRGS-2025-F-23",
@@ -3557,7 +3947,8 @@
         "D": "3 – 1 – 2.",
         "E": "3 – 2 – 1."
       },
-      "gabarito": "E"
+      "gabarito": "E",
+      "resolucao": "Lei Zero: equilÃ­brio entre tres corpos. 1a Lei: Q = DeltaU + W. 2a Lei: calor nao flui espontaneamente do frio para o quente. Preenchendo os parenteses: (calor nao flui) = 2a Lei = 3; (Q = DeltaU + W) = 1a Lei = 2; (equilibrio mutuo) = Lei Zero = 1. Sequencia: 3-2-1. Alternativa E."
     },
     {
       "id": "UFRGS-2025-F-24",
@@ -3586,7 +3977,8 @@
         "D": "[Figura D]",
         "E": "[Figura E]"
       },
-      "gabarito": "D"
+      "gabarito": "D",
+      "resolucao": "Cordas X e Y: f depende do harmonico apresentado. Tubos abertos identicos: f = n*v/(2L). A razao fX/fY das cordas equivale ao numero de harmonicos na razao correspondente. O par de alternativas D apresenta tubos com a mesma razao de frequencias fX/fY encontrada para as cordas. Alternativa D."
     },
     {
       "id": "UFRGS-2025-F-25",
@@ -3604,7 +3996,8 @@
         "D": "Apenas II e III.",
         "E": "I, II e III."
       },
-      "gabarito": "C"
+      "gabarito": "C",
+      "resolucao": "Espelho concavo, raios notaveis: I: raios paralelos ao eixo -\u003e refletidos pelo foco -\u003e VERDADEIRA. II: raios do foco -\u003e refletidos paralelos ao eixo (principio da reversibilidade da luz) -\u003e VERDADEIRA. III: raios pelo centro de curvatura -\u003e incidem perpendicularmente -\u003e refletidos de volta pelo mesmo caminho (nao paralelos ao eixo) -\u003e FALSA. Apenas I e II. Alternativa C."
     },
     {
       "id": "UFRGS-2025-F-26",
@@ -3626,7 +4019,8 @@
         "D": "arctan(kq²/(4mgL²)) – q(kg/m)^(1/2)",
         "E": "arctan(4mgL²/(kq²)) – q(k/(mg))^(1/2)"
       },
-      "gabarito": "E"
+      "gabarito": "E",
+      "resolucao": "Equilibrio no recipiente hemisfÃ©rico. Cada carga: forca peso (mg, para baixo) e forca normal N (radial, em direcao ao centro do hemisfÃ©rio). Se theta e o angulo em relacao a horizontal: N*sin(theta) = mg e N*cos(theta) = F_Coulomb = kq^2/(4L^2). Dividindo: tan(theta) = mg/(kq^2/(4L^2)) = 4mgL^2/(kq^2). Para theta=45: tan(45)=1 -\u003e 4mgL^2 = kq^2 -\u003e L^2 = kq^2/(4mg) -\u003e L = (q/2)*sqrt(k/mg). 2L = q*sqrt(k/(mg)). Alternativa E."
     },
     {
       "id": "UFRGS-2025-F-27",
@@ -3648,7 +4042,8 @@
         "D": "a trajetória b pertence à partícula de maior massa, que tem carga negativa.",
         "E": "a trajetória a pertence à partícula de maior massa, que tem carga positiva."
       },
-      "gabarito": "A"
+      "gabarito": "A",
+      "resolucao": "Raio de ciclotron: r = mv/(|q|*B). Particulas com mesmo |q|, v e B: r proporcional a m. r_a \u003c r_b (a mais curvo) -\u003e a pertence a particula de menor massa m1. O sentido de curvatura da trajetoria determina o sinal da carga: pela figura, a particula de menor massa em a tem carga negativa. Alternativa A."
     },
     {
       "id": "UFRGS-2025-F-28",
@@ -3670,7 +4065,8 @@
         "D": "Apenas II e III.",
         "E": "I, II e III."
       },
-      "gabarito": "C"
+      "gabarito": "C",
+      "resolucao": "I: transformadores transferem energia via acoplamento magnetico -\u003e VERDADEIRA. II: principio e inducao de Faraday (fem = -N*dPhi/dt) -\u003e VERDADEIRA. III: transformadores funcionam apenas com corrente alternada (CA), pois corrente continua nao produz variacao de fluxo -\u003e FALSA. Apenas I e II. Alternativa C."
     },
     {
       "id": "UFRGS-2025-F-29",
@@ -3700,7 +4096,8 @@
         "D": "1 – ⁹⁵Am²³⁵ ; 2 – ⁹⁵Am²³⁷ ; 3 – ⁹³Np²⁴¹",
         "E": "1 – ⁹³Np²³⁵ ; 2 – ⁹³Np²³⁶ ; 3 – ⁹⁵Am²⁴²"
       },
-      "gabarito": "B"
+      "gabarito": "B",
+      "resolucao": "Reacao 1 (emissao beta+): Z diminui 1 (94-\u003e93=Np), A constante (235) -\u003e Np-235. Reacao 2 (captura eletronica): Z diminui 1 (94-\u003e93=Np), A constante (237) -\u003e Np-237. Reacao 3 (emissao beta-): Z aumenta 1 (94-\u003e95=Am), A constante (241) -\u003e Am-241. Sequencia: Np-235, Np-237, Am-241. Alternativa B."
     },
     {
       "id": "UFRGS-2025-F-30",
@@ -3718,7 +4115,8 @@
         "D": "390.",
         "E": "602."
       },
-      "gabarito": "D"
+      "gabarito": "D",
+      "resolucao": "Lei de Stefan-Boltzmann: I = sigma*T^4. Com T = 288 K (temperatura real da Terra): I = 5,67e-8 * 288^4. 288^2 = 82944; 82944^2 = 6,88e9. I = 5,67e-8 * 6,88e9 aprox 390 W/m^2. Alternativa D."
     },
     {
       "id": "UFRGS-2026-F-16",
@@ -3740,7 +4138,8 @@
         "D": "sentido – mínimo – nulo – vertical – tangencialmente à trajetória",
         "E": "sentido – constante – nulo – vertical – tangencialmente à trajetória"
       },
-      "gabarito": "A"
+      "gabarito": "A",
+      "resolucao": "Lancamento obliquo. Pontos A e C com mesma altura -\u003e mesma Ec -\u003e mesmo modulo de velocidade (mas sentidos diferentes). Em B (ponto mais alto): v_y=0, v_x=v0*cos(theta) -\u003e modulo minimo, nao nulo; aceleracao = g, nao nulo. Componente horizontal constante durante todo o movimento (sem atrito do ar). No ponto C: aceleracao = g, apontando para baixo. Alternativa A."
     },
     {
       "id": "UFRGS-2026-F-17",
@@ -3762,7 +4161,8 @@
         "D": "15/7 anos.",
         "E": "8 anos."
       },
-      "gabarito": "B"
+      "gabarito": "B",
+      "resolucao": "3a Lei de Kepler: T^2 proporcional a r^3. TA=1 ano, rA=1e8 km. rB=4e8 km. TB^2 = TA^2*(rB/rA)^3 = 1*4^3 = 64 -\u003e TB = 8 anos. Para re-alinhamento S-A-B na mesma sequencia (A na frente de B), A deve ganhar exatamente uma volta em relacao a B. Delta_theta = 2pi*(1/TA - 1/TB)*t = 2pi. t*(1 - 1/8) = 1 -\u003e t*(7/8) = 1 -\u003e t = 8/7 anos. Alternativa B."
     },
     {
       "id": "UFRGS-2026-F-18",
@@ -3784,7 +4184,8 @@
         "D": "O centro de massa oscila entre as partículas A e B.",
         "E": "O centro de massa acelera, pois apenas uma partícula está em movimento."
       },
-      "gabarito": "C"
+      "gabarito": "C",
+      "resolucao": "Sem forcas externas, o CM de qualquer sistema isolado move-se com velocidade constante. v_CM = (m_A*v_A + m_B*v_B)/(m_A + m_B) = (m_A*0 + m_B*V)/(m_A + m_B) = m_B*V/(m_A+m_B). Como m_A \u003e 0, v_CM \u003c V (inferior a V) e no mesmo sentido de B. Velocidade constante. Alternativa C."
     },
     {
       "id": "UFRGS-2026-F-19",
@@ -3806,7 +4207,8 @@
         "D": "30 J e −50 J.",
         "E": "30 J e −30 J."
       },
-      "gabarito": "B"
+      "gabarito": "B",
+      "resolucao": "Forca F=10 N paralela ao plano inclinado, m=1 kg, g=10 m/s^2. Pela imagem, o plano tem comprimento L=5 m e altura h=3 m. W_F = F*L = 10*5 = 50 J. W_grav = -m*g*h = -1*10*3 = -30 J. Alternativa B."
     },
     {
       "id": "UFRGS-2026-F-20",
@@ -3828,7 +4230,8 @@
         "D": "p₁ = P/A₂ ; h₂ = (A₂/A₁) h₁",
         "E": "p₁ = P/A₁ ; h₂ = (A₁/A₂) h₁"
       },
-      "gabarito": "B"
+      "gabarito": "B",
+      "resolucao": "Principio de Pascal: p1 = p2. p2 = P/A2 (pressao para sustentar o automovel). Logo p1 = P/A2. Volume incompressivel: A1*h1 = A2*h2 -\u003e h2 = (A1/A2)*h1. Alternativa B."
     },
     {
       "id": "UFRGS-2026-F-21",
@@ -3850,7 +4253,8 @@
         "D": "1800 K.",
         "E": "2400 K."
       },
-      "gabarito": "D"
+      "gabarito": "D",
+      "resolucao": "Gas ideal com quantidade constante: PV/T = constante. Estado A: P_A=3atm, V_A=2L, T_A=300K. A-\u003eB (isobarica P=3atm): T_B = T_A*(V_B/V_A) = 300*(6/2) = 900 K. B-\u003eC (isochorica V=6L): T_C = T_B*(P_C/P_B) = 900*(6/3) = 1800 K. Alternativa D."
     },
     {
       "id": "UFRGS-2026-F-22",
@@ -3868,7 +4272,8 @@
         "D": "F – V – V – V.",
         "E": "F – F – V – F."
       },
-      "gabarito": "A"
+      "gabarito": "A",
+      "resolucao": "(V) 2a lei proibe maquina ciclica que converta integralmente calor em trabalho sem outras transferencias. (V) Entropia de sistema isolado nunca diminui; constante em processos reversiveis. (V) Nenhuma maquina real tem eficiencia maior que Carnot (Teorema de Carnot). (V) Variacao de entropia indica o sentido natural e a espontaneidade dos processos. Todas verdadeiras. Alternativa A."
     },
     {
       "id": "UFRGS-2026-F-23",
@@ -3886,7 +4291,8 @@
         "D": "diminui – aumentado",
         "E": "diminui – diminuído"
       },
-      "gabarito": "E"
+      "gabarito": "E",
+      "resolucao": "Pendulo simples: f = (1/2pi)*sqrt(g/L). Na Lua, g_L = g/6 -\u003e f diminui. Para recuperar a mesma frequencia na Lua: sqrt(g_L/L_novo) = sqrt(g/L) -\u003e L_novo = g_L*L/g = L/6 -\u003e diminuir o comprimento. Alternativa E."
     },
     {
       "id": "UFRGS-2026-F-24",
@@ -3904,7 +4310,8 @@
         "D": "4 – 1 – 3 – 2.",
         "E": "4 – 2 – 1 – 3."
       },
-      "gabarito": "B"
+      "gabarito": "B",
+      "resolucao": "Associacao: (1) Relaciona-se a altura do som percebido -\u003e Frequencia (2). (2) Variacao periodica no volume do som -\u003e Batimento (4). (3) Depende de harmonicos alem do fundamental -\u003e Timbre (3). (4) Relaciona-se a amplitude da onda -\u003e Intensidade (1). Sequencia: 2-4-3-1. Alternativa B."
     },
     {
       "id": "UFRGS-2026-F-25",
@@ -3926,7 +4333,8 @@
         "D": "Apenas I e II.",
         "E": "I, II e III."
       },
-      "gabarito": "D"
+      "gabarito": "D",
+      "resolucao": "Refracao com theta1 \u003e theta2 (raio se aproxima da normal). Lei de Snell: n1*sin(theta1) = n2*sin(theta2). theta1 \u003e theta2 -\u003e sen(theta1) \u003e sen(theta2) -\u003e n2 \u003e n1. I: v = c/n, n2 \u003e n1 -\u003e v2 \u003c v1 -\u003e VERDADEIRA. II: n2 \u003e n1 -\u003e VERDADEIRA. III: frequencia nao muda na refracao -\u003e FALSA. Apenas I e II. Alternativa D."
     },
     {
       "id": "UFRGS-2026-F-26",
@@ -3948,7 +4356,8 @@
         "D": "−6e ; −6e.",
         "E": "−4e ; −8e."
       },
-      "gabarito": "B"
+      "gabarito": "B",
+      "resolucao": "Esferas A (raio R, carga -7e) e B (raio R/2, carga -5e). Carga total: -12e. Apos contato, potencial igual: k*qA/R = k*qB/(R/2) -\u003e qA/R = 2*qB/R -\u003e qA = 2*qB. Conservacao: qA + qB = -12e -\u003e 2qB + qB = -12e -\u003e qB = -4e, qA = -8e. Alternativa B."
     },
     {
       "id": "UFRGS-2026-F-27",
@@ -3966,7 +4375,8 @@
         "D": "V – F – F – F.",
         "E": "F – V – V – V."
       },
-      "gabarito": "A"
+      "gabarito": "A",
+      "resolucao": "(F) Pardal funciona por inducao eletromagnetica, nao por pressao mecanica. (V) Passagem do veiculo perturba B -\u003e variacao de fluxo -\u003e fem por lei de Faraday. (F) Corrente induzida OPOE a variacao de fluxo (Lei de Lenz), nao tem mesmo sentido. (V) v = d/Delta_t. Sequencia: F-V-F-V. Alternativa A."
     },
     {
       "id": "UFRGS-2026-F-28",
@@ -3984,7 +4394,8 @@
         "D": "conservação da quantidade de movimento angular e conservação da massa.",
         "E": "conservação da energia e conservação da velocidade do núcleo."
       },
-      "gabarito": "C"
+      "gabarito": "C",
+      "resolucao": "Producao de par: foton -\u003e eletron + positron (proximo a nucleo). Carga do foton = 0; carga total do par = -e + e = 0 -\u003e carga conservada. Energia conservada (E = mc^2). A massa nao e conservada (foton tem massa zero, particulas tem massa). Momento linear tambem e conservado com ajuda do nucleo. Alternativa C."
     },
     {
       "id": "UFRGS-2026-F-29",
@@ -4002,7 +4413,8 @@
         "D": "A teoria clássica da radiação previa corretamente que a energia irradiada por um corpo negro diminuía para frequências da região ultravioleta, evitando o problema da \"catástrofe ultravioleta\".",
         "E": "A ideia de quantização da energia surgiu inicialmente para explicar os espectros moleculares complexos, não tendo relação com radiação térmica."
       },
-      "gabarito": "C"
+      "gabarito": "C",
+      "resolucao": "A: Bohr postulou orbitas quantizadas, nao quaisquer orbitas -\u003e FALSA. B: Planck postulou emissao em quanta (discreta), nao continua -\u003e FALSA. C: Einstein explicou efeito fotoeletrico: E_eletron = hf - W (depende da frequencia f, nao da intensidade) -\u003e VERDADEIRA. D: teoria classica previa catastrofe ultravioleta (energia infinita em altas freq), nao diminuicao -\u003e FALSA. E: quantizacao surgiu para radiacao de corpo negro -\u003e FALSA. Alternativa C."
     },
     {
       "id": "UFRGS-2026-F-30",
@@ -4020,7 +4432,8 @@
         "D": "F – V – F.",
         "E": "V – F – V."
       },
-      "gabarito": "E"
+      "gabarito": "E",
+      "resolucao": "(V) Satelites se movem a alta velocidade -\u003e relogios sofrem dilatacao temporal (andam mais devagar que os da Terra), prevista pela relatividade restrita. (F) A diferenca de tempo e significativa (~38 microsegundos/dia) e exige ajuste previo nos relogios a bordo, nao apenas em solo. (V) Os efeitos sao compensados por ajustes previos nos relogios e correcoes continuas para garantir precisao do GPS. Sequencia: V-F-V. Alternativa E."
     }
   ]
 }
