@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <script src="/js/theme.js"></script>
+  <meta name="description" content="Panorama estatístico das questões de Física do vestibular UFRGS 2012–2026: quais áreas mais caíram, frequência por ano e mapa de cobertura.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Panorama UFRGS — Piras na Física">
+  <meta property="og:description" content="Estatísticas das questões de Física do vestibular UFRGS 2012–2026: distribuição por área, questões por ano e mapa de cobertura.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:locale" content="pt_BR">
+  <title>Panorama UFRGS — Piras na Física</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .pan-page {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    .pan-back {
+      display: inline-block;
+      color: var(--azul);
+      font-size: 0.88rem;
+      text-decoration: none;
+      margin-bottom: 1.25rem;
+    }
+    .pan-back:hover { text-decoration: underline; }
+
+    .pan-header {
+      margin-bottom: 2rem;
+    }
+    .pan-header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--titulo);
+      margin-bottom: 0.4rem;
+    }
+    .pan-header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* ── stats cards ── */
+    .pan-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.75rem;
+    }
+    .pan-stat {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+    }
+    .pan-stat-num {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--azul);
+      line-height: 1;
+      font-family: var(--font-mono);
+    }
+    .pan-stat-label {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      margin-top: 0.45rem;
+    }
+
+    /* ── sections ── */
+    .pan-section {
+      margin-bottom: 3rem;
+    }
+    .pan-section h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--titulo);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border);
+    }
+    .pan-nota {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.85rem;
+      line-height: 1.5;
+    }
+
+    /* ── horizontal bar chart ── */
+    .pan-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .pan-bar-row {
+      display: grid;
+      grid-template-columns: 155px 1fr 88px;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .pan-bar-label {
+      font-size: 0.85rem;
+      color: var(--texto);
+      text-align: right;
+      white-space: nowrap;
+    }
+    .pan-bar-track {
+      background: var(--surface);
+      border-radius: 4px;
+      height: 20px;
+      overflow: hidden;
+      border: 1.5px solid var(--border);
+    }
+    .pan-bar-fill {
+      height: 100%;
+      background: var(--azul);
+      border-radius: 3px;
+      min-width: 2px;
+    }
+    .pan-bar-meta {
+      font-size: 0.82rem;
+      font-family: var(--font-mono);
+      color: var(--texto);
+    }
+    .pan-bar-meta span {
+      color: var(--text-muted);
+    }
+
+    /* ── year bars (vertical) ── */
+    .pan-anos-scroll {
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+    .pan-anos {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.5rem;
+      height: 130px;
+      min-width: max-content;
+    }
+    .pan-ano-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+    }
+    .pan-ano-count {
+      font-size: 0.73rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      color: var(--texto);
+    }
+    .pan-ano-bar {
+      width: 42px;
+      border-radius: 4px 4px 0 0;
+      transition: opacity 0.2s;
+    }
+    .pan-ano-bar:hover { opacity: 0.8; }
+    .pan-ano-bar.bar-full  { background: var(--azul); }
+    .pan-ano-bar.bar-short { background: var(--info-border, var(--azul)); opacity: 0.65; }
+    .pan-ano-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      margin-top: 2px;
+    }
+
+    /* ── heatmap ── */
+    .pan-heatmap-wrapper {
+      overflow-x: auto;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+    }
+    .pan-heatmap {
+      border-collapse: collapse;
+      min-width: 100%;
+      font-size: 0.78rem;
+    }
+    .pan-heatmap thead th {
+      padding: 0.4rem 0.45rem;
+      text-align: center;
+      color: var(--subtitulo);
+      font-weight: 600;
+      white-space: nowrap;
+      background: var(--surface);
+      border-bottom: 2px solid var(--border);
+      font-family: var(--font-mono);
+    }
+    .pan-heatmap thead th.col-area {
+      text-align: left;
+      padding-right: 1rem;
+      min-width: 140px;
+      font-family: var(--font-body);
+    }
+    .pan-heatmap thead th.col-total {
+      border-left: 2px solid var(--border);
+    }
+    .pan-heatmap tbody td {
+      padding: 0.32rem 0.45rem;
+      text-align: center;
+      border: 1px solid var(--border);
+      font-family: var(--font-mono);
+    }
+    .pan-heatmap tbody td.col-area {
+      text-align: left;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      color: var(--texto);
+      white-space: nowrap;
+      padding-right: 1rem;
+      border-left: none;
+      border-right: 2px solid var(--border);
+      background: var(--surface);
+    }
+    .pan-heatmap tbody td.col-total {
+      font-weight: 700;
+      color: var(--texto);
+      border-left: 2px solid var(--border);
+      border-right: none;
+      background: var(--surface);
+    }
+    .pan-heatmap tbody tr:last-child td { border-bottom: none; }
+
+    /* heat intensity classes */
+    .h0 { color: var(--border); }
+    .h1 { background: var(--info-bg, rgba(59,130,246,.10)); color: var(--texto); }
+    .h2 { background: rgba(59,130,246,.22); color: var(--texto); }
+    .h3 { background: rgba(59,130,246,.38); color: var(--texto); }
+    .h4 { background: rgba(59,130,246,.54); color: var(--texto); }
+    .h5 { background: rgba(59,130,246,.70); color: #fff; }
+    .h6 { background: rgba(59,130,246,.87); color: #fff; }
+
+    /* ── heat legend ── */
+    .pan-legenda {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+      margin-top: 0.85rem;
+    }
+    .pan-legenda-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-right: 0.25rem;
+    }
+    .pan-legenda-cell {
+      width: 22px; height: 16px;
+      border-radius: 3px;
+      border: 1px solid var(--border);
+      display: inline-block;
+    }
+    .pan-legenda-num {
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+
+    /* ── CTA ── */
+    .pan-cta {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      margin-top: 1rem;
+    }
+    .pan-cta p {
+      color: var(--text-muted);
+      margin-bottom: 1.1rem;
+      font-size: 0.95rem;
+    }
+    .pan-cta-btn {
+      display: inline-block;
+      background: var(--azul);
+      color: #fff;
+      padding: 0.65rem 1.6rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: opacity 0.2s;
+    }
+    .pan-cta-btn:hover { opacity: 0.88; }
+
+    @media (max-width: 600px) {
+      .pan-header h1 { font-size: 1.5rem; }
+      .pan-stats { grid-template-columns: 1fr 1fr; }
+      .pan-stats .pan-stat:last-child { grid-column: 1 / -1; }
+      .pan-bar-row { grid-template-columns: 100px 1fr 72px; }
+      .pan-bar-label { font-size: 0.78rem; }
+    }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+
+  <main class="pan-page" id="conteudo" style="display:none">
+
+    <a class="pan-back" href="/banco-questoes/">← Banco de Questões</a>
+
+    <div class="pan-header">
+      <h1>Panorama — Física UFRGS</h1>
+      <p>Análise das questões de Física dos vestibulares UFRGS de 2012 a 2026.</p>
+    </div>
+
+    <div class="pan-stats" id="stats"></div>
+
+    <section class="pan-section">
+      <h2>Distribuição por Área</h2>
+      <div class="pan-bars" id="grafico-areas"></div>
+      <p class="pan-nota">Barras proporcionais à área mais frequente (Dinâmica). Percentual calculado sobre o total de questões.</p>
+    </section>
+
+    <section class="pan-section">
+      <h2>Questões por Ano</h2>
+      <div class="pan-anos-scroll">
+        <div class="pan-anos" id="grafico-anos"></div>
+      </div>
+      <p class="pan-nota">* Sem vestibular presencial em 2021. A partir de 2022 a Física integra o caderno combinado (15 questões por prova); de 2012 a 2020 havia caderno exclusivo de Física com 25 questões.</p>
+    </section>
+
+    <section class="pan-section">
+      <h2>Cobertura das Áreas por Ano</h2>
+      <div class="pan-heatmap-wrapper">
+        <table class="pan-heatmap" id="heatmap"></table>
+      </div>
+      <div class="pan-legenda" id="legenda"></div>
+      <p class="pan-nota">Cada célula indica o número de questões daquela área no respectivo ano. Células em "·" indicam área não cobrada.</p>
+    </section>
+
+    <div class="pan-cta">
+      <p>Explore as questões com filtros por ano, área e busca no enunciado — com gabarito e resolução.</p>
+      <a class="pan-cta-btn" href="/banco-questoes/">Acessar Banco de Questões</a>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2025 — Piras na Física</p>
+  </footer>
+
+  <script src="/js/include.js"></script>
+  <script>
+    async function carregar() {
+      const resp = await fetch('/banco-questoes/fisica_ufrgs.json');
+      const dados = await resp.json();
+      const qs = dados.banco_questoes;
+
+      const anos = [...new Set(qs.map(q => q.ano))].sort((a, b) => a - b);
+
+      const areaCounts = {};
+      const anoCounts  = {};
+      const matrix     = {};
+
+      for (const q of qs) {
+        areaCounts[q.area] = (areaCounts[q.area] || 0) + 1;
+        anoCounts[q.ano]   = (anoCounts[q.ano]   || 0) + 1;
+        if (!matrix[q.area]) matrix[q.area] = {};
+        matrix[q.area][q.ano] = (matrix[q.area][q.ano] || 0) + 1;
+      }
+
+      const areasOrd = Object.entries(areaCounts).sort((a, b) => b[1] - a[1]);
+      const total    = qs.length;
+      const numAreas = areasOrd.length;
+
+      // ── stats cards ──────────────────────────────────────────────────────
+      document.getElementById('stats').innerHTML = `
+        <div class="pan-stat">
+          <div class="pan-stat-num">${total}</div>
+          <div class="pan-stat-label">questões no banco</div>
+        </div>
+        <div class="pan-stat">
+          <div class="pan-stat-num">${anos.length}</div>
+          <div class="pan-stat-label">anos (${anos[0]}–${anos[anos.length - 1]})</div>
+        </div>
+        <div class="pan-stat">
+          <div class="pan-stat-num">${numAreas}</div>
+          <div class="pan-stat-label">áreas diferentes</div>
+        </div>`;
+
+      // ── bar chart por área ────────────────────────────────────────────────
+      const maxCount = areasOrd[0][1];
+      document.getElementById('grafico-areas').innerHTML = areasOrd.map(([area, count]) => {
+        const pct  = (count / total * 100).toFixed(1);
+        const barW = (count / maxCount * 100).toFixed(1);
+        return `
+          <div class="pan-bar-row">
+            <div class="pan-bar-label">${area}</div>
+            <div class="pan-bar-track"><div class="pan-bar-fill" style="width:${barW}%"></div></div>
+            <div class="pan-bar-meta">${count} <span>(${pct}%)</span></div>
+          </div>`;
+      }).join('');
+
+      // ── bar chart por ano ─────────────────────────────────────────────────
+      const maxAnual = Math.max(...Object.values(anoCounts));
+      const BAR_H = 80;
+      document.getElementById('grafico-anos').innerHTML = anos.map(ano => {
+        const n    = anoCounts[ano];
+        const h    = Math.round((n / maxAnual) * BAR_H);
+        const cls  = n >= 20 ? 'bar-full' : 'bar-short';
+        return `
+          <div class="pan-ano-col">
+            <div class="pan-ano-count">${n}</div>
+            <div class="pan-ano-bar ${cls}" style="height:${h}px"></div>
+            <div class="pan-ano-label">${ano}</div>
+          </div>`;
+      }).join('');
+
+      // ── heatmap área × ano ────────────────────────────────────────────────
+      const heatAreas = areasOrd.map(([a]) => a);
+
+      function hClass(n) {
+        if (!n) return 'h0';
+        if (n === 1) return 'h1';
+        if (n === 2) return 'h2';
+        if (n === 3) return 'h3';
+        if (n === 4) return 'h4';
+        if (n === 5) return 'h5';
+        return 'h6';
+      }
+
+      const thead = `<thead><tr>
+        <th class="col-area">Área</th>
+        ${anos.map(a => `<th>${a}</th>`).join('')}
+        <th class="col-total">Total</th>
+      </tr></thead>`;
+
+      const tbody = '<tbody>' + heatAreas.map(area => {
+        const cells = anos.map(ano => {
+          const n = (matrix[area] && matrix[area][ano]) || 0;
+          return `<td class="${hClass(n)}">${n || '·'}</td>`;
+        }).join('');
+        return `<tr>
+          <td class="col-area">${area}</td>
+          ${cells}
+          <td class="col-total">${areaCounts[area]}</td>
+        </tr>`;
+      }).join('') + '</tbody>';
+
+      document.getElementById('heatmap').innerHTML = thead + tbody;
+
+      // ── legenda ───────────────────────────────────────────────────────────
+      const legendItems = [
+        ['h0', '0'], ['h1', '1'], ['h2', '2'], ['h3', '3'],
+        ['h4', '4'], ['h5', '5'], ['h6', '6+'],
+      ];
+      document.getElementById('legenda').innerHTML =
+        '<span class="pan-legenda-label">Intensidade:</span>' +
+        legendItems.map(([cls, lbl]) =>
+          `<span class="pan-legenda-cell ${cls}"></span><span class="pan-legenda-num">${lbl}</span>`
+        ).join('');
+
+      // mostrar conteúdo após renderizar
+      document.getElementById('conteudo').style.display = '';
+    }
+
+    carregar();
+  </script>
+</body>
+</html>
