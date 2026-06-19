@@ -1084,6 +1084,29 @@ h3 {
   display: inline-block; font-family: var(--font-display); font-size: .7rem;
   font-weight: 700; color: var(--pitch-deep); margin-top: 1px;
 }
+.planilha-table .col-hidden { display: none; }
+.planilha-th-pts {
+  display: block; font-size: .62rem; font-weight: 700;
+  color: var(--gold); margin-top: 2px; letter-spacing: .02em;
+}
+
+/* ── Planilha: wide-screen ───────────────────────────── */
+.container.planilha-wide {
+  max-width: min(98vw, 1600px);
+  transition: max-width .2s ease;
+}
+@media (max-width: 700px) {
+  .container.planilha-wide { max-width: 100%; padding-inline: 6px; }
+}
+
+/* ── Planilha: barra de filtro ───────────────────────── */
+.planilha-filter-bar {
+  display: flex; align-items: center; gap: 10px;
+  flex-wrap: wrap; margin: 8px 0 4px;
+}
+.planilha-filter-hint {
+  font-size: .74rem; color: var(--muted); white-space: nowrap;
+}
 
 /* ── Mobile tweaks ───────────────────────────────────────── */
 @media (max-width: 400px) {

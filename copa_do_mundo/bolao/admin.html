@@ -30,6 +30,7 @@
       <button class="tab" data-tab="pools">Bolões</button>
       <button class="tab" data-tab="audit">Auditoria</button>
       <button class="tab" data-tab="export">Exportar</button>
+      <button class="tab" data-tab="planilha">Planilha</button>
     </div>
 
     <!-- Resultados -->
@@ -200,6 +201,26 @@
       </div>
     </div>
 
+    <!-- Planilha -->
+    <div id="tab-planilha" class="hidden">
+      <div class="card mt-16">
+        <h3>Planilha de apostas</h3>
+        <p class="muted mt-4" style="font-size:.85rem">
+          Todos os palpites de placar de todos os membros. Admin vê tudo, sem restrição de horário.
+        </p>
+        <select class="filter-select mt-12" id="planilha-pool-select" style="width:100%;max-width:none">
+          <option value="">— Selecione um bolão —</option>
+        </select>
+      </div>
+      <div class="planilha-filter-bar hidden" id="planilha-admin-filter-bar">
+        <select id="planilha-admin-member-filter" class="filter-select">
+          <option value="">Todos os membros</option>
+        </select>
+        <span class="planilha-filter-hint" id="planilha-admin-hint">← role para ver todos os jogos</span>
+      </div>
+      <div id="planilha-admin-wrap" class="planilha-wrap mt-8"></div>
+    </div>
+
   </main>
 
   <script type="module">
@@ -218,8 +239,9 @@
     bindSignOut()
 
     // ── Tabs ──────────────────────────────────────────────────
-    const TABS = ['matches', 'third', 'standings', 'tournament', 'participants', 'pools', 'audit', 'export']
-    let thirdLoaded = false, tournLoaded = false, partLoaded = false, poolsLoaded = false, auditLoaded = false, standingsLoaded = false, exportLoaded = false
+    const TABS = ['matches', 'third', 'standings', 'tournament', 'participants', 'pools', 'audit', 'export', 'planilha']
+    let thirdLoaded = false, tournLoaded = false, partLoaded = false, poolsLoaded = false, auditLoaded = false, standingsLoaded = false, exportLoaded = false, planilhaLoaded = false
+    const adminContainer = document.querySelector('.container')
     document.querySelectorAll('.tab').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'))
@@ -228,6 +250,7 @@
         for (const t of TABS) {
           document.getElementById(`tab-${t}`).classList.toggle('hidden', t !== tab)
         }
+        adminContainer.classList.toggle('planilha-wide', tab === 'planilha')
         if (tab === 'third' && !thirdLoaded)        { thirdLoaded = true;  loadThird() }
         if (tab === 'tournament' && !tournLoaded)   { tournLoaded = true;  loadTournament() }
         if (tab === 'participants' && !partLoaded)  { partLoaded = true;   loadParticipants() }
@@ -235,6 +258,7 @@
         if (tab === 'audit' && !auditLoaded)        { auditLoaded = true;  loadAudit() }
         if (tab === 'standings' && !standingsLoaded) { standingsLoaded = true; loadStandings() }
         if (tab === 'export' && !exportLoaded)       { exportLoaded = true;  loadExport() }
+        if (tab === 'planilha' && !planilhaLoaded)   { planilhaLoaded = true; loadPlanilhaAdmin() }
       })
     })
 
@@ -1462,6 +1486,112 @@
           break
       }
     })
+
+    // ── Planilha de apostas (admin) ───────────────────────────
+    async function loadPlanilhaAdmin() {
+      const poolSel = document.getElementById('planilha-pool-select')
+      try {
+        const pools = (await callAdmin('list_pools'))?.pools ?? []
+        pools.sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'))
+        poolSel.innerHTML = '<option value="">— Selecione um bolão —</option>' +
+          pools.map(p => `<option value="${escHtml(p.id)}">${escHtml(p.name)}</option>`).join('')
+      } catch (e) {
+        poolSel.insertAdjacentHTML('afterend', `<p style="color:var(--flare);font-size:.85rem;margin-top:8px">${escHtml(e.message)}</p>`)
+      }
+      poolSel.addEventListener('change', () => loadAdminPlanilhaPool(poolSel.value))
+    }
+
+    async function loadAdminPlanilhaPool(poolId) {
+      const wrap = document.getElementById('planilha-admin-wrap')
+      const filterBar = document.getElementById('planilha-admin-filter-bar')
+      if (!poolId) {
+        wrap.innerHTML = ''
+        filterBar.classList.add('hidden')
+        return
+      }
+      wrap.innerHTML = '<div class="empty" style="padding:20px"><strong>Carregando…</strong></div>'
+      try {
+        const grid = await callAdmin('audit_grid', { pool_id: poolId })
+        renderAdminPlanilha(grid, wrap, filterBar)
+      } catch (e) {
+        wrap.innerHTML = `<div class="empty" style="color:var(--flare);padding:16px">${escHtml(e.message)}</div>`
+      }
+    }
+
+    function renderAdminPlanilha(grid, wrap, filterBar) {
+      const members = grid.members ?? []
+      const matches = (grid.matches ?? [])
+        .filter(m => m.phase === 'group')
+        .sort((a, b) => new Date(a.match_date) - new Date(b.match_date))
+
+      if (!members.length || !matches.length) {
+        wrap.innerHTML = '<div class="empty" style="padding:20px"><strong>Sem dados ainda.</strong></div>'
+        filterBar.classList.add('hidden')
+        return
+      }
+
+      const predsIndex = {}
+      for (const pr of grid.predictions ?? []) {
+        if (!predsIndex[pr.match_id]) predsIndex[pr.match_id] = {}
+        predsIndex[pr.match_id][pr.user_id] = pr
+      }
+
+      const ptsByUser = {}
+      for (const pr of grid.predictions ?? [])
+        ptsByUser[pr.user_id] = (ptsByUser[pr.user_id] ?? 0) + (pr.points ?? 0)
+      const sortedMembers = [...members].sort((a, b) =>
+        (ptsByUser[b.user_id] ?? 0) - (ptsByUser[a.user_id] ?? 0) ||
+        a.display_name.localeCompare(b.display_name, 'pt-BR')
+      )
+
+      const memberFilterSel = document.getElementById('planilha-admin-member-filter')
+      memberFilterSel.innerHTML = '<option value="">Todos os membros</option>' +
+        sortedMembers.map(m =>
+          `<option value="${escHtml(m.user_id)}">${escHtml(m.display_name)} (${ptsByUser[m.user_id] ?? 0} pts)</option>`
+        ).join('')
+      filterBar.classList.remove('hidden')
+      memberFilterSel.onchange = () => {
+        const uid = memberFilterSel.value
+        wrap.querySelectorAll('[data-uid]').forEach(el =>
+          el.classList.toggle('col-hidden', uid !== '' && el.dataset.uid !== uid))
+        document.getElementById('planilha-admin-hint').classList.toggle('hidden', uid !== '')
+      }
+
+      const thMembers = sortedMembers.map(m =>
+        `<th data-uid="${escHtml(m.user_id)}" title="${escHtml(m.display_name)}">
+          <span style="font-size:.85rem">${escHtml(m.avatar)}</span><br>
+          ${escHtml(m.display_name.split(' ')[0])}
+          <span class="planilha-th-pts">${ptsByUser[m.user_id] ?? 0} pts</span>
+        </th>`).join('')
+
+      const groupOrder = [...new Set(matches.map(m => m.group_name ?? '?'))]
+      let rows = ''
+      for (const grp of groupOrder) {
+        const grpMatches = matches.filter(m => (m.group_name ?? '?') === grp)
+        rows += `<tr class="planilha-group-row"><td class="col-match">Grupo ${escHtml(grp)}</td>${sortedMembers.map(m => `<td data-uid="${escHtml(m.user_id)}"></td>`).join('')}</tr>`
+        for (const m of grpMatches) {
+          const matchPreds = predsIndex[m.id] ?? {}
+          const hasScore = m.home_score !== null && m.away_score !== null
+          const matchCell = `<span style="font-weight:600">${escHtml(translateTeam(m.home_team))} × ${escHtml(translateTeam(m.away_team))}</span>
+            <br><span style="font-size:.66rem;color:var(--muted)">${fmtDate(m.match_date)}</span>
+            ${hasScore ? `<br><span class="planilha-match-score">${m.home_score}–${m.away_score}</span>` : ''}`
+          const cells = sortedMembers.map(mem => {
+            const pr = matchPreds[mem.user_id]
+            if (!pr) return `<td data-uid="${escHtml(mem.user_id)}"><span class="planilha-none">—</span></td>`
+            const pts = pr.points != null ? `<span class="planilha-pts">+${pr.points} pts</span>` : ''
+            return `<td data-uid="${escHtml(mem.user_id)}">
+              <span class="planilha-pred">${pr.home_score}–${pr.away_score}</span>${pts}
+            </td>`
+          }).join('')
+          rows += `<tr><td class="col-match">${matchCell}</td>${cells}</tr>`
+        }
+      }
+
+      wrap.innerHTML = `<table class="planilha-table">
+        <thead><tr><th class="col-match">Partida</th>${thMembers}</tr></thead>
+        <tbody>${rows}</tbody>
+      </table>`
+    }
   </script>
 </body>
 </html>

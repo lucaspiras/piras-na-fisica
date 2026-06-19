@@ -127,9 +127,15 @@
 
       <!-- Tab: Planilha -->
       <div id="tab-planilha" class="hidden">
-        <p class="muted mt-4 mb-8" style="font-size:.82rem">
+        <p class="muted mt-4 mb-4" style="font-size:.82rem">
           Apostas de todos os membros — visíveis a partir de 1h antes de cada partida.
         </p>
+        <div class="planilha-filter-bar hidden" id="planilha-filter-bar">
+          <select id="planilha-member-sel" class="filter-select">
+            <option value="">Todos os membros</option>
+          </select>
+          <span class="planilha-filter-hint" id="planilha-hint">← role para ver todos os jogos</span>
+        </div>
         <div id="planilha-wrap" class="planilha-wrap">
           <div class="empty" style="padding:20px"><strong>Carregando…</strong></div>
         </div>
@@ -404,6 +410,7 @@
     }
 
     // ── Tabs ──────────────────────────────────────────────────
+    const mainContainer = document.querySelector('.container')
     let tabsLoaded = { palpites: false, grupos: false, podio: false, planilha: false }
     document.querySelectorAll('.pool-nav-item').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -414,6 +421,7 @@
         document.getElementById('tab-grupos').classList.toggle('hidden', tab !== 'grupos')
         document.getElementById('tab-podio').classList.toggle('hidden', tab !== 'podio')
         document.getElementById('tab-planilha').classList.toggle('hidden', tab !== 'planilha')
+        mainContainer.classList.toggle('planilha-wide', tab === 'planilha')
         if (!tabsLoaded[tab]) {
           tabsLoaded[tab] = true
           if (tab === 'grupos') loadGrupos()
@@ -637,13 +645,40 @@
         predsIndex[pr.match_id][pr.user_id] = pr
       }
 
-      // Cabeçalho: coluna Partida + uma coluna por membro
-      const meIdx = members.findIndex(m => m.user_id === user.id)
-      const thMembers = members.map((m, i) =>
-        `<th class="${i === meIdx ? 'col-me' : ''}" title="${escHtml(m.display_name)}">
-          <span style="font-size:.9rem">${escHtml(m.avatar)}</span><br>
+      // Ordenar membros por pts desc (de apostas reveladas), empate por nome
+      const ptsByUser = {}
+      for (const pr of data.predictions ?? [])
+        ptsByUser[pr.user_id] = (ptsByUser[pr.user_id] ?? 0) + (pr.points ?? 0)
+      const sortedMembers = [...members].sort((a, b) =>
+        (ptsByUser[b.user_id] ?? 0) - (ptsByUser[a.user_id] ?? 0) ||
+        a.display_name.localeCompare(b.display_name, 'pt-BR')
+      )
+
+      // Preencher filtro de membro
+      const filterSel = document.getElementById('planilha-member-sel')
+      const filterBar = document.getElementById('planilha-filter-bar')
+      const hint = document.getElementById('planilha-hint')
+      filterSel.innerHTML = '<option value="">Todos os membros</option>' +
+        sortedMembers.map(m =>
+          `<option value="${escHtml(m.user_id)}">${escHtml(m.display_name)} (${ptsByUser[m.user_id] ?? 0} pts)</option>`
+        ).join('')
+      filterBar.classList.remove('hidden')
+      filterSel.onchange = () => {
+        const uid = filterSel.value
+        wrap.querySelectorAll('[data-uid]').forEach(el =>
+          el.classList.toggle('col-hidden', uid !== '' && el.dataset.uid !== uid))
+        hint.classList.toggle('hidden', uid !== '')
+      }
+
+      // Cabeçalho: coluna Partida + uma coluna por membro (ordenados por pts)
+      const thMembers = sortedMembers.map(m => {
+        const isMe = m.user_id === user.id
+        return `<th data-uid="${escHtml(m.user_id)}" class="${isMe ? 'col-me' : ''}" title="${escHtml(m.display_name)}">
+          <span style="font-size:.85rem">${escHtml(m.avatar)}</span><br>
           ${escHtml(m.display_name.split(' ')[0])}
-        </th>`).join('')
+          <span class="planilha-th-pts">${ptsByUser[m.user_id] ?? 0} pts</span>
+        </th>`
+      }).join('')
 
       // Agrupar por group_name/phase
       const groupOrder = [...new Set(matches.map(m => m.group_name ?? m.phase ?? '?'))]
@@ -652,7 +687,7 @@
         const grpMatches = matches.filter(m => (m.group_name ?? m.phase ?? '?') === grp)
           .sort((a, b) => new Date(a.match_date) - new Date(b.match_date))
         const label = grpMatches[0]?.phase === 'group' ? `Grupo ${grp}` : grp
-        rows += `<tr class="planilha-group-row"><td class="col-match">${escHtml(label)}</td>${members.map(() => '<td></td>').join('')}</tr>`
+        rows += `<tr class="planilha-group-row"><td class="col-match">${escHtml(label)}</td>${sortedMembers.map(m => `<td data-uid="${escHtml(m.user_id)}"></td>`).join('')}</tr>`
         for (const m of grpMatches) {
           const revealed = revealedIds.has(m.id)
           const matchPreds = predsIndex[m.id] ?? {}
@@ -660,17 +695,18 @@
           const matchCell = `<span style="font-weight:700">${escHtml(translateTeam(m.home_team))} × ${escHtml(translateTeam(m.away_team))}</span>
             <br><span style="font-size:.66rem;color:var(--muted)">${fmtDate(m.match_date)}</span>
             ${hasScore ? `<br><span class="planilha-match-score">${m.home_score}–${m.away_score}</span>` : ''}`
-          const cells = members.map((mem, i) => {
-            const isMe = i === meIdx
-            if (!revealed) return `<td class="${isMe ? 'col-me' : ''}"><span class="planilha-none">—</span></td>`
+          const cells = sortedMembers.map(mem => {
+            const isMe = mem.user_id === user.id
+            const cls = isMe ? 'col-me' : ''
+            if (!revealed) return `<td data-uid="${escHtml(mem.user_id)}" class="${cls}"><span class="planilha-none">—</span></td>`
             const pr = matchPreds[mem.user_id]
-            if (!pr) return `<td class="${isMe ? 'col-me' : ''}"><span class="planilha-none">sem</span></td>`
+            if (!pr) return `<td data-uid="${escHtml(mem.user_id)}" class="${cls}"><span class="planilha-none">sem</span></td>`
             const pts = pr.points != null ? `<span class="planilha-pts">+${pr.points} pts</span>` : ''
-            return `<td class="${isMe ? 'col-me' : ''}">
+            return `<td data-uid="${escHtml(mem.user_id)}" class="${cls}">
               <span class="planilha-pred">${pr.home_score}–${pr.away_score}</span>${pts}
             </td>`
           }).join('')
-          rows += `<tr><td class="col-match${meIdx >= 0 ? '' : ''}">${matchCell}</td>${cells}</tr>`
+          rows += `<tr><td class="col-match">${matchCell}</td>${cells}</tr>`
         }
       }
 
