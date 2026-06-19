@@ -7,13 +7,13 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
   <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
   <script src="/js/theme.js"></script>
-  <meta name="description" content="Banco de questões de Física do vestibular UFRGS 2012–2026 (300 questões), organizadas por área e subárea.">
+  <meta name="description" content="Banco de questões de Física dos vestibulares UFRGS (2012–2026), UFSC (2023–2026) e OBFEP (2016–2025) — 730 questões organizadas por área e subárea.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Banco de Questões UFRGS — Piras na Física">
-  <meta property="og:description" content="300 questões de Física do vestibular UFRGS 2012–2026, organizadas por área e subárea.">
+  <meta property="og:title" content="Banco de Questões de Física — Piras na Física">
+  <meta property="og:description" content="730 questões de Física dos vestibulares UFRGS, UFSC e OBFEP (2016–2025), organizadas por área e subárea.">
   <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
   <meta property="og:locale" content="pt_BR">
-  <title>Banco de Questões UFRGS — Piras na Física</title>
+  <title>Banco de Questões de Física — Piras na Física</title>
   <link rel="stylesheet" href="/css/style.css">
   <style>
     /* ── layout ── */
@@ -144,6 +144,25 @@
       border: 1px solid var(--warn-border);
     }
 
+    .bq-tag-nivel {
+      background: var(--roxo, #7c3aed);
+      color: #fff;
+      border: 1px solid transparent;
+    }
+
+    .bq-tag-1serie {
+      background: var(--info-bg);
+      color: var(--info-text, var(--azul));
+      border: 1px solid var(--info-border);
+      font-style: italic;
+    }
+
+    .bq-tag-dissertativa {
+      background: var(--surface-2);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
     .bq-enunciado {
       font-size: 0.93rem;
       color: var(--texto);
@@ -264,6 +283,16 @@
       color: var(--warn-text);
     }
 
+    .bq-opcoes li.bq-proposicao .bq-opcao-letra {
+      min-width: 2.5rem;
+      font-size: 0.85rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0 4px;
+      text-align: center;
+    }
+
     .bq-opcoes li.bq-correto {
       background: var(--ok-bg);
       border: 1px solid var(--ok-border);
@@ -381,28 +410,26 @@
   <main class="bq-page">
 
     <div class="bq-header">
-      <h1>Banco de Questões — Física UFRGS</h1>
-      <p>300 questões dos vestibulares UFRGS 2012–2020 e 2022–2026, organizadas por área e subárea. <a href="/banco-questoes/panorama.html" style="color:var(--azul);text-decoration:none;white-space:nowrap">Ver panorama estatístico →</a></p>
+      <h1>Banco de Questões de Física</h1>
+      <p>730 questões dos vestibulares UFRGS (2012–2026), UFSC (2023–2026) e OBFEP (2016–2025), organizadas por área e subárea. <a href="/banco-questoes/panorama.html" style="color:var(--azul);text-decoration:none;white-space:nowrap">Ver panorama estatístico →</a></p>
     </div>
 
     <div class="bq-filtros">
       <input type="text" id="busca" placeholder="Buscar no enunciado ou subárea…" autocomplete="off">
+      <select id="filtro-inst">
+        <option value="">Todas as instituições</option>
+        <option value="UFRGS">UFRGS</option>
+        <option value="UFSC">UFSC</option>
+        <option value="OBFEP">OBFEP</option>
+      </select>
+      <select id="filtro-nivel" style="display:none">
+        <option value="">Todos os níveis</option>
+        <option value="A">Nível A</option>
+        <option value="B">Nível B</option>
+        <option value="C">Nível C</option>
+      </select>
       <select id="filtro-ano">
         <option value="">Todos os anos</option>
-        <option>2012</option>
-        <option>2013</option>
-        <option>2014</option>
-        <option>2015</option>
-        <option>2016</option>
-        <option>2017</option>
-        <option>2018</option>
-        <option>2019</option>
-        <option>2020</option>
-        <option>2022</option>
-        <option>2023</option>
-        <option>2024</option>
-        <option>2025</option>
-        <option>2026</option>
       </select>
       <select id="filtro-area">
         <option value="">Todas as áreas</option>
@@ -428,14 +455,46 @@
       const dados = await resp.json();
       questoes = dados.banco_questoes;
 
-      // popular filtro de áreas (ordem de aparecimento único)
+      // popular filtro de anos
+      const anos = [...new Set(questoes.map(q => q.ano))].sort((a, b) => a - b);
+      const selAno = document.getElementById('filtro-ano');
+      anos.forEach(a => {
+        const opt = document.createElement('option');
+        opt.value = a;
+        opt.textContent = a;
+        selAno.appendChild(opt);
+      });
+
+      // popular filtro de áreas
       const areas = [...new Set(questoes.map(q => q.area))].sort();
-      const sel = document.getElementById('filtro-area');
+      const selArea = document.getElementById('filtro-area');
       areas.forEach(a => {
         const opt = document.createElement('option');
         opt.value = a;
         opt.textContent = a;
-        sel.appendChild(opt);
+        selArea.appendChild(opt);
+      });
+
+      // filtro de instituição atualiza anos disponíveis e mostra/oculta nível
+      document.getElementById('filtro-inst').addEventListener('change', () => {
+        const inst = document.getElementById('filtro-inst').value;
+        const selNivel = document.getElementById('filtro-nivel');
+        selNivel.style.display = inst === 'OBFEP' ? '' : 'none';
+        if (inst !== 'OBFEP') selNivel.value = '';
+
+        const anosInst = inst
+          ? [...new Set(questoes.filter(q => (q.instituicao || 'UFRGS') === inst).map(q => q.ano))].sort((a, b) => a - b)
+          : anos;
+        const anoAtual = selAno.value;
+        selAno.innerHTML = '<option value="">Todos os anos</option>';
+        anosInst.forEach(a => {
+          const opt = document.createElement('option');
+          opt.value = a;
+          opt.textContent = a;
+          if (String(a) === anoAtual && anosInst.includes(Number(anoAtual))) opt.selected = true;
+          selAno.appendChild(opt);
+        });
+        renderizar();
       });
 
       renderizar();
@@ -506,10 +565,14 @@
 
     function renderizar() {
       const busca  = document.getElementById('busca').value.toLowerCase().trim();
+      const inst   = document.getElementById('filtro-inst').value;
+      const nivel  = document.getElementById('filtro-nivel').value;
       const ano    = document.getElementById('filtro-ano').value;
       const area   = document.getElementById('filtro-area').value;
 
       const filtradas = questoes.filter(q => {
+        if (inst && (q.instituicao || 'UFRGS') !== inst) return false;
+        if (nivel && q.nivel !== nivel) return false;
         if (ano  && String(q.ano)  !== ano)  return false;
         if (area && q.area         !== area)  return false;
         if (busca && !q.enunciado.toLowerCase().includes(busca)
@@ -531,41 +594,78 @@
       const altImgs = (q) => q.imagens && q.imagens.alternativas ? q.imagens.alternativas : {};
 
       lista.innerHTML = filtradas.map(q => {
-        const opcoesHtml = Object.entries(q.opcoes).map(([letra, texto]) => {
-          const ai = altImgs(q)[letra];
-          const imgAlt = ai ? `<img class="bq-opcao-img" src="${BASE}${ai}" alt="Alternativa ${letra}" loading="lazy">` : '';
-          return `<li><span class="bq-opcao-letra">${letra}</span><span>${fixSubscripts(texto)}${imgAlt}</span></li>`;
-        }).join('');
+        const isProposicoes  = q.tipo_questao === 'proposicoes';
+        const isDissertativa = q.tipo_questao === 'dissertativa';
+        const is1serie = (q.tags || []).includes('somente para 1ª série');
 
-        const anulada = q.gabarito === 'ANULADA';
-        const gabaritoHtml = q.gabarito ? `
-          <div class="bq-gabarito-area">
-            <button class="bq-gabarito-btn${anulada ? ' anulada' : ''}" data-gabarito="${q.gabarito}">Ver gabarito</button>
-            <span class="bq-gabarito-resp${anulada ? ' anulada' : ''}">${anulada ? 'Anulada' : q.gabarito}</span>
-            ${q.resolucao ? `<button class="bq-resolucao-btn">Ver resolução</button>` : ''}
-          </div>
-          ${q.resolucao ? `<div class="bq-resolucao-texto">${fixSubscripts(q.resolucao)}</div>` : ''}` : '';
+        // badges no topo
+        const nivelBadge = q.nivel
+          ? `<span class="bq-tag bq-tag-nivel">Nível ${q.nivel}</span>` : '';
+        const serie1Badge = is1serie
+          ? `<span class="bq-tag bq-tag-1serie">Somente 1ª série</span>` : '';
+        const dissertativaBadge = isDissertativa
+          ? `<span class="bq-tag bq-tag-dissertativa">Dissertativa</span>` : '';
 
-        const tagsExtras = (q.tags || []).map(t =>
-          `<span class="bq-tag bq-tag-extra">${t}</span>`).join('');
+        // tags extras (excluindo "somente para 1ª série" que tem badge próprio)
+        const tagsExtras = (q.tags || [])
+          .filter(t => t !== 'somente para 1ª série')
+          .map(t => `<span class="bq-tag bq-tag-extra">${t}</span>`).join('');
+
+        const instLabel = q.instituicao || 'UFRGS';
+
+        // alternativas (vazio para dissertativas)
+        let opcoesHtml = '';
+        if (!isDissertativa && q.opcoes) {
+          opcoesHtml = Object.entries(q.opcoes).map(([letra, texto]) => {
+            const ai = altImgs(q)[letra];
+            const imgAlt = ai ? `<img class="bq-opcao-img" src="${BASE}${ai}" alt="Alternativa ${letra}" loading="lazy">` : '';
+            const liClass = isProposicoes ? ' class="bq-proposicao"' : '';
+            return `<li${liClass} data-prop="${letra}"><span class="bq-opcao-letra">${letra}</span><span>${fixSubscripts(texto)}${imgAlt}</span></li>`;
+          }).join('');
+        }
+
+        // gabarito/resolução
+        let gabaritoHtml = '';
+        if (isDissertativa) {
+          if (q.resolucao) {
+            gabaritoHtml = `
+              <div class="bq-gabarito-area">
+                <button class="bq-resolucao-btn">Ver resolução</button>
+              </div>
+              <div class="bq-resolucao-texto">${fixSubscripts(q.resolucao)}</div>`;
+          }
+        } else if (q.gabarito) {
+          const anulada = q.gabarito === 'ANULADA';
+          const gabLabel = isProposicoes && !anulada
+            ? `Soma: ${q.gabarito}` : (anulada ? 'Anulada' : q.gabarito.toUpperCase());
+          gabaritoHtml = `
+            <div class="bq-gabarito-area">
+              <button class="bq-gabarito-btn${anulada ? ' anulada' : ''}" data-gabarito="${q.gabarito}" data-tipo="${isProposicoes ? 'proposicoes' : 'opcoes'}">Ver gabarito</button>
+              <span class="bq-gabarito-resp${anulada ? ' anulada' : ''}">${gabLabel}</span>
+              ${q.resolucao ? `<button class="bq-resolucao-btn">Ver resolução</button>` : ''}
+            </div>
+            ${q.resolucao ? `<div class="bq-resolucao-texto">${fixSubscripts(q.resolucao)}</div>` : ''}`;
+        }
 
         return `
         <div class="bq-card">
           <div class="bq-card-topo">
             <span class="bq-num">Q${q.numero}</span>
-            <span class="bq-tag bq-tag-ano">UFRGS ${q.ano}</span>
+            <span class="bq-tag bq-tag-ano">${instLabel} ${q.ano}</span>
+            ${nivelBadge}
             <span class="bq-tag bq-tag-area">${q.area}</span>
             <span class="bq-tag bq-tag-subarea">${q.subarea}</span>
-            ${tagsExtras}
+            ${dissertativaBadge}${serie1Badge}${tagsExtras}
           </div>
           ${renderEnunciado(q)}
-          <ul class="bq-opcoes">${opcoesHtml}</ul>
+          ${opcoesHtml ? `<ul class="bq-opcoes">${opcoesHtml}</ul>` : ''}
           ${gabaritoHtml}
         </div>`;
       }).join('');
     }
 
     document.getElementById('busca').addEventListener('input', renderizar);
+    document.getElementById('filtro-nivel').addEventListener('change', renderizar);
     document.getElementById('filtro-ano').addEventListener('change', renderizar);
     document.getElementById('filtro-area').addEventListener('change', renderizar);
 
@@ -576,11 +676,18 @@
         const visivel = card.classList.toggle('bq-gabarito-visivel');
         gabBtn.textContent = visivel ? 'Ocultar gabarito' : 'Ver gabarito';
         const gabarito = gabBtn.dataset.gabarito;
+        const isProposCard = gabBtn.dataset.tipo === 'proposicoes';
         card.querySelectorAll('.bq-opcoes li').forEach(li => {
           li.classList.remove('bq-correto');
           if (visivel && gabarito !== 'ANULADA') {
-            const letra = li.querySelector('.bq-opcao-letra')?.textContent.trim();
-            if (letra === gabarito) li.classList.add('bq-correto');
+            if (isProposCard) {
+              const propNum = parseInt(li.dataset.prop, 10);
+              const soma = parseInt(gabarito, 10);
+              if (!isNaN(propNum) && (soma & propNum) === propNum) li.classList.add('bq-correto');
+            } else {
+              const letra = li.querySelector('.bq-opcao-letra')?.textContent.trim();
+              if (letra === gabarito) li.classList.add('bq-correto');
+            }
           }
         });
         return;

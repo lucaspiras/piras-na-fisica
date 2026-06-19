@@ -7,13 +7,13 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
   <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
   <script src="/js/theme.js"></script>
-  <meta name="description" content="Panorama estatístico das questões de Física do vestibular UFRGS 2012–2026: quais áreas mais caíram, frequência por ano e mapa de cobertura.">
+  <meta name="description" content="Panorama estatístico das questões de Física dos vestibulares UFRGS e UFSC: quais áreas mais caíram, frequência por ano e mapa de cobertura.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Panorama UFRGS — Piras na Física">
-  <meta property="og:description" content="Estatísticas das questões de Física do vestibular UFRGS 2012–2026: distribuição por área, questões por ano e mapa de cobertura.">
+  <meta property="og:title" content="Panorama — Banco de Questões de Física">
+  <meta property="og:description" content="Estatísticas das questões de Física dos vestibulares UFRGS e UFSC: distribuição por área, questões por ano e mapa de cobertura.">
   <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
   <meta property="og:locale" content="pt_BR">
-  <title>Panorama UFRGS — Piras na Física</title>
+  <title>Panorama — Banco de Questões — Piras na Física</title>
   <link rel="stylesheet" href="/css/style.css">
   <style>
     .pan-page {
@@ -260,6 +260,77 @@
       color: var(--text-muted);
     }
 
+    /* ── subarea cards grid ── */
+    .pan-subareas-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1rem;
+    }
+    .pan-subcard {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.2rem 1.1rem;
+    }
+    .pan-subcard-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1.5px solid var(--border);
+    }
+    .pan-subcard-area {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--titulo);
+    }
+    .pan-subcard-total {
+      font-size: 0.76rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+    .pan-subbars {
+      display: flex;
+      flex-direction: column;
+      gap: 0.38rem;
+    }
+    .pan-subbar-row {
+      display: grid;
+      grid-template-columns: 1fr 68px 24px;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .pan-subbar-label {
+      font-size: 0.77rem;
+      color: var(--texto);
+      line-height: 1.3;
+    }
+    .pan-subbar-track {
+      background: var(--bg);
+      border-radius: 3px;
+      height: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .pan-subbar-fill {
+      height: 100%;
+      background: var(--azul);
+      opacity: 0.72;
+      border-radius: 2px;
+      min-width: 2px;
+    }
+    .pan-subbar-count {
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    @media (max-width: 700px) {
+      .pan-subareas-grid { grid-template-columns: 1fr; }
+    }
+
     /* ── CTA ── */
     .pan-cta {
       text-align: center;
@@ -304,8 +375,8 @@
     <a class="pan-back" href="/banco-questoes/">← Banco de Questões</a>
 
     <div class="pan-header">
-      <h1>Panorama — Física UFRGS</h1>
-      <p>Análise das questões de Física dos vestibulares UFRGS de 2012 a 2026.</p>
+      <h1>Panorama — Banco de Questões de Física</h1>
+      <p>Análise das questões de Física dos vestibulares UFRGS (2012–2026) e UFSC (2023–2026).</p>
     </div>
 
     <div class="pan-stats" id="stats"></div>
@@ -317,11 +388,17 @@
     </section>
 
     <section class="pan-section">
+      <h2>Subáreas por Grande Área</h2>
+      <div class="pan-subareas-grid" id="grafico-subareas"></div>
+      <p class="pan-nota">Barras proporcionais à subárea mais frequente dentro de cada área. Número à direita indica o total de questões naquela subárea.</p>
+    </section>
+
+    <section class="pan-section">
       <h2>Questões por Ano</h2>
       <div class="pan-anos-scroll">
         <div class="pan-anos" id="grafico-anos"></div>
       </div>
-      <p class="pan-nota">* Sem vestibular presencial em 2021. A partir de 2022 a Física integra o caderno combinado (15 questões por prova); de 2012 a 2020 havia caderno exclusivo de Física com 25 questões.</p>
+      <p class="pan-nota">* UFRGS: sem vestibular presencial em 2021; a partir de 2022 a Física integra o caderno combinado (15 questões por prova); de 2012 a 2020 havia caderno exclusivo com 25 questões. UFSC: 10 questões de Física (Q21–Q30), no banco desde 2023.</p>
     </section>
 
     <section class="pan-section">
@@ -393,6 +470,35 @@
             <div class="pan-bar-label">${area}</div>
             <div class="pan-bar-track"><div class="pan-bar-fill" style="width:${barW}%"></div></div>
             <div class="pan-bar-meta">${count} <span>(${pct}%)</span></div>
+          </div>`;
+      }).join('');
+
+      // ── subareas por área ────────────────────────────────────────────────
+      const areaSubCounts = {};
+      for (const q of qs) {
+        if (!areaSubCounts[q.area]) areaSubCounts[q.area] = {};
+        areaSubCounts[q.area][q.subarea] = (areaSubCounts[q.area][q.subarea] || 0) + 1;
+      }
+
+      document.getElementById('grafico-subareas').innerHTML = areasOrd.map(([area, areaTotal]) => {
+        const subs   = Object.entries(areaSubCounts[area] || {}).sort((a, b) => b[1] - a[1]);
+        const maxSub = subs[0][1];
+        const rows   = subs.map(([sub, cnt]) => {
+          const barW = (cnt / maxSub * 100).toFixed(1);
+          return `
+            <div class="pan-subbar-row">
+              <div class="pan-subbar-label">${sub}</div>
+              <div class="pan-subbar-track"><div class="pan-subbar-fill" style="width:${barW}%"></div></div>
+              <div class="pan-subbar-count">${cnt}</div>
+            </div>`;
+        }).join('');
+        return `
+          <div class="pan-subcard">
+            <div class="pan-subcard-title">
+              <span class="pan-subcard-area">${area}</span>
+              <span class="pan-subcard-total">${areaTotal} quest.</span>
+            </div>
+            <div class="pan-subbars">${rows}</div>
           </div>`;
       }).join('');
 
