@@ -129,6 +129,8 @@ export function fmtDateTime(iso) {
 
 // Apostas dos jogos fecham 2h antes do horário previsto da partida.
 export const BETTING_LOCK_MS = 2 * 60 * 60 * 1000
+// Apostas dos outros membros ficam visíveis 1h antes do início.
+export const PREDICTIONS_REVEAL_MS = 1 * 60 * 60 * 1000
 
 export function matchStatus(match) {
   const kickoff = new Date(match.match_date).getTime()

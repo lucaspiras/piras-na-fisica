@@ -93,11 +93,14 @@
         <button class="pool-nav-item active" data-tab="palpites">Palpites</button>
         <button class="pool-nav-item" data-tab="grupos">Grupos</button>
         <button class="pool-nav-item" data-tab="podio">🏆 Pódio</button>
+        <button class="pool-nav-item" data-tab="planilha">Planilha</button>
       </nav>
 
       <!-- Tab: Palpites -->
       <div id="tab-palpites">
         <div id="countdown-banner" class="countdown-banner hidden"></div>
+        <!-- Apostas reveladas — destaque 1–2 partidas mais recentes -->
+        <div id="revealed-section" class="revealed-section hidden"></div>
         <div id="progress-section" class="progress-section hidden">
           <div class="progress-meta">
             <span class="progress-label" id="progress-label">Palpites feitos</span>
@@ -119,6 +122,16 @@
         <div id="groups-grid" class="groups-grid"></div>
         <div class="mt-16">
           <a id="link-standings-full" href="#" class="btn btn-ghost btn-sm">Ver tabela completa →</a>
+        </div>
+      </div>
+
+      <!-- Tab: Planilha -->
+      <div id="tab-planilha" class="hidden">
+        <p class="muted mt-4 mb-8" style="font-size:.82rem">
+          Apostas de todos os membros — visíveis a partir de 1h antes de cada partida.
+        </p>
+        <div id="planilha-wrap" class="planilha-wrap">
+          <div class="empty" style="padding:20px"><strong>Carregando…</strong></div>
         </div>
       </div>
 
@@ -181,7 +194,7 @@
 
   <script type="module">
     import {
-      supabase, requireAuthWithProfile,
+      supabase, requireAuthWithProfile, callAdmin,
       renderHeader, bindSignOut,
       escHtml, fmtDate, fmtTime,
       matchStatus, statusBadge, medalIcon, translateTeam, teamFlag,
@@ -371,8 +384,27 @@
       })
     }
 
+    // ── Estado das apostas reveladas ──────────────────────────
+    let poolPreds = null, poolPredsLoading = false
+    const poolPredsCallbacks = []
+
+    async function getPoolPreds() {
+      if (poolPreds) return poolPreds
+      if (poolPredsLoading) return new Promise(res => poolPredsCallbacks.push(res))
+      poolPredsLoading = true
+      try {
+        poolPreds = await callAdmin('get_pool_predictions', { pool_id: poolId })
+      } catch (e) {
+        console.error('Erro ao buscar apostas do bolão:', e)
+        poolPreds = { members: [], matches: [], predictions: [], revealed_match_ids: [] }
+      }
+      poolPredsCallbacks.forEach(cb => cb(poolPreds))
+      poolPredsCallbacks.length = 0
+      return poolPreds
+    }
+
     // ── Tabs ──────────────────────────────────────────────────
-    let tabsLoaded = { palpites: false, grupos: false, podio: false }
+    let tabsLoaded = { palpites: false, grupos: false, podio: false, planilha: false }
     document.querySelectorAll('.pool-nav-item').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.pool-nav-item').forEach(b => b.classList.remove('active'))
@@ -381,7 +413,13 @@
         document.getElementById('tab-palpites').classList.toggle('hidden', tab !== 'palpites')
         document.getElementById('tab-grupos').classList.toggle('hidden', tab !== 'grupos')
         document.getElementById('tab-podio').classList.toggle('hidden', tab !== 'podio')
-        if (!tabsLoaded[tab]) { tabsLoaded[tab] = true; if (tab === 'grupos') loadGrupos(); if (tab === 'podio') loadPodio() }
+        document.getElementById('tab-planilha').classList.toggle('hidden', tab !== 'planilha')
+        if (!tabsLoaded[tab]) {
+          tabsLoaded[tab] = true
+          if (tab === 'grupos') loadGrupos()
+          if (tab === 'podio') loadPodio()
+          if (tab === 'planilha') loadPlanilha()
+        }
       })
     })
 
@@ -508,6 +546,139 @@
     function setFooter(id,html) { const el=document.getElementById(`footer-${id}`); if(el) el.innerHTML=html }
 
     await loadMatches()
+
+    // Carregar apostas reveladas em background e renderizar destaque
+    getPoolPreds().then(data => renderRevealedSection(data))
+
+    // ── Apostas reveladas (destaque na aba Palpites) ──────────
+    function renderRevealedSection(data) {
+      const sec = document.getElementById('revealed-section')
+      const revealedIds = new Set(data.revealed_match_ids ?? [])
+      if (!revealedIds.size) { sec.classList.add('hidden'); return }
+
+      // Apenas partidas de grupos, reveladas, mais recentes primeiro
+      const groupRevealed = (data.matches ?? [])
+        .filter(m => m.phase === 'group' && revealedIds.has(m.id))
+        .sort((a, b) => new Date(b.match_date) - new Date(a.match_date))
+
+      if (!groupRevealed.length) { sec.classList.add('hidden'); return }
+
+      // Pegar até 2 (simultâneas = mesma data/hora até 15 min de diferença)
+      const featured = [groupRevealed[0]]
+      if (groupRevealed[1]) {
+        const diff = Math.abs(new Date(groupRevealed[0].match_date) - new Date(groupRevealed[1].match_date))
+        if (diff < 15 * 60 * 1000) featured.push(groupRevealed[1])
+      }
+
+      const predsIndex = {}
+      for (const pr of data.predictions ?? []) {
+        if (!predsIndex[pr.match_id]) predsIndex[pr.match_id] = {}
+        predsIndex[pr.match_id][pr.user_id] = pr
+      }
+
+      const cards = featured.map(m => {
+        const matchPreds = predsIndex[m.id] ?? {}
+        const status = matchStatus(m)
+        const hasScore = m.home_score !== null && m.away_score !== null
+        const scoreHtml = hasScore
+          ? `<span class="revealed-card-score">${m.home_score} : ${m.away_score}</span>`
+          : status === 'live' ? `<span class="revealed-card-score" style="color:var(--flare)">AO VIVO</span>` : ''
+        const rows = (data.members ?? []).map(mem => {
+          const pr = matchPreds[mem.user_id]
+          const isMe = mem.user_id === user.id
+          const scoreStr = pr ? `${pr.home_score}–${pr.away_score}` : null
+          const ptsStr = pr?.points != null ? `+${pr.points} pts` : ''
+          return `<div class="revealed-pred-row${isMe ? ' me' : ''}">
+            <span style="font-size:1rem">${escHtml(mem.avatar)}</span>
+            <span class="revealed-pred-name">${escHtml(mem.display_name)}${isMe ? ' <span style="font-size:.68rem;color:var(--muted)">(você)</span>' : ''}</span>
+            ${scoreStr
+              ? `<span class="revealed-pred-score">${escHtml(scoreStr)}</span>
+                 <span class="revealed-pred-pts">${escHtml(ptsStr)}</span>`
+              : `<span class="revealed-no-pred">sem palpite</span>`}
+          </div>`
+        }).join('')
+        return `<div class="revealed-card">
+          <div class="revealed-card-header">
+            <div class="revealed-card-meta">Grupo ${escHtml(m.group_name ?? '?')} · ${fmtDate(m.match_date)} · ${fmtTime(m.match_date)}</div>
+            <div class="revealed-card-teams">
+              ${teamFlag(m.home_team)}${escHtml(translateTeam(m.home_team))}
+              ${scoreHtml}
+              ${escHtml(translateTeam(m.away_team))}${teamFlag(m.away_team)}
+            </div>
+          </div>
+          ${rows}
+        </div>`
+      }).join('')
+
+      sec.innerHTML = `<div class="revealed-label">🔓 Apostas reveladas</div>${cards}`
+      sec.classList.remove('hidden')
+    }
+
+    // ── Tab Planilha ──────────────────────────────────────────
+    async function loadPlanilha() {
+      const wrap = document.getElementById('planilha-wrap')
+      const data = await getPoolPreds()
+      renderPlanilha(data, wrap)
+    }
+
+    function renderPlanilha(data, wrap) {
+      const members = data.members ?? []
+      const matches = data.matches ?? []
+      const revealedIds = new Set(data.revealed_match_ids ?? [])
+
+      if (!members.length || !matches.length) {
+        wrap.innerHTML = '<div class="empty" style="padding:20px"><strong>Sem dados ainda.</strong></div>'
+        return
+      }
+
+      const predsIndex = {}
+      for (const pr of data.predictions ?? []) {
+        if (!predsIndex[pr.match_id]) predsIndex[pr.match_id] = {}
+        predsIndex[pr.match_id][pr.user_id] = pr
+      }
+
+      // Cabeçalho: coluna Partida + uma coluna por membro
+      const meIdx = members.findIndex(m => m.user_id === user.id)
+      const thMembers = members.map((m, i) =>
+        `<th class="${i === meIdx ? 'col-me' : ''}" title="${escHtml(m.display_name)}">
+          <span style="font-size:.9rem">${escHtml(m.avatar)}</span><br>
+          ${escHtml(m.display_name.split(' ')[0])}
+        </th>`).join('')
+
+      // Agrupar por group_name/phase
+      const groupOrder = [...new Set(matches.map(m => m.group_name ?? m.phase ?? '?'))]
+      let rows = ''
+      for (const grp of groupOrder) {
+        const grpMatches = matches.filter(m => (m.group_name ?? m.phase ?? '?') === grp)
+          .sort((a, b) => new Date(a.match_date) - new Date(b.match_date))
+        const label = grpMatches[0]?.phase === 'group' ? `Grupo ${grp}` : grp
+        rows += `<tr class="planilha-group-row"><td class="col-match">${escHtml(label)}</td>${members.map(() => '<td></td>').join('')}</tr>`
+        for (const m of grpMatches) {
+          const revealed = revealedIds.has(m.id)
+          const matchPreds = predsIndex[m.id] ?? {}
+          const hasScore = m.home_score !== null && m.away_score !== null
+          const matchCell = `<span style="font-weight:700">${escHtml(translateTeam(m.home_team))} × ${escHtml(translateTeam(m.away_team))}</span>
+            <br><span style="font-size:.66rem;color:var(--muted)">${fmtDate(m.match_date)}</span>
+            ${hasScore ? `<br><span class="planilha-match-score">${m.home_score}–${m.away_score}</span>` : ''}`
+          const cells = members.map((mem, i) => {
+            const isMe = i === meIdx
+            if (!revealed) return `<td class="${isMe ? 'col-me' : ''}"><span class="planilha-none">—</span></td>`
+            const pr = matchPreds[mem.user_id]
+            if (!pr) return `<td class="${isMe ? 'col-me' : ''}"><span class="planilha-none">sem</span></td>`
+            const pts = pr.points != null ? `<span class="planilha-pts">+${pr.points} pts</span>` : ''
+            return `<td class="${isMe ? 'col-me' : ''}">
+              <span class="planilha-pred">${pr.home_score}–${pr.away_score}</span>${pts}
+            </td>`
+          }).join('')
+          rows += `<tr><td class="col-match${meIdx >= 0 ? '' : ''}">${matchCell}</td>${cells}</tr>`
+        }
+      }
+
+      wrap.innerHTML = `<table class="planilha-table">
+        <thead><tr><th class="col-match">Partida</th>${thMembers}</tr></thead>
+        <tbody>${rows}</tbody>
+      </table>`
+    }
 
     // ── Tab Grupos ────────────────────────────────────────────
     async function loadGrupos() {

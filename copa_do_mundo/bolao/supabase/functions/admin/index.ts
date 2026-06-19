@@ -35,19 +35,71 @@ Deno.serve(async (req) => {
   const admin = createClient(url, serviceKey, { auth: { persistSession: false } })
 
   try {
-    // ── Autorização: só admin ────────────────────────────────
+    // ── Autenticação ─────────────────────────────────────────
     const jwt = (req.headers.get('Authorization') ?? '').replace('Bearer ', '').trim()
     if (!jwt) return json({ error: 'Não autenticado.' }, 401)
 
     const { data: { user }, error: uErr } = await admin.auth.getUser(jwt)
     if (uErr || !user) return json({ error: 'Sessão inválida.' }, 401)
 
+    // ── Roteamento ───────────────────────────────────────────
+    const { action, ...p } = await req.json()
+
+    // ── Ação acessível a qualquer membro do bolão ────────────
+    if (action === 'get_pool_predictions') {
+      const { pool_id } = p
+      if (!pool_id) return json({ error: 'pool_id obrigatório.' }, 400)
+
+      const { data: membership } = await admin
+        .from('pool_members').select('user_id')
+        .eq('pool_id', pool_id).eq('user_id', user.id).maybeSingle()
+      if (!membership) return json({ error: 'Você não participa deste bolão.' }, 403)
+
+      const [{ data: members }, { data: allMatches }, { data: preds }, { data: profiles }] =
+        await Promise.all([
+          admin.from('pool_members').select('user_id').eq('pool_id', pool_id),
+          admin.from('matches')
+            .select('id, match_number, group_name, home_team, away_team, home_score, away_score, status, match_date, phase')
+            .order('match_date'),
+          admin.from('predictions')
+            .select('user_id, match_id, home_score, away_score, points')
+            .eq('pool_id', pool_id),
+          admin.from('profiles').select('id, display_name, avatar'),
+        ])
+
+      const REVEAL_MS = 60 * 60 * 1000
+      const revealedIds = new Set(
+        (allMatches ?? [])
+          .filter((m) =>
+            m.status === 'finished' || m.status === 'live' ||
+            Date.now() >= new Date(m.match_date).getTime() - REVEAL_MS,
+          )
+          .map((m) => m.id),
+      )
+
+      const profById: Record<string, { display_name?: string; avatar?: string }> = {}
+      for (const pr of profiles ?? []) profById[pr.id] = pr
+
+      const memberList = (members ?? [])
+        .map((m) => ({
+          user_id: m.user_id,
+          display_name: profById[m.user_id]?.display_name ?? '—',
+          avatar: profById[m.user_id]?.avatar ?? '⚽',
+        }))
+        .sort((a, b) => (a.display_name ?? '').localeCompare(b.display_name ?? '', 'pt-BR'))
+
+      return json({
+        members: memberList,
+        matches: allMatches ?? [],
+        predictions: (preds ?? []).filter((pr) => revealedIds.has(pr.match_id)),
+        revealed_match_ids: [...revealedIds],
+      })
+    }
+
+    // ── Autorização: demais ações exigem admin ───────────────
     const { data: prof } = await admin
       .from('profiles').select('is_admin').eq('id', user.id).maybeSingle()
     if (!prof?.is_admin) return json({ error: 'Acesso restrito ao administrador.' }, 403)
-
-    // ── Roteamento ───────────────────────────────────────────
-    const { action, ...p } = await req.json()
 
     switch (action) {
       /* ---- Participantes ---- */
