@@ -1108,6 +1108,56 @@ h3 {
   font-size: .74rem; color: var(--muted); white-space: nowrap;
 }
 
+/* ── Prêmios individuais ─────────────────────────────────── */
+.premios-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media (max-width: 560px) {
+  .premios-grid { grid-template-columns: 1fr; }
+}
+.premios-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+}
+.premios-icon {
+  font-size: 1.45rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.premios-title {
+  font-weight: 700;
+  font-size: .92rem;
+  line-height: 1.3;
+}
+.premios-desc {
+  font-size: .71rem;
+  color: var(--muted);
+  margin-top: 3px;
+  line-height: 1.4;
+}
+.premios-extra-row { display: none; }
+.premios-card.premios-expanded .premios-extra-row { display: flex; }
+.premios-expand-btn {
+  display: block;
+  width: 100%;
+  padding: 9px 16px;
+  font-size: .76rem;
+  font-weight: 600;
+  color: var(--pitch-deep);
+  background: var(--pitch-light);
+  border: none;
+  border-top: 1px solid rgba(14,159,80,.2);
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .12s;
+  text-align: center;
+}
+.premios-expand-btn:hover { background: rgba(14,159,80,.18); }
+
 /* ── Mobile tweaks ───────────────────────────────────────── */
 @media (max-width: 400px) {
   .header-name { display: none; }

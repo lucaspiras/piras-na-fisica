@@ -31,6 +31,7 @@
       <button class="tab" data-tab="audit">Auditoria</button>
       <button class="tab" data-tab="export">Exportar</button>
       <button class="tab" data-tab="planilha">Planilha</button>
+      <button class="tab" data-tab="premios">🏅 Prêmios</button>
     </div>
 
     <!-- Resultados -->
@@ -201,6 +202,20 @@
       </div>
     </div>
 
+    <!-- Prêmios -->
+    <div id="tab-premios" class="hidden">
+      <div class="card mt-16">
+        <h3>Prêmios individuais</h3>
+        <p class="muted mt-4" style="font-size:.85rem">
+          Rankings temáticos por categoria — não contam para a pontuação do bolão.
+        </p>
+        <select class="filter-select mt-12" id="premios-pool-select" style="width:100%;max-width:none">
+          <option value="">— Selecione um bolão —</option>
+        </select>
+      </div>
+      <div id="premios-content" class="mt-12"></div>
+    </div>
+
     <!-- Planilha -->
     <div id="tab-planilha" class="hidden">
       <div class="card mt-16">
@@ -239,8 +254,8 @@
     bindSignOut()
 
     // ── Tabs ──────────────────────────────────────────────────
-    const TABS = ['matches', 'third', 'standings', 'tournament', 'participants', 'pools', 'audit', 'export', 'planilha']
-    let thirdLoaded = false, tournLoaded = false, partLoaded = false, poolsLoaded = false, auditLoaded = false, standingsLoaded = false, exportLoaded = false, planilhaLoaded = false
+    const TABS = ['matches', 'third', 'standings', 'tournament', 'participants', 'pools', 'audit', 'export', 'planilha', 'premios']
+    let thirdLoaded = false, tournLoaded = false, partLoaded = false, poolsLoaded = false, auditLoaded = false, standingsLoaded = false, exportLoaded = false, planilhaLoaded = false, premiosLoaded = false
     const adminContainer = document.querySelector('.container')
     document.querySelectorAll('.tab').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -259,6 +274,7 @@
         if (tab === 'standings' && !standingsLoaded) { standingsLoaded = true; loadStandings() }
         if (tab === 'export' && !exportLoaded)       { exportLoaded = true;  loadExport() }
         if (tab === 'planilha' && !planilhaLoaded)   { planilhaLoaded = true; loadPlanilhaAdmin() }
+        if (tab === 'premios' && !premiosLoaded)     { premiosLoaded = true;  loadPremiosAdmin() }
       })
     })
 
@@ -1486,6 +1502,144 @@
           break
       }
     })
+
+    // ── Prêmios individuais (admin) ───────────────────────────
+    async function loadPremiosAdmin() {
+      const poolSel = document.getElementById('premios-pool-select')
+      try {
+        const pools = (await callAdmin('list_pools'))?.pools ?? []
+        pools.sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'))
+        poolSel.innerHTML = '<option value="">— Selecione um bolão —</option>' +
+          pools.map(p => `<option value="${escHtml(p.id)}">${escHtml(p.name)}</option>`).join('')
+      } catch (e) {
+        poolSel.insertAdjacentHTML('afterend', `<p style="color:var(--flare);font-size:.85rem;margin-top:8px">${escHtml(e.message)}</p>`)
+      }
+      poolSel.addEventListener('change', () => loadAdminPremiosPool(poolSel.value))
+      document.getElementById('premios-content').addEventListener('click', e => {
+        const btn = e.target.closest('.premios-expand-btn')
+        if (!btn) return
+        const card = btn.closest('.premios-card')
+        const isOpen = card.classList.toggle('premios-expanded')
+        btn.textContent = isOpen ? 'Ver menos ▴' : `Ver todos (${btn.dataset.count}) ▾`
+      })
+    }
+
+    async function loadAdminPremiosPool(poolId) {
+      const content = document.getElementById('premios-content')
+      if (!poolId) { content.innerHTML = ''; return }
+      content.innerHTML = '<div class="empty" style="padding:20px"><strong>Calculando prêmios…</strong></div>'
+      try {
+        const [grid, { data: ranking }] = await Promise.all([
+          callAdmin('audit_grid', { pool_id: poolId }),
+          supabase.rpc('pool_ranking', { p: poolId })
+        ])
+        const { members, matches: allM, predictions: allP } = grid
+        const classMap = Object.fromEntries((ranking ?? []).map(r => [r.user_id, r.class_points ?? 0]))
+        const matchById = Object.fromEntries((allM ?? []).map(m => [m.id, m]))
+        const completed = (allM ?? []).filter(m => m.home_score != null && m.away_score != null)
+        const completedIds = new Set(completed.map(m => m.id))
+
+        const stats = {}
+        for (const mem of (members ?? [])) {
+          stats[mem.user_id] = { user_id: mem.user_id, display_name: mem.display_name,
+            exactScores: 0, correctResults: 0, correctDiff: 0, koPoints: 0, totalPlayed: 0, maxStreak: 0 }
+        }
+        const predsByUser = {}
+        for (const p of (allP ?? [])) {
+          if (!stats[p.user_id]) continue
+          if (!predsByUser[p.user_id]) predsByUser[p.user_id] = {}
+          predsByUser[p.user_id][p.match_id] = p
+          if (!completedIds.has(p.match_id)) continue
+          const m = matchById[p.match_id]; if (!m) continue
+          const s = stats[p.user_id]; s.totalPlayed++
+          const aD = m.home_score - m.away_score, pD = p.home_score - p.away_score
+          if (p.home_score === m.home_score && p.away_score === m.away_score) s.exactScores++
+          if (Math.sign(pD) === Math.sign(aD)) s.correctResults++
+          if (pD === aD) s.correctDiff++
+          if (m.phase && m.phase !== 'group') s.koPoints += (p.points ?? 0)
+        }
+        const sortedCompleted = [...completed].sort((a, b) => new Date(a.match_date) - new Date(b.match_date))
+        for (const uid of Object.keys(stats)) {
+          let cur = 0, best = 0
+          for (const m of sortedCompleted) {
+            const p = predsByUser[uid]?.[m.id]
+            if (!p) { cur = 0; continue }
+            const aD = m.home_score - m.away_score, pD = p.home_score - p.away_score
+            if (Math.sign(pD) === Math.sign(aD)) { cur++; if (cur > best) best = cur } else cur = 0
+          }
+          stats[uid].maxStreak = best
+        }
+        const rows = Object.values(stats).map(s => ({
+          ...s, classPoints: classMap[s.user_id] ?? 0,
+          pct: s.totalPlayed >= 5 ? Math.round(s.correctResults / s.totalPlayed * 100) : null
+        }))
+        const hasData = completed.length > 0
+        const hasKO = completed.some(m => m.phase && m.phase !== 'group')
+        const hasCls = Object.values(classMap).some(v => v > 0)
+        const n = completed.length
+        const sortBy = key => [...rows].sort((a, b) => b[key] - a[key] || a.display_name.localeCompare(b.display_name, 'pt-BR'))
+        const awards = [
+          { icon: '🎯', title: 'Rei/Rainha do Placar Exato', desc: 'Mais placares completos acertados',
+            empty: !hasData, sorted: sortBy('exactScores'), val: s => s.exactScores, suf: s => s.exactScores === 1 ? 'acerto' : 'acertos' },
+          { icon: '✅', title: 'Rei/Rainha do Resultado', desc: 'Mais resultados corretos (vitória / empate / derrota)',
+            empty: !hasData, sorted: sortBy('correctResults'), val: s => s.correctResults, suf: s => s.correctResults === 1 ? 'resultado' : 'resultados' },
+          { icon: '📐', title: 'Rei/Rainha do Saldo', desc: 'Mais acertos de diferença de gols',
+            empty: !hasData, sorted: sortBy('correctDiff'), val: s => s.correctDiff, suf: s => s.correctDiff === 1 ? 'acerto' : 'acertos' },
+          { icon: '⚡', title: 'Craque das Eliminatórias', desc: 'Mais pontos somados nas fases mata-mata',
+            empty: !hasKO, emptyMsg: 'A fase eliminatória ainda não começou.',
+            sorted: sortBy('koPoints'), val: s => s.koPoints, suf: () => 'pts' },
+          { icon: '📊', title: 'Mestre das Classificações', desc: 'Mais pontos nas previsões de classificação de grupos',
+            empty: !hasCls, emptyMsg: 'Classificações de grupos ainda não computadas.',
+            sorted: [...rows].sort((a, b) => b.classPoints - a.classPoints || a.display_name.localeCompare(b.display_name, 'pt-BR')),
+            val: s => s.classPoints, suf: () => 'pts' },
+          { icon: '💯', title: 'Melhor Aproveitamento', desc: 'Maior % de resultados corretos (mín. 5 jogos)',
+            empty: !hasData || rows.every(s => s.pct === null), emptyMsg: 'Ainda não há 5 jogos concluídos.',
+            sorted: [...rows].filter(s => s.pct !== null).sort((a, b) => b.pct - a.pct || a.display_name.localeCompare(b.display_name, 'pt-BR')),
+            val: s => s.pct, suf: () => '%' },
+          { icon: '🔥', title: 'Sequência Imparável', desc: 'Maior sequência consecutiva de resultados corretos',
+            empty: !hasData, sorted: sortBy('maxStreak'), val: s => s.maxStreak, suf: s => s.maxStreak === 1 ? 'seguido' : 'seguidos' },
+          { icon: '🏃', title: 'Apostador Dedicado', desc: 'Mais partidas apostadas das que já foram jogadas',
+            empty: !hasData, sorted: sortBy('totalPlayed'), val: s => s.totalPlayed, suf: () => `de ${n} jogos` },
+        ]
+        content.innerHTML = `<div class="premios-grid">${awards.map(a => renderPremioAdmin(a)).join('')}</div>`
+      } catch (e) {
+        content.innerHTML = `<div class="empty" style="color:var(--flare);padding:16px">${escHtml(e.message)}</div>`
+      }
+    }
+
+    function renderPremioAdmin(a) {
+      const header = `<div class="premios-card-header">
+        <span class="premios-icon">${a.icon}</span>
+        <div><div class="premios-title">${escHtml(a.title)}</div><div class="premios-desc">${escHtml(a.desc)}</div></div>
+      </div>`
+      if (a.empty || !a.sorted.length) {
+        return `<div class="card premios-card">${header}
+          <p class="muted" style="font-size:.8rem;margin-top:12px">${escHtml(a.emptyMsg ?? 'Sem dados ainda.')}</p>
+        </div>`
+      }
+      const positions = []
+      let pos = 1
+      for (let i = 0; i < a.sorted.length; i++) {
+        positions.push(i > 0 && a.val(a.sorted[i]) === a.val(a.sorted[i - 1]) ? positions[i - 1] : pos)
+        pos = i + 2
+      }
+      const rankRows = a.sorted.map((s, i) => `
+        <div class="rank-row${i >= 3 ? ' premios-extra-row' : ''}">
+          <span class="rank-pos">${medalIcon(positions[i])}</span>
+          <span class="rank-name">${escHtml(s.display_name)}</span>
+          <span style="text-align:right">
+            <span class="rank-pts">${a.val(s)}</span>
+            <span style="display:block;font-size:.68rem;color:var(--muted)">${escHtml(a.suf(s))}</span>
+          </span>
+        </div>`).join('')
+      const expandBtn = a.sorted.length > 3
+        ? `<button class="premios-expand-btn" data-count="${a.sorted.length}">Ver todos (${a.sorted.length}) ▾</button>`
+        : ''
+      return `<div class="card premios-card" style="padding:0;overflow:hidden">
+        <div style="padding:12px 16px;border-bottom:1px solid var(--line)">${header}</div>
+        ${rankRows}${expandBtn}
+      </div>`
+    }
 
     // ── Planilha de apostas (admin) ───────────────────────────
     async function loadPlanilhaAdmin() {

@@ -94,6 +94,7 @@
         <button class="pool-nav-item" data-tab="grupos">Grupos</button>
         <button class="pool-nav-item" data-tab="podio">🏆 Pódio</button>
         <button class="pool-nav-item" data-tab="planilha">Planilha</button>
+        <button class="pool-nav-item" data-tab="premios">🏅 Prêmios</button>
       </nav>
 
       <!-- Tab: Palpites -->
@@ -140,6 +141,9 @@
           <div class="empty" style="padding:20px"><strong>Carregando…</strong></div>
         </div>
       </div>
+
+      <!-- Tab: Prêmios -->
+      <div id="tab-premios" class="hidden"></div>
 
       <!-- Tab: Pódio -->
       <div id="tab-podio" class="hidden">
@@ -411,7 +415,7 @@
 
     // ── Tabs ──────────────────────────────────────────────────
     const mainContainer = document.querySelector('.container')
-    let tabsLoaded = { palpites: false, grupos: false, podio: false, planilha: false }
+    let tabsLoaded = { palpites: false, grupos: false, podio: false, planilha: false, premios: false }
     document.querySelectorAll('.pool-nav-item').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.pool-nav-item').forEach(b => b.classList.remove('active'))
@@ -421,12 +425,14 @@
         document.getElementById('tab-grupos').classList.toggle('hidden', tab !== 'grupos')
         document.getElementById('tab-podio').classList.toggle('hidden', tab !== 'podio')
         document.getElementById('tab-planilha').classList.toggle('hidden', tab !== 'planilha')
+        document.getElementById('tab-premios').classList.toggle('hidden', tab !== 'premios')
         mainContainer.classList.toggle('planilha-wide', tab === 'planilha')
         if (!tabsLoaded[tab]) {
           tabsLoaded[tab] = true
           if (tab === 'grupos') loadGrupos()
           if (tab === 'podio') loadPodio()
           if (tab === 'planilha') loadPlanilha()
+          if (tab === 'premios') loadPremios()
         }
       })
     })
@@ -434,7 +440,9 @@
     // ── Estado palpites ───────────────────────────────────────
     const timers = {}, latestVals = {}
     let predsMap = {}, allMatches = []
-    let activeGroup = 'todos', activeRound = 'todos', viewMode = 'group'
+    let activeGroup = 'todos', activeRound = 'todos', activeDate = '', viewMode = 'group'
+
+    function getLocalDate(d) { return new Date(d).toLocaleDateString('sv-SE') }
 
     async function loadMatches() {
       const [{ data: matches }, { data: preds }] = await Promise.all([
@@ -446,6 +454,8 @@
       const list = document.getElementById('matches-list')
       if (!matches?.length) { list.innerHTML = `<div class="empty"><strong>Nenhuma partida importada ainda</strong></div>`; return }
       allMatches = matches
+      const todayLocal = new Date().toLocaleDateString('sv-SE')
+      if (matches.some(m => getLocalDate(m.match_date) === todayLocal)) activeDate = todayLocal
       updateProgress(); startCountdown(); buildFilterBar(matches); renderMatches()
     }
 
@@ -478,20 +488,32 @@
     function buildFilterBar(matches) {
       const groups = [...new Set(matches.map(m=>m.group_name).filter(Boolean))].sort()
       const rounds = [...new Set(matches.map(m=>m.match_number).filter(n=>n>0))].sort((a,b)=>a-b)
+      const todayLocal = new Date().toLocaleDateString('sv-SE')
+      const dateLabelMap = {}
+      for (const m of matches) {
+        const d = getLocalDate(m.match_date)
+        if (!dateLabelMap[d]) dateLabelMap[d] = fmtDate(m.match_date)
+      }
+      const dates = Object.keys(dateLabelMap).sort()
       const bar = document.getElementById('filter-bar')
       bar.classList.remove('hidden')
       bar.innerHTML = `<div class="filter-selects">
+        ${dates.length > 1 ? `<select class="filter-select" id="sel-date">
+          <option value="">Todos os dias</option>
+          ${dates.map(d=>`<option value="${escHtml(d)}"${d===activeDate?' selected':''}>${d===todayLocal?'Hoje · ':''}${escHtml(dateLabelMap[d])}</option>`).join('')}
+        </select>` : ''}
         ${groups.length?`<select class="filter-select" id="sel-group"><option value="todos">Todos os grupos</option>${groups.map(g=>`<option value="${escHtml(g)}">Grupo ${escHtml(g)}</option>`).join('')}</select>`:''}
         ${rounds.length?`<select class="filter-select" id="sel-round"><option value="todos">Todas as rodadas</option>${rounds.map(r=>`<option value="${r}">Rodada ${r}</option>`).join('')}</select>`:''}
         <select class="filter-select" id="sel-view"><option value="group">Por grupo</option><option value="date">Por data</option></select>
       </div>`
+      document.getElementById('sel-date')?.addEventListener('change',e=>{activeDate=e.target.value;renderMatches()})
       document.getElementById('sel-group')?.addEventListener('change',e=>{activeGroup=e.target.value;renderMatches()})
       document.getElementById('sel-round')?.addEventListener('change',e=>{activeRound=e.target.value;renderMatches()})
       document.getElementById('sel-view').addEventListener('change',e=>{viewMode=e.target.value;renderMatches()})
     }
 
     function renderMatches() {
-      const filtered = allMatches.filter(m => (activeGroup==='todos'||m.group_name===activeGroup) && (activeRound==='todos'||String(m.match_number)===String(activeRound)))
+      const filtered = allMatches.filter(m => (activeGroup==='todos'||m.group_name===activeGroup) && (activeRound==='todos'||String(m.match_number)===String(activeRound)) && (activeDate===''||getLocalDate(m.match_date)===activeDate))
       const list = document.getElementById('matches-list')
       if (!filtered.length) { list.innerHTML='<div class="empty"><strong>Nenhuma partida nesse filtro</strong></div>'; return }
       const bucket = m => viewMode==='group' ? (m.group_name??'?') : m.match_date.slice(0,10)
@@ -805,6 +827,178 @@
           ${hasResult?`<span style="font-family:var(--font-display);font-weight:800;font-size:.88rem;color:var(--pitch-deep);min-width:46px;text-align:right">${pts>0?'+'+pts:'0'} pts</span>`:''}
         </div>`
       }).join('')
+    }
+
+    // ── Tab Prêmios ───────────────────────────────────────────
+    async function loadPremios() {
+      const el = document.getElementById('tab-premios')
+      el.innerHTML = '<p class="muted" style="padding:20px 0">Calculando prêmios…</p>'
+
+      const [data, { data: ranking }] = await Promise.all([
+        getPoolPreds(),
+        supabase.rpc('pool_ranking', { p: poolId })
+      ])
+
+      const { matches: allM, predictions: allP, members } = data
+      const classMap = Object.fromEntries((ranking ?? []).map(r => [r.user_id, r.class_points ?? 0]))
+
+      const matchById = Object.fromEntries((allM ?? []).map(m => [m.id, m]))
+      const completed = (allM ?? []).filter(m => m.home_score != null && m.away_score != null)
+      const completedIds = new Set(completed.map(m => m.id))
+
+      const stats = {}
+      for (const mem of (members ?? [])) {
+        stats[mem.user_id] = {
+          user_id: mem.user_id,
+          display_name: mem.display_name,
+          exactScores: 0,
+          correctResults: 0,
+          correctDiff: 0,
+          koPoints: 0,
+          totalPlayed: 0,
+          maxStreak: 0,
+        }
+      }
+
+      const predsByUser = {}
+      for (const p of (allP ?? [])) {
+        if (!stats[p.user_id]) continue
+        if (!predsByUser[p.user_id]) predsByUser[p.user_id] = {}
+        predsByUser[p.user_id][p.match_id] = p
+        if (!completedIds.has(p.match_id)) continue
+        const m = matchById[p.match_id]
+        if (!m) continue
+        const s = stats[p.user_id]
+        s.totalPlayed++
+        const aD = m.home_score - m.away_score, pD = p.home_score - p.away_score
+        if (p.home_score === m.home_score && p.away_score === m.away_score) s.exactScores++
+        if (Math.sign(pD) === Math.sign(aD)) s.correctResults++
+        if (pD === aD) s.correctDiff++
+        if (m.phase && m.phase !== 'group') s.koPoints += (p.points ?? 0)
+      }
+
+      // Streak: percorre partidas concluídas em ordem cronológica
+      const sortedCompleted = [...completed].sort((a, b) => new Date(a.match_date) - new Date(b.match_date))
+      for (const uid of Object.keys(stats)) {
+        let cur = 0, best = 0
+        for (const m of sortedCompleted) {
+          const p = predsByUser[uid]?.[m.id]
+          if (!p) { cur = 0; continue }
+          const aD = m.home_score - m.away_score, pD = p.home_score - p.away_score
+          if (Math.sign(pD) === Math.sign(aD)) { cur++; if (cur > best) best = cur }
+          else cur = 0
+        }
+        stats[uid].maxStreak = best
+      }
+
+      const rows = Object.values(stats).map(s => ({
+        ...s,
+        classPoints: classMap[s.user_id] ?? 0,
+        pct: s.totalPlayed >= 5 ? Math.round(s.correctResults / s.totalPlayed * 100) : null
+      }))
+
+      const hasData = completed.length > 0
+      const hasKO = completed.some(m => m.phase && m.phase !== 'group')
+      const hasCls = Object.values(classMap).some(v => v > 0)
+      const n = completed.length
+
+      const sortBy = (key) => [...rows].sort((a, b) => b[key] - a[key] || a.display_name.localeCompare(b.display_name, 'pt-BR'))
+
+      const awards = [
+        { icon: '🎯', title: 'Rei/Rainha do Placar Exato',
+          desc: 'Mais placares completos acertados (casa e visitante)',
+          empty: !hasData, sorted: sortBy('exactScores'),
+          val: s => s.exactScores, suf: s => s.exactScores === 1 ? 'acerto' : 'acertos' },
+        { icon: '✅', title: 'Rei/Rainha do Resultado',
+          desc: 'Mais resultados corretos (vitória / empate / derrota)',
+          empty: !hasData, sorted: sortBy('correctResults'),
+          val: s => s.correctResults, suf: s => s.correctResults === 1 ? 'resultado' : 'resultados' },
+        { icon: '📐', title: 'Rei/Rainha do Saldo',
+          desc: 'Mais acertos de diferença de gols (mesma margem)',
+          empty: !hasData, sorted: sortBy('correctDiff'),
+          val: s => s.correctDiff, suf: s => s.correctDiff === 1 ? 'acerto' : 'acertos' },
+        { icon: '⚡', title: 'Craque das Eliminatórias',
+          desc: 'Mais pontos somados nas fases mata-mata',
+          empty: !hasKO, emptyMsg: 'A fase eliminatória ainda não começou.',
+          sorted: sortBy('koPoints'), val: s => s.koPoints, suf: () => 'pts' },
+        { icon: '📊', title: 'Mestre das Classificações',
+          desc: 'Mais pontos nas previsões de classificação de grupos',
+          empty: !hasCls, emptyMsg: 'Classificações de grupos ainda não computadas.',
+          sorted: [...rows].sort((a, b) => b.classPoints - a.classPoints || a.display_name.localeCompare(b.display_name, 'pt-BR')),
+          val: s => s.classPoints, suf: () => 'pts' },
+        { icon: '💯', title: 'Melhor Aproveitamento',
+          desc: 'Maior % de resultados corretos (mín. 5 jogos concluídos)',
+          empty: !hasData || rows.every(s => s.pct === null),
+          emptyMsg: 'Ainda não há 5 jogos concluídos.',
+          sorted: [...rows].filter(s => s.pct !== null).sort((a, b) => b.pct - a.pct || a.display_name.localeCompare(b.display_name, 'pt-BR')),
+          val: s => s.pct, suf: () => '%' },
+        { icon: '🔥', title: 'Sequência Imparável',
+          desc: 'Maior sequência consecutiva de resultados corretos',
+          empty: !hasData, sorted: sortBy('maxStreak'),
+          val: s => s.maxStreak, suf: s => s.maxStreak === 1 ? 'seguido' : 'seguidos' },
+        { icon: '🏃', title: 'Apostador Dedicado',
+          desc: 'Mais partidas apostadas das que já foram jogadas',
+          empty: !hasData, sorted: sortBy('totalPlayed'),
+          val: s => s.totalPlayed, suf: () => `de ${n} jogos` },
+      ]
+
+      el.innerHTML = `
+        <p class="muted mt-4 mb-16" style="font-size:.82rem">Rankings individuais — não contam para a pontuação do bolão.</p>
+        <div class="premios-grid">
+          ${awards.map(a => renderPremio(a)).join('')}
+        </div>`
+
+      el.addEventListener('click', e => {
+        const btn = e.target.closest('.premios-expand-btn')
+        if (!btn) return
+        const card = btn.closest('.premios-card')
+        const isOpen = card.classList.toggle('premios-expanded')
+        btn.textContent = isOpen ? 'Ver menos ▴' : `Ver todos (${btn.dataset.count}) ▾`
+      })
+    }
+
+    function renderPremio(a) {
+      const header = `<div class="premios-card-header">
+        <span class="premios-icon">${a.icon}</span>
+        <div>
+          <div class="premios-title">${escHtml(a.title)}</div>
+          <div class="premios-desc">${escHtml(a.desc)}</div>
+        </div>
+      </div>`
+
+      if (a.empty || !a.sorted.length) {
+        return `<div class="card premios-card">${header}
+          <p class="muted" style="font-size:.8rem;margin-top:12px">${escHtml(a.emptyMsg ?? 'Sem dados ainda.')}</p>
+        </div>`
+      }
+
+      const positions = []
+      let pos = 1
+      for (let i = 0; i < a.sorted.length; i++) {
+        positions.push(i > 0 && a.val(a.sorted[i]) === a.val(a.sorted[i - 1]) ? positions[i - 1] : pos)
+        pos = i + 2
+      }
+
+      const rankRows = a.sorted.map((s, i) => {
+        const isMe = s.user_id === user.id
+        return `<div class="rank-row${isMe ? ' me' : ''}${i >= 3 ? ' premios-extra-row' : ''}">
+          <span class="rank-pos">${medalIcon(positions[i])}</span>
+          <span class="rank-name">${escHtml(s.display_name)}${isMe ? ' <span style="font-size:.7rem;color:var(--muted)">(você)</span>' : ''}</span>
+          <span style="text-align:right">
+            <span class="rank-pts">${a.val(s)}</span>
+            <span style="display:block;font-size:.68rem;color:var(--muted)">${escHtml(a.suf(s))}</span>
+          </span>
+        </div>`
+      }).join('')
+
+      const expandBtn = a.sorted.length > 3
+        ? `<button class="premios-expand-btn" data-count="${a.sorted.length}">Ver todos (${a.sorted.length}) ▾</button>`
+        : ''
+
+      return `<div class="card premios-card" style="padding:0;overflow:hidden">
+        <div style="padding:12px 16px;border-bottom:1px solid var(--line)">${header}</div>
+        ${rankRows}${expandBtn}
+      </div>`
     }
     }
   </script>
