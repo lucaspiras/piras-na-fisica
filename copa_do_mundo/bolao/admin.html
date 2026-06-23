@@ -1503,6 +1503,128 @@
       }
     })
 
+    // ── Helpers compartilhados ────────────────────────────────
+    function loadScript(src) {
+      if (document.querySelector(`script[src="${src}"]`)) return Promise.resolve()
+      return new Promise((resolve, reject) => {
+        const s = document.createElement('script'); s.src = src; s.onload = resolve; s.onerror = reject
+        document.head.appendChild(s)
+      })
+    }
+
+    const EVOLUCAO_PALETTE = ['#4e79a7','#f28e2b','#e15759','#76b7b2','#59a14f',
+                              '#edc948','#b07aa1','#ff9da7','#9c755f','#bab0ac']
+
+    function buildEvolucaoDataAdmin(allM, allP, members) {
+      const completed = (allM ?? [])
+        .filter(m => m.home_score != null && m.away_score != null)
+        .sort((a, b) => new Date(a.match_date) - new Date(b.match_date))
+      const predsByUser = {}
+      for (const p of (allP ?? [])) {
+        if (!predsByUser[p.user_id]) predsByUser[p.user_id] = {}
+        predsByUser[p.user_id][p.match_id] = p.points ?? 0
+      }
+      const labels = completed.map(m => `${translateTeam(m.home_team)} × ${translateTeam(m.away_team)}`)
+      const cumulativeByUser = {}
+      for (const mem of (members ?? [])) {
+        let acc = 0
+        cumulativeByUser[mem.user_id] = completed.map(m => {
+          acc += predsByUser[mem.user_id]?.[m.id] ?? 0
+          return acc
+        })
+      }
+      return { labels, cumulativeByUser, completed }
+    }
+
+    let adminEvolucaoChart = null
+
+    function renderEvolucaoAdmin(container, chartData, members) {
+      if (adminEvolucaoChart) { adminEvolucaoChart.destroy(); adminEvolucaoChart = null }
+      if (!chartData.labels.length) return
+
+      const N = chartData.labels.length
+      const wrap = document.createElement('div')
+      wrap.innerHTML = `
+        <div style="margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--line)">
+          <div style="font-size:.75rem;font-weight:700;color:var(--muted);margin-bottom:10px">📈 EVOLUÇÃO DA PONTUAÇÃO</div>
+          <div class="evolucao-mode-toggle" id="adm-evolucao-toggle">
+            <button class="active" data-mode="static">Estático</button>
+            <button data-mode="anim">Animado</button>
+          </div>
+          <div class="card mt-8" style="padding:12px">
+            <div class="evolucao-canvas-wrap"><canvas id="adm-evolucao-canvas"></canvas></div>
+          </div>
+          <div id="adm-evolucao-controls" class="evolucao-controls hidden">
+            <button class="btn btn-ghost btn-sm" id="adm-evolucao-play">▶ Reproduzir</button>
+            <button class="btn btn-ghost btn-sm" id="adm-evolucao-reset">↺ Reiniciar</button>
+            <span class="evolucao-step-label" id="adm-evolucao-step"></span>
+          </div>
+          <p class="muted mt-8" style="font-size:.75rem">Pontos de placar por partida. Classificação de grupos não incluída.</p>
+        </div>`
+      container.prepend(wrap)
+
+      const canvas = wrap.querySelector('#adm-evolucao-canvas')
+      const datasets = (members ?? []).map((mem, i) => ({
+        label: mem.display_name,
+        data: [...chartData.cumulativeByUser[mem.user_id]],
+        borderColor: EVOLUCAO_PALETTE[i % EVOLUCAO_PALETTE.length],
+        backgroundColor: EVOLUCAO_PALETTE[i % EVOLUCAO_PALETTE.length] + '22',
+        fill: false, tension: 0.3, borderWidth: 1.5, pointRadius: 2,
+      }))
+      adminEvolucaoChart = new Chart(canvas.getContext('2d'), {
+        type: 'line',
+        data: { labels: chartData.labels, datasets },
+        options: {
+          responsive: true, maintainAspectRatio: false, animation: { duration: 250 },
+          plugins: {
+            legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } },
+            tooltip: { mode: 'index', intersect: false }
+          },
+          scales: {
+            x: { ticks: { maxRotation: 45, font: { size: 9 } } },
+            y: { beginAtZero: true, title: { display: true, text: 'Pontos acumulados' } }
+          }
+        }
+      })
+
+      let animStep = N, animTimer = null
+      function showStep(n) {
+        adminEvolucaoChart.data.labels = chartData.labels.slice(0, n)
+        ;(members ?? []).forEach((mem, i) => {
+          adminEvolucaoChart.data.datasets[i].data = chartData.cumulativeByUser[mem.user_id].slice(0, n)
+        })
+        adminEvolucaoChart.update()
+        wrap.querySelector('#adm-evolucao-step').textContent = `Partida ${n} de ${N}`
+      }
+      wrap.querySelector('#adm-evolucao-play').addEventListener('click', () => {
+        const btn = wrap.querySelector('#adm-evolucao-play')
+        if (animTimer) { clearInterval(animTimer); animTimer = null; btn.textContent = '▶ Reproduzir'; return }
+        if (animStep >= N) animStep = 0
+        btn.textContent = '⏸ Pausar'
+        animTimer = setInterval(() => {
+          animStep++; showStep(animStep)
+          if (animStep >= N) { clearInterval(animTimer); animTimer = null; btn.textContent = '▶ Reproduzir' }
+        }, 600)
+      })
+      wrap.querySelector('#adm-evolucao-reset').addEventListener('click', () => {
+        clearInterval(animTimer); animTimer = null
+        animStep = 0; showStep(0)
+        wrap.querySelector('#adm-evolucao-play').textContent = '▶ Reproduzir'
+      })
+      wrap.querySelector('#adm-evolucao-toggle').addEventListener('click', e => {
+        const btn = e.target.closest('button[data-mode]')
+        if (!btn) return
+        wrap.querySelectorAll('#adm-evolucao-toggle button').forEach(b => b.classList.remove('active'))
+        btn.classList.add('active')
+        const controls = wrap.querySelector('#adm-evolucao-controls')
+        if (btn.dataset.mode === 'anim') {
+          controls.classList.remove('hidden'); animStep = 0; showStep(0)
+        } else {
+          clearInterval(animTimer); animTimer = null; controls.classList.add('hidden'); showStep(N)
+        }
+      })
+    }
+
     // ── Prêmios individuais (admin) ───────────────────────────
     async function loadPremiosAdmin() {
       const poolSel = document.getElementById('premios-pool-select')
@@ -1526,12 +1648,14 @@
 
     async function loadAdminPremiosPool(poolId) {
       const content = document.getElementById('premios-content')
+      if (adminEvolucaoChart) { adminEvolucaoChart.destroy(); adminEvolucaoChart = null }
       if (!poolId) { content.innerHTML = ''; return }
       content.innerHTML = '<div class="empty" style="padding:20px"><strong>Calculando prêmios…</strong></div>'
       try {
         const [grid, { data: ranking }] = await Promise.all([
           callAdmin('audit_grid', { pool_id: poolId }),
-          supabase.rpc('pool_ranking', { p: poolId })
+          supabase.rpc('pool_ranking', { p: poolId }),
+          loadScript('https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js')
         ])
         const { members, matches: allM, predictions: allP } = grid
         const classMap = Object.fromEntries((ranking ?? []).map(r => [r.user_id, r.class_points ?? 0]))
@@ -1602,6 +1726,8 @@
             empty: !hasData, sorted: sortBy('totalPlayed'), val: s => s.totalPlayed, suf: () => `de ${n} jogos` },
         ]
         content.innerHTML = `<div class="premios-grid">${awards.map(a => renderPremioAdmin(a)).join('')}</div>`
+        const evolucaoData = buildEvolucaoDataAdmin(allM, allP, members)
+        renderEvolucaoAdmin(content, evolucaoData, members)
       } catch (e) {
         content.innerHTML = `<div class="empty" style="color:var(--flare);padding:16px">${escHtml(e.message)}</div>`
       }

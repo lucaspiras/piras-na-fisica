@@ -95,6 +95,7 @@
         <button class="pool-nav-item" data-tab="podio">🏆 Pódio</button>
         <button class="pool-nav-item" data-tab="planilha">Planilha</button>
         <button class="pool-nav-item" data-tab="premios">🏅 Prêmios</button>
+        <button class="pool-nav-item" data-tab="evolucao">📈 Evolução</button>
       </nav>
 
       <!-- Tab: Palpites -->
@@ -144,6 +145,9 @@
 
       <!-- Tab: Prêmios -->
       <div id="tab-premios" class="hidden"></div>
+
+      <!-- Tab: Evolução -->
+      <div id="tab-evolucao" class="hidden"></div>
 
       <!-- Tab: Pódio -->
       <div id="tab-podio" class="hidden">
@@ -415,7 +419,7 @@
 
     // ── Tabs ──────────────────────────────────────────────────
     const mainContainer = document.querySelector('.container')
-    let tabsLoaded = { palpites: false, grupos: false, podio: false, planilha: false, premios: false }
+    let tabsLoaded = { palpites: false, grupos: false, podio: false, planilha: false, premios: false, evolucao: false }
     document.querySelectorAll('.pool-nav-item').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.pool-nav-item').forEach(b => b.classList.remove('active'))
@@ -426,6 +430,7 @@
         document.getElementById('tab-podio').classList.toggle('hidden', tab !== 'podio')
         document.getElementById('tab-planilha').classList.toggle('hidden', tab !== 'planilha')
         document.getElementById('tab-premios').classList.toggle('hidden', tab !== 'premios')
+        document.getElementById('tab-evolucao').classList.toggle('hidden', tab !== 'evolucao')
         mainContainer.classList.toggle('planilha-wide', tab === 'planilha')
         if (!tabsLoaded[tab]) {
           tabsLoaded[tab] = true
@@ -433,6 +438,7 @@
           if (tab === 'podio') loadPodio()
           if (tab === 'planilha') loadPlanilha()
           if (tab === 'premios') loadPremios()
+          if (tab === 'evolucao') loadEvolucao()
         }
       })
     })
@@ -954,6 +960,156 @@
         const card = btn.closest('.premios-card')
         const isOpen = card.classList.toggle('premios-expanded')
         btn.textContent = isOpen ? 'Ver menos ▴' : `Ver todos (${btn.dataset.count}) ▾`
+      })
+    }
+
+    // ── Tab Evolução ──────────────────────────────────────────
+    function loadScript(src) {
+      if (document.querySelector(`script[src="${src}"]`)) return Promise.resolve()
+      return new Promise((resolve, reject) => {
+        const s = document.createElement('script'); s.src = src; s.onload = resolve; s.onerror = reject
+        document.head.appendChild(s)
+      })
+    }
+
+    function buildEvolucaoData(matches, predictions, members) {
+      const completed = matches
+        .filter(m => m.home_score != null && m.away_score != null)
+        .sort((a, b) => new Date(a.match_date) - new Date(b.match_date))
+
+      const predsByUser = {}
+      for (const p of predictions) {
+        if (!predsByUser[p.user_id]) predsByUser[p.user_id] = {}
+        predsByUser[p.user_id][p.match_id] = p.points ?? 0
+      }
+
+      const labels = completed.map(m =>
+        `${translateTeam(m.home_team)} × ${translateTeam(m.away_team)}`
+      )
+
+      const cumulativeByUser = {}
+      for (const mem of members) {
+        let acc = 0
+        cumulativeByUser[mem.user_id] = completed.map(m => {
+          acc += predsByUser[mem.user_id]?.[m.id] ?? 0
+          return acc
+        })
+      }
+
+      return { labels, cumulativeByUser, completed }
+    }
+
+    const EVOLUCAO_PALETTE = ['#4e79a7','#f28e2b','#e15759','#76b7b2','#59a14f',
+                              '#edc948','#b07aa1','#ff9da7','#9c755f','#bab0ac']
+
+    function initEvolucaoChart(canvasEl, chartData, members, myUserId) {
+      const { labels, cumulativeByUser } = chartData
+      const datasets = members.map((mem, i) => ({
+        label: mem.display_name,
+        data: [...cumulativeByUser[mem.user_id]],
+        borderColor: EVOLUCAO_PALETTE[i % EVOLUCAO_PALETTE.length],
+        backgroundColor: EVOLUCAO_PALETTE[i % EVOLUCAO_PALETTE.length] + '22',
+        fill: false,
+        tension: 0.3,
+        borderWidth: mem.user_id === myUserId ? 3 : 1.5,
+        pointRadius: mem.user_id === myUserId ? 4 : 2,
+      }))
+      return new Chart(canvasEl.getContext('2d'), {
+        type: 'line',
+        data: { labels, datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: { duration: 250 },
+          plugins: {
+            legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } },
+            tooltip: { mode: 'index', intersect: false }
+          },
+          scales: {
+            x: { ticks: { maxRotation: 45, font: { size: 9 } } },
+            y: { beginAtZero: true, title: { display: true, text: 'Pontos acumulados' } }
+          }
+        }
+      })
+    }
+
+    async function loadEvolucao() {
+      const el = document.getElementById('tab-evolucao')
+      el.innerHTML = '<p class="muted" style="padding:20px 0">Carregando gráfico…</p>'
+
+      await loadScript('https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js')
+      const { matches, predictions, members } = await getPoolPreds()
+      const chartData = buildEvolucaoData(matches, predictions, members)
+
+      if (!chartData.labels.length) {
+        el.innerHTML = '<p class="muted" style="padding:20px 0">Nenhuma partida concluída ainda.</p>'
+        return
+      }
+
+      const N = chartData.labels.length
+      el.innerHTML = `
+        <div class="evolucao-mode-toggle mt-8" id="evolucao-toggle">
+          <button class="active" data-mode="static">Estático</button>
+          <button data-mode="anim">Animado</button>
+        </div>
+        <div class="card mt-8" style="padding:12px">
+          <div class="evolucao-canvas-wrap"><canvas id="evolucao-canvas"></canvas></div>
+        </div>
+        <div id="evolucao-controls" class="evolucao-controls hidden">
+          <button class="btn btn-ghost btn-sm" id="evolucao-play">▶ Reproduzir</button>
+          <button class="btn btn-ghost btn-sm" id="evolucao-reset">↺ Reiniciar</button>
+          <span class="evolucao-step-label" id="evolucao-step"></span>
+        </div>
+        <p class="muted mt-8" style="font-size:.75rem">
+          Mostra pontos de palpites de placar por partida. Pontos de classificação de grupos não incluídos.
+        </p>`
+
+      const chart = initEvolucaoChart(el.querySelector('#evolucao-canvas'), chartData, members, user.id)
+
+      let animStep = N, animTimer = null
+
+      function showStep(n) {
+        chart.data.labels = chartData.labels.slice(0, n)
+        members.forEach((mem, i) => {
+          chart.data.datasets[i].data = chartData.cumulativeByUser[mem.user_id].slice(0, n)
+        })
+        chart.update()
+        el.querySelector('#evolucao-step').textContent = `Partida ${n} de ${N}`
+      }
+
+      el.querySelector('#evolucao-play').addEventListener('click', () => {
+        const btn = el.querySelector('#evolucao-play')
+        if (animTimer) {
+          clearInterval(animTimer); animTimer = null; btn.textContent = '▶ Reproduzir'; return
+        }
+        if (animStep >= N) animStep = 0
+        btn.textContent = '⏸ Pausar'
+        animTimer = setInterval(() => {
+          animStep++; showStep(animStep)
+          if (animStep >= N) { clearInterval(animTimer); animTimer = null; btn.textContent = '▶ Reproduzir' }
+        }, 600)
+      })
+
+      el.querySelector('#evolucao-reset').addEventListener('click', () => {
+        clearInterval(animTimer); animTimer = null
+        animStep = 0; showStep(0)
+        el.querySelector('#evolucao-play').textContent = '▶ Reproduzir'
+      })
+
+      el.querySelector('#evolucao-toggle').addEventListener('click', e => {
+        const btn = e.target.closest('button[data-mode]')
+        if (!btn) return
+        el.querySelectorAll('#evolucao-toggle button').forEach(b => b.classList.remove('active'))
+        btn.classList.add('active')
+        const controls = el.querySelector('#evolucao-controls')
+        if (btn.dataset.mode === 'anim') {
+          controls.classList.remove('hidden')
+          animStep = 0; showStep(0)
+        } else {
+          clearInterval(animTimer); animTimer = null
+          controls.classList.add('hidden')
+          showStep(N)
+        }
       })
     }
 

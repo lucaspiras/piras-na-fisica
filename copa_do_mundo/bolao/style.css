@@ -1158,6 +1158,48 @@ h3 {
 }
 .premios-expand-btn:hover { background: rgba(14,159,80,.18); }
 
+/* ── Gráfico de Evolução ─────────────────────────────────── */
+.evolucao-canvas-wrap {
+  position: relative;
+  height: 320px;
+}
+@media (max-width: 560px) {
+  .evolucao-canvas-wrap { height: 240px; }
+}
+.evolucao-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.evolucao-step-label {
+  font-size: .76rem;
+  color: var(--muted);
+  margin-left: auto;
+}
+.evolucao-mode-toggle {
+  display: flex;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  width: fit-content;
+}
+.evolucao-mode-toggle button {
+  padding: 5px 14px;
+  font-size: .78rem;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-family: inherit;
+}
+.evolucao-mode-toggle button.active {
+  background: var(--pitch-light);
+  color: var(--pitch-deep);
+}
+
 /* ── Mobile tweaks ───────────────────────────────────────── */
 @media (max-width: 400px) {
   .header-name { display: none; }
