@@ -96,6 +96,66 @@ Deno.serve(async (req) => {
       })
     }
 
+    // ── Planilha de classificação de grupos (acessível a membros) ────────────
+    if (action === 'get_pool_group_preds') {
+      const { pool_id } = p
+      if (!pool_id) return json({ error: 'pool_id obrigatório.' }, 400)
+
+      const { data: membership } = await admin
+        .from('pool_members').select('user_id')
+        .eq('pool_id', pool_id).eq('user_id', user.id).maybeSingle()
+      if (!membership) return json({ error: 'Você não participa deste bolão.' }, 403)
+
+      const [
+        { data: members },
+        { data: profiles },
+        { data: preds },
+        { data: actual },
+        { data: groupMatches },
+        { data: rules },
+      ] = await Promise.all([
+        admin.from('pool_members').select('user_id').eq('pool_id', pool_id),
+        admin.from('profiles').select('id, display_name, avatar'),
+        admin.from('predicted_group_standings')
+          .select('user_id, group_name, position, team_name')
+          .eq('pool_id', pool_id),
+        admin.from('group_standings_actual').select('group_name, team, position'),
+        admin.from('matches').select('group_name, status').eq('phase', 'group'),
+        admin.from('pool_scoring_rules').select('*').eq('pool_id', pool_id).maybeSingle(),
+      ])
+
+      // Grupos cujos jogos estão todos finalizados
+      const matchesByGroup: Record<string, { total: number; finished: number }> = {}
+      for (const m of groupMatches ?? []) {
+        if (!m.group_name) continue
+        const e = matchesByGroup[m.group_name] ??= { total: 0, finished: 0 }
+        e.total++
+        if (m.status === 'finished') e.finished++
+      }
+      const finishedGroups = Object.entries(matchesByGroup)
+        .filter(([, v]) => v.total > 0 && v.finished >= v.total)
+        .map(([g]) => g)
+
+      const profById: Record<string, { display_name?: string; avatar?: string }> = {}
+      for (const pr of profiles ?? []) profById[pr.id] = pr
+
+      const memberList = (members ?? [])
+        .map((m) => ({
+          user_id: m.user_id,
+          display_name: profById[m.user_id]?.display_name ?? '—',
+          avatar: profById[m.user_id]?.avatar ?? '⚽',
+        }))
+        .sort((a, b) => (a.display_name ?? '').localeCompare(b.display_name ?? '', 'pt-BR'))
+
+      return json({
+        members: memberList,
+        predicted_standings: preds ?? [],
+        actual_standings: actual ?? [],
+        finished_groups: finishedGroups,
+        scoring_rules: rules ?? {},
+      })
+    }
+
     // ── Autorização: demais ações exigem admin ───────────────
     const { data: prof } = await admin
       .from('profiles').select('is_admin').eq('id', user.id).maybeSingle()

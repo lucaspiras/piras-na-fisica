@@ -148,6 +148,26 @@
         <div id="planilha-wrap" class="planilha-wrap">
           <div class="empty" style="padding:20px"><strong>Carregando…</strong></div>
         </div>
+
+        <div style="margin-top:32px">
+          <div class="section-header" style="margin-bottom:12px">
+            <h3 style="font-size:.95rem;font-weight:700">Classificação dos grupos</h3>
+            <div class="pitch-rule" style="margin-top:6px"></div>
+          </div>
+          <p class="muted mb-8" style="font-size:.82rem">
+            Classificação apostada por cada membro, comparada com o resultado real.
+            Verde = posição correta · Vermelho = errou · — = sem palpite.
+          </p>
+          <div id="grupos-planilha-filter-bar" class="planilha-filter-bar hidden">
+            <select id="grupos-planilha-member-sel" class="filter-select">
+              <option value="">Todos os membros</option>
+            </select>
+            <span class="planilha-filter-hint">← role para ver todos os grupos</span>
+          </div>
+          <div id="grupos-planilha-wrap" class="planilha-wrap">
+            <div class="empty" style="padding:20px"><strong>Carregando…</strong></div>
+          </div>
+        </div>
       </div>
 
       <!-- Tab: Prêmios -->
@@ -698,9 +718,12 @@
 
     // ── Tab Planilha ──────────────────────────────────────────
     async function loadPlanilha() {
-      const wrap = document.getElementById('planilha-wrap')
-      const data = await getPoolPreds()
-      renderPlanilha(data, wrap)
+      const [matchData, groupData] = await Promise.all([
+        getPoolPreds(),
+        callAdmin('get_pool_group_preds', { pool_id: poolId }).catch(() => null),
+      ])
+      renderPlanilha(matchData, document.getElementById('planilha-wrap'))
+      renderGroupPlanilha(groupData)
     }
 
     function renderPlanilha(data, wrap) {
@@ -788,6 +811,138 @@
         <thead><tr><th class="col-match">Partida</th>${thMembers}</tr></thead>
         <tbody>${rows}</tbody>
       </table>`
+    }
+
+    function renderGroupPlanilha(data) {
+      const wrap    = document.getElementById('grupos-planilha-wrap')
+      const filterBar = document.getElementById('grupos-planilha-filter-bar')
+      const memberSel = document.getElementById('grupos-planilha-member-sel')
+
+      const finishedGroups = new Set(data?.finished_groups ?? [])
+      if (!data || !finishedGroups.size) {
+        wrap.innerHTML = '<div class="empty" style="padding:20px"><strong>Classificação ainda não disponível.</strong><br><span style="font-size:.82rem;color:var(--muted)">Os grupos aparecem aqui conforme os jogos são encerrados.</span></div>'
+        return
+      }
+
+      const members  = data.members ?? []
+      const posLabel = ['', '🥇 1º', '🥈 2º', '🥉 3º', '4º']
+
+      // Regras de pontuação do bolão (com fallback para padrão)
+      const rules = data.scoring_rules ?? {}
+      const DEF = { cls_1st: 2, cls_2nd: 2, cls_3rd: 1, cls_4th: 1, cls_qualify: 4, cls_exact: 10 }
+      const r = (k) => rules[k] ?? DEF[k] ?? 0
+
+      // actualMap[grupo][posição] = team
+      const actualMap = {}
+      for (const row of data.actual_standings ?? [])
+        (actualMap[row.group_name] ??= {})[row.position] = row.team
+
+      // predsMap[user_id][grupo][posição] = team_name
+      const predsMap = {}
+      for (const row of data.predicted_standings ?? [])
+        ((predsMap[row.user_id] ??= {})[row.group_name] ??= {})[row.position] = row.team_name
+
+      // Calcula pontos de classificação para um grupo, de acordo com as regras do bolão
+      function calcGroupPts(uid, g) {
+        const pred   = predsMap[uid]?.[g] ?? {}
+        const actual = actualMap[g] ?? {}
+        if (!Object.keys(actual).length) return 0
+        const POS_RULE = { 1: 'cls_1st', 2: 'cls_2nd', 3: 'cls_3rd', 4: 'cls_4th' }
+        let pts = 0, allCorrect = true
+        for (const pos of [1, 2, 3, 4]) {
+          const p = pred[pos], a = actual[pos]
+          if (!p || !a) { allCorrect = false; continue }
+          if (p === a) pts += r(POS_RULE[pos])
+          else allCorrect = false
+        }
+        // cls_qualify: ambos os classificados previstos estão no top 2 real
+        const actualTop2 = new Set([actual[1], actual[2]].filter(Boolean))
+        const predTop2   = [pred[1], pred[2]].filter(Boolean)
+        if (predTop2.length === 2 && predTop2.every(t => actualTop2.has(t)))
+          pts += r('cls_qualify')
+        // cls_exact: ordem exata dos 4
+        if (allCorrect) pts += r('cls_exact')
+        return pts
+      }
+
+      // Apenas grupos com todos os jogos encerrados
+      const groups = [...finishedGroups].sort()
+
+      // Totais por membro (soma de todos os grupos finalizados)
+      const totalByUser = {}
+      for (const m of members)
+        totalByUser[m.user_id] = groups.reduce((s, g) => s + calcGroupPts(m.user_id, g), 0)
+
+      const sortedMembers = [...members].sort(
+        (a, b) => (totalByUser[b.user_id] ?? 0) - (totalByUser[a.user_id] ?? 0)
+          || a.display_name.localeCompare(b.display_name, 'pt-BR')
+      )
+
+      // Filtro de membro
+      memberSel.innerHTML = '<option value="">Todos os membros</option>' +
+        sortedMembers.map(m =>
+          `<option value="${escHtml(m.user_id)}">${escHtml(m.display_name)} (${totalByUser[m.user_id] ?? 0} pts)</option>`
+        ).join('')
+      filterBar.classList.remove('hidden')
+      memberSel.onchange = () => {
+        const uid = memberSel.value
+        wrap.querySelectorAll('[data-uid]').forEach(el =>
+          el.classList.toggle('col-hidden', uid !== '' && el.dataset.uid !== uid))
+      }
+
+      const thMembers = sortedMembers.map(m => `
+        <th data-uid="${escHtml(m.user_id)}" title="${escHtml(m.display_name)}">
+          <span style="font-size:.85rem">${escHtml(m.avatar)}</span><br>
+          ${escHtml(m.display_name.split(' ')[0])}
+          <span class="planilha-th-pts">${totalByUser[m.user_id] ?? 0} pts</span>
+        </th>`).join('')
+
+      let rows = ''
+      for (const g of groups) {
+        const pts4member = sortedMembers.map(m => calcGroupPts(m.user_id, g))
+
+        rows += `<tr class="planilha-group-row">
+          <td class="col-match">Grupo ${escHtml(g)}</td>
+          ${sortedMembers.map((m, i) =>
+            `<td data-uid="${escHtml(m.user_id)}" style="text-align:center">
+              <span class="planilha-pts">+${pts4member[i]} pts</span>
+            </td>`
+          ).join('')}
+        </tr>`
+
+        // Linhas de posição (1º a 4º)
+        for (const pos of [1, 2, 3, 4]) {
+          const actualTeam = actualMap[g]?.[pos]
+          rows += `<tr>
+            <td class="col-match" style="padding-left:20px">
+              <span style="font-size:.73rem;color:var(--muted)">${posLabel[pos]}</span>
+              ${actualTeam
+                ? `<br><span style="font-size:.82rem;font-weight:600">${teamFlag(actualTeam)}${escHtml(translateTeam(actualTeam))}</span>`
+                : ''}
+            </td>
+            ${sortedMembers.map(m => {
+              const pred    = predsMap[m.user_id]?.[g]?.[pos]
+              const correct = actualTeam && pred === actualTeam
+              const wrong   = actualTeam && pred && pred !== actualTeam
+              const bg = correct ? 'background:rgba(14,159,80,.12)' : wrong ? 'background:rgba(239,68,68,.08)' : ''
+              const content = pred
+                ? `<span style="font-size:.8rem">${teamFlag(pred)}${escHtml(translateTeam(pred))}</span>
+                   <span style="font-size:.7rem;margin-left:2px">${correct ? '✓' : wrong ? '✗' : ''}</span>`
+                : `<span class="planilha-none">—</span>`
+              return `<td data-uid="${escHtml(m.user_id)}" style="text-align:center;${bg}">${content}</td>`
+            }).join('')}
+          </tr>`
+        }
+      }
+
+      wrap.innerHTML = `
+        <table>
+          <thead><tr>
+            <th class="col-match">Grupo / Posição</th>
+            ${thMembers}
+          </tr></thead>
+          <tbody>${rows}</tbody>
+        </table>`
     }
 
     // ── Tab Grupos ────────────────────────────────────────────
