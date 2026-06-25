@@ -457,6 +457,30 @@ const TEAM_ISO = {
   'Zambia': 'zm', 'Zimbabwe': 'zw',
 }
 
+/* ── Rótulos de fase do mata-mata ───────────────────────────────────────── */
+const KO_ROUND_PT = {
+  'LAST_32': 'Rodada das 32', 'LAST32': 'Rodada das 32', 'R32': 'Rodada das 32',
+  'LAST_16': 'Oitavas de Final', 'LAST16': 'Oitavas de Final', 'R16': 'Oitavas de Final',
+  'ROUND_OF_16': 'Oitavas de Final', 'ROUND_OF_32': 'Rodada das 32',
+  'QUARTER_FINALS': 'Quartas de Final', 'QUARTER-FINALS': 'Quartas de Final',
+  'QUARTERFINALS': 'Quartas de Final', 'QF': 'Quartas de Final',
+  'SEMI_FINALS': 'Semifinal', 'SEMI-FINALS': 'Semifinal',
+  'SEMIFINAL': 'Semifinal', 'SEMIFINALS': 'Semifinal', 'SF': 'Semifinal',
+  'THIRD_PLACE': '3º Lugar', 'THIRD-PLACE': '3º Lugar', '3RD': '3º Lugar', '3P': '3º Lugar',
+  'FINAL': 'Final', 'F': 'Final',
+}
+
+export function koRoundLabel(groupName) {
+  if (!groupName) return 'Mata-mata'
+  return KO_ROUND_PT[groupName.toUpperCase().replace(/ /g, '_')] ?? groupName
+}
+
+// Rótulo curto para a meta da partida (ex.: "Grupo A", "Quartas de Final").
+export function matchMetaLabel(m) {
+  if (!m || m.phase === 'group') return `Grupo ${m?.group_name ?? '?'}`
+  return koRoundLabel(m.group_name)
+}
+
 // Retorna a tag <img> da bandeira do time, ou '' se desconhecido (ex.: 'TBD').
 export function teamFlag(name) {
   const code = TEAM_ISO[name]

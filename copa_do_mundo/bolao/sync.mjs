@@ -14,7 +14,7 @@
  */
 
 import { readFileSync } from 'fs'
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
+import { createClient } from '@supabase/supabase-js'
 
 // ── Read .env ───────────────────────────────────────────────
 let env = {}
@@ -44,6 +44,19 @@ if (!FOOTBALL_DATA_API_KEY || !SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
 
+// ── Mapeamento de fase ──────────────────────────────────────
+// Stages da API → phase e group_name internos.
+// group_name para ko = o próprio stage (koRoundLabel no front traduz para PT-BR).
+function stageToPhase(stage) {
+  if (stage === 'GROUP_STAGE') return 'group'
+  return 'ko'
+}
+
+function stageToGroupName(stage, apiGroup) {
+  if (stage === 'GROUP_STAGE') return apiGroup?.replace('GROUP_', '') ?? null
+  return stage  // ex.: 'LAST_32', 'ROUND_OF_16', 'QUARTER_FINALS', etc.
+}
+
 // ── Fetch from football-data.org ────────────────────────────
 console.log('🌐  Buscando partidas da Copa 2026…')
 const resp = await fetch(
@@ -58,19 +71,28 @@ if (!resp.ok) {
 }
 
 const { matches: allMatches } = await resp.json()
-const groupMatches = (allMatches ?? []).filter(m => m.stage === 'GROUP_STAGE')
-console.log(`📋  ${groupMatches.length} partidas da fase de grupos encontradas.`)
+console.log(`📋  ${allMatches?.length ?? 0} partidas encontradas no total.`)
+
+const byStage = {}
+for (const m of allMatches ?? []) {
+  const s = m.stage ?? 'UNKNOWN'
+  byStage[s] = (byStage[s] ?? 0) + 1
+}
+console.log('     Distribuição por fase:', byStage)
 
 // ── Upsert into Supabase ────────────────────────────────────
 let updated = 0, failed = 0
 
-for (const m of groupMatches) {
+for (const m of allMatches ?? []) {
   const homeScore = m.score?.fullTime?.home ?? null
   const awayScore = m.score?.fullTime?.away ?? null
   const status =
     m.status === 'FINISHED'                              ? 'finished'
     : (m.status === 'IN_PLAY' || m.status === 'PAUSED') ? 'live'
     : 'scheduled'
+
+  const phase     = stageToPhase(m.stage)
+  const groupName = stageToGroupName(m.stage, m.group)
 
   const { data: upserted, error } = await supabase
     .from('matches')
@@ -81,8 +103,8 @@ for (const m of groupMatches) {
       away_team:    m.awayTeam?.name ?? 'TBD',
       home_score:   homeScore,
       away_score:   awayScore,
-      phase:        'group',
-      group_name:   m.group?.replace('GROUP_', '') ?? null,
+      phase,
+      group_name:   groupName,
       match_number: m.matchday ?? 0,
       venue:        m.venue ?? null,
       status,
@@ -91,10 +113,14 @@ for (const m of groupMatches) {
     .maybeSingle()
 
   if (error) {
-    console.warn(`  ⚠️  Erro na partida ${m.id}:`, error.message)
+    console.warn(`  ⚠️  Erro na partida ${m.id} (${m.stage}):`, error.message)
     failed++
     continue
   }
+
+  const stageLabel = phase === 'group' ? `Grupo ${groupName}` : (m.stage ?? 'ko')
+  const teams = `${m.homeTeam?.name ?? 'TBD'} × ${m.awayTeam?.name ?? 'TBD'}`
+  console.log(`  ✓  [${stageLabel}] ${teams}${homeScore !== null ? ` — ${homeScore}:${awayScore}` : ''}`)
   updated++
 
   // Recalculate points for finished matches

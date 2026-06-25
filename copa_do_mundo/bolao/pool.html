@@ -114,6 +114,13 @@
         </div>
         <div id="filter-bar" class="filter-bar hidden"></div>
         <div id="matches-list"></div>
+        <div id="ko-section" class="hidden" style="margin-top:28px">
+          <div class="section-header" style="margin-bottom:16px">
+            <h3 style="font-size:1rem;font-weight:700">⚔ Mata-mata</h3>
+            <div class="pitch-rule" style="margin-top:6px"></div>
+          </div>
+          <div id="ko-list"></div>
+        </div>
       </div>
 
       <!-- Tab: Grupos -->
@@ -213,7 +220,8 @@
       escHtml, fmtDate, fmtTime,
       matchStatus, statusBadge, medalIcon, translateTeam, teamFlag,
       getRules, MATCH_RULE_LABELS, KO_RULE_LABELS, CLS_RULE_LABELS, TOURN_RULE_LABELS,
-      simulateGroupStandings, saveGroupStandings
+      simulateGroupStandings, saveGroupStandings,
+      matchMetaLabel, koRoundLabel
     } from './supabase.js'
 
     function showFatal(error) {
@@ -445,24 +453,25 @@
 
     // ── Estado palpites ───────────────────────────────────────
     const timers = {}, latestVals = {}
-    let predsMap = {}, allMatches = []
+    let predsMap = {}, allMatches = [], koMatches = []
     let activeGroup = 'todos', activeRound = 'todos', activeDate = '', viewMode = 'group'
 
     function getLocalDate(d) { return new Date(d).toLocaleDateString('sv-SE') }
 
     async function loadMatches() {
       const [{ data: matches }, { data: preds }] = await Promise.all([
-        supabase.from('matches').select('id,match_date,home_team,away_team,home_score,away_score,group_name,status,match_number').eq('phase','group').order('match_date'),
+        supabase.from('matches').select('id,match_date,home_team,away_team,home_score,away_score,group_name,status,match_number,phase').order('match_date'),
         supabase.from('predictions').select('match_id,home_score,away_score,points').eq('pool_id',poolId).eq('user_id',user.id)
       ])
       predsMap = {}
       for (const p of preds ?? []) predsMap[p.match_id] = p
       const list = document.getElementById('matches-list')
       if (!matches?.length) { list.innerHTML = `<div class="empty"><strong>Nenhuma partida importada ainda</strong></div>`; return }
-      allMatches = matches
+      allMatches = matches.filter(m => (m.phase ?? 'group') === 'group')
+      koMatches  = matches.filter(m => m.phase && m.phase !== 'group')
       const todayLocal = new Date().toLocaleDateString('sv-SE')
-      if (matches.some(m => getLocalDate(m.match_date) === todayLocal)) activeDate = todayLocal
-      updateProgress(); startCountdown(); buildFilterBar(matches); renderMatches()
+      if (allMatches.some(m => getLocalDate(m.match_date) === todayLocal)) activeDate = todayLocal
+      updateProgress(); startCountdown(matches); buildFilterBar(allMatches); renderMatches(); renderKoMatches()
     }
 
     function updateProgress() {
@@ -477,9 +486,9 @@
       document.getElementById('progress-fill').style.width = pct + '%'
     }
 
-    function startCountdown() {
+    function startCountdown(allMatchesAll = allMatches) {
       const banner = document.getElementById('countdown-banner')
-      const next = allMatches.filter(m => new Date(m.match_date) > new Date() && m.status === 'scheduled').sort((a,b) => new Date(a.match_date)-new Date(b.match_date))[0]
+      const next = allMatchesAll.filter(m => new Date(m.match_date) > new Date() && m.status === 'scheduled').sort((a,b) => new Date(a.match_date)-new Date(b.match_date))[0]
       if (!next) { banner.classList.add('hidden'); return }
       const update = () => {
         const diff = new Date(next.match_date) - new Date()
@@ -540,21 +549,58 @@
     }
 
     function renderMatchCard(m) {
-      const status=matchStatus(m), pred=predsMap[m.id], isOpen=status==='open', isClosed=status==='closed'
-      const home=translateTeam(m.home_team), away=translateTeam(m.away_team)
+      const isTbd = m.home_team === 'TBD' || m.away_team === 'TBD'
+      const rawStatus = matchStatus(m)
+      const status = isTbd && rawStatus === 'open' ? 'locked' : rawStatus
+      const pred=predsMap[m.id], isOpen=status==='open', isClosed=status==='closed'
+      const home=translateTeam(m.home_team)||'A definir', away=translateTeam(m.away_team)||'A definir'
       const scoreArea = isOpen
         ? `<span class="score-area"><input id="home-${m.id}" class="score-input" type="number" min="0" max="20" value="${pred?pred.home_score:''}" placeholder="—"><span class="score-sep">:</span><input id="away-${m.id}" class="score-input" type="number" min="0" max="20" value="${pred?pred.away_score:''}" placeholder="—"></span>`
         : `<span class="score-locked">${m.home_score!==null?`<span>${m.home_score}</span><span class="score-sep">:</span><span>${m.away_score}</span>`:`<span style="font-size:.9rem;color:var(--muted)">— : —</span>`}</span>`
       let footer = ''
-      if (isClosed&&pred) footer = `Seu palpite: ${pred.home_score}–${pred.away_score} ${pred.points!==null?`<span class="points-earned">+${pred.points} pts</span>`:'<span style="font-style:italic">calculando…</span>'}`
+      if (isTbd&&!isClosed) footer = `<span style="color:var(--muted)">Times a definir — apostas abertas assim que o confronto for definido</span>`
+      else if (isClosed&&pred) footer = `Seu palpite: ${pred.home_score}–${pred.away_score} ${pred.points!==null?`<span class="points-earned">+${pred.points} pts</span>`:'<span style="font-style:italic">calculando…</span>'}`
       else if (isClosed&&!pred) footer = `<span style="color:var(--flare)">Sem palpite registrado</span>`
       else if (!isOpen&&pred) footer = `Seu palpite: ${pred.home_score}–${pred.away_score} <span style="color:var(--muted)">· apostas encerradas</span>`
       else if (!isOpen&&!pred) footer = `<span style="color:var(--flare)">Apostas encerradas — sem palpite</span>`
       return `<div class="match-card ${status}" id="card-${m.id}">
-        <div class="match-meta"><strong>Grupo ${escHtml(m.group_name??'?')}</strong><span>·</span><span>${fmtDate(m.match_date)} · ${fmtTime(m.match_date)}</span>${statusBadge(status)}</div>
+        <div class="match-meta"><strong>${escHtml(matchMetaLabel(m))}</strong><span>·</span><span>${fmtDate(m.match_date)} · ${fmtTime(m.match_date)}</span>${statusBadge(status)}</div>
         <div class="match-row"><span class="team-name team-home">${escHtml(home)}${teamFlag(m.home_team)}</span>${scoreArea}<span class="team-name team-away">${teamFlag(m.away_team)}${escHtml(away)}</span></div>
         <div class="match-footer" id="footer-${m.id}">${footer}</div>
       </div>`
+    }
+
+    function renderKoMatches() {
+      const sec = document.getElementById('ko-section')
+      const list = document.getElementById('ko-list')
+      if (!koMatches.length) { sec.classList.add('hidden'); return }
+      sec.classList.remove('hidden')
+
+      // Agrupar por rodada (group_name ou fase)
+      const sections = {}
+      for (const m of koMatches) {
+        const k = m.group_name ?? 'ko'
+        ;(sections[k] ??= []).push(m)
+      }
+      const sectionOrder = Object.keys(sections)
+        .sort((a, b) => new Date(sections[a][0].match_date) - new Date(sections[b][0].match_date))
+
+      list.innerHTML = sectionOrder.map(k => {
+        const ms = sections[k].sort((a, b) => new Date(a.match_date) - new Date(b.match_date))
+        return `
+          <div style="margin-bottom:28px">
+            <div class="round-header"><span class="round-label">${escHtml(koRoundLabel(k))}</span><div class="round-line"></div></div>
+            <div class="stack gap-8">${ms.map(m => renderMatchCard(m)).join('')}</div>
+          </div>`
+      }).join('')
+
+      for (const m of koMatches) {
+        if (matchStatus(m) !== 'open' || m.home_team === 'TBD' || m.away_team === 'TBD') continue
+        const h = document.getElementById(`home-${m.id}`), a = document.getElementById(`away-${m.id}`)
+        if (!h || !a) continue
+        h.addEventListener('input', () => schedSave(m.id))
+        a.addEventListener('input', () => schedSave(m.id))
+      }
     }
 
     function schedSave(matchId, delay=700) {
@@ -635,7 +681,7 @@
         }).join('')
         return `<div class="revealed-card">
           <div class="revealed-card-header">
-            <div class="revealed-card-meta">Grupo ${escHtml(m.group_name ?? '?')} · ${fmtDate(m.match_date)} · ${fmtTime(m.match_date)}</div>
+            <div class="revealed-card-meta">${escHtml(matchMetaLabel(m))} · ${fmtDate(m.match_date)} · ${fmtTime(m.match_date)}</div>
             <div class="revealed-card-teams">
               ${teamFlag(m.home_team)}${escHtml(translateTeam(m.home_team))}
               ${scoreHtml}
@@ -714,7 +760,7 @@
       for (const grp of groupOrder) {
         const grpMatches = matches.filter(m => (m.group_name ?? m.phase ?? '?') === grp)
           .sort((a, b) => new Date(a.match_date) - new Date(b.match_date))
-        const label = grpMatches[0]?.phase === 'group' ? `Grupo ${grp}` : grp
+        const label = grpMatches[0]?.phase === 'group' ? `Grupo ${grp}` : koRoundLabel(grp)
         rows += `<tr class="planilha-group-row"><td class="col-match">${escHtml(label)}</td>${sortedMembers.map(m => `<td data-uid="${escHtml(m.user_id)}"></td>`).join('')}</tr>`
         for (const m of grpMatches) {
           const revealed = revealedIds.has(m.id)
