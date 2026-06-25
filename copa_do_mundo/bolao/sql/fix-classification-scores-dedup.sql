@@ -10,4 +10,5 @@
 -- ============================================================================
 
 UPDATE public.classification_scores
-SET classification_pts = 0;
+SET classification_pts = 0
+WHERE pool_id IS NOT NULL;

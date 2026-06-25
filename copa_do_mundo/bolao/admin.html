@@ -587,17 +587,12 @@
         const msg = document.getElementById('third-msg')
         btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>'
         msg.classList.add('hidden')
-        let count = 0, errors = []
-        for (const g of groups) {
-          const { error } = await supabase.rpc('score_group_all_pools', { p_group_name: g })
-          if (error) errors.push(g)
-          else count++
-        }
+        const { error } = await supabase.rpc('rescore_all_classifications')
         btn.disabled = false; btn.textContent = 'Pontuar classificações de grupos concluídos'
-        msg.textContent = errors.length
-          ? `${count} grupos pontuados. Erros: ${errors.join(', ')}`
-          : `✓ ${count} grupos pontuados em todos os bolões.`
-        msg.style.color = errors.length ? 'var(--flare)' : 'var(--pitch-deep)'
+        msg.textContent = error
+          ? `Erro: ${error.message}`
+          : '✓ Classificações pontuadas (grupos finalizados) em todos os bolões.'
+        msg.style.color = error ? 'var(--flare)' : 'var(--pitch-deep)'
         msg.classList.remove('hidden')
       })
     }
