@@ -1,0 +1,13 @@
+{
+  "files.exclude": {
+    "atividades/lista_de_exercicios": true,
+    "atividades/unidades_estudo_dirigido": true,
+    "atividades/mru_estudo_dirigido": true,
+    "atividades/mruv_estudo_dirigido": true,
+    "atividades/trabalho_energia_cinetica": true,
+    "atividades/energia_potencial_conservacao": true,
+    "atividades/eletrostatica_estudo_dirigido": true,
+    "atividades/potencial_eletrico_estudo_dirigido": true,
+    "atividades/lancamentos_estudo_dirigido": true
+  }
+}

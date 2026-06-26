@@ -1,0 +1,23 @@
+name: Supabase Keep-Alive
+
+on:
+  schedule:
+    # Roda segunda e quinta às 08:00 UTC (a cada ~3-4 dias, abaixo do limite de 7 do Supabase free)
+    - cron: "0 8 * * 1,4"
+  workflow_dispatch: # permite rodar manualmente pelo GitHub
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase feedback
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://vlihugczatpmnyjbdmqw.supabase.co/rest/v1/" \
+            -H "apikey: sb_publishable__QOgJ-nSBouPG9kcbpjcAA_MrcVuNqX")
+          echo "Status HTTP: $STATUS"
+          if [ "$STATUS" -lt 200 ] || [ "$STATUS" -ge 500 ]; then
+            echo "ERRO: projeto nao respondeu corretamente (HTTP $STATUS)"
+            exit 1
+          fi
+          echo "Projeto ativo."
