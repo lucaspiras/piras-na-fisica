@@ -1,0 +1,38 @@
+# Redirects -- um por linha, formato: origem -> destino
+# Caminhos relativos a raiz do site (sem / inicial).
+# Linhas em branco e comentarios (# ...) sao ignorados.
+#
+# Exemplos:
+# conteudos/cinematica/conceitos.html -> fisica/cinematica/conceitos.html
+# atividades/mru_estudo_dirigido/     -> atividades/cinematica/mru/
+
+# Reorganizacao 2026-06-25: Programas -> programas (case), lista_de_exercicios -> listas, estudos dirigidos
+
+# Programas/ -> programas/ (case rename - apenas paginas diretas do hub)
+# NOTA: entradas Programas/ comentadas -- no Windows Programas/ == programas/ (case-insensitive).
+# No servidor Linux do GitHub Pages sao pastas diferentes. Para criar esses stubs,
+# gere em uma maquina Linux ou use um CI (GitHub Actions) apos o deploy.
+# Programas/graficos_avancados/graficos_cientificos.html -> /programas/graficos_avancados/graficos_cientificos.html
+# Programas/simulador_movimento_avancado/simulador_movimento_avancado.html -> /programas/simulador_movimento_avancado/simulador_movimento_avancado.html
+# Programas/pendulo_forcado/pendulo_forcado.html -> /programas/pendulo_forcado/pendulo_forcado.html
+# Programas/forca_eletrica/forca_eletrica.html -> /programas/forca_eletrica/forca_eletrica.html
+# Programas/jogo_alfandega/jogo_ilha.html -> /programas/jogo_alfandega/jogo_ilha.html
+# Programas/conversor/conversor.html -> /programas/conversor/conversor.html
+# Programas/juntar_pdf/juntar_pdf.html -> /programas/juntar_pdf/juntar_pdf.html
+
+# lista_de_exercicios -> listas
+atividades/lista_de_exercicios/MRUV/lista_1_MRUV_velocidade_aceleracao.html -> /atividades/listas/MRUV/lista_1_MRUV_velocidade_aceleracao.html
+atividades/lista_de_exercicios/MRUV/lista_1_MRUV_velocidade_aceleracao_avaliacao.html -> /atividades/listas/MRUV/lista_1_MRUV_velocidade_aceleracao_avaliacao.html
+atividades/lista_de_exercicios/MRUV/lista_2_MRUV_velocidade_media_e_deslocamento.html -> /atividades/listas/MRUV/lista_2_MRUV_velocidade_media_e_deslocamento.html
+atividades/lista_de_exercicios/MRUV/lista_2_MRUV_velocidade_media_e_deslocamento_avaliacao.html -> /atividades/listas/MRUV/lista_2_MRUV_velocidade_media_e_deslocamento_avaliacao.html
+atividades/lista_de_exercicios/lancamentos/lista_1_lancamentos.html -> /atividades/listas/lancamentos/lista_1_lancamentos.html
+
+# Estudos dirigidos: pastas antigas -> novas em estudos_dirigidos/
+atividades/unidades_estudo_dirigido/ -> /atividades/estudos_dirigidos/ed_unidades/
+atividades/mru_estudo_dirigido/ -> /atividades/estudos_dirigidos/ed_mru/
+atividades/mruv_estudo_dirigido/ -> /atividades/estudos_dirigidos/ed_mruv/
+atividades/trabalho_energia_cinetica/ -> /atividades/estudos_dirigidos/ed_trabalho_energia/
+atividades/energia_potencial_conservacao/ -> /atividades/estudos_dirigidos/ed_energia_potencial/
+atividades/eletrostatica_estudo_dirigido/ -> /atividades/estudos_dirigidos/ed_eletrostatica/
+atividades/potencial_eletrico_estudo_dirigido/ -> /atividades/estudos_dirigidos/ed_potencial_eletrico/
+atividades/lancamentos_estudo_dirigido/ -> /atividades/estudos_dirigidos/ed_lancamentos/

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <script src="/js/theme.js"></script>
+  <meta name="description" content="Portal gratuito de Física para o Ensino Médio: conteúdos, simuladores, estudos dirigidos e listas de exercícios.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Lista 1 — MRUV: Velocidade e Aceleração · Piras na Física">
+  <meta property="og:description" content="Portal gratuito de Física para o Ensino Médio: conteúdos, simuladores, estudos dirigidos e listas de exercícios.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/atividades/lista_de_exercicios/MRUV/lista_1_MRUV_velocidade_aceleracao.html">
+  <title>Lista 1 — MRUV: Velocidade e Aceleração · Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/style.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a href="#quiz-container" class="skip-link">Ir para as questões</a>
+
+  <div id="header"></div>
+  <script src="../../../js/include.js"></script>
+
+  <div class="content-hero">
+    <div class="content-hero-inner">
+      <nav class="breadcrumb">
+        <a href="../../../atividades.html">Atividades</a>
+        <span>/</span>
+        <a href="../../../lista_de_exercicios.html">Listas de Exercícios</a>
+        <span>/</span>
+        <span>Lista 1 — Velocidade e Aceleração</span>
+      </nav>
+      <h1 class="content-title">Lista 1 — MRUV<br><em>Velocidade e Aceleração</em></h1>
+      <p class="content-subtitle">
+        Questões sobre a relação entre velocidade e aceleração no MRUV. Use
+        <strong>v = v₀ + a·t</strong> e analise os sinais: sinais iguais → |v| aumenta;
+        sinais opostos → |v| diminui. Nas discursivas, escreva antes de revelar o gabarito.
+      </p>
+      <div class="lista-meta">
+        <span class="lista-badge azul">MRUV</span>
+        <span class="lista-badge roxo">16 questões</span>
+        <span class="lista-badge muted">Múltipla escolha · Numérica · Discursiva</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="main">
+    <div id="quiz-container"></div>
+  </main>
+
+  <section class="score-section">
+    <div class="score-inner">
+      <h2>Seu Resultado</h2>
+      <div class="score-display">
+        <span id="score-num">0</span>
+        <span class="score-sep">/</span>
+        <span id="score-total">16</span>
+      </div>
+      <p id="score-msg">Responda as questões para ver seu resultado!</p>
+
+      <div class="report-area">
+        <p class="report-intro">Exporte seu relatório com nome e data:</p>
+        <div class="name-row">
+          <label class="name-label" for="studentName">Seu nome:</label>
+          <input class="name-input" id="studentName" type="text" placeholder="Nome opcional" maxlength="80" autocomplete="name" />
+        </div>
+        <div class="report-btns">
+          <button class="report-btn" id="downloadBtn">↓ Baixar .txt</button>
+          <button class="report-btn" id="copyBtn">⎘ Copiar</button>
+          <button class="report-btn" id="emailBtn">✉ E-mail</button>
+        </div>
+      </div>
+
+      <button class="reset-btn" id="resetAll">↺ Reiniciar lista</button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Física · Ensino Médio · MRUV · Lista 1 — Velocidade e Aceleração</p>
+  </footer>
+
+  <script>
+    window.QUIZ_MODE  = 'gabarito';
+    window.LISTA_NOME = 'Lista 1 — MRUV: Velocidade e Aceleração';
+  </script>
+  <script src="questions1.js"></script>
+  <script src="quiz_engine.js"></script>
+</body>
+</html>
