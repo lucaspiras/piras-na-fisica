@@ -177,7 +177,7 @@ export const MATCH_RULE_LABELS = {
 export const KO_RULE_LABELS = {
   ko_exact_home:     'Acertar o número de gols da equipe 1',
   ko_exact_away:     'Acertar o número de gols da equipe 2',
-  ko_correct_result: 'Resultado correto (quem avança)',
+  ko_correct_result: 'Acertar o time que avança (vitória ou pênaltis)',
   ko_correct_diff:   'Saldo de gols correto',
   ko_exact_score:    'Bônus: placar exato (as duas equipes)',
 }

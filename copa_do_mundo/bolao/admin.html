@@ -283,7 +283,7 @@
     async function loadMatches() {
       const { data, error } = await supabase
         .from('matches')
-        .select('id, match_date, home_team, away_team, home_score, away_score, group_name, match_number, status, phase')
+        .select('id, match_date, home_team, away_team, home_score, away_score, group_name, match_number, status, phase, advancing_team')
         .order('match_date')
 
       const list = document.getElementById('matches-list')
@@ -298,9 +298,37 @@
 
       list.innerHTML = data.map(m => renderMatchRow(m)).join('')
       for (const m of data) {
-        document.getElementById(`form-${m.id}`)
-          ?.addEventListener('submit', (e) => handleSave(e, m.id))
+        const form = document.getElementById(`form-${m.id}`)
+        form?.addEventListener('submit', (e) => handleSave(e, m.id))
+        const isKo = !!(m.phase && m.phase !== 'group')
+        if (isKo && form) {
+          // Seleção inicial de quem avançou (se já houver resultado de empate gravado).
+          if (m.advancing_team) admAdvance[m.id] = m.advancing_team
+          const toggle = () => toggleAdmAdvance(m.id)
+          form.home?.addEventListener('input', toggle)
+          form.away?.addEventListener('input', toggle)
+          const block = document.getElementById(`adm-advance-${m.id}`)
+          block?.querySelectorAll('.ko-adv-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+              admAdvance[m.id] = btn.dataset.side === 'home' ? m.home_team : m.away_team
+              block.querySelectorAll('.ko-adv-btn').forEach(x => x.classList.remove('selected'))
+              btn.classList.add('selected')
+            })
+          })
+          toggle()
+        }
       }
+    }
+
+    // Quem avançou (mata-mata) selecionado pelo admin, por partida.
+    const admAdvance = {}
+
+    function toggleAdmAdvance(matchId) {
+      const block = document.getElementById(`adm-advance-${matchId}`)
+      if (!block) return
+      const form = document.getElementById(`form-${matchId}`)
+      const h = parseInt(form?.home.value), a = parseInt(form?.away.value)
+      block.style.display = (!isNaN(h) && !isNaN(a) && h === a) ? '' : 'none'
     }
 
     function renderMatchRow(m) {
@@ -338,6 +366,14 @@
               ${teamFlag(m.away_team)}${escHtml(translateTeam(m.away_team))}
             </span>
           </form>
+          ${(m.phase && m.phase !== 'group') ? `
+          <div class="ko-advance" id="adm-advance-${m.id}" style="display:none">
+            <span class="ko-advance-q">⚖️ Empate — quem avançou (pênaltis)?</span>
+            <div class="ko-advance-opts">
+              <button type="button" class="ko-adv-btn${m.advancing_team===m.home_team?' selected':''}" data-adm-adv="${m.id}" data-side="home">${escHtml(translateTeam(m.home_team))}</button>
+              <button type="button" class="ko-adv-btn${m.advancing_team===m.away_team?' selected':''}" data-adm-adv="${m.id}" data-side="away">${escHtml(translateTeam(m.away_team))}</button>
+            </div>
+          </div>` : ''}
           <div class="match-footer" id="save-msg-${m.id}"></div>
         </div>`
     }
@@ -352,11 +388,18 @@
         msg.innerHTML = '<span style="color:var(--flare)">Informe placar válido.</span>'
         return
       }
+      // Mata-mata: empate exige informar quem avançou (pênaltis).
+      const isKoDraw = home === away && !!document.getElementById(`adm-advance-${matchId}`)
+      if (isKoDraw && !admAdvance[matchId]) {
+        msg.innerHTML = '<span style="color:var(--flare)">Empate no mata-mata: selecione quem avançou nos pênaltis.</span>'
+        return
+      }
       const btn = form.querySelector('button[type=submit]')
       btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>'
       msg.innerHTML = ''
       const { error } = await supabase.rpc('set_match_result', {
-        p_match_id: matchId, p_home_score: home, p_away_score: away
+        p_match_id: matchId, p_home_score: home, p_away_score: away,
+        p_advancing_team: isKoDraw ? admAdvance[matchId] : null
       })
       btn.disabled = false; btn.textContent = 'Salvar'
       if (error) {

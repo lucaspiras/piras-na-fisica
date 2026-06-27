@@ -396,6 +396,47 @@ h3 {
   font-weight: 800;
 }
 
+/* Mata-mata: seletor de "quem avança nos pênaltis" (palpite de empate) */
+.ko-advance {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-sm);
+  background: #faf9f6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.ko-advance-q {
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+.ko-advance-opts {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.ko-adv-btn {
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  padding: 7px 14px;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--ink, var(--muted));
+  cursor: pointer;
+  transition: border-color .12s, background .12s, color .12s;
+}
+.ko-adv-btn:hover { border-color: var(--pitch); }
+.ko-adv-btn.selected {
+  border-color: var(--pitch);
+  background: var(--pitch);
+  color: #fff;
+}
+
 .match-footer {
   margin-top: 10px;
   text-align: center;

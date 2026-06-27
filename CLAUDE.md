@@ -132,6 +132,7 @@ Subprojeto isolado com Supabase próprio. Não usa os arquivos `css/style.css` e
 | `group-standings-fifa.sql` | ⏳ pendente (faz `drop view group_standings_actual`) |
 | `match-scoring-per-pool.sql` | ⏳ pendente |
 | `prediction-deadlines.sql` | ⏳ pendente |
+| `ko-advancing-team.sql` | ⏳ pendente (mata-mata: 8 pts p/ quem acerta o time que avança; adiciona `matches.advancing_team` e `predictions.advancing_team`; substitui `set_match_result`/`update_match_predictions_points`/`clear_match_result`. **Rodar ANTES de usar pool.html/admin.html/sync.mjs novos**) |
 
 **Geração de PDF do regulamento:** Puppeteer instalado fora do OneDrive em `C:\Users\Usuario\reg-pdf-tool\`. Rodar de lá: `node gerar_pdf_regulamento.mjs <input.html> <output.pdf>`. O script usa mídia `screen` e calcula altura real para gerar página única.
 

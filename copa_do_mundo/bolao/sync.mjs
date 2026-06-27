@@ -80,6 +80,23 @@ for (const m of allMatches ?? []) {
 }
 console.log('     Distribuição por fase:', byStage)
 
+// ── Times já gravados (para preservar mata-mata definido manualmente) ──
+// A API devolve os confrontos de mata-mata como TBD até a FIFA definir a chave.
+// Se já houver um time gravado no banco, não o sobrescrevemos com 'TBD'.
+const existingTeams = {}
+{
+  const { data: existing, error: exErr } = await supabase
+    .from('matches')
+    .select('external_id,home_team,away_team')
+  if (exErr) {
+    console.warn('  ⚠️  Não foi possível ler os times existentes:', exErr.message)
+  } else {
+    for (const e of existing ?? []) {
+      existingTeams[e.external_id] = { home: e.home_team, away: e.away_team }
+    }
+  }
+}
+
 // ── Upsert into Supabase ────────────────────────────────────
 let updated = 0, failed = 0
 
@@ -94,13 +111,26 @@ for (const m of allMatches ?? []) {
   const phase     = stageToPhase(m.stage)
   const groupName = stageToGroupName(m.stage, m.group)
 
+  // Preserva times já gravados quando a API ainda devolve TBD (null).
+  const prev      = existingTeams[String(m.id)]
+  const homeTeam  = m.homeTeam?.name ?? prev?.home ?? 'TBD'
+  const awayTeam  = m.awayTeam?.name ?? prev?.away ?? 'TBD'
+
+  // Mata-mata encerrado: quem avançou (score.winner cobre vitória nos pênaltis).
+  let advancingTeam = null
+  if (phase === 'ko' && status === 'finished') {
+    if (m.score?.winner === 'HOME_TEAM')      advancingTeam = homeTeam
+    else if (m.score?.winner === 'AWAY_TEAM') advancingTeam = awayTeam
+  }
+
   const { data: upserted, error } = await supabase
     .from('matches')
     .upsert({
-      external_id:  String(m.id),
-      match_date:   m.utcDate,
-      home_team:    m.homeTeam?.name ?? 'TBD',
-      away_team:    m.awayTeam?.name ?? 'TBD',
+      external_id:    String(m.id),
+      match_date:     m.utcDate,
+      home_team:      homeTeam,
+      away_team:      awayTeam,
+      advancing_team: advancingTeam,
       home_score:   homeScore,
       away_score:   awayScore,
       phase,
@@ -119,7 +149,7 @@ for (const m of allMatches ?? []) {
   }
 
   const stageLabel = phase === 'group' ? `Grupo ${groupName}` : (m.stage ?? 'ko')
-  const teams = `${m.homeTeam?.name ?? 'TBD'} × ${m.awayTeam?.name ?? 'TBD'}`
+  const teams = `${homeTeam} × ${awayTeam}`
   console.log(`  ✓  [${stageLabel}] ${teams}${homeScore !== null ? ` — ${homeScore}:${awayScore}` : ''}`)
   updated++
 
