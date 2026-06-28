@@ -337,7 +337,7 @@
       return `
         <div class="match-card ${cls}">
           <div class="match-meta">
-            <strong>${escHtml(matchMetaLabel(m))}${m.phase === 'group' ? ` · Rodada ${m.match_number}` : ` · Jogo ${m.match_number}`}</strong>
+            <strong>${escHtml(matchMetaLabel(m))}${m.phase === 'group' ? ` · Rodada ${m.match_number}` : ''}</strong>
             <span>·</span>
             <span>${fmtDate(m.match_date)} · ${fmtTime(m.match_date)}</span>
             ${m.status === 'finished' ? '<span class="badge badge-closed">Encerrado</span>'

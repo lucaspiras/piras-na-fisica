@@ -101,25 +101,38 @@
       <!-- Tab: Palpites -->
       <div id="tab-palpites">
         <div id="countdown-banner" class="countdown-banner hidden"></div>
-        <!-- Apostas reveladas — destaque 1–2 partidas mais recentes -->
-        <div id="revealed-section" class="revealed-section hidden"></div>
-        <div id="progress-section" class="progress-section hidden">
-          <div class="progress-meta">
-            <span class="progress-label" id="progress-label">Palpites feitos</span>
-            <span class="progress-fraction" id="progress-fraction"></span>
-          </div>
-          <div class="progress-track">
-            <div class="progress-fill" id="progress-fill" style="width:0%"></div>
-          </div>
-        </div>
-        <div id="filter-bar" class="filter-bar hidden"></div>
-        <div id="matches-list"></div>
-        <div id="ko-section" class="hidden" style="margin-top:28px">
+
+        <!-- Mata-mata (fase ativa) -->
+        <div id="ko-section" class="hidden">
           <div class="section-header" style="margin-bottom:16px">
             <h3 style="font-size:1rem;font-weight:700">⚔ Mata-mata</h3>
             <div class="pitch-rule" style="margin-top:6px"></div>
           </div>
           <div id="ko-list"></div>
+        </div>
+
+        <!-- Fase de grupos (encerrada) — recolhível, fechada por padrão -->
+        <div id="group-stage-block" style="margin-top:28px">
+          <button class="ranking-toggle" id="group-toggle" type="button">
+            <span class="ranking-toggle-label">⚽ Palpites da fase de grupos</span>
+            <span class="ranking-toggle-pos" id="group-toggle-hint"></span>
+            <span class="ranking-arrow" id="group-arrow">▾</span>
+          </button>
+          <div id="group-collapse" class="hidden" style="margin-top:14px">
+            <!-- Apostas reveladas — destaque 1–2 partidas mais recentes -->
+            <div id="revealed-section" class="revealed-section hidden"></div>
+            <div id="progress-section" class="progress-section hidden">
+              <div class="progress-meta">
+                <span class="progress-label" id="progress-label">Palpites feitos</span>
+                <span class="progress-fraction" id="progress-fraction"></span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+              </div>
+            </div>
+            <div id="filter-bar" class="filter-bar hidden"></div>
+            <div id="matches-list"></div>
+          </div>
         </div>
       </div>
 
@@ -299,6 +312,15 @@
       document.getElementById('ranking-panel').classList.toggle('hidden', !rankingOpen)
       document.getElementById('ranking-arrow').classList.toggle('open', rankingOpen)
       if (rankingOpen && !rankingLoaded) { rankingLoaded = true; await loadRanking() }
+    })
+
+    // ── Fase de grupos (recolhível) ───────────────────────────
+    // Encerrada: fica fechada por padrão; o usuário abre para rever/editar.
+    let groupOpen = false
+    document.getElementById('group-toggle').addEventListener('click', () => {
+      groupOpen = !groupOpen
+      document.getElementById('group-collapse').classList.toggle('hidden', !groupOpen)
+      document.getElementById('group-arrow').classList.toggle('open', groupOpen)
     })
 
     async function loadRanking() {
@@ -489,6 +511,11 @@
       if (!matches?.length) { list.innerHTML = `<div class="empty"><strong>Nenhuma partida importada ainda</strong></div>`; return }
       allMatches = matches.filter(m => (m.phase ?? 'group') === 'group')
       koMatches  = matches.filter(m => m.phase && m.phase !== 'group')
+      const ghint = document.getElementById('group-toggle-hint')
+      if (ghint) {
+        const feitos = allMatches.filter(m => predsMap[m.id] !== undefined).length
+        ghint.textContent = `${feitos}/${allMatches.length} palpites`
+      }
       const todayLocal = new Date().toLocaleDateString('sv-SE')
       if (allMatches.some(m => getLocalDate(m.match_date) === todayLocal)) activeDate = todayLocal
       updateProgress(); startCountdown(matches); buildFilterBar(allMatches); renderMatches(); renderKoMatches()
