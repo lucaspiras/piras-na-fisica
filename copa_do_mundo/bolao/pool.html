@@ -102,6 +102,9 @@
       <div id="tab-palpites">
         <div id="countdown-banner" class="countdown-banner hidden"></div>
 
+        <!-- Apostas reveladas — destaque das partidas mais recentes (qualquer fase) -->
+        <div id="revealed-section" class="revealed-section hidden"></div>
+
         <!-- Mata-mata (fase ativa) -->
         <div id="ko-section" class="hidden">
           <div class="section-header" style="margin-bottom:16px">
@@ -119,8 +122,6 @@
             <span class="ranking-arrow" id="group-arrow">▾</span>
           </button>
           <div id="group-collapse" class="hidden" style="margin-top:14px">
-            <!-- Apostas reveladas — destaque 1–2 partidas mais recentes -->
-            <div id="revealed-section" class="revealed-section hidden"></div>
             <div id="progress-section" class="progress-section hidden">
               <div class="progress-meta">
                 <span class="progress-label" id="progress-label">Palpites feitos</span>
@@ -752,18 +753,18 @@
       const revealedIds = new Set(data.revealed_match_ids ?? [])
       if (!revealedIds.size) { sec.classList.add('hidden'); return }
 
-      // Apenas partidas de grupos, reveladas, mais recentes primeiro
-      const groupRevealed = (data.matches ?? [])
-        .filter(m => m.phase === 'group' && revealedIds.has(m.id))
+      // Partidas reveladas (qualquer fase — grupos ou mata-mata), mais recentes primeiro
+      const revealed = (data.matches ?? [])
+        .filter(m => revealedIds.has(m.id))
         .sort((a, b) => new Date(b.match_date) - new Date(a.match_date))
 
-      if (!groupRevealed.length) { sec.classList.add('hidden'); return }
+      if (!revealed.length) { sec.classList.add('hidden'); return }
 
       // Pegar até 2 (simultâneas = mesma data/hora até 15 min de diferença)
-      const featured = [groupRevealed[0]]
-      if (groupRevealed[1]) {
-        const diff = Math.abs(new Date(groupRevealed[0].match_date) - new Date(groupRevealed[1].match_date))
-        if (diff < 15 * 60 * 1000) featured.push(groupRevealed[1])
+      const featured = [revealed[0]]
+      if (revealed[1]) {
+        const diff = Math.abs(new Date(revealed[0].match_date) - new Date(revealed[1].match_date))
+        if (diff < 15 * 60 * 1000) featured.push(revealed[1])
       }
 
       const predsIndex = {}
