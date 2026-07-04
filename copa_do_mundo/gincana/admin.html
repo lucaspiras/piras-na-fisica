@@ -223,8 +223,8 @@
         <div class="gq-grid2 mt-16">
           <div>
             <div class="card">
-              <h3>Equipes (${selectedIds.size}/10)</h3>
-              <p class="muted" style="font-size:.82rem">Marque as 10 equipes que vão disputar.</p>
+              <h3>Equipes (${selectedIds.size} selecionadas)</h3>
+              <p class="muted" style="font-size:.82rem">Marque as equipes que vão disputar (qualquer quantidade, mínimo 2).</p>
               <div id="team-list" style="margin-top:8px;max-height:340px;overflow:auto">
                 ${S.profiles.map(p => `<label class="gq-team-row">
                   <input type="checkbox" class="team-cb" value="${p.id}" ${selectedIds.has(p.id)?'checked':''}>
@@ -239,10 +239,11 @@
               <div id="q-list" style="margin-top:8px;max-height:280px;overflow:auto">
                 ${S.questions.map(renderQRow).join('') || '<p class="muted">Nenhuma pergunta ainda.</p>'}
               </div>
+              <button id="btn-load-default" class="btn btn-primary btn-sm mt-8">📥 Usar perguntas padrão (perguntas_copa.json)</button>
               <details class="mt-12"><summary class="mono" style="cursor:pointer;font-size:.85rem">➕ Nova pergunta</summary>
                 ${qForm()}
               </details>
-              <details class="mt-8"><summary class="mono" style="cursor:pointer;font-size:.85rem">📥 Importar JSON</summary>
+              <details class="mt-8"><summary class="mono" style="cursor:pointer;font-size:.85rem">📥 Importar JSON (avançado)</summary>
                 <p class="muted" style="font-size:.78rem">Array de objetos: <span class="mono">{phase,ord,points,text,options:[{key,label}],correct_key}</span></p>
                 <textarea id="json-in" class="input" rows="5" style="width:100%;font-family:monospace;font-size:.8rem"></textarea>
                 <button id="btn-import" class="btn btn-ghost btn-sm mt-8">Importar</button>
@@ -257,7 +258,7 @@
               <input id="cfg-seconds" class="input" type="number" min="5" max="300" value="${S.game.question_seconds}">
               <button id="btn-save-cfg" class="btn btn-ghost btn-sm mt-8">Salvar</button>
               <hr style="border:none;border-top:1px solid var(--line);margin:16px 0">
-              <p class="muted" style="font-size:.82rem">Para iniciar: 10 equipes e as 25 perguntas ativas (1-25).</p>
+              <p class="muted" style="font-size:.82rem">Para iniciar: ao menos 2 equipes e as 25 perguntas ativas (1-25).</p>
               <button id="btn-start-game" class="btn btn-primary btn-full mt-8">▶ Iniciar quiz</button>
             </div>
           </div>
@@ -266,7 +267,7 @@
 
       document.getElementById('btn-save-teams').addEventListener('click', async () => {
         const ids = [...document.querySelectorAll('.team-cb:checked')].map(c=>c.value)
-        if (ids.length !== 10) return toast('Selecione exatamente 10 equipes.', false)
+        if (ids.length < 2) return toast('Selecione ao menos 2 equipes.', false)
         const del = await supabase.from('quiz_teams').delete().eq('game_id', S.game.id)
         if (del.error) return toast(del.error.message, false)
         const ins = await supabase.from('quiz_teams').insert(ids.map(team_id => ({ game_id:S.game.id, team_id })))
@@ -287,6 +288,7 @@
         await loadAll(); render()
       }))
       document.getElementById('btn-import').addEventListener('click', importJson)
+      document.getElementById('btn-load-default').addEventListener('click', loadDefaultQuestions)
       document.getElementById('btn-start-game').addEventListener('click', startGame)
     }
 
@@ -338,9 +340,30 @@
       if (error) return toast(error.message, false)
       await loadAll(); toast(rows.length+' perguntas importadas.'); render()
     }
+    // Carrega o conjunto padrão de perguntas do arquivo perguntas_copa.json (25 ativas +
+    // extras). Evita duplicar: pula qualquer phase+ord que já exista nesta gincana.
+    async function loadDefaultQuestions() {
+      if (!confirm('Carregar as perguntas padrão (perguntas_copa.json) para esta gincana?')) return
+      let arr
+      try {
+        const r = await fetch('perguntas_copa.json')
+        arr = await r.json()
+      } catch { return toast('Não foi possível ler perguntas_copa.json.', false) }
+      if (!Array.isArray(arr)) return toast('Arquivo perguntas_copa.json inválido.', false)
+      const existing = new Set(S.questions.map(q => q.phase+':'+q.ord))
+      const rows = arr
+        .filter(q => !existing.has((q.phase||'group')+':'+(q.ord||0)))
+        .map(q => ({ game_id:S.game.id, phase:q.phase||'group', ord:q.ord||0,
+          points: q.points ?? (q.phase==='group' ? groupPoints(q.ord||0) : 0),
+          text:q.text, options:q.options, correct_key:q.correct_key, media: q.media ?? null }))
+      if (!rows.length) return toast('As perguntas padrão já estão todas cadastradas.', false)
+      const { error } = await supabase.from('quiz_questions').insert(rows)
+      if (error) return toast(error.message, false)
+      await loadAll(); toast(rows.length+' perguntas padrão carregadas.'); render()
+    }
     async function startGame() {
       const groupQs = S.questions.filter(q=>q.phase==='group')
-      if (S.teams.length !== 10) return toast('Selecione 10 equipes primeiro.', false)
+      if (S.teams.length < 2) return toast('Selecione ao menos 2 equipes primeiro.', false)
       if (groupQs.length < 25) return toast('Cadastre as 25 perguntas ativas (1-25).', false)
       const { error } = await rpc('quiz_admin_start_game', { p_game:S.game.id })
       if (error) return toast(error.message, false)
@@ -366,7 +389,7 @@
             <div class="card mt-16" style="${finalRound?'border-color:var(--flare)':''}">
               <h3>🔻 Rodada final — eliminação</h3>
               <p class="muted" style="font-size:.82rem">Equipes em jogo: <strong>${remaining}</strong>.
-                Após revelar cada pergunta <strong>21–24</strong>, elimine as 2 piores (10→8→6→4→2).
+                Após revelar cada pergunta <strong>21–24</strong>, elimine as 2 piores até restarem 2.
                 A <strong>pergunta 25</strong> é a grande final; depois dela, encerre a gincana.</p>
               <div class="gq-ctrl">
                 <button id="btn-elim" class="btn btn-primary btn-sm" ${canEliminate?'':'disabled'}>🔻 Eliminar 2 piores</button>
