@@ -27,7 +27,7 @@ create table if not exists quiz_teams (
 create table if not exists quiz_questions (
   id          uuid primary key default gen_random_uuid(),
   game_id     uuid references quiz_games(id) on delete cascade,
-  phase       text not null check (phase in ('group','knockout')),
+  phase       text not null check (phase in ('group','knockout','extra')),
   ord         int  not null default 0,       -- ordem/numeração (1..20 na fase de grupos)
   points      int  not null default 0,       -- 10 ou 20 na fase de grupos
   text        text not null,

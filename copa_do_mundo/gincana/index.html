@@ -47,7 +47,7 @@
   <script type="module">
     import { supabase, requireAuthWithProfile, escHtml, signOut } from '../bolao/supabase.js'
 
-    const auth = await requireAuthWithProfile('../bolao/login.html')
+    const auth = await requireAuthWithProfile('login.html')
     if (!auth) throw new Error('stop')
     const me = auth.user.id
 
@@ -57,9 +57,16 @@
 
     const rpc = (fn,args)=>supabase.rpc(fn,args)
 
+    // Com várias gincanas podendo existir ao mesmo tempo, a equipe não pode simplesmente
+    // pegar "a mais recente" — busca as gincanas em que ELA está inscrita, preferindo
+    // a mais recente ainda em andamento (senão, a mais recente já encerrada, p/ ver o pódio).
     async function loadGame() {
-      const { data } = await supabase.from('quiz_games').select('*').order('created_at',{ascending:false}).limit(1).maybeSingle()
-      S.game = data
+      const { data } = await supabase.from('quiz_teams').select('game_id, quiz_games(*)').eq('team_id', me)
+      const games = (data ?? []).map(r => r.quiz_games).filter(Boolean)
+      const byNewest = (a,b) => new Date(b.created_at) - new Date(a.created_at)
+      const active   = games.filter(g => g.status !== 'finished').sort(byNewest)[0]
+      const finished = games.filter(g => g.status === 'finished').sort(byNewest)[0]
+      S.game = active ?? finished ?? null
     }
     async function loadLive() {
       if (!S.game) return

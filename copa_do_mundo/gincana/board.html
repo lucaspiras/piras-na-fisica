@@ -45,7 +45,7 @@
 
   <script type="module">
     import { supabase, requireAuthWithProfile, escHtml } from '../bolao/supabase.js'
-    const auth = await requireAuthWithProfile('../bolao/login.html')
+    const auth = await requireAuthWithProfile('login.html')
     if (!auth) throw new Error('stop')
 
     const board = document.getElementById('board')
@@ -62,7 +62,16 @@
         return `<div style="margin-top:18px;max-width:640px"><iframe width="100%" height="360" src="https://www.youtube.com/embed/${id}${start}" frameborder="0" allow="accelerometer;autoplay;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="border-radius:12px"></iframe></div>`
       } catch { return '' }
     }
-    async function loadGame(){ const {data}=await supabase.from('quiz_games').select('*').order('created_at',{ascending:false}).limit(1).maybeSingle(); S.game=data }
+    async function loadGame(){
+      const gameId = new URLSearchParams(location.search).get('game')
+      if (gameId) {
+        const { data } = await supabase.from('quiz_games').select('*').eq('id', gameId).maybeSingle()
+        S.game = data
+        return
+      }
+      // Sem ?game= na URL (link antigo/salvo): mantém o comportamento de antes.
+      const {data}=await supabase.from('quiz_games').select('*').order('created_at',{ascending:false}).limit(1).maybeSingle(); S.game=data
+    }
     async function loadLive(){
       if(!S.game) return
       const [st,sb,ms]=await Promise.all([

@@ -41,13 +41,16 @@
   </main>
 
   <script type="module">
-    import { supabase, requireAdmin, escHtml, signOut } from '../bolao/supabase.js'
+    import { supabase, requireAuthWithProfile, escHtml, signOut } from '../bolao/supabase.js'
 
-    const auth = await requireAdmin()   // redireciona quem não é admin
+    // Checagem local (não usa requireAdmin do bolão, que redireciona para dashboard.html
+    // do bolão em caso de não-admin — aqui, quem não é admin volta para a tela da equipe).
+    const auth = await requireAuthWithProfile('login.html')
     if (!auth) throw new Error('stop')
+    if (!auth.profile.is_admin) { location.href = 'index.html'; throw new Error('stop') }
 
     const app = document.getElementById('app')
-    let S = { game:null, teams:[], profiles:[], questions:[], scoreboard:[], matches:[], state:null,
+    let S = { game:null, games:[], teams:[], profiles:[], questions:[], scoreboard:[], matches:[], state:null,
               answersCount:0, answersByTeam:{}, koPick:{} }
     let pollTimer = null, channel = null
 
@@ -55,10 +58,38 @@
     const toast = (m, ok=true) => { const e=document.getElementById('gq-toast'); if(!e)return;
       e.textContent=m; e.style.color = ok?'var(--pitch-deep)':'var(--flare)'; e.classList.remove('hidden') }
 
+    const ACTIVE_GAME_KEY = 'gq_admin_game_id'
+
     // ── Carregamento de dados ────────────────────────────────────────────
-    async function loadGame() {
-      const { data } = await supabase.from('quiz_games').select('*').order('created_at',{ascending:false}).limit(1).maybeSingle()
-      S.game = data
+    // Lista TODAS as gincanas (não só a mais recente) — o admin escolhe qual abrir.
+    async function loadGames() {
+      const { data, error } = await supabase.from('quiz_games')
+        .select('*, quiz_teams(count)').order('created_at', { ascending:false })
+      if (error) { toast(error.message, false); S.games = []; return }
+      S.games = data ?? []
+    }
+    function teamCount(g) { return g.quiz_teams?.[0]?.count ?? 0 }
+
+    // Abre uma gincana específica (persiste a escolha) e carrega os detalhes dela.
+    async function openGame(id) {
+      S.game = S.games.find(g => g.id === id) ?? null
+      if (!S.game) return
+      localStorage.setItem(ACTIVE_GAME_KEY, id)
+      await loadAll(); subscribe(); startAnswerPoll(); render()
+    }
+    // Recarrega a lista e reaponta S.game para a mesma gincana (pega status atualizado).
+    async function refreshGame() {
+      const id = S.game?.id
+      await loadGames()
+      S.game = id ? (S.games.find(g => g.id === id) ?? null) : null
+    }
+    // Volta ao painel de gincanas (não apaga nada, só limpa a seleção).
+    function backToPicker() {
+      S.game = null
+      localStorage.removeItem(ACTIVE_GAME_KEY)
+      if (channel) { supabase.removeChannel(channel); channel = null }
+      clearInterval(pollTimer)
+      render()
     }
     async function loadAll() {
       if (!S.game) return
@@ -108,7 +139,7 @@
 
     // ── Render principal (state machine por game.status) ─────────────────
     function render() {
-      if (!S.game) return renderNoGame()
+      if (!S.game) return renderPicker()
       const st = S.game.status
       if (st === 'setup')     return renderSetup()
       if (st === 'finished')  return renderFinished()
@@ -117,11 +148,16 @@
 
     function header(sub) {
       const statusLabel = { setup:'Configuração', group:'Quiz ao vivo', knockout:'Rodada final', finished:'Encerrada' }
+      const gameTools = S.game ? `
+        <button id="btn-switch-game" class="btn btn-ghost btn-sm">🔀 Trocar gincana</button>
+        ${S.game.status !== 'setup' ? `<button id="btn-reset-game" class="btn btn-ghost btn-sm">🔄 Reiniciar partida</button>` : ''}
+        <a href="board.html?game=${S.game.id}" target="_blank" class="btn btn-ghost btn-sm" style="text-decoration:none">📺 Telão</a>` : ''
       return `<div class="gq-topbar">
         <div><h2 style="margin:0">🎯 Apresentador · Gincana</h2>
           <span class="muted mono" style="font-size:.8rem">${escHtml(S.game?.name||'')}</span></div>
-        <div style="display:flex;gap:8px;align-items:center">
-          <span class="gq-pill">${statusLabel[S.game?.status]||''}</span>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          ${S.game ? `<span class="gq-pill">${statusLabel[S.game.status]||''}</span>` : ''}
+          ${gameTools}
           <a href="regulamento.html" class="btn btn-ghost btn-sm" style="text-decoration:none">Regulamento</a>
           <button id="btn-signout" class="btn btn-ghost btn-sm">Sair</button>
         </div>
@@ -130,20 +166,52 @@
     }
     function afterRender() {
       document.getElementById('btn-signout')?.addEventListener('click', signOut)
+      document.getElementById('btn-switch-game')?.addEventListener('click', backToPicker)
+      document.getElementById('btn-reset-game')?.addEventListener('click', resetGame)
+    }
+    async function resetGame() {
+      if (!confirm('Reiniciar esta partida? Isso apaga respostas e eliminações e volta para a '
+        + 'configuração — mas MANTÉM as equipes e as perguntas cadastradas.')) return
+      const { error } = await rpc('quiz_admin_reset', { p_game: S.game.id })
+      if (error) return toast(error.message, false)
+      await refreshGame(); await loadAll(); toast('Partida reiniciada.'); render()
     }
 
-    // ── Sem jogo ainda ───────────────────────────────────────────────────
-    function renderNoGame() {
-      app.innerHTML = `<div class="section-header"><h2>🎯 Gincana Quiz</h2><div class="pitch-rule"></div></div>
-        <div class="card mt-16"><p class="muted">Nenhuma gincana criada ainda.</p>
-        <div class="gq-opt"><input id="new-name" class="input" type="text" placeholder="Nome da gincana" value="Gincana Quiz">
-        <button id="btn-create" class="btn btn-primary">Criar gincana</button></div></div>`
+    // ── Painel: escolher uma gincana existente ou criar uma nova ──────────
+    function renderPicker() {
+      app.innerHTML = `<div class="section-header"><h2>🎯 Gincanas</h2><div class="pitch-rule"></div></div>
+        <div class="card mt-16">
+          <h3>+ Nova gincana</h3>
+          <div class="gq-opt"><input id="new-name" class="input" type="text" placeholder="Nome da gincana" value="Gincana Quiz">
+          <button id="btn-create" class="btn btn-primary">Criar</button></div>
+          <p id="gq-toast" class="gq-msg hidden"></p>
+        </div>
+        <div class="card mt-16">
+          <h3>Gincanas existentes (${S.games.length})</h3>
+          <div style="margin-top:8px">
+            ${S.games.map(g => `<div class="gq-team-row">
+              <span class="gq-pill">${{setup:'Configuração',group:'Ao vivo',knockout:'Ao vivo',finished:'Encerrada'}[g.status]||g.status}</span>
+              <span style="flex:1"><strong>${escHtml(g.name)}</strong>
+                <span class="muted mono" style="font-size:.78rem"> · ${teamCount(g)} equipes · criada em ${new Date(g.created_at).toLocaleDateString('pt-BR')}</span></span>
+              <button class="btn btn-primary btn-sm btn-open-game" data-id="${g.id}">▶ Abrir</button>
+              <button class="btn btn-ghost btn-sm btn-del-game" data-id="${g.id}" data-name="${escHtml(g.name)}">🗑 Apagar</button>
+            </div>`).join('') || '<p class="muted">Nenhuma gincana criada ainda.</p>'}
+          </div>
+        </div>`
       document.getElementById('btn-create').addEventListener('click', async () => {
         const name = document.getElementById('new-name').value.trim() || 'Gincana Quiz'
-        const { error } = await supabase.from('quiz_games').insert({ name, created_by: auth.user.id })
-        if (error) return alert(error.message)
-        await loadGame(); await loadAll(); subscribe(); render()
+        const { data, error } = await supabase.from('quiz_games').insert({ name, created_by: auth.user.id }).select().maybeSingle()
+        if (error) return toast(error.message, false)
+        await loadGames()
+        await openGame(data.id)
       })
+      document.querySelectorAll('.btn-open-game').forEach(b => b.addEventListener('click', () => openGame(b.dataset.id)))
+      document.querySelectorAll('.btn-del-game').forEach(b => b.addEventListener('click', async () => {
+        if (!confirm(`Apagar "${b.dataset.name}"? Isso apaga PERMANENTEMENTE as equipes, perguntas e respostas dessa gincana.`)) return
+        const { error } = await rpc('quiz_admin_delete_game', { p_game: b.dataset.id })
+        if (error) return toast(error.message, false)
+        await loadGames(); toast('Gincana apagada.'); render()
+      }))
     }
 
     // ── Setup: equipes + perguntas + config ──────────────────────────────
@@ -199,19 +267,23 @@
       document.getElementById('btn-save-teams').addEventListener('click', async () => {
         const ids = [...document.querySelectorAll('.team-cb:checked')].map(c=>c.value)
         if (ids.length !== 10) return toast('Selecione exatamente 10 equipes.', false)
-        await supabase.from('quiz_teams').delete().eq('game_id', S.game.id)
-        await supabase.from('quiz_teams').insert(ids.map(team_id => ({ game_id:S.game.id, team_id })))
+        const del = await supabase.from('quiz_teams').delete().eq('game_id', S.game.id)
+        if (del.error) return toast(del.error.message, false)
+        const ins = await supabase.from('quiz_teams').insert(ids.map(team_id => ({ game_id:S.game.id, team_id })))
+        if (ins.error) return toast(ins.error.message, false)
         await loadAll(); toast('Equipes salvas.'); render()
       })
       document.getElementById('btn-save-cfg').addEventListener('click', async () => {
         const s = parseInt(document.getElementById('cfg-seconds').value)||30
-        await supabase.from('quiz_games').update({ question_seconds:s }).eq('id', S.game.id)
+        const { error } = await supabase.from('quiz_games').update({ question_seconds:s }).eq('id', S.game.id)
+        if (error) return toast(error.message, false)
         S.game.question_seconds=s; toast('Configuração salva.')
       })
       bindQForm()
       document.querySelectorAll('.btn-del-q').forEach(b => b.addEventListener('click', async () => {
         if (!confirm('Excluir esta pergunta?')) return
-        await supabase.from('quiz_questions').delete().eq('id', b.dataset.id)
+        const { error } = await supabase.from('quiz_questions').delete().eq('id', b.dataset.id)
+        if (error) return toast(error.message, false)
         await loadAll(); render()
       }))
       document.getElementById('btn-import').addEventListener('click', importJson)
@@ -272,7 +344,7 @@
       if (groupQs.length < 25) return toast('Cadastre as 25 perguntas ativas (1-25).', false)
       const { error } = await rpc('quiz_admin_start_game', { p_game:S.game.id })
       if (error) return toast(error.message, false)
-      await loadGame(); await loadAll(); render(); startAnswerPoll()
+      await refreshGame(); await loadAll(); render(); startAnswerPoll()
     }
 
     // ── Quiz ao vivo (perguntas 1-25 + eliminação progressiva) ───────────
@@ -343,7 +415,7 @@
       if (!confirm('Encerrar a gincana? A equipe no topo do placar será a campeã.')) return
       const { error } = await rpc('quiz_admin_finish', { p_game:S.game.id })
       if (error) return toast(error.message, false)
-      await loadGame(); await loadAll(); render()
+      await refreshGame(); await loadAll(); render()
     }
 
     function liveQuestionPanel(st) {
@@ -404,8 +476,16 @@
     }
 
     // ── Boot ─────────────────────────────────────────────────────────────
-    await loadGame(); await loadProfiles(); await loadAll()
-    subscribe(); startAnswerPoll(); render()
+    await loadGames(); await loadProfiles()
+    const savedId = localStorage.getItem(ACTIVE_GAME_KEY)
+    const saved = savedId ? S.games.find(g => g.id === savedId) : null
+    if (saved) {
+      S.game = saved
+      await loadAll(); subscribe(); startAnswerPoll()
+    } else {
+      localStorage.removeItem(ACTIVE_GAME_KEY)
+    }
+    render()
   </script>
 </body>
 </html>
