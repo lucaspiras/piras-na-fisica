@@ -27,6 +27,25 @@ function genInviteCode() {
     '0123456789ABCDEF'[Math.floor(Math.random() * 16)]).join('')
 }
 
+// PostgREST devolve no máximo 1000 linhas por requisição. Este helper pagina
+// via .range() até trazer TODAS as linhas — sem ele, bolões com mais de 1000
+// palpites perdem silenciosamente os excedentes (palpites "somem" da planilha,
+// auditoria e exportação, aparecendo só no dispositivo do próprio autor).
+async function fetchAll(
+  makeQuery: (from: number, to: number) => PromiseLike<{ data: unknown[] | null; error: unknown }>,
+  page = 1000,
+): Promise<{ data: unknown[]; error: unknown }> {
+  let rows: unknown[] = []
+  for (let from = 0; ; from += page) {
+    const { data, error } = await makeQuery(from, from + page - 1)
+    if (error) return { data: rows, error }
+    if (!data || data.length === 0) break
+    rows = rows.concat(data)
+    if (data.length < page) break
+  }
+  return { data: rows, error: null }
+}
+
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: cors })
 
@@ -61,9 +80,9 @@ Deno.serve(async (req) => {
           admin.from('matches')
             .select('id, match_number, group_name, home_team, away_team, home_score, away_score, status, match_date, phase')
             .order('match_date'),
-          admin.from('predictions')
+          fetchAll((from, to) => admin.from('predictions')
             .select('user_id, match_id, home_score, away_score, points')
-            .eq('pool_id', pool_id),
+            .eq('pool_id', pool_id).order('id').range(from, to)),
           admin.from('profiles').select('id, display_name, avatar'),
         ])
 
@@ -333,9 +352,9 @@ Deno.serve(async (req) => {
           admin.from('matches')
             .select('id, match_number, group_name, home_team, away_team, home_score, away_score, status, match_date, phase')
             .order('match_date'),
-          admin.from('predictions')
+          fetchAll((from, to) => admin.from('predictions')
             .select('user_id, match_id, home_score, away_score, points, updated_at')
-            .eq('pool_id', pool_id),
+            .eq('pool_id', pool_id).order('id').range(from, to)),
           admin.from('tournament_predictions')
             .select('user_id, pred_1st, pred_2nd, pred_3rd, updated_at')
             .eq('pool_id', pool_id),
@@ -397,10 +416,12 @@ Deno.serve(async (req) => {
           admin.from('matches')
             .select('id, match_number, group_name, home_team, away_team, home_score, away_score, status, phase, match_date')
             .order('match_date'),
-          admin.from('predictions')
-            .select('pool_id, user_id, match_id, home_score, away_score, points, updated_at'),
-          admin.from('predicted_group_standings')
-            .select('pool_id, user_id, group_name, position, team_name'),
+          fetchAll((from, to) => admin.from('predictions')
+            .select('pool_id, user_id, match_id, home_score, away_score, points, updated_at')
+            .order('id').range(from, to)),
+          fetchAll((from, to) => admin.from('predicted_group_standings')
+            .select('pool_id, user_id, group_name, position, team_name')
+            .order('user_id').order('group_name').order('position').range(from, to)),
         ])
         const emailById: Record<string, string | undefined> = {}
         for (const u of list?.users ?? []) emailById[u.id] = u.email

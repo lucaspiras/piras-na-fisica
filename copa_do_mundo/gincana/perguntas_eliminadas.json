@@ -1,0 +1,577 @@
+[
+  {
+    "phase": "group",
+    "ord": 1,
+    "points": 10,
+    "text": "De quantos em quantos anos acontece a Copa do Mundo masculina de futebol?",
+    "options": [
+      {
+        "key": "A",
+        "label": "2 anos"
+      },
+      {
+        "key": "B",
+        "label": "3 anos"
+      },
+      {
+        "key": "C",
+        "label": "4 anos"
+      },
+      {
+        "key": "D",
+        "label": "5 anos"
+      }
+    ],
+    "correct_key": "C"
+  },
+  {
+    "phase": "group",
+    "ord": 3,
+    "points": 10,
+    "text": "Qual seleção venceu a Copa do Mundo de 2002?",
+    "options": [
+      {
+        "key": "A",
+        "label": "França"
+      },
+      {
+        "key": "B",
+        "label": "Brasil"
+      },
+      {
+        "key": "C",
+        "label": "Alemanha"
+      },
+      {
+        "key": "D",
+        "label": "Itália"
+      }
+    ],
+    "correct_key": "B"
+  },
+  {
+    "phase": "group",
+    "ord": 4,
+    "points": 10,
+    "text": "A Inglaterra, seleção tradicional nas Copas, tem o inglês como idioma. No inglês britânico, como se diz \"futebol\"?",
+    "options": [
+      {
+        "key": "A",
+        "label": "Basketball"
+      },
+      {
+        "key": "B",
+        "label": "Football"
+      },
+      {
+        "key": "C",
+        "label": "Baseball"
+      },
+      {
+        "key": "D",
+        "label": "Handball"
+      }
+    ],
+    "correct_key": "B"
+  },
+  {
+    "phase": "group",
+    "ord": 5,
+    "points": 10,
+    "text": "Quantos jogadores cada time tem em campo no futebol, incluindo o goleiro?",
+    "options": [
+      {
+        "key": "A",
+        "label": "9"
+      },
+      {
+        "key": "B",
+        "label": "10"
+      },
+      {
+        "key": "C",
+        "label": "11"
+      },
+      {
+        "key": "D",
+        "label": "12"
+      }
+    ],
+    "correct_key": "C"
+  },
+  {
+    "phase": "group",
+    "ord": 9,
+    "points": 10,
+    "text": "Quem é o maior artilheiro da história das Copas do Mundo?",
+    "options": [
+      {
+        "key": "A",
+        "label": "Ronaldo"
+      },
+      {
+        "key": "B",
+        "label": "Miroslav Klose"
+      },
+      {
+        "key": "C",
+        "label": "Pelé"
+      },
+      {
+        "key": "D",
+        "label": "Gerd Müller"
+      }
+    ],
+    "correct_key": "B"
+  },
+  {
+    "phase": "group",
+    "ord": 10,
+    "points": 10,
+    "text": "O Brasil, pentacampeão mundial, abriga a Amazônia, vital para o clima. Qual é o principal gás do efeito estufa ligado à ação humana?",
+    "options": [
+      {
+        "key": "A",
+        "label": "Oxigênio"
+      },
+      {
+        "key": "B",
+        "label": "Nitrogênio"
+      },
+      {
+        "key": "C",
+        "label": "Gás carbônico (CO₂)"
+      },
+      {
+        "key": "D",
+        "label": "Hidrogênio"
+      }
+    ],
+    "correct_key": "C"
+  },
+  {
+    "phase": "group",
+    "ord": 13,
+    "points": 20,
+    "text": "Quem marcou o gol conhecido como \"La Mano de Dios\", em 1986?",
+    "options": [
+      {
+        "key": "A",
+        "label": "Maradona"
+      },
+      {
+        "key": "B",
+        "label": "Messi"
+      },
+      {
+        "key": "C",
+        "label": "Batistuta"
+      },
+      {
+        "key": "D",
+        "label": "Kempes"
+      }
+    ],
+    "correct_key": "A"
+  },
+  {
+    "phase": "group",
+    "ord": 16,
+    "points": 20,
+    "text": "A Alemanha, sede da Copa de 2006, já foi dividida pelo Muro de Berlim. Em que ano o muro caiu?",
+    "options": [
+      {
+        "key": "A",
+        "label": "1987"
+      },
+      {
+        "key": "B",
+        "label": "1989"
+      },
+      {
+        "key": "C",
+        "label": "1991"
+      },
+      {
+        "key": "D",
+        "label": "1985"
+      }
+    ],
+    "correct_key": "B"
+  },
+  {
+    "phase": "knockout",
+    "ord": 1,
+    "points": 0,
+    "text": "[Média] Qual seleção é a maior campeã da Copa do Mundo?",
+    "options": [
+      {
+        "key": "A",
+        "label": "Alemanha"
+      },
+      {
+        "key": "B",
+        "label": "Itália"
+      },
+      {
+        "key": "C",
+        "label": "Brasil"
+      },
+      {
+        "key": "D",
+        "label": "Argentina"
+      }
+    ],
+    "correct_key": "C"
+  },
+  {
+    "phase": "knockout",
+    "ord": 4,
+    "points": 0,
+    "text": "[Média] A Inglaterra é um país de língua inglesa. O que significa a palavra \"September\"?",
+    "options": [
+      {
+        "key": "A",
+        "label": "Outubro"
+      },
+      {
+        "key": "B",
+        "label": "Setembro"
+      },
+      {
+        "key": "C",
+        "label": "Novembro"
+      },
+      {
+        "key": "D",
+        "label": "Dezembro"
+      }
+    ],
+    "correct_key": "B"
+  },
+  {
+    "phase": "knockout",
+    "ord": 5,
+    "points": 0,
+    "text": "[Difícil] Qual seleção venceu a Copa do Mundo de 1998?",
+    "options": [
+      {
+        "key": "A",
+        "label": "Brasil"
+      },
+      {
+        "key": "B",
+        "label": "França"
+      },
+      {
+        "key": "C",
+        "label": "Itália"
+      },
+      {
+        "key": "D",
+        "label": "Alemanha"
+      }
+    ],
+    "correct_key": "B"
+  },
+  {
+    "phase": "knockout",
+    "ord": 6,
+    "points": 0,
+    "text": "[Muito difícil] A Alemanha é a terra natal de Albert Einstein. Qual é a velocidade aproximada da luz no vácuo?",
+    "options": [
+      {
+        "key": "A",
+        "label": "300 mil km/s"
+      },
+      {
+        "key": "B",
+        "label": "30 mil km/s"
+      },
+      {
+        "key": "C",
+        "label": "3 milhões km/s"
+      },
+      {
+        "key": "D",
+        "label": "300 km/s"
+      }
+    ],
+    "correct_key": "A"
+  },
+  {
+    "phase": "knockout",
+    "ord": 7,
+    "points": 0,
+    "text": "[Média] O Egito, presente em Copas do Mundo, fica em qual continente?",
+    "options": [
+      {
+        "key": "A",
+        "label": "Ásia"
+      },
+      {
+        "key": "B",
+        "label": "África"
+      },
+      {
+        "key": "C",
+        "label": "Europa"
+      },
+      {
+        "key": "D",
+        "label": "Oceania"
+      }
+    ],
+    "correct_key": "B"
+  },
+  {
+    "phase": "knockout",
+    "ord": 8,
+    "points": 0,
+    "text": "[Difícil] Quantas Copas do Mundo a Argentina havia conquistado até 2022 (incluindo 2022)?",
+    "options": [
+      {
+        "key": "A",
+        "label": "1"
+      },
+      {
+        "key": "B",
+        "label": "2"
+      },
+      {
+        "key": "C",
+        "label": "3"
+      },
+      {
+        "key": "D",
+        "label": "4"
+      }
+    ],
+    "correct_key": "C"
+  },
+  {
+    "phase": "knockout",
+    "ord": 10,
+    "points": 0,
+    "text": "[Média] Em que país foi a Copa do Mundo de 2014?",
+    "options": [
+      {
+        "key": "A",
+        "label": "Brasil"
+      },
+      {
+        "key": "B",
+        "label": "Rússia"
+      },
+      {
+        "key": "C",
+        "label": "Catar"
+      },
+      {
+        "key": "D",
+        "label": "África do Sul"
+      }
+    ],
+    "correct_key": "A"
+  },
+  {
+    "phase": "knockout",
+    "ord": 11,
+    "points": 0,
+    "text": "[Difícil] A China, gigante asiático, disputa com um vizinho o posto de mais populoso. Qual é o país mais populoso do mundo em 2024?",
+    "options": [
+      {
+        "key": "A",
+        "label": "China"
+      },
+      {
+        "key": "B",
+        "label": "Índia"
+      },
+      {
+        "key": "C",
+        "label": "Estados Unidos"
+      },
+      {
+        "key": "D",
+        "label": "Indonésia"
+      }
+    ],
+    "correct_key": "B"
+  },
+  {
+    "phase": "knockout",
+    "ord": 12,
+    "points": 0,
+    "text": "[Muito difícil] A Alemanha, tetracampeã mundial, é terra de grandes compositores. Quem, mesmo surdo, compôs a 9ª Sinfonia?",
+    "options": [
+      {
+        "key": "A",
+        "label": "Mozart"
+      },
+      {
+        "key": "B",
+        "label": "Bach"
+      },
+      {
+        "key": "C",
+        "label": "Beethoven"
+      },
+      {
+        "key": "D",
+        "label": "Chopin"
+      }
+    ],
+    "correct_key": "C"
+  },
+  {
+    "phase": "knockout",
+    "ord": 14,
+    "points": 0,
+    "text": "[Difícil] Qual país sediou e venceu a Copa do Mundo de 1978?",
+    "options": [
+      {
+        "key": "A",
+        "label": "Argentina"
+      },
+      {
+        "key": "B",
+        "label": "Brasil"
+      },
+      {
+        "key": "C",
+        "label": "Espanha"
+      },
+      {
+        "key": "D",
+        "label": "Itália"
+      }
+    ],
+    "correct_key": "A"
+  },
+  {
+    "phase": "knockout",
+    "ord": 15,
+    "points": 0,
+    "text": "[Muito difícil] Durante a Copa, um jogador sofreu um corte no maior órgão do corpo humano. Qual é ele?",
+    "options": [
+      {
+        "key": "A",
+        "label": "Fígado"
+      },
+      {
+        "key": "B",
+        "label": "Pele"
+      },
+      {
+        "key": "C",
+        "label": "Pulmão"
+      },
+      {
+        "key": "D",
+        "label": "Intestino"
+      }
+    ],
+    "correct_key": "B"
+  },
+  {
+    "phase": "knockout",
+    "ord": 16,
+    "points": 0,
+    "text": "[Média] O Brasil, pentacampeão mundial, é banhado a leste por qual oceano?",
+    "options": [
+      {
+        "key": "A",
+        "label": "Pacífico"
+      },
+      {
+        "key": "B",
+        "label": "Índico"
+      },
+      {
+        "key": "C",
+        "label": "Atlântico"
+      },
+      {
+        "key": "D",
+        "label": "Ártico"
+      }
+    ],
+    "correct_key": "C"
+  },
+  {
+    "phase": "knockout",
+    "ord": 18,
+    "points": 0,
+    "text": "[Muito difícil] A Inglaterra é o berço do futebol e de língua inglesa. Qual é o passado do verbo irregular \"to go\"?",
+    "options": [
+      {
+        "key": "A",
+        "label": "Goed"
+      },
+      {
+        "key": "B",
+        "label": "Went"
+      },
+      {
+        "key": "C",
+        "label": "Gone"
+      },
+      {
+        "key": "D",
+        "label": "Going"
+      }
+    ],
+    "correct_key": "B"
+  },
+  {
+    "phase": "knockout",
+    "ord": 20,
+    "points": 0,
+    "text": "[Difícil] Numa chave de mata-mata hipotética com muitas rodadas aparece o número 2¹⁰. Qual é o valor de 2¹⁰?",
+    "options": [
+      {
+        "key": "A",
+        "label": "512"
+      },
+      {
+        "key": "B",
+        "label": "1024"
+      },
+      {
+        "key": "C",
+        "label": "256"
+      },
+      {
+        "key": "D",
+        "label": "2048"
+      }
+    ],
+    "correct_key": "B"
+  },
+  {
+    "phase": "knockout",
+    "ord": 21,
+    "points": 0,
+    "text": "[Muito difícil] Os Estados Unidos, país-sede da Copa de 2026, levaram o ser humano à Lua pela primeira vez em que ano?",
+    "options": [
+      {
+        "key": "A",
+        "label": "1969"
+      },
+      {
+        "key": "B",
+        "label": "1965"
+      },
+      {
+        "key": "C",
+        "label": "1972"
+      },
+      {
+        "key": "D",
+        "label": "1959"
+      }
+    ],
+    "correct_key": "A"
+  }
+]

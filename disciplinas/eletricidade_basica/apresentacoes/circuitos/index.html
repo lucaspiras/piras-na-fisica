@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <title>Circuitos Elétricos Simples · Apresentação</title>
+  <meta name="description" content="Apresentação de Física: circuitos elétricos simples — tensão, corrente, resistência e Lei de Ohm. Portal pirasnafisica.com.br.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Circuitos Elétricos Simples">
+  <meta property="og:description" content="Apresentação de Física: tensão, corrente, resistência e a Lei de Ohm.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/disciplinas/eletricidade_basica/apresentacoes/circuitos/">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    html,body{margin:0;padding:0;height:100%;}
+    *{box-sizing:border-box;}
+    @keyframes flow{to{stroke-dashoffset:-32;}}
+    @keyframes pulse{0%,100%{opacity:.35;}50%{opacity:1;}}
+
+    body{background:#0d0e12;overflow:hidden;font-family:'IBM Plex Sans',sans-serif;}
+
+    /* Palco fixo 1920x1080, escalado para caber na viewport */
+    #deck-stage{
+      position:absolute;top:50%;left:50%;
+      width:1920px;height:1080px;
+      transform-origin:center center;
+      transform:translate(-50%,-50%) scale(1);
+    }
+    .slide-frame{
+      position:absolute;inset:0;width:1920px;height:1080px;
+      visibility:hidden;opacity:0;transition:opacity .25s ease;
+    }
+    .slide-frame.active{visibility:visible;opacity:1;}
+    /* a <section> do design preenche o frame (ela usa width/height:100%) */
+
+    /* Texto de corpo justificado por padrão (parágrafos, itens de lista e
+       descrições dos cards). A última linha não é esticada (padrão do justify),
+       por isso as descrições dos cards terminam com os exemplos — a enumeração
+       cai na última linha e não abre buracos. Sem hifenização (hyphens:manual). */
+    .slide-frame p,
+    .slide-frame li > span:last-child,
+    .slide-frame div[style*="color:#3a3c42"] { text-align: justify; }
+
+    /* ── Chrome de navegação ─────────────────────────── */
+    #ui{position:fixed;inset:0;pointer-events:none;z-index:10;}
+    .nav-btn{
+      position:fixed;top:50%;transform:translateY(-50%);
+      width:54px;height:54px;border-radius:50%;border:none;
+      background:rgba(20,21,27,.55);color:#fff;font-size:24px;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+      pointer-events:auto;transition:background .15s,opacity .2s;opacity:.45;
+    }
+    .nav-btn:hover{background:rgba(30,99,240,.9);opacity:1;}
+    #prev{left:18px;} #next{right:18px;}
+    #bottom-bar{
+      position:fixed;left:0;right:0;bottom:0;height:42px;
+      display:flex;align-items:center;gap:16px;padding:0 18px;
+      pointer-events:auto;
+      background:linear-gradient(to top,rgba(13,14,18,.85),transparent);
+    }
+    #counter{font-family:'IBM Plex Mono',monospace;font-size:14px;color:#cfd2da;min-width:64px;}
+    #progress-track{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.15);overflow:hidden;}
+    #progress-bar{height:100%;width:0;background:#1E63F0;transition:width .25s ease;}
+    .bar-btn{
+      pointer-events:auto;background:none;border:none;color:#cfd2da;cursor:pointer;
+      font-family:'IBM Plex Mono',monospace;font-size:13px;padding:6px 8px;border-radius:6px;
+    }
+    .bar-btn:hover{background:rgba(255,255,255,.1);color:#fff;}
+
+    /* Notas do palestrante */
+    #notes{
+      position:fixed;left:0;right:0;bottom:42px;max-height:34vh;overflow:auto;
+      padding:16px 22px;background:rgba(13,14,18,.94);color:#e7e9ee;
+      font-size:16px;line-height:1.5;border-top:2px solid #1E63F0;
+      transform:translateY(calc(100% + 46px));transition:transform .25s ease;pointer-events:auto;z-index:11;
+    }
+    #notes.open{transform:translateY(0);}
+    #notes b{color:#5fa0ff;font-family:'IBM Plex Mono',monospace;font-weight:500;}
+
+    #hint{
+      position:fixed;top:14px;left:50%;transform:translateX(-50%);
+      font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8b8e97;
+      background:rgba(13,14,18,.7);padding:6px 12px;border-radius:20px;
+      transition:opacity .4s ease;z-index:12;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="deck-wrap">
+    <div id="deck-stage">
+      <div class="slide-frame active">
+<section data-label="Capa" data-screen-label="Capa" data-speaker-notes="Apresentação sobre circuitos elétricos simples. Hoje vamos entender o que faz a corrente circular: a fonte, a tensão, a resistência e a Lei de Ohm." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:space-between;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
+  <svg viewBox="0 0 1920 1080" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.10;">
+    <path d="M0,840 H560 V470 H960 V760 H1340 V300 H1920" fill="none" stroke="#1E63F0" stroke-width="5"/>
+    <circle cx="560" cy="470" r="11" fill="#1E63F0"/><circle cx="960" cy="760" r="11" fill="#1E63F0"/><circle cx="1340" cy="300" r="11" fill="#1E63F0"/>
+  </svg>
+  <div style="display:flex;align-items:center;gap:18px;position:relative;">
+    <span style="width:46px;height:46px;border-radius:50%;background:#1E63F0;display:inline-block;"></span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.22em;text-transform:uppercase;color:#16171A;">Física · Eletrodinâmica</span>
+  </div>
+  <div style="position:relative;">
+    <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:148px;line-height:0.94;letter-spacing:-0.02em;margin:0;">Circuitos<br>Elétricos <span style="color:#1E63F0;">Simples</span></h1>
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:30px;letter-spacing:0.06em;color:#54565c;margin:38px 0 0;">Tensão · Corrente · Resistência · Lei de Ohm</p>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;position:relative;">
+    <span style="font-size:30px;color:#16171A;">Lucas Telichevesky</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:28px;color:#54565c;">2026</span>
+  </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="Agenda" data-screen-label="Agenda" data-speaker-notes="Percorremos seis blocos: do que é um circuito até as aplicações no dia a dia. A espinha dorsal é a Lei de Ohm." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:16px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#1E63F0;">Roteiro</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:64px;font-weight:600;margin:0;letter-spacing:-0.01em;">O que vamos explorar</h2>
+  </div>
+  <div style="margin-top:70px;display:grid;grid-template-columns:1fr 1fr;gap:36px 90px;">
+    <div style="display:flex;gap:28px;align-items:baseline;border-top:2px solid #16171A;padding-top:24px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:#1E63F0;">01</span><div><div style="font-size:38px;font-weight:600;">O circuito elétrico</div><div style="font-size:27px;color:#54565c;margin-top:6px;">O caminho fechado da corrente</div></div></div>
+    <div style="display:flex;gap:28px;align-items:baseline;border-top:2px solid #16171A;padding-top:24px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:#1E63F0;">02</span><div><div style="font-size:38px;font-weight:600;">Tensão e ddp</div><div style="font-size:27px;color:#54565c;margin-top:6px;">A fonte e a diferença de potencial</div></div></div>
+    <div style="display:flex;gap:28px;align-items:baseline;border-top:2px solid #16171A;padding-top:24px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:#1E63F0;">03</span><div><div style="font-size:38px;font-weight:600;">Corrente elétrica</div><div style="font-size:27px;color:#54565c;margin-top:6px;">O fluxo de cargas em movimento</div></div></div>
+    <div style="display:flex;gap:28px;align-items:baseline;border-top:2px solid #16171A;padding-top:24px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:#1E63F0;">04</span><div><div style="font-size:38px;font-weight:600;">Resistência e resistividade</div><div style="font-size:27px;color:#54565c;margin-top:6px;">A oposição à passagem da corrente</div></div></div>
+    <div style="display:flex;gap:28px;align-items:baseline;border-top:2px solid #16171A;padding-top:24px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:#1E63F0;">05</span><div><div style="font-size:38px;font-weight:600;">Lei de Ohm</div><div style="font-size:27px;color:#54565c;margin-top:6px;">A relação entre V, R e i</div></div></div>
+    <div style="display:flex;gap:28px;align-items:baseline;border-top:2px solid #16171A;padding-top:24px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:#1E63F0;">06</span><div><div style="font-size:38px;font-weight:600;">No dia a dia</div><div style="font-size:27px;color:#54565c;margin-top:6px;">Potência e aplicações reais</div></div></div>
+  </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="§ Circuito" data-screen-label="Divisor 01" data-speaker-notes="Primeiro bloco: o que é, de fato, um circuito elétrico." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:center;background:#15161B;color:#F7F6F2;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
+  <span style="position:absolute;right:90px;top:60px;font-family:'Space Grotesk',sans-serif;font-size:420px;font-weight:600;color:#22242c;line-height:1;">01</span>
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.2em;text-transform:uppercase;color:#5fa0ff;position:relative;">Bloco 01</span>
+  <h2 style="font-family:'Space Grotesk',sans-serif;font-size:104px;font-weight:600;margin:24px 0 0;letter-spacing:-0.02em;position:relative;">O circuito elétrico</h2>
+  <div style="width:140px;height:6px;background:#1E63F0;margin-top:44px;position:relative;"></div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="O que é" data-screen-label="O que é um circuito" data-speaker-notes="Um circuito é um caminho fechado por onde a corrente circula. Precisa de fonte, condutores e um consumidor. Se o caminho abre, a corrente para." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#1E63F0;">O circuito</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">O que é um circuito</h2>
+  </div>
+  <div style="display:flex;gap:80px;margin-top:48px;flex:1;align-items:center;">
+    <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:34px;flex:1;">
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:#1E63F0;min-width:42px;">01</span><span style="font-size:34px;line-height:1.4;">É um <strong>caminho fechado</strong> por onde as cargas elétricas podem circular continuamente.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:#1E63F0;min-width:42px;">02</span><span style="font-size:34px;line-height:1.4;">A <strong>fonte</strong> empurra as cargas, os <strong>fios</strong> as conduzem e o <strong>consumidor</strong> (lâmpada, motor, resistor) transforma a energia em luz, calor ou movimento.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:#1E63F0;min-width:42px;">03</span><span style="font-size:34px;line-height:1.4;">Se o caminho é <strong>interrompido</strong>, a corrente cessa — é o que faz um interruptor.</span></li>
+    </ul>
+    <div style="flex:0 0 640px;background:#EEF3FF;border-radius:24px;padding:36px;">
+      <svg viewBox="0 0 650 420" style="width:100%;height:auto;">
+        <!-- wires -->
+        <path d="M140 100 H460" fill="none" stroke="#16171A" stroke-width="5"/>
+        <path d="M460 100 V170 M460 230 V320 M460 320 H140 M140 320 V232 M140 178 V100" fill="none" stroke="#16171A" stroke-width="5"/>
+        <!-- animated current on top wire -->
+        <path d="M140 100 H460" fill="none" stroke="#F4A024" stroke-width="5" stroke-dasharray="14 18" style="animation:flow 1s linear infinite;"/>
+        <polygon points="318,90 338,100 318,110" fill="#F4A024"/>
+        <!-- battery (fonte) on left -->
+        <line x1="116" y1="178" x2="164" y2="178" stroke="#1E63F0" stroke-width="6"/>
+        <line x1="128" y1="194" x2="152" y2="194" stroke="#1E63F0" stroke-width="9"/>
+        <line x1="116" y1="210" x2="164" y2="210" stroke="#1E63F0" stroke-width="6"/>
+        <line x1="128" y1="226" x2="152" y2="226" stroke="#1E63F0" stroke-width="9"/>
+        <text x="92" y="172" font-family="IBM Plex Mono, monospace" font-size="26" fill="#1E63F0">+</text>
+        <!-- lamp (consumidor) on right -->
+        <circle cx="460" cy="200" r="32" fill="#fff" stroke="#16171A" stroke-width="5"/>
+        <line x1="438" y1="178" x2="482" y2="222" stroke="#F4A024" stroke-width="5"/>
+        <line x1="482" y1="178" x2="438" y2="222" stroke="#F4A024" stroke-width="5"/>
+        <!-- labels -->
+        <text x="60" y="270" font-family="IBM Plex Mono, monospace" font-size="25" fill="#1E63F0">fonte</text>
+        <text x="250" y="58" font-family="IBM Plex Mono, monospace" font-size="25" fill="#F4A024">corrente</text>
+        <text x="470" y="270" font-family="IBM Plex Mono, monospace" font-size="25" fill="#16171A">consumidor</text>
+        <text x="220" y="360" font-family="IBM Plex Mono, monospace" font-size="25" fill="#54565c">fios condutores</text>
+      </svg>
+    </div>
+  </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="3 elementos" data-screen-label="Três elementos" data-speaker-notes="Todo circuito simples tem três papéis: quem fornece energia, quem conduz e quem consome. Vamos detalhar cada um." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#1E63F0;">O circuito</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Os três elementos essenciais</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:64px;flex:1;">
+    <div style="display:flex;flex-direction:column;gap:24px;background:#fff;border-radius:24px;padding:44px 40px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#1E63F0;">01 · fonte</span>
+      <svg viewBox="0 0 200 120" style="width:160px;height:96px;"><rect x="40" y="30" width="110" height="60" rx="10" fill="none" stroke="#16171A" stroke-width="5"/><rect x="150" y="48" width="14" height="24" rx="3" fill="#16171A"/><text x="58" y="78" font-family="Space Grotesk" font-size="44" font-weight="600" fill="#1E63F0">+ −</text></svg>
+      <div style="font-size:36px;font-weight:600;">Fonte de tensão</div>
+      <div style="font-size:29px;line-height:1.4;color:#3a3c42;">Mantém a diferença de potencial que <strong>empurra</strong> as cargas. Pilha, bateria e tomada são exemplos de fontes.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:24px;background:#fff;border-radius:24px;padding:44px 40px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#1E63F0;">02 · condutores</span>
+      <svg viewBox="0 0 200 120" style="width:160px;height:96px;"><path d="M20 60 H180" fill="none" stroke="#16171A" stroke-width="6"/><path d="M20 60 H180" fill="none" stroke="#F4A024" stroke-width="6" stroke-dasharray="12 14" style="animation:flow 1s linear infinite;"/><circle cx="20" cy="60" r="8" fill="#16171A"/><circle cx="180" cy="60" r="8" fill="#16171A"/></svg>
+      <div style="font-size:36px;font-weight:600;">Fios condutores</div>
+      <div style="font-size:29px;line-height:1.4;color:#3a3c42;">Oferecem um caminho de <strong>baixa resistência</strong> para a corrente. Geralmente são feitos de cobre.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:24px;background:#fff;border-radius:24px;padding:44px 40px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#1E63F0;">03 · consumidor</span>
+      <svg viewBox="0 0 200 120" style="width:160px;height:96px;"><path d="M20 60 H60 L72 40 L92 80 L112 40 L132 80 L144 60 H180" fill="none" stroke="#16171A" stroke-width="5"/></svg>
+      <div style="font-size:36px;font-weight:600;">Consumidor</div>
+      <div style="font-size:29px;line-height:1.4;color:#3a3c42;"><strong>Consome</strong> a energia, convertendo-a em luz, calor ou movimento. Lâmpada, motor e resistor são exemplos de consumidores em circuitos.</div>
+    </div>
+  </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="§ Tensão" data-screen-label="Divisor 02" data-speaker-notes="Segundo bloco: a tensão, ou diferença de potencial, que é o que dá o 'empurrão' nas cargas." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:center;background:#15161B;color:#F7F6F2;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
+  <span style="position:absolute;right:90px;top:60px;font-family:'Space Grotesk',sans-serif;font-size:420px;font-weight:600;color:#22242c;line-height:1;">02</span>
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.2em;text-transform:uppercase;color:#5fa0ff;position:relative;">Bloco 02</span>
+  <h2 style="font-family:'Space Grotesk',sans-serif;font-size:104px;font-weight:600;margin:24px 0 0;letter-spacing:-0.02em;position:relative;">Tensão e ddp</h2>
+  <div style="width:140px;height:6px;background:#1E63F0;margin-top:44px;position:relative;"></div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="O que é a fonte" data-screen-label="O que é uma fonte" data-speaker-notes="A fonte fornece energia ao circuito: realiza trabalho separando cargas e armazenando energia potencial elétrica entre os polos, o que mantém uma ddp constante. Atenção à nomenclatura — tensão e ddp são a mesma grandeza (U, em volts); a fem é a tensão que a fonte forneceria idealmente, sem perdas internas." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#1E63F0;">Tensão e ddp</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">O que é uma fonte</h2>
+  </div>
+  <div style="display:flex;gap:80px;margin-top:48px;flex:1;align-items:center;">
+    <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:34px;flex:1;">
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:#1E63F0;min-width:42px;">01</span><span style="font-size:34px;line-height:1.4;">Uma fonte <strong>fornece energia</strong> ao circuito — pilha, bateria, tomada ou fonte de alimentação.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:#1E63F0;min-width:42px;">02</span><span style="font-size:34px;line-height:1.4;">Ela realiza trabalho para <strong>separar cargas</strong>, armazenando <strong>energia potencial elétrica</strong> entre os polos (+) e (−).</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:#1E63F0;min-width:42px;">03</span><span style="font-size:34px;line-height:1.4;">Esse desequilíbrio gera uma <strong>diferença de potencial (ddp)</strong> entre os polos — é ela que impulsiona a corrente pelo circuito.</span></li>
+    </ul>
+    <div style="flex:0 0 560px;background:#EEF3FF;border-radius:24px;padding:48px;display:flex;flex-direction:column;align-items:center;gap:14px;">
+      <svg viewBox="0 0 360 200" style="width:100%;height:auto;">
+        <rect x="40" y="50" width="250" height="100" rx="16" fill="#fff" stroke="#16171A" stroke-width="5"/>
+        <rect x="290" y="80" width="22" height="40" rx="5" fill="#16171A"/>
+        <text x="70" y="118" font-family="Space Grotesk" font-size="56" font-weight="600" fill="#54565c">1,5</text>
+        <text x="185" y="118" font-family="IBM Plex Mono, monospace" font-size="34" fill="#54565c">V</text>
+        <text x="320" y="106" font-family="Space Grotesk" font-size="40" font-weight="700" fill="#1E63F0">+</text>
+        <text x="14" y="106" font-family="Space Grotesk" font-size="40" font-weight="700" fill="#16171A">−</text>
+      </svg>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#54565c;text-align:center;">A pilha mantém a ddp<br>entre seus polos</div>
+    </div>
+  </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="DDP" data-screen-label="Diferença de potencial" data-speaker-notes="A ddp entre os polos da fonte mede a energia entregue a cada unidade de carga ao percorrer o circuito: U = E/q (unidade volt; [U] = J/C = V, com os colchetes indicando a unidade). Numa pilha, acumulam-se cargas positivas junto ao polo positivo e cargas negativas junto ao negativo; esse desequilíbrio gera a ddp e faz as cargas positivas do circuito tenderem a ir do polo + para o −." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#1E63F0;">Tensão e ddp</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Diferença de potencial</h2>
+  </div>
+  <div style="display:flex;gap:74px;margin-top:44px;flex:1;align-items:center;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:30px;">
+      <p style="font-size:35px;line-height:1.45;margin:0;">A <strong>ddp entre os polos da fonte</strong> mede a <strong>energia entregue a cada unidade de carga</strong> ao percorrer o circuito.</p>
+      <p style="font-size:35px;line-height:1.45;margin:0;">Numa pilha, acumulam-se <strong>cargas positivas</strong> junto ao polo positivo (+) e <strong>cargas negativas</strong> junto ao polo negativo (−). Esse desequilíbrio gera a ddp — pelo circuito, as cargas positivas tendem a ir do polo <strong>(+) para o (−)</strong>.</p>
+    </div>
+    <div style="flex:0 0 490px;background:#EEF3FF;border-radius:24px;padding:46px 44px;display:flex;flex-direction:column;gap:26px;align-items:flex-start;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.06em;text-transform:uppercase;color:#1E63F0;">definição</div>
+      <div style="display:flex;align-items:center;gap:24px;font-family:'IBM Plex Mono',monospace;">
+        <span style="font-size:80px;font-weight:500;color:#1E63F0;">U =</span>
+        <div style="display:flex;flex-direction:column;align-items:center;line-height:1;">
+          <span style="font-size:50px;padding:0 26px 12px;">E</span>
+          <span style="align-self:stretch;border-top:5px solid #16171A;"></span>
+          <span style="font-size:50px;padding:12px 26px 0;">q</span>
+        </div>
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:38px;color:#54565c;">[U] = J/C = <span style="color:#16171A;font-weight:600;">V</span></div>
+      <div style="font-size:22px;color:#8b8e97;">[ ] indica a unidade</div>
+    </div>
+  </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="Desnível" data-screen-label="Analogia do desnível" data-speaker-notes="A ddp funciona como um desnível: assim como uma bola rola de onde está mais alto para onde está mais baixo, as cargas se deslocam do ponto de maior potencial para o de menor potencial. Quanto maior a queda (a ddp), mais energia cada carga recebe ao percorrer o circuito." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#1E63F0;">Tensão e ddp</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Analogia do desnível</h2>
+  </div>
+  <div style="display:flex;gap:80px;margin-top:46px;flex:1;align-items:center;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:30px;">
+      <p style="font-size:35px;line-height:1.45;margin:0;">Pense num <strong>desnível</strong>: uma bola rola de onde está mais alto para onde está mais baixo. Com as cargas é parecido — as <strong>cargas positivas</strong> tendem a se deslocar do ponto de <strong>maior potencial</strong> para o de <strong>menor potencial elétrico</strong>.</p>
+      <p style="font-size:35px;line-height:1.45;margin:0;">A <strong>ddp</strong> é o tamanho dessa "queda": quanto maior ela for, <strong>mais energia</strong> cada carga recebe ao percorrer o circuito.</p>
+    </div>
+    <div style="flex:0 0 560px;background:#FDF3E2;border-radius:24px;padding:44px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:#a86a12;margin-bottom:22px;">Analogia do desnível</div>
+      <svg viewBox="0 0 500 300" style="width:100%;height:auto;">
+        <!-- guias de nível -->
+        <line x1="135" y1="85" x2="470" y2="85" stroke="#e6cfa6" stroke-width="2" stroke-dasharray="6 6"/>
+        <line x1="360" y1="225" x2="470" y2="225" stroke="#e6cfa6" stroke-width="2" stroke-dasharray="6 6"/>
+        <!-- platôs + rampa (desnível) -->
+        <path d="M50 85 L135 85 L360 225 L455 225" fill="none" stroke="#16171A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- queda de potencial (U) -->
+        <line x1="470" y1="88" x2="470" y2="222" stroke="#F4A024" stroke-width="3" stroke-dasharray="7 7"/>
+        <polygon points="464,97 470,85 476,97" fill="#F4A024"/>
+        <polygon points="464,213 470,225 476,213" fill="#F4A024"/>
+        <text x="446" y="162" font-family="IBM Plex Mono, monospace" font-size="24" fill="#a86a12">U</text>
+        <!-- rótulos (fora do caminho das cargas) -->
+        <text x="24" y="44" font-family="IBM Plex Mono, monospace" font-size="22" fill="#1E63F0">maior potencial</text>
+        <text x="255" y="288" font-family="IBM Plex Mono, monospace" font-size="22" fill="#54565c">menor potencial</text>
+        <!-- cargas positivas: constante no platô, acelerando na rampa, rápido embaixo -->
+        <g>
+          <circle cx="0" cy="-16" r="15" fill="#1E63F0"/>
+          <text x="0" y="-9" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="22" font-weight="700" fill="#fff">+</text>
+          <animateMotion dur="2.6s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0.19;0.35;0.55;0.79;1" keyTimes="0;0.30;0.50;0.68;0.86;1" path="M50 85 L135 85 L360 225 L455 225"/>
+        </g>
+        <g>
+          <circle cx="0" cy="-16" r="15" fill="#1E63F0"/>
+          <text x="0" y="-9" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="22" font-weight="700" fill="#fff">+</text>
+          <animateMotion dur="2.6s" begin="0.87s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0.19;0.35;0.55;0.79;1" keyTimes="0;0.30;0.50;0.68;0.86;1" path="M50 85 L135 85 L360 225 L455 225"/>
+        </g>
+        <g>
+          <circle cx="0" cy="-16" r="15" fill="#1E63F0"/>
+          <text x="0" y="-9" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="22" font-weight="700" fill="#fff">+</text>
+          <animateMotion dur="2.6s" begin="1.74s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0.19;0.35;0.55;0.79;1" keyTimes="0;0.30;0.50;0.68;0.86;1" path="M50 85 L135 85 L360 225 L455 225"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="ddp · tensão · fem" data-screen-label="ddp, tensão e fem" data-speaker-notes="Três nomes que costumam se confundir. A ddp compara o potencial elétrico entre dois pontos — é o que o voltímetro mede. A fem é uma característica da fonte: a energia que ela entrega a cada carga; apesar do nome, não é força e se mede em volts. Tensão é o termo geral, usado como sinônimo de ddp e, às vezes, de fem. O cálculo da fem de pilhas costuma ser tema da Química; a fem induzida em geradores e usinas será vista mais adiante, no eletromagnetismo." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#1E63F0;">Tensão e ddp</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Tensão, ddp e fem</h2>
+  </div>
+  <p style="font-size:33px;line-height:1.45;margin:32px 0 0;"><strong>Força eletromotriz</strong>, <strong>diferença de potencial</strong> e <strong>tensão</strong> são termos importantes, muitas vezes confundidos. Os três são medidos em <strong>volts (V)</strong>, mas têm significados físicos distintos.</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:38px;flex:1;">
+    <div style="display:flex;flex-direction:column;gap:18px;background:#fff;border-radius:24px;padding:38px 36px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#F4A024;">Fem · ε</span>
+      <div style="font-size:34px;font-weight:600;">Força eletromotriz</div>
+      <div style="font-size:29px;line-height:1.45;color:#3a3c42;">Uma característica da <strong>fonte</strong>: a energia que ela entrega a cada carga. Apesar do nome, <strong>não é força</strong>.</div>
+      <div style="background:#FDF3E2;border-radius:14px;padding:16px 20px;margin-top:20px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;letter-spacing:0.08em;text-transform:uppercase;color:#a86a12;margin-bottom:8px;">onde se estuda</div>
+        <div style="font-size:22px;line-height:1.4;color:#54565c;">A fem de pilhas é calculada na <strong>Química</strong>; a fem induzida em usinas, no <strong>eletromagnetismo</strong>.</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px;background:#fff;border-radius:24px;padding:38px 36px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#1E63F0;">Ddp · U</span>
+      <div style="font-size:34px;font-weight:600;">Diferença de potencial</div>
+      <div style="font-size:29px;line-height:1.45;color:#3a3c42;">Compara o potencial elétrico entre <strong>dois pontos</strong> do circuito. É o que se mede com o voltímetro.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px;background:#fff;border-radius:24px;padding:38px 36px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#54565c;">Tensão</span>
+      <div style="font-size:34px;font-weight:600;">Tensão</div>
+      <div style="font-size:29px;line-height:1.45;color:#3a3c42;">Termo geral, usado como <strong>sinônimo</strong> de ddp e, às vezes, de fem. Sem uma definição própria exata.</div>
+    </div>
+  </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="Tensão CC × CA" data-screen-label="Tensão contínua × alternada" data-speaker-notes="A tensão contínua mantém o sinal e os polos ficam fixos — pilhas e baterias. A alternada inverte de sinal periodicamente (60 Hz no Brasil), fazendo a corrente mudar de sentido — é o que vem da tomada. As siglas CC/CA (DC/AC) vêm da corrente; para a tensão fala-se em tensão contínua/alternada, às vezes escrita Vcc/Vca." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#1E63F0;">Tensão e ddp</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Tensão contínua × alternada</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:56px;flex:1;">
+    <div style="background:#fff;border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:24px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#1E63F0;">Tensão contínua · Vcc</span>
+      <svg viewBox="0 0 300 130" style="width:100%;height:auto;">
+        <line x1="20" y1="18" x2="20" y2="100" stroke="#c9ccd4" stroke-width="2"/>
+        <line x1="20" y1="95" x2="288" y2="95" stroke="#c9ccd4" stroke-width="2"/>
+        <line x1="20" y1="45" x2="278" y2="45" stroke="#1E63F0" stroke-width="6"/>
+        <text x="4" y="24" font-family="IBM Plex Mono, monospace" font-size="20" fill="#54565c">U</text>
+        <text x="278" y="118" font-family="IBM Plex Mono, monospace" font-size="20" fill="#54565c">t</text>
+      </svg>
+      <div style="font-size:29px;line-height:1.45;color:#3a3c42;">A tensão mantém o <strong>mesmo sinal</strong> e os polos ficam fixos. A corrente flui sempre no mesmo sentido — é o caso de pilhas, baterias e da maioria dos eletrônicos.</div>
+    </div>
+    <div style="background:#fff;border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:24px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#F4A024;">Tensão alternada · Vca</span>
+      <svg viewBox="0 0 300 130" style="width:100%;height:auto;">
+        <line x1="20" y1="18" x2="20" y2="114" stroke="#c9ccd4" stroke-width="2"/>
+        <line x1="20" y1="65" x2="288" y2="65" stroke="#c9ccd4" stroke-width="2"/>
+        <path d="M20 65 Q47 22 74 65 T128 65 T182 65 T236 65" fill="none" stroke="#F4A024" stroke-width="6"/>
+        <text x="4" y="24" font-family="IBM Plex Mono, monospace" font-size="20" fill="#54565c">U</text>
+        <text x="278" y="58" font-family="IBM Plex Mono, monospace" font-size="20" fill="#54565c">t</text>
+      </svg>
+      <div style="font-size:29px;line-height:1.45;color:#3a3c42;">A tensão <strong>inverte de sinal</strong> periodicamente (no Brasil, 60 vezes por segundo) e a corrente muda de sentido. É a forma distribuída pela rede elétrica, na tomada de casa.</div>
+    </div>
+  </div>
+  <div style="margin-top:30px;font-size:26px;line-height:1.4;color:#54565c;">→ As siglas <strong>CC/CA</strong> (DC/AC) vêm da <strong>corrente</strong>, mas a mesma classificação vale para a tensão que a origina — às vezes escrita <strong>Vcc/Vca</strong>.</div>
+  <div style="margin-top:12px;font-size:26px;line-height:1.4;color:#54565c;">→ Por enquanto, vamos estudar apenas circuitos de corrente contínua.</div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="Pilhas e baterias" data-screen-label="Pilhas e baterias" data-speaker-notes="Pilhas e baterias convertem energia química em elétrica por reações de oxirredução. A pilha é uma única célula (ex.: AA, 1,5 V); a bateria é uma associação de células, em geral em série para somar a tensão (ex.: bateria de carro, 12 V). A diferença essencial é o número de células — recarregável ou não é outra classificação." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#1E63F0;">Tensão e ddp</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Pilhas e baterias</h2>
+  </div>
+  <p style="font-size:33px;line-height:1.45;margin:34px 0 0;">Pilhas e baterias convertem <strong>energia química</strong> em elétrica por meio de reações de <strong>oxirredução</strong> dentro de células eletroquímicas.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:40px;flex:1;">
+    <div style="background:#fff;border-radius:24px;padding:28px 40px;display:flex;flex-direction:column;gap:18px;align-items:flex-start;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#1E63F0;">Pilha</span>
+      <svg viewBox="0 0 200 90" style="width:150px;height:58px;">
+        <line x1="40" y1="45" x2="88" y2="45" stroke="#16171A" stroke-width="4"/>
+        <line x1="88" y1="18" x2="88" y2="72" stroke="#16171A" stroke-width="4"/>
+        <line x1="112" y1="30" x2="112" y2="60" stroke="#16171A" stroke-width="11"/>
+        <line x1="112" y1="45" x2="160" y2="45" stroke="#16171A" stroke-width="4"/>
+        <text x="76" y="12" font-family="IBM Plex Mono, monospace" font-size="18" fill="#1E63F0">+</text>
+        <text x="120" y="12" font-family="IBM Plex Mono, monospace" font-size="18" fill="#16171A">−</text>
+      </svg>
+      <div style="font-size:28px;line-height:1.45;color:#3a3c42;">Uma <strong>única célula</strong> eletroquímica, com tensão fixa e baixa. A pilha AA, por exemplo, fornece 1,5 V.</div>
+    </div>
+    <div style="background:#fff;border-radius:24px;padding:28px 40px;display:flex;flex-direction:column;gap:18px;align-items:flex-start;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#1E63F0;">Bateria</span>
+      <svg viewBox="0 0 260 90" style="width:210px;height:58px;">
+        <line x1="14" y1="45" x2="40" y2="45" stroke="#16171A" stroke-width="4"/>
+        <line x1="40" y1="20" x2="40" y2="70" stroke="#16171A" stroke-width="4"/><line x1="56" y1="30" x2="56" y2="60" stroke="#16171A" stroke-width="10"/>
+        <line x1="56" y1="45" x2="96" y2="45" stroke="#16171A" stroke-width="4"/>
+        <line x1="96" y1="20" x2="96" y2="70" stroke="#16171A" stroke-width="4"/><line x1="112" y1="30" x2="112" y2="60" stroke="#16171A" stroke-width="10"/>
+        <line x1="112" y1="45" x2="152" y2="45" stroke="#16171A" stroke-width="4"/>
+        <line x1="152" y1="20" x2="152" y2="70" stroke="#16171A" stroke-width="4"/><line x1="168" y1="30" x2="168" y2="60" stroke="#16171A" stroke-width="10"/>
+        <line x1="168" y1="45" x2="200" y2="45" stroke="#16171A" stroke-width="4"/>
+      </svg>
+      <div style="font-size:28px;line-height:1.45;color:#3a3c42;">Uma <strong>associação de células</strong>, em geral em série para somar a tensão. É o caso da bateria dos carros (12 V) ou dos celulares.</div>
+    </div>
+  </div>
+  <div style="margin-top:36px;font-size:26px;line-height:1.4;color:#54565c;">→ A diferença essencial é o <strong>número de células</strong>: pilha = uma; bateria = várias.</div>
+  <div style="margin-top:12px;font-size:26px;line-height:1.4;color:#54565c;">→ Pilhas e baterias podem ser <strong>recarregáveis</strong> se forem preparadas para <strong>reverter a reação química</strong> quando submetidas a uma ddp externa.</div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="Outras fontes" data-screen-label="Outras fontes de tensão" data-speaker-notes="Nem toda ddp vem de reação química. Fontes de alimentação convertem a CA da tomada em CC estável; células fotovoltaicas convertem luz em tensão pelo efeito fotovoltaico; geradores eletrostáticos como o de Van de Graaff separam cargas mecanicamente, atingindo tensões altíssimas. Sobre o power bank: não é uma fonte nova — é uma bateria recarregável (íon-lítio) que armazena energia elétrica (carregada na tomada ou por USB) e a devolve como tensão contínua; por isso pertence às pilhas e baterias, não a esta lista de fontes não químicas." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#1E63F0;">Tensão e ddp</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Outras fontes de tensão</h2>
+  </div>
+  <p style="font-size:33px;line-height:1.45;margin:34px 0 0;">Nem toda ddp vem de reação química. Vários dispositivos mantêm uma tensão (em geral <strong>contínua</strong>) a partir de outras formas de energia:</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:44px;flex:1;">
+    <div style="display:flex;flex-direction:column;gap:22px;background:#fff;border-radius:24px;padding:40px 36px;align-items:flex-start;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:22px;color:#1E63F0;">Fonte de alimentação</span>
+      <svg viewBox="0 0 200 120" style="width:150px;height:90px;">
+        <rect x="66" y="38" width="90" height="60" rx="12" fill="#fff" stroke="#16171A" stroke-width="5"/>
+        <line x1="40" y1="56" x2="66" y2="56" stroke="#16171A" stroke-width="5"/>
+        <line x1="40" y1="80" x2="66" y2="80" stroke="#16171A" stroke-width="5"/>
+        <line x1="156" y1="68" x2="184" y2="68" stroke="#F4A024" stroke-width="5"/>
+        <circle cx="186" cy="68" r="5" fill="#F4A024"/>
+      </svg>
+      <div style="font-size:27px;line-height:1.4;color:#3a3c42;">Converte a tensão alternada da tomada em <strong>tensão contínua</strong> estável — é o que fazem carregadores e adaptadores.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px;background:#fff;border-radius:24px;padding:40px 36px;align-items:flex-start;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:22px;color:#1E63F0;">Célula fotovoltaica</span>
+      <svg viewBox="0 0 200 120" style="width:150px;height:90px;">
+        <circle cx="56" cy="42" r="18" fill="none" stroke="#F4A024" stroke-width="5"/>
+        <line x1="56" y1="8" x2="56" y2="17" stroke="#F4A024" stroke-width="4"/>
+        <line x1="27" y1="42" x2="18" y2="42" stroke="#F4A024" stroke-width="4"/>
+        <line x1="34" y1="20" x2="27" y2="13" stroke="#F4A024" stroke-width="4"/>
+        <line x1="78" y1="20" x2="85" y2="13" stroke="#F4A024" stroke-width="4"/>
+        <rect x="92" y="66" width="94" height="42" rx="4" fill="#fff" stroke="#16171A" stroke-width="5"/>
+        <line x1="123" y1="66" x2="123" y2="108" stroke="#16171A" stroke-width="3"/>
+        <line x1="154" y1="66" x2="154" y2="108" stroke="#16171A" stroke-width="3"/>
+        <line x1="92" y1="87" x2="186" y2="87" stroke="#16171A" stroke-width="3"/>
+      </svg>
+      <div style="font-size:27px;line-height:1.4;color:#3a3c42;">Converte <strong>luz</strong> diretamente em tensão, pelo efeito fotovoltaico — painéis solares e calculadoras.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px;background:#fff;border-radius:24px;padding:40px 36px;align-items:flex-start;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:22px;color:#1E63F0;">Gerador eletrostático</span>
+      <svg viewBox="0 0 200 120" style="width:130px;height:90px;">
+        <circle cx="100" cy="44" r="30" fill="#fff" stroke="#16171A" stroke-width="5"/>
+        <rect x="90" y="72" width="20" height="32" fill="#16171A"/>
+        <rect x="60" y="102" width="80" height="12" rx="3" fill="#16171A"/>
+        <path d="M134 30 l14 -6 -5 12 12 -3" fill="none" stroke="#F4A024" stroke-width="4"/>
+      </svg>
+      <div style="font-size:27px;line-height:1.4;color:#3a3c42;">Separa cargas por <strong>atrito e indução</strong>, atingindo tensões altíssimas — como o gerador de Van de Graaff.</div>
+    </div>
+  </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="Tensão real" data-screen-label="Tensão no cotidiano" data-speaker-notes="Ordens de grandeza ajudam a criar intuição: da pilha aos milhões de volts de um raio." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#1E63F0;">Tensão e ddp</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">A tensão no cotidiano</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:30px;margin-top:auto;margin-bottom:auto;">
+    <div style="display:flex;flex-direction:column;gap:14px;border-top:3px solid #1E63F0;padding-top:24px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:72px;font-weight:600;line-height:1;">1,5<span style="font-size:34px;color:#54565c;"> V</span></span><span style="font-size:28px;color:#3a3c42;">Pilha AA</span></div>
+    <div style="display:flex;flex-direction:column;gap:14px;border-top:3px solid #1E63F0;padding-top:24px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:72px;font-weight:600;line-height:1;">5<span style="font-size:34px;color:#54565c;"> V</span></span><span style="font-size:28px;color:#3a3c42;">Carregador USB</span></div>
+    <div style="display:flex;flex-direction:column;gap:14px;border-top:3px solid #1E63F0;padding-top:24px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:72px;font-weight:600;line-height:1;">12<span style="font-size:34px;color:#54565c;"> V</span></span><span style="font-size:28px;color:#3a3c42;">Bateria de carro</span></div>
+    <div style="display:flex;flex-direction:column;gap:14px;border-top:3px solid #1E63F0;padding-top:24px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:72px;font-weight:600;line-height:1;">127<span style="font-size:34px;color:#54565c;"> V</span></span><span style="font-size:28px;color:#3a3c42;">Tomada residencial</span></div>
+    <div style="display:flex;flex-direction:column;gap:14px;border-top:3px solid #F4A024;padding-top:24px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:72px;font-weight:600;line-height:1;color:#F4A024;">10⁸<span style="font-size:34px;color:#54565c;"> V</span></span><span style="font-size:28px;color:#3a3c42;">Raio (relâmpago)</span></div>
+  </div>
+  <p style="font-size:30px;color:#54565c;margin:0;">Quanto maior a tensão, maior a energia disponível para mover cada carga.</p>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="§ Corrente" data-screen-label="Divisor 03" data-speaker-notes="Terceiro bloco: a corrente elétrica — o que ela é e como medimos." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:center;background:#15161B;color:#F7F6F2;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
+  <span style="position:absolute;right:90px;top:60px;font-family:'Space Grotesk',sans-serif;font-size:420px;font-weight:600;color:#22242c;line-height:1;">03</span>
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.2em;text-transform:uppercase;color:#5fa0ff;position:relative;">Bloco 03</span>
+  <h2 style="font-family:'Space Grotesk',sans-serif;font-size:104px;font-weight:600;margin:24px 0 0;letter-spacing:-0.02em;position:relative;">Corrente elétrica</h2>
+  <div style="width:140px;height:6px;background:#F4A024;margin-top:44px;position:relative;"></div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="O que é i" data-screen-label="O que é corrente" data-speaker-notes="Corrente é o movimento ordenado de cargas. Intensidade = carga por tempo: i = Q/t. Unidade ampère. Um ampère é muita carga por segundo." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#F4A024;">Corrente elétrica</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">O que é corrente elétrica</h2>
+  </div>
+  <div style="display:flex;gap:80px;margin-top:46px;flex:1;align-items:center;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:36px;">
+      <p style="font-size:36px;line-height:1.45;margin:0;">É o <strong>movimento ordenado de cargas</strong> através de um condutor. Sua intensidade mede <strong>quanta carga passa por segundo</strong>.</p>
+      <div style="display:flex;align-items:baseline;gap:30px;font-family:'IBM Plex Mono',monospace;">
+        <span style="font-size:96px;font-weight:500;color:#F4A024;">i = </span>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <span style="font-size:60px;border-bottom:5px solid #16171A;padding:0 18px 10px;">Q</span>
+          <span style="font-size:60px;padding-top:10px;">t</span>
+        </div>
+        <span style="font-size:40px;color:#54565c;margin-left:20px;">→ unidade: ampère (A)</span>
+      </div>
+    </div>
+    <div style="flex:0 0 580px;background:#FDF3E2;border-radius:24px;padding:48px 40px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:25px;color:#a86a12;margin-bottom:24px;">elétrons em um fio</div>
+      <svg viewBox="0 0 500 160" style="width:100%;height:auto;">
+        <rect x="20" y="50" width="460" height="60" rx="30" fill="#fff" stroke="#16171A" stroke-width="4"/>
+        <line x1="20" y1="80" x2="480" y2="80" stroke="#F4A024" stroke-width="4" stroke-dasharray="14 16" style="animation:flow 1s linear infinite;"/>
+        <circle cx="90" cy="80" r="13" fill="#1E63F0"/><circle cx="180" cy="80" r="13" fill="#1E63F0"/><circle cx="270" cy="80" r="13" fill="#1E63F0"/><circle cx="360" cy="80" r="13" fill="#1E63F0"/><circle cx="450" cy="80" r="13" fill="#1E63F0"/>
+        <polygon points="466,68 486,80 466,92" fill="#F4A024"/>
+        <text x="455" y="40" font-family="IBM Plex Mono, monospace" font-size="24" fill="#a86a12">i</text>
+      </svg>
+    </div>
+  </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="Sentido" data-screen-label="Sentido real x convencional" data-speaker-notes="Os elétrons (negativos) fluem do polo negativo para o positivo: sentido real. Por convenção histórica, adotamos o sentido contrário, do + para o −." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#F4A024;">Corrente elétrica</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Sentido real × convencional</h2>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:40px;margin-top:auto;margin-bottom:auto;">
+    <div style="background:#fff;border-radius:24px;padding:40px 48px;display:flex;align-items:center;gap:48px;">
+      <div style="flex:0 0 320px;"><div style="font-size:34px;font-weight:600;color:#1E63F0;">Sentido real</div><div style="font-size:28px;color:#3a3c42;margin-top:8px;">o movimento físico dos elétrons, do polo (−) para o (+)</div></div>
+      <svg viewBox="0 0 720 80" style="flex:1;height:64px;"><text x="0" y="50" font-family="Space Grotesk" font-size="40" font-weight="700" fill="#16171A">−</text><line x1="60" y1="40" x2="660" y2="40" stroke="#1E63F0" stroke-width="5"/><polygon points="80,30 60,40 80,50" fill="#1E63F0"/><circle cx="200" cy="40" r="11" fill="#1E63F0"/><circle cx="340" cy="40" r="11" fill="#1E63F0"/><circle cx="480" cy="40" r="11" fill="#1E63F0"/><text x="685" y="50" font-family="Space Grotesk" font-size="40" font-weight="700" fill="#16171A">+</text></svg>
+    </div>
+    <div style="background:#fff;border-radius:24px;padding:40px 48px;display:flex;align-items:center;gap:48px;">
+      <div style="flex:0 0 320px;"><div style="font-size:34px;font-weight:600;color:#F4A024;">Sentido convencional</div><div style="font-size:28px;color:#3a3c42;margin-top:8px;">adotado por convenção, do polo (+) para o (−)</div></div>
+      <svg viewBox="0 0 720 80" style="flex:1;height:64px;"><text x="0" y="50" font-family="Space Grotesk" font-size="40" font-weight="700" fill="#16171A">+</text><line x1="60" y1="40" x2="660" y2="40" stroke="#F4A024" stroke-width="5"/><polygon points="640,30 660,40 640,50" fill="#F4A024"/><text x="685" y="50" font-family="Space Grotesk" font-size="40" font-weight="700" fill="#16171A">−</text></svg>
+    </div>
+  </div>
+  <p style="font-size:30px;color:#54565c;margin:0;">Nos cálculos usamos o sentido convencional — combinado lá no século XVIII, antes de conhecermos o elétron.</p>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="Corrente real" data-screen-label="Corrente no cotidiano" data-speaker-notes="Valores típicos de corrente, do LED ao chuveiro e ao raio." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#F4A024;">Corrente elétrica</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">A corrente no cotidiano</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:34px;margin-top:auto;margin-bottom:auto;">
+    <div style="display:flex;flex-direction:column;gap:14px;border-top:3px solid #F4A024;padding-top:24px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:70px;font-weight:600;line-height:1;">0,02<span style="font-size:32px;color:#54565c;"> A</span></span><span style="font-size:28px;color:#3a3c42;">LED indicador</span></div>
+    <div style="display:flex;flex-direction:column;gap:14px;border-top:3px solid #F4A024;padding-top:24px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:70px;font-weight:600;line-height:1;">0,5<span style="font-size:32px;color:#54565c;"> A</span></span><span style="font-size:28px;color:#3a3c42;">Carregador de celular</span></div>
+    <div style="display:flex;flex-direction:column;gap:14px;border-top:3px solid #F4A024;padding-top:24px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:70px;font-weight:600;line-height:1;">30<span style="font-size:32px;color:#54565c;"> A</span></span><span style="font-size:28px;color:#3a3c42;">Chuveiro elétrico</span></div>
+    <div style="display:flex;flex-direction:column;gap:14px;border-top:3px solid #1E63F0;padding-top:24px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:70px;font-weight:600;line-height:1;color:#1E63F0;">30 mil<span style="font-size:32px;color:#54565c;"> A</span></span><span style="font-size:28px;color:#3a3c42;">Raio (pico)</span></div>
+  </div>
+  <p style="font-size:30px;color:#54565c;margin:0;">Correntes acima de poucos centésimos de ampère já são perigosas ao corpo humano.</p>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="§ Resistência" data-screen-label="Divisor 04" data-speaker-notes="Quarto bloco: a resistência elétrica e a resistividade, que dependem do material e da geometria." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:center;background:#15161B;color:#F7F6F2;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
+  <span style="position:absolute;right:90px;top:60px;font-family:'Space Grotesk',sans-serif;font-size:420px;font-weight:600;color:#22242c;line-height:1;">04</span>
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.2em;text-transform:uppercase;color:#5fa0ff;position:relative;">Bloco 04</span>
+  <h2 style="font-family:'Space Grotesk',sans-serif;font-size:104px;font-weight:600;margin:24px 0 0;letter-spacing:-0.02em;position:relative;">Resistência e resistividade</h2>
+  <div style="width:140px;height:6px;background:#1E63F0;margin-top:44px;position:relative;"></div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="Resistência" data-screen-label="Resistência elétrica" data-speaker-notes="Resistência é a oposição à passagem da corrente. Microscopicamente, os elétrons colidem com os átomos do material e perdem energia, que vira calor. Unidade ohm." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#1E63F0;">Resistência</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Resistência elétrica</h2>
+  </div>
+  <div style="display:flex;gap:80px;margin-top:48px;flex:1;align-items:center;">
+    <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:34px;flex:1;">
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:#1E63F0;min-width:42px;">01</span><span style="font-size:34px;line-height:1.4;">É a <strong>oposição</strong> que um material oferece à passagem da corrente elétrica.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:#1E63F0;min-width:42px;">02</span><span style="font-size:34px;line-height:1.4;">Os elétrons <strong>colidem</strong> com os átomos do material e perdem energia — que se dissipa na forma de <strong>calor</strong>.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:#1E63F0;min-width:42px;">03</span><span style="font-size:34px;line-height:1.4;">Sua unidade é o <strong>ohm (Ω)</strong>: 1 Ω é a resistência que deixa passar 1 A sob 1 V.</span></li>
+    </ul>
+    <div style="flex:0 0 580px;background:#EEF3FF;border-radius:24px;padding:48px 40px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:25px;color:#1E63F0;margin-bottom:24px;">colisões no material</div>
+      <svg viewBox="0 0 500 180" style="width:100%;height:auto;">
+        <rect x="20" y="40" width="460" height="100" rx="14" fill="#fff" stroke="#16171A" stroke-width="4"/>
+        <circle cx="120" cy="70" r="9" fill="#16171A"/><circle cx="200" cy="110" r="9" fill="#16171A"/><circle cx="280" cy="70" r="9" fill="#16171A"/><circle cx="360" cy="110" r="9" fill="#16171A"/><circle cx="440" cy="70" r="9" fill="#16171A"/>
+        <path d="M40 90 L120 70 L160 105 L280 70 L320 105 L440 70 L480 95" fill="none" stroke="#F4A024" stroke-width="4"/>
+        <circle cx="40" cy="90" r="11" fill="#1E63F0"/>
+        <polygon points="468,84 484,95 468,106" fill="#F4A024"/>
+        <text x="250" y="170" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="25" fill="#54565c">elétron desviado → calor</text>
+      </svg>
+    </div>
+  </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="Resistores" data-screen-label="Resistores" data-speaker-notes="O resistor é o componente feito para ter uma resistência definida. Existem os de valor fixo e os variáveis, como o potenciômetro de um controle de volume." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#1E63F0;">Resistência</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Resistores</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:40px;margin-top:60px;flex:1;">
+    <div style="display:flex;flex-direction:column;gap:24px;background:#fff;border-radius:24px;padding:44px 40px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#1E63F0;">Função</span>
+      <div style="font-size:34px;font-weight:600;">Controlar a corrente</div>
+      <div style="font-size:29px;line-height:1.4;color:#3a3c42;">Componente projetado para ter uma resistência <strong>conhecida</strong>, limitando a corrente e protegendo o circuito.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:24px;background:#fff;border-radius:24px;padding:44px 40px;align-items:flex-start;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#1E63F0;">Símbolos</span>
+      <svg viewBox="0 0 240 70" style="width:200px;height:58px;"><path d="M10 35 H50 L62 18 L84 52 L106 18 L128 52 L150 18 L162 35 H210" fill="none" stroke="#16171A" stroke-width="5"/></svg>
+      <svg viewBox="0 0 240 70" style="width:200px;height:58px;"><rect x="60" y="20" width="120" height="30" fill="none" stroke="#16171A" stroke-width="5"/><line x1="10" y1="35" x2="60" y2="35" stroke="#16171A" stroke-width="5"/><line x1="180" y1="35" x2="230" y2="35" stroke="#16171A" stroke-width="5"/></svg>
+      <div style="font-size:27px;color:#54565c;">zigue-zague (EUA) e retângulo (IEC)</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:24px;background:#fff;border-radius:24px;padding:44px 40px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#1E63F0;">Tipos</span>
+      <div style="font-size:30px;line-height:1.5;color:#3a3c42;"><strong>Fixos</strong> — valor constante, lidos por faixas de cor.<br><br><strong>Variáveis</strong> — potenciômetros e reostatos, como o controle de volume.</div>
+    </div>
+  </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="Resistividade" data-screen-label="Resistividade" data-speaker-notes="A 2ª Lei de Ohm: a resistência depende do material (ρ), do comprimento (L) e da área (A). Fio mais longo resiste mais; fio mais grosso resiste menos." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#1E63F0;">Resistividade</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Resistividade — a 2ª Lei de Ohm</h2>
+  </div>
+  <div style="display:flex;gap:70px;margin-top:44px;flex:1;align-items:center;">
+    <div style="flex:0 0 600px;display:flex;flex-direction:column;gap:40px;">
+      <div style="display:flex;align-items:center;gap:26px;font-family:'IBM Plex Mono',monospace;">
+        <span style="font-size:88px;font-weight:500;">R = </span>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <span style="font-size:56px;border-bottom:5px solid #16171A;padding:0 18px 10px;color:#1E63F0;">ρ · L</span>
+          <span style="font-size:56px;padding-top:10px;color:#F4A024;">A</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px;font-size:30px;color:#3a3c42;">
+        <div><strong style="color:#1E63F0;">ρ</strong> — resistividade, propriedade do material (Ω·m)</div>
+        <div><strong>L</strong> — comprimento do fio: mais longo, <strong>mais</strong> resistência</div>
+        <div><strong style="color:#F4A024;">A</strong> — área da secção: mais grosso, <strong>menos</strong> resistência</div>
+      </div>
+    </div>
+    <div style="flex:1;background:#EEF3FF;border-radius:24px;padding:44px 36px;display:flex;flex-direction:column;gap:30px;">
+      <svg viewBox="0 0 520 110" style="width:100%;height:auto;">
+        <rect x="20" y="42" width="320" height="26" rx="6" fill="#1E63F0"/>
+        <line x1="20" y1="88" x2="340" y2="88" stroke="#54565c" stroke-width="3"/><text x="150" y="84" font-family="IBM Plex Mono, monospace" font-size="25" fill="#54565c">L grande</text>
+        <text x="360" y="64" font-family="IBM Plex Mono, monospace" font-size="26" fill="#16171A">R ↑</text>
+      </svg>
+      <svg viewBox="0 0 520 110" style="width:100%;height:auto;">
+        <rect x="20" y="32" width="320" height="46" rx="10" fill="#F4A024"/>
+        <line x1="8" y1="32" x2="8" y2="78" stroke="#54565c" stroke-width="3"/><text x="14" y="100" font-family="IBM Plex Mono, monospace" font-size="25" fill="#54565c">A grande</text>
+        <text x="360" y="64" font-family="IBM Plex Mono, monospace" font-size="26" fill="#16171A">R ↓</text>
+      </svg>
+    </div>
+  </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="Materiais" data-screen-label="Materiais e resistividade" data-speaker-notes="A resistividade varia enormemente entre materiais. Por isso usamos cobre e alumínio nos fios, e borracha e vidro como isolantes." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#1E63F0;">Resistividade</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Cada material, uma resistividade</h2>
+  </div>
+  <div style="margin-top:44px;flex:1;display:flex;flex-direction:column;font-family:'IBM Plex Sans',sans-serif;">
+    <div style="display:grid;grid-template-columns:2fr 1.3fr 2fr;padding:18px 28px;font-family:'IBM Plex Mono',monospace;font-size:25px;color:#54565c;text-transform:uppercase;letter-spacing:0.08em;"><span>Material</span><span>Tipo</span><span style="text-align:right;">ρ (Ω·m) a 20 °C</span></div>
+    <div style="display:grid;grid-template-columns:2fr 1.3fr 2fr;padding:22px 28px;font-size:32px;border-top:2px solid #16171A;align-items:center;"><span style="font-weight:600;">Prata</span><span style="color:#1E63F0;">Condutor</span><span style="text-align:right;font-family:'IBM Plex Mono',monospace;">1,6 × 10⁻⁸</span></div>
+    <div style="display:grid;grid-template-columns:2fr 1.3fr 2fr;padding:22px 28px;font-size:32px;border-top:1px solid #d8d8d2;align-items:center;background:#EEF3FF;"><span style="font-weight:600;">Cobre</span><span style="color:#1E63F0;">Condutor</span><span style="text-align:right;font-family:'IBM Plex Mono',monospace;">1,7 × 10⁻⁸</span></div>
+    <div style="display:grid;grid-template-columns:2fr 1.3fr 2fr;padding:22px 28px;font-size:32px;border-top:1px solid #d8d8d2;align-items:center;"><span style="font-weight:600;">Alumínio</span><span style="color:#1E63F0;">Condutor</span><span style="text-align:right;font-family:'IBM Plex Mono',monospace;">2,8 × 10⁻⁸</span></div>
+    <div style="display:grid;grid-template-columns:2fr 1.3fr 2fr;padding:22px 28px;font-size:32px;border-top:1px solid #d8d8d2;align-items:center;"><span style="font-weight:600;">Silício</span><span style="color:#54565c;">Semicondutor</span><span style="text-align:right;font-family:'IBM Plex Mono',monospace;">~ 6,4 × 10²</span></div>
+    <div style="display:grid;grid-template-columns:2fr 1.3fr 2fr;padding:22px 28px;font-size:32px;border-top:1px solid #d8d8d2;align-items:center;background:#FDF3E2;"><span style="font-weight:600;">Vidro</span><span style="color:#F4A024;">Isolante</span><span style="text-align:right;font-family:'IBM Plex Mono',monospace;">10¹⁰ – 10¹⁴</span></div>
+    <div style="display:grid;grid-template-columns:2fr 1.3fr 2fr;padding:22px 28px;font-size:32px;border-top:1px solid #d8d8d2;align-items:center;"><span style="font-weight:600;">Borracha</span><span style="color:#F4A024;">Isolante</span><span style="text-align:right;font-family:'IBM Plex Mono',monospace;">~ 10¹³</span></div>
+  </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="§ Lei de Ohm" data-screen-label="Divisor 05" data-speaker-notes="Quinto bloco: a Lei de Ohm, que une tensão, resistência e corrente em uma única relação." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:center;background:#15161B;color:#F7F6F2;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
+  <span style="position:absolute;right:90px;top:60px;font-family:'Space Grotesk',sans-serif;font-size:420px;font-weight:600;color:#22242c;line-height:1;">05</span>
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.2em;text-transform:uppercase;color:#5fa0ff;position:relative;">Bloco 05</span>
+  <h2 style="font-family:'Space Grotesk',sans-serif;font-size:104px;font-weight:600;margin:24px 0 0;letter-spacing:-0.02em;position:relative;">Lei de Ohm</h2>
+  <div style="width:140px;height:6px;background:#1E63F0;margin-top:44px;position:relative;"></div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="V = R·i" data-screen-label="Lei de Ohm" data-speaker-notes="A Lei de Ohm relaciona as três grandezas. Em condutores ôhmicos, a resistência é constante e a corrente é proporcional à tensão." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#1E63F0;">Lei de Ohm</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">A relação entre tudo</h2>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:50px;margin-top:auto;margin-bottom:auto;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:150px;font-weight:500;letter-spacing:0.02em;"><span style="color:#1E63F0;">V</span> = <span style="color:#16171A;">R</span> · <span style="color:#F4A024;">i</span></div>
+    <div style="display:flex;gap:70px;">
+      <div style="text-align:center;"><div style="font-family:'IBM Plex Mono',monospace;font-size:40px;color:#1E63F0;">V</div><div style="font-size:30px;color:#3a3c42;margin-top:10px;">tensão (volt)</div></div>
+      <div style="text-align:center;"><div style="font-family:'IBM Plex Mono',monospace;font-size:40px;color:#16171A;">R</div><div style="font-size:30px;color:#3a3c42;margin-top:10px;">resistência (ohm)</div></div>
+      <div style="text-align:center;"><div style="font-family:'IBM Plex Mono',monospace;font-size:40px;color:#F4A024;">i</div><div style="font-size:30px;color:#3a3c42;margin-top:10px;">corrente (ampère)</div></div>
+    </div>
+  </div>
+  <p style="font-size:32px;color:#54565c;margin:0;text-align:center;">Para a mesma resistência, <strong>dobrar a tensão dobra a corrente</strong>.</p>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="Gráfico V×i" data-screen-label="Gráfico V x i" data-speaker-notes="No condutor ôhmico, o gráfico V x i é uma reta — a resistência (a inclinação) é constante. Quando a curva entorta, o material não obedece à Lei de Ohm." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#1E63F0;">Lei de Ohm</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Ôhmico × não-ôhmico</h2>
+  </div>
+  <div style="display:flex;gap:80px;margin-top:40px;flex:1;align-items:center;">
+    <div style="flex:0 0 660px;background:#fff;border-radius:24px;padding:44px;">
+      <svg viewBox="0 0 560 400" style="width:100%;height:auto;">
+        <line x1="70" y1="350" x2="540" y2="350" stroke="#16171A" stroke-width="4"/>
+        <line x1="70" y1="350" x2="70" y2="30" stroke="#16171A" stroke-width="4"/>
+        <text x="520" y="385" font-family="IBM Plex Mono, monospace" font-size="26" fill="#16171A">i</text>
+        <text x="30" y="50" font-family="IBM Plex Mono, monospace" font-size="26" fill="#16171A">V</text>
+        <line x1="70" y1="350" x2="500" y2="70" stroke="#1E63F0" stroke-width="6"/>
+        <path d="M70 350 Q 360 320 500 120" fill="none" stroke="#F4A024" stroke-width="6" stroke-dasharray="2 0"/>
+        <circle cx="285" cy="210" r="9" fill="#1E63F0"/>
+        <text x="300" y="205" font-family="IBM Plex Mono, monospace" font-size="24" fill="#1E63F0">ôhmico (reta)</text>
+        <text x="250" y="300" font-family="IBM Plex Mono, monospace" font-size="24" fill="#a86a12">não-ôhmico</text>
+      </svg>
+    </div>
+    <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:34px;flex:1;">
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:#1E63F0;min-width:42px;">01</span><span style="font-size:34px;line-height:1.4;">Condutor <strong>ôhmico</strong>: o gráfico V × i é uma <strong>reta</strong>. A resistência é a inclinação — e é constante.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:#F4A024;min-width:42px;">02</span><span style="font-size:34px;line-height:1.4;">Materiais <strong>não-ôhmicos</strong> (como o filamento de uma lâmpada) mudam de resistência com a temperatura.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:#16171A;min-width:42px;">03</span><span style="font-size:34px;line-height:1.4;">A Lei de Ohm vale <strong>apenas</strong> para os materiais ôhmicos.</span></li>
+    </ul>
+  </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="Potência" data-screen-label="Potência elétrica" data-speaker-notes="Potência é a rapidez com que a energia é transformada: P = V·i. Combinando com a Lei de Ohm chega-se a P = R·i². É o que aquece o chuveiro e ilumina a lâmpada." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#1E63F0;">No dia a dia</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Potência elétrica</h2>
+  </div>
+  <div style="display:flex;gap:80px;margin-top:46px;flex:1;align-items:center;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:40px;">
+      <p style="font-size:36px;line-height:1.45;margin:0;">A potência mede <strong>quão rápido</strong> a energia elétrica é convertida em outra forma.</p>
+      <div style="display:flex;flex-direction:column;gap:26px;font-family:'IBM Plex Mono',monospace;">
+        <div style="font-size:78px;font-weight:500;"><span style="color:#16171A;">P</span> = <span style="color:#1E63F0;">V</span> · <span style="color:#F4A024;">i</span></div>
+        <div style="font-size:46px;font-weight:500;color:#54565c;">P = R · i²   <span style="font-size:34px;">→ unidade: watt (W)</span></div>
+      </div>
+    </div>
+    <div style="flex:0 0 540px;background:#FDF3E2;border-radius:24px;padding:48px 40px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:25px;color:#a86a12;margin-bottom:24px;">efeito Joule</div>
+      <svg viewBox="0 0 460 220" style="width:100%;height:auto;">
+        <path d="M40 130 H110 L126 100 L156 160 L186 100 L216 160 L246 100 L262 130 H330" fill="none" stroke="#16171A" stroke-width="5"/>
+        <path d="M150 80 Q160 60 150 40" fill="none" stroke="#F4A024" stroke-width="4"/>
+        <path d="M190 80 Q200 58 190 36" fill="none" stroke="#F4A024" stroke-width="4"/>
+        <path d="M230 80 Q240 60 230 40" fill="none" stroke="#F4A024" stroke-width="4"/>
+        <text x="120" y="205" font-family="IBM Plex Mono, monospace" font-size="24" fill="#a86a12">corrente → calor</text>
+      </svg>
+    </div>
+  </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="§ Dia a dia" data-screen-label="Divisor 06" data-speaker-notes="Sexto bloco: onde tudo isso aparece na vida real." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:center;background:#15161B;color:#F7F6F2;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
+  <span style="position:absolute;right:90px;top:60px;font-family:'Space Grotesk',sans-serif;font-size:420px;font-weight:600;color:#22242c;line-height:1;">06</span>
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.2em;text-transform:uppercase;color:#5fa0ff;position:relative;">Bloco 06</span>
+  <h2 style="font-family:'Space Grotesk',sans-serif;font-size:104px;font-weight:600;margin:24px 0 0;letter-spacing:-0.02em;position:relative;">No dia a dia</h2>
+  <div style="width:140px;height:6px;background:#F4A024;margin-top:44px;position:relative;"></div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="Aplicações" data-screen-label="Aplicações" data-speaker-notes="Quatro exemplos: o chuveiro converte corrente em calor; a lâmpada incandescente aquece o filamento; o LED é eficiente; o fusível se rompe ao exceder a corrente segura." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#1E63F0;">No dia a dia</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Os circuitos ao seu redor</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:60px;flex:1;">
+    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:40px 34px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#F4A024;">Efeito Joule</span><div style="font-size:34px;font-weight:600;">Chuveiro</div><div style="font-size:27px;line-height:1.4;color:#3a3c42;">Resistência alta transforma corrente em calor para aquecer a água.</div></div>
+    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:40px 34px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#F4A024;">Filamento</span><div style="font-size:34px;font-weight:600;">Lâmpada</div><div style="font-size:27px;line-height:1.4;color:#3a3c42;">O filamento incandesce ao se aquecer — material não-ôhmico.</div></div>
+    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:40px 34px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#1E63F0;">Semicondutor</span><div style="font-size:34px;font-weight:600;">LED</div><div style="font-size:27px;line-height:1.4;color:#3a3c42;">Emite luz com pouquíssima corrente — muito mais eficiente.</div></div>
+    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:40px 34px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#1E63F0;">Proteção</span><div style="font-size:34px;font-weight:600;">Fusível</div><div style="font-size:27px;line-height:1.4;color:#3a3c42;">Rompe-se quando a corrente passa do limite seguro, abrindo o circuito.</div></div>
+  </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="Resumo" data-screen-label="Resumo das fórmulas" data-speaker-notes="Quatro relações resumem tudo: corrente como carga por tempo, resistência a partir da geometria, a Lei de Ohm e a potência." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#15161B;color:#F7F6F2;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:#5fa0ff;">Síntese</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">As fórmulas que guiam tudo</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:auto;margin-bottom:auto;">
+    <div style="background:#1e2027;border-radius:24px;padding:46px 48px;display:flex;flex-direction:column;gap:18px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:64px;font-weight:500;"><span style="color:#F4A024;">i</span> = Q / t</span><span style="font-size:29px;color:#a9abb2;">corrente — carga por tempo</span></div>
+    <div style="background:#1e2027;border-radius:24px;padding:46px 48px;display:flex;flex-direction:column;gap:18px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:64px;font-weight:500;"><span style="color:#fff;">R</span> = ρL / A</span><span style="font-size:29px;color:#a9abb2;">resistência — material e geometria</span></div>
+    <div style="background:#1e2027;border-radius:24px;padding:46px 48px;display:flex;flex-direction:column;gap:18px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:64px;font-weight:500;"><span style="color:#5fa0ff;">V</span> = R · i</span><span style="font-size:29px;color:#a9abb2;">Lei de Ohm — tensão, resistência, corrente</span></div>
+    <div style="background:#1e2027;border-radius:24px;padding:46px 48px;display:flex;flex-direction:column;gap:18px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:64px;font-weight:500;">P = <span style="color:#5fa0ff;">V</span> · <span style="color:#F4A024;">i</span></span><span style="font-size:29px;color:#a9abb2;">potência — energia por tempo</span></div>
+  </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="Encerramento" data-screen-label="Encerramento" data-speaker-notes="Fechamento da série. Convite para explorar os circuitos elétricos na prática." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:space-between;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
+  <svg viewBox="0 0 1920 1080" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.10;">
+    <path d="M0,300 H560 V640 H980 V340 H1380 V780 H1920" fill="none" stroke="#F4A024" stroke-width="5"/>
+    <circle cx="560" cy="640" r="11" fill="#F4A024"/><circle cx="980" cy="340" r="11" fill="#F4A024"/><circle cx="1380" cy="780" r="11" fill="#F4A024"/>
+  </svg>
+  <div style="display:flex;align-items:center;gap:18px;position:relative;">
+    <span style="width:46px;height:46px;border-radius:50%;background:#F4A024;display:inline-block;"></span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.22em;text-transform:uppercase;color:#16171A;">Fim</span>
+  </div>
+  <h2 style="font-family:'Space Grotesk',sans-serif;font-size:110px;font-weight:600;line-height:0.98;letter-spacing:-0.02em;margin:0;position:relative;">Explorando<br>circuitos elétricos</h2>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;position:relative;">
+    <span style="font-size:30px;color:#16171A;">Lucas Telichevesky</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:28px;color:#54565c;">2026</span>
+  </div>
+</section>
+      </div>
+    </div>
+  </div>
+
+  <div id="ui">
+    <button id="prev" class="nav-btn" aria-label="Slide anterior">‹</button>
+    <button id="next" class="nav-btn" aria-label="Próximo slide">›</button>
+    <div id="bottom-bar">
+      <span id="counter">1 / 30</span>
+      <span id="deck-title" style="font-family:'IBM Plex Sans',sans-serif;font-size:14px;color:#e7e9ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:42%;"></span>
+      <div id="progress-track"><div id="progress-bar"></div></div>
+      <button id="btn-notes" class="bar-btn" title="Notas do palestrante (N)">Notas</button>
+      <button id="btn-full" class="bar-btn" title="Tela cheia (F)">⛶ Tela cheia</button>
+    </div>
+  </div>
+  <div id="notes"></div>
+  <div id="hint">← → navegar · F tela cheia · N notas</div>
+
+  <script>
+    (function(){
+      var stage   = document.getElementById('deck-stage');
+      var frames  = Array.prototype.slice.call(document.querySelectorAll('.slide-frame'));
+      var counter = document.getElementById('counter');
+      var bar     = document.getElementById('progress-bar');
+      var notes   = document.getElementById('notes');
+      var barTitle = document.getElementById('deck-title');
+      var total   = frames.length;
+      var idx = 0;
+
+      function fit(){
+        // Reserva uma faixa inferior para a barra de navegação, para o slide
+        // nunca ser coberto por ela (nada de conteúdo cortado/escondido).
+        var chrome = 50;
+        var avail = window.innerHeight - chrome;
+        var s = Math.min(window.innerWidth / 1920, avail / 1080);
+        stage.style.top = (avail / 2) + 'px';
+        stage.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
+      }
+
+      function renderNotes(){
+        var sec = frames[idx].querySelector('section');
+        var t = (sec && sec.getAttribute('data-speaker-notes')) || '';
+        var label = (sec && sec.getAttribute('data-label')) || ('Slide ' + (idx+1));
+        notes.innerHTML = '<b>' + label + '</b><br>' + (t || '<i>sem notas</i>');
+      }
+
+      function show(i){
+        idx = Math.max(0, Math.min(total - 1, i));
+        frames.forEach(function(f, j){ f.classList.toggle('active', j === idx); });
+        counter.textContent = (idx + 1) + ' / ' + total;
+        bar.style.width = ((idx + 1) / total * 100) + '%';
+        var s0 = frames[idx].querySelector('section');
+        if (barTitle) barTitle.textContent = (s0 && s0.getAttribute('data-screen-label')) || '';
+        renderNotes();
+        if (location.hash !== '#' + (idx + 1)) {
+          history.replaceState(null, '', '#' + (idx + 1));
+        }
+      }
+      function next(){ show(idx + 1); }
+      function prev(){ show(idx - 1); }
+
+      function toggleFull(){
+        if (!document.fullscreenElement) {
+          (document.documentElement.requestFullscreen || function(){}).call(document.documentElement);
+        } else {
+          (document.exitFullscreen || function(){}).call(document);
+        }
+      }
+
+      document.getElementById('next').addEventListener('click', next);
+      document.getElementById('prev').addEventListener('click', prev);
+      document.getElementById('btn-full').addEventListener('click', toggleFull);
+      document.getElementById('btn-notes').addEventListener('click', function(){ notes.classList.toggle('open'); });
+
+      document.addEventListener('keydown', function(e){
+        switch (e.key) {
+          case 'ArrowRight': case 'PageDown': case ' ': case 'l': e.preventDefault(); next(); break;
+          case 'ArrowLeft':  case 'PageUp':   case 'h': e.preventDefault(); prev(); break;
+          case 'Home': e.preventDefault(); show(0); break;
+          case 'End':  e.preventDefault(); show(total - 1); break;
+          case 'f': case 'F': toggleFull(); break;
+          case 'n': case 'N': notes.classList.toggle('open'); break;
+        }
+      });
+
+      window.addEventListener('resize', fit);
+      fit();
+
+      var start = parseInt((location.hash || '').replace('#',''), 10);
+      show(isNaN(start) ? 0 : start - 1);
+
+      // some com a dica após alguns segundos
+      setTimeout(function(){
+        var h = document.getElementById('hint');
+        if (h) { h.style.opacity = '0'; setTimeout(function(){ h.remove(); }, 600); }
+      }, 4000);
+    })();
+  </script>
+</body>
+</html>

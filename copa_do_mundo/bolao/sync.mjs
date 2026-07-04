@@ -101,8 +101,17 @@ const existingTeams = {}
 let updated = 0, failed = 0
 
 for (const m of allMatches ?? []) {
-  const homeScore = m.score?.fullTime?.home ?? null
-  const awayScore = m.score?.fullTime?.away ?? null
+  // O placar deve ser o TOTAL APÓS A PRORROGAÇÃO. Em jogos decididos nos pênaltis,
+  // a API soma os pênaltis no fullTime — então usamos regularTime + extraTime.
+  // Os pênaltis só definem quem avançou (advancing_team), abaixo.
+  let homeScore = m.score?.fullTime?.home ?? null
+  let awayScore = m.score?.fullTime?.away ?? null
+  if (m.score?.penalties) {
+    const rt = m.score.regularTime ?? { home: 0, away: 0 }
+    const et = m.score.extraTime   ?? { home: 0, away: 0 }
+    homeScore = (rt.home ?? 0) + (et.home ?? 0)
+    awayScore = (rt.away ?? 0) + (et.away ?? 0)
+  }
   const status =
     m.status === 'FINISHED'                              ? 'finished'
     : (m.status === 'IN_PLAY' || m.status === 'PAUSED') ? 'live'
