@@ -28,48 +28,48 @@
     "phase": "group",
     "ord": 2,
     "points": 10,
-    "text": "Gana, uma das potências do futebol africano, tem qual cidade como capital?",
+    "text": "O Lago Volta, um dos maiores lagos artificiais do mundo, encontra-se em qual país que disputou a Copa do Mundo de 2026?",
     "options": [
       {
         "key": "A",
-        "label": "Lagos"
+        "label": "Cabo Verde"
       },
       {
         "key": "B",
-        "label": "Acra"
+        "label": "Costa do Marfim"
       },
       {
         "key": "C",
-        "label": "Abidjan"
+        "label": "Senegal"
       },
       {
         "key": "D",
-        "label": "Dakar"
+        "label": "Gana"
       }
     ],
-    "correct_key": "B"
+    "correct_key": "D"
   },
   {
     "phase": "group",
     "ord": 3,
     "points": 10,
-    "text": "O Haiti, que disputou a Copa de 1974, divide uma ilha do Caribe com qual outro país?",
+    "text": "O Haiti, uma das seleções participantes da Copa do Mundo de 2026, foi colonizado pela França e conquistou sua independência em 1804. Durante a guerra, Napoleão Bonaparte enviou tropas para combater os revolucionários haitianos. Entre esses soldados, muitos de uma determinada nacionalidade desertaram ou passaram a lutar ao lado dos haitianos, sendo posteriormente reconhecidos por seu apoio à independência. De qual país atual eram esses soldados?",
     "options": [
       {
         "key": "A",
-        "label": "Cuba"
+        "label": "Itália"
       },
       {
         "key": "B",
-        "label": "Jamaica"
+        "label": "Áustria"
       },
       {
         "key": "C",
-        "label": "República Dominicana"
+        "label": "Polônia"
       },
       {
         "key": "D",
-        "label": "Porto Rico"
+        "label": "Holanda"
       }
     ],
     "correct_key": "C"
@@ -103,26 +103,26 @@
     "phase": "group",
     "ord": 5,
     "points": 10,
-    "text": "O Senegal estreou em Copas em 2002, vencendo a França na abertura. Qual é a capital do Senegal?",
+    "text": "O Senegal estreou em Copas em 2002, vencendo a França na abertura. O país também é mundialmente conhecido por dar nome a uma das mais famosas competições de automobilismo off-road. Qual é essa competição?",
     "options": [
       {
         "key": "A",
-        "label": "Dakar"
+        "label": "Rally dos Sertões"
       },
       {
         "key": "B",
-        "label": "Acra"
+        "label": "Baja 1000"
       },
       {
         "key": "C",
-        "label": "Lagos"
+        "label": "Rally Paris-Dakar"
       },
       {
         "key": "D",
-        "label": "Nairóbi"
+        "label": "Camel Trophy"
       }
     ],
-    "correct_key": "A"
+    "correct_key": "C"
   },
   {
     "phase": "group",
@@ -153,26 +153,26 @@
     "phase": "group",
     "ord": 7,
     "points": 10,
-    "text": "A Alemanha, tetracampeã mundial, faz fronteira com vários países. Qual destes NÃO faz fronteira com ela?",
+    "text": "A Alemanha, tetracampeã mundial, participou da Copa do Mundo de 2026, tendo sido eliminada pelo Paraguai. O país também é conhecido por possuir trechos de rodovias onde não existe limite de velocidade para automóveis. Como essas rodovias são conhecidas?",
     "options": [
       {
         "key": "A",
-        "label": "França"
+        "label": "Bundesroute"
       },
       {
         "key": "B",
-        "label": "Polônia"
+        "label": "Autoblock"
       },
       {
         "key": "C",
-        "label": "Portugal"
+        "label": "Autoweg"
       },
       {
         "key": "D",
-        "label": "Áustria"
+        "label": "Autobahn"
       }
     ],
-    "correct_key": "C"
+    "correct_key": "D"
   },
   {
     "phase": "group",
@@ -1024,5 +1024,105 @@
       }
     ],
     "correct_key": "A"
+  },
+  {
+    "phase": "extra",
+    "ord": 17,
+    "points": 0,
+    "text": "Gana, uma das potências do futebol africano, tem qual cidade como capital?",
+    "options": [
+      {
+        "key": "A",
+        "label": "Lagos"
+      },
+      {
+        "key": "B",
+        "label": "Acra"
+      },
+      {
+        "key": "C",
+        "label": "Abidjan"
+      },
+      {
+        "key": "D",
+        "label": "Dakar"
+      }
+    ],
+    "correct_key": "B"
+  },
+  {
+    "phase": "extra",
+    "ord": 18,
+    "points": 0,
+    "text": "O Haiti, que disputou a Copa de 1974, divide uma ilha do Caribe com qual outro país?",
+    "options": [
+      {
+        "key": "A",
+        "label": "Cuba"
+      },
+      {
+        "key": "B",
+        "label": "Jamaica"
+      },
+      {
+        "key": "C",
+        "label": "República Dominicana"
+      },
+      {
+        "key": "D",
+        "label": "Porto Rico"
+      }
+    ],
+    "correct_key": "C"
+  },
+  {
+    "phase": "extra",
+    "ord": 19,
+    "points": 0,
+    "text": "O Senegal estreou em Copas em 2002, vencendo a França na abertura. Qual é a capital do Senegal?",
+    "options": [
+      {
+        "key": "A",
+        "label": "Dakar"
+      },
+      {
+        "key": "B",
+        "label": "Acra"
+      },
+      {
+        "key": "C",
+        "label": "Lagos"
+      },
+      {
+        "key": "D",
+        "label": "Nairóbi"
+      }
+    ],
+    "correct_key": "A"
+  },
+  {
+    "phase": "extra",
+    "ord": 20,
+    "points": 0,
+    "text": "A Alemanha, tetracampeã mundial, faz fronteira com vários países. Qual destes NÃO faz fronteira com ela?",
+    "options": [
+      {
+        "key": "A",
+        "label": "França"
+      },
+      {
+        "key": "B",
+        "label": "Polônia"
+      },
+      {
+        "key": "C",
+        "label": "Portugal"
+      },
+      {
+        "key": "D",
+        "label": "Áustria"
+      }
+    ],
+    "correct_key": "C"
   }
 ]

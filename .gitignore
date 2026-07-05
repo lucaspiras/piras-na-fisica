@@ -6,3 +6,6 @@ Provas_vestibulares/
 
 # Arquivos de reserva / rascunhos (não versionar)
 not_commit/
+
+# Gabarito da gincana (expõe as respostas certas — só uso local do apresentador)
+copa_do_mundo/gincana/perguntas.html
