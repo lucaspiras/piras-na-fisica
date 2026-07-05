@@ -36,6 +36,12 @@
     .bd-row.top { background:#191c23; }
     .bd-row.elim { opacity:.4; }
     .bd-count { font-size:1.3rem; color:#9aa2b1; margin-top:16px; text-align:center; }
+    .bd-answers { margin-top:22px; }
+    .bd-answers h3 { font-size:1.1rem; text-transform:uppercase; letter-spacing:.08em; color:#9aa2b1; }
+    .bd-answer-row { display:flex; align-items:center; gap:12px; padding:8px 14px; border-radius:10px;
+      background:#191c23; font-size:1.15rem; }
+    .bd-answer-row .nm { flex:1; font-weight:600; }
+    .bd-answer-row .k { font-family:var(--font-mono,monospace); font-weight:800; color:#6ea8ff; font-size:1.2rem; }
     .bd-match { background:#191c23; border:1px solid #262a33; border-radius:12px; padding:8px 12px; margin-top:8px; font-size:1.1rem; }
     .bd-match .w { color:#1e9f50; font-weight:700; }
   </style>
@@ -49,8 +55,8 @@
     if (!auth) throw new Error('stop')
 
     const board = document.getElementById('board')
-    let S = { game:null, state:null, scoreboard:[], matches:[], count:0 }
-    let channel=null, timer=null, poll=null
+    let S = { game:null, state:null, scoreboard:[], matches:[], count:0, answers:[] }
+    let channel=null, timer=null, poll=null, statePoll=null
 
     const rpc=(f,a)=>supabase.rpc(f,a)
     function ytEmbed(url){
@@ -80,6 +86,12 @@
         supabase.from('quiz_matches').select('*').eq('game_id',S.game.id).order('round').order('slot'),
       ])
       S.state=st.data??null; S.scoreboard=sb.data??[]; S.matches=ms.data??[]
+      if (S.state && (S.state.question_status==='closed' || S.state.question_status==='revealed')) {
+        const { data: ans } = await rpc('quiz_current_answers', { p_game: S.game.id })
+        S.answers = ans ?? []
+      } else {
+        S.answers = []
+      }
     }
     function subscribe(){
       if(channel) supabase.removeChannel(channel); if(!S.game) return
@@ -94,6 +106,18 @@
       const {data}=await supabase.from('quiz_answers').select('team_id').eq('question_id',S.state.current_question_id)
       S.count=data?.length??0; const el=document.getElementById('bd-count'); if(el) el.textContent=S.count
     },1200) }
+    // Rede/realtime instável não pode travar o telão: reconfere o estado do jogo
+    // periodicamente, independente do Realtime, e só re-renderiza quando algo mudou.
+    function startStatePoll(){
+      clearInterval(statePoll)
+      let lastSig = null
+      statePoll = setInterval(async () => {
+        if (!S.game) return
+        await loadLive()
+        const sig = JSON.stringify([S.state?.question_status, S.state?.current_question_id, S.state?.question_started_at, S.state?.media_shown])
+        if (sig !== lastSig) { lastSig = sig; render() }
+      }, 2000)
+    }
 
     function remaining(){ const st=S.state; if(!st||st.question_status!=='open'||!st.question_started_at) return null
       return Math.max(0,new Date(st.question_started_at).getTime()+st.question_seconds*1000-Date.now()) }
@@ -116,21 +140,35 @@
 
     function question(st){
       const revealed=st.question_status==='revealed', ck=revealed?st.reveal_correct_key:null
-      const meta=`Pergunta ${st.q_ord} · ${st.q_points} pontos${st.q_ord>=21?' · RODADA FINAL':''}`
+      const closed=st.question_status==='closed'
+      const meta=`Pergunta ${st.q_ord} · ${st.q_points} pontos${st.q_ord>=21?' · RODADA FINAL':''}${closed?' · tempo encerrado':''}`
       const opts=(st.q_options||[]).map(o=>`<div class="bd-opt ${revealed&&o.key===ck?'correct':''}">
         <span class="k">${o.key}</span><span>${escHtml(o.label)}</span></div>`).join('')
       const timerH= st.question_status==='open'
         ? `<div class="bd-timer"><div class="bd-timerfill" id="bd-fill" style="width:100%"></div></div><div class="bd-timernum" id="bd-num"></div>`
         : (st.question_status==='shown'?`<div class="bd-timernum" style="margin-top:22px">Prepare-se…</div>`:'')
+      // O vídeo aparece assim que o apresentador manda mostrar (media_shown), mesmo antes
+      // de revelar a resposta certa; se for revelado sem ter passado por lá, mostra também.
+      const showVideo = (st.media_shown || revealed) && st.q_media
+      const answersBlock = (closed || revealed) ? answersGrid() : ''
       board.innerHTML=`<div class="bd"><div class="bd-main">
         <div class="bd-meta">${meta}</div>
         <div class="bd-q">${escHtml(st.q_text||'')}</div>
         ${timerH}
         <div class="bd-opts">${opts}</div>
         <div class="bd-count">Respostas recebidas: <strong id="bd-count">${S.count}</strong></div>
-        ${revealed && st.q_media ? ytEmbed(st.q_media) : ''}
+        ${answersBlock}
+        ${showVideo ? ytEmbed(st.q_media) : ''}
       </div><div class="bd-side">${scoreboard()}</div></div>`
       if(st.question_status==='open') startTimer()
+    }
+    function answersGrid(){
+      const rows = S.answers.map(a => `<div class="bd-answer-row">
+        <span>${escHtml(a.avatar||'👥')}</span>
+        <span class="nm">${escHtml(a.display_name)}</span>
+        <span class="k">${a.choice_key ? escHtml(a.choice_key) : '—'}</span></div>`).join('')
+      return `<div class="bd-answers"><h3>Respostas das equipes</h3>
+        <div style="margin-top:8px;display:flex;flex-direction:column;gap:4px">${rows || '<p style="color:#6b7280">Nenhuma resposta.</p>'}</div></div>`
     }
     function scoreboard(){
       const remaining=S.scoreboard.filter(s=>!s.eliminated).length
@@ -149,7 +187,7 @@
         <div class="bd-side">${scoreboard()}</div></div>`
     }
 
-    await loadGame(); await loadLive(); subscribe(); startPoll(); render()
+    await loadGame(); await loadLive(); subscribe(); startPoll(); startStatePoll(); render()
   </script>
 </body>
 </html>

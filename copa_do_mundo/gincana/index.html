@@ -160,12 +160,15 @@
       const correctKey = revealed ? st.reveal_correct_key : null
       const meta = `Pergunta ${st.q_ord} · ${st.q_points} pts${st.q_ord>=21?' · rodada final':''}`
 
+      // Enquanto a pergunta está aberta, a equipe pode trocar de resposta livremente —
+      // só trava de vez quando o apresentador encerra o tempo ou revela a correta.
+      const canChange = status==='open' && canAnswer
       const opts = (st.q_options||[]).map(o => {
         let cls = 'gq-opt'
         if (revealed && o.key===correctKey) cls+=' correct'
         else if (revealed && o.key===S.myChoice && o.key!==correctKey) cls+=' wrong'
-        else if (!revealed && o.key===S.myChoice) cls+=' sel'
-        const dis = revealed || answered || status!=='open' || !canAnswer ? 'disabled' : ''
+        else if (o.key===S.myChoice) cls+=' sel'
+        const dis = canChange ? '' : 'disabled'
         return `<button class="${cls}" data-k="${o.key}" ${dis}>
           <span class="k">${o.key}</span><span>${escHtml(o.label)}</span></button>`
       }).join('')
@@ -178,10 +181,12 @@
           : `<div class="gq-banner gq-no">Sem resposta registrada</div>`
       } else if (status==='shown') {
         banner = `<div class="muted" style="text-align:center;margin-top:6px">Prepare-se… o tempo vai começar</div>`
+      } else if (status==='closed' && canAnswer) {
+        banner = `<div class="gq-banner gq-ok">Tempo encerrado — aguarde a revelação</div>`
       } else if (status==='open' && !canAnswer) {
         banner = `<div class="muted" style="text-align:center;margin-top:6px">${S.eliminated?'✖ Sua equipe foi eliminada — acompanhe o placar':'👀 Você está assistindo'}</div>`
       } else if (status==='open' && answered) {
-        banner = `<div class="gq-banner gq-ok">Resposta enviada ✓ — aguarde a revelação</div>`
+        banner = `<div class="gq-banner gq-ok">Resposta enviada ✓ — pode trocar até o tempo acabar</div>`
       }
 
       const timerHtml = status==='open'
@@ -196,24 +201,22 @@
         <div class="gq-opts">${opts}</div>
         ${banner}`)
 
-      if (status==='open' && canAnswer && !answered) {
+      if (canChange) {
         document.querySelectorAll('.gq-opt').forEach(b => b.addEventListener('click', () => submit(b.dataset.k)))
       }
       if (status==='open') startTimer()
     }
 
     async function submit(choice) {
-      document.querySelectorAll('.gq-opt').forEach(b=>b.disabled=true)
+      const prev = S.myChoice
       S.myChoice = choice
       document.querySelectorAll('.gq-opt').forEach(b=> b.classList.toggle('sel', b.dataset.k===choice))
       const { error } = await rpc('quiz_submit_answer', { p_question_id:S.state.current_question_id, p_choice:choice })
       if (error) {
-        S.myChoice=null
+        S.myChoice = prev
         alert(error.message || 'Não deu para enviar. Tente de novo.')
         render()
       } else {
-        // mostra "enviada" sem esperar realtime
-        const b = document.querySelector('.gq-qbox')?.parentElement
         render()
       }
     }

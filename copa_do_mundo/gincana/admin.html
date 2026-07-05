@@ -447,25 +447,35 @@
         return `<div class="gq-live-opt ${isCorrect?'correct':''}"><span class="mono">${o.key}</span> ${escHtml(o.label)}</div>`
       }).join('')
       const stt = st.question_status
+      const statusLabelLive = {shown:'exibida',open:'aberta',closed:'tempo encerrado',revealed:'revelada',idle:'—'}
       return `<div class="gq-live-q">
         <div class="muted mono" style="font-size:.78rem">${st.q_phase==='group'?('Pergunta #'+st.q_ord+' · '+st.q_points+' pts'):'Extra'}
-          · <span class="gq-pill">${{shown:'exibida',open:'aberta',revealed:'revelada',idle:'—'}[stt]||stt}</span></div>
+          · <span class="gq-pill">${statusLabelLive[stt]||stt}</span>
+          ${st.media_shown?' · <span class="gq-pill" style="background:rgba(244,160,36,.16);color:#a86a12">🎬 vídeo no telão</span>':''}</div>
         <div style="font-size:1.05rem;font-weight:600;margin-top:8px">${escHtml(st.q_text||'')}</div>
         <div class="gq-live-opts">${opts}</div>
         <div class="muted" style="font-size:.82rem;margin-top:10px">Respostas recebidas: <strong id="gq-answer-count">${S.answersCount}</strong></div>
       </div>
       <div class="gq-ctrl">
         <button id="btn-start" class="btn btn-primary btn-sm" ${stt==='shown'?'':'disabled'}>▶ Iniciar tempo (${st.question_seconds}s)</button>
-        <button id="btn-reveal" class="btn btn-ghost btn-sm" ${stt==='open'?'':'disabled'}>👁 Revelar resposta</button>
-        ${st.q_media?`<a href="${escHtml(st.q_media)}" target="_blank" rel="noopener" class="btn btn-ghost btn-sm" style="text-decoration:none">🎬 Vídeo (toque antes de revelar)</a>`:''}
+        <button id="btn-close" class="btn btn-ghost btn-sm" ${stt==='open'?'':'disabled'}>🔒 Encerrar tempo (mostrar respostas)</button>
+        <button id="btn-reveal" class="btn btn-ghost btn-sm" ${(stt==='open'||stt==='closed')?'':'disabled'}>👁 Revelar resposta</button>
+        ${st.q_media?`<button id="btn-show-media" class="btn btn-ghost btn-sm" ${st.media_shown?'disabled':''}>🎬 Mostrar vídeo no telão</button>
+          <a href="${escHtml(st.q_media)}" target="_blank" rel="noopener" class="btn btn-ghost btn-sm" style="text-decoration:none">👁 Pré-visualizar (só você)</a>`:''}
       </div>`
     }
     function bindLiveButtons() {
       document.getElementById('btn-start')?.addEventListener('click', async () => {
         const { error } = await rpc('quiz_admin_start', { p_game:S.game.id }); if(error) toast(error.message,false)
       })
+      document.getElementById('btn-close')?.addEventListener('click', async () => {
+        const { error } = await rpc('quiz_admin_close', { p_game:S.game.id }); if(error) toast(error.message,false)
+      })
       document.getElementById('btn-reveal')?.addEventListener('click', async () => {
         const { error } = await rpc('quiz_admin_reveal', { p_game:S.game.id }); if(error) toast(error.message,false)
+      })
+      document.getElementById('btn-show-media')?.addEventListener('click', async () => {
+        const { error } = await rpc('quiz_admin_show_media', { p_game:S.game.id }); if(error) toast(error.message,false)
       })
     }
     async function showQuestion(qid) {
