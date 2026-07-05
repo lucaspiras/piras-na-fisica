@@ -128,14 +128,26 @@
 
     function render(){
       clearInterval(timer)
-      if(!S.game||S.game.status==='setup') return wait('🎯','Gincana Quiz','Aguardando o início…')
+      if(!S.game||S.game.status==='setup') return wait('🎯','Gincana Quiz','Aguardando o início…', true)
       if(S.game.status==='finished') return finished()
       const st=S.state
-      if(!st||!st.current_question_id||st.question_status==='idle') return wait('🎬','Prepare-se!','Aguardando a próxima pergunta')
+      if(!st||!st.current_question_id||st.question_status==='idle') return wait('🎬','Prepare-se!','Aguardando a próxima pergunta', true)
       question(st)
     }
-    function wait(icon,title,sub){ board.innerHTML=`<div class="bd"><div class="bd-main"><div class="bd-wait">
-      <div class="big">${icon}</div><h1>${title}</h1><p style="color:#9aa2b1;font-size:1.3rem">${sub||''}</p></div></div>
+    // URL absoluta (funciona mesmo escaneada de um celular fora deste servidor).
+    const JOIN_URL = 'https://pirasnafisica.com.br/copa_do_mundo/gincana/index.html'
+    function qrBlock(){
+      const qrImg = 'https://api.qrserver.com/v1/create-qr-code/?size=220x220&margin=8&data=' + encodeURIComponent(JOIN_URL)
+      return `<div style="margin-top:26px;display:flex;flex-direction:column;align-items:center;gap:8px">
+        <img src="${qrImg}" width="220" height="220" alt="QR code de acesso" style="border-radius:14px;background:#fff;padding:10px">
+        <p style="color:#9aa2b1;font-size:1rem;margin:0">Aponte a câmera para entrar</p>
+        <p style="color:#6b7280;font-size:.85rem;margin:0">${JOIN_URL}</p>
+      </div>`
+    }
+    function wait(icon,title,sub,showQr){ board.innerHTML=`<div class="bd"><div class="bd-main"><div class="bd-wait">
+      <div class="big">${icon}</div><h1>${title}</h1><p style="color:#9aa2b1;font-size:1.3rem">${sub||''}</p>
+      ${showQr?qrBlock():''}
+      </div></div>
       <div class="bd-side">${scoreboard()}</div></div>` }
 
     function question(st){

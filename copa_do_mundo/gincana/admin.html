@@ -409,9 +409,9 @@
               </div>
             </div>
           </div>
-          <div>${scoreboardCard()}</div>
+          <div>${scoreboardCard(true)}</div>
         </div>`)
-      afterRender(); bindLiveButtons()
+      afterRender(); bindLiveButtons(); bindScoreboardControls()
       document.querySelectorAll('.btn-show').forEach(b => b.addEventListener('click', () => showQuestion(b.dataset.id)))
       document.getElementById('btn-elim').addEventListener('click', eliminateWorst)
       document.getElementById('btn-unelim').addEventListener('click', resetElim)
@@ -495,17 +495,29 @@
     }
 
     // ── Placar (card reutilizável) ───────────────────────────────────────
-    function scoreboardCard() {
+    // showControls=true (só na tela ao vivo) inclui o botão de excluir equipe —
+    // útil se uma equipe estiver colando/trapaceando durante a atividade.
+    function scoreboardCard(showControls=false) {
       const remaining = S.scoreboard.filter(s=>!s.eliminated).length
       const elim = S.scoreboard.length - remaining
       const rows = S.scoreboard.map((s,i)=>`<div class="gq-scorerow ${s.eliminated?'elim':''}"
         style="${i%2?'':'background:var(--paper)'}">
         <span class="pos">${i+1}º</span><span>${escHtml(s.avatar||'👥')}</span>
         <span class="nm">${escHtml(s.display_name)}${s.eliminated?' <span class="mono" style="color:var(--flare);font-size:.72rem">✖ eliminada</span>':''}</span>
-        <span class="pt">${s.total_points}</span></div>`).join('')
+        <span class="pt">${s.total_points}</span>
+        ${showControls && !s.eliminated ? `<button class="btn btn-ghost btn-sm btn-exclude-team" data-id="${s.team_id}" data-name="${escHtml(s.display_name)}" title="Excluir equipe da gincana">🚫</button>` : ''}
+        </div>`).join('')
       return `<div class="card"><h3>Placar ao vivo</h3>
         <p class="muted" style="font-size:.78rem;margin-top:2px">${remaining} em jogo${elim?` · ${elim} eliminada${elim>1?'s':''}`:''}</p>
         <div style="margin-top:8px">${rows || '<p class="muted">Sem pontos ainda.</p>'}</div></div>`
+    }
+    function bindScoreboardControls() {
+      document.querySelectorAll('.btn-exclude-team').forEach(b => b.addEventListener('click', async () => {
+        if (!confirm(`Excluir "${b.dataset.name}" da gincana? A equipe não poderá mais responder (útil em caso de trapaça).`)) return
+        const { error } = await rpc('quiz_admin_exclude_team', { p_game:S.game.id, p_team:b.dataset.id })
+        if (error) return toast(error.message, false)
+        await loadAll(); toast('Equipe excluída da gincana.'); render()
+      }))
     }
 
     // ── Boot ─────────────────────────────────────────────────────────────
