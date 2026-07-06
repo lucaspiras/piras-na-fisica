@@ -57,6 +57,7 @@
     const board = document.getElementById('board')
     let S = { game:null, state:null, scoreboard:[], matches:[], count:0, answers:[] }
     let channel=null, timer=null, poll=null, statePoll=null
+    let localAnchor=null, localOpenQid=null, calibrating=false   // cronômetro local, imune ao relógio do sistema
 
     const rpc=(f,a)=>supabase.rpc(f,a)
     function ytEmbed(url){
@@ -119,8 +120,27 @@
       }, 2000)
     }
 
-    function remaining(){ const st=S.state; if(!st||st.question_status!=='open'||!st.question_started_at) return null
-      return Math.max(0,new Date(st.question_started_at).getTime()+st.question_seconds*1000-Date.now()) }
+    // Cronômetro local: em vez de comparar o relógio de PAREDE do aparelho (Date.now())
+    // com o horário do servidor — o que "nasce esgotado" se a data/hora do computador
+    // estiver desconfigurada —, pedimos ao servidor (RPC quiz_elapsed_ms) quanto tempo
+    // JÁ se passou (cálculo 100% no Postgres) uma única vez ao abrir a pergunta, e daí
+    // em diante contamos sozinhos com o relógio monotônico do navegador
+    // (performance.now()), imune a qualquer configuração errada de data/hora local.
+    async function ensureCalibrated(st){
+      if (localOpenQid === st.current_question_id || calibrating) return
+      calibrating = true
+      const nowLocal = performance.now()
+      const { data: elapsedMs } = await rpc('quiz_elapsed_ms', { p_game: S.game.id })
+      localOpenQid = st.current_question_id
+      localAnchor = nowLocal - (elapsedMs ?? 0)
+      calibrating = false
+    }
+    function remaining(){
+      const st=S.state
+      if(!st||st.question_status!=='open'||localOpenQid!==st.current_question_id||localAnchor==null) return null
+      const elapsed = performance.now() - localAnchor
+      return Math.max(0, st.question_seconds*1000 - elapsed)
+    }
     function tick(){ const rem=remaining(); const bar=document.getElementById('bd-fill'),num=document.getElementById('bd-num')
       if(rem==null||!bar) return; bar.style.width=Math.max(0,Math.min(100,rem/(S.state.question_seconds*1000)*100))+'%'
       if(num) num.textContent=rem<=0?'tempo esgotado':Math.ceil(rem/1000)+'s' }
@@ -172,7 +192,8 @@
         ${answersBlock}
         ${showVideo ? ytEmbed(st.q_media) : ''}
       </div><div class="bd-side">${scoreboard()}</div></div>`
-      if(st.question_status==='open') startTimer()
+      if(st.question_status==='open') { ensureCalibrated(st); startTimer() }
+      else { localOpenQid = null; localAnchor = null }
     }
     function answersGrid(){
       const rows = S.answers.map(a => `<div class="bd-answer-row">

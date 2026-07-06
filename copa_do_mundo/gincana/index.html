@@ -54,6 +54,7 @@
     const app = document.getElementById('app')
     let S = { game:null, state:null, isTeam:false, eliminated:false, scoreboard:[], myChoice:null }
     let channel = null, timer = null, curQ = null
+    let localAnchor=null, localOpenQid=null, calibrating=false   // cronômetro local, imune ao relógio do sistema
 
     const rpc = (fn,args)=>supabase.rpc(fn,args)
 
@@ -96,11 +97,23 @@
     }
 
     // ── Cronômetro ───────────────────────────────────────────────────────
+    // Igual ao board.html: cronômetro local calibrado uma vez pelo servidor
+    // (RPC quiz_elapsed_ms), depois contado com performance.now() — imune a
+    // relógio de sistema desconfigurado no aparelho do aluno.
+    async function ensureCalibrated(st){
+      if (localOpenQid === st.current_question_id || calibrating) return
+      calibrating = true
+      const nowLocal = performance.now()
+      const { data: elapsedMs } = await rpc('quiz_elapsed_ms', { p_game: S.game.id })
+      localOpenQid = st.current_question_id
+      localAnchor = nowLocal - (elapsedMs ?? 0)
+      calibrating = false
+    }
     function remaining() {
       const st = S.state
-      if (!st || st.question_status!=='open' || !st.question_started_at) return null
-      const end = new Date(st.question_started_at).getTime() + st.question_seconds*1000
-      return Math.max(0, end - Date.now())
+      if (!st || st.question_status!=='open' || localOpenQid!==st.current_question_id || localAnchor==null) return null
+      const elapsed = performance.now() - localAnchor
+      return Math.max(0, st.question_seconds*1000 - elapsed)
     }
     function tick() {
       const rem = remaining()
@@ -204,7 +217,8 @@
       if (canChange) {
         document.querySelectorAll('.gq-opt').forEach(b => b.addEventListener('click', () => submit(b.dataset.k)))
       }
-      if (status==='open') startTimer()
+      if (status==='open') { ensureCalibrated(st); startTimer() }
+      else { localOpenQid = null; localAnchor = null }
     }
 
     async function submit(choice) {
