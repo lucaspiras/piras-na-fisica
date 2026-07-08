@@ -44,6 +44,16 @@
     .bd-answer-row .k { font-family:var(--font-mono,monospace); font-weight:800; color:#6ea8ff; font-size:1.2rem; }
     .bd-match { background:#191c23; border:1px solid #262a33; border-radius:12px; padding:8px 12px; margin-top:8px; font-size:1.1rem; }
     .bd-match .w { color:#1e9f50; font-weight:700; }
+    .bd-podium { display:flex; align-items:flex-end; justify-content:center; gap:18px; margin-top:22px; flex-wrap:wrap; }
+    .bd-podium-slot { background:#191c23; border:2px solid #262a33; border-radius:16px 16px 0 0;
+      display:flex; flex-direction:column; align-items:center; justify-content:flex-end;
+      padding:16px 22px; width:190px; }
+    .bd-podium-slot .medal { font-size:2.6rem; }
+    .bd-podium-slot .nm { font-weight:700; font-size:1.2rem; margin-top:6px; text-align:center; }
+    .bd-podium-slot .pt { font-family:var(--font-mono,monospace); font-weight:800; color:#6ea8ff; font-size:1.4rem; margin-top:4px; }
+    .bd-podium-slot.p1 { min-height:220px; border-color:#f4b400; box-shadow:0 0 0 2px rgba(244,180,0,.25); }
+    .bd-podium-slot.p2 { min-height:175px; }
+    .bd-podium-slot.p3 { min-height:145px; }
   </style>
 </head>
 <body>
@@ -213,10 +223,18 @@
       return `<h2>Placar</h2>${sub}<div style="margin-top:8px;display:flex;flex-direction:column;gap:4px">${rows||'<p style="color:#6b7280">—</p>'}</div>`
     }
     function finished(){
-      const champ=S.scoreboard[0]
-      board.innerHTML=`<div class="bd"><div class="bd-main"><div class="bd-wait">
-        <div class="big">🏆</div><h1 style="font-size:3.2rem">${escHtml(champ?.display_name||'')}</h1>
-        <p style="color:#9aa2b1;font-size:1.5rem">Campeã da Gincana!</p></div></div>
+      const top=S.scoreboard.slice(0,3)
+      const medal=i=>i===0?'🥇':i===1?'🥈':'🥉'
+      const slot=(s,place)=>s?`<div class="bd-podium-slot p${place}">
+          <div class="medal">${medal(place-1)}</div>
+          <div class="nm">${escHtml(s.display_name)}</div>
+          <div class="pt">${s.total_points} pts</div>
+        </div>`:''
+      board.innerHTML=`<div class="bd"><div class="bd-main"><div class="bd-wait" style="padding:40px 20px 10px">
+        <div class="big">🏆</div><h1 style="font-size:2.6rem">${escHtml(top[0]?.display_name||'')}</h1>
+        <p style="color:#9aa2b1;font-size:1.4rem">Campeã da Gincana!</p></div>
+        <div class="bd-podium">${slot(top[1],2)}${slot(top[0],1)}${slot(top[2],3)}</div>
+      </div>
         <div class="bd-side">${scoreboard()}</div></div>`
     }
 
