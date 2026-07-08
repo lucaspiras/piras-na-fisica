@@ -93,7 +93,24 @@
       channel = supabase.channel('gq-team-'+S.game.id)
         .on('postgres_changes', { event:'*', schema:'public', table:'quiz_state', filter:'game_id=eq.'+S.game.id },
             async () => { await loadLive(); render() })
+        .on('postgres_changes', { event:'*', schema:'public', table:'quiz_games', filter:'id=eq.'+S.game.id },
+            async () => { await loadGame(); await loadLive(); render() })
         .subscribe()
+    }
+    // Rede/Wi-Fi instável (comum num evento com várias equipes no mesmo Wi-Fi) pode
+    // derrubar o socket do Realtime sem avisar — a equipe fica "presa" na pergunta
+    // anterior, achando que "não carregou" ou que "o tempo não começou". Este poll
+    // reconfere o estado periodicamente, independente do Realtime, como rede de segurança.
+    let statePoll = null
+    function startStatePoll() {
+      clearInterval(statePoll)
+      let lastSig = null
+      statePoll = setInterval(async () => {
+        if (!S.game) return
+        await loadLive()
+        const sig = JSON.stringify([S.game?.status, S.state?.question_status, S.state?.current_question_id, S.state?.question_started_at])
+        if (sig !== lastSig) { lastSig = sig; render() }
+      }, 3000)   // um pouco mais espaçado que o do telão — aqui multiplica por N equipes
     }
 
     // ── Cronômetro ───────────────────────────────────────────────────────
@@ -257,7 +274,7 @@
     }
 
     // ── Boot ─────────────────────────────────────────────────────────────
-    await loadGame(); await loadLive(); subscribe(); render()
+    await loadGame(); await loadLive(); subscribe(); startStatePoll(); render()
   </script>
 </body>
 </html>
