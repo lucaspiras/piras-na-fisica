@@ -294,9 +294,14 @@
 
     const groupPoints = ord => ord<=10 ? 10 : ord<=20 ? 20 : ord<=24 ? 40 : 80
 
+    function qPill(q) {
+      if (q.phase==='group') return '#'+q.ord+' · '+q.points+'pt'
+      if (q.phase==='test')  return '🧪 teste #'+q.ord
+      return 'extra #'+q.ord
+    }
     function renderQRow(q) {
       return `<div class="gq-q-row">
-        <span class="gq-pill">${q.phase==='group'?('#'+q.ord+' · '+q.points+'pt'):('extra #'+q.ord)}</span>
+        <span class="gq-pill">${qPill(q)}</span>
         <span style="flex:1;font-size:.85rem">${escHtml(q.text).slice(0,80)}</span>
         <span class="mono" style="color:var(--pitch-deep)">${escHtml(q.correct_key)}</span>
         <button class="btn btn-ghost btn-sm btn-del-q" data-id="${q.id}">✕</button>
@@ -373,6 +378,7 @@
     // ── Quiz ao vivo (perguntas 1-25 + eliminação progressiva) ───────────
     function renderLive() {
       const groupQs = S.questions.filter(q=>q.phase==='group').sort((a,b)=>a.ord-b.ord)
+      const testQs  = S.questions.filter(q=>q.phase==='test').sort((a,b)=>a.ord-b.ord)
       const st = S.state || {}
       const curId = st.current_question_id
       const remaining = S.scoreboard.filter(s=>!s.eliminated).length
@@ -385,6 +391,19 @@
               <h3>Controle da pergunta</h3>
               ${curId ? liveQuestionPanel(st, groupQs) : '<p class="muted">Escolha uma pergunta abaixo para exibir.</p>'}
             </div>
+
+            ${testQs.length ? `<div class="card mt-16">
+              <h3>🧪 Perguntas de teste (aquecimento, sem pontuação)</h3>
+              <p class="muted" style="font-size:.82rem">Exiba antes da #1 para as equipes confirmarem que estão
+                conseguindo responder. Não conta ponto nem entra no desempate.</p>
+              <div style="margin-top:8px">
+                ${testQs.map(q => `<div class="gq-q-row">
+                  <span class="gq-pill">🧪 #${q.ord}</span>
+                  <span style="flex:1;font-size:.85rem">${escHtml(q.text).slice(0,68)}</span>
+                  <button class="btn ${curId===q.id?'btn-primary':'btn-ghost'} btn-sm btn-show" data-id="${q.id}">Exibir</button>
+                </div>`).join('')}
+              </div>
+            </div>` : ''}
 
             <div class="card mt-16" style="${finalRound?'border-color:var(--flare)':''}">
               <h3>🔻 Rodada final — eliminação</h3>
@@ -409,9 +428,9 @@
               </div>
             </div>
           </div>
-          <div>${scoreboardCard(true)}</div>
+          <div>${scoreboardCard(true)}${auditCard()}</div>
         </div>`)
-      afterRender(); bindLiveButtons(); bindScoreboardControls()
+      afterRender(); bindLiveButtons(); bindScoreboardControls(); bindAuditControls()
       document.querySelectorAll('.btn-show').forEach(b => b.addEventListener('click', () => showQuestion(b.dataset.id)))
       document.getElementById('btn-elim').addEventListener('click', eliminateWorst)
       document.getElementById('btn-unelim').addEventListener('click', resetElim)
@@ -454,7 +473,7 @@
       const statusLabelLive = {shown:'exibida',open:'aberta',closed:'tempo encerrado',revealed:'revelada',idle:'—'}
       const nextQ = nextQuestionOf(groupQs||[], st)
       return `<div class="gq-live-q">
-        <div class="muted mono" style="font-size:.78rem">${st.q_phase==='group'?('Pergunta #'+st.q_ord+' · '+st.q_points+' pts'):'Extra'}
+        <div class="muted mono" style="font-size:.78rem">${st.q_phase==='group'?('Pergunta #'+st.q_ord+' · '+st.q_points+' pts'):st.q_phase==='test'?('🧪 Teste #'+st.q_ord+' — sem pontuação'):'Extra'}
           · <span class="gq-pill">${statusLabelLive[stt]||stt}</span>
           ${st.media_shown?' · <span class="gq-pill" style="background:rgba(244,160,36,.16);color:#a86a12">🎬 vídeo no telão</span>':''}</div>
         <div style="font-size:1.05rem;font-weight:600;margin-top:8px">${escHtml(st.q_text||'')}</div>
@@ -510,8 +529,9 @@
           <h2 style="margin:6px 0">${escHtml(champ?.display_name || 'Campeã')}</h2>
           <p class="muted">Campeã da gincana!</p>
         </div>
-        <div class="mt-16">${scoreboardCard()}</div>`)
-      afterRender()
+        <div class="mt-16">${scoreboardCard()}</div>
+        <div class="mt-16">${auditCard()}</div>`)
+      afterRender(); bindAuditControls()
     }
 
     // ── Placar (card reutilizável) ───────────────────────────────────────
@@ -530,6 +550,63 @@
       return `<div class="card"><h3>Placar ao vivo</h3>
         <p class="muted" style="font-size:.78rem;margin-top:2px">${remaining} em jogo${elim?` · ${elim} eliminada${elim>1?'s':''}`:''}</p>
         <div style="margin-top:8px">${rows || '<p class="muted">Sem pontos ainda.</p>'}</div></div>`
+    }
+    // ── Conferência (auditoria de respostas por pergunta/equipe) ──────────
+    // Carrega sob demanda (não fica pollando) — pensado para conferir no final,
+    // mas disponível já ao vivo caso precise checar algo no meio do jogo.
+    let S_audit = null
+    function auditCard() {
+      const rows = S_audit || []
+      const table = rows.length ? `<div style="max-height:320px;overflow:auto;margin-top:8px">
+        <table style="width:100%;border-collapse:collapse;font-size:.78rem">
+          <thead><tr style="text-align:left;border-bottom:1px solid var(--line)">
+            <th style="padding:4px 6px">Rodada</th><th style="padding:4px 6px">Equipe</th>
+            <th style="padding:4px 6px">Resp.</th><th style="padding:4px 6px">Certa</th>
+            <th style="padding:4px 6px">Pts</th><th style="padding:4px 6px">Tempo</th></tr></thead>
+          <tbody>${rows.map(r => `<tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:4px 6px">${qPill({phase:r.q_phase, ord:r.q_ord, points:r.q_points})}</td>
+            <td style="padding:4px 6px">${escHtml(r.display_name)}</td>
+            <td style="padding:4px 6px" class="mono">${escHtml(r.choice_key)}</td>
+            <td style="padding:4px 6px">${r.is_correct?'✅':'❌'}</td>
+            <td style="padding:4px 6px" class="mono">${r.is_correct ? (r.q_phase==='group'?r.q_points:0) : 0}</td>
+            <td style="padding:4px 6px" class="mono">${(r.response_ms/1000).toFixed(1)}s</td>
+          </tr>`).join('')}</tbody>
+        </table></div>` : '<p class="muted" style="font-size:.82rem;margin-top:8px">Nada carregado ainda.</p>'
+      return `<div class="card mt-16">
+        <h3>📋 Conferência de respostas</h3>
+        <p class="muted" style="font-size:.82rem">Todas as respostas registradas, pergunta a pergunta — para
+          conferir acertos e pontuação no final.</p>
+        <div class="gq-ctrl">
+          <button id="btn-load-audit" class="btn btn-ghost btn-sm">🔄 Carregar / atualizar</button>
+          <button id="btn-export-audit" class="btn btn-ghost btn-sm" ${rows.length?'':'disabled'}>⬇ Baixar CSV</button>
+        </div>
+        ${table}
+      </div>`
+    }
+    function bindAuditControls() {
+      document.getElementById('btn-load-audit')?.addEventListener('click', async () => {
+        const { data, error } = await rpc('quiz_admin_audit', { p_game: S.game.id })
+        if (error) return toast(error.message, false)
+        S_audit = data ?? []
+        toast(S_audit.length + ' respostas carregadas.')
+        render()
+      })
+      document.getElementById('btn-export-audit')?.addEventListener('click', () => {
+        if (!S_audit?.length) return
+        const header = ['fase','ordem','pontos_pergunta','pergunta','equipe','resposta','gabarito','acertou','pontos_ganhos','tempo_ms','respondido_em']
+        const csvEsc = v => `"${String(v??'').replace(/"/g,'""')}"`
+        const lines = [header.join(';')].concat(S_audit.map(r => [
+          r.q_phase, r.q_ord, r.q_points, r.q_text, r.display_name, r.choice_key, r.correct_key,
+          r.is_correct ? 'sim':'não', r.is_correct ? (r.q_phase==='group'?r.q_points:0) : 0,
+          r.response_ms, r.answered_at
+        ].map(csvEsc).join(';')))
+        const blob = new Blob(['﻿'+lines.join('\r\n')], { type:'text/csv;charset=utf-8' })
+        const a = document.createElement('a')
+        a.href = URL.createObjectURL(blob)
+        a.download = `gincana-${(S.game.name||'conferencia').replace(/[^\w-]+/g,'_')}.csv`
+        a.click()
+        URL.revokeObjectURL(a.href)
+      })
     }
     function bindScoreboardControls() {
       document.querySelectorAll('.btn-exclude-team').forEach(b => b.addEventListener('click', async () => {

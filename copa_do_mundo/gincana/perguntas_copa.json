@@ -1,5 +1,31 @@
 [
   {
+    "phase": "test",
+    "ord": 1,
+    "points": 0,
+    "text": "Pergunta de teste 1 — isto NÃO vale ponto. Para confirmar que o sistema está funcionando, toque na alternativa B.",
+    "options": [
+      { "key": "A", "label": "Alternativa A" },
+      { "key": "B", "label": "Alternativa B (toque aqui)" },
+      { "key": "C", "label": "Alternativa C" },
+      { "key": "D", "label": "Alternativa D" }
+    ],
+    "correct_key": "B"
+  },
+  {
+    "phase": "test",
+    "ord": 2,
+    "points": 0,
+    "text": "Pergunta de teste 2 — isto NÃO vale ponto. Agora toque na alternativa D.",
+    "options": [
+      { "key": "A", "label": "Alternativa A" },
+      { "key": "B", "label": "Alternativa B" },
+      { "key": "C", "label": "Alternativa C" },
+      { "key": "D", "label": "Alternativa D (toque aqui)" }
+    ],
+    "correct_key": "D"
+  },
+  {
     "phase": "group",
     "ord": 1,
     "points": 10,
