@@ -53,6 +53,7 @@
     let S = { game:null, games:[], teams:[], profiles:[], questions:[], scoreboard:[], matches:[], state:null,
               answersCount:0, answersByTeam:{}, koPick:{} }
     let pollTimer = null, channel = null
+    let elim = { open:false, ranking:[], selected:new Set() }   // painel de seleção de eliminação
 
     const rpc  = (fn, args) => supabase.rpc(fn, args)
     const toast = (m, ok=true) => { const e=document.getElementById('gq-toast'); if(!e)return;
@@ -74,6 +75,7 @@
     async function openGame(id) {
       S.game = S.games.find(g => g.id === id) ?? null
       if (!S.game) return
+      elim = { open:false, ranking:[], selected:new Set() }
       localStorage.setItem(ACTIVE_GAME_KEY, id)
       await loadAll(); subscribe(); startAnswerPoll(); render()
     }
@@ -410,11 +412,11 @@
               <p class="muted" style="font-size:.82rem">Equipes em jogo: <strong>${remaining}</strong>.
                 Após revelar cada pergunta <strong>21–24</strong>, elimine as 2 piores até restarem 2.
                 A <strong>pergunta 25</strong> é a grande final; depois dela, encerre a gincana.</p>
-              <div class="gq-ctrl">
-                <button id="btn-elim" class="btn btn-primary btn-sm" ${canEliminate?'':'disabled'}>🔻 Eliminar 2 piores</button>
+              ${elim.open ? elimPanel() : `<div class="gq-ctrl">
+                <button id="btn-elim" class="btn btn-primary btn-sm" ${canEliminate?'':'disabled'}>🔻 Eliminar equipes</button>
                 <button id="btn-unelim" class="btn btn-ghost btn-sm">↩ Desfazer eliminações</button>
                 <button id="btn-finish" class="btn btn-ghost btn-sm">🏁 Encerrar gincana</button>
-              </div>
+              </div>`}
             </div>
 
             <div class="card mt-16">
@@ -432,19 +434,60 @@
         </div>`)
       afterRender(); bindLiveButtons(); bindScoreboardControls(); bindAuditControls()
       document.querySelectorAll('.btn-show').forEach(b => b.addEventListener('click', () => showQuestion(b.dataset.id)))
-      document.getElementById('btn-elim').addEventListener('click', eliminateWorst)
-      document.getElementById('btn-unelim').addEventListener('click', resetElim)
-      document.getElementById('btn-finish').addEventListener('click', finishGame)
+      if (elim.open) {
+        bindElimPanel()
+      } else {
+        document.getElementById('btn-elim').addEventListener('click', openElimPanel)
+        document.getElementById('btn-unelim').addEventListener('click', resetElim)
+        document.getElementById('btn-finish').addEventListener('click', finishGame)
+      }
     }
 
-    async function eliminateWorst() {
+    // ── Painel de eliminação: sugere as 2 piores, admin pode trocar antes de confirmar ──
+    async function openElimPanel() {
       const remaining = S.scoreboard.filter(s=>!s.eliminated).length
       if (remaining <= 2) return toast('Já restam 2 equipes — hora da grande final.', false)
-      if (!confirm('Eliminar as 2 equipes de menor pontuação (entre as que seguem em jogo)?')) return
-      const { data, error } = await rpc('quiz_eliminate_worst', { p_game:S.game.id, p_count:2 })
+      const { data, error } = await rpc('quiz_group_ranking', { p_game: S.game.id })
       if (error) return toast(error.message, false)
+      const activeIds = new Set(S.scoreboard.filter(s=>!s.eliminated).map(s=>s.team_id))
+      elim.ranking = (data||[]).filter(r => activeIds.has(r.team_id)).sort((a,b)=>a.rank-b.rank)
+      elim.selected = new Set(elim.ranking.slice(-2).map(r=>r.team_id))  // sugestão: as 2 piores
+      elim.open = true
+      render()
+    }
+    function elimPanel() {
+      const rows = elim.ranking.map(r => `<label class="gq-team-row" style="cursor:pointer">
+        <input type="checkbox" class="elim-cb" value="${r.team_id}" ${elim.selected.has(r.team_id)?'checked':''}>
+        <span class="mono muted" style="width:32px">${r.rank}º</span>
+        <span style="flex:1">${escHtml(r.display_name)}</span>
+        <span class="mono">${r.group_points} pts</span>
+      </label>`).join('')
+      return `<div class="mt-8">
+        <p class="muted" style="font-size:.78rem">Já vêm marcadas as 2 piores colocadas (mesmo critério de
+          desempate do regulamento) — desmarque/marque para trocar quem sai.</p>
+        <div style="margin-top:6px;max-height:260px;overflow:auto">${rows}</div>
+        <div class="gq-ctrl mt-8">
+          <button id="btn-elim-confirm" class="btn btn-primary btn-sm">✔ Confirmar eliminação (<span id="elim-count">${elim.selected.size}</span>)</button>
+          <button id="btn-elim-cancel" class="btn btn-ghost btn-sm">Cancelar</button>
+        </div>
+      </div>`
+    }
+    function bindElimPanel() {
+      document.querySelectorAll('.elim-cb').forEach(cb => cb.addEventListener('change', () => {
+        if (cb.checked) elim.selected.add(cb.value); else elim.selected.delete(cb.value)
+        const el = document.getElementById('elim-count'); if (el) el.textContent = elim.selected.size
+      }))
+      document.getElementById('btn-elim-confirm').addEventListener('click', confirmElim)
+      document.getElementById('btn-elim-cancel').addEventListener('click', () => { elim.open=false; render() })
+    }
+    async function confirmElim() {
+      if (!elim.selected.size) return toast('Selecione ao menos uma equipe.', false)
+      const names = elim.ranking.filter(r => elim.selected.has(r.team_id)).map(r => r.display_name)
+      if (!confirm(`Eliminar: ${names.join(', ')}?`)) return
+      const { error } = await rpc('quiz_admin_eliminate_teams', { p_game:S.game.id, p_team_ids:[...elim.selected] })
+      if (error) return toast(error.message, false)
+      elim.open = false
       await loadAll(); render()
-      const names = (data||[]).map(r => typeof r==='string' ? r : r.quiz_eliminate_worst).filter(Boolean)
       toast('Eliminadas: ' + (names.join(', ') || '—'))
     }
     async function resetElim() {
