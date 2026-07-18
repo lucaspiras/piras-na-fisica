@@ -3,7 +3,7 @@
 
 $root       = Split-Path -Parent $PSScriptRoot
 $indexFile  = Join-Path $root "programas.html"
-$programDir = Join-Path $root "Programas"
+$programDir = Join-Path $root "programas"
 
 # Arquivos de suporte que nao devem virar cards
 $excludeNames = @('tutorial', 'professor', 'admin', 'readme')
@@ -47,7 +47,7 @@ Write-Host "Programas nao listados encontrados:" -ForegroundColor Yellow
 $cardLines = [System.Collections.Generic.List[string]]::new()
 
 foreach ($f in $missing) {
-    $href = "/Programas/$($f.Directory.Name)/$($f.Name)"
+    $href = "/programas/$($f.Directory.Name)/$($f.Name)"
 
     # Tentar extrair <title> do arquivo HTML
     $src        = [System.IO.File]::ReadAllText($f.FullName, [System.Text.Encoding]::UTF8)
