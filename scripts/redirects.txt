@@ -36,3 +36,13 @@ atividades/energia_potencial_conservacao/ -> /atividades/estudos_dirigidos/ed_en
 atividades/eletrostatica_estudo_dirigido/ -> /atividades/estudos_dirigidos/ed_eletrostatica/
 atividades/potencial_eletrico_estudo_dirigido/ -> /atividades/estudos_dirigidos/ed_potencial_eletrico/
 atividades/lancamentos_estudo_dirigido/ -> /atividades/estudos_dirigidos/ed_lancamentos/
+
+# Reorganizacao 2026-07-19: provas saem de disciplinas/ e vao para atividades/testes/
+# (links ja compartilhados com alunos continuam funcionando por estes stubs)
+disciplinas/fisica_1_mecanica/provas/fisica_1_prova_MRU/prova_1_fisica_1_Unidades_MRU.html -> /atividades/testes/prova-mru/prova_1_fisica_1_Unidades_MRU.html
+disciplinas/fisica_1_mecanica/provas/fisica_1_prova_MRU/consulta_resultado.html -> /atividades/testes/prova-mru/consulta_resultado.html
+disciplinas/fisica_1_mecanica/provas/fisica_1_prova_MRU/corrigir_resultado_v1.html -> /atividades/testes/prova-mru/corrigir_resultado_v1.html
+disciplinas/fisica_1_mecanica/provas/fisica_1_prova_MRU/ -> /atividades/testes/prova-mru/
+disciplinas/fisica_1_mecanica/provas/prova_2_MRU_MRUV_Lancamentos/prova_final_2026_01_primeira_etapa.html -> /atividades/testes/prova-final-cinematica/prova_final_2026_01_primeira_etapa.html
+disciplinas/fisica_1_mecanica/provas/prova_2_MRU_MRUV_Lancamentos/consulta_resultado.html -> /atividades/testes/prova-final-cinematica/consulta_resultado.html
+disciplinas/fisica_1_mecanica/provas/prova_2_MRU_MRUV_Lancamentos/ -> /atividades/testes/prova-final-cinematica/

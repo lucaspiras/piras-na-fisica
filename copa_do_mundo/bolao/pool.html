@@ -332,6 +332,11 @@
       if (me) {
         document.getElementById('ranking-my-pos').textContent = `${me.placement}º · ${me.total_points} pts`
       }
+      // Só detalha quando o bolão pontua grupos/pódio (há bolão que pontua só jogos).
+      const detalha = data.some(r => r.group_points > 0 || r.podium_points > 0)
+      const parcela = (label, valor, titulo) =>
+        `<span class="${valor > 0 ? '' : 'zero'}" title="${titulo}">${label} <b>${valor}</b></span>`
+
       list.innerHTML = data.map(r => `
         <div class="rank-row${r.user_id === user.id ? ' me' : ''}">
           <span class="rank-pos">${medalIcon(r.placement)}</span>
@@ -340,7 +345,11 @@
           </span>
           <span style="text-align:right">
             <span class="rank-pts">${r.total_points}</span>
-            ${r.class_points > 0 ? `<span style="display:block;font-size:.68rem;color:var(--muted)">${r.match_points}+${r.class_points}</span>` : ''}
+            ${detalha ? `<span class="rank-breakdown">
+              ${parcela('jogos', r.match_points, 'Pontos dos palpites de placar')}
+              ${parcela('grupos', r.group_points, 'Classificação dos grupos e melhores 3ºs')}
+              ${parcela('pódio', r.podium_points, 'Campeão, vice e 3º lugar')}
+            </span>` : ''}
           </span>
         </div>`).join('')
     }

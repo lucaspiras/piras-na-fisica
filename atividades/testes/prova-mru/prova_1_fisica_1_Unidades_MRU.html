@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prova de Física – Unidades de Medida e MRU</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <script src="/js/theme.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="../prova.css">
+</head>
+<body>
+
+<!-- Screen reader live region -->
+<div id="announcer" aria-live="assertive" aria-atomic="true" role="status"></div>
+
+<!-- Skip navigation -->
+<a class="skip-link" href="#main-content">Ir para o conteúdo da prova</a>
+
+<div id="header"></div>
+
+
+
+
+<main id="main-content" role="main">
+
+<div class="prova-hero">
+  
+    <h1>Prova de Física</h1>
+    <p class="header-subtitle">Unidades de Medida e MRU</p>
+</div>
+
+<div class="exam-info-box" role="region" aria-label="Informações da prova">
+  <dl class="exam-info-grid">
+    <div class="exam-info-item">
+      <dt>Disciplina</dt>
+      <dd>Física I</dd>
+    </div>
+    <div class="exam-info-item">
+      <dt>Questões</dt>
+      <dd>20</dd>
+    </div>
+    <div class="exam-info-item conteudos">
+      <dt>Conteúdos cobrados</dt>
+      <dd>
+        <div class="conteudo-tags">
+          <span>Sistema Internacional</span>
+          <span>Conversão de unidades</span>
+          <span>Posição e deslocamento</span>
+          <span>Velocidade média</span>
+          <span>MRU</span>
+          <span>Gráficos s×t e v×t</span>
+        </div>
+      </dd>
+    </div>
+  </dl>
+</div>
+
+<div class="instructions-box" role="region" aria-labelledby="instrucoes-titulo">
+  <h2 id="instrucoes-titulo">Instruções de acessibilidade</h2>
+  <ul>
+    <li>Use <strong>Tab</strong> para navegar entre as alternativas.</li>
+    <li>Use as <strong>setas do teclado</strong> para selecionar uma alternativa dentro de cada questão.</li>
+    <li>Pressione <strong>Espaço ou Enter</strong> para marcar a alternativa destacada.</li>
+    <li>Marque apenas <strong>uma alternativa</strong> por questão.</li>
+    <li>Após responder todas as questões, use Tab até o botão <strong>"Enviar respostas"</strong> e pressione Enter.</li>
+    <li>O resultado e o gabarito serão lidos pelo leitor de tela ao final.</li>
+    <li><strong>Não é permitido o uso de calculadora.</strong></li>
+  </ul>
+</div>
+
+
+  <div id="progress-section" role="region" aria-label="Progresso da prova">
+    <span id="progress-label">Progresso: <span id="progress-text">0 de 20 questões respondidas</span></span>
+    <div id="progress-bar-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="20" aria-labelledby="progress-label">
+      <div id="progress-bar"></div>
+    </div>
+  </div>
+
+  <form id="quiz-form" novalidate aria-label="Formulário da prova de Física">
+
+    <div class="question-card" id="identificacao-card">
+      <label for="nome-aluno" style="display:block; font-size:1rem; color:var(--accent); font-weight:bold; margin-bottom:0.5rem;">
+        Seu nome completo <span aria-hidden="true">*</span>
+      </label>
+      <input
+        type="text"
+        id="nome-aluno"
+        name="nome-aluno"
+        required
+        autocomplete="name"
+        placeholder="Digite seu nome completo"
+        aria-required="true"
+        aria-describedby="nome-hint"
+        style="
+          width:100%; padding:0.85rem 1rem;
+          background:var(--surface2); color:var(--text);
+          border:2px solid var(--border); border-radius:8px;
+          font-size:1.05rem; font-family:inherit;
+          transition: border-color 0.2s;
+        "
+      >
+      <span id="nome-hint" style="display:block; margin-top:0.4rem; font-size:0.88rem; color:var(--muted);">
+        Seu nome será registrado junto com as respostas.
+      </span>
+
+      <div style="margin-top:1.25rem;">
+        <label for="palavra-secreta" style="display:block; font-size:1rem; color:var(--accent); font-weight:bold; margin-bottom:0.5rem;">
+          Palavra secreta <span aria-hidden="true">*</span>
+        </label>
+        <input
+          type="text"
+          id="palavra-secreta"
+          name="palavra-secreta"
+          required
+          autocomplete="off"
+          placeholder="Crie uma palavra ou frase secreta"
+          aria-required="true"
+          aria-describedby="palavra-hint"
+          style="
+            width:100%; padding:0.85rem 1rem;
+            background:var(--surface2); color:var(--text);
+            border:2px solid var(--border); border-radius:8px;
+            font-size:1.05rem; font-family:inherit;
+            transition: border-color 0.2s;
+          "
+        >
+        <span id="palavra-hint" style="display:block; margin-top:0.4rem; font-size:0.88rem; color:var(--muted);">
+          Você precisará desta palavra para consultar seu resultado. <strong>Anote no caderno se necessário.</strong>
+        </span>
+      </div>
+    </div>
+
+    <!-- Q1 -->
+    <div class="question-card" id="q1-card">
+      <span class="question-number" aria-hidden="true">Questão 1 de 20</span>
+      <div class="question-text" id="q1-text">
+        O Sistema Internacional de Unidades (SI) foi adotado oficialmente em 1960 e estabelece sete unidades de base. Assinale a alternativa que apresenta corretamente a unidade de base do SI para a grandeza comprimento:
+      </div>
+      <ul class="options-list" role="radiogroup" aria-labelledby="q1-text" id="q1-group">
+        <li class="option-item" id="q1-a"><label><input type="radio" name="q1" value="a" aria-label="Alternativa A: centímetro (cm)"> <span class="option-letter">A)</span> <span class="option-label">centímetro (cm)</span></label></li>
+        <li class="option-item" id="q1-b"><label><input type="radio" name="q1" value="b" aria-label="Alternativa B: polegada (in)"> <span class="option-letter">B)</span> <span class="option-label">polegada (in)</span></label></li>
+        <li class="option-item" id="q1-c"><label><input type="radio" name="q1" value="c" aria-label="Alternativa C: quilômetro (km)"> <span class="option-letter">C)</span> <span class="option-label">quilômetro (km)</span></label></li>
+        <li class="option-item" id="q1-d"><label><input type="radio" name="q1" value="d" aria-label="Alternativa D: milímetro (mm)"> <span class="option-letter">D)</span> <span class="option-label">milímetro (mm)</span></label></li>
+        <li class="option-item" id="q1-e"><label><input type="radio" name="q1" value="e" aria-label="Alternativa E: metro (m)"> <span class="option-letter">E)</span> <span class="option-label">metro (m)</span></label></li>
+      </ul>
+      <div class="question-feedback" id="q1-feedback" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question-card" id="q2-card">
+      <span class="question-number" aria-hidden="true">Questão 2 de 20</span>
+      <div class="question-text" id="q2-text">
+        Antes da criação do Sistema Métrico Decimal, durante a Revolução Francesa (final do século XVIII), as unidades de medida variavam de cidade para cidade, sendo frequentemente baseadas em partes do corpo humano, como o pé, a polegada e o côvado. Sobre a história das unidades de medida, é CORRETO afirmar que:
+      </div>
+      <ul class="options-list" role="radiogroup" aria-labelledby="q2-text" id="q2-group">
+        <li class="option-item" id="q2-a"><label><input type="radio" name="q2" value="a" aria-label="Alternativa A"> <span class="option-letter">A)</span> <span class="option-label">o metro foi originalmente definido como a décima milionésima parte da distância entre o Polo Norte e a linha do Equador, medida ao longo do meridiano que passa por Paris.</span></label></li>
+        <li class="option-item" id="q2-b"><label><input type="radio" name="q2" value="b" aria-label="Alternativa B"> <span class="option-letter">B)</span> <span class="option-label">o Sistema Internacional foi criado pelos egípcios em 3000 a.C.</span></label></li>
+        <li class="option-item" id="q2-c"><label><input type="radio" name="q2" value="c" aria-label="Alternativa C"> <span class="option-letter">C)</span> <span class="option-label">a polegada e o pé são unidades do Sistema Internacional.</span></label></li>
+        <li class="option-item" id="q2-d"><label><input type="radio" name="q2" value="d" aria-label="Alternativa D"> <span class="option-letter">D)</span> <span class="option-label">o quilograma foi definido com base no peso de um homem adulto médio.</span></label></li>
+        <li class="option-item" id="q2-e"><label><input type="radio" name="q2" value="e" aria-label="Alternativa E"> <span class="option-letter">E)</span> <span class="option-label">o segundo foi a primeira unidade padronizada do SI, em 1795.</span></label></li>
+      </ul>
+      <div class="question-feedback" id="q2-feedback" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question-card" id="q3-card">
+      <span class="question-number" aria-hidden="true">Questão 3 de 20</span>
+      <div class="question-text" id="q3-text">
+        Segundo as normas do Sistema Internacional de Unidades, há regras específicas para a escrita dos símbolos das unidades. Assinale a alternativa em que TODAS as unidades estão escritas corretamente:
+      </div>
+      <ul class="options-list" role="radiogroup" aria-labelledby="q3-text">
+        <li class="option-item" id="q3-a"><label><input type="radio" name="q3" value="a" aria-label="Alternativa A: 10 Kg, 5 Mts, 20 seg"> <span class="option-letter">A)</span> <span class="option-label">10 Kg, 5 Mts, 20 seg</span></label></li>
+        <li class="option-item" id="q3-b"><label><input type="radio" name="q3" value="b" aria-label="Alternativa B: 10 kg, 5 m, 20 s"> <span class="option-letter">B)</span> <span class="option-label">10 kg, 5 m, 20 s</span></label></li>
+        <li class="option-item" id="q3-c"><label><input type="radio" name="q3" value="c" aria-label="Alternativa C: 10 KG, 5 M, 20 S"> <span class="option-letter">C)</span> <span class="option-label">10 KG, 5 M, 20 S</span></label></li>
+        <li class="option-item" id="q3-d"><label><input type="radio" name="q3" value="d" aria-label="Alternativa D: 10 kgs, 5 ms, 20 ss"> <span class="option-letter">D)</span> <span class="option-label">10 kgs, 5 ms, 20 ss</span></label></li>
+        <li class="option-item" id="q3-e"><label><input type="radio" name="q3" value="e" aria-label="Alternativa E: 10 Kg., 5 m., 20 s."> <span class="option-letter">E)</span> <span class="option-label">10 Kg., 5 m., 20 s.</span></label></li>
+      </ul>
+      <div class="question-feedback" id="q3-feedback" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question-card" id="q4-card">
+      <span class="question-number" aria-hidden="true">Questão 4 de 20</span>
+      <div class="question-text" id="q4-text">Um atleta corre 7,5 km em um treino. Essa distância, expressa em metros, equivale a:</div>
+      <ul class="options-list" role="radiogroup" aria-labelledby="q4-text">
+        <li class="option-item" id="q4-a"><label><input type="radio" name="q4" value="a"> <span class="option-letter">A)</span> <span class="option-label">75 m</span></label></li>
+        <li class="option-item" id="q4-b"><label><input type="radio" name="q4" value="b"> <span class="option-letter">B)</span> <span class="option-label">7.500 m</span></label></li>
+        <li class="option-item" id="q4-c"><label><input type="radio" name="q4" value="c"> <span class="option-letter">C)</span> <span class="option-label">750 m</span></label></li>
+        <li class="option-item" id="q4-d"><label><input type="radio" name="q4" value="d"> <span class="option-letter">D)</span> <span class="option-label">75.000 m</span></label></li>
+        <li class="option-item" id="q4-e"><label><input type="radio" name="q4" value="e"> <span class="option-letter">E)</span> <span class="option-label">750.000 m</span></label></li>
+      </ul>
+      <div class="question-feedback" id="q4-feedback" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question-card" id="q5-card">
+      <span class="question-number" aria-hidden="true">Questão 5 de 20</span>
+      <div class="question-text" id="q5-text">Um carro trafega a uma velocidade de 108 km/h em uma rodovia. Essa velocidade, convertida para m/s, é igual a:</div>
+      <ul class="options-list" role="radiogroup" aria-labelledby="q5-text">
+        <li class="option-item" id="q5-a"><label><input type="radio" name="q5" value="a"> <span class="option-letter">A)</span> <span class="option-label">10 m/s</span></label></li>
+        <li class="option-item" id="q5-b"><label><input type="radio" name="q5" value="b"> <span class="option-letter">B)</span> <span class="option-label">20 m/s</span></label></li>
+        <li class="option-item" id="q5-c"><label><input type="radio" name="q5" value="c"> <span class="option-letter">C)</span> <span class="option-label">30 m/s</span></label></li>
+        <li class="option-item" id="q5-d"><label><input type="radio" name="q5" value="d"> <span class="option-letter">D)</span> <span class="option-label">36 m/s</span></label></li>
+        <li class="option-item" id="q5-e"><label><input type="radio" name="q5" value="e"> <span class="option-letter">E)</span> <span class="option-label">60 m/s</span></label></li>
+      </ul>
+      <div class="question-feedback" id="q5-feedback" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question-card" id="q6-card">
+      <span class="question-number" aria-hidden="true">Questão 6 de 20</span>
+      <div class="question-text" id="q6-text">Um experimento teve duração de 2 horas, 15 minutos e 30 segundos. A duração total, expressa em segundos, é:</div>
+      <ul class="options-list" role="radiogroup" aria-labelledby="q6-text">
+        <li class="option-item" id="q6-a"><label><input type="radio" name="q6" value="a"> <span class="option-letter">A)</span> <span class="option-label">8.130 s</span></label></li>
+        <li class="option-item" id="q6-b"><label><input type="radio" name="q6" value="b"> <span class="option-letter">B)</span> <span class="option-label">7.530 s</span></label></li>
+        <li class="option-item" id="q6-c"><label><input type="radio" name="q6" value="c"> <span class="option-letter">C)</span> <span class="option-label">9.150 s</span></label></li>
+        <li class="option-item" id="q6-d"><label><input type="radio" name="q6" value="d"> <span class="option-letter">D)</span> <span class="option-label">9.150 min</span></label></li>
+        <li class="option-item" id="q6-e"><label><input type="radio" name="q6" value="e"> <span class="option-letter">E)</span> <span class="option-label">13.530 s</span></label></li>
+      </ul>
+      <div class="question-feedback" id="q6-feedback" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question-card" id="q7-card">
+      <span class="question-number" aria-hidden="true">Questão 7 de 20</span>
+      <div class="question-text" id="q7-text">
+        Considere as seguintes transformações de unidades:<br><br>
+        I. 500 cm = 5 m<br>
+        II. 2,5 h = 150 min<br>
+        III. 72 km/h = 20 m/s<br>
+        IV. 3.000 g = 30 kg<br><br>
+        Estão CORRETAS apenas as afirmações:
+      </div>
+      <ul class="options-list" role="radiogroup" aria-labelledby="q7-text">
+        <li class="option-item" id="q7-a"><label><input type="radio" name="q7" value="a"> <span class="option-letter">A)</span> <span class="option-label">I e II</span></label></li>
+        <li class="option-item" id="q7-b"><label><input type="radio" name="q7" value="b"> <span class="option-letter">B)</span> <span class="option-label">I, III e IV</span></label></li>
+        <li class="option-item" id="q7-c"><label><input type="radio" name="q7" value="c"> <span class="option-letter">C)</span> <span class="option-label">II, III e IV</span></label></li>
+        <li class="option-item" id="q7-d"><label><input type="radio" name="q7" value="d"> <span class="option-letter">D)</span> <span class="option-label">I, II e III</span></label></li>
+        <li class="option-item" id="q7-e"><label><input type="radio" name="q7" value="e"> <span class="option-letter">E)</span> <span class="option-label">Todas estão corretas</span></label></li>
+      </ul>
+      <div class="question-feedback" id="q7-feedback" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="question-card" id="q8-card">
+      <span class="question-number" aria-hidden="true">Questão 8 de 20</span>
+      <div class="question-text" id="q8-text">
+        (Unidade fictícia) Em um planeta distante, os habitantes utilizam uma unidade de comprimento chamada "zorg", onde 1 zorg = 4 metros. Eles também usam o "flux" como unidade de tempo, sendo 1 flux = 2 segundos. Qual seria, nesse planeta, a velocidade equivalente a 10 m/s, expressa em zorg/flux?
+      </div>
+      <ul class="options-list" role="radiogroup" aria-labelledby="q8-text">
+        <li class="option-item" id="q8-a"><label><input type="radio" name="q8" value="a"> <span class="option-letter">A)</span> <span class="option-label">2,5 zorg/flux</span></label></li>
+        <li class="option-item" id="q8-b"><label><input type="radio" name="q8" value="b"> <span class="option-letter">B)</span> <span class="option-label">40 zorg/flux</span></label></li>
+        <li class="option-item" id="q8-c"><label><input type="radio" name="q8" value="c"> <span class="option-letter">C)</span> <span class="option-label">10 zorg/flux</span></label></li>
+        <li class="option-item" id="q8-d"><label><input type="radio" name="q8" value="d"> <span class="option-letter">D)</span> <span class="option-label">20 zorg/flux</span></label></li>
+        <li class="option-item" id="q8-e"><label><input type="radio" name="q8" value="e"> <span class="option-letter">E)</span> <span class="option-label">5 zorg/flux</span></label></li>
+      </ul>
+      <div class="question-feedback" id="q8-feedback" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Q9 -->
+    <div class="question-card" id="q9-card">
+      <span class="question-number" aria-hidden="true">Questão 9 de 20</span>
+      <div class="question-text" id="q9-text">
+        Em uma estrada retilínea, observa-se um marco quilométrico indicando km 50. Sobre o conceito de posição na cinemática, é CORRETO afirmar que:
+      </div>
+      <ul class="options-list" role="radiogroup" aria-labelledby="q9-text">
+        <li class="option-item" id="q9-a"><label><input type="radio" name="q9" value="a"> <span class="option-letter">A)</span> <span class="option-label">a posição de um ponto é determinada em relação a um referencial adotado (no caso, o marco zero da estrada).</span></label></li>
+        <li class="option-item" id="q9-b"><label><input type="radio" name="q9" value="b"> <span class="option-letter">B)</span> <span class="option-label">a posição é a mesma coisa que a distância percorrida pelo veículo.</span></label></li>
+        <li class="option-item" id="q9-c"><label><input type="radio" name="q9" value="c"> <span class="option-letter">C)</span> <span class="option-label">a posição independe do referencial escolhido.</span></label></li>
+        <li class="option-item" id="q9-d"><label><input type="radio" name="q9" value="d"> <span class="option-letter">D)</span> <span class="option-label">a posição é sempre positiva, qualquer que seja o referencial.</span></label></li>
+        <li class="option-item" id="q9-e"><label><input type="radio" name="q9" value="e"> <span class="option-letter">E)</span> <span class="option-label">a posição só pode ser medida em metros, nunca em quilômetros.</span></label></li>
+      </ul>
+      <div class="question-feedback" id="q9-feedback" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Q10 -->
+    <div class="question-card" id="q10-card">
+      <span class="question-number" aria-hidden="true">Questão 10 de 20</span>
+      <div class="question-text" id="q10-text">
+        Um ciclista parte do ponto A, percorre 300 m para o leste até o ponto B e, em seguida, retorna 100 m para o oeste, parando no ponto C. Sobre essa trajetória, é CORRETO afirmar que:
+      </div>
+      <ul class="options-list" role="radiogroup" aria-labelledby="q10-text">
+        <li class="option-item" id="q10-a"><label><input type="radio" name="q10" value="a"> <span class="option-letter">A)</span> <span class="option-label">a distância percorrida é 200 m e o deslocamento é 400 m.</span></label></li>
+        <li class="option-item" id="q10-b"><label><input type="radio" name="q10" value="b"> <span class="option-letter">B)</span> <span class="option-label">a distância percorrida é 400 m e o deslocamento é 200 m.</span></label></li>
+        <li class="option-item" id="q10-c"><label><input type="radio" name="q10" value="c"> <span class="option-letter">C)</span> <span class="option-label">a distância percorrida e o deslocamento são ambos iguais a 300 m.</span></label></li>
+        <li class="option-item" id="q10-d"><label><input type="radio" name="q10" value="d"> <span class="option-letter">D)</span> <span class="option-label">a distância percorrida é 400 m e o deslocamento é 400 m.</span></label></li>
+        <li class="option-item" id="q10-e"><label><input type="radio" name="q10" value="e"> <span class="option-letter">E)</span> <span class="option-label">a distância percorrida é 200 m e o deslocamento é 200 m.</span></label></li>
+      </ul>
+      <div class="question-feedback" id="q10-feedback" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Q11 -->
+    <div class="question-card" id="q11-card">
+      <span class="question-number" aria-hidden="true">Questão 11 de 20</span>
+      <div class="question-text" id="q11-text">Assinale a alternativa que diferencia CORRETAMENTE velocidade média e velocidade instantânea:</div>
+      <ul class="options-list" role="radiogroup" aria-labelledby="q11-text">
+        <li class="option-item" id="q11-a"><label><input type="radio" name="q11" value="a"> <span class="option-letter">A)</span> <span class="option-label">A velocidade média é medida pelo velocímetro do carro, e a velocidade instantânea é calculada ao final da viagem.</span></label></li>
+        <li class="option-item" id="q11-b"><label><input type="radio" name="q11" value="b"> <span class="option-letter">B)</span> <span class="option-label">A velocidade instantânea só existe no MRU; a velocidade média só existe em movimentos variados.</span></label></li>
+        <li class="option-item" id="q11-c"><label><input type="radio" name="q11" value="c"> <span class="option-letter">C)</span> <span class="option-label">A velocidade média é a razão entre o deslocamento total e o intervalo de tempo total, enquanto a velocidade instantânea é a velocidade em um determinado instante.</span></label></li>
+        <li class="option-item" id="q11-d"><label><input type="radio" name="q11" value="d"> <span class="option-letter">D)</span> <span class="option-label">Velocidade média e velocidade instantânea são sempre iguais, em qualquer tipo de movimento.</span></label></li>
+        <li class="option-item" id="q11-e"><label><input type="radio" name="q11" value="e"> <span class="option-letter">E)</span> <span class="option-label">A velocidade média é sempre maior que a velocidade instantânea.</span></label></li>
+      </ul>
+      <div class="question-feedback" id="q11-feedback" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Q12 -->
+    <div class="question-card" id="q12-card">
+      <span class="question-number" aria-hidden="true">Questão 12 de 20</span>
+      <div class="question-text" id="q12-text">Um automóvel percorre 240 km em 3 horas, mantendo velocidade constante em uma rodovia. Qual é a velocidade média do automóvel, em km/h?</div>
+      <ul class="options-list" role="radiogroup" aria-labelledby="q12-text">
+        <li class="option-item" id="q12-a"><label><input type="radio" name="q12" value="a"> <span class="option-letter">A)</span> <span class="option-label">60 km/h</span></label></li>
+        <li class="option-item" id="q12-b"><label><input type="radio" name="q12" value="b"> <span class="option-letter">B)</span> <span class="option-label">70 km/h</span></label></li>
+        <li class="option-item" id="q12-c"><label><input type="radio" name="q12" value="c"> <span class="option-letter">C)</span> <span class="option-label">80 km/h</span></label></li>
+        <li class="option-item" id="q12-d"><label><input type="radio" name="q12" value="d"> <span class="option-letter">D)</span> <span class="option-label">90 km/h</span></label></li>
+        <li class="option-item" id="q12-e"><label><input type="radio" name="q12" value="e"> <span class="option-letter">E)</span> <span class="option-label">120 km/h</span></label></li>
+      </ul>
+      <div class="question-feedback" id="q12-feedback" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Q13 -->
+    <div class="question-card" id="q13-card">
+      <span class="question-number" aria-hidden="true">Questão 13 de 20</span>
+      <div class="question-text" id="q13-text">Um trem desloca-se com velocidade constante de 25 m/s durante 40 segundos. A distância percorrida pelo trem nesse intervalo de tempo é:</div>
+      <ul class="options-list" role="radiogroup" aria-labelledby="q13-text">
+        <li class="option-item" id="q13-a"><label><input type="radio" name="q13" value="a"> <span class="option-letter">A)</span> <span class="option-label">100 m</span></label></li>
+        <li class="option-item" id="q13-b"><label><input type="radio" name="q13" value="b"> <span class="option-letter">B)</span> <span class="option-label">250 m</span></label></li>
+        <li class="option-item" id="q13-c"><label><input type="radio" name="q13" value="c"> <span class="option-letter">C)</span> <span class="option-label">500 m</span></label></li>
+        <li class="option-item" id="q13-d"><label><input type="radio" name="q13" value="d"> <span class="option-letter">D)</span> <span class="option-label">1.000 m</span></label></li>
+        <li class="option-item" id="q13-e"><label><input type="radio" name="q13" value="e"> <span class="option-letter">E)</span> <span class="option-label">1.250 m</span></label></li>
+      </ul>
+      <div class="question-feedback" id="q13-feedback" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Q14 -->
+    <div class="question-card" id="q14-card">
+      <span class="question-number" aria-hidden="true">Questão 14 de 20</span>
+      <div class="question-text" id="q14-text">Um caminhão viaja com velocidade média constante de 25 m/s em uma rodovia. Quanto tempo, em horas, ele levará para percorrer uma distância de 360 km?</div>
+      <ul class="options-list" role="radiogroup" aria-labelledby="q14-text">
+        <li class="option-item" id="q14-a"><label><input type="radio" name="q14" value="a"> <span class="option-letter">A)</span> <span class="option-label">3 horas</span></label></li>
+        <li class="option-item" id="q14-b"><label><input type="radio" name="q14" value="b"> <span class="option-letter">B)</span> <span class="option-label">3,5 horas</span></label></li>
+        <li class="option-item" id="q14-c"><label><input type="radio" name="q14" value="c"> <span class="option-letter">C)</span> <span class="option-label">4 horas</span></label></li>
+        <li class="option-item" id="q14-d"><label><input type="radio" name="q14" value="d"> <span class="option-letter">D)</span> <span class="option-label">4,5 horas</span></label></li>
+        <li class="option-item" id="q14-e"><label><input type="radio" name="q14" value="e"> <span class="option-letter">E)</span> <span class="option-label">5 horas</span></label></li>
+      </ul>
+      <div class="question-feedback" id="q14-feedback" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Q15 -->
+    <div class="question-card" id="q15-card">
+      <span class="question-number" aria-hidden="true">Questão 15 de 20</span>
+      <div class="question-text" id="q15-text">
+        A posição de uma partícula em MRU é dada pela função horária x(t) = 20 + 5t (no SI), onde x é dado em metros e t em segundos. Sobre esse movimento, é CORRETO afirmar que:
+      </div>
+      <ul class="options-list" role="radiogroup" aria-labelledby="q15-text">
+        <li class="option-item" id="q15-a"><label><input type="radio" name="q15" value="a"> <span class="option-letter">A)</span> <span class="option-label">a posição inicial é 5 m e a velocidade é 20 m/s.</span></label></li>
+        <li class="option-item" id="q15-b"><label><input type="radio" name="q15" value="b"> <span class="option-letter">B)</span> <span class="option-label">a posição inicial é zero e a velocidade é 25 m/s.</span></label></li>
+        <li class="option-item" id="q15-c"><label><input type="radio" name="q15" value="c"> <span class="option-letter">C)</span> <span class="option-label">a partícula está em repouso, pois trata-se de MRU.</span></label></li>
+        <li class="option-item" id="q15-d"><label><input type="radio" name="q15" value="d"> <span class="option-letter">D)</span> <span class="option-label">a posição inicial é 20 m e a velocidade é 5 m/s.</span></label></li>
+        <li class="option-item" id="q15-e"><label><input type="radio" name="q15" value="e"> <span class="option-letter">E)</span> <span class="option-label">a velocidade é variável ao longo do tempo.</span></label></li>
+      </ul>
+      <div class="question-feedback" id="q15-feedback" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Q16 -->
+    <div class="question-card" id="q16-card">
+      <span class="question-number" aria-hidden="true">Questão 16 de 20</span>
+      <div class="question-text" id="q16-text">
+        As cidades A e B encontram-se ao longo de uma mesma rodovia retilínea: a cidade A no km 0 e a cidade B no km 400. No mesmo instante, um carro parte da cidade A em direção a B com velocidade de 60 km/h, enquanto outro carro parte de B em direção a A com velocidade de 40 km/h. Depois de quanto tempo ocorre o encontro entre eles?
+      </div>
+      <ul class="options-list" role="radiogroup" aria-labelledby="q16-text">
+        <li class="option-item" id="q16-a"><label><input type="radio" name="q16" value="a"> <span class="option-letter">A)</span> <span class="option-label">2 horas</span></label></li>
+        <li class="option-item" id="q16-b"><label><input type="radio" name="q16" value="b"> <span class="option-letter">B)</span> <span class="option-label">3 horas</span></label></li>
+        <li class="option-item" id="q16-c"><label><input type="radio" name="q16" value="c"> <span class="option-letter">C)</span> <span class="option-label">10 horas</span></label></li>
+        <li class="option-item" id="q16-d"><label><input type="radio" name="q16" value="d"> <span class="option-letter">D)</span> <span class="option-label">5 horas</span></label></li>
+        <li class="option-item" id="q16-e"><label><input type="radio" name="q16" value="e"> <span class="option-letter">E)</span> <span class="option-label">4 horas</span></label></li>
+      </ul>
+      <div class="question-feedback" id="q16-feedback" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Q17 -->
+    <div class="question-card" id="q17-card">
+      <span class="question-number" aria-hidden="true">Questão 17 de 20</span>
+      <div class="question-text" id="q17-text">
+        Em uma estrada retilínea, um carro X passa por um posto policial com velocidade constante de 90 km/h. Cinco minutos depois, uma viatura Y inicia perseguição, partindo do mesmo posto com velocidade constante de 120 km/h. Quanto tempo (após a saída da viatura) levará para que a viatura alcance o carro X?
+      </div>
+      <ul class="options-list" role="radiogroup" aria-labelledby="q17-text">
+        <li class="option-item" id="q17-a"><label><input type="radio" name="q17" value="a"> <span class="option-letter">A)</span> <span class="option-label">10 minutos</span></label></li>
+        <li class="option-item" id="q17-b"><label><input type="radio" name="q17" value="b"> <span class="option-letter">B)</span> <span class="option-label">30 minutos</span></label></li>
+        <li class="option-item" id="q17-c"><label><input type="radio" name="q17" value="c"> <span class="option-letter">C)</span> <span class="option-label">20 minutos</span></label></li>
+        <li class="option-item" id="q17-d"><label><input type="radio" name="q17" value="d"> <span class="option-letter">D)</span> <span class="option-label">25 minutos</span></label></li>
+        <li class="option-item" id="q17-e"><label><input type="radio" name="q17" value="e"> <span class="option-letter">E)</span> <span class="option-label">15 minutos</span></label></li>
+      </ul>
+      <div class="question-feedback" id="q17-feedback" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Q18 — gráfico visível com descrição acessível -->
+    <div class="question-card" id="q18-card">
+      <span class="question-number" aria-hidden="true">Questão 18 de 20</span>
+      <div class="question-text" id="q18-text">
+        Analise o gráfico da posição x(t) em função do tempo (t) de um móvel em MRU descrito a seguir:
+      </div>
+      <div class="graph-figure" role="img" aria-label="Gráfico da posição x em função do tempo para um movimento uniforme">
+      <svg viewBox="0 0 420 320" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <rect width="420" height="320" fill="#f7f7ff"/>
+        <line x1="60" y1="280" x2="380" y2="280" stroke="#103f91" stroke-width="2"/>
+        <line x1="60" y1="280" x2="60" y2="40" stroke="#103f91" stroke-width="2"/>
+        <path d="M60 200 L140 160 L220 120 L300 80 L380 40" fill="none" stroke="#1d7a23" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="60" cy="200" r="4" fill="#103f91"/>
+        <circle cx="140" cy="160" r="4" fill="#103f91"/>
+        <circle cx="220" cy="120" r="4" fill="#103f91"/>
+        <circle cx="300" cy="80" r="4" fill="#103f91"/>
+        <circle cx="380" cy="40" r="4" fill="#103f91"/>
+        <text x="60" y="298" fill="#3a3a3a" font-size="12" text-anchor="middle">0 s</text>
+        <text x="220" y="298" fill="#3a3a3a" font-size="12" text-anchor="middle">5 s</text>
+        <text x="380" y="298" fill="#3a3a3a" font-size="12" text-anchor="middle">10 s</text>
+        <text x="40" y="280" fill="#3a3a3a" font-size="12" text-anchor="end">0 m</text>
+        <text x="40" y="240" fill="#3a3a3a" font-size="12" text-anchor="end">5 m</text>
+        <text x="40" y="200" fill="#3a3a3a" font-size="12" text-anchor="end">10 m</text>
+        <text x="40" y="160" fill="#3a3a3a" font-size="12" text-anchor="end">15 m</text>
+        <text x="40" y="120" fill="#3a3a3a" font-size="12" text-anchor="end">20 m</text>
+        <text x="40" y="80" fill="#3a3a3a" font-size="12" text-anchor="end">25 m</text>
+        <text x="40" y="40" fill="#3a3a3a" font-size="12" text-anchor="end">30 m</text>
+      </svg>
+      <div class="graph-caption">Gráfico da posição x em função do tempo para MRU. Posição inicial: 10 m; velocidade: 2 m/s.</div>
+    </div>
+    <div class="graphic-notice" role="note" aria-label="Descrição do gráfico da questão 18">
+        <strong>Descrição do gráfico (acessível):</strong><br>
+        O gráfico mostra a posição x (eixo vertical, em metros, de 0 a 30 m) em função do tempo t (eixo horizontal, em segundos, de 0 a 10 s). A reta é crescente e passa pelos pontos: t = 0 s → x = 10 m; t = 5 s → x = 20 m; t = 10 s → x = 30 m. A reta é contínua, confirmando MRU com velocidade constante.
+      </div>
+      <div class="question-text">Com base no gráfico, a velocidade do móvel é igual a:</div>
+      <ul class="options-list" role="radiogroup" aria-labelledby="q18-text">
+        <li class="option-item" id="q18-a"><label><input type="radio" name="q18" value="a"> <span class="option-letter">A)</span> <span class="option-label">2 m/s</span></label></li>
+        <li class="option-item" id="q18-b"><label><input type="radio" name="q18" value="b"> <span class="option-letter">B)</span> <span class="option-label">4 m/s</span></label></li>
+        <li class="option-item" id="q18-c"><label><input type="radio" name="q18" value="c"> <span class="option-letter">C)</span> <span class="option-label">5 m/s</span></label></li>
+        <li class="option-item" id="q18-d"><label><input type="radio" name="q18" value="d"> <span class="option-letter">D)</span> <span class="option-label">8 m/s</span></label></li>
+        <li class="option-item" id="q18-e"><label><input type="radio" name="q18" value="e"> <span class="option-letter">E)</span> <span class="option-label">10 m/s</span></label></li>
+      </ul>
+      <div class="question-feedback" id="q18-feedback" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Q19 — gráfico visível com descrição acessível -->
+    <div class="question-card" id="q19-card">
+      <span class="question-number" aria-hidden="true">Questão 19 de 20</span>
+      <div class="question-text" id="q19-text">
+        O gráfico abaixo representa a velocidade (v) em função do tempo (t) de um veículo em MRU durante 20 segundos. Veja a descrição acessível:
+      </div>
+      <div class="graph-figure" role="img" aria-label="Gráfico da velocidade em função do tempo de um movimento uniforme">
+      <svg viewBox="0 0 420 260" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+        <rect width="420" height="260" fill="#f7f7ff"/>
+        <line x1="60" y1="220" x2="380" y2="220" stroke="#103f91" stroke-width="2"/>
+        <line x1="60" y1="220" x2="60" y2="40" stroke="#103f91" stroke-width="2"/>
+        <line x1="60" y1="110" x2="380" y2="110" stroke="#1d7a23" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="120" cy="110" r="4" fill="#103f91"/>
+        <circle cx="200" cy="110" r="4" fill="#103f91"/>
+        <circle cx="280" cy="110" r="4" fill="#103f91"/>
+        <circle cx="360" cy="110" r="4" fill="#103f91"/>
+        <text x="120" y="235" fill="#3a3a3a" font-size="12" text-anchor="middle">5 s</text>
+        <text x="200" y="235" fill="#3a3a3a" font-size="12" text-anchor="middle">10 s</text>
+        <text x="280" y="235" fill="#3a3a3a" font-size="12" text-anchor="middle">15 s</text>
+        <text x="360" y="235" fill="#3a3a3a" font-size="12" text-anchor="middle">20 s</text>
+        <text x="40" y="220" fill="#3a3a3a" font-size="12" text-anchor="end">0 m/s</text>
+        <text x="40" y="110" fill="#3a3a3a" font-size="12" text-anchor="end">15 m/s</text>
+      </svg>
+      <div class="graph-caption">Gráfico da velocidade constante v = 15 m/s em função do tempo.</div>
+    </div>
+    <div class="graphic-notice" role="note" aria-label="Descrição do gráfico da questão 19">
+        <strong>Descrição do gráfico (acessível):</strong><br>
+        O gráfico mostra a velocidade v (eixo vertical, em m/s) em função do tempo t (eixo horizontal, em segundos), de 0 a 20 s. A reta é horizontal (velocidade constante), com valor constante de v = 15 m/s durante todo o intervalo de 0 a 20 s. Isso indica MRU com velocidade de 15 m/s.
+      </div>
+      <div class="question-text">A distância percorrida pelo veículo nesse intervalo de tempo é:</div>
+      <ul class="options-list" role="radiogroup" aria-labelledby="q19-text">
+        <li class="option-item" id="q19-a"><label><input type="radio" name="q19" value="a"> <span class="option-letter">A)</span> <span class="option-label">75 m</span></label></li>
+        <li class="option-item" id="q19-b"><label><input type="radio" name="q19" value="b"> <span class="option-letter">B)</span> <span class="option-label">150 m</span></label></li>
+        <li class="option-item" id="q19-c"><label><input type="radio" name="q19" value="c"> <span class="option-letter">C)</span> <span class="option-label">200 m</span></label></li>
+        <li class="option-item" id="q19-d"><label><input type="radio" name="q19" value="d"> <span class="option-letter">D)</span> <span class="option-label">300 m</span></label></li>
+        <li class="option-item" id="q19-e"><label><input type="radio" name="q19" value="e"> <span class="option-letter">E)</span> <span class="option-label">400 m</span></label></li>
+      </ul>
+      <div class="question-feedback" id="q19-feedback" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Q20 -->
+    <div class="question-card" id="q20-card">
+      <span class="question-number" aria-hidden="true">Questão 20 de 20</span>
+      <div class="question-text" id="q20-text">
+        Um motorista percorre a primeira metade de um trajeto de 200 km a uma velocidade média de 50 km/h e a segunda metade a 100 km/h. Qual foi a velocidade média do motorista no trajeto completo?
+      </div>
+      <ul class="options-list" role="radiogroup" aria-labelledby="q20-text">
+        <li class="option-item" id="q20-a"><label><input type="radio" name="q20" value="a"> <span class="option-letter">A)</span> <span class="option-label">60 km/h</span></label></li>
+        <li class="option-item" id="q20-b"><label><input type="radio" name="q20" value="b"> <span class="option-letter">B)</span> <span class="option-label">66,7 km/h</span></label></li>
+        <li class="option-item" id="q20-c"><label><input type="radio" name="q20" value="c"> <span class="option-letter">C)</span> <span class="option-label">75 km/h</span></label></li>
+        <li class="option-item" id="q20-d"><label><input type="radio" name="q20" value="d"> <span class="option-letter">D)</span> <span class="option-label">80 km/h</span></label></li>
+        <li class="option-item" id="q20-e"><label><input type="radio" name="q20" value="e"> <span class="option-letter">E)</span> <span class="option-label">90 km/h</span></label></li>
+      </ul>
+      <div class="question-feedback" id="q20-feedback" role="alert" aria-live="polite"></div>
+    </div>
+
+    <!-- Submit -->
+    <div id="submit-section">
+      <button type="button" id="btn-submit" aria-label="Enviar respostas e ver resultado">
+        Enviar respostas
+      </button>
+      <p id="missing-warning" role="alert" aria-live="assertive"></p>
+    </div>
+
+    <!-- Result panel -->
+    <div id="result-panel" role="region" aria-labelledby="result-heading" tabindex="-1">
+      <h2 id="result-heading">Resultado da Prova</h2>
+      <div id="result-score" aria-live="polite"></div>
+      <p id="result-detail"></p>
+      <button type="button" id="btn-retry">Refazer a prova</button>
+    </div>
+
+  </form>
+</main>
+
+<footer></footer>
+
+<script src="script.js"></script>
+<script src="/js/include.js"></script>
+</body>
+</html>

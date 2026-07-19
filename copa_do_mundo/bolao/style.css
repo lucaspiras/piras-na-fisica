@@ -502,6 +502,24 @@ h3 {
   font-size: 1.1rem;
   color: var(--pitch-deep);
 }
+
+/* Detalhe do placar: jogos · grupos · pódio */
+.rank-breakdown {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-top: 2px;
+  font-size: .68rem;
+  color: var(--muted);
+}
+.rank-breakdown > span { white-space: nowrap; }
+.rank-breakdown b {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--ink);
+}
+.rank-breakdown .zero b { color: var(--muted); font-weight: 600; }
 .rank-count {
   font-size: .75rem;
   color: var(--muted);

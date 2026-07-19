@@ -1,0 +1,604 @@
+/* =============================================================
+   Provas e testes — estilo compartilhado
+   Usado por: forca-movimento/, prova-mru/, prova-final-cinematica/
+   (antes cada pasta tinha uma cópia própria do mesmo CSS)
+
+   Herda os tokens de /css/style.css (--bg, --surface, --texto, --azul…),
+   então acompanha o fundo dourado e o modo escuro do site automaticamente.
+   ============================================================= */
+
+/* Acento das provas: azul da marca, com um tom escuro para títulos */
+:root {
+  --prova-cor: var(--azul);
+  --prova-forte: var(--azul-escuro);
+  --prova-ok: #1d7a23;
+  --prova-erro: #a11a1a;
+  --prova-foco: #b36b00;
+  --prova-raio: 12px;
+}
+
+[data-theme="dark"] {
+  --prova-cor: #8fb0ff;
+  --prova-forte: #c7d2fe;
+  --prova-ok: #86efac;
+  --prova-erro: #fecdd3;
+  --prova-foco: #fbbf24;
+}
+
+body {
+  background: var(--bg);
+  color: var(--texto);
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+/* Link para pular ao conteúdo (leitores de tela / teclado) */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--prova-cor);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--prova-raio);
+  font-weight: 700;
+  font-size: 1rem;
+  z-index: 9999;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 1rem; }
+
+#announcer {
+  position: absolute;
+  left: -9999px; top: -9999px;
+  width: 1px; height: 1px;
+  overflow: hidden;
+}
+
+/* ---- Cabeçalho da prova (dentro do conteúdo, abaixo do header do site) ---- */
+.prova-hero {
+  background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul) 50%, var(--roxo) 100%);
+  color: #fff;
+  padding: 1.8rem 2rem;
+  border-radius: var(--prova-raio);
+  margin-bottom: 1.5rem;
+}
+
+.prova-hero h1 {
+  font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 0.3rem;
+}
+
+.prova-hero .header-subtitle {
+  font-size: 1.02rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.ref-box {
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.25);
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* ---- Ficha de informações da prova ---- */
+.exam-info-box {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--prova-raio);
+  padding: 1.1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+.exam-info-grid {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.exam-info-item { min-width: 0; }
+
+.exam-info-item dt {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 0.15rem;
+}
+
+.exam-info-item dd {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--prova-forte);
+}
+
+/* Conteúdos cobrados: lista de etiquetas */
+.exam-info-item.conteudos { flex: 1 1 100%; }
+
+.conteudo-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.15rem;
+}
+
+.conteudo-tags span {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--prova-cor);
+  background: color-mix(in srgb, var(--prova-cor) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--prova-cor) 28%, transparent);
+  border-radius: 999px;
+  padding: 0.15rem 0.7rem;
+}
+
+/* ---- Instruções ---- */
+.instructions-box {
+  background: var(--surface-2);
+  border: 1.5px solid var(--border);
+  border-left: 4px solid var(--prova-cor);
+  border-radius: var(--prova-raio);
+  padding: 1.3rem 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.instructions-box h2 {
+  font-size: 0.95rem;
+  color: var(--prova-cor);
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.instructions-box ul { padding-left: 1.4rem; }
+.instructions-box li { margin-bottom: 0.35rem; font-size: 0.97rem; }
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.2rem 4rem;
+}
+
+/* ---- Barra de progresso ----
+   O header do site é sticky; a barra gruda logo abaixo dele. */
+#progress-section {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  padding: 0.9rem 0;
+  z-index: 90;
+  border-bottom: 1.5px solid var(--border);
+  margin-bottom: 1.75rem;
+}
+
+#progress-label {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+#progress-bar-container {
+  background: var(--surface-2);
+  border-radius: 999px;
+  height: 10px;
+  width: 100%;
+  overflow: hidden;
+}
+
+#progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--azul), var(--roxo));
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* ---- Cartão de questão ---- */
+.question-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--prova-raio);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.4rem;
+  box-shadow: 0 2px 10px var(--shadow);
+  transition: border-color 0.25s;
+}
+
+.question-card:focus-within { border-color: var(--prova-cor); }
+
+.question-number {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--prova-cor);
+  font-weight: 700;
+  margin-bottom: 0.55rem;
+  display: block;
+}
+
+.question-text {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--texto);
+  margin-bottom: 1.1rem;
+}
+
+/* ---- Figuras e gráficos ---- */
+.graph-figure,
+.figura,
+.opcoes-figura {
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  margin: 1rem 0 1.2rem;
+}
+
+.figura, .opcoes-figura { padding: 0.75rem; text-align: center; }
+.opcoes-figura { overflow-x: auto; }
+
+.graph-figure svg { display: block; width: 100%; height: auto; }
+
+.figura img, .opcoes-figura img, .graph-figure img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.opcoes-figura img { min-width: 380px; }
+
+.graph-caption {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  padding: 0.7rem 1rem;
+  background: var(--surface-2);
+}
+
+.opcoes-figura-dica,
+.figura figcaption {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+}
+
+.graphic-notice {
+  background: var(--info-bg);
+  border: 1px dashed var(--info-border);
+  border-radius: 10px;
+  padding: 0.9rem 1.2rem;
+  margin: 1rem 0;
+  font-size: 0.92rem;
+  color: var(--info-text);
+}
+.graphic-notice strong { color: var(--info-text); }
+
+/* ---- Campos de identificação ---- */
+.campo { margin-bottom: 1rem; }
+
+.campo label {
+  display: block;
+  font-weight: 700;
+  color: var(--prova-cor);
+  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
+}
+
+.campo input,
+#nome-aluno,
+#palavra-secreta {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: var(--bg);
+  color: var(--texto);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.campo input:focus,
+#nome-aluno:focus,
+#palavra-secreta:focus {
+  outline: none;
+  border-color: var(--prova-cor);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--prova-cor) 20%, transparent);
+  background: var(--surface);
+}
+
+.campo .hint {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ---- Alternativas ---- */
+.options-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0;
+  margin: 0;
+}
+
+.options-list li { margin: 0; padding: 0; }
+.options-list li::before { display: none; }
+
+.option-item label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 0.8rem 1.05rem;
+  cursor: pointer;
+  transition: border-color 0.18s, background 0.18s;
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.option-item label:hover {
+  border-color: var(--prova-cor);
+  background: color-mix(in srgb, var(--prova-cor) 7%, transparent);
+}
+
+.option-item input[type="radio"] {
+  width: 20px; height: 20px; min-width: 20px;
+  accent-color: var(--prova-cor);
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.option-item label:focus-within {
+  border-color: var(--prova-foco);
+  outline: 3px solid var(--prova-foco);
+  outline-offset: 1px;
+}
+
+.option-letter { font-weight: 700; color: var(--prova-cor); min-width: 1.2rem; }
+
+/* Alternativas só com a letra (quando as opções são uma imagem) */
+.letras-list { flex-direction: row; flex-wrap: wrap; gap: 0.55rem; }
+.letras-list .option-item { flex: 0 0 auto; }
+.letras-list .option-item label {
+  min-width: 5rem;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.02rem;
+}
+
+/* Marcação de certo/errado (resultado) */
+.option-item.correct label,
+.result-options .option-item.correct .option-row {
+  border-color: var(--prova-ok);
+  background: var(--ok-bg);
+  color: var(--ok-text);
+}
+
+.option-item.wrong label,
+.result-options .option-item.wrong .option-row {
+  border-color: var(--prova-erro);
+  background: var(--danger-bg);
+  color: var(--danger-text);
+}
+
+.question-feedback {
+  margin-top: 0.7rem;
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  font-size: 0.93rem;
+  display: none;
+}
+.question-feedback.show { display: block; }
+.question-feedback.correct-fb { background: var(--ok-bg); color: var(--ok-text); border: 1px solid var(--ok-border); }
+.question-feedback.wrong-fb   { background: var(--danger-bg); color: var(--danger-text); border: 1px solid var(--danger-border); }
+
+/* ---- Blocos de questões (teste com figura compartilhada) ---- */
+.bloco { margin-bottom: 2.5rem; }
+
+.bloco-intro {
+  background: var(--surface-2);
+  border: 1.5px solid var(--border);
+  border-left: 4px solid var(--prova-cor);
+  border-radius: var(--prova-raio);
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1.1rem;
+}
+
+.bloco-intro h2 {
+  font-size: 0.9rem;
+  color: var(--prova-cor);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.45rem;
+}
+
+.bloco-intro p { font-size: 0.99rem; margin: 0; }
+
+/* ---- Envio ---- */
+#submit-section { margin-top: 2.5rem; text-align: center; }
+
+#btn-submit {
+  background: linear-gradient(90deg, var(--azul), var(--roxo));
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.95rem 3rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  font-family: inherit;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s, transform 0.12s;
+}
+
+#btn-submit:hover { opacity: 0.92; transform: translateY(-1px); }
+#btn-submit:focus-visible { outline: 3px solid var(--prova-foco); outline-offset: 3px; }
+#btn-submit:disabled { background: var(--surface-2); color: var(--text-muted); cursor: not-allowed; }
+
+#missing-warning {
+  color: var(--danger-text);
+  font-size: 0.93rem;
+  margin-top: 0.7rem;
+  display: none;
+}
+
+/* ---- Painel de resultado ---- */
+#result-panel {
+  display: none;
+  background: var(--surface);
+  border: 2px solid var(--prova-cor);
+  border-radius: var(--prova-raio);
+  padding: 1.8rem 2rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+#result-panel h2 { font-size: 1.3rem; color: var(--prova-cor); margin-bottom: 0.8rem; }
+#result-score { font-size: 1.8rem; font-weight: 800; color: var(--titulo); margin-bottom: 0.4rem; }
+#result-detail { color: var(--text-muted); font-size: 0.98rem; margin-bottom: 1.2rem; }
+
+#btn-retry {
+  background: var(--surface-2);
+  color: var(--texto);
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  padding: 0.7rem 1.8rem;
+  font-size: 0.98rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+#btn-retry:hover { border-color: var(--prova-cor); color: var(--prova-cor); }
+
+/* =============================================================
+   CONSULTA DE RESULTADO
+   ============================================================= */
+.search-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--prova-raio);
+  padding: 1.6rem;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+.search-card h2 { color: var(--prova-cor); font-size: 1.05rem; margin-bottom: 0.9rem; }
+
+.search-row { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+
+.search-input {
+  flex: 1;
+  min-width: 220px;
+  padding: 0.8rem 1rem;
+  background: var(--bg);
+  color: var(--texto);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus { outline: none; border-color: var(--prova-cor); }
+
+.btn-search {
+  background: linear-gradient(90deg, var(--azul), var(--roxo));
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.8rem 1.75rem;
+  font-size: 0.98rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.btn-search:hover { opacity: 0.92; }
+
+#search-error {
+  color: var(--danger-text);
+  font-size: 0.93rem;
+  margin-top: 0.6rem;
+  display: none;
+}
+
+.score-panel {
+  background: var(--surface);
+  border: 2px solid var(--prova-cor);
+  border-radius: var(--prova-raio);
+  padding: 1.6rem 2rem;
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+.score-panel .student-name { font-size: 1rem; color: var(--text-muted); margin-bottom: 0.35rem; }
+.score-value { font-size: 2.6rem; font-weight: 800; color: var(--prova-cor); line-height: 1.1; }
+.score-sub { font-size: 0.98rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+.badge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.badge-acertou { background: var(--ok-bg); color: var(--ok-text); border: 1px solid var(--ok-border); }
+.badge-errou   { background: var(--danger-bg); color: var(--danger-text); border: 1px solid var(--danger-border); }
+.badge-vazio   { background: var(--warn-bg); color: var(--warn-text); border: 1px solid var(--warn-border); }
+
+.result-options .option-item .option-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 0.8rem 1.05rem;
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.result-badge { font-weight: 700; font-size: 0.85rem; margin-left: auto; white-space: nowrap; }
+.result-badge.correct-badge { color: var(--ok-text); }
+.result-badge.wrong-badge   { color: var(--danger-text); }
+
+#result-section { display: none; }
+
+/* ---- Rodapé próprio da prova (quando existir) ---- */
+.prova-rodape {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  padding: 1.5rem 1rem 0;
+  border-top: 1px solid var(--border);
+  margin-top: 3rem;
+}
+
+.prova-rodape a { color: var(--prova-cor); }
+
+@media (max-width: 600px) {
+  main { padding: 1.25rem 1rem 3rem; }
+  .prova-hero { padding: 1.3rem 1.2rem; border-radius: 10px; }
+  .question-card { padding: 1.1rem 1rem; }
+  .exam-info-grid { gap: 1.2rem; }
+  #btn-submit { width: 100%; }
+  .letras-list .option-item label { min-width: 4rem; }
+}

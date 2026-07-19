@@ -1,7 +1,7 @@
 /* =============================================================
    Teste sobre Mecânica — renderização e envio
    Mesmo padrão da prova de MRU
-   (disciplinas/fisica_1_mecanica/provas/fisica_1_prova_MRU/script.js):
+   (atividades/testes/prova-mru/script.js):
    REST do Supabase, lê o gabarito no servidor e grava resposta + resultado.
    Depende de questoes.js (BLOCOS, QUESTOES, TOTAL_QUESTOES).
    ============================================================= */

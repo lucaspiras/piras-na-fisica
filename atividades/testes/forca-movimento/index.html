@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Teste sobre Mecânica</title>
   <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
-  <link rel="stylesheet" href="styles.css">
+  <script src="/js/theme.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="../prova.css">
 </head>
 <body>
 
@@ -14,16 +16,46 @@
 
 <a class="skip-link" href="#main-content">Ir para o conteúdo do teste</a>
 
-<header role="banner">
-  <div class="header-top">
+<div id="header"></div>
+
+
+
+<main id="main-content" role="main">
+
+<div class="prova-hero">
     <h1>Teste sobre Mecânica</h1>
     <p class="header-subtitle">Força e movimento</p>
-  </div>
   <p class="ref-box">
     Adaptado de: SILVEIRA, F., MOREIRA, M.A. e AXT, R.
     <em>Estrutura interna de testes de conhecimento em Física: um exemplo em Mecânica.</em>
   </p>
-</header>
+</div>
+
+<div class="exam-info-box" role="region" aria-label="Informações do teste">
+  <dl class="exam-info-grid">
+    <div class="exam-info-item">
+      <dt>Tipo</dt>
+      <dd>Teste conceitual</dd>
+    </div>
+    <div class="exam-info-item">
+      <dt>Questões</dt>
+      <dd>19</dd>
+    </div>
+    <div class="exam-info-item conteudos">
+      <dt>Conteúdos cobrados</dt>
+      <dd>
+        <div class="conteudo-tags">
+          <span>Forças e movimento</span>
+          <span>Inércia</span>
+          <span>Força resultante</span>
+          <span>Queda e lançamentos</span>
+          <span>Movimento circular</span>
+          <span>Atrito</span>
+        </div>
+      </dd>
+    </div>
+  </dl>
+</div>
 
 <div class="instructions-box" role="region" aria-labelledby="instrucoes-titulo">
   <h2 id="instrucoes-titulo">Instruções</h2>
@@ -37,7 +69,6 @@
   </ul>
 </div>
 
-<main id="main-content" role="main">
 
   <div id="progress-section" role="region" aria-label="Progresso do teste">
     <span id="progress-label">Progresso: <span id="progress-text">0 de 19 questões respondidas</span></span>
@@ -110,11 +141,10 @@
   </form>
 </main>
 
-<footer role="contentinfo">
-  Teste sobre Mecânica &nbsp;|&nbsp; <a href="consulta.html">Consultar resultado</a>
-</footer>
+<footer></footer>
 
 <script src="questoes.js"></script>
 <script src="teste.js"></script>
+<script src="/js/include.js"></script>
 </body>
 </html>
