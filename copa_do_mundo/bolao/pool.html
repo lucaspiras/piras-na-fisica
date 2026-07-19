@@ -31,6 +31,7 @@
       <!-- Action bar -->
       <div class="pool-actions-bar mt-12">
         <a id="link-rules" href="rules.html" class="pool-action-btn" style="text-decoration:none">📋 Regras</a>
+        <a id="link-final" href="final.html" class="pool-action-btn" style="text-decoration:none">🏆 Resultado final</a>
         <div class="pool-actions-spacer"></div>
         <button id="btn-config" class="pool-action-btn hidden">⚙ Configurações</button>
       </div>
@@ -287,6 +288,7 @@
     document.getElementById('header-slot').innerHTML = renderHeader(profile, true)
     bindSignOut()
     document.getElementById('link-rules').href = `rules.html?pool=${poolId}`
+    document.getElementById('link-final').href = `final.html?id=${poolId}`
     document.getElementById('link-standings-full').href = `standings.html?pool=${poolId}`
 
     const [{ data: pool, error: poolError }, { data: membership, error: membershipError }] = await Promise.all([
