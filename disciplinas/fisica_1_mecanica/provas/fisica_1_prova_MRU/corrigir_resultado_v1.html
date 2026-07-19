@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Correção de Resultado – Versão Antiga da Prova</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 700px; margin: 2rem auto; padding: 1rem; background: #f5f5f5; }
+  h1 { color: #103f91; font-size: 1.3rem; }
+  .notice { background: #fff3cd; border: 1px solid #ffc107; border-radius: 6px; padding: 1rem; margin: 1rem 0; font-size: 0.9rem; }
+  .card { background: white; border-radius: 8px; padding: 1.5rem; margin: 1rem 0; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+  label { display: block; font-weight: 600; margin-bottom: 0.3rem; color: #333; }
+  input[type=text] { width: 100%; padding: 0.6rem 0.8rem; border: 2px solid #ccc; border-radius: 6px; font-size: 1rem; box-sizing: border-box; margin-bottom: 1rem; }
+  button { padding: 0.7rem 1.5rem; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; }
+  #btn-verificar { background: #103f91; color: white; }
+  #btn-corrigir { background: #198754; color: white; display: none; margin-top: 0.5rem; }
+  #btn-verificar:disabled, #btn-corrigir:disabled { opacity: 0.6; cursor: not-allowed; }
+  #log { font-family: monospace; font-size: 0.85rem; white-space: pre-wrap; background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: 6px; max-height: 400px; overflow-y: auto; display: none; }
+  .ok { color: #4ec9b0; }
+  .warn { color: #ce9178; }
+  .err { color: #f44747; }
+  .info { color: #9cdcfe; }
+</style>
+</head>
+<body>
+
+<h1>Correção de Resultado – Aluno na Versão Antiga da Prova</h1>
+
+<div class="notice">
+  <strong>⚠️ Use com cuidado.</strong> Esta página corrige o resultado de um aluno que fez a versão antiga da prova
+  (com as alternativas em outra ordem). As respostas são remapeadas para as letras da versão atual e a nota é recalculada.
+  Clique em <em>Verificar</em> primeiro para revisar as mudanças antes de confirmar.
+</div>
+
+<div class="card">
+  <label for="nome">Nome do aluno (como digitado na prova):</label>
+  <input type="text" id="nome" placeholder="Ex: João da Silva">
+  <label for="palavra">Palavra secreta:</label>
+  <input type="text" id="palavra" placeholder="Palavra secreta usada na prova">
+  <button id="btn-verificar">Verificar</button>
+  <button id="btn-corrigir">Confirmar Correção</button>
+</div>
+
+<pre id="log"></pre>
+
+<script>
+const SUPABASE_URL     = 'https://ksxaxkqnooercwndpdut.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_eK6ljdM_K9cAdWezjyegJw_SudfxPjj';
+
+// Questões onde as alternativas trocaram de posição entre a versão antiga (online) e a nova.
+// Cada entrada é: questão → { letra_antiga: letra_nova }
+const MAPA_VERSAO = {
+  q1:  { b: 'e', e: 'b' },   // B e E trocaram
+  q4:  { b: 'c', c: 'b' },   // B e C trocaram
+  q6:  { a: 'b', b: 'a' },   // A e B trocaram
+  q7:  { b: 'd', d: 'b' },   // B e D trocaram
+  q8:  { b: 'e', e: 'b' },   // B e E trocaram
+  q9:  { a: 'b', b: 'a' },   // A e B trocaram
+  q11: { b: 'c', c: 'b' },   // B e C trocaram
+  q15: { b: 'd', d: 'b' },   // B e D trocaram
+  q16: { c: 'e', e: 'c' },   // C e E trocaram
+  q17: { b: 'e', e: 'b' },   // B e E trocaram
+};
+
+const TOTAL = 20;
+let resultadoAtual = null;
+let correcaoCalculada = null;
+
+function log(msg, cls = '') {
+  const el = document.getElementById('log');
+  el.style.display = 'block';
+  el.innerHTML += `<span class="${cls}">${msg}</span>\n`;
+  el.scrollTop = el.scrollHeight;
+}
+
+async function supabaseGet(path) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+    headers: {
+      'apikey': SUPABASE_ANON_KEY,
+      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+    }
+  });
+  if (!res.ok) throw new Error(`Erro ${res.status}: ${await res.text()}`);
+  return res.json();
+}
+
+async function supabasePatch(path, body) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': SUPABASE_ANON_KEY,
+      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+      'Prefer': 'return=representation'
+    },
+    body: JSON.stringify(body)
+  });
+  if (!res.ok) throw new Error(`Erro ${res.status}: ${await res.text()}`);
+  const updated = await res.json();
+  if (!updated || updated.length === 0) {
+    throw new Error('Nenhuma linha foi atualizada. O Supabase pode estar bloqueando a atualização via RLS (Row Level Security). Veja as instruções abaixo.');
+  }
+  return updated[0];
+}
+
+function calcularCorrecao(resultado) {
+  const novosDetalhes = {};
+  let novosAcertos = 0;
+
+  for (let i = 1; i <= TOTAL; i++) {
+    const q = `q${i}`;
+    const det = resultado.detalhes[q] || {};
+    const marcadaAntiga = det.marcada;
+    const correta = det.correta;
+
+    let novaMarcada = marcadaAntiga;
+    if (marcadaAntiga && MAPA_VERSAO[q]?.[marcadaAntiga]) {
+      novaMarcada = MAPA_VERSAO[q][marcadaAntiga];
+    }
+
+    const acertou = novaMarcada !== null && novaMarcada !== undefined && novaMarcada === correta;
+    if (acertou) novosAcertos++;
+
+    novosDetalhes[q] = { marcada: novaMarcada, correta, acertou };
+  }
+
+  return { novosDetalhes, novosAcertos };
+}
+
+document.getElementById('btn-verificar').addEventListener('click', async function () {
+  const nome   = document.getElementById('nome').value.trim();
+  const palavra = document.getElementById('palavra').value.trim();
+  if (!nome || !palavra) { alert('Preencha nome e palavra secreta.'); return; }
+
+  document.getElementById('log').innerHTML = '';
+  document.getElementById('log').style.display = 'none';
+  document.getElementById('btn-corrigir').style.display = 'none';
+  resultadoAtual = null;
+  correcaoCalculada = null;
+
+  this.disabled = true;
+  this.textContent = 'Buscando...';
+
+  try {
+    const encNome   = encodeURIComponent(nome);
+    const encPalavra = encodeURIComponent(palavra);
+    const data = await supabaseGet(
+      `resultados?nome_aluno=ilike.${encNome}&palavra_secreta=ilike.${encPalavra}&order=calculado_em.desc&limit=1&select=*`
+    );
+
+    if (!data.length) {
+      log('❌ Resultado não encontrado. Verifique o nome e a palavra secreta.', 'err');
+      return;
+    }
+
+    resultadoAtual = data[0];
+    log(`✔ Resultado encontrado: ${resultadoAtual.nome_aluno}`, 'ok');
+    log(`  ID: ${resultadoAtual.id}`, 'info');
+    log(`  Enviado em: ${new Date(resultadoAtual.calculado_em).toLocaleString('pt-BR')}`, 'info');
+    log(`  Acertos atuais: ${resultadoAtual.acertos} / ${resultadoAtual.total}\n`, 'info');
+
+    correcaoCalculada = calcularCorrecao(resultadoAtual);
+    const { novosDetalhes, novosAcertos } = correcaoCalculada;
+
+    log('── Questões que serão ajustadas ──────────────────────', 'info');
+    let algumaMudanca = false;
+    for (let i = 1; i <= TOTAL; i++) {
+      const q = `q${i}`;
+      const antes = resultadoAtual.detalhes[q] || {};
+      const depois = novosDetalhes[q];
+      if (antes.marcada !== depois.marcada || antes.acertou !== depois.acertou) {
+        algumaMudanca = true;
+        const acertouStr = depois.acertou ? '✓ acertou' : '✗ errou';
+        const cls = depois.acertou ? 'ok' : 'warn';
+        log(`  Q${i}: respondeu ${antes.marcada || '—'} → convertido para ${depois.marcada || '—'} | correta: ${depois.correta} | ${acertouStr}`, cls);
+      }
+    }
+
+    if (!algumaMudanca) {
+      log('  Nenhuma alteração detectada. O resultado já parece correto.', 'ok');
+    } else {
+      log(`\n  Acertos antes: ${resultadoAtual.acertos}`, 'warn');
+      log(`  Acertos depois: ${novosAcertos}`, 'ok');
+      log('\nClique em "Confirmar Correção" para salvar a mudança.', 'info');
+      document.getElementById('btn-corrigir').style.display = 'inline-block';
+    }
+
+  } catch (err) {
+    log(`❌ Erro: ${err.message}`, 'err');
+  } finally {
+    this.disabled = false;
+    this.textContent = 'Verificar';
+  }
+});
+
+document.getElementById('btn-corrigir').addEventListener('click', async function () {
+  if (!resultadoAtual || !correcaoCalculada) return;
+
+  this.disabled = true;
+  this.textContent = 'Salvando...';
+
+  try {
+    const atualizado = await supabasePatch(`resultados?id=eq.${resultadoAtual.id}`, {
+      acertos: correcaoCalculada.novosAcertos,
+      detalhes: correcaoCalculada.novosDetalhes
+    });
+    log('\n✔ Resultado corrigido e salvo com sucesso!', 'ok');
+    log(`  Nova nota confirmada no Supabase: ${atualizado.acertos} / ${atualizado.total}`, 'ok');
+    this.style.display = 'none';
+  } catch (err) {
+    log(`\n❌ Erro ao salvar: ${err.message}`, 'err');
+    if (err.message.includes('RLS') || err.message.includes('Nenhuma linha')) {
+      log('\n── Solução alternativa via Supabase Dashboard ──────────', 'info');
+      log('  1. Acesse https://supabase.com → seu projeto → Table Editor → resultados', 'info');
+      log(`  2. Filtre por id = ${resultadoAtual.id}`, 'info');
+      log(`  3. Edite o campo "acertos" para: ${correcaoCalculada.novosAcertos}`, 'info');
+      log(`  4. Edite o campo "detalhes" com o JSON abaixo:`, 'info');
+      log(JSON.stringify(correcaoCalculada.novosDetalhes, null, 2), 'warn');
+    }
+    this.disabled = false;
+    this.textContent = 'Confirmar Correção';
+  }
+});
+</script>
+</body>
+</html>

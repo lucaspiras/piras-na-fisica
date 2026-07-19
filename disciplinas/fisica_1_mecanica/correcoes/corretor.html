@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corretor de Prova — Física MRU</title>
+<link rel="stylesheet" href="corretor.css">
+</head>
+<body>
+
+<header>
+  <div class="header-eyebrow">// corretor óptico</div>
+  <h1>Corretor de Prova — Física</h1>
+  <p>Faça upload da foto da folha óptica para obter a nota instantaneamente.</p>
+  <div class="header-badge">Unidades de Medida &amp; MRU · 20 questões · 0,5 pt cada</div>
+</header>
+
+<main>
+
+  <!-- ── Gabarito ── -->
+  <div class="card">
+    <div class="card-label">Gabarito oficial</div>
+    <div id="gab-grid" class="gab-grid"></div>
+  </div>
+
+  <!-- ── Upload ── -->
+  <div class="card">
+    <div class="card-label">Foto da folha óptica</div>
+
+    <div id="upload-zone">
+      <input type="file" id="file-input" accept="image/*" capture="environment"/>
+      <span class="upload-icon">📷</span>
+      <div class="upload-title">Toque para fotografar ou selecionar imagem</div>
+      <div class="upload-sub">
+        A folha deve estar completamente visível · Boa iluminação · Sem sombras nos cantos
+      </div>
+    </div>
+
+    <div id="preview-wrap">
+      <img id="preview-img" src="" alt="Prévia da folha óptica"/>
+      <div class="preview-actions">
+        <button class="btn-ghost" onclick="resetUpload()">↩ Trocar imagem</button>
+      </div>
+    </div>
+
+    <!-- Status da detecção de marcadores -->
+    <div id="detect-status" class="detect-status"></div>
+
+    <!-- Canvas de debug (pontos de leitura das bolhas) -->
+    <div id="debug-canvas-wrap">
+      <div class="card-label" style="margin-top:12px">Pontos de leitura detectados</div>
+      <canvas id="debug-canvas"></canvas>
+    </div>
+  </div>
+
+  <!-- ── Erro ── -->
+  <div id="error-msg"></div>
+
+  <!-- ── Botão ── -->
+  <button class="btn-primary" id="btn-corrigir" onclick="corrigirProva()" disabled>
+    Corrigir Prova
+  </button>
+
+  <!-- ── Loading ── -->
+  <div id="loading">
+    <span class="spinner"></span> Processando imagem...
+  </div>
+
+  <!-- ── Resultado ── -->
+  <div class="card" id="result-section">
+    <div class="card-label">Resultado</div>
+
+    <div class="score-row">
+      <div class="score-box">
+        <div class="score-box-label">Nota final</div>
+        <div class="score-box-value" id="score-nota">—</div>
+      </div>
+      <div class="score-box">
+        <div class="score-box-label">Acertos</div>
+        <div class="score-box-value" id="score-acertos">—</div>
+      </div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span>Desempenho</span>
+        <span id="progress-label-val">—</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="card-label">Questão por questão</div>
+    <div class="resp-grid" id="resp-grid"></div>
+
+    <div class="obs-box" id="obs-box"></div>
+
+    <div class="divider"></div>
+    <div class="card-label">Registrar resultado</div>
+    <div class="envio-form">
+      <input type="text" id="nome-aluno-envio" class="envio-input"
+             placeholder="Nome completo do aluno" autocomplete="off" />
+      <button class="btn-primary envio-btn" id="btn-enviar" onclick="enviarResultado()">
+        Enviar ao Supabase
+      </button>
+    </div>
+    <div id="envio-status" class="envio-status" style="display:none"></div>
+  </div>
+
+</main>
+
+<footer>
+  Processamento local · nenhum dado é enviado a servidores externos
+</footer>
+
+<script src="corretor.js"></script>
+</body>
+</html>

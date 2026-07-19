@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste sobre Mecânica</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Região para leitores de tela -->
+<div id="announcer" aria-live="assertive" aria-atomic="true" role="status"></div>
+
+<a class="skip-link" href="#main-content">Ir para o conteúdo do teste</a>
+
+<header role="banner">
+  <div class="header-top">
+    <h1>Teste sobre Mecânica</h1>
+    <p class="header-subtitle">Força e movimento</p>
+  </div>
+  <p class="ref-box">
+    Adaptado de: SILVEIRA, F., MOREIRA, M.A. e AXT, R.
+    <em>Estrutura interna de testes de conhecimento em Física: um exemplo em Mecânica.</em>
+  </p>
+</header>
+
+<div class="instructions-box" role="region" aria-labelledby="instrucoes-titulo">
+  <h2 id="instrucoes-titulo">Instruções</h2>
+  <ul>
+    <li>São <strong>19 questões</strong> de múltipla escolha. Marque <strong>uma alternativa</strong> por questão.</li>
+    <li>Várias questões se referem a uma <strong>figura comum</strong>, mostrada no início de cada bloco.</li>
+    <li>Quando as alternativas forem <strong>desenhos</strong>, veja a imagem e marque a <strong>letra</strong> correspondente.</li>
+    <li>Use <strong>Tab</strong> para navegar e as <strong>setas do teclado</strong> para escolher a alternativa.</li>
+    <li>Não é um teste de cálculo: responda o que você <strong>pensa</strong> sobre cada situação.</li>
+    <li>Anote sua <strong>palavra secreta</strong> — é com ela que você consulta seu resultado depois.</li>
+  </ul>
+</div>
+
+<main id="main-content" role="main">
+
+  <div id="progress-section" role="region" aria-label="Progresso do teste">
+    <span id="progress-label">Progresso: <span id="progress-text">0 de 19 questões respondidas</span></span>
+    <div id="progress-bar-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="19" aria-labelledby="progress-label">
+      <div id="progress-bar"></div>
+    </div>
+  </div>
+
+  <form id="quiz-form" novalidate aria-label="Formulário do teste sobre Mecânica">
+
+    <!-- Identificação -->
+    <div class="question-card" id="identificacao-card">
+      <span class="question-number">Identificação</span>
+
+      <div class="campo">
+        <label for="nome">Nome completo <span aria-hidden="true">*</span></label>
+        <input type="text" id="nome" name="nome" required autocomplete="name"
+               placeholder="Digite seu nome completo" aria-required="true">
+      </div>
+
+      <div class="campo">
+        <label for="professor">Professor</label>
+        <input type="text" id="professor" name="professor" autocomplete="off"
+               placeholder="Nome do seu professor">
+      </div>
+
+      <div class="campo">
+        <label for="instituicao">Instituição</label>
+        <input type="text" id="instituicao" name="instituicao" autocomplete="organization"
+               placeholder="Escola, instituto ou universidade">
+      </div>
+
+      <div class="campo">
+        <label for="curso-turma">Curso e turma</label>
+        <input type="text" id="curso-turma" name="curso-turma" autocomplete="off"
+               placeholder="Ex.: 2º ano — Turma B">
+      </div>
+
+      <div class="campo">
+        <label for="palavra-secreta">Palavra secreta <span aria-hidden="true">*</span></label>
+        <input type="text" id="palavra-secreta" name="palavra-secreta" required autocomplete="off"
+               placeholder="Crie uma palavra ou frase secreta" aria-required="true"
+               aria-describedby="palavra-hint">
+        <span class="hint" id="palavra-hint">
+          Você precisará dela para consultar seu resultado. <strong>Anote no caderno.</strong>
+        </span>
+      </div>
+    </div>
+
+    <!-- Blocos de questões (gerados por teste.js) -->
+    <div id="blocos"></div>
+
+    <!-- Envio -->
+    <div id="submit-section">
+      <button type="button" id="btn-submit" aria-label="Enviar respostas do teste">
+        Enviar respostas
+      </button>
+      <p id="missing-warning" role="alert" aria-live="assertive"></p>
+    </div>
+
+    <!-- Confirmação -->
+    <div id="result-panel" role="region" aria-labelledby="result-heading" tabindex="-1">
+      <h2 id="result-heading">Teste enviado</h2>
+      <div id="result-score" aria-live="polite"></div>
+      <p id="result-detail"></p>
+      <p><a href="consulta.html">Consultar meu resultado</a></p>
+      <button type="button" id="btn-retry" style="display:none">Responder novamente</button>
+    </div>
+
+  </form>
+</main>
+
+<footer role="contentinfo">
+  Teste sobre Mecânica &nbsp;|&nbsp; <a href="consulta.html">Consultar resultado</a>
+</footer>
+
+<script src="questoes.js"></script>
+<script src="teste.js"></script>
+</body>
+</html>

@@ -31,7 +31,7 @@
     .cinem-hero {
       background: linear-gradient(135deg, #1e2a78 0%, #2f5bea 50%, #6a2fe8 100%);
       color: #fff;
-      padding: 3.5rem 2rem 3rem;
+      padding:1.6rem 2rem 1.6rem;
     }
     .cinem-hero-inner {
       max-width: 900px;
@@ -183,6 +183,12 @@
     @media (max-width: 600px) {
       .cinem-main { padding: 2rem 1.2rem 3rem; }
     }
+      .hub-crumb{max-width:900px;margin:0 auto;padding:1.1rem 2rem .2rem;}
+    .hub-crumb .breadcrumb{opacity:1;margin-bottom:0;color:#5b6573;}
+    .hub-crumb .breadcrumb a{color:#2f5bea;}
+    .hub-crumb .breadcrumb a:hover{text-decoration:underline;}
+    .hub-crumb .breadcrumb span{opacity:.55;}
+    @media(max-width:600px){.hub-crumb{padding:.9rem 1.2rem .2rem;}}
   </style>
 </head>
 <body>
@@ -190,15 +196,18 @@
 <div id="header"></div>
 <script src="../../js/include.js"></script>
 
-<div class="cinem-hero">
-  <div class="cinem-hero-inner">
-    <nav class="breadcrumb">
+<div class="hub-crumb">
+  <nav class="breadcrumb">
       <a href="../../index.html">Início</a>
       <span>/</span>
       <a href="../../conteudos.html">Conteúdos</a>
       <span>/</span>
       <span>Cinemática</span>
     </nav>
+</div>
+
+<div class="cinem-hero">
+  <div class="cinem-hero-inner">
     <h1>📐 Cinemática</h1>
     <p>O estudo do movimento: posição, velocidade, aceleração e trajetórias — sem se preocupar com as causas que originam o movimento.</p>
   </div>

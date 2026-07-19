@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consultar resultado — Teste sobre Mecânica</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Ir para a consulta</a>
+
+<header role="banner">
+  <div class="header-top">
+    <h1>Consultar resultado</h1>
+    <p class="header-subtitle">Teste sobre Mecânica</p>
+  </div>
+</header>
+
+<main id="main-content" role="main">
+
+  <div class="search-card">
+    <h2>Informe seus dados</h2>
+    <p style="font-size:.95rem;color:var(--muted);margin-bottom:1rem">
+      Use exatamente o mesmo nome e a mesma palavra secreta que você digitou ao responder o teste.
+    </p>
+    <div class="search-row">
+      <input type="text" id="nome-busca" class="search-input"
+             placeholder="Seu nome completo" autocomplete="name" aria-label="Seu nome completo">
+      <input type="text" id="palavra-busca" class="search-input"
+             placeholder="Sua palavra secreta" autocomplete="off" aria-label="Sua palavra secreta">
+      <button type="button" id="btn-buscar" class="btn-search">Consultar</button>
+    </div>
+    <p id="search-error" role="alert" aria-live="assertive"></p>
+  </div>
+
+  <section id="result-section" aria-label="Resultado do teste">
+    <div class="score-panel">
+      <div class="student-name" id="res-nome"></div>
+      <div class="score-value" id="res-score"></div>
+      <div class="score-sub" id="res-detalhe"></div>
+    </div>
+    <div id="questoes-resultado"></div>
+  </section>
+
+</main>
+
+<footer role="contentinfo">
+  <a href="index.html">← Voltar ao teste</a>
+</footer>
+
+<script src="questoes.js"></script>
+<script src="consulta.js"></script>
+</body>
+</html>

@@ -1,0 +1,441 @@
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface2: #f7f7f7;
+  --border: #c5c5c5;
+  --text: #111111;
+  --muted: #3a3a3a;
+  --accent: #103f91;
+  --accent-hover: #1550b0;
+  --correct: #1d7a23;
+  --wrong: #a11a1a;
+  --focus: #b36b00;
+  --radius: 10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  min-height: 100vh;
+}
+
+/* Skip link for screen readers */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--accent);
+  color: #000;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: bold;
+  font-size: 1rem;
+  z-index: 9999;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 1rem; }
+
+/* Live region for announcements */
+#announcer {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+header {
+  background: var(--surface);
+  border-bottom: 2px solid var(--border);
+  padding: 1.5rem 1rem 1.75rem;
+}
+
+.header-top {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.header-logo {
+  display: block;
+  height: 52px;
+  width: auto;
+  margin-bottom: 1rem;
+}
+
+header h1 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  color: var(--text);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.2rem;
+  text-align: center;
+}
+
+.header-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+
+.exam-info-box {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 2rem;
+  margin: 1rem auto 0;
+  max-width: 860px;
+}
+
+.exam-info-grid {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.exam-info-item dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 0.15rem;
+}
+
+.exam-info-item dd {
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.instructions-box {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem;
+  margin: 2rem auto;
+  max-width: 860px;
+}
+
+.instructions-box h2 {
+  font-size: 1.1rem;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.instructions-box ul {
+  padding-left: 1.5rem;
+  color: var(--text);
+}
+
+.instructions-box li {
+  margin-bottom: 0.4rem;
+}
+
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1rem 4rem;
+}
+
+/* Progress bar */
+#progress-section {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  padding: 1rem 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+
+#progress-label {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+#progress-bar-container {
+  background: var(--surface2);
+  border-radius: 999px;
+  height: 10px;
+  width: 100%;
+  overflow: hidden;
+}
+
+#progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* Question cards */
+.question-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem 2rem;
+  margin-bottom: 1.75rem;
+  transition: border-color 0.3s;
+}
+
+.question-card:focus-within {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.question-number {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.question-text {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+
+/* Notice box for replaced graphics */
+.graphic-notice {
+  background: #f3f7ff;
+  border: 1px dashed #aac4ff;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+.graphic-notice strong { color: var(--accent); }
+
+.graph-figure {
+  border: 1px solid #d1d9e6;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #ffffff;
+  margin: 1rem 0 1.5rem;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+.graph-figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.graph-caption {
+  font-size: 0.95rem;
+  color: var(--muted);
+  padding: 0.75rem 1rem;
+  background: #f6f9ff;
+}
+
+/* Options */
+.options-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.option-item label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  background: var(--surface2);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 0.85rem 1.1rem;
+  cursor: pointer;
+  transition: border-color 0.18s, background 0.18s;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.option-item label:hover {
+  border-color: var(--accent);
+  background: #e9f0ff;
+}
+
+.option-item input[type="radio"] {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.option-item input[type="radio"]:focus-visible + .option-label {
+  outline: 3px solid var(--focus);
+  border-radius: 4px;
+}
+
+.option-item label:focus-within {
+  border-color: var(--focus);
+  outline: 3px solid var(--focus);
+  outline-offset: 1px;
+}
+
+.option-item.correct label {
+  border-color: var(--correct);
+  background: #f0fff4;
+  color: #1d7a23;
+}
+
+.option-item.wrong label {
+  border-color: var(--wrong);
+  background: #fff0f0;
+  color: #a11a1a;
+}
+
+.option-item.correct label::after {
+  content: " ✓ Correta";
+  color: var(--correct);
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.option-item.wrong label::after {
+  content: " ✗ Errada";
+  color: var(--wrong);
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.option-letter {
+  font-weight: bold;
+  color: var(--accent);
+  min-width: 1.2rem;
+}
+
+/* Feedback per question */
+.question-feedback {
+  margin-top: 0.75rem;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  display: none;
+}
+
+.question-feedback.show { display: block; }
+.question-feedback.correct-fb { background: #f0fff4; color: #1d7a23; border: 1px solid var(--correct); }
+.question-feedback.wrong-fb   { background: #fff0f0; color: #a11a1a; border: 1px solid var(--wrong); }
+
+/* Submit and result */
+#submit-section {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+#btn-submit {
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 1rem 3rem;
+  font-size: 1.15rem;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.2s, transform 0.1s;
+}
+
+#btn-submit:hover { background: var(--accent-hover); }
+#btn-submit:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+#btn-submit:active { transform: scale(0.97); }
+#btn-submit:disabled {
+  background: var(--surface2);
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
+#missing-warning {
+  color: var(--wrong);
+  font-size: 0.95rem;
+  margin-top: 0.75rem;
+  display: none;
+}
+
+/* Result panel */
+#result-panel {
+  display: none;
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 2rem 2.5rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+#result-panel h2 {
+  font-size: 1.5rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+#result-score {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+#result-detail {
+  color: var(--muted);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+#btn-retry {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+#btn-retry:hover { border-color: var(--accent); color: var(--accent); }
+#btn-retry:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding: 2rem;
+  border-top: 1px solid var(--border);
+  margin-top: 4rem;
+}
+
+@media (max-width: 600px) {
+  .question-card { padding: 1.2rem 1rem; }
+  #btn-submit { width: 100%; }
+}

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Folha Óptica — Física MRU</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff;
+    color: #000;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 10mm 12mm;
+    position: relative;
+    background: #fff;
+  }
+
+  /* ── Marcadores ArUco nos cantos ── */
+  .marker {
+    position: absolute;
+    width: 22mm;
+    height: 22mm;
+  }
+  .marker canvas {
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+  }
+  .marker-tl { top: 5mm;  left: 5mm; }
+  .marker-tr { top: 5mm;  right: 5mm; }
+  .marker-bl { bottom: 5mm; left: 5mm; }
+  .marker-br { bottom: 5mm; right: 5mm; }
+
+  /* ── Cabeçalho ── */
+  .header {
+    margin-left: 26mm;
+    margin-right: 26mm;
+    padding-bottom: 3mm;
+    border-bottom: 1.5px solid #000;
+    margin-bottom: 4mm;
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 12pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .header h2 {
+    font-size: 9pt;
+    font-weight: normal;
+    margin-top: 1mm;
+  }
+
+  .fields {
+    margin-left: 26mm;
+    margin-right: 26mm;
+    margin-bottom: 4mm;
+  }
+  .field-row {
+    display: flex;
+    gap: 6mm;
+    margin-bottom: 3mm;
+    align-items: flex-end;
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .field.narrow { flex: 0 0 40mm; }
+  .field label {
+    font-size: 7pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1mm;
+  }
+  .field .line {
+    border-bottom: 1px solid #000;
+    height: 5mm;
+  }
+
+  /* ── Instruções ── */
+  .instrucoes {
+    margin-left: 26mm;
+    margin-right: 26mm;
+    margin-bottom: 4mm;
+    font-size: 7.5pt;
+    line-height: 1.5;
+    background: #f2f2f2;
+    padding: 2mm 3mm;
+    border-radius: 1mm;
+  }
+  .instrucoes strong { font-size: 7.5pt; }
+
+  /* ── Grade de respostas ── */
+  .grade-title {
+    margin-left: 26mm;
+    margin-right: 26mm;
+    font-size: 8pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 3mm;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    padding-top: 3mm;
+  }
+
+  .grade-wrapper {
+    margin-left: 26mm;
+    margin-right: 26mm;
+  }
+
+  .grade-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .grade-table thead th {
+    font-size: 8pt;
+    font-weight: bold;
+    text-align: center;
+    padding: 1.5mm 0;
+    border: 0.5px solid #999;
+    background: #e8e8e8;
+  }
+  .grade-table thead th:first-child {
+    width: 14mm;
+  }
+
+  .grade-table tbody tr:nth-child(even) td { background: #f9f9f9; }
+  .grade-table tbody tr:nth-child(odd)  td { background: #fff; }
+
+  .grade-table td {
+    border: 0.5px solid #ccc;
+    text-align: center;
+    padding: 1mm 0;
+    height: 9.5mm;
+  }
+  .grade-table td.q-num {
+    font-size: 8pt;
+    font-weight: bold;
+    color: #333;
+  }
+  .grade-table td.q-num span {
+    display: inline-block;
+    width: 6mm;
+    height: 6mm;
+    line-height: 6mm;
+    border-radius: 50%;
+    background: #ddd;
+    font-size: 7.5pt;
+  }
+
+  /* Bolha */
+  .bubble-cell {
+    vertical-align: middle;
+  }
+  .bubble {
+    display: inline-block;
+    width: 7mm;
+    height: 7mm;
+    border-radius: 50%;
+    border: 1.5px solid #333;
+    line-height: 7mm;
+    font-size: 7pt;
+    font-weight: bold;
+    color: #555;
+    vertical-align: middle;
+    background: #fff;
+  }
+
+  /* ── Rodapé ── */
+  .footer {
+    margin-top: 6mm;
+    margin-left: 26mm;
+    margin-right: 26mm;
+    text-align: center;
+    font-size: 7pt;
+    color: #666;
+    border-top: 0.5px solid #ccc;
+    padding-top: 2mm;
+  }
+
+  /* ── Impressão ── */
+  @media print {
+    body { margin: 0; }
+    .page { margin: 0; padding: 10mm 12mm; box-shadow: none; }
+    .no-print { display: none !important; }
+  }
+
+  /* Botão de impressão (não aparece na impressão) */
+  .print-btn {
+    display: block;
+    margin: 8mm auto;
+    padding: 8px 28px;
+    background: #1a56db;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .print-btn:hover { background: #1344b4; }
+</style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">🖨️ Imprimir Folha Óptica</button>
+
+<div class="page" id="page">
+
+  <!-- Marcadores ArUco nos 4 cantos -->
+  <div class="marker marker-tl"><canvas id="m0"></canvas></div>
+  <div class="marker marker-tr"><canvas id="m1"></canvas></div>
+  <div class="marker marker-bl"><canvas id="m2"></canvas></div>
+  <div class="marker marker-br"><canvas id="m3"></canvas></div>
+
+  <!-- Cabeçalho -->
+  <div class="header">
+    <h1>Folha de Respostas — Prova de Física</h1>
+    <h2>Unidades de Medida e Movimento Retilíneo Uniforme (MRU) &nbsp;|&nbsp; 2º Ano</h2>
+  </div>
+
+  <!-- Campos do aluno -->
+  <div class="fields">
+    <div class="field-row">
+      <div class="field">
+        <label>Nome do Aluno</label>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field narrow">
+        <label>Turma / Turno</label>
+        <div class="line"></div>
+      </div>
+      <div class="field narrow">
+        <label>Data</label>
+        <div class="line"></div>
+      </div>
+      <div class="field narrow">
+        <label>Nº</label>
+        <div class="line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Instruções -->
+  <div class="instrucoes">
+    <strong>Instruções:</strong> Pinte completamente o círculo correspondente à sua resposta com caneta esferográfica <strong>preta ou azul</strong>.
+    Marque apenas <strong>uma alternativa</strong> por questão. Não use corretivo. Rasuras invalidam a questão.
+    Exemplo de marcação correta: <strong>●</strong> &nbsp; Incorreta: <strong>⊗ ◐ ○</strong>
+  </div>
+
+  <!-- Grade de respostas -->
+  <div class="grade-title">Grade de Respostas — 20 Questões (0,5 pt cada = 10,0 pts)</div>
+
+  <div class="grade-wrapper">
+    <table class="grade-table" id="grade-table">
+      <thead>
+        <tr>
+          <th>Questão</th>
+          <th>A</th>
+          <th>B</th>
+          <th>C</th>
+          <th>D</th>
+          <th>E</th>
+        </tr>
+      </thead>
+      <tbody id="grade-body">
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Rodapé -->
+  <div class="footer">
+    Valor total: 10,0 pontos &nbsp;|&nbsp; Não é permitido o uso de calculadora &nbsp;|&nbsp;
+    Prova de uso exclusivo do professor — <span id="ano-atual"></span>
+  </div>
+
+</div><!-- /page -->
+
+<script>
+// ── Ano no rodapé
+document.getElementById('ano-atual').textContent = new Date().getFullYear();
+
+// ── Gerar linhas da grade
+const tbody = document.getElementById('grade-body');
+for (let q = 1; q <= 20; q++) {
+  const tr = document.createElement('tr');
+  // Número da questão
+  const tdN = document.createElement('td');
+  tdN.className = 'q-num';
+  tdN.innerHTML = `<span>${q}</span>`;
+  tr.appendChild(tdN);
+  // Bolhas A-E
+  ['A','B','C','D','E'].forEach(alt => {
+    const td = document.createElement('td');
+    td.className = 'bubble-cell';
+    td.innerHTML = `<div class="bubble" data-q="${q}" data-alt="${alt}">${alt}</div>`;
+    tr.appendChild(td);
+  });
+  tbody.appendChild(tr);
+}
+
+// ── Gerador de marcadores ArUco (dicionário 4x4_50)
+// Bits dos primeiros 4 IDs do dicionário 4x4_50
+const ARUCO_4X4 = {
+  0: [
+    [1,0,0,0],
+    [0,1,1,1],
+    [0,1,0,1],
+    [1,0,0,0]
+  ],
+  1: [
+    [0,1,0,0],
+    [1,1,0,0],
+    [1,0,1,0],
+    [0,0,1,1]
+  ],
+  2: [
+    [0,0,1,1],
+    [1,0,1,0],
+    [0,1,1,1],
+    [1,1,0,0]
+  ],
+  3: [
+    [0,0,0,1],
+    [0,1,1,0],
+    [1,1,0,0],
+    [0,1,1,0]
+  ]
+};
+
+function drawAruco(canvasEl, id) {
+  const N = 6; // 4 dados + 1 borda de cada lado
+  const SIZE = 132; // px canvas interno
+  const cell = SIZE / N;
+  canvasEl.width  = SIZE;
+  canvasEl.height = SIZE;
+  const ctx = canvasEl.getContext('2d');
+
+  // Fundo branco
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, SIZE, SIZE);
+
+  // Borda preta (1 célula)
+  ctx.fillStyle = '#000';
+  ctx.fillRect(0, 0, SIZE, cell);               // top
+  ctx.fillRect(0, SIZE - cell, SIZE, cell);      // bottom
+  ctx.fillRect(0, 0, cell, SIZE);               // left
+  ctx.fillRect(SIZE - cell, 0, cell, SIZE);     // right
+
+  // Dados internos 4x4
+  const bits = ARUCO_4X4[id];
+  for (let r = 0; r < 4; r++) {
+    for (let c = 0; c < 4; c++) {
+      ctx.fillStyle = bits[r][c] === 1 ? '#000' : '#fff';
+      ctx.fillRect((c + 1) * cell, (r + 1) * cell, cell, cell);
+    }
+  }
+}
+
+// Renderizar os 4 marcadores (IDs 0,1,2,3 → cantos TL,TR,BL,BR)
+[0,1,2,3].forEach(id => {
+  const canvas = document.getElementById('m' + id);
+  drawAruco(canvas, id);
+});
+</script>
+</body>
+</html>

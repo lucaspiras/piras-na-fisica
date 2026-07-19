@@ -31,7 +31,7 @@
     .cinem-hero {
       background: linear-gradient(135deg, #064e3b 0%, #059669 50%, #10b981 100%);
       color: #fff;
-      padding: 3.5rem 2rem 3rem;
+      padding:1.6rem 2rem 1.6rem;
     }
     .cinem-hero-inner { max-width: 900px; margin: 0 auto; }
     .breadcrumb { display:flex; align-items:center; gap:.5rem; font-size:.9rem; opacity:.75; margin-bottom:1.2rem; }
@@ -55,6 +55,12 @@
     .sub-arrow { font-size:1.2rem; color:#f97316; font-weight:800; transition:transform .2s; flex-shrink:0; }
     .sub-link:hover .sub-arrow { transform:translateX(5px); }
     @media(max-width:600px){ .cinem-main{padding:2rem 1.2rem 3rem;} }
+      .hub-crumb{max-width:900px;margin:0 auto;padding:1.1rem 2rem .2rem;}
+    .hub-crumb .breadcrumb{opacity:1;margin-bottom:0;color:#5b6573;}
+    .hub-crumb .breadcrumb a{color:#059669;}
+    .hub-crumb .breadcrumb a:hover{text-decoration:underline;}
+    .hub-crumb .breadcrumb span{opacity:.55;}
+    @media(max-width:600px){.hub-crumb{padding:.9rem 1.2rem .2rem;}}
   </style>
 </head>
 <body>
@@ -62,13 +68,16 @@
 <div id="header"></div>
 <script src="../../js/include.js"></script>
 
-<div class="cinem-hero">
-  <div class="cinem-hero-inner">
-    <nav class="breadcrumb">
+<div class="hub-crumb">
+  <nav class="breadcrumb">
       <a href="../../index.html">Início</a><span>/</span>
       <a href="../../conteudos.html">Conteúdos</a><span>/</span>
       <span>Grandezas Físicas</span>
     </nav>
+</div>
+
+<div class="cinem-hero">
+  <div class="cinem-hero-inner">
     <h1>⚙️ Grandezas Físicas e Unidades de Medida</h1>
     <p>Os fundamentos da Física: o que medimos, como medimos e por que a linguagem matemática das grandezas é essencial para toda a ciência.</p>
   </div>

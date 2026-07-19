@@ -1,0 +1,523 @@
+/* =============================================================
+   Teste sobre Mecânica — estilos
+   Base: styles.css + consulta.css da prova de MRU
+   (disciplinas/fisica_1_mecanica/provas/fisica_1_prova_MRU/)
+   Acréscimos: blocos com figura compartilhada e alternativas em imagem.
+   ============================================================= */
+
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface2: #f7f7f7;
+  --border: #c5c5c5;
+  --text: #111111;
+  --muted: #3a3a3a;
+  --accent: #103f91;
+  --accent-hover: #1550b0;
+  --correct: #1d7a23;
+  --wrong: #a11a1a;
+  --focus: #b36b00;
+  --radius: 10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  min-height: 100vh;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: bold;
+  font-size: 1rem;
+  z-index: 9999;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 1rem; }
+
+/* Região de avisos para leitor de tela */
+#announcer {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+header {
+  background: var(--surface);
+  border-bottom: 2px solid var(--border);
+  padding: 1.5rem 1rem 1.75rem;
+}
+
+.header-top { max-width: 860px; margin: 0 auto; }
+
+header h1 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.2rem;
+  text-align: center;
+}
+
+.header-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--muted);
+  font-style: italic;
+  text-align: center;
+}
+
+/* Referência bibliográfica do teste original */
+.ref-box {
+  max-width: 860px;
+  margin: 1.25rem auto 0;
+  padding: 0.9rem 1.25rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.92rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.instructions-box {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem;
+  margin: 2rem auto;
+  max-width: 860px;
+}
+
+.instructions-box h2 {
+  font-size: 1.1rem;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.instructions-box ul { padding-left: 1.5rem; }
+.instructions-box li { margin-bottom: 0.4rem; }
+
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1rem 4rem;
+}
+
+/* Barra de progresso */
+#progress-section {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  padding: 1rem 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+
+#progress-label {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+#progress-bar-container {
+  background: var(--surface2);
+  border-radius: 999px;
+  height: 10px;
+  width: 100%;
+  overflow: hidden;
+}
+
+#progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* ---- Campos do respondente ---- */
+.campo { margin-bottom: 1.1rem; }
+
+.campo label {
+  display: block;
+  font-weight: bold;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+}
+
+.campo input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: var(--surface2);
+  color: var(--text);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.campo input:focus { outline: none; border-color: var(--accent); }
+
+.campo .hint {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+/* ---- Bloco de questões com figura compartilhada ---- */
+.bloco { margin-bottom: 2.75rem; }
+
+.bloco-intro {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.bloco-intro h2 {
+  font-size: 0.95rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.bloco-intro p { font-size: 1.02rem; }
+
+/* Figura (contexto ou alternativas em imagem) */
+.figura {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.figura img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.figura figcaption {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+/* Imagem com as alternativas (A–E lado a lado): rola em telas estreitas
+   para não espremer os diagramas a ponto de ficarem ilegíveis. */
+.opcoes-figura {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+}
+
+.opcoes-figura img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  min-width: 380px;
+}
+
+.opcoes-figura-dica {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+/* Cartão de questão */
+.question-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem 2rem;
+  margin-bottom: 1.75rem;
+  transition: border-color 0.3s;
+}
+
+.question-card:focus-within { border-color: var(--accent); outline: none; }
+
+.question-number {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.question-text {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+}
+
+/* ---- Alternativas ---- */
+.options-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.option-item label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  background: var(--surface2);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 0.85rem 1.1rem;
+  cursor: pointer;
+  transition: border-color 0.18s, background 0.18s;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.option-item label:hover { border-color: var(--accent); background: #e9f0ff; }
+
+.option-item input[type="radio"] {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.option-item label:focus-within {
+  border-color: var(--focus);
+  outline: 3px solid var(--focus);
+  outline-offset: 1px;
+}
+
+.option-letter { font-weight: bold; color: var(--accent); min-width: 1.2rem; }
+
+/* Alternativas só com letras (quando as opções são a imagem acima) */
+.letras-list {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.letras-list .option-item { flex: 0 0 auto; }
+
+.letras-list .option-item label {
+  min-width: 5rem;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.05rem;
+}
+
+/* ---- Envio ---- */
+#submit-section { margin-top: 3rem; text-align: center; }
+
+#btn-submit {
+  background: var(--accent);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 1rem 3rem;
+  font-size: 1.15rem;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.2s, transform 0.1s;
+}
+
+#btn-submit:hover { background: var(--accent-hover); }
+#btn-submit:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+#btn-submit:active { transform: scale(0.97); }
+#btn-submit:disabled { background: var(--surface2); color: var(--muted); cursor: not-allowed; }
+
+#missing-warning {
+  color: var(--wrong);
+  font-size: 0.95rem;
+  margin-top: 0.75rem;
+  display: none;
+}
+
+/* Painel de confirmação */
+#result-panel {
+  display: none;
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 2rem 2.5rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+#result-panel h2 { font-size: 1.5rem; color: var(--accent); margin-bottom: 1rem; }
+#result-score { font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem; }
+#result-detail { color: var(--muted); font-size: 1rem; margin-bottom: 1.5rem; }
+
+#btn-retry {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+#btn-retry:hover { border-color: var(--accent); color: var(--accent); }
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding: 2rem;
+  border-top: 1px solid var(--border);
+  margin-top: 4rem;
+}
+
+/* =============================================================
+   CONSULTA DE RESULTADO
+   ============================================================= */
+.search-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.search-card h2 { color: var(--accent); font-size: 1.1rem; margin-bottom: 1rem; }
+
+.search-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+.search-input {
+  flex: 1;
+  min-width: 220px;
+  padding: 0.85rem 1rem;
+  background: var(--surface2);
+  color: var(--text);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus { outline: none; border-color: var(--accent); }
+
+.btn-search {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.85rem 1.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.btn-search:hover { background: var(--accent-hover); }
+
+#search-error {
+  color: var(--wrong);
+  font-size: 0.95rem;
+  margin-top: 0.6rem;
+  display: none;
+}
+
+.score-panel {
+  background: var(--surface2);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.75rem 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.score-panel .student-name { font-size: 1.05rem; color: var(--muted); margin-bottom: 0.4rem; }
+.score-value { font-size: 3rem; font-weight: bold; color: var(--accent); line-height: 1.1; }
+.score-sub { font-size: 1rem; color: var(--muted); margin-top: 0.3rem; }
+
+.badge {
+  display: inline-block;
+  border-radius: 4px;
+  padding: 0.1rem 0.55rem;
+  font-size: 0.78rem;
+  font-weight: bold;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.badge-acertou { background: #f0fff4; color: var(--correct); border: 1px solid var(--correct); }
+.badge-errou   { background: #fff0f0; color: var(--wrong);   border: 1px solid var(--wrong); }
+.badge-vazio   { background: #fff9e6; color: #856404;        border: 1px solid #ffc107; }
+
+.result-options .option-item .option-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  background: var(--surface2);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 0.85rem 1.1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.result-options .option-item.correct .option-row {
+  border-color: var(--correct);
+  background: #f0fff4;
+  color: #1d7a23;
+}
+
+.result-options .option-item.wrong .option-row {
+  border-color: var(--wrong);
+  background: #fff0f0;
+  color: #a11a1a;
+}
+
+.result-badge { font-weight: bold; font-size: 0.88rem; margin-left: auto; white-space: nowrap; }
+.result-badge.correct-badge { color: var(--correct); }
+.result-badge.wrong-badge   { color: var(--wrong); }
+
+#result-section { display: none; }
+
+@media (max-width: 600px) {
+  .question-card { padding: 1.2rem 1rem; }
+  .bloco-intro { padding: 1rem 1.1rem; }
+  #btn-submit { width: 100%; }
+  .letras-list .option-item label { min-width: 4rem; }
+}

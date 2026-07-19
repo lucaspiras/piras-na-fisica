@@ -14,11 +14,11 @@
   --amarelo: #facc15;
   --laranja: #fb923c;
 
-  /* Tokens semânticos — tema claro */
-  --bg: #f9fafb;
+  /* Tokens semânticos — tema claro (fundo dourado leve + neutros harmonizados) */
+  --bg: #faf6ea;
   --surface: #ffffff;
-  --surface-2: #eef2ff;
-  --border: #e5e7eb;
+  --surface-2: #f2ecda;
+  --border: #e7ddc6;
   --texto: #1f2933;
   --text-muted: #5b6573;
   --shadow: rgba(0, 0, 0, 0.08);

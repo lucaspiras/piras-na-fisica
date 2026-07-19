@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IFSul — Física I</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg:       #0d0f14;
+  --surface:  #13161e;
+  --surface2: #1b1f2b;
+  --border:   #2a2f44;
+  --border2:  #363d58;
+  --accent:   #3d8ef0;
+  --green:    #1fd6a0;
+  --muted:    #5e6785;
+  --text:     #dce1f5;
+  --text-dim: #8a93b8;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'IBM Plex Sans', sans-serif;
+  --radius: 12px;
+  --radius-sm: 6px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+header {
+  width: 100%;
+  padding: 2.5rem 2rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(180deg, #0f1220 0%, transparent 100%);
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+header h1 {
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+header p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 300;
+}
+
+main {
+  width: 100%;
+  max-width: 760px;
+  padding: 2.5rem 1.5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Seções ── */
+.section-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+/* ── Card-link ── */
+.card-link {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 1.2rem 1.3rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color .2s, background .2s, transform .15s;
+  position: relative;
+  overflow: hidden;
+}
+.card-link::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border2) 30%, var(--border2) 70%, transparent);
+}
+.card-link:hover {
+  border-color: var(--border2);
+  background: var(--surface2);
+  transform: translateY(-2px);
+}
+
+.card-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.card-desc {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.card-tag {
+  display: inline-block;
+  margin-top: 4px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  padding: 2px 7px;
+  border-radius: 20px;
+  align-self: flex-start;
+}
+.tag-aluno    { background: rgba(61,142,240,0.12); color: var(--accent); border: 1px solid rgba(61,142,240,0.25); }
+.tag-prof     { background: rgba(31,214,160,0.10); color: var(--green);  border: 1px solid rgba(31,214,160,0.22); }
+.tag-impressao{ background: rgba(94,103,133,0.15); color: var(--muted);  border: 1px solid var(--border2); }
+
+footer {
+  padding: 1.2rem;
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+  font-family: var(--mono);
+  position: relative;
+  z-index: 1;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">// ifsul · física i</div>
+  <h1>Sistema de Provas e Correção</h1>
+  <p>Prova online · Folha óptica · Corretor automático</p>
+</header>
+
+<main>
+
+  <!-- Alunos -->
+  <div>
+    <div class="section-label">Para alunos</div>
+    <div class="cards">
+
+      <a class="card-link" href="provas/fisica_1_prova_MRU/prova_1_fisica_1_Unidades_MRU.html">
+        <span class="card-icon">📝</span>
+        <div class="card-title">Prova de Física I</div>
+        <div class="card-desc">Unidades de Medida e MRU · 20 questões · 2º Ano</div>
+        <span class="card-tag tag-aluno">prova online</span>
+      </a>
+
+      <a class="card-link" href="provas/fisica_1_prova_MRU/consulta_resultado.html">
+        <span class="card-icon">🔍</span>
+        <div class="card-title">Consultar Resultado</div>
+        <div class="card-desc">Veja sua nota e o gabarito completo usando nome e palavra secreta.</div>
+        <span class="card-tag tag-aluno">resultado</span>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Professor -->
+  <div>
+    <div class="section-label">Para o professor</div>
+    <div class="cards">
+
+      <a class="card-link" href="correcoes/corretor.html">
+        <span class="card-icon">🔬</span>
+        <div class="card-title">Corretor Óptico</div>
+        <div class="card-desc">Fotografe a folha óptica e obtenha a nota automaticamente. Registra no Supabase.</div>
+        <span class="card-tag tag-prof">correção automática</span>
+      </a>
+
+      <a class="card-link" href="correcoes/folha_optica.html">
+        <span class="card-icon">🖨️</span>
+        <div class="card-title">Folha Óptica</div>
+        <div class="card-desc">Folha em branco para o aluno marcar as respostas. Imprima antes da prova.</div>
+        <span class="card-tag tag-impressao">impressão</span>
+      </a>
+
+      <a class="card-link" href="correcoes/folha_optica_gabarito.html">
+        <span class="card-icon">✅</span>
+        <div class="card-title">Gabarito</div>
+        <div class="card-desc">Folha óptica com as respostas corretas preenchidas. Mesmo layout da folha do aluno.</div>
+        <span class="card-tag tag-impressao">impressão</span>
+      </a>
+
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Instituto Federal Sul-rio-grandense · Física I · <span id="ano"></span>
+</footer>
+
+<script>
+  document.getElementById('ano').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

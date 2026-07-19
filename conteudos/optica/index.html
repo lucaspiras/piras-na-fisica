@@ -28,7 +28,7 @@
   </script>
   <link rel="stylesheet" href="../../css/style.css">
   <style>
-    .op-hero { background: linear-gradient(135deg,#0c4a6e 0%,#0369a1 55%,#0ea5e9 100%); color:#fff; padding:3.5rem 2rem 3rem; }
+    .op-hero { background: linear-gradient(135deg,#0c4a6e 0%,#0369a1 55%,#0ea5e9 100%); color:#fff; padding:1.6rem 2rem 1.6rem; }
     .op-hero-inner { max-width:900px; margin:0 auto; }
     .breadcrumb { display:flex; align-items:center; gap:.5rem; font-size:.9rem; opacity:.75; margin-bottom:1.2rem; }
     .breadcrumb a { color:#fff; text-decoration:none; }
@@ -51,19 +51,28 @@
     .sub-arrow { font-size:1.2rem; color:#0ea5e9; font-weight:800; transition:transform .2s; flex-shrink:0; }
     .sub-link:hover .sub-arrow { transform:translateX(5px); }
     @media(max-width:600px){ .op-main{padding:2rem 1.2rem 3rem;} }
+      .hub-crumb{max-width:900px;margin:0 auto;padding:1.1rem 2rem .2rem;}
+    .hub-crumb .breadcrumb{opacity:1;margin-bottom:0;color:#5b6573;}
+    .hub-crumb .breadcrumb a{color:#0369a1;}
+    .hub-crumb .breadcrumb a:hover{text-decoration:underline;}
+    .hub-crumb .breadcrumb span{opacity:.55;}
+    @media(max-width:600px){.hub-crumb{padding:.9rem 1.2rem .2rem;}}
   </style>
 </head>
 <body>
 <div id="header"></div>
 <script src="../../js/include.js"></script>
 
-<div class="op-hero">
-  <div class="op-hero-inner">
-    <nav class="breadcrumb">
+<div class="hub-crumb">
+  <nav class="breadcrumb">
       <a href="../../index.html">Início</a><span>/</span>
       <a href="../../conteudos.html">Conteúdos</a><span>/</span>
       <span>Óptica</span>
     </nav>
+</div>
+
+<div class="op-hero">
+  <div class="op-hero-inner">
     <h1>🔦 Óptica</h1>
     <p>O estudo da luz: sua natureza, como ela se comporta ao encontrar superfícies e meios diferentes, e como olhos e instrumentos ópticos formam imagens.</p>
   </div>
