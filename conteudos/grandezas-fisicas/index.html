@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="../../css/style.css">
   <style>
     .cinem-hero {
-      background: linear-gradient(135deg, #064e3b 0%, #059669 50%, #10b981 100%);
+      background: var(--tema-grad);
       color: #fff;
       padding:1.6rem 2rem 1.6rem;
     }
@@ -41,29 +41,29 @@
     .cinem-hero h1 { font-size:clamp(2rem,5vw,3rem); font-weight:800; margin-bottom:.6rem; }
     .cinem-hero p { font-size:1.1rem; opacity:.85; max-width:600px; line-height:1.6; }
     .cinem-main { max-width:900px; margin:0 auto; padding:3rem 2rem 4rem; }
-    .cinem-intro { font-size:1.05rem; line-height:1.75; color:#444; margin-bottom:2.5rem; }
-    .subtopicos-titulo { font-size:1.4rem; font-weight:700; color:#064e3b; margin-bottom:1.5rem; display:flex; align-items:center; gap:.6rem; }
+    .cinem-intro { font-size:1.05rem; line-height:1.75; color:var(--texto); margin-bottom:2.5rem; }
+    .subtopicos-titulo { font-size:1.4rem; font-weight:700; color:var(--tema-strong); margin-bottom:1.5rem; display:flex; align-items:center; gap:.6rem; }
     .subtopicos-lista { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.9rem; }
     .subtopicos-lista li { counter-increment:none; padding-left:0; margin-bottom:0; }
     .subtopicos-lista li::before { display:none; }
-    .sub-link { display:flex; align-items:center; gap:1rem; padding:1.2rem 1.4rem; background:#fff; border-radius:12px; text-decoration:none; color:#1f2933; border:1.5px solid #e5e7eb; box-shadow:0 2px 8px rgba(0,0,0,.05); transition:border-color .2s,box-shadow .2s,transform .2s; }
-    .sub-link:hover { border-color:#059669; box-shadow:0 6px 20px rgba(5,150,105,.12); transform:translateX(4px); }
-    .sub-num { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,#059669,#064e3b); color:#fff; font-size:.9rem; font-weight:700; flex-shrink:0; }
+    .sub-link { display:flex; align-items:center; gap:1rem; padding:1.2rem 1.4rem; background:var(--surface); border-radius:12px; text-decoration:none; color:var(--texto); border:1.5px solid var(--border); box-shadow:0 2px 8px rgba(0,0,0,.05); transition:border-color .2s,box-shadow .2s,transform .2s; }
+    .sub-link:hover { border-color:var(--tema-cor); box-shadow:0 6px 20px color-mix(in srgb, var(--tema-cor) 18%, transparent); transform:translateX(4px); }
+    .sub-num { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:var(--tema-grad); color:#fff; font-size:.9rem; font-weight:700; flex-shrink:0; }
     .sub-info { flex:1; }
-    .sub-info h3 { font-size:1.05rem; font-weight:700; color:#064e3b; margin-bottom:.2rem; }
-    .sub-info p { font-size:.88rem; color:#666; margin:0; line-height:1.4; }
-    .sub-arrow { font-size:1.2rem; color:#f97316; font-weight:800; transition:transform .2s; flex-shrink:0; }
+    .sub-info h3 { font-size:1.05rem; font-weight:700; color:var(--tema-strong); margin-bottom:.2rem; }
+    .sub-info p { font-size:.88rem; color:var(--text-muted); margin:0; line-height:1.4; }
+    .sub-arrow { font-size:1.2rem; color:var(--tema-cor); font-weight:800; transition:transform .2s; flex-shrink:0; }
     .sub-link:hover .sub-arrow { transform:translateX(5px); }
     @media(max-width:600px){ .cinem-main{padding:2rem 1.2rem 3rem;} }
       .hub-crumb{max-width:900px;margin:0 auto;padding:1.1rem 2rem .2rem;}
-    .hub-crumb .breadcrumb{opacity:1;margin-bottom:0;color:#5b6573;}
-    .hub-crumb .breadcrumb a{color:#059669;}
+    .hub-crumb .breadcrumb{opacity:1;margin-bottom:0;color:var(--text-muted);}
+    .hub-crumb .breadcrumb a{color:var(--tema-cor);}
     .hub-crumb .breadcrumb a:hover{text-decoration:underline;}
     .hub-crumb .breadcrumb span{opacity:.55;}
     @media(max-width:600px){.hub-crumb{padding:.9rem 1.2rem .2rem;}}
   </style>
 </head>
-<body>
+<body data-tema="grandezas-fisicas">
 
 <div id="header"></div>
 <script src="../../js/include.js"></script>
@@ -78,7 +78,7 @@
 
 <div class="cinem-hero">
   <div class="cinem-hero-inner">
-    <h1>⚙️ Grandezas Físicas e Unidades de Medida</h1>
+    <h1>⚖️ Grandezas Físicas e Unidades de Medida</h1>
     <p>Os fundamentos da Física: o que medimos, como medimos e por que a linguagem matemática das grandezas é essencial para toda a ciência.</p>
   </div>
 </div>

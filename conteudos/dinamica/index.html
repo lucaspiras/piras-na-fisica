@@ -7,18 +7,18 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
   <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
   <script src="/js/theme.js"></script>
-  <meta name="description" content="Trabalho de uma força, potência, energia cinética, energia potencial e conservação da energia mecânica.">
+  <meta name="description" content="Dinâmica: a área da Física que estuda as causas do movimento. Conceito de força, as três leis de Newton, atrito, plano inclinado e força centrípeta.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Trabalho e Energia — Piras na Física">
-  <meta property="og:description" content="Trabalho de uma força, potência, energia cinética, energia potencial e conservação da energia mecânica.">
+  <meta property="og:title" content="Dinâmica — Piras na Física">
+  <meta property="og:description" content="Dinâmica: a área da Física que estuda as causas do movimento. Conceito de força, as três leis de Newton, atrito, plano inclinado e força centrípeta.">
   <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
   <meta property="og:image:width" content="1080">
   <meta property="og:image:height" content="1080">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:url" content="https://pirasnafisica.com.br/conteudos/trabalho-energia/">
+  <meta property="og:url" content="https://pirasnafisica.com.br/conteudos/dinamica/">
   <meta name="twitter:card" content="summary_large_image">
-  <title>Trabalho e Energia — Piras na Física</title>
+  <title>Dinâmica — Piras na Física</title>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -28,20 +28,21 @@
   </script>
   <link rel="stylesheet" href="../../css/style.css">
   <style>
-    .te-hero {
+    .newton-hero {
       background: var(--tema-grad);
       color: #fff;
       padding:1.6rem 2rem 1.6rem;
     }
-    .te-hero-inner { max-width: 900px; margin: 0 auto; }
+    .newton-hero-inner { max-width: 900px; margin: 0 auto; }
     .breadcrumb { display:flex; align-items:center; gap:.5rem; font-size:.9rem; opacity:.75; margin-bottom:1.2rem; }
     .breadcrumb a { color:#fff; text-decoration:none; }
     .breadcrumb a:hover { text-decoration:underline; }
     .breadcrumb span { opacity:.6; }
-    .te-hero h1 { font-size:clamp(2rem,5vw,3rem); font-weight:800; margin-bottom:.6rem; }
-    .te-hero p { font-size:1.1rem; opacity:.85; max-width:600px; line-height:1.6; }
-    .te-main { max-width:900px; margin:0 auto; padding:3rem 2rem 4rem; }
-    .te-intro { font-size:1.05rem; line-height:1.75; color:var(--texto); margin-bottom:2.5rem; }
+    .newton-hero h1 { font-size:clamp(2rem,5vw,3rem); font-weight:800; margin-bottom:.6rem; }
+    .newton-hero p { font-size:1.1rem; opacity:.85; max-width:600px; line-height:1.6; }
+    .newton-main { max-width:900px; margin:0 auto; padding:3rem 2rem 4rem; }
+    .newton-intro { font-size:1.05rem; line-height:1.75; color:var(--texto); margin-bottom:1rem; }
+    .newton-intro:last-of-type { margin-bottom:2.5rem; }
     .subtopicos-titulo { font-size:1.4rem; font-weight:700; color:var(--tema-strong); margin-bottom:1.5rem; display:flex; align-items:center; gap:.6rem; }
     .subtopicos-lista { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.9rem; }
     .subtopicos-lista li { padding-left:0; margin-bottom:0; }
@@ -54,7 +55,7 @@
     .sub-info p { font-size:.88rem; color:var(--text-muted); margin:0; line-height:1.4; }
     .sub-arrow { font-size:1.2rem; color:var(--tema-cor); font-weight:800; transition:transform .2s; flex-shrink:0; }
     .sub-link:hover .sub-arrow { transform:translateX(5px); }
-    @media(max-width:600px){ .te-main{padding:2rem 1.2rem 3rem;} }
+    @media(max-width:600px){ .newton-main{padding:2rem 1.2rem 3rem;} }
       .hub-crumb{max-width:900px;margin:0 auto;padding:1.1rem 2rem .2rem;}
     .hub-crumb .breadcrumb{opacity:1;margin-bottom:0;color:var(--text-muted);}
     .hub-crumb .breadcrumb a{color:var(--tema-cor);}
@@ -63,7 +64,7 @@
     @media(max-width:600px){.hub-crumb{padding:.9rem 1.2rem .2rem;}}
   </style>
 </head>
-<body data-tema="trabalho-energia">
+<body data-tema="dinamica">
 
 <div id="header"></div>
 <script src="../../js/include.js"></script>
@@ -72,71 +73,97 @@
   <nav class="breadcrumb">
       <a href="../../index.html">Início</a><span>/</span>
       <a href="../../conteudos.html">Conteúdos</a><span>/</span>
-      <span>Trabalho e Energia</span>
+      <span>Dinâmica</span>
     </nav>
 </div>
 
-<div class="te-hero">
-  <div class="te-hero-inner">
-    <h1>🔋 Trabalho e Energia</h1>
-    <p>Os conceitos mais poderosos da Física: trabalho, energia cinética, energia potencial e a lei da conservação da energia mecânica.</p>
+<div class="newton-hero">
+  <div class="newton-hero-inner">
+    <h1>🍎 Dinâmica</h1>
+    <p>A área da Física que estuda as <strong>causas</strong> do movimento: por que um corpo acelera, freia ou muda de direção. No centro dela estão as leis de Newton, o conjunto de leis que rege a Mecânica Clássica.</p>
   </div>
 </div>
 
-<main class="te-main">
-  <p class="te-intro">
-    Energia é a grandeza mais universal da Física — ela aparece em todas as áreas, do quantum à cosmologia. Neste tema você entenderá o que é trabalho, como a energia se transforma e por que a soma total se conserva em sistemas sem atrito.
+<main class="newton-main">
+  <p class="newton-intro">
+    A <strong>Cinemática</strong> descreve <em>como</em> um corpo se move — sua posição, velocidade e aceleração. A <strong>Dinâmica</strong> vai além e pergunta <em>por quê</em>: o que faz um corpo sair do repouso, ganhar velocidade ou curvar sua trajetória. A resposta está no conceito de <strong>força</strong>.
+  </p>
+  <p class="newton-intro">
+    As respostas dessa área foram organizadas por Isaac Newton em 1687, no <em>Principia</em>, em três leis do movimento. Juntas, elas formam a base da <strong>Mecânica Clássica</strong> — o conjunto de leis que descreve com enorme precisão desde uma bola rolando na quadra até o movimento dos planetas, desde que as velocidades envolvidas sejam bem menores que a da luz e a escala seja maior que a dos átomos.
+  </p>
+  <p class="newton-intro">
+    Neste tema você vai estudar o conceito de força, as três leis de Newton e as principais aplicações delas: atrito, plano inclinado e movimento circular.
   </p>
 
   <h2 class="subtopicos-titulo">📚 Textos deste tema</h2>
 
   <ul class="subtopicos-lista">
     <li>
-      <a href="trabalho.html" class="sub-link">
+      <a href="forcas.html" class="sub-link">
         <span class="sub-num">01</span>
         <div class="sub-info">
-          <h3>Trabalho de uma Força</h3>
-          <p>T = F·d·cosθ. Trabalho positivo, negativo e nulo. Trabalho do peso e da força elástica.</p>
+          <h3>Conceito de Força e Suas Propriedades</h3>
+          <p>O que é força, como representá-la vetorialmente, tipos de força e diagrama de corpo livre.</p>
         </div>
         <span class="sub-arrow">→</span>
       </a>
     </li>
     <li>
-      <a href="potencia.html" class="sub-link">
+      <a href="primeira-lei.html" class="sub-link">
         <span class="sub-num">02</span>
         <div class="sub-info">
-          <h3>Potência</h3>
-          <p>P = T/Δt = F·v. Watts, cavalos-vapor e rendimento de máquinas.</p>
+          <h3>Primeira Lei de Newton — Inércia</h3>
+          <p>Todo corpo permanece em repouso ou em MRU a menos que uma força resultante atue sobre ele.</p>
         </div>
         <span class="sub-arrow">→</span>
       </a>
     </li>
     <li>
-      <a href="energia-cinetica.html" class="sub-link">
+      <a href="segunda-lei.html" class="sub-link">
         <span class="sub-num">03</span>
         <div class="sub-info">
-          <h3>Energia Cinética e Teorema Trabalho-Energia</h3>
-          <p>E<sub>c</sub> = ½mv². O trabalho da força resultante equals a variação de energia cinética.</p>
+          <h3>Segunda Lei de Newton — F = m · a</h3>
+          <p>A aceleração de um corpo é diretamente proporcional à força resultante e inversamente proporcional à sua massa.</p>
         </div>
         <span class="sub-arrow">→</span>
       </a>
     </li>
     <li>
-      <a href="energia-potencial.html" class="sub-link">
+      <a href="terceira-lei.html" class="sub-link">
         <span class="sub-num">04</span>
         <div class="sub-info">
-          <h3>Energia Potencial (Gravitacional e Elástica)</h3>
-          <p>E<sub>pg</sub> = mgh e E<sub>pe</sub> = ½kx². Forças conservativas e energia armazenada.</p>
+          <h3>Terceira Lei de Newton — Ação e Reação</h3>
+          <p>Toda ação tem uma reação de mesmo módulo, mesma direção e sentido oposto — em corpos diferentes.</p>
         </div>
         <span class="sub-arrow">→</span>
       </a>
     </li>
     <li>
-      <a href="conservacao-energia.html" class="sub-link">
+      <a href="atrito.html" class="sub-link">
         <span class="sub-num">05</span>
         <div class="sub-info">
-          <h3>Conservação da Energia Mecânica</h3>
-          <p>E<sub>m</sub> = E<sub>c</sub> + E<sub>p</sub> = constante. Pêndulo, queda livre e o efeito do atrito.</p>
+          <h3>Força de Atrito</h3>
+          <p>Atrito estático e cinético, coeficientes de atrito, a relação f = μN e aplicações cotidianas.</p>
+        </div>
+        <span class="sub-arrow">→</span>
+      </a>
+    </li>
+    <li>
+      <a href="plano-inclinado.html" class="sub-link">
+        <span class="sub-num">06</span>
+        <div class="sub-info">
+          <h3>Plano Inclinado</h3>
+          <p>Decomposição do peso, força normal no plano inclinado, aceleração com e sem atrito.</p>
+        </div>
+        <span class="sub-arrow">→</span>
+      </a>
+    </li>
+    <li>
+      <a href="forca-centripeta.html" class="sub-link">
+        <span class="sub-num">07</span>
+        <div class="sub-info">
+          <h3>Força Centrípeta</h3>
+          <p>A força resultante que mantém um corpo em trajetória circular — F_c = mv²/r.</p>
         </div>
         <span class="sub-arrow">→</span>
       </a>

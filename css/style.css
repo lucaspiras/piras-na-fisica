@@ -79,6 +79,59 @@
 }
 
 /* =========================
+   CORES POR TEMA DE CONTEÚDO
+   Ativadas por data-tema="<pasta>" no <body> das páginas de conteudos/.
+   Ficam aqui (e não em conteudos/shared.css) porque os hubs de tema carregam
+   apenas este arquivo.
+
+   Cada tema define 3 cores:
+   --tema-deep   → cor escura (stop inicial do gradiente)
+   --tema-cor    → cor "mid", legível sobre o creme do site (bordas, links, acentos)
+   --tema-light  → cor clara (stop final do gradiente)
+   E duas derivadas:
+   --tema-grad   → gradiente deep → cor → light (banner, número da seção, índice, tabelas)
+   --tema-strong → cor de TEXTO de títulos e rótulos: deep no claro, light no escuro
+
+   CRITÉRIO DA PALETA — não escolher cor "no olho" ao criar uma seção nova.
+   Cada tema recebe a cor que o fenômeno evoca, respeitando separação mínima de
+   matiz (~20° entre quaisquer dois temas) para que nenhum par se confunda:
+
+     grandezas-fisicas  ardósia   base neutra da física: régua, balança, medição
+     cinematica         azul      movimento
+     dinamica           verde     força e as leis de Newton (a maçã 🍎 destaca)
+     trabalho-energia   laranja   combustível, calorias
+     optica             magenta   dispersão da luz no prisma
+     eletricidade       dourado   raio
+     termodinamica      vermelho  calor
+     ondulatoria        teal      ondas, mar
+     fisica-moderna     violeta   quântico, ultravioleta
+
+   Os três quentes (termodinâmica 0°, energia 22°, eletricidade 43°) são vizinhos
+   de propósito: formam a família calor/energia/eletricidade. Os stops claros
+   (coral, laranja, amarelo) os mantêm distinguíveis.
+========================= */
+[data-tema="grandezas-fisicas"] { --tema-deep:#1e293b; --tema-cor:#475569; --tema-light:#64748b; }
+[data-tema="cinematica"]        { --tema-deep:#1e3a8a; --tema-cor:#1d4ed8; --tema-light:#3b82f6; }
+[data-tema="dinamica"]          { --tema-deep:#14532d; --tema-cor:#15803d; --tema-light:#22c55e; }
+[data-tema="trabalho-energia"]  { --tema-deep:#7c2d12; --tema-cor:#c2410c; --tema-light:#f97316; }
+[data-tema="optica"]            { --tema-deep:#701a75; --tema-cor:#a21caf; --tema-light:#d946ef; }
+[data-tema="eletricidade"]      { --tema-deep:#713f12; --tema-cor:#a16207; --tema-light:#eab308; }
+[data-tema="termodinamica"]     { --tema-deep:#7f1d1d; --tema-cor:#b91c1c; --tema-light:#ef4444; }
+[data-tema="ondulatoria"]       { --tema-deep:#134e4a; --tema-cor:#0f766e; --tema-light:#14b8a6; }
+[data-tema="fisica-moderna"]    { --tema-deep:#4c1d95; --tema-cor:#6d28d9; --tema-light:#a78bfa; }
+
+/* Derivadas — assim trocar a cor de um tema é editar uma linha só, acima. */
+[data-tema] {
+  --tema-grad: linear-gradient(135deg, var(--tema-deep) 0%, var(--tema-cor) 55%, var(--tema-light) 100%);
+  --tema-strong: var(--tema-deep);
+}
+
+/* No escuro, --tema-strong (só cor de texto) subiria ilegível sobre o fundo #0b0e14,
+   então os títulos passam a usar o stop claro. O gradiente segue com --tema-deep e
+   não é afetado: lá a cor escura aparece como fundo, com texto branco por cima. */
+[data-theme="dark"] [data-tema] { --tema-strong: var(--tema-light); }
+
+/* =========================
    RESET
 ========================= */
 * {

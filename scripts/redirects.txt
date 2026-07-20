@@ -46,3 +46,15 @@ disciplinas/fisica_1_mecanica/provas/fisica_1_prova_MRU/ -> /atividades/testes/p
 disciplinas/fisica_1_mecanica/provas/prova_2_MRU_MRUV_Lancamentos/prova_final_2026_01_primeira_etapa.html -> /atividades/testes/prova-final-cinematica/prova_final_2026_01_primeira_etapa.html
 disciplinas/fisica_1_mecanica/provas/prova_2_MRU_MRUV_Lancamentos/consulta_resultado.html -> /atividades/testes/prova-final-cinematica/consulta_resultado.html
 disciplinas/fisica_1_mecanica/provas/prova_2_MRU_MRUV_Lancamentos/ -> /atividades/testes/prova-final-cinematica/
+
+# Reorganizacao 2026-07-19: secao "Leis de Newton" -> "Dinamica"
+# (nome mais preciso: a secao cobre forcas, atrito, plano inclinado e forca centripeta,
+#  nao apenas as tres leis; alinha com as demais secoes, que nomeiam areas da Fisica)
+conteudos/leis-newton/forcas.html -> /conteudos/dinamica/forcas.html
+conteudos/leis-newton/primeira-lei.html -> /conteudos/dinamica/primeira-lei.html
+conteudos/leis-newton/segunda-lei.html -> /conteudos/dinamica/segunda-lei.html
+conteudos/leis-newton/terceira-lei.html -> /conteudos/dinamica/terceira-lei.html
+conteudos/leis-newton/atrito.html -> /conteudos/dinamica/atrito.html
+conteudos/leis-newton/plano-inclinado.html -> /conteudos/dinamica/plano-inclinado.html
+conteudos/leis-newton/forca-centripeta.html -> /conteudos/dinamica/forca-centripeta.html
+conteudos/leis-newton/ -> /conteudos/dinamica/

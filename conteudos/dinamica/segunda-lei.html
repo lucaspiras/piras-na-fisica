@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <script src="/js/theme.js"></script>
+  <meta name="description" content="Portal gratuito de Física para o Ensino Médio: conteúdos, simuladores, estudos dirigidos e listas de exercícios.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Segunda Lei de Newton — Piras na Física">
+  <meta property="og:description" content="Portal gratuito de Física para o Ensino Médio: conteúdos, simuladores, estudos dirigidos e listas de exercícios.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/conteudos/dinamica/segunda-lei.html">
+  <title>Segunda Lei de Newton — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body data-tema="dinamica">
+
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-crumb">
+  <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Dinâmica</a><span>/</span>
+      <span>2ª Lei</span>
+    </nav>
+</div>
+
+<div class="content-hero">
+  <div class="content-hero-inner">
+    <h1 class="content-title">Segunda Lei de Newton</h1>
+    <p class="content-subtitle">A aceleração de um corpo é diretamente proporcional à força resultante e inversamente proporcional à sua massa.</p>
+    <span class="formula-highlight">F⃗<sub>R</sub> = m · a⃗</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">O enunciado</a></li>
+      <li><a href="#s2">A equação F = ma</a></li>
+      <li><a href="#s3">Relações e proporções</a></li>
+      <li><a href="#s4">Força resultante e aceleração</a></li>
+      <li><a href="#s5">Aplicação: queda livre</a></li>
+      <li><a href="#s6">Calculadora</a></li>
+      <li><a href="#s7">Gráfico interativo</a></li>
+      <li><a href="#s8">Aplicações cotidianas</a></li>
+      <li><a href="#s9">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="primeira-lei.html">← 1ª Lei</a>
+      <a href="terceira-lei.html" class="toc-next">3ª Lei →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> O enunciado da Segunda Lei</h2>
+
+      <p>
+        A Segunda Lei de Newton — também chamada de <strong>Lei da Força</strong> ou <strong>Princípio Fundamental da Dinâmica</strong> — relaciona matematicamente força, massa e aceleração:
+      </p>
+
+      <div class="highlight-box" style="border-left-color:#ea580c; background:#fff7ed;">
+        <span class="hb-icon">📜</span>
+        <p style="font-style:italic; font-size:1.05rem;">
+          "A mudança de movimento é proporcional à força motora imprimida e ocorre na direção da linha reta na qual aquela força é imprimida."
+          <br><br>
+          — Isaac Newton, <em>Principia Mathematica</em> (1687)
+        </p>
+      </div>
+
+      <p>
+        Em termos simples: para acelerar um corpo, você precisa aplicar uma força. Quanto <em>maior a força</em>, maior a aceleração. Quanto <em>maior a massa</em>, menor a aceleração para a mesma força.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> A equação F = m · a</h2>
+
+      <div class="formula-box">
+        <span class="formula-label">Segunda Lei de Newton</span>
+        <span class="formula-expr">F⃗<sub>R</sub> = m · a⃗</span>
+        <span class="formula-legend">
+          <span>F⃗<sub>R</sub> = força resultante (N)</span>
+          <span>m = massa do corpo (kg)</span>
+          <span>a⃗ = aceleração produzida (m/s²)</span>
+          <span>A força e a aceleração têm a mesma direção e sentido</span>
+        </span>
+      </div>
+
+      <p>
+        Rearranjando, podemos isolar qualquer uma das três grandezas:
+      </p>
+
+      <div class="formula-row">
+        <div class="formula-box">
+          <span class="formula-label">Calcular a aceleração</span>
+          <span class="formula-expr">a = F<sub>R</sub> / m</span>
+        </div>
+        <div class="formula-box">
+          <span class="formula-label">Calcular a massa</span>
+          <span class="formula-expr">m = F<sub>R</sub> / a</span>
+        </div>
+        <div class="formula-box">
+          <span class="formula-label">Calcular a força</span>
+          <span class="formula-expr">F<sub>R</sub> = m · a</span>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo 1</div>
+        <div class="ex-body">
+          <p>Uma força de 60 N age sobre um bloco de 4 kg. Qual a aceleração produzida?</p>
+          <p>a = F / m = 60 / 4 = <strong>15 m/s²</strong></p>
+          <div class="ex-result">a = 15 m/s²</div>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo 2</div>
+        <div class="ex-body">
+          <p>Um carro de 1 200 kg acelera de 0 a 20 m/s em 8 s. Qual a força resultante?</p>
+          <p>a = Δv/Δt = 20/8 = 2,5 m/s²</p>
+          <p>F<sub>R</sub> = m · a = 1 200 × 2,5 = <strong>3 000 N</strong></p>
+          <div class="ex-result">F<sub>R</sub> = 3 000 N = 3 kN</div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Relações e proporções</h2>
+
+      <div class="concept-grid">
+        <div class="concept-card">
+          <span class="cc-icon">📈</span>
+          <div class="cc-title">F ∝ a (massa fixa)</div>
+          <p class="cc-desc">Para mesma massa, dobrar a força dobra a aceleração. Triplicar a força triplica a aceleração.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">📉</span>
+          <div class="cc-title">a ∝ 1/m (força fixa)</div>
+          <p class="cc-desc">Para mesma força, dobrar a massa reduz a aceleração à metade. É a inércia resistindo.</p>
+        </div>
+      </div>
+
+
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Força resultante e aceleração</h2>
+
+      <p>
+        Um ponto crucial: na 2ª Lei, <strong>F é a força resultante</strong> — a soma vetorial de todas as forças que atuam no corpo. Não é uma única força aplicada.
+      </p>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Bloco com atrito</div>
+        <div class="ex-body">
+          <p>Uma força F = 100 N empurra um bloco de 10 kg numa superfície com atrito f = 40 N.</p>
+          <p>Força resultante: F<sub>R</sub> = F − f = 100 − 40 = 60 N</p>
+          <p>Aceleração: a = F<sub>R</sub> / m = 60 / 10 = <strong>6 m/s²</strong></p>
+          <div class="ex-result">a = 6 m/s² (não 10 m/s², porque o atrito reduz a resultante)</div>
+        </div>
+      </div>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">📐</span>
+        <p>
+          Perceba: se F = 40 N (igual ao atrito), F<sub>R</sub> = 0 e a = 0 — o bloco se move com velocidade constante (MRU) ou permanece parado. Isso conecta a 2ª Lei com a 1ª Lei!
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Aplicação: queda livre e força peso</h2>
+
+      <p>
+        Na queda livre (sem ar), a única força que age sobre um corpo é o <strong>peso</strong>. Aplicando a 2ª Lei:
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Aceleração na queda livre</span>
+        <span class="formula-expr">P = m · g ⟹ a = g</span>
+        <span class="formula-legend">
+          <span>Todos os corpos caem com a mesma aceleração g ≈ 9,8 m/s² ≈ 10 m/s²</span>
+          <span>Independentemente da massa — a massa cancela na equação!</span>
+        </span>
+      </div>
+
+      <div class="highlight-box">
+        <span class="hb-icon">🪶</span>
+        <p>
+          Galileu demonstrou experimentalmente (Torre de Pisa) que corpos de massas diferentes caem juntos no vácuo. A 2ª Lei explica o porquê: a = P/m = (mg)/m = g — a massa se cancela!
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Calculadora F = m · a</h2>
+
+      <p>Deixe <strong>um campo em branco</strong> para ser calculado.</p>
+
+      <div class="calc-box">
+        <h4>🧮 Calculadora — F = m · a</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Força resultante F<sub>R</sub> (N)</label>
+            <input type="number" id="nd-F" placeholder="deixe vazio p/ calcular">
+          </div>
+          <div class="calc-field">
+            <label>Massa m (kg)</label>
+            <input type="number" id="nd-m" placeholder="deixe vazio p/ calcular">
+          </div>
+          <div class="calc-field">
+            <label>Aceleração a (m/s²)</label>
+            <input type="number" id="nd-a" placeholder="deixe vazio p/ calcular">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calc2Lei()">Calcular</button>
+        <div class="calc-result" id="nd-result"></div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Gráfico F×a interativo</h2>
+
+      <p>
+        Veja como a aceleração varia com a força para diferentes massas.
+      </p>
+
+      <div class="graph-box">
+        <h4>📈 Gráfico F×a — 2ª Lei de Newton</h4>
+        <div class="graph-canvases">
+          <canvas id="nd-graph" width="500" height="280"></canvas>
+        </div>
+        <div class="graph-controls">
+          <div class="slider-row">
+            <label>Massa m = <span id="nd-m-disp">5</span> kg</label>
+            <input type="range" id="nd-m-sl" min="1" max="20" value="5" step="1">
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Aplicações cotidianas</h2>
+
+      <div class="daily-grid">
+        <div class="daily-card">
+          <span class="dc-icon">🚀</span>
+          <div class="dc-title">Foguete</div>
+          <p class="dc-desc">Motores de foguete queimam combustível para gerar enorme força. Como a massa diminui ao longo do voo, a aceleração aumenta.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🏎️</span>
+          <div class="dc-title">Carro esportivo</div>
+          <p class="dc-desc">Motor potente = força maior. Massa menor = maior aceleração com a mesma força. F1 acelera 0→100 km/h em menos de 2 s.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">⚾</span>
+          <div class="dc-title">Arremesso de bola</div>
+          <p class="dc-desc">Quanto mais força você aplica ao arremessar (e menos massa tem a bola), maior a velocidade que ela atinge ao sair da mão.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🏗️</span>
+          <div class="dc-title">Estrutura de pontes</div>
+          <p class="dc-desc">Engenheiros calculam as forças sobre cada peça para garantir que a aceleração resultante seja zero (equilíbrio estático).</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s9">
+      <h2><span class="sec-num">9</span> Resumo</h2>
+
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>2ª Lei: F⃗<sub>R</sub> = m·a⃗ — força resultante, massa e aceleração estão ligadas.</li>
+          <li>Aceleração e força têm sempre a mesma direção e sentido.</li>
+          <li>Para mesma massa: dobrar F dobra a. Para mesma F: dobrar m reduz a à metade.</li>
+          <li>F na equação é a RESULTANTE — soma vetorial de todas as forças.</li>
+          <li>Na queda livre, a massa se cancela: todos os corpos caem com a = g.</li>
+          <li>A 1ª Lei é um caso especial da 2ª: quando F<sub>R</sub> = 0, a = 0.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="primeira-lei.html">← 1ª Lei de Newton</a>
+      <a href="terceira-lei.html" class="nav-next">Próximo: 3ª Lei →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+
+<script>
+(function() {
+  /* ---- Calculadora 2ª Lei ---- */
+  window.calc2Lei = function() {
+    const F = document.getElementById('nd-F').value;
+    const m = document.getElementById('nd-m').value;
+    const a = document.getElementById('nd-a').value;
+    const res = document.getElementById('nd-result');
+
+    const vals = [F, m, a].map(v => v === '' ? null : parseFloat(v));
+    const blanks = vals.filter(x => x === null).length;
+
+    if (blanks !== 1) {
+      res.className = 'calc-result erro';
+      res.textContent = 'Deixe exatamente UM campo em branco.';
+      return;
+    }
+
+    let msg = '';
+    const [fv, mv, av] = vals;
+    if (fv === null) {
+      const calc = mv * av;
+      document.getElementById('nd-F').value = calc.toFixed(3);
+      msg = 'F = m·a = ' + mv + ' × ' + av + ' = ' + calc.toFixed(3) + ' N';
+    } else if (mv === null) {
+      if (av === 0) { res.className='calc-result erro'; res.textContent='a não pode ser zero.'; return; }
+      const calc = fv / av;
+      document.getElementById('nd-m').value = calc.toFixed(3);
+      msg = 'm = F/a = ' + fv + ' / ' + av + ' = ' + calc.toFixed(3) + ' kg';
+    } else {
+      if (mv === 0) { res.className='calc-result erro'; res.textContent='m não pode ser zero.'; return; }
+      const calc = fv / mv;
+      document.getElementById('nd-a').value = calc.toFixed(3);
+      msg = 'a = F/m = ' + fv + ' / ' + mv + ' = ' + calc.toFixed(3) + ' m/s²';
+    }
+    res.className = 'calc-result ok';
+    res.textContent = msg;
+  };
+
+  /* ---- Gráfico F×a ---- */
+  const canvas = document.getElementById('nd-graph');
+  const ctx = canvas.getContext('2d');
+  const mSl   = document.getElementById('nd-m-sl');
+  const mDisp = document.getElementById('nd-m-disp');
+
+  function drawGraph() {
+    const m = parseFloat(mSl.value);
+    mDisp.textContent = m;
+
+    const W = canvas.width, H = canvas.height;
+    const PAD = {l:55, r:20, t:30, b:45};
+    const gW = W - PAD.l - PAD.r;
+    const gH = H - PAD.t - PAD.b;
+    const Fmax = 100;
+    const aMax = Fmax / m;
+
+    const toX = F => PAD.l + (F / Fmax) * gW;
+    const toY = a => PAD.t + (1 - a / aMax) * gH;
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#fafafa';
+    ctx.fillRect(PAD.l, PAD.t, gW, gH);
+
+    /* Grade */
+    ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+    for (let i = 0; i <= 5; i++) {
+      const x = PAD.l + (i/5)*gW;
+      ctx.beginPath(); ctx.moveTo(x, PAD.t); ctx.lineTo(x, PAD.t+gH); ctx.stroke();
+      const y = PAD.t + (i/5)*gH;
+      ctx.beginPath(); ctx.moveTo(PAD.l, y); ctx.lineTo(PAD.l+gW, y); ctx.stroke();
+    }
+
+    /* Eixos */
+    ctx.strokeStyle = '#374151'; ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(PAD.l, PAD.t); ctx.lineTo(PAD.l, PAD.t+gH);
+    ctx.moveTo(PAD.l, PAD.t+gH); ctx.lineTo(PAD.l+gW, PAD.t+gH);
+    ctx.stroke();
+
+    /* Rótulos eixo F */
+    ctx.fillStyle = '#555'; ctx.font = '11px Poppins, sans-serif'; ctx.textAlign = 'center';
+    for (let i = 0; i <= 5; i++) {
+      ctx.fillText((i*20).toString(), toX(i*20), PAD.t+gH+18);
+    }
+    ctx.fillText('F (N)', PAD.l+gW+10, PAD.t+gH+5);
+
+    /* Rótulos eixo a */
+    ctx.textAlign = 'right';
+    const step = Math.ceil(aMax/5/5)*5 || 1;
+    for (let av = 0; av <= aMax+0.001; av += step) {
+      ctx.fillText(av.toFixed(1), PAD.l-6, toY(av)+4);
+    }
+    ctx.save();
+    ctx.translate(14, PAD.t+gH/2);
+    ctx.rotate(-Math.PI/2);
+    ctx.textAlign = 'center';
+    ctx.fillText('a (m/s²)', 0, 0);
+    ctx.restore();
+
+    /* Linha F=ma */
+    ctx.strokeStyle = '#ea580c'; ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(toX(0), toY(0));
+    ctx.lineTo(toX(Fmax), toY(aMax));
+    ctx.stroke();
+
+    /* Título */
+    ctx.fillStyle = '#7c2d12'; ctx.font = 'bold 12px Poppins, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('a = F / ' + m + '  (inclinação = 1/' + m + ')', PAD.l+8, PAD.t+16);
+  }
+
+  mSl.addEventListener('input', drawGraph);
+  drawGraph();
+
+  /* TOC */
+  const sections = document.querySelectorAll('.content-section');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', function() {
+    let current = '';
+    sections.forEach(sec => { if (window.scrollY >= sec.offsetTop-120) current = sec.id; });
+    tocLinks.forEach(a => {
+      a.parentElement.classList.toggle('active', a.getAttribute('href') === '#'+current);
+    });
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. dinamica/segunda-lei-graficos.png
+     Dois gráficos: F×a (reta, inclinação = m) e a×m (hipérbole a = F/m). Eixos rotulados.
+-->
+
+</body>
+</html>

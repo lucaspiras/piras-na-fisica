@@ -4,20 +4,9 @@
    ============================================================= */
 
 /* ---- CORES POR TEMA ----
-   Cada tema tem 3 variáveis (mesmas cores dos hubs):
-   --tema-grad   → gradiente (banner, número da seção, cabeçalho do índice, tabelas, botões)
-   --tema-cor    → cor "mid", legível sobre fundo claro (bordas, links, acentos)
-   --tema-strong → cor escura (títulos e rótulos, para manter contraste/leitura)
-   Os acentos internos usam essas variáveis com o azul-roxo como fallback. */
-[data-tema="grandezas-fisicas"] { --tema-grad: linear-gradient(135deg,#064e3b 0%,#059669 50%,#10b981 100%); --tema-cor:#059669; --tema-strong:#064e3b; }
-[data-tema="cinematica"]        { --tema-grad: linear-gradient(135deg,#1e2a78 0%,#2f5bea 50%,#6a2fe8 100%); --tema-cor:#2f5bea; --tema-strong:#1e2a78; }
-[data-tema="leis-newton"]       { --tema-grad: linear-gradient(135deg,#7c2d12 0%,#c2410c 50%,#ea580c 100%); --tema-cor:#c2410c; --tema-strong:#7c2d12; }
-[data-tema="trabalho-energia"]  { --tema-grad: linear-gradient(135deg,#4c1d95 0%,#7c3aed 55%,#8b5cf6 100%); --tema-cor:#7c3aed; --tema-strong:#4c1d95; }
-[data-tema="eletricidade"]      { --tema-grad: linear-gradient(135deg,#78350f 0%,#b45309 55%,#d97706 100%); --tema-cor:#b45309; --tema-strong:#78350f; }
-[data-tema="ondulatoria"]       { --tema-grad: linear-gradient(135deg,#134e4a 0%,#0f766e 55%,#14b8a6 100%); --tema-cor:#0f766e; --tema-strong:#134e4a; }
-[data-tema="optica"]            { --tema-grad: linear-gradient(135deg,#0c4a6e 0%,#0369a1 55%,#0ea5e9 100%); --tema-cor:#0369a1; --tema-strong:#0c4a6e; }
-[data-tema="termodinamica"]     { --tema-grad: linear-gradient(135deg,#7f1d1d 0%,#b91c1c 55%,#ef4444 100%); --tema-cor:#b91c1c; --tema-strong:#7f1d1d; }
-[data-tema="fisica-moderna"]    { --tema-grad: linear-gradient(135deg,#1e1b4b 0%,#4338ca 55%,#818cf8 100%); --tema-cor:#4338ca; --tema-strong:#1e1b4b; }
+   As paletas (--tema-deep/cor/light/grad/strong) ficam em css/style.css, que TODA
+   página carrega — inclusive os hubs, que não linkam este arquivo. Este arquivo só
+   consome as variáveis; para trocar a cor de uma seção, edite lá. */
 
 /* ---- HERO DO CONTEÚDO ---- */
 .content-hero {
