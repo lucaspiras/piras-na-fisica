@@ -45,8 +45,8 @@
 <div class="content-hero">
   <div class="content-hero-inner">
     <h1 class="content-title">Segunda Lei de Newton</h1>
-    <p class="content-subtitle">A aceleração de um corpo é diretamente proporcional à força resultante e inversamente proporcional à sua massa.</p>
-    <span class="formula-highlight">F⃗<sub>R</sub> = m · a⃗</span>
+    <p class="content-subtitle">A Primeira Lei diz que a força muda o movimento. A Segunda diz exatamente <em>quanto</em> — e é a equação mais usada de toda a mecânica.</p>
+    <span class="formula-highlight"><span class="vec">F</span><sub>R</sub> = m · <span class="vec">a</span></span>
   </div>
 </div>
 
@@ -55,15 +55,16 @@
   <aside class="content-toc">
     <div class="toc-header">Neste texto</div>
     <ol class="toc-list">
-      <li><a href="#s1">O enunciado</a></li>
-      <li><a href="#s2">A equação F = ma</a></li>
-      <li><a href="#s3">Relações e proporções</a></li>
-      <li><a href="#s4">Força resultante e aceleração</a></li>
-      <li><a href="#s5">Aplicação: queda livre</a></li>
-      <li><a href="#s6">Calculadora</a></li>
-      <li><a href="#s7">Gráfico interativo</a></li>
-      <li><a href="#s8">Aplicações cotidianas</a></li>
-      <li><a href="#s9">Resumo</a></li>
+      <li><a href="#s1">Da 1ª para a 2ª Lei</a></li>
+      <li><a href="#s2">O enunciado</a></li>
+      <li><a href="#s3">A equação F = m·a</a></li>
+      <li><a href="#s4">As duas proporções</a></li>
+      <li><a href="#s5">É sempre a resultante</a></li>
+      <li><a href="#s6">Queda livre</a></li>
+      <li><a href="#s7">Calculadora</a></li>
+      <li><a href="#s8">Gráfico interativo</a></li>
+      <li><a href="#s9">No dia a dia</a></li>
+      <li><a href="#s10">Resumo</a></li>
     </ol>
     <div class="toc-nav">
       <a href="primeira-lei.html">← 1ª Lei</a>
@@ -74,10 +75,27 @@
   <main class="content-main">
 
     <section class="content-section" id="s1">
-      <h2><span class="sec-num">1</span> O enunciado da Segunda Lei</h2>
+      <h2><span class="sec-num">1</span> Da Primeira para a Segunda Lei</h2>
 
       <p>
-        A Segunda Lei de Newton — também chamada de <strong>Lei da Força</strong> ou <strong>Princípio Fundamental da Dinâmica</strong> — relaciona matematicamente força, massa e aceleração:
+        A <a href="primeira-lei.html">Primeira Lei</a> nos deu uma resposta qualitativa e revolucionária: <strong>força é o que muda o movimento</strong>. Sem força resultante, nada de aceleração. Mas ela para justamente onde a curiosidade aperta. <em>Quando</em> há força resultante, o corpo acelera — só que quanto? Uma força grande acelera mais que uma pequena, tudo bem. Mas o dobro da força dá o dobro da aceleração? E se o corpo for mais pesado?
+      </p>
+
+      <p>
+        Todo mundo tem uma intuição sobre isso, treinada no empurra-empurra do dia a dia. Empurre um carrinho de compras vazio e ele dispara; encha-o de garrafas de água e o mesmo empurrão mal o move. Aumente a força, e ele acelera mais. Existe aí uma relação clara entre <strong>força</strong>, <strong>massa</strong> e <strong>aceleração</strong> — e a genialidade de Newton foi transformar essa intuição em uma equação exata.
+      </p>
+
+      <p>
+        Essa equação, <span class="vec">F</span><sub>R</sub> = m·<span class="vec">a</span>, é provavelmente a fórmula mais importante do Ensino Médio inteiro. Com ela se calcula a força para lançar um foguete, a frenagem de um carro, a tensão em um cabo de elevador. Vamos construí-la com calma.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> O enunciado da Segunda Lei</h2>
+
+      <p>
+        Também chamada de <strong>Princípio Fundamental da Dinâmica</strong>, a Segunda Lei aparece assim no <em>Principia</em>:
       </p>
 
       <div class="highlight-box" style="border-left-color:#ea580c; background:#fff7ed;">
@@ -90,27 +108,31 @@
       </div>
 
       <p>
-        Em termos simples: para acelerar um corpo, você precisa aplicar uma força. Quanto <em>maior a força</em>, maior a aceleração. Quanto <em>maior a massa</em>, menor a aceleração para a mesma força.
+        Curiosidade que costuma surpreender: Newton <strong>nunca escreveu "F = ma"</strong> dessa forma. Ele falava em "mudança de movimento" — o que hoje chamamos de variação da quantidade de movimento. A notação algébrica compacta que usamos veio depois, com Euler, no século XVIII. Mas o conteúdo é o mesmo: aplicar uma força resultante muda a velocidade, e essa mudança acontece na direção e no sentido da força.
+      </p>
+
+      <p>
+        Em linguagem direta: para acelerar um corpo, é preciso uma força resultante. Quanto <em>maior a força</em>, maior a aceleração; quanto <em>maior a massa</em>, menor a aceleração para a mesma força.
       </p>
 
     </section>
 
-    <section class="content-section" id="s2">
-      <h2><span class="sec-num">2</span> A equação F = m · a</h2>
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> A equação F = m · a</h2>
 
       <div class="formula-box">
         <span class="formula-label">Segunda Lei de Newton</span>
-        <span class="formula-expr">F⃗<sub>R</sub> = m · a⃗</span>
+        <span class="formula-expr"><span class="vec">F</span><sub>R</sub> = m · <span class="vec">a</span></span>
         <span class="formula-legend">
-          <span>F⃗<sub>R</sub> = força resultante (N)</span>
+          <span><span class="vec">F</span><sub>R</sub> = força resultante (N)</span>
           <span>m = massa do corpo (kg)</span>
-          <span>a⃗ = aceleração produzida (m/s²)</span>
-          <span>A força e a aceleração têm a mesma direção e sentido</span>
+          <span><span class="vec">a</span> = aceleração produzida (m/s²)</span>
+          <span>Força e aceleração têm sempre a mesma direção e sentido</span>
         </span>
       </div>
 
       <p>
-        Rearranjando, podemos isolar qualquer uma das três grandezas:
+        Note o caráter vetorial: a aceleração aponta <strong>exatamente para onde aponta a resultante</strong>. Empurre um carrinho para a frente e ele acelera para a frente; puxe-o para a esquerda e ele acelera para a esquerda. Aceleração e força resultante são vetores paralelos, sempre. Da equação, isolamos qualquer uma das três grandezas conforme o problema:
       </p>
 
       <div class="formula-row">
@@ -129,100 +151,119 @@
       </div>
 
       <div class="example-box">
-        <div class="ex-header">📋 Exemplo 1</div>
+        <div class="ex-header">📋 Exemplo 1 — Achar a aceleração</div>
         <div class="ex-body">
-          <p>Uma força de 60 N age sobre um bloco de 4 kg. Qual a aceleração produzida?</p>
+          <p>Uma força resultante de 60 N age sobre um bloco de 4 kg. Qual a aceleração produzida?</p>
           <p>a = F / m = 60 / 4 = <strong>15 m/s²</strong></p>
           <div class="ex-result">a = 15 m/s²</div>
         </div>
       </div>
 
       <div class="example-box">
-        <div class="ex-header">📋 Exemplo 2</div>
+        <div class="ex-header">📋 Exemplo 2 — Achar a força (de um carro real)</div>
         <div class="ex-body">
-          <p>Um carro de 1 200 kg acelera de 0 a 20 m/s em 8 s. Qual a força resultante?</p>
-          <p>a = Δv/Δt = 20/8 = 2,5 m/s²</p>
-          <p>F<sub>R</sub> = m · a = 1 200 × 2,5 = <strong>3 000 N</strong></p>
+          <p>Um carro de 1 200 kg acelera de 0 a 20 m/s (72 km/h) em 8 s. Qual a força resultante que o impulsiona?</p>
+          <p>Primeiro a aceleração: a = Δv/Δt = 20/8 = 2,5 m/s²</p>
+          <p>Agora a força: F<sub>R</sub> = m · a = 1 200 × 2,5 = <strong>3 000 N</strong></p>
           <div class="ex-result">F<sub>R</sub> = 3 000 N = 3 kN</div>
         </div>
       </div>
 
     </section>
 
-    <section class="content-section" id="s3">
-      <h2><span class="sec-num">3</span> Relações e proporções</h2>
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> As duas proporções escondidas na fórmula</h2>
+
+      <p>
+        A fórmula é curta, mas guarda duas relações que valem a pena separar, porque são a essência da lei. Elas dizem como a aceleração reage quando mexemos em uma coisa de cada vez.
+      </p>
 
       <div class="concept-grid">
         <div class="concept-card">
           <span class="cc-icon">📈</span>
           <div class="cc-title">F ∝ a (massa fixa)</div>
-          <p class="cc-desc">Para mesma massa, dobrar a força dobra a aceleração. Triplicar a força triplica a aceleração.</p>
+          <p class="cc-desc">Com a mesma massa, a aceleração acompanha a força: dobrar a força dobra a aceleração; triplicar, triplica. Relação direta.</p>
         </div>
         <div class="concept-card">
           <span class="cc-icon">📉</span>
           <div class="cc-title">a ∝ 1/m (força fixa)</div>
-          <p class="cc-desc">Para mesma força, dobrar a massa reduz a aceleração à metade. É a inércia resistindo.</p>
+          <p class="cc-desc">Com a mesma força, a aceleração cai quando a massa sobe: dobrar a massa reduz a aceleração à metade. É a inércia resistindo.</p>
         </div>
       </div>
 
-
-    </section>
-
-    <section class="content-section" id="s4">
-      <h2><span class="sec-num">4</span> Força resultante e aceleração</h2>
-
-      <p>
-        Um ponto crucial: na 2ª Lei, <strong>F é a força resultante</strong> — a soma vetorial de todas as forças que atuam no corpo. Não é uma única força aplicada.
-      </p>
-
-      <div class="example-box">
-        <div class="ex-header">📋 Exemplo — Bloco com atrito</div>
-        <div class="ex-body">
-          <p>Uma força F = 100 N empurra um bloco de 10 kg numa superfície com atrito f = 40 N.</p>
-          <p>Força resultante: F<sub>R</sub> = F − f = 100 − 40 = 60 N</p>
-          <p>Aceleração: a = F<sub>R</sub> / m = 60 / 10 = <strong>6 m/s²</strong></p>
-          <div class="ex-result">a = 6 m/s² (não 10 m/s², porque o atrito reduz a resultante)</div>
-        </div>
-      </div>
-
-      <div class="highlight-box info">
-        <span class="hb-icon">📐</span>
+      <div class="highlight-box">
+        <span class="hb-icon">🛒</span>
         <p>
-          Perceba: se F = 40 N (igual ao atrito), F<sub>R</sub> = 0 e a = 0 — o bloco se move com velocidade constante (MRU) ou permanece parado. Isso conecta a 2ª Lei com a 1ª Lei!
+          O carrinho de supermercado prova as duas de uma vez. Com o mesmo empurrão (força fixa), o carrinho cheio acelera menos que o vazio — é a segunda proporção. E, para o mesmo carrinho (massa fixa), um empurrão mais forte o faz disparar mais — é a primeira.
         </p>
       </div>
 
     </section>
 
     <section class="content-section" id="s5">
-      <h2><span class="sec-num">5</span> Aplicação: queda livre e força peso</h2>
+      <h2><span class="sec-num">5</span> O detalhe que mais derruba estudante: é a resultante</h2>
 
       <p>
-        Na queda livre (sem ar), a única força que age sobre um corpo é o <strong>peso</strong>. Aplicando a 2ª Lei:
+        Aqui mora o erro mais comum com a Segunda Lei. Na fórmula, <strong>F é a força resultante</strong> — a soma vetorial de <em>todas</em> as forças sobre o corpo — e não a força que você aplica. Confundir uma força isolada com a resultante leva a respostas erradas quase sempre, porque no mundo real quase nunca há uma força só.
       </p>
 
-      <div class="formula-box">
-        <span class="formula-label">Aceleração na queda livre</span>
-        <span class="formula-expr">P = m · g ⟹ a = g</span>
-        <span class="formula-legend">
-          <span>Todos os corpos caem com a mesma aceleração g ≈ 9,8 m/s² ≈ 10 m/s²</span>
-          <span>Independentemente da massa — a massa cancela na equação!</span>
-        </span>
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Empurrando com atrito</div>
+        <div class="ex-body">
+          <p>Você empurra um bloco de 10 kg com F = 100 N, mas o chão oferece atrito f = 40 N contra o movimento. Qual a aceleração?</p>
+          <p>Tentação: a = 100 / 10 = 10 m/s². <strong>Errado</strong> — isso usaria a força aplicada, não a resultante.</p>
+          <p>Resultante: F<sub>R</sub> = F − f = 100 − 40 = 60 N</p>
+          <p>Aceleração: a = F<sub>R</sub> / m = 60 / 10 = <strong>6 m/s²</strong></p>
+          <div class="ex-result">a = 6 m/s² — o atrito "consome" parte da força antes de sobrar aceleração.</div>
+        </div>
       </div>
 
-      <div class="highlight-box">
-        <span class="hb-icon">🪶</span>
+      <div class="highlight-box info">
+        <span class="hb-icon">🔗</span>
         <p>
-          Galileu demonstrou experimentalmente (Torre de Pisa) que corpos de massas diferentes caem juntos no vácuo. A 2ª Lei explica o porquê: a = P/m = (mg)/m = g — a massa se cancela!
+          E se você empurrar com exatamente 40 N, igualando o atrito? Então F<sub>R</sub> = 0 e a = 0: o bloco não acelera. Ou fica parado, ou desliza em velocidade constante. Repare que isso é <strong>a Primeira Lei</strong> reaparecendo — ela nada mais é que o caso particular da Segunda quando a resultante é nula.
         </p>
       </div>
 
     </section>
 
     <section class="content-section" id="s6">
-      <h2><span class="sec-num">6</span> Calculadora F = m · a</h2>
+      <h2><span class="sec-num">6</span> Uma aplicação célebre: por que tudo cai junto</h2>
 
-      <p>Deixe <strong>um campo em branco</strong> para ser calculado.</p>
+      <p>
+        Há uma pergunta antiga: uma pedra pesada cai mais rápido que uma leve? Aristóteles dizia que sim, e por dois mil anos foi o que se ensinou. A intuição parece dar razão a ele — uma pena cai devagar, uma bola de aço despenca. Mas a pena é enganada pelo ar. No vácuo, a Segunda Lei prevê algo espantoso.
+      </p>
+
+      <p>
+        Na queda livre (sem ar), a <strong>única</strong> força sobre o corpo é o peso, P = m·g. Aplicando F<sub>R</sub> = m·a:
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Aceleração na queda livre</span>
+        <span class="formula-expr">m · g = m · a &nbsp;⟹&nbsp; a = g</span>
+        <span class="formula-legend">
+          <span>A massa aparece nos dois lados e se cancela</span>
+          <span>Todos os corpos caem com a mesma aceleração g ≈ 9,8 m/s² ≈ 10 m/s²</span>
+        </span>
+      </div>
+
+      <p>
+        A massa <strong>se cancela</strong>. Por isso uma pedra de 1 kg e outra de 100 kg, soltas juntas no vácuo, chegam ao chão no mesmo instante. É contraintuitivo, mas verdadeiro — e há uma imagem que o comprova de forma inesquecível.
+      </p>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">🌙</span>
+        <p>
+          Em 1971, na Lua (onde não há ar), o astronauta <strong>David Scott</strong>, da Apollo 15, soltou ao mesmo tempo um <strong>martelo</strong> e uma <strong>pena de falcão</strong> diante da câmera. Os dois tocaram o solo lunar simultaneamente. Foi uma homenagem em rede nacional a Galileu, que havia previsto isso três séculos e meio antes — e a Segunda Lei explica exatamente por quê.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Calculadora F = m · a</h2>
+
+      <p>Experimente as três formas da lei. Deixe <strong>um campo em branco</strong> para ser calculado a partir dos outros dois.</p>
 
       <div class="calc-box">
         <h4>🧮 Calculadora — F = m · a</h4>
@@ -246,11 +287,11 @@
 
     </section>
 
-    <section class="content-section" id="s7">
-      <h2><span class="sec-num">7</span> Gráfico F×a interativo</h2>
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Gráfico F×a interativo</h2>
 
       <p>
-        Veja como a aceleração varia com a força para diferentes massas.
+        A primeira proporção — F ∝ a — vira uma reta no gráfico. Mexa na massa e repare como a <strong>inclinação</strong> muda: quanto maior a massa, mais "deitada" fica a reta, porque cada newton de força produz menos aceleração.
       </p>
 
       <div class="graph-box">
@@ -268,46 +309,46 @@
 
     </section>
 
-    <section class="content-section" id="s8">
-      <h2><span class="sec-num">8</span> Aplicações cotidianas</h2>
+    <section class="content-section" id="s9">
+      <h2><span class="sec-num">9</span> A Segunda Lei no dia a dia</h2>
 
       <div class="daily-grid">
         <div class="daily-card">
           <span class="dc-icon">🚀</span>
-          <div class="dc-title">Foguete</div>
-          <p class="dc-desc">Motores de foguete queimam combustível para gerar enorme força. Como a massa diminui ao longo do voo, a aceleração aumenta.</p>
+          <div class="dc-title">Foguete que fica mais leve</div>
+          <p class="dc-desc">O empuxo dos motores é quase constante, mas o foguete queima toneladas de combustível por minuto. Como m diminui, a aceleração a = F/m só aumenta ao longo da subida.</p>
         </div>
         <div class="daily-card">
           <span class="dc-icon">🏎️</span>
-          <div class="dc-title">Carro esportivo</div>
-          <p class="dc-desc">Motor potente = força maior. Massa menor = maior aceleração com a mesma força. F1 acelera 0→100 km/h em menos de 2 s.</p>
+          <div class="dc-title">Carro de corrida</div>
+          <p class="dc-desc">A receita da aceleração é força grande e massa pequena. Por isso um F1, leve e potente, faz 0→100 km/h em menos de 2 s, enquanto um caminhão carregado leva muitos segundos.</p>
         </div>
         <div class="daily-card">
-          <span class="dc-icon">⚾</span>
-          <div class="dc-title">Arremesso de bola</div>
-          <p class="dc-desc">Quanto mais força você aplica ao arremessar (e menos massa tem a bola), maior a velocidade que ela atinge ao sair da mão.</p>
+          <span class="dc-icon">🥊</span>
+          <div class="dc-title">Recuar o punho no boxe</div>
+          <p class="dc-desc">Ao "acompanhar" o golpe recuando a mão, o lutador aumenta o tempo do impacto. Mais tempo para a mesma variação de velocidade significa menos força — a mesma ideia do airbag.</p>
         </div>
         <div class="daily-card">
-          <span class="dc-icon">🏗️</span>
-          <div class="dc-title">Estrutura de pontes</div>
-          <p class="dc-desc">Engenheiros calculam as forças sobre cada peça para garantir que a aceleração resultante seja zero (equilíbrio estático).</p>
+          <span class="dc-icon">🛗</span>
+          <div class="dc-title">Elevador que arranca</div>
+          <p class="dc-desc">Quando o elevador sobe acelerando, o cabo precisa fazer mais que segurar o peso: precisa de força extra para produzir a aceleração. Você sente isso como um "peso a mais" nos pés.</p>
         </div>
       </div>
 
     </section>
 
-    <section class="content-section" id="s9">
-      <h2><span class="sec-num">9</span> Resumo</h2>
+    <section class="content-section" id="s10">
+      <h2><span class="sec-num">10</span> Resumo</h2>
 
       <div class="summary-box">
         <h3>O que você aprendeu</h3>
         <ul>
-          <li>2ª Lei: F⃗<sub>R</sub> = m·a⃗ — força resultante, massa e aceleração estão ligadas.</li>
-          <li>Aceleração e força têm sempre a mesma direção e sentido.</li>
-          <li>Para mesma massa: dobrar F dobra a. Para mesma F: dobrar m reduz a à metade.</li>
-          <li>F na equação é a RESULTANTE — soma vetorial de todas as forças.</li>
-          <li>Na queda livre, a massa se cancela: todos os corpos caem com a = g.</li>
-          <li>A 1ª Lei é um caso especial da 2ª: quando F<sub>R</sub> = 0, a = 0.</li>
+          <li>A 2ª Lei quantifica a 1ª: diz <em>quanto</em> um corpo acelera quando há força resultante.</li>
+          <li>Fórmula: <span class="vec">F</span><sub>R</sub> = m·<span class="vec">a</span>. Aceleração e força resultante têm sempre a mesma direção e sentido.</li>
+          <li>Duas proporções: para massa fixa, F ∝ a; para força fixa, a ∝ 1/m.</li>
+          <li>O F da fórmula é a RESULTANTE — soma vetorial de todas as forças, não uma força isolada.</li>
+          <li>Quando F<sub>R</sub> = 0, temos a = 0: a 1ª Lei é o caso particular da 2ª.</li>
+          <li>Na queda livre a massa se cancela (a = g): todos os corpos caem juntos no vácuo, como o martelo e a pena na Lua.</li>
         </ul>
       </div>
 
@@ -454,6 +495,12 @@
 <!-- IMAGENS NECESSÁRIAS:
   1. dinamica/segunda-lei-graficos.png
      Dois gráficos: F×a (reta, inclinação = m) e a×m (hipérbole a = F/m). Eixos rotulados.
+
+  2. dinamica/segunda-lei-carrinho.png
+     Mesmo carrinho de supermercado com o mesmo empurrão: vazio acelera muito, cheio de garrafas acelera pouco. Setas de força iguais, setas de aceleração diferentes.
+
+  3. dinamica/queda-martelo-pena.png
+     Astronauta na Lua soltando martelo e pena que caem juntos; ao lado, a mesma cena na Terra com ar, onde a pena atrasa.
 -->
 
 </body>

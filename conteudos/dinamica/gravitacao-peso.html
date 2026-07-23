@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <script src="/js/theme.js"></script>
+  <meta name="description" content="Gravidade e peso: da Lei da Gravitação Universal de Newton ao P = mg como aproximação perto da superfície. Por que g muda de lugar e a diferença entre massa e peso.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gravitação e Peso — Piras na Física">
+  <meta property="og:description" content="Gravidade e peso: da Lei da Gravitação Universal de Newton ao P = mg como aproximação perto da superfície. Por que g muda de lugar e a diferença entre massa e peso.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/conteudos/dinamica/gravitacao-peso.html">
+  <title>Gravitação e Peso — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body data-tema="dinamica">
+
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-crumb">
+  <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Dinâmica</a><span>/</span>
+      <span>Gravitação e Peso</span>
+    </nav>
+</div>
+
+<div class="content-hero">
+  <div class="content-hero-inner">
+    <h1 class="content-title">Gravitação e Peso</h1>
+    <p class="content-subtitle">A mesma força que derruba uma maçã mantém a Lua no céu. Entendê-la revela por que o P = mg que você usa é, na verdade, um atalho de uma lei muito maior.</p>
+    <span class="formula-highlight">F = G·m₁·m₂/r² &nbsp;⟶&nbsp; P = m·g</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">A força que nos prende ao chão</a></li>
+      <li><a href="#s2">Gravitação Universal</a></li>
+      <li><a href="#s3">De onde vem o P = mg</a></li>
+      <li><a href="#s4">g não é o mesmo em toda parte</a></li>
+      <li><a href="#s5">Peso e massa não são a mesma coisa</a></li>
+      <li><a href="#s6">Calculadora: peso pelo Universo</a></li>
+      <li><a href="#s7">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="terceira-lei.html">← 3ª Lei</a>
+      <a href="forca-normal.html" class="toc-next">Força Normal →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> A força que nos prende ao chão</h2>
+
+      <p>
+        De todas as forças que você vai encontrar na dinâmica, o <strong>peso</strong> é a mais fiel: nunca desliga, atua sobre absolutamente tudo e aparece em praticamente todo problema. É a força com que a Terra atrai um corpo, e ela existe esteja o corpo caindo, apoiado, pendurado ou parado. Foi ela, aliás, o pano de fundo de quase todos os exemplos dos textos anteriores.
+      </p>
+
+      <p>
+        A fórmula do peso, <strong>P = mg</strong>, você provavelmente já usa há tempos. Mas ela é a ponta de um iceberg. Por baixo dela está uma das ideias mais grandiosas da história da ciência — a <strong>Lei da Gravitação Universal</strong> —, e entender essa lei explica coisas que o P = mg sozinho não conta: por que seu peso seria diferente na Lua, por que g vale 9,8 e não outro número, e por que astronautas "flutuam" mesmo com a Terra puxando-os com força. Vamos do topo do iceberg até a base.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> A lei que uniu a maçã e a Lua</h2>
+
+      <p>
+        A grande sacada de Isaac Newton, publicada em 1687 no <em>Principia</em>, foi perceber que a força que faz uma maçã cair é <strong>a mesma</strong> que mantém a Lua em órbita — e, mais ainda, a mesma que prende os planetas ao Sol. Até então, acreditava-se que o "céu" e a "Terra" obedeciam a regras distintas. Newton unificou os dois mundos numa única lei: <strong>toda partícula de matéria atrai toda outra</strong>, com uma força que cresce com as massas e diminui com o quadrado da distância.
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Lei da Gravitação Universal</span>
+        <span class="formula-expr">F = G · m₁ · m₂ / r²</span>
+        <span class="formula-legend">
+          <span>F = força de atração entre os corpos (N)</span>
+          <span>m₁, m₂ = massas dos dois corpos (kg)</span>
+          <span>r = distância entre os centros dos corpos (m)</span>
+          <span>G = constante da gravitação = 6,67 × 10⁻¹¹ N·m²/kg²</span>
+        </span>
+      </div>
+
+      <p>
+        Dois detalhes dessa fórmula merecem atenção. O primeiro é o <strong>r²</strong> no denominador: a atração cai rápido com a distância. Dobrar a distância entre dois corpos divide a força por <strong>quatro</strong>, não por dois. O segundo é o valor minúsculo de <strong>G</strong>: a gravidade é, de longe, a mais fraca das forças fundamentais da natureza. Você só a sente porque um dos corpos envolvidos — a Terra — é colossal.
+      </p>
+
+      <div class="highlight-box">
+        <span class="hb-icon">🍎</span>
+        <p>
+          Note que a lei é <strong>simétrica</strong>: a maçã puxa a Terra com a mesma força com que a Terra puxa a maçã — é a <a href="terceira-lei.html">Terceira Lei</a> em ação. A maçã cai visivelmente e a Terra não porque a Terra tem massa incomparavelmente maior; a mesma força produz nela uma aceleração desprezível.
+        </p>
+      </div>
+
+      <div class="highlight-box curiosity-box" style="background:#f0f7ff;border-left:4px solid #3b82f6;">
+        <div class="curiosity-summary">
+          <span class="hb-icon">⚖️</span>
+          <span class="curiosity-title">Como se "pesou" a Terra — sem tirá-la do lugar</span>
+          <button class="curiosity-toggle" type="button" aria-expanded="false" aria-controls="curiosidade-cavendish">Expandir</button>
+        </div>
+        <div class="curiosity-content" id="curiosidade-cavendish" hidden>
+          <p>
+            Newton escreveu a fórmula, mas não sabia o valor de G — e sem ele não dá para calcular a massa da Terra. O problema é que a atração gravitacional entre objetos comuns é fraquíssima e quase impossível de medir.
+          </p>
+          <p>
+            Em 1798, o inglês <strong>Henry Cavendish</strong> conseguiu a proeza. Usando uma <em>balança de torção</em> — dois pesos pequenos numa haste suspensa por um fio finíssimo — ele mediu a atração diminuta entre esferas de chumbo, observando o leve giro do fio. A partir dela, calculou G e, com isso, a massa da Terra: cerca de 6 × 10²⁴ kg. Por isso se diz que Cavendish foi o primeiro a "pesar o mundo", num experimento de mesa que cabia numa sala.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> De onde vem o P = mg</h2>
+
+      <p>
+        Se a gravidade obedece à fórmula do r², por que na escola usamos a fórmula simples P = mg? Porque <strong>P = mg é uma aproximação</strong> — excelente, mas aproximação — válida perto da superfície de um planeta. Vamos ver como uma vira a outra.
+      </p>
+
+      <p>
+        Considere um corpo de massa <em>m</em> na superfície da Terra (massa <em>M</em>, raio <em>R</em>). A distância entre o corpo e o <strong>centro</strong> da Terra é justamente o raio <em>R</em>. Aplicando a Gravitação Universal, a força com que a Terra o atrai — o peso — é:
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Peso pela Gravitação Universal</span>
+        <span class="formula-expr">P = G · M · m / R²</span>
+      </div>
+
+      <p>
+        Agora repare no truque. Os fatores <strong>G · M / R²</strong> só dependem do planeta (Terra), não do corpo apoiado. Podemos agrupá-los num único número e batizá-lo de <strong>g</strong>, a aceleração da gravidade:
+      </p>
+
+      <div class="formula-row">
+        <div class="formula-box">
+          <span class="formula-label">Definição de g</span>
+          <span class="formula-expr">g = G · M / R²</span>
+        </div>
+        <div class="formula-box">
+          <span class="formula-label">Fica o familiar</span>
+          <span class="formula-expr">P = m · g</span>
+        </div>
+      </div>
+
+      <p>
+        Pronto: o P = mg é só a Gravitação Universal com <em>G·M/R²</em> já calculado e apelidado de g. Para a Terra, esse cálculo dá <strong>g ≈ 9,8 m/s²</strong> (arredondado para 10 m/s² na maioria dos exercícios). E o mesmo raciocínio vale para <strong>qualquer</strong> astro: basta trocar M e R pelos valores do planeta ou lua para obter o g de lá.
+      </p>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">💡</span>
+        <p>
+          Isso explica por que, na <a href="segunda-lei.html">queda livre</a>, todos os corpos caem com a mesma aceleração, independentemente da massa. Aplicando a 2ª Lei a um corpo em queda, P = m·a vira m·g = m·a, e a massa se cancela: a = g. A massa que "puxa" (no peso) é a mesma que "resiste" (na inércia), e as duas se anulam.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> g não é o mesmo em toda parte</h2>
+
+      <p>
+        Como g = G·M/R² depende do raio até o centro, ele <strong>não é uma constante universal</strong> — muda conforme onde você está. Costumamos tratá-lo como fixo (9,8 m/s²) porque, no dia a dia, as variações são pequenas. Mas elas existem, e algumas são até surpreendentes.
+      </p>
+
+      <div class="concept-grid">
+        <div class="concept-card">
+          <span class="cc-icon">🏔️</span>
+          <div class="cc-title">Com a altitude</div>
+          <p class="cc-desc">Quanto mais alto, maior o r e menor o g. No topo do Everest, g cai cerca de 0,3%; na órbita da ISS (400 km), já está em torno de 8,7 m/s².</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">🌐</span>
+          <div class="cc-title">Com a latitude</div>
+          <p class="cc-desc">A Terra é ligeiramente achatada nos polos, que ficam mais perto do centro. Por isso g é um pouco maior nos polos (≈ 9,83) do que no equador (≈ 9,78).</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">🪐</span>
+          <div class="cc-title">De astro para astro</div>
+          <p class="cc-desc">Um planeta mais massivo puxa mais; um planeta maior afasta a superfície do centro e puxa menos. É a disputa entre M e R² que fixa o g de cada mundo.</p>
+        </div>
+      </div>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">🌀</span>
+        <p>
+          Há ainda um efeito extra por causa da <strong>rotação</strong> da Terra: no equador, parte da gravidade é "gasta" fazendo você girar junto com o planeta (força centrípeta), o que reduz levemente o peso que a balança marca. Some-se isso ao achatamento e o resultado é que você pesa um tiquinho menos no equador do que num polo — mesma massa, g um pouco menor.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Peso e massa: o mal-entendido da balança</h2>
+
+      <p>
+        Existe uma confusão que atravessa gerações, e ela tem uma origem cultural clara. Na balança da farmácia, o visor mostra "70 kg", e todo mundo chama isso de <em>peso</em>. Só que quilograma é unidade de <strong>massa</strong>, não de força. No vocabulário da Física, aquele número é a sua massa; o seu peso é 700 N.
+      </p>
+
+      <div class="highlight-box danger">
+        <span class="hb-icon">⚠️</span>
+        <p>
+          <strong>Massa ≠ Peso.</strong> A <strong>massa</strong> (kg) é uma propriedade intrínseca do corpo — mede a quantidade de matéria e a inércia (a resistência a mudar de movimento). É a mesma em qualquer lugar do universo. O <strong>peso</strong> (N) é uma <em>força</em>, resultado da gravidade local, e muda de um astro para outro.
+        </p>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — A mesma pessoa na Terra e na Lua</div>
+        <div class="ex-body">
+          <p>Uma pessoa tem massa m = 70 kg. Qual é seu peso na Terra (g = 10 m/s²) e na Lua (g = 1,6 m/s²)?</p>
+          <p><strong>Na Terra:</strong> P = 70 × 10 = <strong>700 N</strong></p>
+          <p><strong>Na Lua:</strong> P = 70 × 1,6 = <strong>112 N</strong></p>
+          <p>Na Lua ela continua com 70 kg de matéria — mesmos ossos, mesmos músculos —, mas é puxada para o chão com menos de um sexto da intensidade. Foi por isso que os astronautas da Apollo se moviam aos saltos: com o peso reduzido, um impulso comum das pernas os levava muito mais alto e mais longe.</p>
+          <div class="ex-result">Massa: 70 kg (em qualquer lugar) | Peso: 700 N (Terra), 112 N (Lua)</div>
+        </div>
+      </div>
+
+      <p>
+        Um jeito de fixar a diferença: a massa responde "quanta matéria há aqui?" e não muda nunca; o peso responde "com que força este lugar me puxa?" e depende de onde você está. Levar uma mala de 20 kg é cansativo na Terra e seria fácil na Lua — a mala tem a mesma massa, mas pesa menos lá.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Calculadora: seu peso pelo Universo</h2>
+
+      <p>
+        Digite uma massa e escolha um mundo para ver quanto você pesaria lá. Repare como a massa fica igual e só o peso muda — e como Júpiter e o Sol te esmagariam, enquanto na Lua você quase voa.
+      </p>
+
+      <div class="calc-box">
+        <h4>🪐 Quanto você pesaria em cada mundo?</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Massa m (kg)</label>
+            <input type="number" id="pw-m" placeholder="ex: 70" value="70" min="0">
+          </div>
+          <div class="calc-field">
+            <label>Mundo</label>
+            <select id="pw-world" style="width:100%;padding:.6rem;border:1.5px solid #d1d5db;border-radius:8px;font-size:.95rem;">
+              <option value="1.6">Lua (g = 1,6)</option>
+              <option value="3.7">Mercúrio (g = 3,7)</option>
+              <option value="8.9">Vênus (g = 8,9)</option>
+              <option value="9.8" selected>Terra (g = 9,8)</option>
+              <option value="3.7">Marte (g = 3,7)</option>
+              <option value="24.8">Júpiter (g = 24,8)</option>
+              <option value="10.4">Saturno (g = 10,4)</option>
+              <option value="274">Sol (g = 274)</option>
+            </select>
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcPeso()">Calcular peso</button>
+        <div class="calc-result" id="pw-result"></div>
+      </div>
+
+      <table class="content-table" style="margin-top:1.5rem;">
+        <thead>
+          <tr><th>Mundo</th><th>g (m/s²)</th><th>Peso de 70 kg</th><th>Comparado à Terra</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Lua</td><td>1,6</td><td>112 N</td><td>0,17×</td></tr>
+          <tr><td>Marte</td><td>3,7</td><td>259 N</td><td>0,38×</td></tr>
+          <tr><td>Vênus</td><td>8,9</td><td>623 N</td><td>0,91×</td></tr>
+          <tr><td><strong>Terra</strong></td><td><strong>9,8</strong></td><td><strong>686 N</strong></td><td><strong>1,00×</strong></td></tr>
+          <tr><td>Saturno*</td><td>10,4</td><td>728 N</td><td>1,06×</td></tr>
+          <tr><td>Júpiter*</td><td>24,8</td><td>1 736 N</td><td>2,53×</td></tr>
+          <tr><td>Sol</td><td>274</td><td>19 180 N</td><td>28×</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:.85rem;color:var(--text-muted);">*Júpiter e Saturno são gasosos: o valor de g é medido no "topo" das nuvens, não numa superfície sólida.</p>
+
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Resumo</h2>
+
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>A Gravitação Universal (F = G·m₁·m₂/r²) diz que toda massa atrai toda massa; a força cai com o quadrado da distância e G é minúsculo.</li>
+          <li>Cavendish mediu G em 1798 e, com isso, "pesou" a Terra: ≈ 6 × 10²⁴ kg.</li>
+          <li>O peso P = mg é uma aproximação dessa lei perto da superfície, com g = G·M/R² — um número que só depende do planeta.</li>
+          <li>Por isso g varia: com a altitude, com a latitude (achatamento + rotação) e, sobretudo, de astro para astro.</li>
+          <li>Na queda livre a massa se cancela (a = g): todos os corpos caem juntos no vácuo.</li>
+          <li>Massa (kg) mede a matéria e a inércia e é invariável; peso (N) é força e depende da gravidade local.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="terceira-lei.html">← 3ª Lei de Newton</a>
+      <a href="forca-normal.html" class="nav-next">Próximo: Força Normal →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+
+<script>
+(function() {
+  /* Calculadora de peso em outros mundos */
+  window.calcPeso = function() {
+    const m = parseFloat(document.getElementById('pw-m').value);
+    const sel = document.getElementById('pw-world');
+    const g = parseFloat(sel.value);
+    const world = sel.options[sel.selectedIndex].text.split(' (')[0];
+    const res = document.getElementById('pw-result');
+
+    if (isNaN(m) || m < 0) {
+      res.className = 'calc-result erro';
+      res.textContent = 'Informe uma massa válida.';
+      return;
+    }
+
+    const P = m * g;
+    const Pterra = m * 9.8;
+    const razao = (P / Pterra);
+    res.className = 'calc-result ok';
+    res.innerHTML =
+      'Massa: <strong>' + m + ' kg</strong> (a mesma em qualquer lugar)<br>' +
+      'Peso em ' + world + ': P = m·g = ' + m + ' × ' + g + ' = <strong>' + P.toFixed(0) + ' N</strong><br>' +
+      'Isso é <strong>' + razao.toFixed(2) + '×</strong> o seu peso na Terra (' + Pterra.toFixed(0) + ' N).';
+  };
+
+  /* Curiosidades expansíveis */
+  document.querySelectorAll('.curiosity-toggle').forEach(function (btn) {
+    const target = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!target) return;
+    btn.addEventListener('click', function () {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.textContent = expanded ? 'Expandir' : 'Recolher';
+      target.hidden = expanded;
+    });
+  });
+
+  /* TOC: destaque da seção ativa no scroll */
+  const sections = document.querySelectorAll('.content-section');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', function() {
+    let current = '';
+    sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 120) current = sec.id; });
+    tocLinks.forEach(a => {
+      a.parentElement.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. dinamica/gravitacao-maca-lua.png
+     Newton unindo a maçã que cai e a Lua em órbita pela mesma força; fórmula F = G m1 m2 / r² em destaque.
+
+  2. dinamica/gravitacao-cavendish.png
+     Balança de torção de Cavendish: haste suspensa por fio, esferas grandes e pequenas, o leve giro medido.
+
+  3. dinamica/g-varia.png
+     Painéis mostrando g menor no alto (montanha/ISS), diferença polo/equador (Terra achatada) e comparação entre planetas.
+
+  4. dinamica/peso-planetas.png
+     Mesma silhueta em diferentes mundos (Lua, Marte, Terra, Júpiter) com o peso em cada um. Massa fixa, peso variável.
+-->
+
+</body>
+</html>

@@ -45,7 +45,7 @@
 <div class="content-hero">
   <div class="content-hero-inner">
     <h1 class="content-title">Plano Inclinado</h1>
-    <p class="content-subtitle">Decomposição do peso, força normal e aceleração de corpos em superfícies inclinadas — com e sem atrito.</p>
+    <p class="content-subtitle">A rampa é o primeiro problema em que o peso não aponta "para onde interessa" — e resolvê-lo é aprender a decompor forças, a técnica mais poderosa da dinâmica.</p>
     <span class="formula-highlight">a = g·(senθ − μ·cosθ)</span>
   </div>
 </div>
@@ -55,11 +55,11 @@
   <aside class="content-toc">
     <div class="toc-header">Neste texto</div>
     <ol class="toc-list">
-      <li><a href="#s1">Introdução</a></li>
+      <li><a href="#s1">Por que a rampa é especial</a></li>
       <li><a href="#s2">Decomposição do peso</a></li>
-      <li><a href="#s3">Força normal</a></li>
-      <li><a href="#s4">Sem atrito</a></li>
-      <li><a href="#s5">Com atrito</a></li>
+      <li><a href="#s3">A força normal diminui</a></li>
+      <li><a href="#s4">Descida sem atrito</a></li>
+      <li><a href="#s5">Descida com atrito</a></li>
       <li><a href="#s6">Ângulo crítico</a></li>
       <li><a href="#s7">Calculadora</a></li>
       <li><a href="#s8">Simulador</a></li>
@@ -74,118 +74,145 @@
   <main class="content-main">
 
     <section class="content-section" id="s1">
-      <h2><span class="sec-num">1</span> O problema do plano inclinado</h2>
+      <h2><span class="sec-num">1</span> Por que a rampa é um problema especial</h2>
 
       <p>
-        O <strong>plano inclinado</strong> é uma das situações clássicas da Dinâmica: um corpo sobre uma superfície que forma um ângulo θ com a horizontal. Nessa configuração, a força peso não é nem paralela nem perpendicular à superfície — por isso precisamos decompô-la em componentes.
+        No texto sobre <a href="introducao_dinamica.html">força</a> ficou uma promessa: quando as forças apontam para direções diferentes, a soma deixa de ser um simples "mais e menos" e vira <strong>composição de vetores</strong>. O plano inclinado é o palco onde essa técnica estreia — e onde ela se mostra indispensável.
       </p>
 
-      <div class="highlight-box info">
-        <span class="hb-icon">💡</span>
-        <p>
-          A estratégia é escolher um sistema de coordenadas <strong>paralelo e perpendicular ao plano</strong>. Isso simplifica enormemente as contas, pois o movimento ocorre ao longo do plano (eixo x) e não há movimento perpendicular ao plano (eixo y em equilíbrio).
-        </p>
-      </div>
+      <p>
+        Rampas estão por toda parte: a ladeira que faz o carro "puxar" se você solta o freio, o escorregador do parquinho, a esteira inclinada que descarrega bagagens no aeroporto, a rampa de acessibilidade na entrada da escola. Em todas elas há a mesma pergunta: um corpo apoiado numa superfície inclinada vai descer? E, se descer, com que aceleração?
+      </p>
 
+      <p>
+        O que torna o problema diferente de tudo que vimos é a geometria. Na mesa horizontal, o peso apontava direto para baixo, contra a normal — tudo alinhado. Na rampa, o peso continua apontando para baixo (ele sempre aponta para o centro da Terra), mas agora está <strong>torto</strong> em relação à superfície: não é nem paralelo nem perpendicular a ela. Parte do peso empurra o corpo ladeira abaixo, e parte o pressiona contra a rampa. Separar essas duas partes é toda a mágica.
+      </p>
+
+      <div class="highlight-box curiosity-box" style="background:#f0f7ff;border-left:4px solid #3b82f6;">
+        <div class="curiosity-summary">
+          <span class="hb-icon">⛰️</span>
+          <span class="curiosity-title">Galileu usou rampas para "diluir" a gravidade</span>
+          <button class="curiosity-toggle" type="button" aria-expanded="false" aria-controls="curiosidade-galileu-rampa">Expandir</button>
+        </div>
+        <div class="curiosity-content" id="curiosidade-galileu-rampa" hidden>
+          <p>
+            No início do século XVII, Galileu queria estudar a queda dos corpos, mas a queda livre era rápida demais para ser cronometrada com os relógios da época (ele usava a própria pulsação e um relógio de água). A saída genial foi o plano inclinado: numa rampa suave, o corpo desce com a mesma física da queda, só que com uma aceleração <strong>bem menor</strong> — a = g·senθ. Foi como colocar a gravidade em câmera lenta.
+          </p>
+          <p>
+            Rolando bolinhas por canaletas inclinadas e medindo o tempo, Galileu descobriu que a distância percorrida cresce com o <em>quadrado</em> do tempo — a assinatura do movimento uniformemente acelerado. Ou seja: boa parte do que hoje chamamos de <a href="../cinematica/mruv.html">MRUV</a> nasceu de experimentos em planos inclinados, décadas antes de Newton escrever suas leis.
+          </p>
+        </div>
+      </div>
 
     </section>
 
     <section class="content-section" id="s2">
-      <h2><span class="sec-num">2</span> Decomposição do peso</h2>
+      <h2><span class="sec-num">2</span> Decompondo o peso: o pulo do gato</h2>
 
       <p>
-        O peso P = mg aponta verticalmente para baixo. Ao decompô-lo nos eixos do plano inclinado, obtemos duas componentes:
+        A ideia central é escolher eixos <strong>alinhados com a rampa</strong>, em vez dos eixos horizontal e vertical de sempre. Um eixo (x) acompanha a superfície, ladeira abaixo; o outro (y) fica perpendicular a ela. Nesses eixos, a normal e o atrito já ficam "certinhos" — o único vetor torto passa a ser o peso, e é ele que decompomos em duas componentes.
       </p>
 
       <div class="formula-row">
         <div class="formula-box">
           <span class="formula-label">Componente paralela ao plano</span>
           <span class="formula-expr">P<sub>x</sub> = P · senθ = mg·senθ</span>
-          <span class="formula-legend"><span>Puxa o corpo morro abaixo</span></span>
+          <span class="formula-legend"><span>É a parte do peso que puxa o corpo ladeira abaixo</span></span>
         </div>
         <div class="formula-box">
           <span class="formula-label">Componente perpendicular ao plano</span>
           <span class="formula-expr">P<sub>y</sub> = P · cosθ = mg·cosθ</span>
-          <span class="formula-legend"><span>Comprime o corpo contra a superfície</span></span>
+          <span class="formula-legend"><span>É a parte que aperta o corpo contra a superfície</span></span>
         </div>
       </div>
 
+      <div class="highlight-box info">
+        <span class="hb-icon">🧭</span>
+        <p>
+          Uma dúvida clássica: por que o seno vai com a componente <em>paralela</em>, e não com a perpendicular? Um jeito de nunca mais errar: nos casos extremos, θ = 90° é queda livre, e aí <strong>todo</strong> o peso deve puxar "ladeira abaixo". Como sen90° = 1, é o seno que precisa acompanhar a componente paralela para dar P<sub>x</sub> = P. Confira você mesmo o outro extremo, θ = 0°.
+        </p>
+      </div>
+
       <div class="example-box">
-        <div class="ex-header">📋 Exemplo — Decomposição</div>
+        <div class="ex-header">📋 Exemplo — Decompondo o peso</div>
         <div class="ex-body">
-          <p>Bloco de m = 5 kg em plano com θ = 30°, g = 10 m/s²:</p>
+          <p>Bloco de m = 5 kg em uma rampa de θ = 30° (g = 10 m/s²):</p>
           <p>P = mg = 5 × 10 = 50 N</p>
-          <p>P<sub>x</sub> = 50 · sen30° = 50 × 0,5 = <strong>25 N</strong> (morro abaixo)</p>
+          <p>P<sub>x</sub> = 50 · sen30° = 50 × 0,5 = <strong>25 N</strong> (ladeira abaixo)</p>
           <p>P<sub>y</sub> = 50 · cos30° = 50 × 0,866 = <strong>43,3 N</strong> (contra o plano)</p>
-          <div class="ex-result">P<sub>x</sub> = 25 N ↓ plano | P<sub>y</sub> = 43,3 N → plano</div>
+          <div class="ex-result">Metade do peso já basta para puxar o bloco morro abaixo, a 30°.</div>
         </div>
       </div>
 
     </section>
 
     <section class="content-section" id="s3">
-      <h2><span class="sec-num">3</span> Força normal no plano inclinado</h2>
+      <h2><span class="sec-num">3</span> A força normal encolhe na rampa</h2>
 
       <p>
-        Como o corpo não penetra na superfície (sem aceleração perpendicular ao plano), a componente perpendicular está em equilíbrio:
+        Como o corpo não afunda na superfície, na direção perpendicular ele está em equilíbrio: a normal precisa cancelar apenas a componente perpendicular do peso, não o peso inteiro. Resultado:
       </p>
 
       <div class="formula-box">
         <span class="formula-label">Normal no plano inclinado</span>
         <span class="formula-expr">N = P · cosθ = mg · cosθ</span>
         <span class="formula-legend">
-          <span>N é menor que o peso total!</span>
-          <span>Para θ = 0° (horizontal): N = mg (volta ao caso normal)</span>
-          <span>Para θ = 90° (vertical): N = 0 (queda livre)</span>
+          <span>A normal é MENOR que o peso total</span>
+          <span>θ = 0° (mesa horizontal): N = mg — o caso de sempre</span>
+          <span>θ = 90° (parede vertical): N = 0 — nada aperta a superfície</span>
         </span>
       </div>
 
+      <p>
+        Essa redução da normal tem uma consequência prática importante, que conecta este texto com o anterior. Como o <a href="atrito.html">atrito</a> vale f = μ·N, e a normal encolheu, o atrito na rampa também é menor do que seria no plano horizontal. Por isso um corpo desliza mais fácil quanto mais inclinada é a superfície — some a "cola" da normal, e o peso ainda ganha um empurrão ladeira abaixo.
+      </p>
+
       <div class="highlight-box">
-        <span class="hb-icon">💡</span>
+        <span class="hb-icon">🛒</span>
         <p>
-          Como N = mg·cosθ &lt; mg, o atrito no plano inclinado é menor do que numa superfície horizontal com o mesmo bloco. Isso explica por que é mais fácil arrastar uma caixa por uma rampa do que levantá-la verticalmente — só que aí você percorre distância maior!
+          É por isso que uma rampa de acesso é útil: subir uma caixa por uma rampa exige menos força do que erguê-la na vertical, porque só precisamos vencer P<sub>x</sub> = mg·senθ, e não o peso todo. O preço é justo: percorre-se uma distância maior. A rampa não cria energia de graça — só troca "muita força por pouca distância" por "pouca força por muita distância".
         </p>
       </div>
 
     </section>
 
     <section class="content-section" id="s4">
-      <h2><span class="sec-num">4</span> Movimento no plano inclinado sem atrito</h2>
+      <h2><span class="sec-num">4</span> Descendo sem atrito</h2>
 
       <p>
-        Sem atrito, a única força ao longo do plano é P<sub>x</sub>. Aplicando a 2ª Lei:
+        No caso ideal, sem atrito, a única força ao longo da rampa é P<sub>x</sub>. Aplicando a <a href="segunda-lei.html">Segunda Lei</a> nesse eixo (F<sub>R</sub> = mg·senθ = m·a), a massa se cancela — de novo, como na queda livre:
       </p>
 
       <div class="formula-box">
         <span class="formula-label">Aceleração no plano inclinado (sem atrito)</span>
         <span class="formula-expr">a = g · senθ</span>
         <span class="formula-legend">
-          <span>Independe da massa!</span>
-          <span>Para θ = 90°: a = g (queda livre)</span>
-          <span>Para θ = 0°: a = 0 (superfície horizontal plana)</span>
+          <span>Independe da massa — um caixote e uma caixinha descem juntos</span>
+          <span>θ = 90°: a = g (a queda livre é o caso extremo da rampa)</span>
+          <span>θ = 0°: a = 0 (mesa horizontal, o corpo não desliza sozinho)</span>
         </span>
       </div>
 
       <div class="example-box">
-        <div class="ex-header">📋 Exemplo — Plano sem atrito</div>
+        <div class="ex-header">📋 Exemplo — Rampa sem atrito</div>
         <div class="ex-body">
-          <p>Bloco desliza por plano com θ = 30°, g = 10 m/s², sem atrito.</p>
+          <p>Um bloco desce uma rampa lisa de θ = 30° (g = 10 m/s²):</p>
           <p>a = g·senθ = 10 × sen30° = 10 × 0,5 = <strong>5 m/s²</strong></p>
-          <div class="ex-result">a = 5 m/s² morro abaixo (independe da massa)</div>
+          <div class="ex-result">a = 5 m/s² ladeira abaixo — metade da aceleração da queda livre, exatamente a "gravidade diluída" de Galileu.</div>
         </div>
       </div>
 
     </section>
 
     <section class="content-section" id="s5">
-      <h2><span class="sec-num">5</span> Movimento no plano inclinado com atrito</h2>
+      <h2><span class="sec-num">5</span> Descendo com atrito</h2>
 
       <p>
-        Com atrito cinético (bloco descendo), a força de atrito aponta morro acima, opondo-se ao movimento:
+        No mundo real há atrito, e ele complica — mas de forma organizada. Quando o bloco desce, o atrito cinético aponta para <strong>cima</strong> da rampa, brigando contra a descida. A resultante ao longo do plano vira uma disputa entre o peso que puxa para baixo e o atrito que resiste:
       </p>
 
       <div class="formula-box">
-        <span class="formula-label">Força resultante com atrito (descendo)</span>
+        <span class="formula-label">Resultante ao longo do plano (descendo)</span>
         <span class="formula-expr">F<sub>R</sub> = mg·senθ − μ<sub>c</sub>·mg·cosθ</span>
       </div>
 
@@ -193,33 +220,33 @@
         <span class="formula-label">Aceleração com atrito (descendo)</span>
         <span class="formula-expr">a = g·(senθ − μ<sub>c</sub>·cosθ)</span>
         <span class="formula-legend">
-          <span>Se senθ &gt; μ<sub>c</sub>·cosθ → o bloco desce acelerando</span>
-          <span>Se senθ = μ<sub>c</sub>·cosθ → o bloco desce em MRU (ou permanece parado)</span>
-          <span>Se senθ &lt; μ<sub>c</sub>·cosθ → o bloco não desce (atrito é suficiente para manter em repouso)</span>
+          <span>senθ &gt; μ<sub>c</sub>·cosθ → vence o peso: o bloco desce acelerando</span>
+          <span>senθ = μ<sub>c</sub>·cosθ → empate: desce em MRU (ou fica parado)</span>
+          <span>senθ &lt; μ<sub>c</sub>·cosθ → vence o atrito: o bloco não desce</span>
         </span>
       </div>
 
       <div class="example-box">
-        <div class="ex-header">📋 Exemplo — Plano com atrito</div>
+        <div class="ex-header">📋 Exemplo — Rampa com atrito</div>
         <div class="ex-body">
-          <p>θ = 30°, μ<sub>c</sub> = 0,3, g = 10 m/s²</p>
-          <p>a = 10 × (sen30° − 0,3×cos30°) = 10 × (0,5 − 0,3×0,866)</p>
+          <p>θ = 30°, μ<sub>c</sub> = 0,3, g = 10 m/s². Compare com o caso sem atrito acima.</p>
+          <p>a = 10 × (sen30° − 0,3·cos30°) = 10 × (0,5 − 0,3×0,866)</p>
           <p>a = 10 × (0,5 − 0,26) = 10 × 0,24 = <strong>2,4 m/s²</strong></p>
-          <div class="ex-result">a = 2,4 m/s² (menor que sem atrito: 5 m/s²)</div>
+          <div class="ex-result">a = 2,4 m/s² — o atrito derrubou a aceleração de 5 para 2,4 m/s². Mais da metade do "impulso" da rampa foi consumido pelo atrito.</div>
         </div>
       </div>
 
     </section>
 
     <section class="content-section" id="s6">
-      <h2><span class="sec-num">6</span> Ângulo crítico</h2>
+      <h2><span class="sec-num">6</span> Ângulo crítico: quando começa a escorregar</h2>
 
       <p>
-        O <strong>ângulo crítico</strong> (θ<sub>c</sub>) é o menor ângulo para o qual o bloco começa a deslizar (com atrito estático):
+        Existe uma inclinação exata em que o corpo está na iminência de deslizar: abaixo dela, o atrito estático segura; acima dela, o corpo cede e desce. É o <strong>ângulo crítico</strong> θ<sub>c</sub>, e ele tem uma fórmula surpreendentemente limpa, em que a massa e a gravidade somem por completo:
       </p>
 
       <div class="formula-box">
-        <span class="formula-label">Ângulo crítico</span>
+        <span class="formula-label">Ângulo crítico (iminência de deslizar)</span>
         <span class="formula-expr">tanθ<sub>c</sub> = μ<sub>e</sub></span>
         <span class="formula-legend">
           <span>θ<sub>c</sub> = arctan(μ<sub>e</sub>)</span>
@@ -230,7 +257,7 @@
       <div class="highlight-box info">
         <span class="hb-icon">📐</span>
         <p>
-          O ângulo crítico pode ser medido experimentalmente: incline gradualmente o plano até o objeto começar a escorregar. O ângulo nesse momento é θ<sub>c</sub> = arctan(μ<sub>e</sub>). É uma forma simples de medir o coeficiente de atrito!
+          Isso dá uma forma caseira de <strong>medir o coeficiente de atrito</strong> sem nenhum equipamento: coloque um objeto sobre uma tábua e vá levantando uma das pontas devagar. No exato instante em que o objeto começa a escorregar, meça o ângulo — a tangente dele é μ<sub>e</sub>. Um celular sobre um livro serve de laboratório. É, aliás, mais ou menos assim que se estima o quão "escorregadio" é um talude ou uma pilha de areia.
         </p>
       </div>
 
@@ -268,7 +295,7 @@
     <section class="content-section" id="s8">
       <h2><span class="sec-num">8</span> Simulador de plano inclinado</h2>
 
-      <p>Ajuste o ângulo e o coeficiente de atrito e veja as forças desenhadas sobre o bloco.</p>
+      <p>Ajuste o ângulo e o coeficiente de atrito e veja as forças desenhadas sobre o bloco. Repare como a seta da normal encurta ao aumentar o ângulo, enquanto a componente P<sub>x</sub> cresce.</p>
 
       <div class="graph-box">
         <h4>📐 Forças no Plano Inclinado</h4>
@@ -295,11 +322,13 @@
       <div class="summary-box">
         <h3>O que você aprendeu</h3>
         <ul>
-          <li>Decompor o peso nos eixos do plano: P<sub>x</sub> = mg·senθ (paralelo) e P<sub>y</sub> = mg·cosθ (perpendicular).</li>
-          <li>Normal no plano inclinado: N = mg·cosθ (menor que o peso total).</li>
-          <li>Aceleração sem atrito: a = g·senθ (independe da massa).</li>
-          <li>Aceleração com atrito (descendo): a = g·(senθ − μ·cosθ).</li>
-          <li>Ângulo crítico: tanθ<sub>c</sub> = μ<sub>e</sub> — abaixo disso o bloco não desce.</li>
+          <li>Na rampa, o peso fica "torto" em relação à superfície e precisa ser decomposto em eixos alinhados ao plano.</li>
+          <li>Componentes do peso: P<sub>x</sub> = mg·senθ (ladeira abaixo) e P<sub>y</sub> = mg·cosθ (contra o plano).</li>
+          <li>A normal encolhe: N = mg·cosθ, menor que o peso total — e por isso o atrito na rampa também é menor.</li>
+          <li>Descida sem atrito: a = g·senθ, independente da massa (a queda livre é o caso θ = 90°).</li>
+          <li>Descida com atrito: a = g·(senθ − μ<sub>c</sub>·cosθ).</li>
+          <li>Ângulo crítico: tanθ<sub>c</sub> = μ<sub>e</sub> — abaixo dele o corpo não desce, e ele serve para medir μ na prática.</li>
+          <li>Galileu usou planos inclinados para "diluir" a gravidade e descobrir as leis da queda.</li>
         </ul>
       </div>
 
@@ -457,6 +486,18 @@
   muSl.addEventListener('input', drawPI);
   drawPI();
 
+  /* Curiosidades expansíveis */
+  document.querySelectorAll('.curiosity-toggle').forEach(function (btn) {
+    const target = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!target) return;
+    btn.addEventListener('click', function () {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.textContent = expanded ? 'Expandir' : 'Recolher';
+      target.hidden = expanded;
+    });
+  });
+
   /* TOC */
   const sections = document.querySelectorAll('.content-section');
   const tocLinks = document.querySelectorAll('.toc-list a');
@@ -472,7 +513,13 @@
 
 <!-- IMAGENS NECESSÁRIAS:
   1. dinamica/plano-inclinado-forcas.png
-     Plano inclinado com ângulo θ, bloco, eixos x e y. Vetores P, P_x, P_y, N desenhados. Fundo branco.
+     Plano inclinado com ângulo θ, bloco, eixos x e y alinhados ao plano. Vetores P, P_x, P_y, N e atrito f desenhados. Fundo branco.
+
+  2. dinamica/plano-galileu-diluir.png
+     Galileu rolando bolinha por canaleta inclinada, com o texto "gravidade diluída"; ao lado, comparação com a queda livre (θ = 90°).
+
+  3. dinamica/plano-angulo-critico.png
+     Sequência de uma tábua sendo levantada até o objeto escorregar, com o ângulo θc marcado e a relação tanθc = μe.
 -->
 
 </body>

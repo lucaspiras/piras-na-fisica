@@ -1,4 +1,7 @@
 {
+  // Pastas que existem apenas com stubs de redirect (URLs antigas -> novas).
+  // Continuam no disco e publicadas, mas somem do explorador para reduzir ruido.
+  // Ao mover uma pasta do site, acrescente a origem antiga aqui.
   "files.exclude": {
     "atividades/lista_de_exercicios": true,
     "atividades/unidades_estudo_dirigido": true,
@@ -8,6 +11,9 @@
     "atividades/energia_potencial_conservacao": true,
     "atividades/eletrostatica_estudo_dirigido": true,
     "atividades/potencial_eletrico_estudo_dirigido": true,
-    "atividades/lancamentos_estudo_dirigido": true
+    "atividades/lancamentos_estudo_dirigido": true,
+    "conteudos/leis-newton": true,
+    "disciplinas/fisica_1_mecanica/provas/fisica_1_prova_MRU": true,
+    "disciplinas/fisica_1_mecanica/provas/prova_2_MRU_MRUV_Lancamentos": true
   }
 }

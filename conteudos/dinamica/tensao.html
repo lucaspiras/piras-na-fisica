@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <script src="/js/theme.js"></script>
+  <meta name="description" content="Força de tensão: o fio que só puxa. Fio e polia ideais, tensão uniforme, a máquina de Atwood e sistemas de blocos ligados por cordas.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tensão e Sistemas de Fios — Piras na Física">
+  <meta property="og:description" content="Força de tensão: o fio que só puxa. Fio e polia ideais, tensão uniforme, a máquina de Atwood e sistemas de blocos ligados por cordas.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/conteudos/dinamica/tensao.html">
+  <title>Tensão e Sistemas de Fios — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body data-tema="dinamica">
+
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-crumb">
+  <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Dinâmica</a><span>/</span>
+      <span>Tensão</span>
+    </nav>
+</div>
+
+<div class="content-hero">
+  <div class="content-hero-inner">
+    <h1 class="content-title">Tensão e Sistemas de Fios</h1>
+    <p class="content-subtitle">Fio, corda, cabo, corrente: sempre que algo é puxado, içado ou pendurado, é a tensão que faz o serviço. E ela obedece a uma regra que nunca se quebra — corda só puxa.</p>
+    <span class="formula-highlight"><span class="vec">T</span> ao longo do fio</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">O fio que só puxa</a></li>
+      <li><a href="#s2">Fio ideal e polia ideal</a></li>
+      <li><a href="#s3">Um corpo pendurado</a></li>
+      <li><a href="#s4">A máquina de Atwood</a></li>
+      <li><a href="#s5">Calculadora de Atwood</a></li>
+      <li><a href="#s6">Tensão no dia a dia</a></li>
+      <li><a href="#s7">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="forca-normal.html">← Força Normal</a>
+      <a href="atrito.html" class="toc-next">Atrito →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> O fio que só puxa</h2>
+
+      <p>
+        Fechamos a trinca das forças recorrentes com a <strong>tensão</strong> (<span class="vec">T</span>) — a força transmitida ao longo de um fio, corda, cabo ou corrente quando ele é esticado. O <a href="gravitacao-peso.html">peso</a> puxa à distância, a <a href="forca-normal.html">normal</a> empurra por contato, e a tensão faz a ponte entre corpos afastados: ela leva a "puxada" de uma ponta do fio à outra.
+      </p>
+
+      <p>
+        A tensão age <strong>ao longo do fio</strong>, na direção dele, e tem uma regra que nunca se quebra e resolve metade das dúvidas sobre o tema:
+      </p>
+
+      <div class="highlight-box">
+        <span class="hb-icon">🪢</span>
+        <p>
+          <strong>Corda só puxa, nunca empurra.</strong> A tensão sempre aponta <em>ao longo do fio, afastando-se do corpo</em>, no sentido de esticá-lo. Faz sentido: você consegue puxar um carrinho por um barbante, mas se tentar empurrá-lo o barbante simplesmente dobra. Um fio só "trabalha" esticado.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Fio ideal e polia ideal</h2>
+
+      <p>
+        Nos problemas do Ensino Médio, quase sempre supomos o <strong>fio ideal</strong>: sem massa e inextensível (não estica). Não é realismo — é uma simplificação deliberada, e das mais úteis, porque traz duas consequências que enxugam qualquer cálculo:
+      </p>
+
+      <div class="concept-grid">
+        <div class="concept-card">
+          <span class="cc-icon">⚖️</span>
+          <div class="cc-title">Tensão igual em toda parte</div>
+          <p class="cc-desc">Num fio ideal, a tensão tem o mesmo valor em toda a sua extensão. O que se puxa numa ponta reaparece igual na outra — nada se "perde" pelo caminho.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">⚙️</span>
+          <div class="cc-title">Polia ideal só redireciona</div>
+          <p class="cc-desc">Uma polia sem massa e sem atrito muda a direção do fio sem alterar o módulo da tensão. Puxar para baixo vira puxar para cima, com a mesma força.</p>
+        </div>
+      </div>
+
+      <p>
+        A polia ideal é uma das ferramentas mais elegantes da mecânica: ela permite, por exemplo, usar o próprio peso de um corpo (que puxa para baixo) para erguer outro (puxando para cima), sem que a corda perca força ao contornar a roldana. É exatamente o princípio da <strong>máquina de Atwood</strong>, que veremos em detalhe. Como o fio é inextensível, há ainda um bônus: todos os corpos ligados por ele têm o <strong>mesmo módulo de aceleração</strong> — se um desce 1 metro, o outro sobe 1 metro no mesmo tempo.
+      </p>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">🏗️</span>
+        <p>
+          Polias reais têm massa e atrito, e por isso máquinas de verdade (guindastes, elevadores, talhas) usam <em>conjuntos</em> de polias que reduzem a força necessária ao custo de puxar mais corda — a mesma troca "força por distância" que a rampa faz. No modelo ideal do Ensino Médio, deixamos essas perdas de lado para focar na física essencial.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> O caso mais simples: um corpo pendurado</h2>
+
+      <p>
+        Antes de montar sistemas, vale fixar o caso básico. Um corpo pendurado e parado está em equilíbrio: a tensão do fio (para cima) precisa equilibrar o peso (para baixo).
+      </p>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Lustre no teto</div>
+        <div class="ex-body">
+          <p>Um lustre de 5 kg pende do teto por um único cabo (g = 10 m/s²). Qual a tensão no cabo?</p>
+          <p>Em equilíbrio, a tensão iguala o peso: T = P = m·g = 5 × 10 = <strong>50 N</strong>.</p>
+          <p>Se fossem <strong>dois</strong> cabos verticais iguais dividindo a carga, cada um faria 25 N.</p>
+          <div class="ex-result">T = 50 N (um cabo) ou 25 N em cada (dois cabos).</div>
+        </div>
+      </div>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">🧗</span>
+        <p>
+          Cuidado com um caso que engana: quando a corda não é vertical (dois cabos formando um "V" que sustenta um peso), a tensão em cada cabo pode ser <strong>maior</strong> que o próprio peso. Quanto mais abertos (horizontais) os cabos, maior a tensão — por isso uma rede de varal esticada quase na horizontal arrebenta com um peso pequeno no meio. Esse caso usa decomposição de vetores, no espírito do <a href="plano-inclinado.html">plano inclinado</a>.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> A máquina de Atwood</h2>
+
+      <p>
+        A <strong>máquina de Atwood</strong> é o sistema mais clássico de tensão: duas massas, <em>m₁</em> e <em>m₂</em>, penduradas nas pontas de um fio que passa por uma polia. É um problema lindo porque combina, num só desenho, a <a href="gravitacao-peso.html">gravidade</a>, a tensão e a <a href="segunda-lei.html">Segunda Lei</a> — e foi inventado em 1784 justamente para estudar a queda dos corpos de forma "lenta o suficiente" para medir.
+      </p>
+
+      <p>
+        Se as massas forem diferentes, a mais pesada desce e a mais leve sobe, ambas com o mesmo módulo de aceleração (o fio é inextensível). Escrevendo a 2ª Lei para cada bloco e resolvendo o sistema, chega-se a duas fórmulas:
+      </p>
+
+      <div class="formula-row">
+        <div class="formula-box">
+          <span class="formula-label">Aceleração do sistema</span>
+          <span class="formula-expr">a = (m₂ − m₁)·g / (m₁ + m₂)</span>
+        </div>
+        <div class="formula-box">
+          <span class="formula-label">Tensão no fio</span>
+          <span class="formula-expr">T = 2·m₁·m₂·g / (m₁ + m₂)</span>
+        </div>
+      </div>
+
+      <p>
+        Vale a pena ler o que essas fórmulas dizem. Se <em>m₁ = m₂</em>, a aceleração é <strong>zero</strong>: o sistema fica em equilíbrio, e a tensão iguala o peso de cada lado. Quanto maior a diferença entre as massas, maior a aceleração — no extremo em que uma massa é desprezível, a outra praticamente cai em queda livre (a → g). E a tensão fica sempre <strong>entre</strong> os dois pesos: maior que o peso do bloco leve (por isso ele sobe) e menor que o peso do bloco pesado (por isso ele desce).
+      </p>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo — Atwood com 3 kg e 5 kg</div>
+        <div class="ex-body">
+          <p>m₁ = 3 kg, m₂ = 5 kg, g = 10 m/s².</p>
+          <p>a = (5 − 3)×10 / (3 + 5) = 20/8 = <strong>2,5 m/s²</strong></p>
+          <p>T = 2×3×5×10 / (3 + 5) = 300/8 = <strong>37,5 N</strong></p>
+          <p>Confira: o peso do bloco leve é 30 N e o do pesado é 50 N. A tensão (37,5 N) está entre os dois, como esperado.</p>
+          <div class="ex-result">a = 2,5 m/s² | T = 37,5 N</div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Calculadora de Atwood</h2>
+
+      <p>Escolha as duas massas e veja a aceleração do sistema e a tensão no fio. Experimente deixá-las iguais para ver a aceleração zerar.</p>
+
+      <div class="calc-box">
+        <h4>⚙️ Máquina de Atwood</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Massa m₁ (kg)</label>
+            <input type="number" id="at-m1" placeholder="ex: 3" value="3" min="0">
+          </div>
+          <div class="calc-field">
+            <label>Massa m₂ (kg)</label>
+            <input type="number" id="at-m2" placeholder="ex: 5" value="5" min="0">
+          </div>
+          <div class="calc-field">
+            <label>g (m/s²)</label>
+            <input type="number" id="at-g" value="10" step="0.1">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcAtwood()">Calcular</button>
+        <div class="calc-result" id="at-result"></div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Tensão no dia a dia</h2>
+
+      <div class="daily-grid">
+        <div class="daily-card">
+          <span class="dc-icon">🏗️</span>
+          <div class="dc-title">Guindaste</div>
+          <p class="dc-desc">O cabo transmite à carga uma tensão que supera o peso para erguê-la, ou o iguala para mantê-la parada no alto. É a 3ª Lei e a tensão trabalhando juntas.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🛗</span>
+          <div class="dc-title">Cabo de elevador</div>
+          <p class="dc-desc">A tensão é máxima na partida para cima: ali o cabo precisa mais do que segurar o peso, precisa acelerar a cabine. Os cabos reais são dimensionados para esse pico.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🧗</span>
+          <div class="dc-title">Tirolesa e ponte pênsil</div>
+          <p class="dc-desc">Quanto mais esticado (horizontal) o cabo, maior a tensão para sustentar o mesmo peso. Por isso esses cabos têm sempre uma "barriga" — a curva reduz o esforço.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🚗</span>
+          <div class="dc-title">Reboque</div>
+          <p class="dc-desc">O cabo entre dois carros só funciona esticado, puxando. Se o carro de trás avança e o cabo afrouxa, a tensão some — e volta com um solavanco quando ele estica de novo.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Resumo</h2>
+
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>A tensão age ao longo do fio e <strong>só puxa</strong> — nunca empurra.</li>
+          <li>No fio ideal (sem massa, inextensível), a tensão é a mesma em toda a extensão, e a polia ideal apenas redireciona sem mudar o módulo.</li>
+          <li>Corpos ligados por um fio inextensível têm o mesmo módulo de aceleração.</li>
+          <li>Corpo pendurado em equilíbrio: T = P. Com cabos inclinados (em "V"), a tensão pode superar o peso.</li>
+          <li>Máquina de Atwood: a = (m₂−m₁)g/(m₁+m₂) e T = 2m₁m₂g/(m₁+m₂); a tensão fica sempre entre os dois pesos.</li>
+          <li>Guindastes, cabos de elevador, tirolesas e reboques são a tensão em ação.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="forca-normal.html">← Força Normal</a>
+      <a href="atrito.html" class="nav-next">Próximo: Atrito →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+
+<script>
+(function() {
+  /* Calculadora da máquina de Atwood */
+  window.calcAtwood = function() {
+    const m1 = parseFloat(document.getElementById('at-m1').value);
+    const m2 = parseFloat(document.getElementById('at-m2').value);
+    const g = parseFloat(document.getElementById('at-g').value);
+    const res = document.getElementById('at-result');
+
+    if (isNaN(m1) || isNaN(m2) || isNaN(g) || m1 < 0 || m2 < 0 || (m1 + m2) === 0) {
+      res.className = 'calc-result erro';
+      res.textContent = 'Informe massas válidas (não ambas zero) e g.';
+      return;
+    }
+
+    const a = (m2 - m1) * g / (m1 + m2);
+    const T = 2 * m1 * m2 * g / (m1 + m2);
+    let desc;
+    if (Math.abs(a) < 0.001) desc = 'massas iguais → sistema em equilíbrio, nada acelera';
+    else if (a > 0) desc = 'm₂ desce e m₁ sobe';
+    else desc = 'm₁ desce e m₂ sobe';
+
+    res.className = 'calc-result ok';
+    res.innerHTML =
+      'Aceleração: a = (' + m2 + ' − ' + m1 + ')×' + g + ' / (' + m1 + ' + ' + m2 + ') = <strong>' + Math.abs(a).toFixed(2) + ' m/s²</strong><br>' +
+      'Tensão: T = 2×' + m1 + '×' + m2 + '×' + g + ' / (' + m1 + ' + ' + m2 + ') = <strong>' + T.toFixed(2) + ' N</strong><br>' +
+      '→ ' + desc + '.';
+  };
+
+  /* TOC: destaque da seção ativa no scroll */
+  const sections = document.querySelectorAll('.content-section');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', function() {
+    let current = '';
+    sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 120) current = sec.id; });
+    tocLinks.forEach(a => {
+      a.parentElement.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. dinamica/tensao-so-puxa.png
+     Fio puxando um carrinho (funciona) ao lado de um fio tentando empurrar (dobra e não funciona). Setas de tensão ao longo do fio.
+
+  2. dinamica/tensao-polia-ideal.png
+     Fio ideal sobre polia ideal: tensão igual dos dois lados; a polia apenas muda a direção. Corpo pendurado com T = P ao lado.
+
+  3. dinamica/maquina-atwood.png
+     Máquina de Atwood: duas massas m1 e m2 nas pontas do fio sobre a polia, com as setas de peso e tensão e as fórmulas de a e T.
+-->
+
+</body>
+</html>

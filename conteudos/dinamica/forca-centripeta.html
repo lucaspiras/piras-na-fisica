@@ -45,7 +45,7 @@
 <div class="content-hero">
   <div class="content-hero-inner">
     <h1 class="content-title">Força Centrípeta</h1>
-    <p class="content-subtitle">A força resultante que aponta para o centro da trajetória circular — responsável por manter o corpo em órbita.</p>
+    <p class="content-subtitle">Andar em círculo é acelerar o tempo todo — mesmo com velocidade constante. E toda aceleração precisa de uma força. Descobrir qual é ela explica desde a curva de um carro até a órbita da Lua.</p>
     <span class="formula-highlight">F<sub>c</sub> = m·v²/r = m·ω²·r</span>
   </div>
 </div>
@@ -55,14 +55,15 @@
   <aside class="content-toc">
     <div class="toc-header">Neste texto</div>
     <ol class="toc-list">
-      <li><a href="#s1">O que é F. centrípeta?</a></li>
+      <li><a href="#s1">Virar é acelerar</a></li>
       <li><a href="#s2">A fórmula</a></li>
-      <li><a href="#s3">Não é "nova força"!</a></li>
-      <li><a href="#s4">Força centrífuga?</a></li>
-      <li><a href="#s5">Exemplos clássicos</a></li>
-      <li><a href="#s6">Calculadora</a></li>
-      <li><a href="#s7">Simulador</a></li>
-      <li><a href="#s8">Resumo</a></li>
+      <li><a href="#s3">Não é uma força nova</a></li>
+      <li><a href="#s4">A "força" centrífuga</a></li>
+      <li><a href="#s5">A Lua que cai para sempre</a></li>
+      <li><a href="#s6">Exemplos clássicos</a></li>
+      <li><a href="#s7">Calculadora</a></li>
+      <li><a href="#s8">Simulador</a></li>
+      <li><a href="#s9">Resumo</a></li>
     </ol>
     <div class="toc-nav">
       <a href="plano-inclinado.html">← Plano inclinado</a>
@@ -73,34 +74,37 @@
   <main class="content-main">
 
     <section class="content-section" id="s1">
-      <h2><span class="sec-num">1</span> O que é a força centrípeta?</h2>
+      <h2><span class="sec-num">1</span> Virar é acelerar (mesmo sem mudar de velocidade)</h2>
 
       <p>
-        Quando um corpo realiza um <strong>movimento circular</strong>, sua velocidade muda de direção a cada instante — mesmo que o módulo (velocidade escalar) seja constante. Mudança de velocidade significa aceleração. Essa aceleração aponta sempre <strong>para o centro</strong> da trajetória circular e chama-se <em>aceleração centrípeta</em>.
+        Comece por uma cena banal: você está num carro que faz uma curva fechada em velocidade constante, digamos 40 km/h o tempo todo. O velocímetro não muda. Mesmo assim, seu corpo é jogado contra a porta e você precisa se segurar. Alguma coisa está claramente acontecendo — mas o quê, se a "velocidade" não mudou?
       </p>
 
       <p>
-        Pela 2ª Lei de Newton, toda aceleração é causada por uma força resultante. A <strong>força centrípeta</strong> (F<sub>c</sub>) é exatamente essa resultante — a força que aponta para o centro e mantém o corpo na trajetória circular.
+        A pista está na palavra <strong>velocidade</strong>, que na dinâmica é um vetor. Ela tem módulo (o número do velocímetro) <em>e</em> direção. Na curva, o módulo pode ficar igual, mas a direção muda a cada instante — o carro que apontava para o norte passa a apontar para o leste. E mudar a velocidade, ainda que só na direção, <strong>é acelerar</strong>. Movimento circular é movimento acelerado, sempre, mesmo que o velocímetro esteja cravado.
+      </p>
+
+      <p>
+        Essa aceleração tem uma direção bem definida: aponta sempre <strong>para o centro</strong> da curva. Por isso se chama <em>aceleração centrípeta</em> — do latim, "que busca o centro". E, pela <a href="segunda-lei.html">Segunda Lei</a>, se há aceleração, há uma força resultante na mesma direção. Essa força, apontada para o centro, é a <strong>força centrípeta</strong>. É ela que puxa o carro para dentro da curva enquanto seu corpo, por <a href="primeira-lei.html">inércia</a>, teimava em seguir reto.
       </p>
 
       <div class="concept-grid">
         <div class="concept-card">
           <span class="cc-icon">🎯</span>
           <div class="cc-title">Direção</div>
-          <p class="cc-desc">Sempre perpendicular à velocidade, apontando para o centro da trajetória circular.</p>
+          <p class="cc-desc">Sempre perpendicular à velocidade, apontando para o centro da trajetória. Nunca "para a frente".</p>
         </div>
         <div class="concept-card">
-          <span class="cc-icon">⚡</span>
+          <span class="cc-icon">🔄</span>
           <div class="cc-title">Efeito</div>
-          <p class="cc-desc">Muda a direção da velocidade continuamente, sem alterar seu módulo (no MCU).</p>
+          <p class="cc-desc">Muda continuamente a direção da velocidade, curvando a trajetória, sem alterar o módulo (no movimento circular uniforme).</p>
         </div>
         <div class="concept-card">
           <span class="cc-icon">📏</span>
           <div class="cc-title">Módulo</div>
-          <p class="cc-desc">Constante (no MCU). Calculado por F<sub>c</sub> = mv²/r ou F<sub>c</sub> = mω²r.</p>
+          <p class="cc-desc">Depende da massa, da velocidade e do raio: F<sub>c</sub> = mv²/r. Curvas mais fechadas e maior velocidade exigem muito mais força.</p>
         </div>
       </div>
-
 
     </section>
 
@@ -115,9 +119,13 @@
           <span>m = massa do corpo (kg)</span>
           <span>v = velocidade linear (m/s)</span>
           <span>ω = velocidade angular (rad/s)</span>
-          <span>r = raio da trajetória circular (m)</span>
+          <span>r = raio da trajetória (m)</span>
         </span>
       </div>
+
+      <p>
+        Vale prestar atenção ao <strong>v²</strong>: a velocidade entra ao quadrado. Isso significa que <em>dobrar</em> a velocidade numa curva <strong>quadruplica</strong> a força necessária para fazê-la. É a matemática por trás de um conselho de motorista experiente — reduzir na curva não é frescura, é física. A mesma curva a 80 km/h exige quatro vezes mais atrito dos pneus do que a 40 km/h.
+      </p>
 
       <div class="formula-row">
         <div class="formula-box">
@@ -125,7 +133,7 @@
           <span class="formula-expr">a<sub>c</sub> = v² / r = ω² · r</span>
         </div>
         <div class="formula-box">
-          <span class="formula-label">Relação v e ω</span>
+          <span class="formula-label">Relação entre v e ω</span>
           <span class="formula-expr">v = ω · r</span>
         </div>
       </div>
@@ -133,110 +141,139 @@
       <div class="example-box">
         <div class="ex-header">📋 Exemplo 1 — Carro em curva</div>
         <div class="ex-body">
-          <p>Um carro de m = 1 000 kg faz uma curva de raio r = 50 m a v = 20 m/s. Qual a força centrípeta necessária?</p>
-          <p>F<sub>c</sub> = mv²/r = 1000 × 400/50 = <strong>8 000 N = 8 kN</strong></p>
-          <div class="ex-result">F<sub>c</sub> = 8 000 N — fornecida pelo atrito dos pneus com o asfalto</div>
+          <p>Um carro de m = 1 000 kg faz uma curva de raio r = 50 m a v = 20 m/s (72 km/h). Que força centrípeta é necessária?</p>
+          <p>F<sub>c</sub> = mv²/r = 1000 × 20²/50 = 1000 × 400/50 = <strong>8 000 N</strong></p>
+          <div class="ex-result">F<sub>c</sub> = 8 000 N — e quem fornece essa força é o atrito dos pneus com o asfalto. Se o atrito disponível for menor que isso, o carro derrapa para fora.</div>
         </div>
       </div>
 
       <div class="example-box">
-        <div class="ex-header">📋 Exemplo 2 — Satélite em órbita</div>
+        <div class="ex-header">📋 Exemplo 2 — A Estação Espacial em órbita</div>
         <div class="ex-body">
-          <p>ISS orbita a Terra a r = 6 800 km = 6,8×10⁶ m, v ≈ 7 700 m/s, m ≈ 4,2×10⁵ kg.</p>
-          <p>F<sub>c</sub> = mv²/r = 4,2×10⁵ × (7700)²/(6,8×10⁶) ≈ <strong>3,7×10⁶ N</strong></p>
-          <div class="ex-result">F centrípeta = gravidade da Terra sobre a ISS!</div>
+          <p>A ISS orbita a r ≈ 6,8×10⁶ m do centro da Terra, a v ≈ 7 700 m/s, com massa m ≈ 4,2×10⁵ kg.</p>
+          <p>F<sub>c</sub> = mv²/r = 4,2×10⁵ × (7 700)² / (6,8×10⁶) ≈ <strong>3,7×10⁶ N</strong></p>
+          <div class="ex-result">Essa força centrípeta enorme é fornecida inteiramente pela gravidade da Terra. A ISS não tem motor a manter a órbita — apenas cai continuamente ao redor do planeta.</div>
         </div>
       </div>
 
     </section>
 
     <section class="content-section" id="s3">
-      <h2><span class="sec-num">3</span> Força centrípeta não é um novo tipo de força!</h2>
+      <h2><span class="sec-num">3</span> Cuidado: centrípeta não é uma força nova</h2>
+
+      <p>
+        Aqui está o mal-entendido número um deste tema. Ao lado de peso, normal, atrito, tensão e empuxo, o estudante às vezes anota "força centrípeta" como se fosse mais um tipo na lista. <strong>Não é.</strong> Centrípeta não é uma força com identidade própria — é um <em>papel</em> que alguma força já conhecida assume quando aponta para o centro de uma curva.
+      </p>
 
       <div class="highlight-box danger">
         <span class="hb-icon">⚠️</span>
         <p>
-          <strong>Erro conceptual frequente:</strong> A força centrípeta não é um "tipo" de força como peso, normal ou atrito. Ela é o <em>nome dado à força resultante</em> que, em determinada situação, aponta para o centro da trajetória circular.
+          Em um diagrama de corpo livre, você <strong>nunca</strong> desenha uma seta chamada "F<sub>c</sub>" além das outras. Você desenha as forças reais (peso, normal, atrito, tensão…) e, entre elas, identifica qual aponta para o centro — <em>essa</em> é a que faz o papel de centrípeta. Escrever F<sub>c</sub> como uma força extra é contar a mesma força duas vezes.
         </p>
       </div>
 
       <p>
-        A força que faz o papel de centrípeta depende de cada situação:
+        Quem exerce o papel de centrípeta muda conforme a situação — e reconhecer isso é metade dos problemas de movimento circular:
       </p>
 
       <table class="content-table">
         <thead>
-          <tr><th>Situação</th><th>Força que age como centrípeta</th></tr>
+          <tr><th>Situação</th><th>Quem faz o papel de centrípeta</th></tr>
         </thead>
         <tbody>
-          <tr><td>Carro em curva (horizontal)</td><td>Atrito dos pneus com o asfalto</td></tr>
-          <tr><td>Planeta em órbita</td><td>Força gravitacional do Sol</td></tr>
-          <tr><td>Satélite artificial</td><td>Força gravitacional da Terra</td></tr>
-          <tr><td>Eletro girando no átomo</td><td>Força elétrica (coulombiana) do núcleo</td></tr>
-          <tr><td>Looping (topo)</td><td>Peso + Normal (ambos para o centro)</td></tr>
-          <tr><td>Pedra em onda (horizontal)</td><td>Tensão do fio</td></tr>
-          <tr><td>Avião em curva banqueada</td><td>Componente horizontal da sustentação</td></tr>
+          <tr><td>Carro em curva plana</td><td>O atrito dos pneus com o asfalto</td></tr>
+          <tr><td>Planeta em torno do Sol</td><td>A força gravitacional do Sol</td></tr>
+          <tr><td>Satélite em órbita da Terra</td><td>A força gravitacional da Terra</td></tr>
+          <tr><td>Pedra girando presa a um barbante</td><td>A tensão no barbante</td></tr>
+          <tr><td>Elétron ao redor do núcleo</td><td>A força elétrica de atração</td></tr>
+          <tr><td>Carrinho no topo de um loop</td><td>O peso somado à normal (ambos para o centro)</td></tr>
+          <tr><td>Avião fazendo curva inclinada</td><td>A componente horizontal da sustentação das asas</td></tr>
         </tbody>
       </table>
 
     </section>
 
     <section class="content-section" id="s4">
-      <h2><span class="sec-num">4</span> E a força centrífuga?</h2>
+      <h2><span class="sec-num">4</span> E aquela "força" que te joga para fora?</h2>
 
       <p>
-        A <strong>força centrífuga</strong> é uma <em>pseudoforça</em> (força fictícia) que aparece apenas em referenciais não-inerciais — ou seja, em referenciais que giram junto com o corpo.
+        Se a força aponta para <em>dentro</em> da curva, por que você sente que está sendo jogado para <em>fora</em>? Essa sensação tem nome popular — força centrífuga — mas, do ponto de vista da física, ela é uma <strong>ilusão criada pelo referencial</strong>. Não existe nenhum agente te empurrando para fora.
       </p>
 
       <div class="example-box">
-        <div class="ex-header">📋 Dois pontos de vista na curva</div>
+        <div class="ex-header">🚗 A curva vista de dois lugares</div>
         <div class="ex-body">
-          <p><strong>Referencial da rua (inercial):</strong> O carro faz a curva porque o atrito exerce força centrípeta sobre ele. Você (passageiro) tende a continuar reto pela inércia — a porta "empurra" você para dentro da curva.</p>
-          <br>
-          <p><strong>Referencial do carro (não-inercial):</strong> Você "sente" uma força para fora da curva (centrífuga). Mas ela é fictícia — é a inércia do seu corpo resistindo à mudança de direção.</p>
-          <div class="ex-result">No referencial inercial, não existe força centrífuga. A sensação é inércia.</div>
+          <p><strong>De fora, da calçada (referencial inercial):</strong> o carro é obrigado a curvar pelo atrito, que aponta para o centro. Seu corpo, por inércia, tentaria seguir em linha reta — e é a porta do carro que o empurra para dentro, forçando você a curvar junto. Nada te empurra para fora; você é que "queria" ir reto.</p>
+          <p><strong>De dentro do carro (referencial não inercial):</strong> como tudo ao seu redor gira com o carro, parece que uma força misteriosa te cola na porta. Batizamos essa sensação de "centrífuga", mas ela é fictícia — é a sua inércia disfarçada.</p>
+          <div class="ex-result">No referencial correto (inercial), a única força horizontal real é a centrípeta, para dentro. A "centrífuga" é a inércia vista de um referencial que gira.</div>
         </div>
       </div>
 
       <div class="highlight-box info">
-        <span class="hb-icon">💡</span>
+        <span class="hb-icon">🧪</span>
         <p>
-          A centrífuga de laboratório usa esse princípio: em alta rotação, partículas mais densas "migram" para fora porque têm mais inércia (resistem mais à mudança de direção). No referencial do lab, elas simplesmente tendem a ir em linha reta enquanto o tubo gira.
+          A centrífuga de laboratório — que separa o sangue em camadas ou seca a roupa na máquina — vive disso. Girando muito rápido, as partes mais densas tendem a seguir reto (mais inércia) enquanto a parede do tubo curva; o resultado é que elas se acumulam na borda externa. Não há força as empurrando para fora: há a parede curvando tudo, menos elas, para dentro.
         </p>
       </div>
 
     </section>
 
     <section class="content-section" id="s5">
-      <h2><span class="sec-num">5</span> Exemplos clássicos</h2>
+      <h2><span class="sec-num">5</span> A ideia mais bonita: a Lua está caindo</h2>
+
+      <p>
+        A força centrípeta guarda uma das sacadas mais elegantes da história da ciência, e ela é de Newton. Diz a lenda que, ao ver uma maçã cair, ele se perguntou: e se a mesma força que puxa a maçã puxasse também a Lua? A resposta a levou a unificar o céu e a Terra sob uma única lei.
+      </p>
+
+      <p>
+        Newton imaginou um canhão no alto de uma montanha altíssima, disparando cada vez mais forte. Com pouca pólvora, a bala cai perto. Com mais, cai mais longe, acompanhando a curvatura da Terra. Com pólvora suficiente, a bala cairia tão longe que <strong>a Terra "fugiria" embaixo dela na mesma taxa</strong> em que ela cai — e a bala daria a volta ao mundo sem nunca tocar o chão. Isso é uma órbita: uma queda que nunca termina.
+      </p>
+
+      <div class="highlight-box">
+        <span class="hb-icon">🌙</span>
+        <p>
+          É exatamente o que a Lua faz. Ela está o tempo todo "caindo" em direção à Terra — a gravidade é a força centrípeta que a puxa para o centro. Mas, como também se desloca lateralmente muito rápido, ela erra a Terra continuamente e descreve uma órbita. A Lua não fica parada no céu por mágica: ela cai para sempre, sem nunca chegar.
+        </p>
+      </div>
+
+      <p>
+        Foi essa percepção — a de que a mesma força centrípeta que faz a maçã cair mantém a Lua em órbita — que nasceu a <strong>Gravitação Universal</strong>. O movimento circular deixou de ser um assunto à parte e se revelou a chave do sistema solar inteiro.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Exemplos clássicos</h2>
 
       <div class="daily-grid">
         <div class="daily-card">
-          <span class="dc-icon">🎡</span>
-          <div class="dc-title">Roda-gigante</div>
-          <p class="dc-desc">No topo: Normal + Peso ambos para baixo (centro). No fundo: Normal para cima (centro) e Peso para baixo. Equações diferentes, mesmo princípio.</p>
+          <span class="dc-icon">🎢</span>
+          <div class="dc-title">Loop da montanha-russa</div>
+          <p class="dc-desc">No topo do loop, de cabeça para baixo, o peso e a normal apontam para o centro e juntos fazem a centrípeta. Há uma velocidade mínima para não cair: v<sub>mín</sub> = √(g·r).</p>
         </div>
         <div class="daily-card">
           <span class="dc-icon">🏎️</span>
-          <div class="dc-title">Pista banqueada</div>
-          <p class="dc-desc">Pistas inclinadas reduzem a dependência do atrito. A componente horizontal da Normal fornece parte da força centrípeta.</p>
+          <div class="dc-title">Pista inclinada</div>
+          <p class="dc-desc">Inclinar a pista faz parte da normal apontar para o centro, ajudando o atrito a fazer a curva. Por isso autódromos e velódromos têm curvas "deitadas".</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🪣</span>
+          <div class="dc-title">Balde de água girando</div>
+          <p class="dc-desc">Gire um balde de água num círculo vertical rápido o bastante e a água não cai no ponto mais alto — ela também está "caindo" junto, presa pela centrípeta.</p>
         </div>
         <div class="daily-card">
           <span class="dc-icon">🌍</span>
-          <div class="dc-title">Órbitas planetárias</div>
-          <p class="dc-desc">A gravidade é a força centrípeta. A velocidade orbital é aquela para a qual a centrípeta necessária equals a força gravitacional.</p>
-        </div>
-        <div class="daily-card">
-          <span class="dc-icon">🎠</span>
-          <div class="dc-title">Loop em montanha-russa</div>
-          <p class="dc-desc">No topo do loop, velocidade mínima ocorre quando N = 0: v<sub>min</sub> = √(gr). Abaixo disso, o trilho precisaria puxar o carro!</p>
+          <div class="dc-title">Satélites e planetas</div>
+          <p class="dc-desc">Da ISS aos planetas do Sistema Solar, a gravidade é sempre a força centrípeta. A velocidade orbital é aquela em que a gravidade fornece exatamente a centrípeta necessária.</p>
         </div>
       </div>
 
     </section>
 
-    <section class="content-section" id="s6">
-      <h2><span class="sec-num">6</span> Calculadora</h2>
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Calculadora</h2>
+
+      <p>Deixe <strong>um campo em branco</strong> para calculá-lo a partir dos outros três.</p>
 
       <div class="calc-box">
         <h4>🧮 Calculadora — F<sub>c</sub> = mv²/r</h4>
@@ -264,10 +301,10 @@
 
     </section>
 
-    <section class="content-section" id="s7">
-      <h2><span class="sec-num">7</span> Simulador de movimento circular</h2>
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Simulador de movimento circular</h2>
 
-      <p>Veja a velocidade (azul) sempre tangente à trajetória e a força centrípeta (laranja) sempre apontando para o centro.</p>
+      <p>Veja a velocidade (azul) sempre tangente à trajetória e a força centrípeta (laranja) sempre apontando para o centro. Aumente ω e repare como a seta laranja cresce — é o v² da fórmula em ação.</p>
 
       <div class="graph-box">
         <h4>⭕ Movimento Circular — Força Centrípeta</h4>
@@ -291,18 +328,19 @@
 
     </section>
 
-    <section class="content-section" id="s8">
-      <h2><span class="sec-num">8</span> Resumo</h2>
+    <section class="content-section" id="s9">
+      <h2><span class="sec-num">9</span> Resumo</h2>
 
       <div class="summary-box">
         <h3>O que você aprendeu</h3>
         <ul>
-          <li>Força centrípeta é a resultante que aponta para o centro, mantendo o corpo em trajetória circular.</li>
-          <li>Fórmula: F<sub>c</sub> = mv²/r = mω²r.</li>
-          <li>Não é um tipo novo de força — é o papel exercido por atrito, gravidade, tensão etc.</li>
-          <li>Força centrífuga é fictícia — só existe em referenciais não-inerciais (girantes).</li>
-          <li>Carro em curva: atrito é a centrípeta. Satélite: gravidade é a centrípeta.</li>
-          <li>Velocidade mínima no topo de um loop: v<sub>min</sub> = √(gr).</li>
+          <li>Todo movimento circular é acelerado, porque a direção da velocidade muda o tempo todo — mesmo com módulo constante.</li>
+          <li>A aceleração e a força centrípeta apontam sempre para o centro da trajetória.</li>
+          <li>Fórmula: F<sub>c</sub> = mv²/r = mω²r. Como v entra ao quadrado, dobrar a velocidade quadruplica a força.</li>
+          <li>Centrípeta NÃO é uma força nova: é o papel exercido por atrito, gravidade, tensão, normal etc.</li>
+          <li>A "força centrífuga" é fictícia — é a inércia vista de um referencial que gira.</li>
+          <li>A Lua e os satélites estão em queda permanente: a gravidade é a centrípeta que os mantém em órbita — a ideia que gerou a Gravitação Universal.</li>
+          <li>No topo de um loop, a velocidade mínima para não cair é v<sub>mín</sub> = √(g·r).</li>
         </ul>
       </div>
 
@@ -473,6 +511,12 @@
 <!-- IMAGENS NECESSÁRIAS:
   1. dinamica/forca-centripeta-diagrama.png
      Círculo com corpo em movimento. Seta tangente (velocidade v) e seta para o centro (F_c) perpendiculares. Centro marcado.
+
+  2. dinamica/centripeta-canhao-newton.png
+     O "canhão de Newton" no alto de uma montanha: trajetórias cada vez mais longas até a bala entrar em órbita e dar a volta à Terra.
+
+  3. dinamica/centripeta-carro-curva.png
+     Carro em curva visto de cima, com a seta de atrito apontando para o centro e a trajetória reta (tracejada) que o corpo seguiria por inércia.
 -->
 
 </body>

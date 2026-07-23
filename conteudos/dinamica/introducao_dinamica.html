@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <script src="/js/theme.js"></script>
+  <meta name="description" content="Portal gratuito de Física para o Ensino Médio: conteúdos, simuladores, estudos dirigidos e listas de exercícios.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Introdução à Dinâmica — Piras na Física">
+  <meta property="og:description" content="Portal gratuito de Física para o Ensino Médio: conteúdos, simuladores, estudos dirigidos e listas de exercícios.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/conteudos/dinamica/introducao_dinamica.html">
+  <title>Introdução à Dinâmica — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body data-tema="dinamica">
+
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-crumb">
+  <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Dinâmica</a><span>/</span>
+      <span>Introdução</span>
+    </nav>
+</div>
+
+<div class="content-hero">
+  <div class="content-hero-inner">
+    <h1 class="content-title">Introdução à Dinâmica</h1>
+    <p class="content-subtitle">A cinemática descreve como os corpos se movem. A dinâmica pergunta por que eles se movem assim, e a resposta começa na ideia de força.</p>
+    <span class="formula-highlight"><span class="vec">F</span> = medida de uma interação</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Da cinemática à dinâmica</a></li>
+      <li><a href="#s2">Uma ideia que durou 2000 anos</a></li>
+      <li><a href="#s3">O que é força?</a></li>
+      <li><a href="#s4">Força como vetor</a></li>
+      <li><a href="#s5">Tipos de força</a></li>
+      <li><a href="#s6">Força resultante</a></li>
+      <li><a href="#s7">Diagrama de corpo livre</a></li>
+      <li><a href="#s8">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="index.html">← Dinâmica</a>
+      <a href="primeira-lei.html" class="toc-next">1ª Lei →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Da cinemática à dinâmica</h2>
+
+      <p>
+        A cinemática permite descrever os movimentos. Com ela, podemos dizer onde um corpo está, com que velocidade se move, se acelera ou freia e quanto tempo leva para chegar. Montamos gráficos, aplicamos equações e previmos posições. Em nenhum momento, porém, respondemos a uma pergunta anterior a todas essas: o que causou aquele movimento, e por que ele foi daquela forma e não de outra.
+      </p>
+
+      <p>
+        Um carro que acelera de 0 a 100 km/h em 8 segundos tem uma aceleração bem definida, e a cinemática permite calculá-la. No entanto, a cinemática nada diz sobre o motor que impulsiona o carro, o atrito dos pneus com o asfalto ou sobre por que é mais difícil acelerar o carro quando está mais carregado. Ela descreve o movimento como quem descreve um filme: registra o que acontece em cada quadro, sem conhecer o enredo.
+      </p>
+
+      <p>
+        A <strong>dinâmica</strong> é a parte da mecânica que investiga esse enredo, as causas dos movimentos. Ela liga o movimento que observamos às interações entre os corpos. Dentro da dinâmica, podemos atribuir as mudanças no movimento dos objetos às forças que atuam sobre eles. A grandeza que mede essas interações é a <strong>força</strong>.
+      </p>
+
+      <p>
+        Ao longo deste texto, será apresentada primeiro a longa história por trás dessa ideia. Na sequência, virão a definição de força e sua natureza vetorial, os principais tipos de força, a noção de força resultante e, por fim, o diagrama de corpo livre, a ferramenta que organiza toda a análise.
+      </p>
+
+      <div class="concept-grid">
+        <div class="concept-card">
+          <span class="cc-icon">🎥</span>
+          <div class="cc-title">Cinemática: o como</div>
+          <p class="cc-desc">Descreve o movimento: posição, velocidade, aceleração e tempo. Responde “o elevador subiu 12 m em 6 s”.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">🔍</span>
+          <div class="cc-title">Dinâmica: o porquê</div>
+          <p class="cc-desc">Explica o movimento pelas interações. Responde “o cabo puxou o elevador para cima com força maior que o peso”.</p>
+        </div>
+      </div>
+
+      <p>
+        Antes de prosseguir, vale um teste rápido. Imagine que você chuta uma bola e ela sobe pelo ar. Enquanto a bola sobe, quais forças agem sobre ela? Responda mentalmente antes de abrir a caixa a seguir.
+      </p>
+
+      <div class="highlight-box curiosity-box" style="background:#f0f7ff;border-left:4px solid #3b82f6;">
+        <div class="curiosity-summary">
+          <span class="hb-icon">⚽</span>
+          <span class="curiosity-title">A resposta que quase todo mundo dá, e por que ela não se sustenta</span>
+          <button class="curiosity-toggle" type="button" aria-expanded="false" aria-controls="curiosidade-chute">Expandir</button>
+        </div>
+        <div class="curiosity-content" id="curiosidade-chute" hidden>
+          <p>
+            A resposta mais comum atribui à bola uma força do chute que a empurra para cima, enquanto a gravidade a puxa para baixo. A ideia é intuitiva, afinal a bola só subiu porque foi chutada.
+          </p>
+          <p>
+            Cabe perceber que o pé já não toca mais a bola. A força do chute existiu durante o contato, que durou alguns centésimos de segundo, e terminou no instante em que o pé se separou. A partir daí, a única força relevante sobre a bola é o peso, somado à resistência do ar. Não existe força do chute viajando dentro da bola.
+          </p>
+          <p>
+            O que o chute deixou na bola não foi força, e sim velocidade. Velocidade, como será visto na Primeira Lei de Newton, não precisa de força para continuar existindo.
+          </p>
+          <p>
+            Quem respondeu que havia uma força para cima está em boa companhia. Essa foi a resposta oficial da física ocidental por cerca de vinte séculos, e é justamente o assunto da próxima seção.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Uma ideia que durou 2000 anos</h2>
+
+      <p>
+        A intuição de que movimento exige força não é ingenuidade de estudante. É a leitura mais honesta da experiência cotidiana. Empurre um armário e ele anda enquanto você empurra, parando assim que você solta. Pedale uma bicicleta e ela perde velocidade quando você deixa de pedalar. Arraste uma caixa pelo chão e, sem força, nada acontece. O mundo cotidiano parece afirmar que força é o que mantém as coisas em movimento.
+      </p>
+
+      <p>
+        <strong>Aristóteles</strong>, no século IV a.C., sistematizou essa leitura. Para ele, o estado natural dos corpos terrestres era o repouso, e todo movimento violento exigia um motor em contato permanente com o objeto. Era uma teoria coerente e compatível com quase tudo que se podia observar, e por isso permaneceu como explicação dominante por cerca de dois mil anos.
+      </p>
+
+      <p>
+        O primeiro sinal de que algo não fechava aparecia num caso incômodo, o da flecha. Se o movimento exige um motor em contato, o que empurra a flecha depois que ela deixa a corda do arco? Aristóteles recorreu ao ar, que se fecharia atrás da flecha e a empurraria adiante. A explicação nunca convenceu por inteiro. No século XIV, filósofos como Jean Buridan propuseram que o arremesso transferia ao projétil um impulso interno, o <em>ímpeto</em>, que se gastava aos poucos. É praticamente a mesma resposta que a maioria dos estudantes dá hoje sobre a bola chutada.
+      </p>
+
+      <p>
+        A virada veio com <strong>Galileu Galilei</strong>, no início do século XVII. Em vez de perguntar o que mantém o corpo em movimento, Galileu observou esferas descendo e subindo por planos inclinados e notou um padrão: quanto mais liso o plano, mais longe a esfera ia. No limite de um plano perfeitamente liso e horizontal, ela não pararia nunca. O atrito, antes tratado como detalhe desprezível, era a verdadeira causa da parada. Movimento não precisa de força para continuar, e sim para mudar.
+      </p>
+
+      <p>
+        Foi <strong>Isaac Newton</strong> quem transformou essa intuição num sistema completo. Em 1687, no <em>Philosophiæ Naturalis Principia Mathematica</em>, publicou as três leis que ligam força e movimento. Em conjunto com a gravitação universal, essas leis passaram a explicar com a mesma matemática desde a queda de uma pedra até a órbita dos planetas. Dessa obra vêm a definição de força usada até hoje e a unidade que leva o nome dele.
+      </p>
+
+      <div class="highlight-box">
+        <span class="hb-icon">💡</span>
+        <p>
+          A dinâmica inverte o senso comum num ponto: força não é o que mantém o movimento, e sim o que o <strong>muda</strong>. A frase pode soar estranha na primeira leitura, porque contraria vinte séculos de intuição. Convém guardá-la, pois organiza tudo o que vem a seguir.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> O que é força?</h2>
+
+      <p>
+        Depois dessa história, é possível definir força com cuidado. Em Física, <strong>força</strong> é a medida de uma interação entre dois corpos. Duas palavras dessa definição carregam o essencial, e vale destacar cada uma.
+      </p>
+
+      <p>
+        A primeira é <em>interação</em>. Força não é uma substância que um corpo guarda dentro de si, nem uma qualidade que ele possui, como a massa ou a temperatura. Não faz sentido dizer que “esta caixa tem 50 N”. A segunda palavra é <em>dois</em>. Força é sempre um acontecimento entre dois corpos: a corda puxa o balde, o ímã atrai o prego, a Terra atrai a maçã, o chão empurra os seus pés. Sempre que identificar uma força, você deve conseguir apontar quem a exerce e quem a sofre.
+      </p>
+
+      <div class="highlight-box">
+        <span class="hb-icon">🔎</span>
+        <p>
+          Um teste prático ajuda a reconhecer forças: toda força deve caber na frase “<strong>___ exerce força sobre ___</strong>”. Quando não é possível preencher as duas lacunas com corpos concretos, provavelmente não há força. É o caso da suposta força do chute na bola já solta no ar, pois o pé, que seria o agente, não está mais presente.
+        </p>
+      </div>
+
+      <p>
+        Uma força que atua sobre um corpo pode provocar dois tipos de efeito, muitas vezes ao mesmo tempo.
+      </p>
+
+      <div class="concept-grid">
+        <div class="concept-card">
+          <span class="cc-icon">🏃</span>
+          <div class="cc-title">Efeito dinâmico</div>
+          <p class="cc-desc">Altera o estado de movimento: acelera, freia ou muda a direção. O carro que arranca no sinal verde, o goleiro que desvia a bola.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">🪨</span>
+          <div class="cc-title">Efeito estático</div>
+          <p class="cc-desc">Deforma o corpo: comprime, estica ou entorta. A mola do colchão que afunda, o elástico do estilingue que estica.</p>
+        </div>
+      </div>
+
+      <p>
+        O chute na bola reúne os dois efeitos. Durante os poucos centésimos de segundo de contato, a bola se deforma visivelmente, o que é o efeito estático, e ganha velocidade, o que é o efeito dinâmico. Fotografias em câmara lenta de chutes profissionais mostram a bola achatada em quase metade do diâmetro no instante do impacto.
+      </p>
+
+      <p>
+        A unidade de força no Sistema Internacional é o <strong>newton</strong>, de símbolo N, em homenagem a Isaac Newton. A escolha não é arbitrária, pois o valor de 1 N vem diretamente da Segunda Lei de Newton, estudada mais adiante.
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Definição do newton</span>
+        <span class="formula-expr">1 N = 1 kg · m/s²</span>
+        <span class="formula-legend">
+          <span>1 newton é a força capaz de imprimir aceleração de 1 m/s² a uma massa de 1 kg</span>
+        </span>
+      </div>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">🍎</span>
+        <p>
+          Para ter uma noção concreta da escala, segurar uma <strong>maçã de 100 g</strong> na mão exige cerca de 1 N, pois P = 0,1 × 10 = 1 N. Uma garrafa de 2 litros cheia de água pesa cerca de 20 N, e uma pessoa de 70 kg, cerca de 700 N. A coincidência entre a maçã e o valor de 1 N combina bem com a história, verdadeira ou não, da maçã de Newton.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Força como grandeza vetorial</h2>
+
+      <p>
+        Imagine que alguém diga ter aplicado 200 N no carrinho de supermercado. A informação é insuficiente, e a falta importa: empurrar 200 N para a frente e 200 N para o lado produz resultados diferentes. Força é uma <strong>grandeza vetorial</strong>, e para descrevê-la o número sozinho não basta.
+      </p>
+
+      <p>
+        Por isso, ao escrever uma força, colocamos uma pequena seta sobre a letra, como em <span class="vec">F</span>, <span class="vec">P</span> e <span class="vec">N</span>. A seta lembra que aquele símbolo carrega direção e sentido, não apenas um valor. Para falar somente do número, usamos as barras de módulo, como em |<span class="vec">F</span>|, ou a letra sem seta, como em <em>F</em> = 200 N.
+      </p>
+
+      <p>
+        Um vetor força fica completamente definido por três características.
+      </p>
+
+      <div class="concept-grid">
+        <div class="concept-card">
+          <span class="cc-icon">📏</span>
+          <div class="cc-title">Módulo</div>
+          <p class="cc-desc">A intensidade da força, em newtons. É o “quanto”. Por exemplo, |<span class="vec">F</span>| = 20 N.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">↔️</span>
+          <div class="cc-title">Direção</div>
+          <p class="cc-desc">A reta ao longo da qual a força age. Por exemplo, horizontal, vertical ou a 45°.</p>
+        </div>
+        <div class="concept-card">
+          <span class="cc-icon">➡️</span>
+          <div class="cc-title">Sentido</div>
+          <p class="cc-desc">Para qual dos dois lados, dentro daquela direção. Na direção vertical, os sentidos possíveis são para cima e para baixo.</p>
+        </div>
+      </div>
+
+      <div class="highlight-box danger">
+        <span class="hb-icon">⚠️</span>
+        <p>
+          Um alerta sobre confusão frequente: <strong>direção e sentido não são sinônimos</strong> em Física, embora sejam no português cotidiano. Uma rua de mão dupla tem uma direção e dois sentidos. Dizer que duas forças têm “direções opostas” é impreciso, pois elas têm a mesma direção e sentidos opostos.
+          <br><br>
+          Cabe notar que uma única expressão do dia a dia costuma trazer as duas informações ao mesmo tempo. “Para cima” fixa a direção, que é a vertical, e também o sentido, de baixo para cima. “Para o leste” fixa a direção, que é a leste-oeste, e o sentido, de oeste para leste. Não há erro nisso, desde que se tenha clareza de que a expressão informa direção e sentido de uma vez.
+        </p>
+      </div>
+
+      <p>
+        Na prática, uma força é representada por uma seta desenhada a partir do corpo: o comprimento indica o módulo, a inclinação indica a direção e a ponta indica o sentido. Duas setas de mesmo tamanho apontando para lados opostos representam forças que se cancelam. É desenhando essas setas que se resolve boa parte dos problemas de dinâmica.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Tipos de força</h2>
+
+      <p>
+        Apesar da variedade de interações possíveis na natureza, no Ensino Médio quase todo problema se resolve com meia dúzia de forças recorrentes. Convém conhecê-las pelo nome, porque em um problema de dinâmica o trabalho principal é identificar quais delas estão presentes.
+      </p>
+
+      <p>
+        Uma separação ajuda a organizá-las. Algumas forças exigem <strong>contato</strong> entre os corpos, como a normal, o atrito, a tensão e a elástica. Outras agem <strong>à distância</strong>, por meio de campos, como o peso e as forças elétricas e magnéticas. Dentre os casos particulares, destaca-se o empuxo, que é um contato distribuído exercido por um fluido.
+      </p>
+
+      <table class="content-table">
+        <thead>
+          <tr><th>Tipo de Força</th><th>Símbolo</th><th>Quem exerce, e como</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Peso</strong></td><td><span class="vec">P</span></td><td>A Terra atrai o corpo, à distância. Sempre vertical, para baixo. <em>P = mg</em>.</td></tr>
+          <tr><td><strong>Normal</strong></td><td><span class="vec">N</span></td><td>A superfície de apoio empurra o corpo, perpendicularmente a ela. É a mesa reagindo ao livro apoiado.</td></tr>
+          <tr><td><strong>Tensão</strong></td><td><span class="vec">T</span></td><td>Um fio, corda ou cabo puxa o corpo ao longo de si mesmo. Corda só puxa, nunca empurra.</td></tr>
+          <tr><td><strong>Atrito</strong></td><td><span class="vec">f</span></td><td>A superfície resiste ao deslizamento, paralelamente ao contato, opondo-se ao movimento ou à tendência dele.</td></tr>
+          <tr><td><strong>Elástica</strong></td><td><span class="vec">F</span><sub>el</sub></td><td>Uma mola ou material deformado tenta voltar à forma original. Lei de Hooke: <em>F = k·x</em>.</td></tr>
+          <tr><td><strong>Empuxo</strong></td><td><span class="vec">E</span></td><td>Um fluido empurra para cima o corpo nele imerso. Princípio de Arquimedes: <em>E = ρ·V·g</em>.</td></tr>
+        </tbody>
+      </table>
+
+      <p>
+        Repare que a coluna da direita sempre nomeia um agente concreto: a Terra, a mesa, a corda, a superfície, a mola, o fluido. Isso não é coincidência, e sim a aplicação direta do teste da seção 3. Uma força sem agente identificável indica que algo saiu errado na análise.
+      </p>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">🔎</span>
+        <p>
+          Quatro dessas forças aparecem em quase todo problema de dinâmica e escondem detalhes que merecem estudo à parte. Depois das leis de Newton, cada uma recebe um texto próprio: <a href="gravitacao-peso.html">Gravitação e Peso</a>, <a href="forca-normal.html">Força Normal</a>, <a href="tensao.html">Tensão</a> e <a href="atrito.html">Atrito</a>.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Força resultante</h2>
+
+      <p>
+        Na prática, quase nunca há uma única força atuando. Neste momento, sobre você agem ao menos o peso e a normal da cadeira, e mais algumas se você segura o celular. Ainda assim, o efeito conjunto de todas elas equivale ao de uma única força, chamada <strong>força resultante</strong>.
+      </p>
+
+      <p>
+        A resultante é a soma vetorial de todas as forças que atuam sobre o corpo, e é ela que interessa para prever o movimento. Um corpo não sente cada força em separado, sente o efeito combinado. Quando a resultante é nula, o movimento não muda. Quando não é, o corpo acelera no sentido dela.
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Força resultante</span>
+        <span class="formula-expr"><span class="vec">F</span><sub>R</sub> = <span class="vec">F</span>₁ + <span class="vec">F</span>₂ + <span class="vec">F</span>₃ + …</span>
+        <span class="formula-legend">
+          <span>Mesma direção e mesmo sentido: os módulos se somam</span>
+          <span>Mesma direção e sentidos opostos: os módulos se subtraem</span>
+        </span>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Exemplo: cabo de guerra desigual</div>
+        <div class="ex-body">
+          <p>Duas pessoas empurram a mesma caixa. Ana aplica 80 N para a direita, e Bruno, 30 N para a esquerda.</p>
+          <p>O primeiro passo é <strong>escolher um sentido positivo</strong>. Adotando a direita como positiva:</p>
+          <p>F<sub>R</sub> = +80 N + (−30 N) = <strong>+50 N</strong></p>
+          <p>O sinal positivo confirma que a resultante aponta para a direita. A caixa se comporta como se uma única pessoa a empurrasse com 50 N, pois os 30 N de Bruno não desaparecem, apenas cancelam parte do esforço de Ana.</p>
+          <div class="ex-result">F<sub>R</sub> = 50 N → para a direita</div>
+        </div>
+      </div>
+
+      <p>
+        Quando a resultante é zero, isso não significa ausência de forças, e sim forças que se equilibram. Um lustre pendurado no teto tem peso e tensão de módulos iguais e sentidos opostos, de modo que a resultante é nula e o lustre permanece parado. Pelo mesmo motivo, um paraquedista em velocidade constante também tem resultante nula, ainda que esteja em pleno movimento.
+      </p>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">📐</span>
+        <p>
+          Quando as forças têm <strong>direções diferentes</strong>, a soma deixa de ser algébrica. É preciso compor os vetores pela regra do paralelogramo ou decompô-los em componentes <em>x</em> e <em>y</em>. Esse procedimento será tratado no texto sobre <a href="plano-inclinado.html">plano inclinado</a>, onde se torna indispensável.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Diagrama de corpo livre</h2>
+
+      <p>
+        A ferramenta que organiza toda a análise de forças é o <strong>diagrama de corpo livre</strong>, abreviado como DCL. Ele consiste em isolar mentalmente o corpo de interesse, apagar o resto do cenário e desenhar apenas as setas das forças que agem sobre ele.
+      </p>
+
+      <p>
+        O procedimento parece simples, e resolve o erro mais comum de quem começa, que é misturar as forças que o corpo sofre com as forças que o corpo exerce sobre os outros. No DCL entram apenas as primeiras. O livro sobre a mesa recebe peso e normal; a força que o livro faz na mesa existe, mas pertence ao diagrama da mesa, não ao do livro.
+      </p>
+
+      <div class="highlight-box">
+        <span class="hb-icon">✏️</span>
+        <p>
+          <strong>Como desenhar um DCL:</strong><br>
+          1. Represente o corpo como um ponto ou retângulo simples, sem o cenário ao redor.<br>
+          2. Percorra a lista de forças da seção 5 e pergunte, para cada uma, se existe um agente presente.<br>
+          3. Desenhe cada força como uma seta saindo do corpo, com comprimento proporcional ao módulo.<br>
+          4. Nomeie cada seta com o símbolo da força.<br>
+          5. Confira se toda seta desenhada tem um agente concreto e se nenhuma força ficou sobrando.
+        </p>
+      </div>
+
+      <p>
+        Um bom sinal de que o diagrama está correto é conseguir narrá-lo em voz alta: “a Terra puxa o bloco para baixo, a mesa o empurra para cima com a mesma intensidade, a mão o empurra para a direita e o atrito resiste para a esquerda”. Quando a narração faz sentido, o desenho costuma fazer também.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Resumo</h2>
+
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>A cinemática descreve como os corpos se movem; a dinâmica investiga por que eles se movem assim, buscando as causas.</li>
+          <li>Força não mantém o movimento, e sim o <strong>muda</strong>. Essa inversão levou séculos para se firmar, de Aristóteles a Galileu e Newton.</li>
+          <li>Força é a medida de uma <strong>interação</strong> entre dois corpos, com sempre um agente e um receptor.</li>
+          <li>Seus efeitos podem ser dinâmicos, quando mudam o movimento, ou estáticos, quando deformam o corpo.</li>
+          <li>É uma grandeza <strong>vetorial</strong>, definida por módulo, direção e sentido. Unidade SI: newton (1 N = 1 kg·m/s²).</li>
+          <li>Os principais tipos são peso, normal, tensão, atrito, elástica e empuxo.</li>
+          <li>A <strong>força resultante</strong> é a soma vetorial de todas as forças sobre o corpo, e determina o movimento.</li>
+          <li>O <strong>diagrama de corpo livre</strong> isola o corpo e representa apenas as forças que agem sobre ele.</li>
+          <li>Peso, normal, tensão e atrito são as forças mais recorrentes, cada uma com um texto detalhado, a começar por <a href="gravitacao-peso.html">Gravitação e Peso</a>.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="index.html">← Dinâmica</a>
+      <a href="primeira-lei.html" class="nav-next">Próximo: 1ª Lei →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+
+<script>
+(function() {
+  /* Curiosidades expansíveis */
+  document.querySelectorAll('.curiosity-toggle').forEach(function (btn) {
+    const target = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!target) return;
+    btn.addEventListener('click', function () {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.textContent = expanded ? 'Expandir' : 'Recolher';
+      target.hidden = expanded;
+    });
+  });
+
+  /* TOC: destaque da seção ativa no scroll */
+  const sections = document.querySelectorAll('.content-section');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', function() {
+    let current = '';
+    sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 120) current = sec.id; });
+    tocLinks.forEach(a => {
+      a.parentElement.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. dinamica/forcas-vetores.png
+     Dois vetores força: 20 N horizontal para a direita e 15 N a 45°. Setas, módulos e ângulo marcados. Fundo branco.
+
+  2. dinamica/forcas-composicao.png
+     Dois painéis: colinear (80 N - 30 N = 50 N) e não-colinear (paralelogramo). Visual limpo e colorido.
+
+  3. dinamica/dcl-livro-mesa.png
+     Livro sobre mesa com DCL ao lado: setas P (baixo) e N (cima) de igual tamanho, rotuladas.
+
+  4. dinamica/dcl-bloco-atrito.png
+     Bloco em superfície com 4 forças: P (baixo), N (cima), F aplicada (direita), Atrito (esquerda). Colorido.
+
+  5. dinamica/historia-forca.png
+     Linha do tempo: Aristóteles (séc. IV a.C.), Buridan e o ímpeto (séc. XIV), Galileu e planos inclinados (1638), Newton e o Principia (1687).
+
+  6. dinamica/bola-chute-forcas.png
+     Bola subindo após o chute, com a concepção errada (seta para cima "força do chute") riscada em vermelho ao lado do DCL correto (apenas P para baixo).
+-->
+
+</body>
+</html>

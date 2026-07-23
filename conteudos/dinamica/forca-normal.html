@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <script src="/js/theme.js"></script>
+  <meta name="description" content="Força normal: a força de contato perpendicular que o apoio exerce e que se ajusta à situação. Peso aparente, a balança no elevador, a queda livre e a força G.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Força Normal — Piras na Física">
+  <meta property="og:description" content="Força normal: a força de contato perpendicular que o apoio exerce e que se ajusta à situação. Peso aparente, a balança no elevador, a queda livre e a força G.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/conteudos/dinamica/forca-normal.html">
+  <title>Força Normal — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../shared.css">
+</head>
+<body data-tema="dinamica">
+
+<div id="header"></div>
+<script src="../../js/include.js"></script>
+
+<div class="content-crumb">
+  <nav class="breadcrumb">
+      <a href="../../index.html">Início</a><span>/</span>
+      <a href="../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="index.html">Dinâmica</a><span>/</span>
+      <span>Força Normal</span>
+    </nav>
+</div>
+
+<div class="content-hero">
+  <div class="content-hero-inner">
+    <h1 class="content-title">Força Normal</h1>
+    <p class="content-subtitle">O apoio que empurra de volta. Parece a força mais óbvia da física — até você descobrir que ela nunca é fixa e que é ela, não o peso, que a balança realmente mede.</p>
+    <span class="formula-highlight"><span class="vec">N</span> ⊥ à superfície</span>
+  </div>
+</div>
+
+<div class="content-wrapper">
+
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">O apoio que empurra de volta</a></li>
+      <li><a href="#s2">Sempre perpendicular</a></li>
+      <li><a href="#s3">A normal se ajusta</a></li>
+      <li><a href="#s4">Não é par com o peso</a></li>
+      <li><a href="#s5">Peso aparente: a balança mente</a></li>
+      <li><a href="#s6">Calculadora do elevador</a></li>
+      <li><a href="#s7">Casos extremos</a></li>
+      <li><a href="#s8">Resumo</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="gravitacao-peso.html">← Gravitação e Peso</a>
+      <a href="tensao.html" class="toc-next">Tensão →</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> O apoio que empurra de volta</h2>
+
+      <p>
+        No texto anterior vimos que o <a href="gravitacao-peso.html">peso</a> puxa todo corpo para baixo, sem parar. Então surge uma pergunta simples: por que o livro sobre a mesa não afunda até o centro da Terra? Alguma coisa o segura. Essa "coisa" é a <strong>força normal</strong> — a força que a mesa exerce de volta sobre o livro, empurrando-o para cima.
+      </p>
+
+      <p>
+        A força normal (<span class="vec">N</span>) é a força que qualquer superfície de apoio exerce sobre o corpo apoiado nela. Ela parece a mais banal das forças — "o chão me segura, e daí?" —, mas guarda duas surpresas que derrubam muito estudante: ela nem sempre aponta para cima, e quase nunca vale exatamente o peso. Entender a normal de verdade é o que permite resolver problemas de elevador, rampa e até entender por que astronautas flutuam.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Sempre perpendicular — e nascida de uma deformação</h2>
+
+      <p>
+        A palavra "normal", em geometria, significa <strong>perpendicular</strong>. E esse é o traço que define a força: a normal é <strong>sempre perpendicular à superfície de contato</strong>, apontando para fora dela, empurrando o corpo. Numa mesa horizontal ela aponta para cima; numa parede vertical, na horizontal; numa <a href="plano-inclinado.html">rampa</a>, perpendicular ao plano inclinado — e não para cima.
+      </p>
+
+      <div class="highlight-box danger">
+        <span class="hb-icon">⚠️</span>
+        <p>
+          O erro mais comum é achar que a normal aponta sempre "para cima" ou sempre "contra o peso". Não: ela aponta <strong>para fora da superfície</strong>, seja qual for a inclinação dela. Só coincide com a vertical quando a superfície é horizontal.
+        </p>
+      </div>
+
+      <p>
+        De onde ela vem? De uma deformação minúscula. Quando você apoia um livro na mesa, o tampo cede um tiquinho — como uma mola muito rígida — e reage empurrando o livro de volta. Por isso a normal é uma força de <strong>contato</strong>: nasce e some junto com o toque. Afaste o livro da mesa e a normal desaparece no mesmo instante. E, por vir dessa "mola", ela tem uma propriedade central: <strong>não tem valor fixo — ela se ajusta</strong> ao que a situação exige, exatamente como uma mola empurra mais quando é mais comprimida.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> A normal se ajusta: um mesmo bloco, três normais</h2>
+
+      <p>
+        A ideia de que "normal = peso" só vale num caso muito particular: superfície <strong>horizontal</strong>, sem outras forças verticais e sem aceleração vertical. Mude qualquer uma dessas condições e a normal muda de valor. Veja o mesmo bloco em três situações.
+      </p>
+
+      <div class="example-box">
+        <div class="ex-header">📋 Um bloco de 10 kg (peso = 100 N, com g = 10), três normais</div>
+        <div class="ex-body">
+          <p><strong>1. Só apoiado na mesa horizontal:</strong> a normal apenas equilibra o peso. N = 100 N.</p>
+          <p><strong>2. Com alguém empurrando-o para baixo com 40 N:</strong> a mesa reage a tudo que a comprime. N = 100 + 40 = 140 N.</p>
+          <p><strong>3. Numa rampa inclinada a 30°:</strong> só a componente do peso perpendicular ao plano comprime a superfície. N = 100 · cos30° ≈ 87 N.</p>
+          <div class="ex-result">A normal se ajusta: 140 N, 100 N ou 87 N para o mesmo bloco, conforme a situação.</div>
+        </div>
+      </div>
+
+      <p>
+        O caso da rampa é tão frequente que tem um texto só para ele — o <a href="plano-inclinado.html">plano inclinado</a>, onde N = mg·cosθ. Guarde a lição geral: para achar a normal, você nunca "decora" um valor; você escreve o equilíbrio das forças na direção perpendicular à superfície e descobre quanto a normal precisa valer.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Cuidado: normal e peso não são um par ação-reação</h2>
+
+      <p>
+        Sobre um livro parado na mesa agem duas forças verticais: o peso (para baixo) e a normal (para cima). Como têm o mesmo módulo e sentidos opostos, é quase irresistível dizer que uma é a reação da outra. <strong>Não são.</strong> A pista está numa regra da <a href="terceira-lei.html">Terceira Lei</a>: par ação-reação atua sempre em corpos <em>diferentes</em>, e aqui as duas forças atuam no <em>mesmo</em> corpo, o livro.
+      </p>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">🔎</span>
+        <p>
+          A reação do peso (Terra puxa o livro) é o livro puxando a Terra. A reação da normal (mesa empurra o livro) é o livro comprimindo a mesa. Peso e normal só têm módulos iguais aqui <strong>por acaso</strong> — porque o livro está em equilíbrio na horizontal (1ª Lei). No elevador acelerado, como veremos a seguir, esse "acaso" desaparece e N deixa de valer o peso.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Peso aparente: por que a balança mente</h2>
+
+      <p>
+        Aqui está a revelação mais interessante sobre a normal. Quando você sobe numa balança, o que ela mede <strong>não é o seu peso</strong> — é a força normal que ela precisa exercer para te sustentar. Nas condições normais, os dois valores coincidem, e por isso ninguém percebe a diferença. Mas basta acelerar para que eles se separem. Ao número que a balança marca damos o nome de <strong>peso aparente</strong>.
+      </p>
+
+      <p>
+        O laboratório perfeito para ver isso é o elevador. Imagine-se sobre uma balança dentro dele. Duas forças agem sobre você: o peso <em>P = mg</em> (para baixo) e a normal <em>N</em> da balança (para cima). O que a balança marca é <em>N</em>. Aplicando a <a href="segunda-lei.html">Segunda Lei</a> na vertical:
+      </p>
+
+      <div class="formula-box">
+        <span class="formula-label">Peso aparente no elevador (positivo para cima)</span>
+        <span class="formula-expr">N = m · (g + a)</span>
+        <span class="formula-legend">
+          <span>a &gt; 0 (acelera para cima): N &gt; mg — você se sente mais pesado</span>
+          <span>a = 0 (parado ou velocidade constante): N = mg — peso real</span>
+          <span>a &lt; 0 (acelera para baixo): N &lt; mg — você se sente mais leve</span>
+        </span>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-header">🛗 A mesma pessoa, quatro leituras na balança</div>
+        <div class="ex-body">
+          <p>Pessoa de 80 kg (peso real = 800 N, g = 10) numa balança dentro do elevador:</p>
+          <p><strong>Parado:</strong> N = 80 × 10 = 800 N. A balança marca o peso real.</p>
+          <p><strong>Arrancando para cima (a = 2 m/s²):</strong> N = 80 × 12 = 960 N. Marca 20% a mais.</p>
+          <p><strong>Arrancando para baixo (a = −2 m/s²):</strong> N = 80 × 8 = 640 N. Marca 20% a menos.</p>
+          <p><strong>Cabo rompido, queda livre (a = −10 m/s²):</strong> N = 80 × 0 = 0. A balança marca zero!</p>
+          <div class="ex-result">Em todos os casos o peso real continua 800 N. Quem muda é a normal — e é ela que a balança mostra.</div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> Calculadora do elevador</h2>
+
+      <p>Escolha uma massa e a aceleração do elevador (positiva para cima, negativa para baixo) e veja o que a balança marcaria.</p>
+
+      <div class="calc-box">
+        <h4>🛗 Peso aparente no elevador — N = m·(g + a)</h4>
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label>Massa m (kg)</label>
+            <input type="number" id="el-m" placeholder="ex: 80" value="80" min="0">
+          </div>
+          <div class="calc-field">
+            <label>Aceleração a (m/s²) <small>+ sobe / − desce</small></label>
+            <input type="number" id="el-a" placeholder="ex: 2 ou -2" value="2" step="0.1">
+          </div>
+          <div class="calc-field">
+            <label>g (m/s²)</label>
+            <input type="number" id="el-g" value="10" step="0.1">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcNormal()">Calcular</button>
+        <div class="calc-result" id="el-result"></div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Casos extremos: de zero à força esmagadora</h2>
+
+      <p>
+        Levada ao limite, a ideia de peso aparente explica algumas das experiências mais impressionantes da física. Em todas elas o peso real quase não muda — o que muda é a normal.
+      </p>
+
+      <div class="daily-grid">
+        <div class="daily-card">
+          <span class="dc-icon">🛰️</span>
+          <div class="dc-title">Astronautas na ISS (N = 0)</div>
+          <p class="dc-desc">A 400 km de altitude, a gravidade ainda é ~90% da do solo — o peso real é enorme. Eles flutuam porque a estação inteira está em queda livre permanente ao redor da Terra. Sem nada os empurrando de volta, a normal é zero: peso aparente nulo, "gravidade zero" só na aparência.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">✈️</span>
+          <div class="dc-title">Voo parabólico (zero-g na Terra)</div>
+          <p class="dc-desc">Aviões apelidados de "cometa vômito" mergulham em parábolas que reproduzem a queda livre. Durante ~25 segundos, tudo dentro flutua — é assim que se treinam astronautas e se filmam cenas de "gravidade zero" sem sair do planeta.</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🎢</span>
+          <div class="dc-title">Montanha-russa</div>
+          <p class="dc-desc">No topo de uma lombada, o assento te empurra menos e você sente o "friozinho na barriga" (normal baixa). No fundo de um vale, o assento te comprime com força e você se sente pesadíssimo (normal alta).</p>
+        </div>
+        <div class="daily-card">
+          <span class="dc-icon">🏎️</span>
+          <div class="dc-title">Fórmula 1 (N ≫ peso)</div>
+          <p class="dc-desc">Em alta velocidade, as asas empurram o carro contra a pista (downforce). A normal chega a superar várias vezes o peso do carro — em tese, haveria aderência suficiente para ele andar de cabeça para baixo num túnel. Mais normal significa mais atrito, e é isso que segura o carro nas curvas.</p>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <span class="hb-icon">🚀</span>
+        <p>
+          O oposto do peso aparente nulo é a <strong>"força G"</strong> dos pilotos e astronautas na decolagem. Quando o foguete acelera fortemente para cima, a normal do assento precisa ser muito maior que o peso — o corpo sente várias vezes o próprio peso. A 3 G, uma pessoa de 80 kg é empurrada pelo assento como se pesasse 240 kg. É a mesma fórmula N = m(g + a), agora com <em>a</em> grande e positivo.
+        </p>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Resumo</h2>
+
+      <div class="summary-box">
+        <h3>O que você aprendeu</h3>
+        <ul>
+          <li>A normal é a força que uma superfície de apoio exerce sobre o corpo, sempre <strong>perpendicular à superfície</strong> — nem sempre "para cima".</li>
+          <li>É uma força de contato, nascida de uma deformação minúscula; some quando o contato acaba.</li>
+          <li>Ela se ajusta: não é fixa nem sempre igual ao peso. Mesmo bloco pode ter N = 140, 100 ou 87 N conforme a situação.</li>
+          <li>Peso e normal, no mesmo corpo, <strong>não</strong> são par ação-reação — só se igualam por acaso, no equilíbrio horizontal.</li>
+          <li>A balança mede a normal (peso aparente), não o peso: N = m·(g + a) no elevador.</li>
+          <li>Casos extremos: queda livre e órbita dão N = 0 (a "gravidade zero" da ISS e do voo parabólico); downforce e força G dão N muito maior que o peso.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="gravitacao-peso.html">← Gravitação e Peso</a>
+      <a href="tensao.html" class="nav-next">Próximo: Tensão →</a>
+    </div>
+
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+
+<script>
+(function() {
+  /* Calculadora do elevador — peso aparente */
+  window.calcNormal = function() {
+    const m = parseFloat(document.getElementById('el-m').value);
+    const a = parseFloat(document.getElementById('el-a').value);
+    const g = parseFloat(document.getElementById('el-g').value);
+    const res = document.getElementById('el-result');
+
+    if (isNaN(m) || m < 0 || isNaN(a) || isNaN(g)) {
+      res.className = 'calc-result erro';
+      res.textContent = 'Preencha massa, aceleração e g.';
+      return;
+    }
+
+    const N = m * (g + a);
+    const P = m * g;
+    let sensacao;
+    if (N > P + 0.01) sensacao = 'mais pesado que o normal';
+    else if (N < P - 0.01) sensacao = (N <= 0.01 ? 'em "gravidade zero" (queda livre)' : 'mais leve que o normal');
+    else sensacao = 'com o peso normal';
+    const Nsafe = N < 0 ? 0 : N;
+
+    res.className = 'calc-result ok';
+    res.innerHTML =
+      'Peso real: P = m·g = ' + P.toFixed(0) + ' N (não muda)<br>' +
+      'Balança marca: N = m·(g + a) = ' + m + ' × (' + g + ' + ' + a + ') = <strong>' + Nsafe.toFixed(0) + ' N</strong><br>' +
+      'Você se sentiria <strong>' + sensacao + '</strong>.';
+  };
+
+  /* Curiosidades expansíveis */
+  document.querySelectorAll('.curiosity-toggle').forEach(function (btn) {
+    const target = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!target) return;
+    btn.addEventListener('click', function () {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.textContent = expanded ? 'Expandir' : 'Recolher';
+      target.hidden = expanded;
+    });
+  });
+
+  /* TOC: destaque da seção ativa no scroll */
+  const sections = document.querySelectorAll('.content-section');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', function() {
+    let current = '';
+    sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 120) current = sec.id; });
+    tocLinks.forEach(a => {
+      a.parentElement.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+})();
+</script>
+
+<!-- IMAGENS NECESSÁRIAS:
+  1. dinamica/normal-perpendicular.png
+     Três superfícies (horizontal, parede, rampa) com a seta da normal sempre perpendicular a cada uma, mostrando que nem sempre aponta para cima.
+
+  2. dinamica/normal-tres-casos.png
+     Mesmo bloco em três situações — mesa (N=P), empurrado para baixo (N>P) e na rampa (N=P·cosθ) — com as setas de N e P e os valores.
+
+  3. dinamica/peso-aparente-elevador.png
+     Pessoa sobre balança dentro de elevador em quatro estados: parado, subindo acelerando (marca mais), descendo acelerando (marca menos) e queda livre (marca zero).
+
+  4. dinamica/normal-extremos.png
+     Painéis: astronauta flutuando na ISS (N=0), avião em voo parabólico, F1 com setas de downforce (N grande), foguete na decolagem (força G).
+-->
+
+</body>
+</html>

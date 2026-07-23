@@ -50,7 +50,7 @@ disciplinas/fisica_1_mecanica/provas/prova_2_MRU_MRUV_Lancamentos/ -> /atividade
 # Reorganizacao 2026-07-19: secao "Leis de Newton" -> "Dinamica"
 # (nome mais preciso: a secao cobre forcas, atrito, plano inclinado e forca centripeta,
 #  nao apenas as tres leis; alinha com as demais secoes, que nomeiam areas da Fisica)
-conteudos/leis-newton/forcas.html -> /conteudos/dinamica/forcas.html
+conteudos/leis-newton/forcas.html -> /conteudos/dinamica/introducao_dinamica.html
 conteudos/leis-newton/primeira-lei.html -> /conteudos/dinamica/primeira-lei.html
 conteudos/leis-newton/segunda-lei.html -> /conteudos/dinamica/segunda-lei.html
 conteudos/leis-newton/terceira-lei.html -> /conteudos/dinamica/terceira-lei.html
