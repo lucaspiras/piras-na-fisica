@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Duas físicas do movimento: Aristóteles e Newton — Teste sobre Mecânica</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <script src="/js/theme.js"></script>
+  <meta name="description" content="As concepções aristotélica e newtoniana do movimento, e como cada uma responderia às questões do teste de Mecânica sobre força e movimento.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="../prova.css">
+  <style>
+    .artigo { font-size: 1.03rem; line-height: 1.75; }
+    .artigo h2 {
+      font-size: 1.4rem;
+      color: var(--titulo);
+      margin: 2.4rem 0 0.9rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid var(--border);
+    }
+    .artigo h3 { font-size: 1.12rem; color: var(--prova-forte); margin: 1.6rem 0 0.6rem; }
+    .artigo p { margin-bottom: 1rem; }
+    .artigo strong { color: var(--titulo); }
+
+    /* Vetor com seta por cima (não vem do style.css global) */
+    .vec { display: inline-block; position: relative; padding-top: 0.5em; line-height: 1; font-weight: 700; font-style: italic; }
+    .vec::before {
+      content: '\2192'; position: absolute; top: 0.05em; left: 0; right: 0;
+      text-align: center; font-size: 0.55em; line-height: 1; font-style: normal; font-weight: 400;
+    }
+
+    /* Duas colunas comparando as concepções */
+    .duas-visoes { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; margin: 1.4rem 0; }
+    .visao {
+      border: 1.5px solid var(--border);
+      border-radius: var(--prova-raio);
+      padding: 1.2rem 1.35rem;
+      background: var(--surface);
+    }
+    .visao.aristoteles { border-top: 5px solid var(--prova-foco); }
+    .visao.newton      { border-top: 5px solid var(--prova-ok); }
+    .visao h3 { margin-top: 0; }
+    .visao ul { padding-left: 1.2rem; margin: 0.4rem 0 0; }
+    .visao li { margin-bottom: 0.4rem; }
+
+    /* Equação-síntese de cada concepção */
+    .visao-eq { margin: 0.2rem 0 1rem; }
+    .visao-eq .eq {
+      display: inline-block;
+      font-family: var(--font-mono, monospace);
+      font-size: 1.5rem; font-weight: 800; color: var(--titulo);
+      background: var(--surface-2); border: 1.5px solid var(--border);
+      border-radius: 8px; padding: 0.3rem 1rem;
+    }
+    .visao.aristoteles .visao-eq .eq { border-color: var(--prova-foco); }
+    .visao.newton      .visao-eq .eq { border-color: var(--prova-ok); }
+    .visao-eq .eq-nota { display: block; margin-top: 0.45rem; font-size: 0.8rem; color: var(--text-muted); font-style: italic; line-height: 1.45; }
+
+    /* Bloco de discussão de uma questão */
+    .questao-caso {
+      background: var(--surface-2);
+      border: 1.5px solid var(--border);
+      border-radius: var(--prova-raio);
+      padding: 1.3rem 1.5rem;
+      margin: 1.4rem 0;
+    }
+    .questao-caso h3 { margin-top: 0; color: var(--prova-cor); }
+    .questao-caso .fig-opcoes {
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      padding: 0.6rem;
+      margin: 0.9rem 0;
+      overflow-x: auto;
+    }
+    .questao-caso .fig-opcoes img { display: block; max-width: 100%; min-width: 340px; height: auto; margin: 0 auto; }
+    .questao-caso .previsao { margin: 0.5rem 0; padding-left: 0.9rem; border-left: 3px solid var(--border); }
+    .questao-caso .previsao.ar { border-left-color: var(--prova-foco); }
+    .questao-caso .previsao.nw { border-left-color: var(--prova-ok); }
+    .questao-caso .previsao .quem { font-weight: 800; }
+    .questao-caso .previsao.ar .quem { color: var(--prova-foco); }
+    .questao-caso .previsao.nw .quem { color: var(--prova-ok); }
+
+    /* Tabela-resumo */
+    .tabela-resumo { width: 100%; border-collapse: collapse; margin: 1.2rem 0; font-size: 0.95rem; }
+    .tabela-resumo th, .tabela-resumo td {
+      border: 1px solid var(--border);
+      padding: 0.55rem 0.7rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    .tabela-resumo th { background: var(--surface-2); color: var(--titulo); }
+    .tabela-resumo caption { text-align: left; color: var(--text-muted); font-size: 0.88rem; margin-bottom: 0.4rem; }
+    .tabela-wrap { overflow-x: auto; }
+
+    .artigo-nav {
+      display: flex; flex-wrap: wrap; gap: 0.8rem;
+      margin: 2.5rem 0 0; padding-top: 1.4rem; border-top: 1px solid var(--border);
+    }
+    .artigo-nav a {
+      background: var(--surface-2); border: 1.5px solid var(--border);
+      border-radius: 999px; padding: 0.6rem 1.3rem; color: var(--prova-cor);
+      font-weight: 700; font-size: 0.95rem;
+    }
+    .artigo-nav a:hover { border-color: var(--prova-cor); }
+
+    @media (max-width: 640px) { .duas-visoes { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Ir para o conteúdo</a>
+
+<div id="header"></div>
+
+<main id="main-content" role="main">
+
+  <div class="prova-hero">
+    <h1>Duas físicas do movimento</h1>
+    <p class="header-subtitle">As concepções aristotélica e newtoniana por trás do teste de Mecânica</p>
+  </div>
+
+  <article class="artigo">
+
+    <p>
+      O <a href="index.html">teste sobre força e movimento</a> não cobra cálculo. Ele investiga <strong>como você pensa o movimento</strong>. Por trás de cada questão existem duas maneiras de explicar as relações entre força e movimento: as visões aristotélica e newtoniana. Entender essas duas visões ajuda a ler o seu resultado e, principalmente, a perceber onde a intuição do dia a dia nos engana. 
+    </p>
+
+    <h2>1. As duas visões, lado a lado</h2>
+
+    <div class="duas-visoes">
+      <div class="visao aristoteles">
+        <h3>Concepção aristotélica</h3>
+        <p>É a leitura do senso comum, sistematizada por Aristóteles no século IV a.C. e dominante por quase dois mil anos.</p>
+        <div class="visao-eq">
+          <span class="eq"><span class="vec">F</span><sub>res</sub> = m·<span class="vec">v</span></span>
+          <span class="eq-nota">Aristóteles nunca escreveu esta equação — é uma forma moderna de resumir sua ideia: a força seria proporcional à <strong>velocidade</strong>.</span>
+        </div>
+        <ul>
+          <li>Todo movimento exige uma <strong>força no sentido do movimento</strong> — um "motor" que empurra o corpo enquanto ele anda.</li>
+          <li>A <strong>velocidade acompanha a força</strong>: mais força, mais velocidade; força constante, velocidade constante.</li>
+          <li>Cessando a força que empurra, o movimento <strong>cessa</strong>.</li>
+          <li>O repouso é o estado natural dos corpos na Terra.</li>
+        </ul>
+      </div>
+      <div class="visao newton">
+        <h3>Concepção newtoniana</h3>
+        <p>É a mecânica construída por Galileu e Newton entre os séculos XVII e XVIII, a que a física usa até hoje.</p>
+        <div class="visao-eq">
+          <span class="eq"><span class="vec">F</span><sub>res</sub> = m·<span class="vec">a</span></span>
+          <span class="eq-nota">A 2ª lei de Newton: a força é proporcional à <strong>aceleração</strong>, não à velocidade.</span>
+        </div>
+        <ul>
+          <li>A força não mantém o movimento: ela o <strong>muda</strong>. Sem força resultante, o corpo mantém a velocidade que já tem (inércia).</li>
+          <li>A força resultante causa <strong>aceleração</strong>, não velocidade: ela mede o quanto a velocidade <em>varia</em>.</li>
+          <li>Força resultante nula significa <strong>velocidade constante</strong> — inclusive um corpo que segue em linha reta sem nada empurrando.</li>
+          <li>Um corpo lançado só sofre a <strong>gravidade</strong> (e a resistência do ar); não existe "força do lançamento" viajando com ele.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>2. A concepção aristotélica em detalhe</h2>
+
+    <p>
+      Aristóteles distinguia dois tipos de movimento. O <strong>movimento natural</strong> era a tendência de cada corpo a buscar seu lugar próprio: a pedra cai porque seu lugar é embaixo, a chama sobe porque o dela é em cima. Já o <strong>movimento violento</strong> — empurrar, puxar, lançar — era todo movimento contrário a essa tendência, e exigia um <strong>motor em contato permanente</strong> com o corpo. Enquanto o motor age, há movimento; quando ele para, o movimento acaba.
+    </p>
+
+    <p>
+      Essa ideia descreve muito bem a vida cotidiana. O armário só desliza enquanto você o empurra. A bicicleta perde velocidade quando você deixa de pedalar. É uma leitura honesta da experiência — e é por isso que ela reaparece, espontaneamente, na cabeça de quase todo estudante.
+    </p>
+
+    <p>
+      O ponto fraco sempre foi o <strong>projétil</strong>. Se todo movimento violento precisa de um motor em contato, o que empurra a flecha depois que ela deixa o arco? No século XIV, Jean Buridan respondeu com a <strong>teoria do ímpeto</strong>: o lançamento transferiria ao corpo uma espécie de "impulso interno" que o manteria em movimento e se gastaria aos poucos, até acabar. É uma versão mais refinada da mesma ideia — e é exatamente a resposta que a maioria dos estudantes dá hoje sobre a bola chutada. No teste, ela aparece nas alternativas em que o corpo <em>"continua se movendo por um tempo e depois para"</em>.
+    </p>
+
+    <h2>3. A concepção newtoniana em detalhe</h2>
+
+    <p>
+      A virada começou com <strong>Galileu</strong>, que inverteu a pergunta. Em vez de perguntar o que mantém um corpo em movimento, perguntou o que o faz <em>parar</em> — e respondeu: o atrito. Num plano cada vez mais liso, uma esfera vai cada vez mais longe; num plano ideal, sem atrito, ela nunca pararia. O movimento não precisa de causa para <strong>continuar</strong>, apenas para <strong>mudar</strong>.
+    </p>
+
+    <p>
+      <strong>Newton</strong> transformou isso em lei. Pela <strong>1ª lei (inércia)</strong>, um corpo livre de força resultante mantém sua velocidade — parado se estava parado, em linha reta e velocidade constante se já se movia. Pela <strong>2ª lei</strong>, a força resultante não fixa a velocidade, e sim a aceleração: ela mede o quanto a velocidade <em>muda</em>. Disso decorre a chave para ler o teste: <strong>velocidade constante ⇒ força resultante nula</strong>, e <strong>força resultante constante ⇒ velocidade que varia uniformemente</strong>. Um corpo lançado, já solto da mão, sofre apenas o peso.
+    </p>
+
+    <h2>4. As questões vistas pelas duas lentes</h2>
+
+    <p>Veja como cada concepção responderia a alguns grupos de questões do teste. A divergência entre elas é justamente o que o teste mede.</p>
+
+    <div class="questao-caso">
+      <h3>A bola lançada para cima (questões 1 a 3)</h3>
+      <p>Uma bola é lançada verticalmente. <strong>A</strong> é um ponto da subida, <strong>B</strong> o ponto mais alto e <strong>C</strong> um ponto da descida. Quais forças agem sobre ela em cada ponto?</p>
+      <div class="fig-opcoes">
+        <img src="img/q1_resp.jpg" alt="Cinco diagramas de forças para a bola subindo, de A a E, com combinações de setas para cima e para baixo.">
+      </div>
+      <p class="previsao ar"><span class="quem">Aristóteles / ímpeto:</span> se a bola sobe, é porque há uma força para cima maior que o peso — o "impulso" do lançamento carregado dentro dela (uma seta para cima maior que a do peso, esquema&nbsp;D). No ponto mais alto, esse impulso já se igualou ao peso: as forças se equilibram, ou não há força nenhuma. Na descida, muitos ainda desenham <em>duas</em> setas para baixo — o peso e a "força da velocidade" que a bola teria adquirido.</p>
+      <p class="previsao nw"><span class="quem">Newton:</span> assim que a bola deixa a mão, a única força é o <strong>peso, para baixo</strong>, igual na subida, no topo e na descida (esquema com uma só seta para baixo). Ela sobe porque <em>já tem</em> velocidade para cima, não porque haja uma força a empurrando. No topo a velocidade é zero por um instante, mas o peso continua agindo.</p>
+      <p>Na descida (questão 3), quem imagina só o peso acaba dando a mesma resposta que Newton — é o ponto em que as duas visões mais se aproximam.</p>
+    </div>
+
+    <div class="questao-caso">
+      <h3>A caixa empurrada e o elevador (questões 7 a 14)</h3>
+      <p>Um indivíduo empurra uma caixa (com atrito); um motor levanta um elevador. Em vários momentos a força aplicada é <em>um pouco maior</em> que o atrito/peso, ou passa a <em>igualá-lo</em>.</p>
+      <div class="fig-opcoes">
+        <img src="img/fig_q_10_14.jpg" alt="Um elevador suspenso por um cabo ligado a um motor.">
+      </div>
+      <p class="previsao ar"><span class="quem">Aristóteles:</span> como a velocidade acompanha a força, uma força <em>pouco</em> maior que o atrito dá uma velocidade <strong>pequena e constante</strong>; diminuir a força faz a velocidade <strong>diminuir</strong>. E quando a força aplicada <strong>iguala</strong> o atrito ou o peso, não sobra motor: o corpo <strong>para</strong> — de imediato, na versão estrita, ou depois de um tempo, na versão do ímpeto.</p>
+      <p class="previsao nw"><span class="quem">Newton:</span> o que importa é a força <strong>resultante</strong>. Se a força aplicada é maior que o atrito, a resultante não é nula: a caixa <strong>acelera</strong>, ganhando velocidade, por menor que seja a diferença. E quando a força aplicada iguala o atrito/peso, a resultante é <strong>zero</strong>: o corpo <strong>continua com velocidade constante</strong>, sem parar. É aqui que a intuição mais falha.</p>
+    </div>
+
+    <div class="questao-caso">
+      <h3>O lançamento oblíquo (questões 17 a 19)</h3>
+      <p>Uma pedra é arremessada obliquamente e descreve uma parábola: <strong>A</strong> na subida, <strong>B</strong> no ponto mais alto, <strong>C</strong> na descida.</p>
+      <div class="fig-opcoes">
+        <img src="img/fig_q_17-19.jpg" alt="Uma pessoa arremessa uma pedra obliquamente; a trajetória é uma parábola, com os pontos A, B e C.">
+      </div>
+      <p class="previsao ar"><span class="quem">Aristóteles / ímpeto:</span> há uma força <strong>na direção do movimento</strong> (a diagonal da subida, a horizontal no topo, a diagonal da descida) somada ao peso. É o impulso do arremesso "empurrando" a pedra ao longo da curva.</p>
+      <p class="previsao nw"><span class="quem">Newton:</span> em <em>todos</em> os pontos, a única força é o <strong>peso, vertical para baixo</strong>. A pedra avança na horizontal por inércia; a gravidade apenas encurva sua trajetória. Não existe força na direção do movimento.</p>
+    </div>
+
+    <div class="questao-caso">
+      <h3>O satélite em órbita (questão 5)</h3>
+      <p>Um satélite descreve um movimento circular uniforme em torno da Terra.</p>
+      <div class="fig-opcoes">
+        <img src="img/fig_q5.jpg" alt="Cinco figuras, de A a E, com a Terra ao centro e um satélite em órbita circular, com diferentes setas de força.">
+      </div>
+      <p class="previsao ar"><span class="quem">Aristóteles / ímpeto:</span> algo precisa empurrar o satélite <strong>no sentido do movimento</strong> para mantê-lo girando (uma seta tangente à órbita) — com ou sem a gravidade somada, conforme a versão.</p>
+      <p class="previsao nw"><span class="quem">Newton:</span> a única força é a <strong>gravidade, apontando para a Terra</strong> (centrípeta). Ela não mantém a velocidade — muda continuamente a <em>direção</em> do movimento, encurvando a trajetória numa circunferência. A velocidade se mantém sozinha, por inércia.</p>
+    </div>
+
+    <h2>5. Resumo das previsões</h2>
+
+    <div class="tabela-wrap">
+      <table class="tabela-resumo">
+        <caption>O mesmo fato, explicado de dois modos. A coluna da direita é a física correta.</caption>
+        <thead>
+          <tr>
+            <th>Situação</th>
+            <th>Aristóteles / ímpeto</th>
+            <th>Newton</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Corpo lançado, já solto</td>
+            <td>Carrega uma força no sentido do movimento (o impulso do lançamento)</td>
+            <td>Só o peso age; a velocidade se mantém por inércia</td>
+          </tr>
+          <tr>
+            <td>Força aplicada &gt; atrito, mas constante</td>
+            <td>Velocidade constante (proporcional à força)</td>
+            <td>Velocidade aumenta (há aceleração)</td>
+          </tr>
+          <tr>
+            <td>Força aplicada = atrito / peso</td>
+            <td>O corpo para (na hora, ou depois de um tempo)</td>
+            <td>Velocidade constante (resultante nula)</td>
+          </tr>
+          <tr>
+            <td>Corpo sobe / avança</td>
+            <td>Há uma força empurrando no sentido do movimento</td>
+            <td>Só há força se a velocidade estiver mudando</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      Se, ao ler suas respostas no resultado, você reconhecer o padrão "há sempre uma força no sentido do movimento", saiba que está em ótima companhia: foi a resposta oficial da física por vinte séculos. Reconhecê-la é o primeiro passo para trocá-la pela de Newton.
+    </p>
+
+    <div class="artigo-nav">
+      <a href="consulta.html">← Consultar meu resultado</a>
+      <a href="/conteudos/dinamica/introducao_dinamica.html">Introdução à Dinâmica</a>
+      <a href="/conteudos/dinamica/primeira-lei.html">1ª Lei de Newton →</a>
+    </div>
+
+  </article>
+
+</main>
+
+<footer></footer>
+
+<script src="/js/include.js"></script>
+</body>
+</html>

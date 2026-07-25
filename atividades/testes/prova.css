@@ -582,6 +582,68 @@ main {
 
 #result-section { display: none; }
 
+/* ---- Perfil conceitual (newtoniano × aristotélico) ---- */
+.perfil-panel {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-left: 5px solid var(--prova-cor);
+  border-radius: var(--prova-raio);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+.perfil-panel.perfil-newtoniana   { border-left-color: var(--prova-ok); }
+.perfil-panel.perfil-aristotelica { border-left-color: var(--prova-foco); }
+.perfil-panel.perfil-mista        { border-left-color: var(--roxo); }
+
+.perfil-titulo {
+  font-size: 1.15rem;
+  color: var(--titulo);
+  margin-bottom: 1rem;
+  line-height: 1.25;
+}
+
+.perfil-scores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+}
+.perfil-score {
+  flex: 1 1 200px;
+  background: var(--surface-2);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  text-align: center;
+}
+.perfil-num { display: block; font-size: 2rem; font-weight: 800; color: var(--prova-cor); line-height: 1.1; }
+.perfil-den { font-size: 1.1rem; font-weight: 700; color: var(--text-muted); }
+.perfil-lab { display: block; font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+.perfil-corpo { font-size: 0.99rem; margin-bottom: 0.8rem; }
+.perfil-nota {
+  font-size: 0.93rem;
+  background: var(--surface-2);
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 0.8rem;
+}
+.perfil-link { font-weight: 700; margin-bottom: 0.7rem; }
+.perfil-link a { color: var(--prova-cor); }
+.perfil-aviso { font-size: 0.82rem; color: var(--text-muted); font-style: italic; margin: 0; }
+
+/* Etiqueta de concepção da resposta do aluno (no cabeçalho de cada questão) */
+.camp-badge { text-transform: none; letter-spacing: 0; }
+.camp-newton { background: var(--ok-bg);     color: var(--ok-text);     border: 1px solid var(--ok-border); }
+.camp-arist  { background: var(--warn-bg);   color: var(--warn-text);   border: 1px solid var(--warn-border); }
+.camp-impeto { background: var(--info-bg);   color: var(--info-text);   border: 1px solid var(--info-border); }
+.camp-ambas  { background: var(--ok-bg);     color: var(--ok-text);     border: 1px solid var(--ok-border); }
+.camp-outra  { background: var(--surface-2); color: var(--text-muted);  border: 1px solid var(--border); }
+
+/* Marcação da alternativa que representa a visão aristotélica / do ímpeto */
+.result-badge.arist-badge { color: var(--prova-foco); }
+
 /* ---- Rodapé próprio da prova (quando existir) ---- */
 .prova-rodape {
   text-align: center;

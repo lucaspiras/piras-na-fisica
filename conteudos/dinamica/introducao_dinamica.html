@@ -27,6 +27,16 @@
   </script>
   <link rel="stylesheet" href="../../css/style.css">
   <link rel="stylesheet" href="../shared.css">
+  <style>
+    .chute-figuras { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.75rem 0; }
+    .chute-parte { margin: 0; display: flex; flex-direction: column; }
+    .chute-parte img { width: 100%; height: auto; display: block; border-radius: 10px; border: 1px solid var(--border); }
+    .chute-parte figcaption { margin-top: 0.7rem; padding: 0.6rem 0.8rem; background: var(--surface-2); border-radius: 8px; border-left: 4px solid var(--border); font-size: 0.92rem; color: var(--text-muted); }
+    .chute-parte .leg-chute { border-left-color: #ef4444; }
+    .chute-parte .leg-gravidade { border-left-color: #3b82f6; }
+    .chute-parte figcaption strong { color: var(--texto); }
+    @media (max-width: 560px) { .chute-figuras { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body data-tema="dinamica">
 
@@ -84,11 +94,11 @@
       </p>
 
       <p>
-        A <strong>dinâmica</strong> é a parte da mecânica que investiga esse enredo, as causas dos movimentos. Ela liga o movimento que observamos às interações entre os corpos. Dentro da dinâmica, podemos atribuir as mudanças no movimento dos objetos às forças que atuam sobre eles. A grandeza que mede essas interações é a <strong>força</strong>.
+        A <strong>dinâmica</strong> é a parte da mecânica que investiga esse enredo, as causas dos movimentos. Ela liga o movimento que observamos às interações entre os corpos. Dentro da dinâmica, podemos atribuir as mudanças no movimento dos objetos às <strong>forças</strong> que atuam sobre eles. As <strong>leis de Newton</strong> são o conjunto de leis que descrevem como as forças afetam o movimento dos objetos.
       </p>
 
       <p>
-        Ao longo deste texto, será apresentada primeiro a longa história por trás dessa ideia. Na sequência, virão a definição de força e sua natureza vetorial, os principais tipos de força, a noção de força resultante e, por fim, o diagrama de corpo livre, a ferramenta que organiza toda a análise.
+        Ao longo deste texto, será apresentada inicialmente um pouco da longa história por trás dessa ideia. Na sequência, virão a definição de força e sua natureza vetorial, os principais tipos de força, a noção de força resultante e, por fim, o diagrama de corpo livre, a ferramenta que organiza toda a análise.
       </p>
 
       <div class="concept-grid">
@@ -121,6 +131,16 @@
           <p>
             Cabe perceber que o pé já não toca mais a bola. A força do chute existiu durante o contato, que durou alguns centésimos de segundo, e terminou no instante em que o pé se separou. A partir daí, a única força relevante sobre a bola é o peso, somado à resistência do ar. Não existe força do chute viajando dentro da bola.
           </p>
+          <div class="chute-figuras">
+            <figure class="chute-parte">
+              <img src="img/introducao_1_caixa_bola_parte_11.PNG" alt="O menino chuta a bola e uma seta vermelha apontando para cima representa a força do pé sobre a bola.">
+              <figcaption class="leg-chute"><strong>Durante o chute:</strong> enquanto o pé toca a bola, ele faz força nela (seta vermelha) e a lança para cima.</figcaption>
+            </figure>
+            <figure class="chute-parte">
+              <img src="img/introducao_1_caixa_bola_2.PNG" alt="A bola já está no ar, longe do menino, e apenas uma seta azul apontando para baixo representa a força da gravidade.">
+              <figcaption class="leg-gravidade"><strong>Depois do chute:</strong> o pé já não toca a bola. Resta apenas o peso, a força da gravidade (seta azul).</figcaption>
+            </figure>
+          </div>
           <p>
             O que o chute deixou na bola não foi força, e sim velocidade. Velocidade, como será visto na Primeira Lei de Newton, não precisa de força para continuar existindo.
           </p>
@@ -148,17 +168,17 @@
       </p>
 
       <p>
-        A virada veio com <strong>Galileu Galilei</strong>, no início do século XVII. Em vez de perguntar o que mantém o corpo em movimento, Galileu observou esferas descendo e subindo por planos inclinados e notou um padrão: quanto mais liso o plano, mais longe a esfera ia. No limite de um plano perfeitamente liso e horizontal, ela não pararia nunca. O atrito, antes tratado como detalhe desprezível, era a verdadeira causa da parada. Movimento não precisa de força para continuar, e sim para mudar.
+        Uma nova perspectiva surge a partir de <strong>Galileu Galilei</strong>, no início do século XVII. Ele propõe que os objetos não precisam de força para continuar em movimento. Contrariando Aristóteles, ele propõe que a tendência dos objetos é que estando em movimento a tendência dos objetos é continuar em movimento. Ele buscou corroborar essa ideia com experimentos envolvendo planos inclinados. Eles mostraram que ao reduzir o atrito, os objetos passavam a se mover por mais tempo, indicando que é a força de atrito que faz com que eles parem e não uma tendência natural. 
       </p>
 
       <p>
-        Foi <strong>Isaac Newton</strong> quem transformou essa intuição num sistema completo. Em 1687, no <em>Philosophiæ Naturalis Principia Mathematica</em>, publicou as três leis que ligam força e movimento. Em conjunto com a gravitação universal, essas leis passaram a explicar com a mesma matemática desde a queda de uma pedra até a órbita dos planetas. Dessa obra vêm a definição de força usada até hoje e a unidade que leva o nome dele.
+        Foi <strong>Isaac Newton</strong> quem transformou essa intuição em um sistema completo. Em 1687, no <em>Philosophiæ Naturalis Principia Mathematica</em>, publicou as três leis que conectam força e movimento. Em conjunto com a gravitação universal, essas leis passaram a explicar com a mesma matemática desde a queda de uma pedra até a órbita dos planetas. Dessa obra vem a definição de força usada até hoje.
       </p>
 
       <div class="highlight-box">
         <span class="hb-icon">💡</span>
         <p>
-          A dinâmica inverte o senso comum num ponto: força não é o que mantém o movimento, e sim o que o <strong>muda</strong>. A frase pode soar estranha na primeira leitura, porque contraria vinte séculos de intuição. Convém guardá-la, pois organiza tudo o que vem a seguir.
+          A dinâmica newtoniana inverte o senso comum num ponto: força não é o que mantém o movimento, e sim o que o <strong>muda</strong>. A frase pode soar estranha na primeira leitura, porque contraria vinte séculos de intuição. Convém guardá-la, pois organiza tudo o que vem a seguir.
         </p>
       </div>
 
@@ -267,7 +287,7 @@
       </div>
 
       <p>
-        Na prática, uma força é representada por uma seta desenhada a partir do corpo: o comprimento indica o módulo, a inclinação indica a direção e a ponta indica o sentido. Duas setas de mesmo tamanho apontando para lados opostos representam forças que se cancelam. É desenhando essas setas que se resolve boa parte dos problemas de dinâmica.
+        Na prática, uma força é representada por uma seta desenhada a partir do corpo: o comprimento indica o módulo, a inclinação indica a direção e a ponta indica o sentido. Duas setas de mesmo tamanho apontando para lados opostos representam forças de mesmo módulo e direção, mas sentidos opostos. É desenhando essas setas que se resolve boa parte dos problemas de dinâmica.
       </p>
 
     </section>

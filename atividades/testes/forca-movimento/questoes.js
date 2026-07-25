@@ -17,7 +17,7 @@ const BLOCOS = [
     titulo: 'Questões 1 a 3',
     intro: 'A figura se refere a uma bola lançada verticalmente para cima. <strong>A</strong> é um ponto da subida, <strong>B</strong> é o ponto mais alto da trajetória e <strong>C</strong> é um ponto da descida.',
     figura: {
-      src: 'fig_1_q123.jpg',
+      src: 'img/fig_1_q123.jpg',
       alt: 'Uma pessoa lança uma bola verticalmente para cima. A trajetória é indicada por uma linha tracejada, com o ponto A na subida, o ponto B no alto e o ponto C na descida.'
     },
     questoes: [
@@ -26,7 +26,7 @@ const BLOCOS = [
         enunciado: 'No ponto A, quando a bola está subindo, qual dos desenhos melhor representa a(s) força(s) exercidas na bola?',
         tipo: 'imagem',
         opcoesImg: {
-          src: 'q1_resp.jpg',
+          src: 'img/q1_resp.jpg',
           alt: 'Cinco diagramas de forças sobre a bola, rotulados de A a E: (A) uma seta para cima; (B) uma seta grande para cima e uma menor para baixo; (C) apenas uma seta para baixo; (D) uma seta para cima e uma menor para baixo; (E) uma seta para cima e uma para baixo, de tamanhos iguais.'
         },
         letras: ['a', 'b', 'c', 'd', 'e']
@@ -36,7 +36,7 @@ const BLOCOS = [
         enunciado: 'No ponto B, quando a bola atinge o ponto mais alto da trajetória, qual dos desenhos melhor representa a(s) força(s) exercidas na bola?',
         tipo: 'imagem',
         opcoesImg: {
-          src: 'q2_resp.jpg',
+          src: 'img/q2_resp.jpg',
           alt: 'Cinco diagramas rotulados de A a E: (A) uma seta longa para cima e duas menores para baixo; (B) uma seta para cima e uma para baixo, de tamanhos iguais; (C) uma seta curta para cima e uma longa para baixo; (D) apenas uma seta para baixo; (E) nenhuma seta, indicando força nula.'
         },
         letras: ['a', 'b', 'c', 'd', 'e']
@@ -46,7 +46,7 @@ const BLOCOS = [
         enunciado: 'No ponto C, quando a bola está descendo, qual dos desenhos melhor representa a(s) força(s) exercidas na bola?',
         tipo: 'imagem',
         opcoesImg: {
-          src: 'q3_resp.jpg',
+          src: 'img/q3_resp.jpg',
           alt: 'Cinco diagramas rotulados de A a E: (A) apenas uma seta para baixo; (B) uma seta para cima e uma para baixo; (C) duas setas para baixo; (D) nenhuma seta, indicando força nula; (E) uma seta para cima e duas para baixo.'
         },
         letras: ['a', 'b', 'c', 'd', 'e']
@@ -58,7 +58,7 @@ const BLOCOS = [
     titulo: 'Questão 4',
     intro: 'A figura se refere a um corpo que foi abandonado em repouso sobre uma rampa.',
     figura: {
-      src: 'fig_q4.jpg',
+      src: 'img/fig_q4.jpg',
       alt: 'Um corpo desliza sobre uma rampa inclinada, mostrado em três posições sucessivas, com setas indicando o sentido do movimento rampa abaixo.'
     },
     questoes: [
@@ -83,7 +83,7 @@ const BLOCOS = [
         enunciado: 'As figuras se referem a um satélite descrevendo movimento circular uniforme em torno da Terra. As setas simbolizam as forças exercidas sobre o satélite. Qual das figuras melhor representa a(s) força(s) sobre o satélite?',
         tipo: 'imagem',
         opcoesImg: {
-          src: 'fig_q5.jpg',
+          src: 'img/fig_q5.jpg',
           alt: 'Cinco figuras rotuladas de A a E, cada uma com a Terra ao centro e um satélite sobre uma órbita circular tracejada, com diferentes setas representando as forças sobre o satélite.'
         },
         letras: ['a', 'b', 'c', 'd', 'e']
@@ -99,7 +99,7 @@ const BLOCOS = [
         enunciado: 'As figuras se referem a um menino que faz girar, em uma trajetória circular em um plano vertical, uma pedra presa ao extremo de um fio. Em qual das figuras a(s) força(s) sobre a pedra está(ão) melhor representada(s) pela(s) seta(s)?',
         tipo: 'imagem',
         opcoesImg: {
-          src: 'fig_q6.jpg',
+          src: 'img/fig_q6.jpg',
           alt: 'Cinco figuras rotuladas de A a E, cada uma mostrando um menino girando uma pedra presa a um fio em trajetória circular vertical, com diferentes setas representando as forças sobre a pedra.'
         },
         letras: ['a', 'b', 'c', 'd', 'e']
@@ -111,7 +111,7 @@ const BLOCOS = [
     titulo: 'Questões 7 a 9',
     intro: 'A figura se refere a um indivíduo que empurra uma caixa sobre uma superfície horizontal, onde existe atrito.',
     figura: {
-      src: 'fig_q_789.jpg',
+      src: 'img/fig_q_789.jpg',
       alt: 'Um indivíduo empurra uma caixa sobre uma superfície horizontal.'
     },
     questoes: [
@@ -152,7 +152,7 @@ const BLOCOS = [
     titulo: 'Questões 10 a 14',
     intro: 'A figura se refere a um elevador movimentado por um motor.',
     figura: {
-      src: 'fig_q_10_14.jpg',
+      src: 'img/fig_q_10_14.jpg',
       alt: 'Um elevador suspenso por um cabo ligado a um motor.'
     },
     questoes: [
@@ -213,7 +213,7 @@ const BLOCOS = [
     titulo: 'Questão 15',
     intro: 'A figura se refere a um indivíduo que, do topo de uma torre, arremessa para baixo uma bola.',
     figura: {
-      src: 'fig_q_15.jpg',
+      src: 'img/fig_q_15.jpg',
       alt: 'Do alto de uma torre, uma pessoa arremessa uma bola para baixo; os pontos A, B e C marcam posições sucessivas durante a queda.'
     },
     questoes: [
@@ -222,7 +222,7 @@ const BLOCOS = [
         enunciado: 'A figura se refere a um indivíduo que, do topo de uma torre, arremessa para baixo uma bola. Os pontos A, B e C são pontos da trajetória da bola após o arremesso. É desprezível a força de resistência do ar sobre a bola. As setas nos esquemas seguintes simbolizam as forças exercidas sobre a bola nos pontos A, B e C. Qual dos esquemas seguintes melhor representa a(s) força(s) sobre a bola?',
         tipo: 'imagem',
         opcoesImg: {
-          src: 'q15_resp.jpg',
+          src: 'img/q15_resp.jpg',
           alt: 'Três esquemas rotulados A, B e C. Cada um mostra a bola nos pontos A, B e C com setas para baixo: no esquema A as setas crescem de tamanho ponto a ponto; no esquema B as setas têm o mesmo tamanho nos três pontos; no esquema C as setas também crescem.'
         },
         letras: ['a', 'b', 'c']
@@ -234,7 +234,7 @@ const BLOCOS = [
     titulo: 'Questão 16',
     intro: 'A figura se refere a um indivíduo que lança com grande velocidade uma bola sobre uma superfície horizontal com atrito.',
     figura: {
-      src: 'fig_q_16.jpg',
+      src: 'img/fig_q_16.jpg',
       alt: 'Uma pessoa lança uma bola sobre uma superfície horizontal com atrito; os pontos A e B ficam no trecho em que a bola ainda rola e no ponto C a bola está parada.'
     },
     questoes: [
@@ -243,7 +243,7 @@ const BLOCOS = [
         enunciado: 'A figura se refere a um indivíduo que lança com grande velocidade uma bola sobre uma superfície horizontal com atrito. Os pontos A e B são pontos da trajetória da bola após o lançamento, quando a bola já está rolando; no ponto C a bola está finalmente em repouso. As setas nos desenhos seguintes simbolizam as forças horizontais sobre a bola nos pontos A, B e C. Qual dos esquemas melhor representa a(s) força(s) sobre a bola?',
         tipo: 'imagem',
         opcoesImg: {
-          src: 'q16_resp.jpg',
+          src: 'img/q16_resp.jpg',
           alt: 'Cinco esquemas rotulados de A a E mostrando as forças horizontais sobre a bola nos pontos A, B e C, combinando setas para a frente e para trás; em alguns esquemas não há seta alguma no ponto C.'
         },
         letras: ['a', 'b', 'c', 'd', 'e']
@@ -255,7 +255,7 @@ const BLOCOS = [
     titulo: 'Questões 17 a 19',
     intro: 'A figura se refere a uma pedra arremessada obliquamente. <strong>A</strong> é um ponto da subida, <strong>B</strong> é o ponto mais alto da trajetória e <strong>C</strong> é um ponto da descida.',
     figura: {
-      src: 'fig_q_17-19.jpg',
+      src: 'img/fig_q_17-19.jpg',
       alt: 'Uma pessoa arremessa uma pedra obliquamente; a trajetória é uma parábola tracejada, com o ponto A na subida, o ponto B no ponto mais alto e o ponto C na descida.'
     },
     questoes: [
@@ -264,7 +264,7 @@ const BLOCOS = [
         enunciado: 'No ponto A, qual é o esquema que melhor representa a(s) força(s) sobre a pedra?',
         tipo: 'imagem',
         opcoesImg: {
-          src: 'q17_resp.jpg',
+          src: 'img/q17_resp.jpg',
           alt: 'Cinco diagramas rotulados de A a E com setas sobre a pedra no ponto A, combinando uma seta na direção do movimento (diagonal para cima) e uma seta para baixo.'
         },
         letras: ['a', 'b', 'c', 'd', 'e']
@@ -274,7 +274,7 @@ const BLOCOS = [
         enunciado: 'No ponto B, qual é o esquema que melhor representa a(s) força(s) sobre a pedra?',
         tipo: 'imagem',
         opcoesImg: {
-          src: 'q18_resp.jpg',
+          src: 'img/q18_resp.jpg',
           alt: 'Cinco diagramas rotulados de A a E com setas sobre a pedra no ponto mais alto, combinando setas horizontal, para cima e para baixo.'
         },
         letras: ['a', 'b', 'c', 'd', 'e']
@@ -284,7 +284,7 @@ const BLOCOS = [
         enunciado: 'No ponto C, qual é o esquema que melhor representa a(s) força(s) sobre a pedra?',
         tipo: 'imagem',
         opcoesImg: {
-          src: 'q19_resp.jpg',
+          src: 'img/q19_resp.jpg',
           alt: 'Cinco diagramas rotulados de A a E com setas sobre a pedra no ponto C, durante a descida.'
         },
         letras: ['a', 'b', 'c', 'd', 'e']

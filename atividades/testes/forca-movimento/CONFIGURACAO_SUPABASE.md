@@ -158,7 +158,9 @@ teste_forca_movimento_lang/
 ├── questoes.js             ← as 19 questões (usado pelas duas páginas)
 ├── teste.js                ← renderização + envio
 ├── consulta.js             ← busca + exibição do resultado
+├── concepcoes-chave.js     ← chave conceitual (aristotélica), só p/ consulta/concepcoes
+├── concepcoes.html         ← texto sobre as concepções newtoniana e aristotélica
 ├── styles.css
 ├── CONFIGURACAO_SUPABASE.md ← este arquivo
-└── *.jpg                   ← figuras e alternativas em imagem
+└── img/                    ← figuras e alternativas em imagem (*.jpg)
 ```
