@@ -9,15 +9,28 @@ on:
 jobs:
   ping:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false # se um projeto falhar, os outros ainda são pingados
+      matrix:
+        include:
+          - nome: feedbacks
+            url: "https://vlihugczatpmnyjbdmqw.supabase.co/rest/v1/feedbacks?select=id&limit=1"
+            key: sb_publishable__QOgJ-nSBouPG9kcbpjcAA_MrcVuNqX
+          - nome: forca-movimento
+            url: "https://ksxaxkqnooercwndpdut.supabase.co/rest/v1/fm_gabarito?select=questao&limit=1"
+            key: sb_publishable_eK6ljdM_K9cAdWezjyegJw_SudfxPjj
+          - nome: bolao
+            url: "https://zmbgprapzgvpnmbtrakp.supabase.co/rest/v1/matches?select=id&limit=1"
+            key: sb_publishable_Zh1Kq8RsRjK1OUiGsVTVkw_AhkMK275
     steps:
-      - name: Consultar tabela feedbacks (ping no root não conta como atividade de banco)
+      - name: Consultar tabela do projeto ${{ matrix.nome }} (query numa tabela conta como atividade de banco)
         run: |
           STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
-            "https://vlihugczatpmnyjbdmqw.supabase.co/rest/v1/feedbacks?select=id&limit=1" \
-            -H "apikey: sb_publishable__QOgJ-nSBouPG9kcbpjcAA_MrcVuNqX")
-          echo "Status HTTP: $STATUS"
+            "${{ matrix.url }}" \
+            -H "apikey: ${{ matrix.key }}")
+          echo "[${{ matrix.nome }}] Status HTTP: $STATUS"
           if [ "$STATUS" -lt 200 ] || [ "$STATUS" -ge 500 ]; then
-            echo "ERRO: projeto nao respondeu corretamente (HTTP $STATUS)"
+            echo "[${{ matrix.nome }}] ERRO: projeto nao respondeu corretamente (HTTP $STATUS)"
             exit 1
           fi
-          echo "Projeto ativo."
+          echo "[${{ matrix.nome }}] Projeto ativo."
