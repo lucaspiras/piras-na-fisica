@@ -2,9 +2,22 @@ name: Supabase Keep-Alive
 
 on:
   schedule:
-    # Roda a cada 2 dias às 08:00 UTC — margem maior abaixo do limite de 7 do Supabase free
-    - cron: "0 8 */2 * *"
+    # Diário às 08:00 UTC — margem larga abaixo do limite de 7 dias do Supabase free
+    - cron: "0 8 * * *"
   workflow_dispatch: # permite rodar manualmente pelo GitHub
+
+# Por que escrita (PATCH) e não leitura (GET):
+# uma leitura anônima que o RLS devolve vazia NÃO reseta o cronômetro de
+# inatividade do Supabase — foi por isso que o projeto de feedbacks pausava
+# mesmo sendo "pingado". Um PATCH numa tabela `keepalive` dedicada é uma
+# gravação real e conta como atividade de banco.
+#   Tabela criada em cada projeto:
+#     create table if not exists keepalive (id int primary key, touched_at timestamptz);
+#     insert into keepalive (id, touched_at) values (1, now()) on conflict (id) do nothing;
+#     alter table keepalive enable row level security;
+#     create policy "anon toca keepalive" on keepalive for all to anon using (true) with check (true);
+# O bolão está em outra conta, nunca pausou e não tem a tabela: segue com GET.
+# Se um dia ele pausar, criar a tabela lá e trocar metodo para PATCH.
 
 jobs:
   ping:
@@ -14,23 +27,36 @@ jobs:
       matrix:
         include:
           - nome: feedbacks
-            url: "https://vlihugczatpmnyjbdmqw.supabase.co/rest/v1/feedbacks?select=id&limit=1"
+            metodo: PATCH
+            url: "https://vlihugczatpmnyjbdmqw.supabase.co/rest/v1/keepalive?id=eq.1"
             key: sb_publishable__QOgJ-nSBouPG9kcbpjcAA_MrcVuNqX
-          - nome: forca-movimento
-            url: "https://ksxaxkqnooercwndpdut.supabase.co/rest/v1/fm_gabarito?select=questao&limit=1"
+          - nome: testes
+            metodo: PATCH
+            url: "https://ksxaxkqnooercwndpdut.supabase.co/rest/v1/keepalive?id=eq.1"
             key: sb_publishable_eK6ljdM_K9cAdWezjyegJw_SudfxPjj
           - nome: bolao
+            metodo: GET
             url: "https://zmbgprapzgvpnmbtrakp.supabase.co/rest/v1/matches?select=id&limit=1"
             key: sb_publishable_Zh1Kq8RsRjK1OUiGsVTVkw_AhkMK275
     steps:
-      - name: Consultar tabela do projeto ${{ matrix.nome }} (query numa tabela conta como atividade de banco)
+      - name: Manter ${{ matrix.nome }} ativo (${{ matrix.metodo }})
         run: |
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
-            "${{ matrix.url }}" \
-            -H "apikey: ${{ matrix.key }}")
-          echo "[${{ matrix.nome }}] Status HTTP: $STATUS"
-          if [ "$STATUS" -lt 200 ] || [ "$STATUS" -ge 500 ]; then
-            echo "[${{ matrix.nome }}] ERRO: projeto nao respondeu corretamente (HTTP $STATUS)"
+          if [ "${{ matrix.metodo }}" = "PATCH" ]; then
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X PATCH \
+              "${{ matrix.url }}" \
+              -H "apikey: ${{ matrix.key }}" \
+              -H "Authorization: Bearer ${{ matrix.key }}" \
+              -H "Content-Type: application/json" \
+              -H "Prefer: return=minimal" \
+              -d "{\"touched_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}")
+          else
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+              "${{ matrix.url }}" \
+              -H "apikey: ${{ matrix.key }}")
+          fi
+          echo "[${{ matrix.nome }}] ${{ matrix.metodo }} -> HTTP $STATUS"
+          if [ "$STATUS" -lt 200 ] || [ "$STATUS" -ge 400 ]; then
+            echo "[${{ matrix.nome }}] ERRO: resposta inesperada (HTTP $STATUS)"
             exit 1
           fi
           echo "[${{ matrix.nome }}] Projeto ativo."
