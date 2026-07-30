@@ -43,6 +43,19 @@
     .newton-main { max-width:900px; margin:0 auto; padding:3rem 2rem 4rem; }
     .newton-intro { font-size:1.05rem; line-height:1.75; color:var(--texto); margin-bottom:1rem; }
     .newton-intro:last-of-type { margin-bottom:2.5rem; }
+    .dinam-atividades { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--border); }
+    .dinam-atividades h2 { font-size: 1.3rem; font-weight: 700; color: var(--tema-strong); margin-bottom: 1rem; }
+    .ativ-links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .ativ-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.7rem 1.2rem;
+      background: color-mix(in srgb, var(--tema-cor) 7%, transparent);
+      border: 1.5px solid color-mix(in srgb, var(--tema-cor) 25%, transparent);
+      border-radius: 10px; text-decoration: none; color: var(--tema-cor);
+      font-weight: 600; font-size: 0.9rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .ativ-btn:hover { background: color-mix(in srgb, var(--tema-cor) 14%, transparent); border-color: var(--tema-cor); }
     .subtopicos-titulo { font-size:1.4rem; font-weight:700; color:var(--tema-strong); margin-bottom:1.5rem; display:flex; align-items:center; gap:.6rem; }
     .subtopicos-lista { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.9rem; }
     .subtopicos-lista li { padding-left:0; margin-bottom:0; }
@@ -199,6 +212,14 @@
       </a>
     </li>
   </ul>
+
+  <div class="dinam-atividades">
+    <h2>✏️ Atividades relacionadas</h2>
+    <div class="ativ-links">
+      <a href="../../atividades/estudos_dirigidos/ed_leis_newton/index.html" class="ativ-btn">📚 Estudo Dirigido: Leis de Newton</a>
+      <a href="../../atividades/testes/forca-movimento/index.html" class="ativ-btn">🧠 Teste sobre Mecânica</a>
+    </div>
+  </div>
 </main>
 
 <footer><p>© 2025 — Piras na Física</p></footer>

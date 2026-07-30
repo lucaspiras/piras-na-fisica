@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <meta name="description" content="Estudo dirigido conceitual das três leis de Newton: enunciado preciso antes da simplificação escolar, referenciais inerciais, quantidade de movimento, pares de interação, situações do cotidiano e limites de validade.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="As Três Leis de Newton — Estudo Dirigido">
+  <meta property="og:description" content="As três leis de Newton com rigor conceitual: o enunciado preciso de cada lei, a simplificação do Ensino Médio, situações do cotidiano e o contraste com a física de Aristóteles.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/atividades/estudos_dirigidos/ed_leis_newton/">
+  <title>As Três Leis de Newton — Estudo Dirigido</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Poppins:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <noscript><style>.topic{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+  <a href="#topicos" class="skip-link">Ir para o conteúdo</a>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-deco">
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+      <div class="hero-orb orb-3"></div>
+      <div class="wave-line"></div>
+      <div class="wave-line"></div>
+      <div class="wave-line"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="tag-dot"></span>
+          Física · Dinâmica · Ensino Médio
+        </div>
+        <h1 class="hero-title">
+          As Três Leis<br>
+          de <em>Newton</em>
+        </h1>
+        <p class="hero-sub">Três leis que explicam por que os corpos se movem como se movem. Aqui cada uma aparece primeiro no seu enunciado preciso — e só depois na versão simplificada que você usa nos exercícios.</p>
+        <a href="#topicos" class="hero-cta">Começar o estudo ↓</a>
+      </div>
+      <div class="hero-visual">
+        <div class="energy-card"><div class="ec-icon deep">🧊</div><div><div class="ec-name">1ª Lei</div><div class="ec-desc">Inércia e referenciais inerciais</div></div></div>
+        <div class="energy-card"><div class="ec-icon green">➡️</div><div><div class="ec-name">2ª Lei</div><div class="ec-desc">Quantidade de movimento e F = m·a</div></div></div>
+        <div class="energy-card"><div class="ec-icon lime">🔄</div><div><div class="ec-name">3ª Lei</div><div class="ec-desc">Pares de interação</div></div></div>
+        <div class="energy-card"><div class="ec-icon orange">🧩</div><div><div class="ec-name">As três juntas</div><div class="ec-desc">Nenhuma cena é de uma lei só</div></div></div>
+        <div class="energy-card"><div class="ec-icon purple">🔬</div><div><div class="ec-name">Limites</div><div class="ec-desc">Onde Newton deixa de valer</div></div></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SUMÁRIO -->
+  <nav class="sumario" id="topicos">
+    <div class="sumario-inner">
+      <a href="../../../index.html" class="sum-logo-link" aria-label="Piras na Física">
+        <img src="../../../img/files/piras_na_fisica_logo_transparente.png" alt="Logo Piras na Física" class="sum-logo" />
+      </a>
+      <div class="sum-divider"></div>
+      <span class="sum-label">Tópicos</span>
+      <ol class="sum-list">
+        <li><a href="#t1">Força</a></li>
+        <li><a href="#t2">1ª Lei</a></li>
+        <li><a href="#t3">2ª Lei</a></li>
+        <li><a href="#t4">3ª Lei</a></li>
+        <li><a href="#t5">Resultante &amp; DCL</a></li>
+        <li><a href="#t6">As três juntas</a></li>
+        <li><a href="#t7">Aristóteles</a></li>
+        <li><a href="#t8">Limites</a></li>
+        <li><a href="#t9">Síntese</a></li>
+      </ol>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <!-- ============ TÓPICO 1 ============ -->
+    <section class="topic" id="t1">
+      <div class="topic-header">
+        <span class="topic-num">01</span>
+        <h2>Força: a linguagem da dinâmica</h2>
+      </div>
+      <div class="topic-body">
+        <p>A cinemática descreve <em>como</em> um corpo se move: onde está, com que velocidade, com que aceleração. A <strong>dinâmica</strong> faz a pergunta anterior a todas essas: <em>por que</em> ele se move assim? E a resposta se organiza em torno de uma única ideia — a de <strong>força</strong>.</p>
+
+        <p>Antes de qualquer lei, é preciso acertar o que uma força é. Força não é uma propriedade que um corpo possui, como a massa ou a cor. Força é uma <strong>interação entre dois corpos</strong>. Não existe "a força de um objeto": existe a força que <em>a Terra faz na maçã</em>, que <em>a mesa faz no livro</em>, que <em>o pé faz na bola</em>. Sempre que você nomear uma força, deve conseguir dizer quem a exerce e sobre quem.</p>
+
+        <p>Força também é uma grandeza <strong>vetorial</strong>: tem intensidade, direção e sentido. Duas forças de 10 N cada uma podem somar 20 N, 0 N ou qualquer valor intermediário, dependendo de como estão orientadas. Por isso o que interessa à dinâmica quase nunca é uma força isolada, e sim a <strong>força resultante</strong>: a soma vetorial de todas as forças que agem sobre o corpo.</p>
+
+        <div class="formula-box">
+          <span class="formula-label">Força resultante</span>
+          <span class="formula-tex">F<sub>res</sub> = ΣF  (soma vetorial de todas as forças que agem NO corpo)</span>
+          <span class="formula-unit">Unidade no SI: newton (N). 1 N = 1 kg·m/s² — a força que dá a 1 kg a aceleração de 1 m/s².</span>
+        </div>
+
+        <p>No Ensino Médio, um punhado de forças dá conta de quase toda situação mecânica. Vale conhecê-las por nome, e sobretudo saber <strong>quem exerce cada uma</strong>:</p>
+
+        <div class="energy-grid">
+          <div class="eg-card">
+            <span class="eg-icon">🌍</span>
+            <div class="eg-name">Peso</div>
+            <div class="eg-desc">A Terra atrai o corpo. Age à distância, sem contato.</div>
+          </div>
+          <div class="eg-card">
+            <span class="eg-icon">🧱</span>
+            <div class="eg-name">Normal</div>
+            <div class="eg-desc">A superfície de apoio empurra o corpo, perpendicularmente a ela.</div>
+          </div>
+          <div class="eg-card">
+            <span class="eg-icon">🛑</span>
+            <div class="eg-name">Atrito</div>
+            <div class="eg-desc">A superfície resiste ao escorregamento do corpo sobre ela.</div>
+          </div>
+          <div class="eg-card">
+            <span class="eg-icon">🪢</span>
+            <div class="eg-name">Tração</div>
+            <div class="eg-desc">O fio esticado puxa o corpo, ao longo do próprio fio.</div>
+          </div>
+          <div class="eg-card">
+            <span class="eg-icon">💪</span>
+            <div class="eg-name">Força aplicada</div>
+            <div class="eg-desc">Alguém ou algum motor empurra ou puxa o corpo.</div>
+          </div>
+          <div class="eg-card">
+            <span class="eg-icon">🌬️</span>
+            <div class="eg-name">Resistência do ar</div>
+            <div class="eg-desc">O ar se opõe ao movimento; cresce com a velocidade.</div>
+          </div>
+        </div>
+
+        <table class="units-table" aria-label="As forças mais comuns na mecânica do Ensino Médio">
+          <thead>
+            <tr><th>Força</th><th>Símbolo</th><th>Quem exerce</th><th>Direção e sentido</th><th>Expressão</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Peso</td><td>P</td><td>a Terra</td><td>vertical, para baixo</td><td class="val">P = m·g</td></tr>
+            <tr><td>Normal</td><td>N</td><td>a superfície de apoio</td><td>perpendicular à superfície</td><td class="val">depende do caso</td></tr>
+            <tr><td>Atrito estático</td><td>Fat</td><td>a superfície</td><td>contra a tendência de escorregar</td><td class="val">Fat ≤ μ<sub>e</sub>·N</td></tr>
+            <tr><td>Atrito cinético</td><td>Fat</td><td>a superfície</td><td>contra o escorregamento</td><td class="val">Fat = μ<sub>c</sub>·N</td></tr>
+            <tr><td>Tração</td><td>T</td><td>o fio ou cabo</td><td>ao longo do fio</td><td class="val">depende do caso</td></tr>
+          </tbody>
+        </table>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🧮</span>
+          <p>Repare na diferença entre os dois atritos. No <strong>estático</strong>, o produto μ<sub>e</sub>·N é o <em>valor máximo</em> que o atrito pode atingir antes de o corpo escorregar — abaixo desse limite, ele vale exatamente o necessário para impedir o movimento. No <strong>cinético</strong>, com o corpo já escorregando, o atrito assume o valor μ<sub>c</sub>·N, e em geral μ<sub>c</sub> &lt; μ<sub>e</sub> (custa mais para começar a arrastar do que para continuar).</p>
+        </div>
+
+        <div class="highlight-box orange-hl">
+          <span class="hb-icon">⚖️</span>
+          <p><strong>Massa não é peso.</strong> A massa (kg) mede a quantidade de matéria e a inércia do corpo — é a mesma na Terra, na Lua ou no espaço. O peso (N) é a <em>força</em> com que a Terra atrai esse corpo, P = m·g, e muda de astro para astro: na Lua, sua massa é idêntica e seu peso é cerca de seis vezes menor. Neste estudo usamos <strong>g = 10 m/s²</strong> por convenção; o valor real é ≈ 9,8 m/s² e varia com o local.</p>
+        </div>
+
+        <div class="concept-card">
+          <h4>Como saber se aquilo é mesmo uma força</h4>
+          <ul>
+            <li><strong>Tem um agente?</strong> Se você não consegue dizer <em>quem</em> exerce, provavelmente não é força.</li>
+            <li><strong>É de contato ou de campo?</strong> Toda força do Ensino Médio cai numa dessas categorias.</li>
+            <li><strong>Vem em par?</strong> Toda força tem uma parceira no outro corpo (é a 3ª Lei, no tópico 04).</li>
+            <li><strong>Inércia não é força.</strong> É a tendência do corpo a manter a velocidade — não empurra nada.</li>
+            <li><strong>A normal não é a reação do peso.</strong> São forças de naturezas diferentes, e a normal nem sempre tem o mesmo valor do peso. Voltaremos a isso nos tópicos 04 e 05.</li>
+            <li><strong>"Força centrífuga" não entra nesta lista.</strong> Ela aparece só quando descrevemos o movimento de dentro de um sistema que gira (veja o tópico 02).</li>
+          </ul>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz1"></div>
+    </section>
+
+    <!-- ============ TÓPICO 2 ============ -->
+    <section class="topic" id="t2">
+      <div class="topic-header">
+        <span class="topic-num">02</span>
+        <h2>1ª Lei — Inércia e referenciais inerciais</h2>
+      </div>
+      <div class="topic-body">
+        <p>A primeira lei costuma ser resumida assim: "se a força resultante é zero, a velocidade não muda". Essa frase é correta e é a que resolve os exercícios — mas ela esconde o que a lei realmente afirma, e que é algo <em>anterior</em> às outras duas.</p>
+
+        <div class="law-card">
+          <div class="law-tier precise">
+            <span class="tier-tag">Enunciado preciso</span>
+            <p class="law-statement">Existe uma classe de referenciais — chamados <strong>referenciais inerciais</strong> — nos quais todo corpo com força resultante nula permanece em repouso ou em movimento retilíneo uniforme. É nesses referenciais, e somente neles, que as outras duas leis de Newton valem na forma em que as escrevemos.</p>
+            <p class="law-note"><strong>Por que isso importa:</strong> se a 1ª Lei fosse apenas "se ΣF = 0 então a = 0", ela seria um caso particular trivial da 2ª Lei — e não precisaria existir como lei separada. O conteúdo próprio dela é anterior à 2ª: ela afirma que existem referenciais privilegiados e, com isso, diz <strong>onde</strong> a 2ª Lei pode ser aplicada. Num referencial acelerado — um ônibus freando, um carrossel girando — corpos mudam de velocidade sem que nenhum outro corpo os empurre. Ali a 1ª Lei falha, e a 2ª também.</p>
+          </div>
+          <div class="law-tier simple">
+            <span class="tier-tag">Simplificação para o Ensino Médio</span>
+            <p class="law-statement">Se a força resultante sobre um corpo é nula, ele permanece <strong>em repouso ou em movimento retilíneo uniforme</strong> — a velocidade não muda.</p>
+            <p class="law-note">Essa é a forma que você vai usar em todos os exercícios, e ela é <strong>correta e suficiente</strong>: é o que a 1ª Lei diz <em>dentro</em> de um referencial inercial. Na prática escolar, o chão, a sala de aula e a pista são referenciais inerciais com folga de sobra. A simplificação só cobra o preço quando o problema é resolvido "de dentro" de algo que acelera.</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <span class="formula-label">A forma operacional</span>
+          <span class="formula-tex">F<sub>res</sub> = 0  ⇒  v = constante (repouso <em>ou</em> MRU)</span>
+          <span class="formula-unit">Válida em referencial inercial. Atenção: resultante nula NÃO significa corpo parado — significa velocidade que não muda.</span>
+        </div>
+
+        <figure class="fbd-figure">
+          <svg viewBox="0 0 720 250" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dois painéis mostrando um ônibus que arranca com uma sacola pendurada. No painel da calçada, a sacola apenas mantém a velocidade anterior. No painel de dentro do ônibus, aparece uma seta pontilhada rotulada força que não existe.">
+            <defs>
+              <marker id="nl1-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" fill="#ef4444"/>
+              </marker>
+              <marker id="nl1-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/>
+              </marker>
+            </defs>
+
+            <!-- PAINEL A -->
+            <text x="30" y="26" font-family="Space Mono, monospace" font-size="12" font-weight="700" fill="#15803d">DA CALÇADA — referencial inercial</text>
+            <line x1="25" y1="205" x2="340" y2="205" stroke="#cbd5e1" stroke-width="2"/>
+            <rect x="45" y="105" width="230" height="72" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+            <circle cx="90" cy="188" r="13" fill="none" stroke="#64748b" stroke-width="2"/>
+            <circle cx="235" cy="188" r="13" fill="none" stroke="#64748b" stroke-width="2"/>
+            <!-- sacola inclinada para trás -->
+            <line x1="190" y1="107" x2="163" y2="150" stroke="#334155" stroke-width="2"/>
+            <circle cx="160" cy="157" r="11" fill="#dcfce7" stroke="#15803d" stroke-width="2"/>
+            <!-- aceleração do ônibus -->
+            <line x1="285" y1="141" x2="332" y2="141" stroke="#ef4444" stroke-width="3" marker-end="url(#nl1-red)"/>
+            <text x="268" y="130" font-family="Space Mono, monospace" font-size="11" fill="#ef4444">a do ônibus</text>
+            <text x="30" y="232" font-family="Poppins, sans-serif" font-size="11.5" fill="#334155">A sacola apenas mantém a velocidade que tinha.</text>
+
+            <!-- divisor -->
+            <line x1="360" y1="15" x2="360" y2="235" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="5 4"/>
+
+            <!-- PAINEL B -->
+            <text x="385" y="26" font-family="Space Mono, monospace" font-size="12" font-weight="700" fill="#a16207">DE DENTRO — referencial NÃO inercial</text>
+            <line x1="380" y1="205" x2="695" y2="205" stroke="#cbd5e1" stroke-width="2"/>
+            <rect x="400" y="105" width="230" height="72" rx="8" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+            <circle cx="445" cy="188" r="13" fill="none" stroke="#64748b" stroke-width="2"/>
+            <circle cx="590" cy="188" r="13" fill="none" stroke="#64748b" stroke-width="2"/>
+            <line x1="545" y1="107" x2="518" y2="150" stroke="#334155" stroke-width="2"/>
+            <circle cx="515" cy="157" r="11" fill="#fef3c7" stroke="#a16207" stroke-width="2"/>
+            <!-- pseudo-força -->
+            <line x1="500" y1="157" x2="450" y2="157" stroke="#94a3b8" stroke-width="3" stroke-dasharray="4 3" marker-end="url(#nl1-gray)"/>
+            <text x="405" y="145" font-family="Space Mono, monospace" font-size="11" fill="#64748b">força que</text>
+            <text x="405" y="158" font-family="Space Mono, monospace" font-size="11" fill="#64748b">não existe</text>
+            <text x="600" y="140" font-family="Space Mono, monospace" font-size="15" font-weight="700" fill="#dc2626">✗</text>
+            <text x="385" y="232" font-family="Poppins, sans-serif" font-size="11.5" fill="#334155">Aqui inventamos uma força sem nenhum corpo que a exerça.</text>
+          </svg>
+          <figcaption>A <strong>mesma cena</strong>, dois referenciais. Na calçada não há mistério algum: a sacola mantém sua velocidade e o ônibus avança à frente dela. Dentro do ônibus, que está acelerando, a 1ª Lei parece falhar — e para salvar as contas somos levados a inventar uma força para trás que <strong>nenhum corpo exerce</strong>. É exatamente disso que a 1ª Lei trata: dizer em quais referenciais as leis valem.</figcaption>
+        </figure>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🧊</span>
+          <p><strong>Inércia</strong> é a tendência de todo corpo a manter seu estado de movimento — parado, tende a continuar parado; em movimento, tende a continuar com a mesma velocidade, em linha reta. E a <strong>massa é a medida da inércia</strong>: quanto maior a massa, mais difícil mudar o movimento. Note que quem faz os corpos pararem no cotidiano é o <em>atrito</em>, e não a falta de um motor que os empurre.</p>
+        </div>
+
+        <div class="highlight-box orange-hl">
+          <span class="hb-icon">🎢</span>
+          <p><strong>Referenciais não inerciais são os que aceleram:</strong> o ônibus que arranca ou freia, o elevador que parte, o carrossel que gira. Neles surgem efeitos que <em>parecem</em> forças mas não têm agente — é o caso da famosa "força centrífuga", que você sente ao fazer uma curva de carro. Ela não aparece na descrição feita de fora, onde o que existe é o carro te empurrando para dentro da curva. Rigorosamente, nem o chão é um referencial inercial perfeito (a Terra gira), mas para tudo o que fazemos aqui a aproximação é excelente.</p>
+        </div>
+
+        <div class="concept-card">
+          <h4>Pontos fundamentais</h4>
+          <ul>
+            <li>Força resultante nula <strong>não</strong> significa corpo parado: significa velocidade que não muda.</li>
+            <li>Repouso e MRU são, para a dinâmica, a mesma situação — resultante nula nos dois casos.</li>
+            <li>Manter velocidade constante <strong>não exige força nenhuma</strong>; mudá-la, sim.</li>
+            <li>A massa mede a inércia: dois corpos de massas diferentes resistem de formas diferentes à mesma força.</li>
+            <li>Não existe "força do movimento" armazenada dentro de um corpo lançado.</li>
+          </ul>
+        </div>
+
+        <div class="concept-card">
+          <h4>No cotidiano</h4>
+          <ul>
+            <li><strong>Cinto de segurança:</strong> numa freada, seu corpo tende a manter a velocidade — o cinto aplica a força que o desacelera junto com o carro.</li>
+            <li><strong>Toalha puxada:</strong> se o puxão é bem rápido, os pratos quase não se movem; o atrito age por tempo curtíssimo.</li>
+            <li><strong>Ônibus arrancando:</strong> os passageiros parecem "cair para trás" porque tendem a permanecer com a velocidade anterior.</li>
+            <li><strong>Bater o pó de um tapete:</strong> o tapete é sacudido e a poeira, por inércia, fica para trás.</li>
+            <li><strong>Sonda no espaço:</strong> com os motores desligados e longe de tudo, ela segue em linha reta indefinidamente.</li>
+          </ul>
+          <p style="margin-top:12px;font-size:.85rem;color:var(--text-muted)">Em todos esses casos, a inércia é a ideia em destaque — mas nenhum deles é "puro". Veja o tópico 06.</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz2"></div>
+    </section>
+
+    <!-- ============ TÓPICO 3 ============ -->
+    <section class="topic" id="t3">
+      <div class="topic-header">
+        <span class="topic-num">03</span>
+        <h2>2ª Lei — Quantidade de movimento e F = m·a</h2>
+      </div>
+      <div class="topic-body">
+        <p>A 1ª Lei diz o que acontece quando a resultante é nula. A 2ª responde à pergunta seguinte: e quando <em>não</em> é? Quanto o movimento muda, e em que direção? Para enunciá-la com precisão, precisamos primeiro de uma grandeza que Newton colocou no centro da sua mecânica — e que o Ensino Médio costuma deixar para muito depois.</p>
+
+        <div class="formula-box">
+          <span class="formula-label">Quantidade de movimento (momento linear)</span>
+          <span class="formula-tex">p = m · v</span>
+          <span class="formula-unit">Unidade: kg·m/s. É uma grandeza vetorial — tem a mesma direção e sentido da velocidade.</span>
+        </div>
+
+        <p>A quantidade de movimento combina <em>quanta matéria</em> está se movendo com <em>quão rápido</em> ela se move. É uma medida de "movimento total" muito mais útil que a velocidade sozinha:</p>
+
+        <div class="example-box">
+          <h4>Mesmo p, movimentos bem diferentes</h4>
+          <p>Um caminhão de 8 000 kg a 1 m/s (bem devagar):</p>
+          <p class="calc-line">p = 8 000 × 1 = <strong>8 000 kg·m/s</strong></p>
+          <p>Uma moto de 200 kg a 40 m/s (144 km/h):</p>
+          <p class="calc-line">p = 200 × 40 = <strong>8 000 kg·m/s</strong></p>
+          <p>Os dois têm a mesma quantidade de movimento — e, num certo sentido, custa o mesmo para pará-los.</p>
+        </div>
+
+        <div class="law-card">
+          <div class="law-tier precise">
+            <span class="tier-tag">Enunciado preciso</span>
+            <p class="law-statement">A força resultante que age sobre um corpo determina <strong>a rapidez com que a quantidade de movimento desse corpo varia</strong>: quanto maior a força resultante, mais rápido <em>p</em> muda. E a variação de <em>p</em> ocorre na mesma direção e sentido da força resultante.</p>
+            <p class="law-note">Repare no que a lei <strong>não</strong> diz. Ela não diz que a força é proporcional à velocidade, nem que é proporcional à aceleração: ela fala da <strong>variação da quantidade de movimento por unidade de tempo</strong>. Foi assim que Newton a formulou — em termos de quantidade de movimento, não de aceleração — e é essa a forma que continua valendo justamente nos casos em que a versão escolar falha.</p>
+          </div>
+          <div class="law-tier simple">
+            <span class="tier-tag">Simplificação para o Ensino Médio — massa constante</span>
+            <p class="law-statement">Se a massa do corpo não muda, a única forma de <em>p</em> = <em>m</em>·<em>v</em> variar é a <strong>velocidade</strong> variar. E "variação de velocidade por unidade de tempo" é exatamente a <strong>aceleração</strong>. Nesse caso, a força resultante é igual à massa multiplicada pela aceleração.</p>
+            <p class="law-note">Essa é a versão que resolve praticamente tudo no Ensino Médio, e ela é <strong>exata</strong> — não é um arredondamento — desde que a massa seja constante e o referencial seja inercial. Blocos, carros, caixas, pessoas, bolas: massa constante. A conta que você já fazia está certa; o que muda agora é saber <em>por que</em> ela está certa e <em>quando</em> deixaria de estar.</p>
+          </div>
+        </div>
+
+        <div class="formula-box large">
+          <span class="formula-label">Simplificação — o princípio fundamental da dinâmica</span>
+          <span class="formula-tex big">F<sub>res</sub> = m · a</span>
+          <span class="formula-unit">F em newtons (N) · m em kg · a em m/s² · 1 N = 1 kg·m/s². Válida para massa constante, em referencial inercial.</span>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">➡️</span>
+          <p>A aceleração tem sempre a <strong>direção e o sentido da força resultante</strong> — e não da velocidade. São coisas distintas: um carro em curva com velocidade de módulo constante tem aceleração (a direção da velocidade está mudando), e portanto tem força resultante, apontando para o centro da curva. Numa freada, a resultante aponta para trás enquanto a velocidade ainda aponta para a frente.</p>
+        </div>
+
+        <div class="highlight-box orange-hl">
+          <span class="hb-icon">🚀</span>
+          <p><strong>Onde a simplificação para de valer.</strong> Um foguete queima combustível e <strong>expele massa</strong> a cada segundo: sua massa diminui durante o próprio movimento. Aí a quantidade de movimento pode variar porque <em>m</em> mudou, e não apenas porque <em>v</em> mudou — e F<sub>res</sub> = m·a, com <em>m</em> fixo, deixa de dar a resposta certa. O enunciado em termos de quantidade de movimento continua valendo, desde que aplicado ao <strong>sistema completo: o foguete mais os gases expelidos</strong>. Tratar o caso quantitativamente exige ferramentas fora deste estudo, mas o importante é ver que a simplificação tem um limite concreto — e é assim que se calcula um lançamento espacial de verdade. Outros exemplos: um vagão sendo carregado de areia em movimento, uma corda sendo recolhida do chão.</p>
+        </div>
+
+        <div class="concept-card">
+          <h4>O que a equação diz</h4>
+          <ul>
+            <li>Mesma massa: o <strong>dobro</strong> de força resultante produz o <strong>dobro</strong> de aceleração.</li>
+            <li>Mesma força: o <strong>dobro</strong> de massa produz <strong>metade</strong> da aceleração (a = F/m).</li>
+            <li>Se ΣF = 0, então a = 0 — reencontramos o resultado da 1ª Lei como caso particular.</li>
+            <li>Quem determina a aceleração é a força <strong>resultante</strong>, nunca uma força isolada.</li>
+            <li>Sendo vetorial, a equação pode ser aplicada eixo por eixo, separadamente.</li>
+          </ul>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplo — o erro mais comum</h4>
+          <p>Um carrinho de 25 kg é empurrado com 60 N. O atrito com o piso vale 10 N.</p>
+          <p class="calc-line">F<sub>res</sub> = 60 − 10 = <strong>50 N</strong></p>
+          <p class="calc-line">a = F<sub>res</sub> / m = 50 / 25 = <strong>2 m/s²</strong></p>
+          <p>Usar os 60 N direto daria 2,4 m/s² — errado. A força aplicada não é a resultante.</p>
+        </div>
+
+        <div class="concept-card">
+          <h4>No cotidiano</h4>
+          <ul>
+            <li><strong>Carrinho de compras:</strong> cheio, acelera menos que vazio com o mesmo empurrão — mais massa, menos aceleração.</li>
+            <li><strong>Frear caminhão × carro:</strong> o caminhão exige força muito maior para a mesma desaceleração.</li>
+            <li><strong>Airbag e capacete:</strong> não reduzem sua variação de velocidade numa batida — eles a espalham por um tempo maior, e assim a força necessária fica menor.</li>
+            <li><strong>Chutar uma bola:</strong> a mesma bola sai mais rápido quanto maior a força do chute.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz3"></div>
+    </section>
+
+    <!-- ============ TÓPICO 4 ============ -->
+    <section class="topic" id="t4">
+      <div class="topic-header">
+        <span class="topic-num">04</span>
+        <h2>3ª Lei — Pares de interação</h2>
+      </div>
+      <div class="topic-body">
+        <p>Se força é interação entre dois corpos, como dissemos no tópico 01, então uma consequência se impõe: forças nunca aparecem sozinhas. Elas vêm sempre <strong>aos pares</strong>. É o que a 3ª Lei formaliza — e é a lei mais curta de enunciar e a mais fácil de aplicar errado.</p>
+
+        <div class="law-card">
+          <div class="law-tier precise">
+            <span class="tier-tag">Enunciado preciso</span>
+            <p class="law-statement">Se um corpo <strong>A</strong> exerce uma força sobre um corpo <strong>B</strong>, então <strong>B</strong> exerce sobre <strong>A</strong>, <em>no mesmo instante</em>, uma força de <strong>mesma intensidade</strong>, sobre a <strong>mesma linha de ação</strong>, de <strong>sentido oposto</strong> e da <strong>mesma natureza física</strong>. As duas forças do par atuam sempre em <strong>corpos diferentes</strong> — e por isso nunca se somam para dar resultante nula em um só corpo.</p>
+            <p class="law-note">Cada detalhe desse enunciado existe para bloquear um erro. <strong>Mesma linha de ação</strong> (colineares) é a parte que quase nunca se enuncia, e é justamente ela que garante um dos resultados mais fortes da física: em um sistema isolado, a quantidade de movimento total não muda. <strong>Mesma natureza</strong> impede pares falsos — uma força de contato não pode ser a reação de uma força gravitacional. <strong>Simultâneas</strong> desfaz a ideia de que primeiro vem a ação e depois a reação: os nomes são rótulos, não uma ordem no tempo. E <strong>corpos diferentes</strong> é o detalhe que resolve o paradoxo do "então nada deveria se mover".</p>
+          </div>
+          <div class="law-tier simple">
+            <span class="tier-tag">Simplificação para o Ensino Médio</span>
+            <p class="law-statement">A toda ação corresponde uma reação de <strong>igual intensidade e sentido oposto</strong>.</p>
+            <p class="law-note">A frase é útil e você pode usá-la — mas é curta demais, e é a origem de quase todos os erros com a 3ª Lei, porque omite três coisas: que as forças agem em <strong>corpos diferentes</strong>, que estão na <strong>mesma linha de ação</strong> e que são da <strong>mesma natureza</strong>. Sempre que usar o slogan, complete mentalmente a pergunta: "<strong>quem</strong> faz força em <strong>quem</strong>?". Se você não consegue nomear os dois corpos, provavelmente não está diante de um par ação–reação.</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <span class="formula-label">3ª Lei de Newton</span>
+          <span class="formula-tex">F<sub>AB</sub> = − F<sub>BA</sub></span>
+          <span class="formula-unit">mesmo módulo · mesma linha de ação · sentidos opostos · simultâneas · mesma natureza · em corpos DIFERENTES</span>
+        </div>
+
+        <figure class="fbd-figure">
+          <svg viewBox="0 0 720 300" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama do livro sobre a mesa. À esquerda, o peso e a normal agem no mesmo corpo e por isso não formam par ação e reação. À direita, os dois pares verdadeiros: normal da mesa no livro com a força do livro na mesa, e peso com a força do livro na Terra.">
+            <defs>
+              <marker id="nl2-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+              </marker>
+              <marker id="nl2-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" fill="#9333ea"/>
+              </marker>
+            </defs>
+
+            <!-- PAINEL A: a cena -->
+            <text x="26" y="26" font-family="Space Mono, monospace" font-size="12" font-weight="700" fill="#dc2626">AS DUAS FORÇAS NO LIVRO</text>
+            <!-- mesa -->
+            <line x1="40" y1="185" x2="300" y2="185" stroke="#64748b" stroke-width="3"/>
+            <line x1="70" y1="185" x2="70" y2="245" stroke="#64748b" stroke-width="3"/>
+            <line x1="270" y1="185" x2="270" y2="245" stroke="#64748b" stroke-width="3"/>
+            <!-- livro -->
+            <rect x="135" y="157" width="105" height="28" rx="3" fill="#f1f5f9" stroke="#334155" stroke-width="2"/>
+            <text x="152" y="176" font-family="Poppins, sans-serif" font-size="12" fill="#334155">livro</text>
+            <!-- N para cima -->
+            <line x1="187" y1="155" x2="187" y2="82" stroke="#16a34a" stroke-width="3" marker-end="url(#nl2-green)"/>
+            <text x="196" y="92" font-family="Space Mono, monospace" font-size="12" font-weight="700" fill="#16a34a">N</text>
+            <text x="196" y="106" font-family="Poppins, sans-serif" font-size="10" fill="#64748b">mesa → livro</text>
+            <!-- P para baixo -->
+            <line x1="187" y1="187" x2="187" y2="258" stroke="#9333ea" stroke-width="3" marker-end="url(#nl2-purple)"/>
+            <text x="196" y="243" font-family="Space Mono, monospace" font-size="12" font-weight="700" fill="#9333ea">P</text>
+            <text x="196" y="257" font-family="Poppins, sans-serif" font-size="10" fill="#64748b">Terra → livro</text>
+            <!-- cerca vermelha -->
+            <rect x="120" y="70" width="145" height="200" rx="10" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4"/>
+            <text x="26" y="288" font-family="Poppins, sans-serif" font-size="11.5" font-weight="600" fill="#dc2626">Mesmo corpo → NÃO é par ação–reação.</text>
+
+            <!-- divisor -->
+            <line x1="330" y1="15" x2="330" y2="285" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="5 4"/>
+
+            <!-- PAINEL B: os pares verdadeiros -->
+            <text x="355" y="26" font-family="Space Mono, monospace" font-size="12" font-weight="700" fill="#15803d">OS PARES VERDADEIROS</text>
+
+            <rect x="352" y="45" width="340" height="98" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+            <text x="366" y="68" font-family="Space Mono, monospace" font-size="10" font-weight="700" fill="#16a34a">PAR 1 — contato</text>
+            <line x1="380" y1="115" x2="380" y2="86" stroke="#16a34a" stroke-width="3" marker-end="url(#nl2-green)"/>
+            <text x="394" y="96" font-family="Poppins, sans-serif" font-size="11" fill="#334155">N: mesa → livro</text>
+            <line x1="380" y1="122" x2="380" y2="132" stroke="#16a34a" stroke-width="3" marker-end="url(#nl2-green)"/>
+            <text x="394" y="133" font-family="Poppins, sans-serif" font-size="11" fill="#334155">N′: livro → mesa</text>
+
+            <rect x="352" y="158" width="340" height="98" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="1.5"/>
+            <text x="366" y="181" font-family="Space Mono, monospace" font-size="10" font-weight="700" fill="#9333ea">PAR 2 — gravitacional</text>
+            <line x1="380" y1="199" x2="380" y2="228" stroke="#9333ea" stroke-width="3" marker-end="url(#nl2-purple)"/>
+            <text x="394" y="209" font-family="Poppins, sans-serif" font-size="11" fill="#334155">P: Terra → livro</text>
+            <line x1="380" y1="248" x2="380" y2="238" stroke="#9333ea" stroke-width="3" marker-end="url(#nl2-purple)"/>
+            <text x="394" y="246" font-family="Poppins, sans-serif" font-size="11" fill="#334155">P′: livro → Terra</text>
+
+            <text x="355" y="288" font-family="Poppins, sans-serif" font-size="11.5" font-weight="600" fill="#15803d">Cada par: corpos diferentes, mesma natureza.</text>
+          </svg>
+          <figcaption><strong>O par falso mais comum do Ensino Médio.</strong> Peso e normal, no livro em repouso, têm mesma intensidade e sentidos opostos — mas agem no <em>mesmo</em> corpo e têm naturezas diferentes: elas apenas se equilibram (isso é 1ª Lei, não 3ª). Cada uma tem o seu próprio par, em <em>outro</em> corpo. Um teste decisivo: coloque outro objeto sobre o livro. A normal muda; o peso do livro não. Se fossem um par, teriam de mudar juntas.</figcaption>
+        </figure>
+
+        <div class="concept-card">
+          <h4>Anatomia do par ação–reação</h4>
+          <ul>
+            <li><strong>Mesma intensidade</strong> e sentidos opostos — sempre, sem exceção.</li>
+            <li><strong>Mesma linha de ação:</strong> as duas forças são colineares.</li>
+            <li><strong>Corpos diferentes:</strong> uma age em A, a outra em B. Nunca no mesmo corpo.</li>
+            <li><strong>Mesma natureza:</strong> as duas de contato, ou as duas gravitacionais, ou as duas elétricas…</li>
+            <li><strong>Simultâneas:</strong> existem juntas, o tempo todo. Não há "primeiro a ação".</li>
+            <li><strong>Não se anulam:</strong> como agem em corpos distintos, jamais se somam para zerar a resultante de um deles.</li>
+          </ul>
+        </div>
+
+        <div class="analogy-grid">
+          <div class="analogy-card par">
+            <h4>✓ É par ação–reação</h4>
+            <ul>
+              <li>O pé empurra o chão para trás / o chão empurra o pé para a frente.</li>
+              <li>A Terra atrai a maçã / a maçã atrai a Terra.</li>
+              <li>O livro comprime a mesa / a mesa empurra o livro.</li>
+              <li>O ímã atrai o clipe / o clipe atrai o ímã.</li>
+            </ul>
+            <span class="ac-eq">corpos diferentes</span>
+          </div>
+          <div class="analogy-card nopar">
+            <h4>✗ Só se equilibra</h4>
+            <ul>
+              <li>Peso e normal do livro na mesa (mesmo corpo).</li>
+              <li>Peso e tração da lâmpada pendurada (mesmo corpo).</li>
+              <li>Peso e resistência do ar no paraquedista (mesmo corpo).</li>
+              <li>Força aplicada e atrito na caixa em MRU (mesmo corpo).</li>
+            </ul>
+            <span class="ac-eq">mesmo corpo</span>
+          </div>
+        </div>
+
+        <div class="highlight-box orange-hl">
+          <span class="hb-icon">⚠️</span>
+          <p><strong>O erro clássico:</strong> "se ação e reação são iguais e opostas, elas se anulam e nada pode se mover". A saída do paradoxo está numa palavra do enunciado preciso: elas agem em <em>corpos diferentes</em>. Para saber se um corpo acelera, você soma apenas as forças que agem <strong>nele</strong> — e a parceira de cada uma está no outro corpo, fora dessa soma.</p>
+        </div>
+
+        <div class="highlight-box green-hl">
+          <span class="hb-icon">🔗</span>
+          <p><strong>A consequência mais profunda.</strong> Porque as forças do par são iguais, opostas e colineares, num sistema isolado a <strong>quantidade de movimento total não muda</strong>: o que um corpo ganha, o outro perde exatamente. É por isso que dois patinadores que se empurram saem com quantidades de movimento opostas, que o recuo da arma acompanha o disparo do projétil, e que o foguete acelera expelindo gases. Aquele detalhe "chato" do enunciado — mesma linha de ação — é o que sustenta uma das leis de conservação mais importantes da física.</p>
+        </div>
+
+        <div class="concept-card">
+          <h4>No cotidiano</h4>
+          <ul>
+            <li><strong>Andar:</strong> seu pé empurra o chão para trás; o chão empurra você para a frente. Sem atrito, não há como andar.</li>
+            <li><strong>Nadar e remar:</strong> você empurra a água para trás; a água empurra você para a frente.</li>
+            <li><strong>Foguete:</strong> expele gases para baixo e é empurrado para cima — funciona no vácuo, pois não precisa "empurrar o ar".</li>
+            <li><strong>Recuo da arma:</strong> a arma empurra o projétil para a frente; o projétil empurra a arma para trás.</li>
+            <li><strong>Mangueira de incêndio:</strong> ela lança a água à frente e é empurrada para trás — daí a força para segurá-la.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz4"></div>
+    </section>
+
+    <!-- ============ TÓPICO 5 ============ -->
+    <section class="topic" id="t5">
+      <div class="topic-header">
+        <span class="topic-num">05</span>
+        <h2>Força resultante, equilíbrio e diagrama de corpo livre</h2>
+      </div>
+      <div class="topic-body">
+        <p>As três leis estão enunciadas. Falta a ferramenta que permite aplicá-las: saber, em cada situação, <strong>quais forças agem no corpo</strong> e o que elas somam. É aqui que a maioria dos erros de dinâmica se resolve — não na conta, mas no desenho.</p>
+
+        <div class="formula-box">
+          <span class="formula-label">Somando forças</span>
+          <span class="formula-tex">mesma direção e sentido: F<sub>res</sub> = F₁ + F₂  ·  sentidos opostos: F<sub>res</sub> = F₁ − F₂</span>
+          <span class="formula-unit">Perpendiculares: F<sub>res</sub> = √(F₁² + F₂²). Na prática, decompõe-se em eixos e aplica-se F<sub>res,x</sub> = m·a<sub>x</sub> e F<sub>res,y</sub> = m·a<sub>y</sub> separadamente.</span>
+        </div>
+
+        <div class="concept-card">
+          <h4>Diagrama de corpo livre (DCL) em 5 passos</h4>
+          <ul>
+            <li><strong>1.</strong> Escolha <em>um</em> corpo e isole-o mentalmente — represente-o por um ponto ou um retângulo.</li>
+            <li><strong>2.</strong> Desenhe só as forças que agem <strong>nele</strong>. As que ele exerce em outros corpos ficam de fora.</li>
+            <li><strong>3.</strong> Nomeie cada seta dizendo quem a exerce (P, N, Fat, T…). Sem agente, a força não entra.</li>
+            <li><strong>4.</strong> Escolha os eixos — em geral um deles na direção do movimento.</li>
+            <li><strong>5.</strong> Some as forças eixo por eixo e aplique F<sub>res</sub> = m·a em cada um.</li>
+          </ul>
+        </div>
+
+        <figure class="fbd-figure">
+          <svg viewBox="0 0 720 270" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dois diagramas de corpo livre. À esquerda, bloco em superfície horizontal com força aplicada, atrito, normal e peso, onde a normal é igual ao peso. À direita, bloco em rampa, onde a normal é menor que o peso.">
+            <defs>
+              <marker id="nl3-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" fill="#ef4444"/>
+              </marker>
+              <marker id="nl3-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" fill="#ea580c"/>
+              </marker>
+              <marker id="nl3-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" fill="#16a34a"/>
+              </marker>
+              <marker id="nl3-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" fill="#9333ea"/>
+              </marker>
+            </defs>
+
+            <!-- PAINEL A -->
+            <text x="26" y="24" font-family="Space Mono, monospace" font-size="12" font-weight="700" fill="#15803d">SUPERFÍCIE HORIZONTAL</text>
+            <line x1="30" y1="170" x2="330" y2="170" stroke="#64748b" stroke-width="3"/>
+            <rect x="140" y="130" width="70" height="40" rx="3" fill="#f1f5f9" stroke="#334155" stroke-width="2"/>
+            <!-- F aplicada -->
+            <line x1="212" y1="150" x2="300" y2="150" stroke="#ef4444" stroke-width="3" marker-end="url(#nl3-red)"/>
+            <text x="256" y="142" font-family="Space Mono, monospace" font-size="12" font-weight="700" fill="#ef4444">F</text>
+            <!-- atrito -->
+            <line x1="138" y1="150" x2="66" y2="150" stroke="#ea580c" stroke-width="3" marker-end="url(#nl3-orange)"/>
+            <text x="88" y="142" font-family="Space Mono, monospace" font-size="12" font-weight="700" fill="#ea580c">Fat</text>
+            <!-- N -->
+            <line x1="175" y1="128" x2="175" y2="58" stroke="#16a34a" stroke-width="3" marker-end="url(#nl3-green)"/>
+            <text x="183" y="68" font-family="Space Mono, monospace" font-size="12" font-weight="700" fill="#16a34a">N</text>
+            <!-- P -->
+            <line x1="175" y1="172" x2="175" y2="242" stroke="#9333ea" stroke-width="3" marker-end="url(#nl3-purple)"/>
+            <text x="183" y="230" font-family="Space Mono, monospace" font-size="12" font-weight="700" fill="#9333ea">P</text>
+            <text x="26" y="262" font-family="Poppins, sans-serif" font-size="11.5" font-weight="600" fill="#334155">Aqui, e só aqui, N = P.</text>
+
+            <!-- divisor -->
+            <line x1="358" y1="15" x2="358" y2="255" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="5 4"/>
+
+            <!-- PAINEL B: rampa -->
+            <text x="382" y="24" font-family="Space Mono, monospace" font-size="12" font-weight="700" fill="#a16207">PLANO INCLINADO</text>
+            <polygon points="400,225 690,225 690,105" fill="#f8fafc" stroke="#64748b" stroke-width="2.5"/>
+            <!-- bloco na rampa -->
+            <polygon points="550,131 563,160 526,176 513,146" fill="#f1f5f9" stroke="#334155" stroke-width="2"/>
+            <!-- N perpendicular à rampa -->
+            <line x1="538" y1="153" x2="515" y2="98" stroke="#16a34a" stroke-width="3" marker-end="url(#nl3-green)"/>
+            <text x="490" y="94" font-family="Space Mono, monospace" font-size="12" font-weight="700" fill="#16a34a">N</text>
+            <!-- P vertical -->
+            <line x1="538" y1="153" x2="538" y2="238" stroke="#9333ea" stroke-width="3" marker-end="url(#nl3-purple)"/>
+            <text x="546" y="232" font-family="Space Mono, monospace" font-size="12" font-weight="700" fill="#9333ea">P</text>
+            <text x="382" y="262" font-family="Poppins, sans-serif" font-size="11.5" font-weight="600" fill="#a16207">Aqui N ≠ P — e não são um par.</text>
+          </svg>
+          <figcaption><strong>Convenção de cores usada nos diagramas deste estudo:</strong> <span style="color:#ef4444">força aplicada / resultante</span>, <span style="color:#16a34a">normal</span>, <span style="color:#9333ea">peso</span>, <span style="color:#ea580c">atrito</span>. Note o contraste entre os dois painéis: a normal só coincide com o peso em situações particulares. Na rampa, ela é perpendicular à superfície inclinada e tem intensidade menor que o peso.</figcaption>
+        </figure>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🔵</span>
+          <p><strong>Equilíbrio é ter força resultante nula</strong> — e vem em duas formas. No <em>equilíbrio estático</em>, o corpo está em repouso. No <em>equilíbrio dinâmico</em>, ele se move em linha reta com velocidade constante. Nos dois casos a = 0, e a dinâmica os trata do mesmo jeito. "Estar em equilíbrio" não é o mesmo que "estar parado".</p>
+        </div>
+
+        <div class="example-box">
+          <h4>Dois equilíbrios, uma só ideia</h4>
+          <p><strong>Lustre pendurado no teto:</strong> a tração do fio para cima equilibra exatamente o peso para baixo. Resultante nula, em repouso.</p>
+          <p><strong>Paraquedista na velocidade terminal:</strong> a resistência do ar cresce com a velocidade até igualar o peso. Resultante nula — mas descendo com velocidade constante. Note que o peso não diminuiu; foi a resistência do ar que aumentou.</p>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplo com DCL</h4>
+          <p>Caixa de 10 kg empurrada com 40 N na horizontal; atrito de 10 N.</p>
+          <p class="calc-line">Eixo vertical: N − P = 0 → N = 100 N (não há aceleração vertical)</p>
+          <p class="calc-line">Eixo horizontal: F<sub>res</sub> = 40 − 10 = <strong>30 N</strong></p>
+          <p class="calc-line">a = 30 / 10 = <strong>3 m/s²</strong></p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz5"></div>
+    </section>
+
+    <!-- ============ TÓPICO 6 ============ -->
+    <section class="topic" id="t6">
+      <div class="topic-header">
+        <span class="topic-num">06</span>
+        <h2>Nenhuma situação é de uma lei só</h2>
+      </div>
+      <div class="topic-body">
+        <div class="highlight-box green-hl">
+          <span class="hb-icon">🧩</span>
+          <p>Livros e listas costumam rotular cada cena com uma lei: "essa é da inércia", "essa é de ação e reação". O rótulo diz qual lei responde à <strong>pergunta que está em destaque</strong> — nunca que as outras estão ausentes. Em toda situação real as três operam ao mesmo tempo, e por baixo de tudo ainda há a escolha do referencial. Este tópico existe para você nunca confundir o rótulo com a cena completa.</p>
+        </div>
+
+        <p>Um método que funciona sempre, diante de qualquer situação:</p>
+
+        <div class="concept-card">
+          <h4>Como analisar uma cena por inteiro</h4>
+          <ul>
+            <li><strong>Passo 0 — referencial.</strong> De onde você está descrevendo? Se for de algo que acelera, cuidado: as leis não valem ali na forma simples.</li>
+            <li><strong>Passo 1 — 1ª Lei.</strong> O que o corpo faria se a resultante fosse nula? Qual velocidade ele tende a manter?</li>
+            <li><strong>Passo 2 — 2ª Lei.</strong> Que forças de fato agem nele, qual é a resultante e que aceleração ela produz?</li>
+            <li><strong>Passo 3 — 3ª Lei.</strong> Para cada força, quem é a parceira e em que corpo ela está?</li>
+          </ul>
+        </div>
+
+        <p>Vamos aplicar o método à cena mais citada de todas — e ver como as três leis aparecem juntas nela.</p>
+
+        <table class="units-table" aria-label="Análise multi-lei do ônibus que freia">
+          <thead>
+            <tr><th>A pergunta</th><th>Lei que responde</th><th>A resposta</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Por que o passageiro vai para a frente?</td>
+              <td class="val">1ª Lei</td>
+              <td>Ele não é "jogado": apenas mantém a velocidade que já tinha, enquanto o ônibus desacelera embaixo dele.</td>
+            </tr>
+            <tr>
+              <td>Quem realmente o faz parar, e com que desaceleração?</td>
+              <td class="val">2ª Lei</td>
+              <td>A força do corrimão somada ao atrito dos pés é a resultante; ela determina a desaceleração dele.</td>
+            </tr>
+            <tr>
+              <td>O corrimão sofre alguma coisa?</td>
+              <td class="val">3ª Lei</td>
+              <td>Sim: o passageiro o empurra para a frente com a mesma intensidade com que é segurado.</td>
+            </tr>
+            <tr>
+              <td>Por que, de dentro, <em>parece</em> haver uma força para a frente?</td>
+              <td class="val">Referencial</td>
+              <td>O ônibus freando não é um referencial inercial. Visto da rua, essa força não existe — nenhum corpo a exerce.</td>
+            </tr>
+            <tr>
+              <td>Por que existem cinto e airbag?</td>
+              <td class="val">2ª Lei</td>
+              <td>A variação de velocidade é a mesma; eles a espalham por um tempo maior, e assim a força sobre o corpo fica menor.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>O mesmo vale para o caso oposto — um carro <em>arrancando</em>. Aqui as três leis entram numa sequência encadeada:</p>
+
+        <div class="mlaw-grid">
+          <div class="mlaw-card l3">
+            <span class="mlaw-badge">3ª Lei</span>
+            <div class="mlaw-role">Onde a força nasce</div>
+            <p>O pneu empurra o asfalto para trás; o asfalto empurra o pneu para a frente. Sem esse par, o carro giraria as rodas no lugar.</p>
+          </div>
+          <div class="mlaw-card l2">
+            <span class="mlaw-badge">2ª Lei</span>
+            <div class="mlaw-role">Quanto ele acelera</div>
+            <p>Essa força do asfalto, menos as resistências, é a resultante. Dividida pela massa do carro, dá a aceleração.</p>
+          </div>
+          <div class="mlaw-card l1">
+            <span class="mlaw-badge">1ª Lei</span>
+            <div class="mlaw-role">Por que você afunda no banco</div>
+            <p>Você tende a manter sua velocidade; o banco é que acelera contra você — e é ele que aplica a força que te leva junto.</p>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <h4>Rótulo usual × o que mais está acontecendo</h4>
+          <ul>
+            <li><strong>Toalha puxada (rótulo: 1ª Lei).</strong> Mas é a 2ª que explica por quê: o atrito age por um tempo curtíssimo, então a variação de velocidade dos pratos é mínima.</li>
+            <li><strong>Foguete (rótulo: 3ª Lei).</strong> Mas a 2ª diz quanto ele acelera — e ali a massa varia, então vale o enunciado em quantidade de movimento, aplicado ao foguete mais os gases.</li>
+            <li><strong>Andar (rótulo: 3ª Lei).</strong> Mas é a 2ª que liga o atrito do chão à sua aceleração, e a 1ª que explica por que você continua andando entre dois passos.</li>
+            <li><strong>Elevador subindo (rótulo: 2ª Lei).</strong> Mas quem muda é a <em>normal</em> sob seus pés, não o seu peso — e a sensação de "ficar mais leve ou mais pesado" é a 1ª Lei somada ao referencial acelerado da cabine.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz6"></div>
+    </section>
+
+    <!-- ============ TÓPICO 7 ============ -->
+    <section class="topic" id="t7">
+      <div class="topic-header">
+        <span class="topic-num">07</span>
+        <h2>Aristóteles × Newton: a inversão da pergunta</h2>
+      </div>
+      <div class="topic-body">
+        <p>Agora que as três leis estão firmes, vale olhar para o que elas substituíram. Não por curiosidade histórica apenas: a física que Newton derrubou é <em>exatamente</em> a que a nossa intuição reconstrói sozinha, todos os dias.</p>
+
+        <p>Para <strong>Aristóteles</strong>, no século IV a.C., o movimento precisava de uma <strong>causa contínua</strong>. Um corpo só se movia enquanto algo o movia, e a velocidade resultava da disputa entre a força aplicada e a <em>resistência do meio</em>. Não é uma teoria ingênua: num mundo cheio de atrito e de ar — o mundo em que vivemos —, ela descreve bem o que se observa. Empurre um armário e ele anda enquanto você empurra; solte e ele para.</p>
+
+        <p>O ponto fraco sempre foi o <strong>projétil</strong>: o que empurra a flecha depois que ela deixa o arco? A resposta que sobreviveu não foi de Aristóteles, mas da tradição do <strong>ímpeto</strong> — de João Filopono, no século VI, a Jean Buridan, no XIV: o lançamento transferiria ao corpo um "impulso interno" que se gastaria aos poucos. É essa, e não a de Aristóteles literal, a ideia que quase todo estudante reinventa ao dizer que a bola chutada "carrega a força do chute".</p>
+
+        <p>A virada veio antes de Newton. <strong>Galileu</strong>, observando esferas em planos cada vez mais lisos, e <strong>Descartes</strong>, formulando a persistência do movimento retilíneo, já haviam chegado à inércia. Newton reuniu isso num sistema e acrescentou o que faltava: a lei que quantifica a mudança, e a que descreve as interações aos pares.</p>
+
+        <div class="analogy-grid">
+          <div class="analogy-card arist">
+            <h4>🏺 Concepção aristotélica</h4>
+            <ul>
+              <li>O movimento exige uma causa contínua agindo no sentido do movimento.</li>
+              <li>A velocidade acompanha a força: mais força, mais velocidade.</li>
+              <li>Cessando a causa, o movimento cessa.</li>
+              <li>O repouso é o estado natural dos corpos terrestres.</li>
+            </ul>
+            <span class="ac-eq">F ∝ v  (resumo nosso)</span>
+          </div>
+          <div class="analogy-card newt">
+            <h4>🍎 Concepção newtoniana</h4>
+            <ul>
+              <li>O movimento não precisa de causa para continuar — só para mudar.</li>
+              <li>A força resultante determina a <em>variação</em> do movimento.</li>
+              <li>Resultante nula: a velocidade se conserva (repouso ou MRU).</li>
+              <li>Repouso e movimento uniforme são estados equivalentes.</li>
+            </ul>
+            <span class="ac-eq">F<sub>res</sub> = m · a</span>
+          </div>
+        </div>
+
+        <div class="highlight-box orange-hl">
+          <span class="hb-icon">🏺</span>
+          <p>Uma ressalva importante: Aristóteles <strong>nunca escreveu</strong> "F = m·v". Aquele "F ∝ v" é um resumo moderno, feito por nós, de uma tese qualitativa que envolvia também a resistência do meio — algo mais próximo de "a velocidade depende da razão entre a força e a resistência". Num meio viscoso, isso é até razoável. O salto de Galileu e Newton não foi observar melhor: foi <strong>idealizar</strong> — imaginar o movimento sem atrito, que ninguém nunca viu.</p>
+        </div>
+
+        <table class="units-table" aria-label="O mesmo fato explicado pelas duas concepções">
+          <thead>
+            <tr><th>Situação</th><th>Explicação aristotélica / do ímpeto</th><th>Explicação newtoniana</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Bola chutada, subindo</td><td>Carrega uma força do chute que a empurra para cima</td><td>Só o peso age; ela sobe pela velocidade que já tem</td></tr>
+            <tr><td>Força aplicada igual ao atrito</td><td>O corpo para: acabou o motor que o movia</td><td>Segue com velocidade constante — resultante nula</td></tr>
+            <tr><td>Massas diferentes em queda, no vácuo</td><td>A mais pesada cai mais rápido</td><td>Caem com a mesma aceleração g</td></tr>
+            <tr><td>Manter velocidade constante</td><td>Exige força no sentido do movimento</td><td>Não exige força alguma</td></tr>
+            <tr><td>Nave que desliga os motores</td><td>Deveria ir parando aos poucos</td><td>Segue indefinidamente, em linha reta</td></tr>
+          </tbody>
+        </table>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🧠</span>
+          <p>No fundo, o que mudou foi a <strong>pergunta</strong>. Aristóteles perguntava: "o que <em>mantém</em> este corpo em movimento?". Newton pergunta: "o que <em>muda</em> o movimento deste corpo?". Toda a dinâmica sai dessa inversão — e é por isso que a resposta certa para "o que mantém a nave em movimento?" é: nada, e nada precisa manter.</p>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">📄</span>
+          <p><strong>Qual das duas concepções guia o seu raciocínio?</strong> Existe um teste conceitual clássico que mede exatamente isso, questão por questão, e devolve um perfil comparando seus acertos pela física newtoniana com os que você teria se Aristóteles estivesse certo: responda ao <a href="../../testes/forca-movimento/index.html">Teste sobre Mecânica</a>. Para se aprofundar no contraste entre as duas visões, leia também <a href="../../testes/forca-movimento/concepcoes.html">Duas físicas do movimento</a>.</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz7"></div>
+    </section>
+
+    <!-- ============ TÓPICO 8 ============ -->
+    <section class="topic" id="t8">
+      <div class="topic-header">
+        <span class="topic-num">08</span>
+        <h2>Onde as leis de Newton deixam de valer</h2>
+      </div>
+      <div class="topic-body">
+        <p>Toda teoria física tem um <strong>domínio de validade</strong> — e delimitá-lo não a enfraquece: é justamente o que a torna científica. As leis de Newton descrevem com precisão extraordinária o mundo dos objetos comuns em velocidades comuns. Fora desse domínio, precisamos de outras teorias.</p>
+
+        <div class="energy-grid">
+          <div class="eg-card">
+            <span class="eg-icon">⚡</span>
+            <div class="eg-name">Relatividade restrita</div>
+            <div class="eg-desc">Velocidades próximas à da luz. Newton passa a errar as previsões.</div>
+          </div>
+          <div class="eg-card">
+            <span class="eg-icon">⚛️</span>
+            <div class="eg-name">Mecânica quântica</div>
+            <div class="eg-desc">Escala atômica. A própria ideia de trajetória perde sentido.</div>
+          </div>
+          <div class="eg-card">
+            <span class="eg-icon">🌌</span>
+            <div class="eg-name">Relatividade geral</div>
+            <div class="eg-desc">Gravidade intensa. O GPS precisa dessa correção para funcionar.</div>
+          </div>
+        </div>
+
+        <table class="units-table" aria-label="Limites de validade da mecânica newtoniana">
+          <thead>
+            <tr><th>Regime</th><th>O que falha em Newton</th><th>Teoria adequada</th><th>Newton ainda serve?</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>v muito menor que a da luz, escala macroscópica</td><td>nada falha</td><td class="val">Newton</td><td>Sim — é a física de engenharia e de missões espaciais</td></tr>
+            <tr><td>v próxima à da luz</td><td>previsões de tempo, espaço e da própria inércia</td><td class="val">Relatividade restrita</td><td>Só como aproximação de baixa velocidade</td></tr>
+            <tr><td>Escala atômica</td><td>a noção de trajetória bem definida</td><td class="val">Mecânica quântica</td><td>Não se aplica</td></tr>
+            <tr><td>Gravidade muito intensa</td><td>a descrição da própria gravidade</td><td class="val">Relatividade geral</td><td>Aproximação excelente em campos fracos</td></tr>
+          </tbody>
+        </table>
+
+        <p>Vale voltar ao tópico 03 com esse olhar. Quando a relatividade substitui a mecânica newtoniana, a formulação que Newton deu à 2ª Lei — a que fala da <strong>variação da quantidade de movimento</strong> — sobrevive, desde que se adote uma definição modificada de <em>p</em>. Já a versão escolar, F<sub>res</sub> = m·a, não sobrevive. Aquele cuidado em distinguir o enunciado preciso da simplificação não era preciosismo: é a diferença entre a forma que atravessa a fronteira e a que fica atrás dela.</p>
+
+        <div class="highlight-box green-hl">
+          <span class="hb-icon">🎯</span>
+          <p><strong>Princípio da correspondência.</strong> A relatividade e a mecânica quântica não descartam Newton: elas <em>reproduzem</em> os resultados newtonianos no limite de baixas velocidades e de escalas grandes. Uma teoria nova precisa explicar tudo o que a antiga explicava bem — e é por isso que continuamos usando Newton para lançar foguetes, projetar pontes e calcular órbitas.</p>
+        </div>
+
+        <div class="highlight-box orange-hl">
+          <span class="hb-icon">⚠️</span>
+          <p><strong>O que não dizer:</strong> "Einstein provou que Newton estava errado". A formulação correta é que as leis de Newton são uma <em>excelente aproximação</em> dentro do seu domínio, e que esse domínio cobre praticamente toda a engenharia e todo o cotidiano. Dentro dele, Newton é tão exato quanto se precisa.</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz8"></div>
+    </section>
+
+    <!-- ============ TÓPICO 9 ============ -->
+    <section class="topic" id="t9">
+      <div class="topic-header">
+        <span class="topic-num">09</span>
+        <h2>Síntese: mapa das três leis</h2>
+      </div>
+      <div class="topic-body">
+        <table class="units-table" aria-label="Síntese das três leis de Newton">
+          <thead>
+            <tr><th>Lei</th><th>Enunciado preciso (resumo)</th><th>Simplificação do EM</th><th>Erro comum</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="val">1ª — Inércia</td>
+              <td>Existem referenciais inerciais; neles, resultante nula implica velocidade constante</td>
+              <td>F<sub>res</sub> = 0 ⇒ repouso ou MRU</td>
+              <td>Achar que resultante nula significa corpo parado</td>
+            </tr>
+            <tr>
+              <td class="val">2ª — Dinâmica</td>
+              <td>A resultante determina a rapidez com que a quantidade de movimento varia</td>
+              <td>F<sub>res</sub> = m·a (massa constante)</td>
+              <td>Usar uma força isolada no lugar da resultante</td>
+            </tr>
+            <tr>
+              <td class="val">3ª — Interação</td>
+              <td>Pares de mesma intensidade, colineares, simultâneos, de mesma natureza, em corpos diferentes</td>
+              <td>Ação e reação: iguais e opostas</td>
+              <td>Chamar de par duas forças que agem no mesmo corpo</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="concept-card">
+          <h4>Roteiro para qualquer problema de dinâmica</h4>
+          <ul>
+            <li><strong>1.</strong> Escolha o referencial (de preferência inercial: o chão).</li>
+            <li><strong>2.</strong> Escolha o corpo e faça o diagrama de corpo livre.</li>
+            <li><strong>3.</strong> Liste as forças nomeando quem exerce cada uma.</li>
+            <li><strong>4.</strong> Escolha os eixos, um deles na direção do movimento.</li>
+            <li><strong>5.</strong> Some as forças em cada eixo e aplique F<sub>res</sub> = m·a.</li>
+            <li><strong>6.</strong> Confira o sinal e a ordem de grandeza do resultado — faz sentido fisicamente?</li>
+          </ul>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🧭</span>
+          <p>Guarde as duas ideias que sustentam tudo. A primeira: <strong>força não mantém o movimento — força muda o movimento</strong>. A segunda: <strong>nenhuma situação real é de uma lei só</strong>. Quando uma questão parecer difícil, volte ao tópico 06 e refaça as quatro perguntas do método — referencial, 1ª, 2ª, 3ª. Quase sempre a dificuldade estava em confundir o rótulo da cena com a cena completa.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PLACAR FINAL -->
+  <section class="score-section">
+    <div class="score-inner">
+      <h2>Seu Desempenho</h2>
+      <div class="score-display">
+        <span id="score-num">0</span>
+        <span class="score-sep">/</span>
+        <span id="score-total">0</span>
+      </div>
+      <p id="score-msg">Responda as questões para ver seu placar!</p>
+      <button class="reset-btn" id="resetAll">Reiniciar tudo</button>
+
+      <div class="report-name">
+        <label for="studentName" class="report-hint">Seu nome para o relatório (opcional):</label>
+        <input type="text" id="studentName" class="name-input" placeholder="Ex: João Silva" maxlength="60" autocomplete="off" />
+      </div>
+      <div class="report-actions">
+        <p class="report-hint">Salve ou compartilhe suas respostas:</p>
+        <div class="report-btns">
+          <button class="report-btn" id="downloadReportBtn">&#8595; Baixar .txt</button>
+          <button class="report-btn" id="copyReportBtn">&#128203; Copiar</button>
+          <button class="report-btn" id="emailReportBtn">&#9993; Enviar por e-mail</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Física · Ensino Médio · As Três Leis de Newton</p>
+  </footer>
+
+  <script src="quiz.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
