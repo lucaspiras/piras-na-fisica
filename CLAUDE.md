@@ -70,6 +70,64 @@ Estrutura da página: hero com breadcrumb + título + fórmula em destaque, segu
 
 Os hubs de tema ficam em `conteudos/<tema>/index.html`; os subtópicos em `conteudos/<tema>/<subtopico>.html`.
 
+## Convenções de escrita dos textos
+
+Valem para todo texto de conteúdo, novo ou editado. Nasceram nos briefs de redação (`briefs/`, pasta ignorada pelo git) e ficam registradas aqui porque cada brief é arquivado em `briefs/feitos/` depois de executado.
+
+**Voz, ritmo e vícios a evitar ficam em `.claude/rules/guia-de-estilo-lucas_1.md`**, que é carregado automaticamente e é a fonte única desse assunto (travessão, negrito, conectores, estrutura do parágrafo, vícios de escrita de IA, citações e epígrafes). Esta seção cobre apenas o que é específico do site: marcação, CSS e onde cada coisa entra na página.
+
+### Parágrafo de abertura
+
+A maioria dos textos abre com um `<p class="content-lead">` **antes** da primeira `<section>`, apresentando o assunto e anunciando o percurso. CSS em `conteudos/shared.css`.
+
+Cuidado ao escrevê-lo: a barra lateral "Neste texto" já lista todas as seções, então uma enumeração das seções apenas duplica o índice. O parágrafo deve trazer o que o índice não dá — por que o assunto importa, que problema o texto resolve, o que nele contraria a intuição. A menção ao percurso vem em prosa e em segundo plano.
+
+Evitar fórmula fixa: se todos os textos começarem com "Neste texto vamos abordar…", vira preenchimento. Textos curtos podem dispensar a abertura.
+
+### Referências bibliográficas
+
+```html
+<sup class="ref"><a href="#ref-1" id="cite-1">1</a></sup>
+
+<section class="content-section referencias" id="referencias">
+  <h2>Referências</h2>
+  <ol>
+    <li id="ref-1">SOBRENOME, Nome. <em>Título</em>. Local: Editora, ano.
+      <a href="#cite-1" class="voltar" aria-label="Voltar ao texto">↩</a></li>
+  </ol>
+</section>
+```
+
+- Numeração sequencial por **ordem de aparição**. Obra citada mais de uma vez reutiliza o mesmo número (vários retornos numerados na mesma entrada).
+- O indicador vem **depois** da pontuação.
+- "Referências" entra no índice "Neste texto" como último item.
+- Hierarquia para **escolher** o que citar (não para ordenar): fontes primárias, teóricos que as seguiram, referências consagradas, livros, artigos científicos, divulgação, internet.
+- Densidade: baixa nos textos da linha básica, só onde a afirmação é discutível ou histórica; alta nos textos de aprofundamento.
+- **Nunca inventar dado bibliográfico.** Faltando editora, ano, tradutor, volume ou página, deixar `<!-- VERIFICAR: dado faltante -->` e avisar na resposta.
+- **Toda obra citada precisa estar acessível online.** Antes de citar, localizar um link de acesso e conferir que a obra existe e que os dados batem. Sem acesso possível, escolher outra referência ou avisar. Clássicos em domínio público costumam estar no Archive.org, Gallica ou e-rara; artigos brasileiros de ensino, no SciELO.
+- Padrão de formatação: **ABNT NBR 6023**, com o título em *itálico* em vez de negrito, por ser mais legível na web.
+
+CSS em `css/style.css`: `.ref`, `.referencias`, `.voltar`.
+
+**Controle:** `not_commit/referencias-controle.html` (ignorado pelo git) reúne todas as obras citadas no site, com referência completa, link de acesso e as páginas que as citam. Atualizar sempre que uma referência for acrescentada.
+
+### Epígrafe
+
+Não confundir com referência. A **epígrafe** é uma frase de efeito que abre o texto, ligada ao tema (um texto sobre caos abre com a borboleta e o furacão; um sobre Sócrates, com "só sei que nada sei"). Atribuição só pelo nome do autor, sem indicador numérico e sem entrada na lista de Referências. As duas coisas convivem no mesmo texto. Regras de uso no guia de estilo, seção 7.
+
+### Emoji e ponto de exclamação
+
+Fora do corpo do texto, os dois têm função e ficam:
+
+- **Emoji como ícone**: caixas de destaque, cards de conceito, cards dos estudos dirigidos.
+- **Exclamação em microtexto de interface** ("✓ Copiado!") e em mensagem motivacional, como o retorno de um quiz.
+
+Na prosa dos textos, nenhum dos dois.
+
+### Ao editar um texto existente
+
+Preservar o vocabulário e o ritmo do original: as inserções devem parecer escritas pela mesma pessoa. Correções pedidas como localizadas são localizadas, sem reescrever seções que o pedido não citou.
+
 ## Banco de questões UFRGS (`banco-questoes/`)
 
 **Fonte de dados:** `banco-questoes/fisica_ufrgs.json` — chave raiz `banco_questoes` (array de 300 questões).

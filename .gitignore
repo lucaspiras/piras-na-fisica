@@ -9,3 +9,7 @@ not_commit/
 
 # Gabarito da gincana (expõe as respostas certas — só uso local do apresentador)
 copa_do_mundo/gincana/perguntas.html
+
+# Briefs de redação/correção (instruções de trabalho, não fazem parte do site)
+# Barra inicial: ignora só a pasta da raiz, não .claude/skills/briefs/
+/briefs/

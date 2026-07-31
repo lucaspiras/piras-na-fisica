@@ -1639,3 +1639,70 @@ footer {
   display: block;
   margin: 0 auto;
 }
+
+/* =========================
+   REFERÊNCIAS BIBLIOGRÁFICAS
+   Padrão do site: indicador numérico sobrescrito no corpo do texto,
+   clicável, levando à lista ao final da página, com link de retorno.
+   Uso:
+     <sup class="ref"><a href="#ref-1" id="cite-1">1</a></sup>
+     <section class="content-section referencias" id="referencias"> … </section>
+========================= */
+.ref {
+  font-size: 0.7em;
+  line-height: 0;
+  vertical-align: super;
+  font-weight: 700;
+  margin-left: 1px;
+}
+
+.ref a {
+  color: var(--tema-cor, var(--azul));
+  text-decoration: none;
+  padding: 0 2px;
+  border-radius: 3px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.ref a:hover,
+.ref a:focus-visible {
+  background: color-mix(in srgb, var(--tema-cor, var(--azul)) 14%, transparent);
+  text-decoration: none;
+}
+
+/* Lista de referências ao final do texto */
+.referencias {
+  border-top: 2px solid var(--border);
+  padding-top: 1.5rem;
+}
+
+.referencias ol {
+  padding-left: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.referencias li {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+.referencias li::marker { color: var(--tema-cor, var(--azul)); font-weight: 700; }
+
+/* Destaque temporário ao chegar numa referência pelo indicador */
+.referencias li:target {
+  background: color-mix(in srgb, var(--tema-cor, var(--azul)) 9%, transparent);
+  border-radius: 6px;
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--tema-cor, var(--azul)) 9%, transparent);
+}
+
+.referencias .voltar {
+  color: var(--tema-cor, var(--azul));
+  text-decoration: none;
+  margin-left: 0.35rem;
+  font-size: 0.95rem;
+}
+
+.referencias .voltar:hover { text-decoration: underline; }
