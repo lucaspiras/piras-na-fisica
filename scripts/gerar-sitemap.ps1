@@ -12,17 +12,33 @@ $excluir = @(
   '/header/',            # fragmento carregado via JS
   '/conteudos_texto/',   # versao antiga, orfa
   '/Listas_Exercicios/', # orfa (nao linkada)
-  '/disciplinas/',       # em construcao
+  '/disciplinas/',       # em construcao (ver excecoes abaixo)
+  '/img/animacoes/',     # catalogo de assets, util para mim e nao para o aluno
+  '/not_commit/',        # rascunhos locais, ignorados pelo git
+  '/Provas_vestibulares/', # PDFs e gabaritos originais, ignorados pelo git
   'feedback/admin.html'  # painel administrativo
 )
 $padraoExcluir = ($excluir -join '|')
+
+# Excecoes: paginas que entram no sitemap MESMO estando numa pasta excluida.
+# Necessario porque /disciplinas/ guarda material que NAO pode ser indexado
+# (gabarito em correcoes/folha_optica_gabarito.html, o corretor de provas e as
+# provas em si). Por isso a pasta segue bloqueada e liberamos item a item, em
+# vez de afrouxar a exclusao.
+$incluirMesmoAssim = @(
+  '/disciplinas/eletricidade_basica/apresentacoes/circuitos/index.html',
+  '/disciplinas/fisica_1_mecanica/apresentacoes/leis-de-newton/index.html',
+  '/disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+)
+$padraoIncluir = ($incluirMesmoAssim -join '|')
 
 $urls = Get-ChildItem -Path $root -Recurse -Filter *.html |
   Where-Object {
     # Normaliza separador para / (funciona igual no Windows e Linux)
     $norm = $_.FullName.Replace('\', '/')
-    # Exclui pastas da lista e qualquer stub de redirect (detectado pelo meta refresh)
-    $norm -notmatch $padraoExcluir -and
+    # A excecao e avaliada ANTES da exclusao: uma pagina da allowlist entra
+    # mesmo estando dentro de uma pasta bloqueada.
+    ($norm -match $padraoIncluir -or $norm -notmatch $padraoExcluir) -and
     (Get-Content $_.FullName -Raw) -notmatch 'http-equiv="refresh"'
   } |
   ForEach-Object {

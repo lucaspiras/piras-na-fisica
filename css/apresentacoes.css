@@ -1,0 +1,240 @@
+/* =============================================================
+   APRESENTAÇÕES — estilo compartilhado por todos os decks
+   Usado por: disciplinas/<materia>/apresentacoes/<deck>/index.html
+
+   Como criar uma apresentação nova:
+     1. <link rel="stylesheet" href="/css/apresentacoes.css">
+     2. <body data-tema="dinamica">   (ver temas abaixo)
+     3. Envolver cada <section> em <div class="slide-frame">, a primeira
+        com a classe .active
+     4. Copiar o chrome (#ui, #bottom-bar, #notes, #hint) e o IIFE
+
+   As cores de acento saem dos tokens --acento*, definidos por [data-tema].
+   Trocar a matéria de um deck é trocar UM atributo, nada mais.
+   ============================================================= */
+
+/* =========================
+   TEMAS
+   Espelham as cores de [data-tema] em css/style.css, para a apresentação
+   combinar com as páginas de conteúdo da mesma matéria.
+   Contraste conferido (WCAG AA) sobre o creme #F7F6F2 e o escuro #15161B.
+========================= */
+
+/* Dinâmica — verde + âmbar.
+   verde no creme 4,64:1 · verde claro no escuro 7,93:1 · verde na caixa 4,60:1 */
+[data-tema="dinamica"] {
+  --acento:          #15803D;
+  --acento-claro:    #22C55E;
+  --acento-suave:    #ECF8F0;
+  --acento-tracos:   #DCEFE3;
+  --acento2:         #F4A024;
+  --acento2-suave:   #FDF3E2;
+  --acento2-escuro:  #8A5610;
+  --acento2-tracos:  #F7E9CD;
+}
+
+/* Eletricidade — dourado + azul.
+   dourado no creme 4,55:1 · dourado claro no escuro 9,42:1 · azul 4,74:1
+   O azul é o secundário (e não o laranja) porque o laranja e o dourado da
+   matéria são quase o mesmo tom e anulariam o contraste entre os acentos. */
+[data-tema="eletricidade"] {
+  --acento:          #A16207;
+  --acento-claro:    #EAB308;
+  --acento-suave:    #FDF8EC;
+  --acento-tracos:   #EFE0BE;
+  --acento2:         #1E63F0;
+  --acento2-suave:   #EEF3FF;
+  --acento2-escuro:  #1E4BB8;
+  --acento2-tracos:  #A9C5F0;
+}
+
+/* Reserva: deck sem data-tema cai no azul original. */
+:root {
+  --acento:          #1E63F0;
+  --acento-claro:    #5FA0FF;
+  --acento-suave:    #EEF3FF;
+  --acento-tracos:   #E4EBFB;
+  --acento2:         #F4A024;
+  --acento2-suave:   #FDF3E2;
+  --acento2-escuro:  #A86A12;
+  --acento2-tracos:  #F7E9CD;
+
+  /* Neutros do sistema. NÃO transformar em var() dentro das <section>:
+     a regra de justificação abaixo casa por substring literal do atributo
+     style, e trocar #3a3c42 por var() a quebraria silenciosamente. */
+  --tinta:      #16171A;
+  --creme:      #F7F6F2;
+  --corpo:      #3A3C42;
+  --cinza:      #54565C;
+  --escuro:     #15161B;
+  --palco:      #0D0E12;
+}
+
+/* =========================
+   PALCO
+========================= */
+html, body { margin: 0; padding: 0; height: 100%; }
+* { box-sizing: border-box; }
+
+body {
+  background: var(--palco);
+  overflow: hidden;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+@keyframes flow  { to { stroke-dashoffset: -32; } }
+@keyframes pulse { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+
+/* Palco fixo 1920x1080, escalado por JS para caber na viewport */
+#deck-stage {
+  position: absolute; top: 50%; left: 50%;
+  width: 1920px; height: 1080px;
+  transform-origin: center center;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.slide-frame {
+  position: absolute; inset: 0;
+  width: 1920px; height: 1080px;
+  visibility: hidden; opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.slide-frame.active { visibility: visible; opacity: 1; }
+
+/* Texto de corpo justificado por padrão. A última linha não é esticada,
+   que é o comportamento normal do justify.
+   ATENÇÃO: o terceiro seletor casa por substring LITERAL do atributo style.
+   Se algum dia #3a3c42 virar var(--corpo) no corpo dos slides, esta regra
+   para de casar e todos os cards perdem a justificação, sem erro nenhum. */
+.slide-frame p,
+.slide-frame li > span:last-child,
+.slide-frame div[style*="color:#3a3c42"] { text-align: justify; }
+
+/* =========================
+   CHROME DE NAVEGAÇÃO
+========================= */
+#ui { position: fixed; inset: 0; pointer-events: none; z-index: 10; }
+
+.nav-btn {
+  position: fixed; top: 50%; transform: translateY(-50%);
+  width: 54px; height: 54px; border-radius: 50%; border: none;
+  background: rgba(20, 21, 27, .55); color: #fff; font-size: 24px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: auto; transition: background .15s, opacity .2s; opacity: .45;
+}
+
+.nav-btn:hover { background: var(--acento); opacity: 1; }
+
+#prev { left: 18px; }
+#next { right: 18px; }
+
+#bottom-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; height: 42px;
+  display: flex; align-items: center; gap: 16px; padding: 0 18px;
+  pointer-events: auto;
+  background: linear-gradient(to top, rgba(13, 14, 18, .85), transparent);
+}
+
+#counter {
+  font-family: 'IBM Plex Mono', monospace; font-size: 14px;
+  color: #cfd2da; min-width: 64px;
+}
+
+#deck-title {
+  font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; color: #e7e9ee;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 42%;
+}
+
+#progress-track {
+  flex: 1; height: 4px; border-radius: 2px;
+  background: rgba(255, 255, 255, .15); overflow: hidden;
+}
+
+#progress-bar {
+  height: 100%; width: 0;
+  background: var(--acento);
+  transition: width .25s ease;
+}
+
+.bar-btn {
+  pointer-events: auto; background: none; border: none; color: #cfd2da; cursor: pointer;
+  font-family: 'IBM Plex Mono', monospace; font-size: 13px; padding: 6px 8px; border-radius: 6px;
+}
+
+.bar-btn:hover { background: rgba(255, 255, 255, .1); color: #fff; }
+
+/* Notas do palestrante.
+   Cuidado ao apresentar: este painel fica sobre a tela PROJETADA. Com HDMI
+   espelhado, abrir as notas mostra tudo para a turma. */
+#notes {
+  position: fixed; left: 0; right: 0; bottom: 42px;
+  max-height: 34vh; overflow: auto; padding: 16px 22px;
+  background: rgba(13, 14, 18, .94); color: #e7e9ee;
+  font-size: 16px; line-height: 1.5;
+  border-top: 2px solid var(--acento);
+  transform: translateY(calc(100% + 46px));
+  transition: transform .25s ease;
+  pointer-events: auto; z-index: 11;
+}
+
+#notes.open { transform: translateY(0); }
+#notes b { color: var(--acento-claro); }
+
+#hint {
+  position: fixed; top: 14px; left: 50%; transform: translateX(-50%);
+  font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #8b8e97;
+  background: rgba(13, 14, 18, .7); padding: 6px 12px; border-radius: 20px;
+  transition: opacity .4s ease; z-index: 12;
+}
+
+/* =========================
+   ACESSIBILIDADE
+========================= */
+
+/* Sem isto, quem navega por teclado não enxerga onde está o foco. */
+.nav-btn:focus-visible,
+.bar-btn:focus-visible,
+.video-slot:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide-frame { transition: none; }
+  #hint { transition: none; }
+}
+
+/* =========================
+   IMPRESSÃO / SALVAR COMO PDF
+   Sem este bloco o deck imprime UM slide só. E sem o print-color-adjust
+   os slides escuros saem em branco com texto branco, ou seja, páginas
+   ilegíveis no material impresso.
+========================= */
+@media print {
+  #ui, #notes, #hint { display: none !important; }
+
+  html, body { overflow: visible; background: #fff; height: auto; }
+
+  #deck-wrap { position: static; }
+
+  #deck-stage {
+    position: static;
+    transform: none !important;
+    width: 1920px; height: auto;
+  }
+
+  .slide-frame {
+    position: static;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 1920px; height: 1080px;
+    break-after: page; page-break-after: always;
+  }
+
+  .slide-frame:last-child { break-after: auto; page-break-after: auto; }
+
+  @page { size: 1920px 1080px; margin: 0; }
+
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}

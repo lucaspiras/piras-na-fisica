@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <title>Forças · Apresentação</title>
+  <meta name="description" content="Apresentação de Física: peso, normal, tração e atrito, e como identificá-las num problema.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Forças">
+  <meta property="og:description" content="Apresentação de Física: peso, normal, tração e atrito, e como identificá-las num problema.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/apresentacoes.css">
+</head>
+<body data-tema="dinamica">
+  <div id="deck-wrap">
+    <div id="deck-stage">
+      <div class="slide-frame active">
+<section data-label="Capa" data-screen-label="Capa" data-speaker-notes="Peso · Normal · Tração · Atrito" style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:space-between;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
+  <div style="display:flex;align-items:center;gap:18px;position:relative;">
+    <span style="width:46px;height:46px;border-radius:50%;background:var(--acento);display:inline-block;"></span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.22em;text-transform:uppercase;color:#16171A;">Física · Dinâmica</span>
+  </div>
+  <div style="position:relative;">
+    <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:148px;line-height:0.94;letter-spacing:-0.02em;margin:0;">Forças</h1>
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:30px;letter-spacing:0.06em;color:#54565c;margin:38px 0 0;">Peso · Normal · Tração · Atrito</p>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;position:relative;">
+    <span style="font-size:30px;color:#16171A;">Lucas Telichevesky</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:28px;color:#54565c;">2026</span>
+  </div>
+</section>
+      </div>      <div class="slide-frame">
+<section data-label="Agenda" data-screen-label="Roteiro" data-speaker-notes="Roteiro da apresentação." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Roteiro</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">O que vamos ver</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px 90px;margin-top:56px;">
+      <div style="border-top:2px solid #16171A;padding-top:24px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:var(--acento);">01</span>
+        <div style="font-size:38px;font-weight:600;margin-top:10px;">As quatro forças</div>
+        <div style="font-size:27px;color:#3a3c42;margin-top:6px;">O que aparece em quase todo problema</div>
+      </div>
+      <div style="border-top:2px solid #16171A;padding-top:24px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:var(--acento);">02</span>
+        <div style="font-size:38px;font-weight:600;margin-top:10px;">Força Peso</div>
+        <div style="font-size:27px;color:#3a3c42;margin-top:6px;">A atração da Terra, e como ela muda de astro</div>
+      </div>
+      <div style="border-top:2px solid #16171A;padding-top:24px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:var(--acento);">03</span>
+        <div style="font-size:38px;font-weight:600;margin-top:10px;">Força Normal</div>
+        <div style="font-size:27px;color:#3a3c42;margin-top:6px;">O apoio da superfície, e o erro clássico</div>
+      </div>
+      <div style="border-top:2px solid #16171A;padding-top:24px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:var(--acento);">04</span>
+        <div style="font-size:38px;font-weight:600;margin-top:10px;">Tração</div>
+        <div style="font-size:27px;color:#3a3c42;margin-top:6px;">Fios, cabos e cordas</div>
+      </div>
+      <div style="border-top:2px solid #16171A;padding-top:24px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:var(--acento);">05</span>
+        <div style="font-size:38px;font-weight:600;margin-top:10px;">Força de atrito</div>
+        <div style="font-size:27px;color:#3a3c42;margin-top:6px;">Estático, cinético e os coeficientes</div>
+      </div>
+      <div style="border-top:2px solid #16171A;padding-top:24px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:var(--acento);">06</span>
+        <div style="font-size:38px;font-weight:600;margin-top:10px;">Aplicações e exercícios</div>
+        <div style="font-size:27px;color:#3a3c42;margin-top:6px;">Vestibular, ENEM e o dia a dia</div>
+      </div>
+  </div>
+</section>
+      </div>      <div class="slide-frame">
+<section data-label="§ Tipos de força" data-screen-label="Divisor 05" data-speaker-notes="Quinto bloco: as forças que efetivamente aparecem nos problemas — peso, normal, tensão e atrito." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:center;background:#15161B;color:#F7F6F2;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
+  <span style="position:absolute;right:90px;top:60px;font-family:'Space Grotesk',sans-serif;font-size:420px;font-weight:600;color:#22242c;line-height:1;">05</span>
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.2em;text-transform:uppercase;color:var(--acento-claro);position:relative;">Bloco 05</span>
+  <h2 style="font-family:'Space Grotesk',sans-serif;font-size:104px;font-weight:600;margin:24px 0 0;letter-spacing:-0.02em;position:relative;">Tipos de<br>força</h2>
+  <div style="width:140px;height:6px;background:var(--acento);margin-top:44px;position:relative;"></div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="4 forças" data-screen-label="Peso, normal, tensão, atrito" data-speaker-notes="Visão geral das quatro forças que vamos detalhar: peso, normal, tensão e atrito. Todas as outras derivam delas em problemas de dinâmica no ensino médio." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Tipos de força</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">As quatro forças principais</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:64px;flex:1;">
+    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:36px 30px;"><svg viewBox="0 0 120 100" style="width:90px;height:74px;"><rect x="35" y="15" width="50" height="30" rx="6" style="fill:var(--acento)"></rect><line x1="60" y1="45" x2="60" y2="85" stroke="#16171A" stroke-width="6"></line><polygon points="48,72 60,90 72,72" fill="#16171A"></polygon></svg><div style="font-size:32px;font-weight:600;">Peso</div><div style="font-size:26px;line-height:1.4;color:#3a3c42;">Atração gravitacional pela Terra.</div></div>
+    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:36px 30px;"><svg viewBox="0 0 120 100" style="width:90px;height:74px;"><line x1="15" y1="70" x2="105" y2="70" stroke="#16171A" stroke-width="6"></line><rect x="35" y="30" width="50" height="30" rx="6" style="fill:var(--acento)"></rect><line x1="60" y1="70" x2="60" y2="30" style="stroke:var(--acento2)" stroke-width="6"></line><polygon points="48,42 60,24 72,42" style="fill:var(--acento2)"></polygon></svg><div style="font-size:32px;font-weight:600;">Normal</div><div style="font-size:26px;line-height:1.4;color:#3a3c42;">Contato perpendicular entre superfícies.</div></div>
+    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:36px 30px;"><svg viewBox="0 0 120 100" style="width:90px;height:74px;"><line x1="20" y1="50" x2="100" y2="50" stroke="#16171A" stroke-width="6"></line><line x1="20" y1="50" x2="5" y2="50" style="stroke:var(--acento)" stroke-width="6"></line><polygon points="18,40 2,50 18,60" style="fill:var(--acento)"></polygon><line x1="100" y1="50" x2="115" y2="50" style="stroke:var(--acento2)" stroke-width="6"></line><polygon points="102,40 118,50 102,60" style="fill:var(--acento2)"></polygon></svg><div style="font-size:32px;font-weight:600;">Tensão</div><div style="font-size:26px;line-height:1.4;color:#3a3c42;">Tração em fios e cordas esticados.</div></div>
+    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:36px 30px;"><svg viewBox="0 0 120 100" style="width:90px;height:74px;"><line x1="15" y1="70" x2="105" y2="70" stroke="#16171A" stroke-width="6"></line><rect x="35" y="35" width="50" height="30" rx="6" style="fill:var(--acento)"></rect><line x1="35" y1="50" x2="15" y2="50" style="stroke:var(--acento2)" stroke-width="6"></line><polygon points="27,40 11,50 27,60" style="fill:var(--acento2)"></polygon></svg><div style="font-size:32px;font-weight:600;">Atrito</div><div style="font-size:26px;line-height:1.4;color:#3a3c42;">Contato paralelo, opõe-se ao deslizamento.</div></div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Força Peso" data-screen-label="Força peso" data-speaker-notes="O peso é a força gravitacional que um corpo sofre pela proximidade com outros corpos massivos. Nas proximidades da Terra, Fg = m·g, com g ≈ 9,81 m/s² (ou 10 m/s² para simplificar)." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força peso</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">O que é a força peso</h2>
+  </div>
+  <div style="display:flex;gap:70px;margin-top:44px;flex:1;align-items:center;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:30px;">
+      <p style="font-size:34px;line-height:1.45;margin:0;">Também chamada de força <strong>gravitacional</strong>, é a força que um corpo sofre pela proximidade com outros corpos massivos.</p>
+      <p style="font-size:34px;line-height:1.45;margin:0;">Nas proximidades da Terra, o peso vale:</p>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:64px;font-weight:500;">F<sub style="font-size:32px;">g</sub> = m · g</div>
+      <div style="font-size:26px;color:#54565c;">g ≈ 9,81 m/s² (frequentemente adotado como 10 m/s²)</div>
+    </div>
+    <div style="flex:0 0 480px;background:var(--acento-suave);border-radius:24px;padding:44px;display:flex;align-items:center;justify-content:center;">
+      <svg viewBox="0 0 300 300" style="width:100%;height:auto;">
+        <rect x="110" y="60" width="80" height="60" rx="8" style="fill:var(--acento)"></rect>
+        <line x1="150" y1="120" x2="150" y2="230" stroke="#16171A" stroke-width="7"></line>
+        <polygon points="130,205 150,245 170,205" fill="#16171A"></polygon>
+        <text x="168" y="185" font-family="IBM Plex Mono, monospace" font-size="28" fill="#16171A">F<tspan baseline-shift="sub" font-size="18">g</tspan></text>
+      </svg>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Peso pelo universo" data-screen-label="Peso em outros astros" data-speaker-notes="A aceleração da gravidade muda de astro para astro — por isso o peso de um corpo (não sua massa) varia conforme onde ele está." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força peso</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">O mesmo corpo, pesos diferentes</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:auto;margin-bottom:auto;">
+    <div style="display:flex;flex-direction:column;gap:14px;border-top:3px solid var(--acento);padding-top:24px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:72px;font-weight:600;line-height:1;">9,8<span style="font-size:32px;color:#54565c;"> m/s²</span></span><span style="font-size:28px;color:#3a3c42;">Terra</span></div>
+    <div style="display:flex;flex-direction:column;gap:14px;border-top:3px solid var(--acento);padding-top:24px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:72px;font-weight:600;line-height:1;">1,6<span style="font-size:32px;color:#54565c;"> m/s²</span></span><span style="font-size:28px;color:#3a3c42;">Lua</span></div>
+    <div style="display:flex;flex-direction:column;gap:14px;border-top:3px solid var(--acento);padding-top:24px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:72px;font-weight:600;line-height:1;">3,7<span style="font-size:32px;color:#54565c;"> m/s²</span></span><span style="font-size:28px;color:#3a3c42;">Marte</span></div>
+    <div style="display:flex;flex-direction:column;gap:14px;border-top:3px solid var(--acento2);padding-top:24px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:72px;font-weight:600;line-height:1;color:var(--acento2);">24,8<span style="font-size:32px;color:#54565c;"> m/s²</span></span><span style="font-size:28px;color:#3a3c42;">Júpiter</span></div>
+  </div>
+  <p style="font-size:30px;color:#54565c;margin:0;">A massa não muda de planeta para planeta — só o peso. Por isso um astronauta "pesa" menos na Lua, mas continua com a mesma massa.</p>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Força Normal" data-screen-label="Força normal" data-speaker-notes="A normal é uma força de contato perpendicular às superfícies. Sem ela, não poderíamos caminhar nem apoiar objetos — tudo penetraria nas superfícies." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força normal</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">O que é a força normal</h2>
+  </div>
+  <div style="display:flex;gap:80px;margin-top:48px;flex:1;align-items:center;">
+    <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:34px;flex:1;">
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">01</span><span style="font-size:34px;line-height:1.4;">É uma força de <strong>contato</strong>, exercida entre duas superfícies, na direção <strong>perpendicular</strong> a elas.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">02</span><span style="font-size:34px;line-height:1.4;">Pode ser entendida como a força que <strong>impede</strong> um corpo de penetrar no outro.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">03</span><span style="font-size:34px;line-height:1.4;">Sem ela, um livro sobre a mesa continuaria caindo, e não conseguiríamos caminhar sobre o chão.</span></li>
+    </ul>
+    <div style="flex:0 0 560px;background:var(--acento-suave);border-radius:24px;padding:44px;">
+      <svg viewBox="0 0 400 260" style="width:100%;height:auto;">
+        <line x1="20" y1="200" x2="380" y2="200" stroke="#16171A" stroke-width="6"></line>
+        <rect x="140" y="120" width="120" height="60" rx="8" style="fill:var(--acento)"></rect>
+        <line x1="200" y1="120" x2="200" y2="40" style="stroke:var(--acento2)" stroke-width="7"></line>
+        <polygon points="180,60 200,20 220,60" style="fill:var(--acento2)"></polygon>
+        <text x="215" y="70" font-family="IBM Plex Mono, monospace" font-size="26" style="fill:var(--acento2-escuro)">N</text>
+      </svg>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Cuidado! Normal" data-screen-label="Normal não é reação do peso" data-speaker-notes="Erro comum: achar que a normal é o par de ação-reação do peso. Não é — a reação do peso é uma força que o corpo faz na Terra (para cima); a reação da normal é uma força normal que o corpo faz na superfície." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força normal</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Cuidado! A normal não é a reação do peso</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:56px;flex:1;">
+    <div style="background:var(--acento2-suave);border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:22px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento2-escuro);">Peso</span><div style="font-size:29px;line-height:1.5;color:#3a3c42;">A reação do peso é uma força <strong>peso que o corpo faz na Terra</strong>, puxando-a para cima (imperceptível, mas existe).</div></div>
+    <div style="background:var(--acento-suave);border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:22px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">Normal</span><div style="font-size:29px;line-height:1.5;color:#3a3c42;">A reação da normal é uma força <strong>normal que o corpo faz na superfície</strong> — dois pares completamente diferentes.</div></div>
+  </div>
+  <p style="font-size:28px;color:#54565c;margin-top:36px;">O cálculo da normal depende da situação: em geral, ela é obtida impondo que não há aceleração na direção perpendicular ao contato.</p>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Tensão" data-screen-label="Força de tensão" data-speaker-notes="Fios e cordas esticados exercem e sofrem tensão. Ela aponta sempre na direção do fio e, idealizando fios inextensíveis e sem massa, é igual nos dois extremos." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força de tensão</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">A força que os fios transmitem</h2>
+  </div>
+  <div style="display:flex;gap:80px;margin-top:48px;flex:1;align-items:center;">
+    <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:34px;flex:1;">
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">01</span><span style="font-size:34px;line-height:1.4;">Fios e cordas esticados exercem e estão submetidos a uma força chamada <strong>tensão</strong>.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">02</span><span style="font-size:34px;line-height:1.4;">A tensão sempre aponta na <strong>direção do fio</strong>, e é considerada igual nos dois extremos.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">03</span><span style="font-size:34px;line-height:1.4;">Fios suportam um <strong>valor máximo</strong> de tensão — por isso elevadores têm limite de passageiros.</span></li>
+    </ul>
+    <div style="flex:0 0 560px;background:var(--acento-suave);border-radius:24px;padding:44px;">
+      <svg viewBox="0 0 420 200" style="width:100%;height:auto;">
+        <rect x="10" y="70" width="60" height="60" rx="8" style="fill:var(--acento)"></rect>
+        <line x1="70" y1="100" x2="350" y2="100" stroke="#16171A" stroke-width="6"></line>
+        <rect x="350" y="70" width="60" height="60" rx="8" style="fill:var(--acento2)"></rect>
+        <line x1="70" y1="100" x2="20" y2="100" style="stroke:var(--acento)" stroke-width="6"></line>
+        <polygon points="32,90 12,100 32,110" style="fill:var(--acento)"></polygon>
+        <line x1="350" y1="100" x2="400" y2="100" style="stroke:var(--acento2)" stroke-width="6"></line>
+        <polygon points="388,90 408,100 388,110" style="fill:var(--acento2)"></polygon>
+        <text x="180" y="80" font-family="IBM Plex Mono, monospace" font-size="26" fill="#54565c">T</text>
+      </svg>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Força de atrito" data-screen-label="Força de atrito: visão geral" data-speaker-notes="O atrito é uma força de contato paralela à superfície de contato, sempre se opondo ao deslizamento ou à tendência de deslizamento. Divide-se em cinético (corpo já deslizando) e estático (corpo parado)." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força de atrito</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Cinético × estático</h2>
+  </div>
+  <p style="font-size:32px;line-height:1.45;margin:34px 0 0;">Força de contato exercida entre duas superfícies, na direção <strong>paralela</strong> à região de contato entre elas.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:38px;flex:1;">
+    <div style="background:#fff;border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:18px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">Cinético</span><div style="font-size:29px;line-height:1.45;color:#3a3c42;">Quando o corpo <strong>desliza</strong> sobre a superfície, sofre uma força de atrito cinético contrária ao movimento.</div></div>
+    <div style="background:#fff;border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:18px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento2);">Estático</span><div style="font-size:29px;line-height:1.45;color:#3a3c42;">Um corpo em <strong>repouso</strong> pode sofrer atrito estático, que dificulta seu início de movimento.</div></div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Atrito cinético" data-screen-label="Atrito cinético" data-speaker-notes="Para um corpo que desliza, o atrito cinético é dado por Fac = μc · N, sempre no sentido contrário ao movimento." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força de atrito</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Atrito cinético</h2>
+  </div>
+  <div style="display:flex;gap:70px;margin-top:44px;flex:1;align-items:center;">
+    <div style="flex:0 0 560px;display:flex;flex-direction:column;gap:30px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:70px;font-weight:500;">F<sub style="font-size:34px;">ac</sub> = μ<sub style="font-size:34px;">c</sub> · N</div>
+      <div style="font-size:28px;line-height:1.5;color:#3a3c42;">O corpo desliza sobre a superfície e sofre uma força de atrito no sentido <strong>contrário</strong> ao movimento.</div>
+    </div>
+    <div style="flex:1;background:var(--acento-suave);border-radius:24px;padding:44px;">
+      <svg viewBox="0 0 500 220" style="width:100%;height:auto;">
+        <line x1="20" y1="180" x2="480" y2="180" stroke="#16171A" stroke-width="6"></line>
+        <rect x="230" y="110" width="100" height="60" rx="8" style="fill:var(--acento)"></rect>
+        <line x1="330" y1="140" x2="430" y2="140" style="stroke:var(--acento2)" stroke-width="7"></line>
+        <polygon points="408,128 442,140 408,152" style="fill:var(--acento2)"></polygon>
+        <text x="440" y="120" font-family="IBM Plex Mono, monospace" font-size="24" style="fill:var(--acento2-escuro)">v</text>
+        <line x1="230" y1="150" x2="140" y2="150" stroke="#16171A" stroke-width="7"></line>
+        <polygon points="162,138 128,150 162,162" fill="#16171A"></polygon>
+        <text x="100" y="200" font-family="IBM Plex Mono, monospace" font-size="24" fill="#16171A">F<tspan baseline-shift="sub" font-size="16">ac</tspan></text>
+      </svg>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Atrito estático" data-screen-label="Atrito estático + exercício" data-speaker-notes="O valor máximo do atrito estático é Faemáx = μe·N. Exercício: bloco de 1 kg, μe=0,5 (N=10N, Faemáx=5N). Para F=2N e F=4N o bloco fica parado e o atrito iguala F. Para F=5N, está no limiar. Para F=6N, o bloco passa a se mover, pois a força aplicada supera o atrito estático máximo." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força de atrito</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:56px;font-weight:600;margin:0;letter-spacing:-0.01em;">Atrito estático — bloco de 1 kg, μₑ = 0,5</h2>
+  </div>
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:32px;margin-top:24px;">F<sub style="font-size:18px;">aeMáx</sub> = μₑ · N = 0,5 · 10 = <strong style="color:var(--acento);">5 N</strong></div>
+  <div style="margin-top:30px;flex:1;display:flex;flex-direction:column;">
+    <div style="display:grid;grid-template-columns:1fr 1fr 2fr;padding:16px 28px;font-family:'IBM Plex Mono',monospace;font-size:22px;color:#54565c;text-transform:uppercase;letter-spacing:0.06em;"><span>Força aplicada</span><span>Atrito estático</span><span>O que acontece</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 2fr;padding:18px 28px;font-size:28px;border-top:2px solid #16171A;align-items:center;"><span>F = 2 N</span><span>2 N</span><span style="color:#3a3c42;">Bloco parado — o atrito iguala a força aplicada</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 2fr;padding:18px 28px;font-size:28px;border-top:1px solid #d8d8d2;align-items:center;background:var(--acento-suave);"><span>F = 4 N</span><span>4 N</span><span style="color:#3a3c42;">Bloco parado — ainda abaixo do máximo (5 N)</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 2fr;padding:18px 28px;font-size:28px;border-top:1px solid #d8d8d2;align-items:center;"><span>F = 5 N</span><span>5 N</span><span style="color:#3a3c42;">Limiar — no ponto de começar a deslizar</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 2fr;padding:18px 28px;font-size:28px;border-top:1px solid #d8d8d2;align-items:center;background:var(--acento2-suave);"><span>F = 6 N</span><span style="color:var(--acento2-escuro);">passa a cinético</span><span style="color:#3a3c42;">F supera o máximo — o bloco entra em movimento</span></div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Coeficientes" data-screen-label="Coeficientes de atrito" data-speaker-notes="Valores típicos de coeficiente de atrito, para dar noção de ordem de grandeza. O gelo tem atrito baixíssimo; a borracha no asfalto, altíssimo — por isso os pneus são de borracha." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força de atrito</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Aprofundando: coeficientes de atrito</h2>
+  </div>
+  <div style="margin-top:44px;flex:1;display:flex;flex-direction:column;">
+    <div style="display:grid;grid-template-columns:2.2fr 1fr 1fr;padding:18px 28px;font-family:'IBM Plex Mono',monospace;font-size:24px;color:#54565c;text-transform:uppercase;letter-spacing:0.06em;"><span>Par de superfícies</span><span style="text-align:right;">μₑ (estático)</span><span style="text-align:right;">μc (cinético)</span></div>
+    <div style="display:grid;grid-template-columns:2.2fr 1fr 1fr;padding:22px 28px;font-size:32px;border-top:2px solid #16171A;align-items:center;"><span style="font-weight:600;">Borracha — asfalto seco</span><span style="text-align:right;font-family:'IBM Plex Mono',monospace;">~1,0</span><span style="text-align:right;font-family:'IBM Plex Mono',monospace;">~0,8</span></div>
+    <div style="display:grid;grid-template-columns:2.2fr 1fr 1fr;padding:22px 28px;font-size:32px;border-top:1px solid #d8d8d2;align-items:center;background:var(--acento-suave);"><span style="font-weight:600;">Aço — aço</span><span style="text-align:right;font-family:'IBM Plex Mono',monospace;">0,74</span><span style="text-align:right;font-family:'IBM Plex Mono',monospace;">0,57</span></div>
+    <div style="display:grid;grid-template-columns:2.2fr 1fr 1fr;padding:22px 28px;font-size:32px;border-top:1px solid #d8d8d2;align-items:center;"><span style="font-weight:600;">Madeira — madeira</span><span style="text-align:right;font-family:'IBM Plex Mono',monospace;">0,42</span><span style="text-align:right;font-family:'IBM Plex Mono',monospace;">0,30</span></div>
+    <div style="display:grid;grid-template-columns:2.2fr 1fr 1fr;padding:22px 28px;font-size:32px;border-top:1px solid #d8d8d2;align-items:center;background:var(--acento2-suave);"><span style="font-weight:600;">Gelo — gelo</span><span style="text-align:right;font-family:'IBM Plex Mono',monospace;color:var(--acento2-escuro);">0,10</span><span style="text-align:right;font-family:'IBM Plex Mono',monospace;color:var(--acento2-escuro);">0,03</span></div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="§ Aplicações" data-screen-label="Divisor 06" data-speaker-notes="Sexto e último bloco: fechamento com o resumo das fórmulas e exercícios de vestibular para consolidar tudo." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:center;background:#15161B;color:#F7F6F2;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
+  <span style="position:absolute;right:90px;top:60px;font-family:'Space Grotesk',sans-serif;font-size:420px;font-weight:600;color:#22242c;line-height:1;">06</span>
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.2em;text-transform:uppercase;color:var(--acento-claro);position:relative;">Bloco 06</span>
+  <h2 style="font-family:'Space Grotesk',sans-serif;font-size:104px;font-weight:600;margin:24px 0 0;letter-spacing:-0.02em;position:relative;">Aplicações e<br>exercícios</h2>
+  <div style="width:140px;height:6px;background:var(--acento2);margin-top:44px;position:relative;"></div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Exercício UFSC" data-screen-label="Exercício: UFSC (3 forças)" data-speaker-notes="Questão sobre faixa possível da força resultante de duas forças conhecidas. Relaciona-se diretamente com o slide de força resultante do bloco 03." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Exercício · UFSC</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.3;">Uma força de 8 N e outra de 5 N atuam num corpo, mantido em repouso por uma terceira força. Que valor essa força NÃO pode ter?</h2>
+  </div>
+  <div style="display:flex;gap:60px;margin-top:30px;flex:1;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:16px;font-size:32px;justify-content:center;">
+      <div>a) 12 N</div><div>b) 8 N</div><div>c) 14 N</div><div>d) 3 N</div><div>e) 4 N</div>
+    </div>
+    <div style="flex:1;background:var(--acento-suave);border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:16px;justify-content:center;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:var(--acento);">Resolução</div>
+      <div style="font-size:29px;line-height:1.5;">Alternativa <strong>c</strong>. A resultante de F₁=8N e F₂=5N varia entre |8−5|=3N e 8+5=13N. Como o corpo está em repouso, a terceira força deve anular essa resultante — logo, seu módulo está entre 3N e 13N. <strong>14 N</strong> está fora dessa faixa.</div>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Exercício bola" data-screen-label="Exercício: bola lançada" data-speaker-notes="Clássico de vestibular sobre as forças em um lançamento vertical, desprezando a resistência do ar. Em qualquer ponto da trajetória — subindo, no topo ou descendo — a única força atuante é o peso." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Exercício · lançamento vertical</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.3;">Um menino lança uma bola verticalmente para cima. Desprezando a resistência do ar, qual força atua sobre a bola enquanto ela sobe, no topo e enquanto desce?</h2>
+  </div>
+  <div style="flex:1;display:flex;align-items:center;margin-top:30px;gap:60px;">
+    <div style="flex:0 0 460px;background:#fff;border-radius:24px;padding:36px;">
+      <svg viewBox="0 0 300 300" style="width:100%;height:auto;">
+        <line x1="150" y1="30" x2="150" y2="270" stroke="#c9ccd4" stroke-width="2" stroke-dasharray="6 6"></line>
+        <circle cx="150" cy="250" r="16" style="fill:var(--acento)"></circle>
+        <circle cx="150" cy="150" r="16" style="fill:var(--acento)"></circle>
+        <circle cx="150" cy="60" r="16" style="fill:var(--acento)"></circle>
+        <line x1="150" y1="270" x2="150" y2="300" stroke="#16171A" stroke-width="5"></line>
+        <text x="15" y="255" font-family="IBM Plex Mono, monospace" font-size="24" fill="#54565c">A</text>
+        <text x="15" y="155" font-family="IBM Plex Mono, monospace" font-size="24" fill="#54565c">B</text>
+        <text x="15" y="65" font-family="IBM Plex Mono, monospace" font-size="24" fill="#54565c">C</text>
+      </svg>
+    </div>
+    <div style="flex:1;background:var(--acento-suave);border-radius:24px;padding:44px 46px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:var(--acento);margin-bottom:16px;">Resolução</div>
+      <div style="font-size:30px;line-height:1.5;">Em <strong>A, B e C</strong>, a única força atuante é o <strong>peso</strong>, apontando sempre para baixo — mesmo quando a bola sobe. No topo (B), a velocidade é nula, mas a força (e a aceleração) continua sendo a gravidade, constante.</div>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Exercício laranja" data-screen-label="Exercício: laranja de Monteiro Lobato" data-speaker-notes="Baseado em trecho de Monteiro Lobato sobre uma laranja lançada para cima. Serve para desconstruir a ideia (errada) de que existe uma 'força do lançamento' que continua agindo durante a subida." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Exercício · UFSC-SC</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.35;">Em "Viagem ao Céu", Monteiro Lobato afirma que uma laranja lançada para cima sobe enquanto a força que a lançou é maior que seu peso, e cai quando o peso se torna maior. O que está correto?</h2>
+  </div>
+  <div style="display:flex;gap:60px;margin-top:24px;flex:1;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:12px;font-size:26px;justify-content:center;">
+      <div>01) Na subida há uma força maior que o peso, empurrando a laranja para cima</div>
+      <div>02) No ponto mais alto, a velocidade é nula e todas as forças se anulam</div>
+      <div>04) Desprezando o ar, só a força peso atua sobre a laranja após o lançamento</div>
+      <div>08) Para a laranja parar de subir, a gravidade precisa ficar maior que a tal força</div>
+      <div>16) Desprezando o ar, a aceleração da laranja independe de sua massa</div>
+    </div>
+    <div style="flex:1;background:var(--acento-suave);border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:14px;justify-content:center;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:var(--acento);">Resolução: 04 + 16 (soma = 20)</div>
+      <div style="font-size:27px;line-height:1.5;">Lobato erra: não existe "força do lançamento" que perdura no ar. Após deixar a mão, <strong>só o peso</strong> atua (04 verdadeira). Como a = g independe de m, a aceleração <strong>não depende da massa</strong> (16 verdadeira). As afirmações 01, 02 e 08 descrevem essa força fantasma, por isso são falsas.</div>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Encerramento" data-screen-label="Encerramento" data-speaker-notes="Fechamento da série. As três leis de Newton seguem em movimento uniforme na nossa vida cotidiana, mesmo sem percebermos." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:space-between;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
+  <svg viewBox="0 0 1920 1080" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.10;">
+    <line x1="-40" y1="760" x2="1980" y2="480" style="stroke:var(--acento2)" stroke-width="5"></line>
+    <circle cx="300" cy="712" r="11" style="fill:var(--acento2)"></circle>
+    <circle cx="980" cy="620" r="11" style="fill:var(--acento2)"></circle>
+    <circle cx="1660" cy="528" r="11" style="fill:var(--acento2)"></circle>
+  </svg>
+  <div style="display:flex;align-items:center;gap:18px;position:relative;">
+    <span style="width:46px;height:46px;border-radius:50%;background:var(--acento2);display:inline-block;"></span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.22em;text-transform:uppercase;color:#16171A;">Fim</span>
+  </div>
+  <h2 style="font-family:'Space Grotesk',sans-serif;font-size:110px;font-weight:600;line-height:0.98;letter-spacing:-0.02em;margin:0;position:relative;">Em movimento<br>uniforme, sem parar</h2>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;position:relative;">
+    <span style="font-size:30px;color:#16171A;">Lucas Telichevesky</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:28px;color:#54565c;">2026</span>
+  </div>
+</section>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="ui">
+    <button id="prev" class="nav-btn" aria-label="Slide anterior">‹</button>
+    <button id="next" class="nav-btn" aria-label="Próximo slide">›</button>
+    <div id="bottom-bar">
+      <span id="counter">1 / 18</span>
+      <span id="deck-title" style="font-family:'IBM Plex Sans',sans-serif;font-size:14px;color:#e7e9ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:42%;"></span>
+      <div id="progress-track"><div id="progress-bar"></div></div>
+      <button id="btn-notes" class="bar-btn" title="Notas do palestrante (N)">Notas</button>
+      <button id="btn-full" class="bar-btn" title="Tela cheia (F)">⛶ Tela cheia</button>
+      <a id="btn-portal" class="bar-btn" href="/conteudos/dinamica/" title="Voltar ao portal" style="text-decoration:none;">← Portal</a>
+    </div>
+  </div>
+  <div id="notes"></div>
+  <div id="hint">← → navegar · F tela cheia · N notas</div>
+
+  <script>
+    (function(){
+      var stage   = document.getElementById('deck-stage');
+      var frames  = Array.prototype.slice.call(document.querySelectorAll('.slide-frame'));
+      var counter = document.getElementById('counter');
+      var bar     = document.getElementById('progress-bar');
+      var notes   = document.getElementById('notes');
+      var barTitle = document.getElementById('deck-title');
+      var total   = frames.length;
+      var idx = 0;
+
+      function fit(){
+        // Reserva uma faixa inferior para a barra de navegação, para o slide
+        // nunca ser coberto por ela (nada de conteúdo cortado/escondido).
+        var chrome = 50;
+        var avail = window.innerHeight - chrome;
+        var s = Math.min(window.innerWidth / 1920, avail / 1080);
+        stage.style.top = (avail / 2) + 'px';
+        stage.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
+      }
+
+      function renderNotes(){
+        var sec = frames[idx].querySelector('section');
+        var t = (sec && sec.getAttribute('data-speaker-notes')) || '';
+        var label = (sec && sec.getAttribute('data-label')) || ('Slide ' + (idx+1));
+        notes.innerHTML = '<b>' + label + '</b><br>' + (t || '<i>sem notas</i>');
+      }
+
+      function show(i){
+        limparSlots();
+        idx = Math.max(0, Math.min(total - 1, i));
+        frames.forEach(function(f, j){ f.classList.toggle('active', j === idx); });
+        counter.textContent = (idx + 1) + ' / ' + total;
+        bar.style.width = ((idx + 1) / total * 100) + '%';
+        var s0 = frames[idx].querySelector('section');
+        if (barTitle) barTitle.textContent = (s0 && s0.getAttribute('data-screen-label')) || '';
+        renderNotes();
+        if (location.hash !== '#' + (idx + 1)) {
+          history.replaceState(null, '', '#' + (idx + 1));
+        }
+      }
+      function next(){ show(idx + 1); }
+      function prev(){ show(idx - 1); }
+
+      function toggleFull(){
+        if (!document.fullscreenElement) {
+          (document.documentElement.requestFullscreen || function(){}).call(document.documentElement);
+        } else {
+          (document.exitFullscreen || function(){}).call(document);
+        }
+      }
+
+
+      // ── Fachada de vídeo: só carrega o player ao clicar ──────────────
+      // Motivo: .slide-frame esconde com visibility:hidden, que NÃO pausa
+      // iframe. Sem isto, um vídeo iniciado continua com áudio por cima do
+      // slide seguinte, sem controle visível.
+      var slots = Array.prototype.slice.call(document.querySelectorAll('.video-slot'));
+      slots.forEach(function(s){ s.dataset.fachada = s.innerHTML; });
+
+      function tocarSlot(slot){
+        if (slot.querySelector('iframe,video')) return;
+        var yt = slot.getAttribute('data-yt');
+        var titulo = slot.getAttribute('data-title') || '';
+        var full = 'position:absolute;inset:0;width:100%;height:100%;border:0;display:block;';
+        if (!yt) return;                    // mídia ainda não definida
+        if (!navigator.onLine) {            // sem rede: avisa e oferece o link
+          slot.innerHTML = '<div style="position:absolute;inset:0;display:flex;flex-direction:column;' +
+            'align-items:center;justify-content:center;gap:16px;padding:0 40px;text-align:center;' +
+            'font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:22px;color:var(--acento);">' +
+            'sem conexão para carregar o vídeo' +
+            '<a href="https://youtu.be/' + yt + '" target="_blank" rel="noopener" ' +
+            'style="color:var(--acento);font-size:18px;">abrir no YouTube ↗</a></div>';
+          return;
+        }
+        if (slot.getAttribute('data-modo') === 'link') {
+          window.open('https://youtu.be/' + yt, '_blank', 'noopener');
+          return;                           // vídeo que não permite incorporação
+        }
+        slot.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + yt +
+          '?autoplay=1&rel=0&modestbranding=1&hl=pt-BR&playsinline=1" title="' + titulo +
+          '" style="' + full + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen"' +
+          ' referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+        slot.style.background = '#000';
+        slot.style.cursor = 'default';
+        slot.removeAttribute('tabindex');
+      }
+
+      // Desmonta os players ao trocar de slide — é o que mata o áudio.
+      function limparSlots(){
+        slots.forEach(function(s){
+          if (s.querySelector('iframe,video')) {
+            s.innerHTML = s.dataset.fachada;
+            s.style.background = '';
+            s.style.cursor = 'pointer';
+            s.setAttribute('tabindex','0');
+          }
+        });
+      }
+
+      slots.forEach(function(slot){
+        slot.addEventListener('click', function(){ tocarSlot(slot); });
+        slot.addEventListener('keydown', function(e){
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.stopPropagation(); e.preventDefault(); tocarSlot(slot);
+          }
+        });
+      });
+
+      document.getElementById('next').addEventListener('click', next);
+      document.getElementById('prev').addEventListener('click', prev);
+      document.getElementById('btn-full').addEventListener('click', toggleFull);
+      document.getElementById('btn-notes').addEventListener('click', function(){ notes.classList.toggle('open'); });
+
+      document.addEventListener('keydown', function(e){
+        switch (e.key) {
+          case 'ArrowRight': case 'PageDown': case ' ': case 'l': e.preventDefault(); next(); break;
+          case 'ArrowLeft':  case 'PageUp':   case 'h': e.preventDefault(); prev(); break;
+          case 'Home': e.preventDefault(); show(0); break;
+          case 'End':  e.preventDefault(); show(total - 1); break;
+          case 'f': case 'F': toggleFull(); break;
+          case 'n': case 'N': notes.classList.toggle('open'); break;
+        }
+      });
+
+      window.addEventListener('resize', fit);
+      fit();
+
+      var start = parseInt((location.hash || '').replace('#',''), 10);
+      show(isNaN(start) ? 0 : start - 1);
+
+      // some com a dica após alguns segundos
+      setTimeout(function(){
+        var h = document.getElementById('hint');
+        if (h) { h.style.opacity = '0'; setTimeout(function(){ h.remove(); }, 600); }
+      }, 4000);
+    })();
+  </script>
+</body>
+</html>

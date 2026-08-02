@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="/js/theme.js"></script>
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <title>Animações · Piras na Física</title>
+  <meta name="description" content="Animações em SVG usadas nos textos e apresentações do site, disponíveis para reaproveitamento.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .anim-wrap { max-width: 1100px; margin: 0 auto; padding: 2rem 1.2rem 4rem; }
+
+    .anim-hero h1 { margin: 0 0 .6rem; color: var(--titulo); }
+    .anim-hero p  { color: var(--text-muted); line-height: 1.65; max-width: 70ch; margin: 0 0 .8rem; }
+
+    .anim-secao { margin-top: 2.6rem; }
+    .anim-secao > h2 {
+      margin: 0 0 .3rem; font-size: 1.35rem; color: var(--titulo);
+      border-bottom: 2px solid var(--border); padding-bottom: .5rem;
+    }
+    .anim-secao > .anim-nota { color: var(--text-muted); font-size: .92rem; margin: .7rem 0 1.4rem; line-height: 1.6; }
+
+    .anim-grade { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem 1.4rem; }
+
+    .anim-card {
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;
+    }
+    .anim-card img { display: block; width: 100%; height: auto; }
+
+    .anim-info { padding: .85rem 1rem 1rem; display: flex; flex-direction: column; gap: .6rem; }
+    .anim-info p { margin: 0; font-size: .88rem; line-height: 1.55; color: var(--text-muted); }
+    .anim-info p strong { color: var(--texto); }
+
+    .anim-acoes { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+    .anim-acoes a, .anim-acoes button {
+      font-family: var(--font-mono); font-size: .74rem; letter-spacing: .02em;
+      padding: .4rem .7rem; border-radius: 7px; border: 1.5px solid var(--border);
+      background: var(--surface-2); color: var(--texto); text-decoration: none;
+      cursor: pointer; line-height: 1.2;
+    }
+    .anim-acoes a:hover, .anim-acoes button:hover { border-color: var(--azul); color: var(--azul); }
+    .anim-acoes code { font-family: var(--font-mono); font-size: .74rem; color: var(--text-muted); }
+
+    .anim-uso {
+      margin-top: 2.6rem; background: var(--surface-2); border: 1.5px solid var(--border);
+      border-radius: 12px; padding: 1.2rem 1.4rem;
+    }
+    .anim-uso h2 { margin: 0 0 .8rem; font-size: 1.1rem; color: var(--titulo); }
+    .anim-uso dt { font-weight: 600; margin-top: .9rem; font-size: .95rem; }
+    .anim-uso dd { margin: .3rem 0 0; color: var(--text-muted); font-size: .9rem; line-height: 1.6; }
+    .anim-uso pre {
+      margin: .5rem 0 0; padding: .7rem .9rem; overflow-x: auto;
+      background: var(--surface); border: 1.5px solid var(--border); border-radius: 8px;
+      font-family: var(--font-mono); font-size: .78rem; line-height: 1.6; color: var(--texto);
+    }
+
+    @media (max-width: 700px) {
+      .anim-grade { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+
+  <main class="anim-wrap">
+
+    <div class="anim-hero">
+      <h1>Animações</h1>
+      <p>
+        Arquivos <strong>SVG animados</strong> feitos para os textos e as apresentações do site. Cada um é
+        autossuficiente: leva junto o próprio CSS e a própria animação, e por isso pode ser aberto direto no
+        navegador, inserido num slide, colocado numa prova ou importado num editor vetorial, sem depender de
+        nada do resto do site.
+      </p>
+      <p>
+        Como são vetores, ampliam sem perder nitidez. A animação roda sozinha, em laço, e é ignorada por quem
+        tiver ativado a redução de movimento no sistema.
+      </p>
+    </div>
+
+    <section class="anim-secao">
+      <h2>Planos inclinados · o experimento mental de Galileu</h2>
+      <p class="anim-nota">
+        Os quatro quadros acompanham uma mesma variação: a bolinha é sempre solta da altura marcada pela linha
+        tracejada, e o que muda de um quadro para o outro é o quanto a segunda rampa está deitada. Usados em
+        <a href="/conteudos/dinamica/primeira-lei.html">Primeira lei de Newton</a> e na apresentação
+        <a href="/disciplinas/fisica_1_mecanica/apresentacoes/leis-de-newton/">Leis de Newton</a>.
+      </p>
+
+      <div class="anim-grade">
+
+        <figure class="anim-card">
+          <img src="/img/animacoes/planos-inclinados/1-mesma-inclinacao.svg"
+               alt="Duas rampas de madeira com a mesma inclinação; a bolinha desce por uma e sobe pela outra até a altura de partida">
+          <figcaption class="anim-info">
+            <p><strong>1. Mesma inclinação.</strong> A bolinha sobe até quase a altura de onde partiu. A diferença é o atrito.</p>
+            <div class="anim-acoes">
+              <a href="/img/animacoes/planos-inclinados/1-mesma-inclinacao.svg" target="_blank" rel="noopener">abrir sozinha ↗</a>
+              <button type="button" data-copiar="/img/animacoes/planos-inclinados/1-mesma-inclinacao.svg">copiar o &lt;img&gt;</button>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="anim-card">
+          <img src="/img/animacoes/planos-inclinados/2-menos-inclinada.svg"
+               alt="A segunda rampa está mais deitada; a bolinha percorre uma distância maior para atingir a mesma altura">
+          <figcaption class="anim-info">
+            <p><strong>2. Segunda rampa mais deitada.</strong> A bolinha rola bem mais para alcançar a mesma altura.</p>
+            <div class="anim-acoes">
+              <a href="/img/animacoes/planos-inclinados/2-menos-inclinada.svg" target="_blank" rel="noopener">abrir sozinha ↗</a>
+              <button type="button" data-copiar="/img/animacoes/planos-inclinados/2-menos-inclinada.svg">copiar o &lt;img&gt;</button>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="anim-card">
+          <img src="/img/animacoes/planos-inclinados/3-quase-horizontal.svg"
+               alt="A segunda rampa está bem menos inclinada; a bolinha sai do quadro ainda subindo">
+          <figcaption class="anim-info">
+            <p><strong>3. Quase horizontal.</strong> A bolinha vai muito além do quadro, e continua subindo.</p>
+            <div class="anim-acoes">
+              <a href="/img/animacoes/planos-inclinados/3-quase-horizontal.svg" target="_blank" rel="noopener">abrir sozinha ↗</a>
+              <button type="button" data-copiar="/img/animacoes/planos-inclinados/3-quase-horizontal.svg">copiar o &lt;img&gt;</button>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="anim-card">
+          <img src="/img/animacoes/planos-inclinados/4-horizontal.svg"
+               alt="A segunda rampa é horizontal; a bolinha segue rolando com velocidade constante">
+          <figcaption class="anim-info">
+            <p><strong>4. Rampa horizontal.</strong> Não há altura a recuperar. Sem atrito, a bolinha seguiria indefinidamente.</p>
+            <div class="anim-acoes">
+              <a href="/img/animacoes/planos-inclinados/4-horizontal.svg" target="_blank" rel="noopener">abrir sozinha ↗</a>
+              <button type="button" data-copiar="/img/animacoes/planos-inclinados/4-horizontal.svg">copiar o &lt;img&gt;</button>
+            </div>
+          </figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+    <section class="anim-uso">
+      <h2>Como reaproveitar</h2>
+      <dl>
+        <dt>Numa página do site</dt>
+        <dd>
+          O caminho absoluto funciona de qualquer pasta.
+          <pre>&lt;img src="/img/animacoes/planos-inclinados/4-horizontal.svg"
+     alt="descrição do que a animação mostra"&gt;</pre>
+        </dd>
+
+        <dt>Fora do site</dt>
+        <dd>
+          Baixe o arquivo pelo link "abrir sozinha" e use o caminho local. Nada mais precisa ir junto: o arquivo
+          não busca fonte, folha de estilo nem script na rede, então funciona offline e continua animando.
+        </dd>
+
+        <dt>Trocando as cores</dt>
+        <dd>
+          O cenário é controlado por variáveis CSS declaradas dentro do próprio arquivo
+          (<code>--fq-ceu</code>, <code>--fq-chao</code>, <code>--fq-rotulo</code>, entre outras). Para
+          retematizar, basta editar o bloco <code>&lt;style&gt;</code> no topo do <code>.svg</code>.
+        </dd>
+
+        <dt>Modo escuro</dt>
+        <dd>
+          Cada arquivo traz a própria versão noturna, acionada pela preferência do sistema. Como um
+          <code>.svg</code> carregado por <code>&lt;img&gt;</code> é um documento à parte, ele não enxerga o
+          botão de tema do site — quem manda ali é a configuração do sistema operacional.
+        </dd>
+
+        <dt>Numa apresentação ou num arquivo do Word</dt>
+        <dd>
+          Programas de escritório importam o SVG como desenho vetorial, mas descartam a animação e mostram o
+          primeiro quadro. Para manter o movimento, o caminho é abrir a animação no navegador durante a aula,
+          como faz o slide da apresentação.
+        </dd>
+      </dl>
+    </section>
+
+  </main>
+
+  <footer></footer>
+  <script src="/js/include.js"></script>
+  <script>
+    document.querySelectorAll('[data-copiar]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var caminho = btn.getAttribute('data-copiar');
+        var alt = btn.closest('.anim-card').querySelector('img').getAttribute('alt');
+        var trecho = '<img src="' + caminho + '"\n     alt="' + alt + '">';
+        navigator.clipboard.writeText(trecho).then(function () {
+          var original = btn.textContent;
+          btn.textContent = '✓ Copiado!';
+          setTimeout(function () { btn.textContent = original; }, 1600);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

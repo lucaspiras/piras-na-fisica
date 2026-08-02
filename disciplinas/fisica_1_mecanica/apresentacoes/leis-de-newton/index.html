@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <title>Leis de Newton · Apresentação</title>
+  <meta name="description" content="Apresentação de Física: as três leis de Newton — inércia, força resultante e ação e reação.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Leis de Newton">
+  <meta property="og:description" content="Apresentação de Física: as três leis de Newton — inércia, força resultante e ação e reação.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/disciplinas/fisica_1_mecanica/apresentacoes/leis-de-newton/">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/apresentacoes.css">
+</head>
+<body data-tema="dinamica">
+  <div id="deck-wrap">
+    <div id="deck-stage">
+      <div class="slide-frame active">
+<section data-label="Capa" data-screen-label="Capa" data-speaker-notes="Abertura. O curso vai além do que consta no livro: vamos entender por que os corpos se movem do jeito que se movem, com bastante exemplo do cotidiano." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:space-between;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
+  <svg viewBox="0 0 1920 1080" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.10;">
+    <path d="M -40,900 Q 500,180 1100,540 T 1980,260" fill="none" style="stroke:var(--acento)" stroke-width="5"></path>
+    <circle cx="120" cy="860" r="11" style="fill:var(--acento)"></circle>
+    <circle cx="1100" cy="540" r="11" style="fill:var(--acento)"></circle>
+    <circle cx="1860" cy="300" r="11" style="fill:var(--acento)"></circle>
+  </svg>
+  <div style="display:flex;align-items:center;gap:18px;position:relative;">
+    <span style="width:46px;height:46px;border-radius:50%;background:var(--acento);display:inline-block;"></span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.22em;text-transform:uppercase;color:#16171A;">Física · Dinâmica</span>
+  </div>
+  <div style="position:relative;">
+    <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:148px;line-height:0.94;letter-spacing:-0.02em;margin:0;">Leis de<br>Newton</h1>
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:30px;letter-spacing:0.06em;color:#54565c;margin:38px 0 0;">Inércia · Força · Ação e reação</p>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;position:relative;">
+    <span style="font-size:30px;color:#16171A;">Lucas Telichevesky</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:28px;color:#54565c;">2026</span>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Agenda" data-screen-label="Roteiro" data-speaker-notes="Roteiro da apresentação sobre as três leis de Newton." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Roteiro</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">O que vamos ver</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px 90px;margin-top:56px;">
+      <div style="border-top:2px solid #16171A;padding-top:24px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:var(--acento);">01</span>
+        <div style="font-size:38px;font-weight:600;margin-top:10px;">Causas dos movimentos</div>
+        <div style="font-size:27px;color:#3a3c42;margin-top:6px;">De Aristóteles a Newton, passando por Galileu</div>
+      </div>
+      <div style="border-top:2px solid #16171A;padding-top:24px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:var(--acento);">02</span>
+        <div style="font-size:38px;font-weight:600;margin-top:10px;">1ª Lei — a inércia</div>
+        <div style="font-size:27px;color:#3a3c42;margin-top:6px;">O que mantém um corpo em movimento</div>
+      </div>
+      <div style="border-top:2px solid #16171A;padding-top:24px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:var(--acento);">03</span>
+        <div style="font-size:38px;font-weight:600;margin-top:10px;">2ª Lei — a força</div>
+        <div style="font-size:27px;color:#3a3c42;margin-top:6px;">F = m·a, e por que ela muda o movimento</div>
+      </div>
+      <div style="border-top:2px solid #16171A;padding-top:24px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:var(--acento);">04</span>
+        <div style="font-size:38px;font-weight:600;margin-top:10px;">3ª Lei — ação e reação</div>
+        <div style="font-size:27px;color:#3a3c42;margin-top:6px;">Pares de força que nunca se anulam</div>
+      </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="§ Causas" data-screen-label="Divisor 01" data-speaker-notes="Primeiro bloco: antes das leis, a pergunta que intrigou os filósofos por dois mil anos." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:center;background:#15161B;color:#F7F6F2;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
+  <span style="position:absolute;right:90px;top:60px;font-family:'Space Grotesk',sans-serif;font-size:420px;font-weight:600;color:#22242c;line-height:1;">01</span>
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.2em;text-transform:uppercase;color:var(--acento-claro);position:relative;">Bloco 01</span>
+  <h2 style="font-family:'Space Grotesk',sans-serif;font-size:104px;font-weight:600;margin:24px 0 0;letter-spacing:-0.02em;position:relative;">Causas dos<br>movimentos</h2>
+  <div style="width:140px;height:6px;background:var(--acento);margin-top:44px;position:relative;"></div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Pergunta" data-screen-label="Pergunta motivadora" data-speaker-notes="As duas perguntas que abrem a dinâmica. Deixe a turma arriscar respostas antes de seguir — a intuição comum costuma ser aristotélica: 'precisa de força para continuar em movimento'." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:center;gap:56px;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Para pensar</span>
+  <div style="display:flex;flex-direction:column;gap:40px;">
+    <div style="display:flex;gap:32px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:34px;color:var(--acento);">1</span><span style="font-family:'Space Grotesk',sans-serif;font-size:64px;font-weight:600;line-height:1.2;letter-spacing:-0.01em;">Qual é a causa dos movimentos?</span></div>
+    <div style="display:flex;gap:32px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:34px;color:var(--acento);">2</span><span style="font-family:'Space Grotesk',sans-serif;font-size:64px;font-weight:600;line-height:1.2;letter-spacing:-0.01em;">O que mantém um corpo em movimento?</span></div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Aristóteles × Newton" data-screen-label="Aristóteles x Newton" data-speaker-notes="Aristóteles achava que o estado natural era o repouso e que força era necessária para manter o movimento. Só quase 2000 anos depois, com Galileu e Newton, entendemos que o repouso não tem status especial: é o movimento que muda que precisa de explicação." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Causas dos movimentos</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Dois mil anos de diferença</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:56px;flex:1;">
+    <div style="background:#fff;border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:22px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#54565c;">~350 a.C. · Aristóteles</span>
+      <div style="font-size:34px;font-weight:600;">"É preciso força para manter o movimento"</div>
+      <div style="font-size:29px;line-height:1.45;color:#3a3c42;">O estado natural dos corpos seria o <strong>repouso</strong>. Sem uma força continuamente aplicada, tudo tenderia a parar. Combina com a intuição — um carrinho empurrado realmente para.</div>
+    </div>
+    <div style="background:#fff;border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:22px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">1687 · Newton (e Galileu)</span>
+      <div style="font-size:34px;font-weight:600;">"É preciso força para mudar o movimento"</div>
+      <div style="font-size:29px;line-height:1.45;color:#3a3c42;">Repouso e movimento uniforme são <strong>igualmente naturais</strong>. O carrinho para por causa do atrito — uma força — não por falta dela. Sem atrito, seguiria para sempre.</div>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Galileu Galilei" data-screen-label="Galileu Galilei" data-speaker-notes="Galileu (1564-1642) é a ponte entre Aristóteles e Newton. O que ele muda não é a resposta, é a pergunta: em vez de perguntar qual é o estado natural dos corpos, pergunta o que acontece com o movimento à medida que o atrito diminui. Vale marcar a data: os Discursos saem em 1638, quando ele já estava em prisão domiciliar e quase cego." style="width:100%;height:100%;box-sizing:border-box;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;padding:90px 110px;display:flex;flex-direction:column;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Causas dos movimentos</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Galileu Galilei</h2>
+  </div>
+  <div style="display:flex;gap:80px;margin-top:48px;flex:1;align-items:center;">
+    <figure style="flex:0 0 460px;align-self:stretch;margin:0;position:relative;border-radius:24px;overflow:hidden;background:var(--acento-suave);">
+      <img src="./midia/galileu-galilei-sustermans-1636.jpg" alt="Retrato de Galileu Galilei pintado por Justus Sustermans em 1636" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+      <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:14px 18px;font-family:'IBM Plex Mono',monospace;font-size:16px;color:#fff;background:linear-gradient(to top,rgba(0,0,0,.72),rgba(0,0,0,0));">Justus Sustermans, 1636 · domínio público</figcaption>
+    </figure>
+    <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:34px;flex:1;">
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">01</span><span style="font-size:34px;line-height:1.4;">Físico, astrônomo e matemático italiano (<strong>1564–1642</strong>). Defendeu o modelo de Copérnico e foi o primeiro a apontar uma luneta para o céu.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">02</span><span style="font-size:34px;line-height:1.4;">Trocou a pergunta: em vez de "qual é o estado natural dos corpos?", perguntou <strong>o que acontece quando o atrito diminui</strong>.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">03</span><span style="font-size:34px;line-height:1.4;">Publicou o resultado nos <strong>Discursos sobre duas novas ciências</strong> (1638), aos 74 anos e em prisão domiciliar.</span></li>
+    </ul>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Planos inclinados" data-screen-label="O experimento dos planos inclinados" data-speaker-notes="Galileu não tinha como construir uma superfície perfeitamente lisa — então não tentou. Peça para a turma prever o que acontece ao deitar mais a segunda rampa antes de mostrar o quadro 2. A altura alcançada é sempre um pouco menor que a de partida, e a diferença é o atrito." style="width:100%;height:100%;box-sizing:border-box;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;padding:76px 110px;display:flex;flex-direction:column;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Causas dos movimentos</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">O experimento dos planos inclinados</h2>
+  </div>
+  <p style="font-size:33px;line-height:1.45;margin:26px 0 0;max-width:1480px;color:#3a3c42;">A bolinha é sempre solta da mesma altura, marcada pela linha tracejada. A única coisa que muda de um quadro para o outro é <strong style="color:#16171A;">o quanto a segunda rampa está deitada</strong>.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:38px;">
+    <figure style="margin:0;max-width:856px;display:flex;flex-direction:column;gap:20px;">
+      <img src="/img/animacoes/planos-inclinados/1-mesma-inclinacao.svg" alt="Animação: duas rampas com a mesma inclinação; a bolinha sobe até quase a altura de partida" style="width:100%;height:auto;display:block;border:2px solid #ddd8cc;border-radius:18px;background:#fff;">
+      <figcaption style="font-size:29px;line-height:1.4;color:#3a3c42;"><strong style="color:#16171A;">1.</strong> Rampas iguais. A bolinha sobe até <strong style="color:#16171A;">quase</strong> a altura de onde partiu. A diferença é o atrito.</figcaption>
+    </figure>
+    <figure style="margin:0;max-width:856px;display:flex;flex-direction:column;gap:20px;">
+      <img src="/img/animacoes/planos-inclinados/2-menos-inclinada.svg" alt="Animação: a segunda rampa está mais deitada; a bolinha percorre uma distância maior" style="width:100%;height:auto;display:block;border:2px solid #ddd8cc;border-radius:18px;background:#fff;">
+      <figcaption style="font-size:29px;line-height:1.4;color:#3a3c42;"><strong style="color:#16171A;">2.</strong> Segunda rampa mais deitada. Ela rola <strong style="color:#16171A;">bem mais</strong> para alcançar a mesma altura.</figcaption>
+    </figure>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Levando ao limite" data-screen-label="Levando o raciocínio ao limite" data-speaker-notes="Aqui está o passo do experimento mental: não é preciso montar a rampa horizontal sem atrito para saber o que aconteceria nela. Descendo, a bolinha ganha velocidade; subindo, perde. O plano horizontal é o caso intermediário: não há motivo para aumentar nem para diminuir. A conclusão inverte o ônus da explicação — o que passa a exigir causa é a MUDANÇA do movimento." style="width:100%;height:100%;box-sizing:border-box;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;padding:76px 110px;display:flex;flex-direction:column;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Causas dos movimentos</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Levando o raciocínio ao limite</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:38px;">
+    <figure style="margin:0;max-width:856px;display:flex;flex-direction:column;gap:20px;">
+      <img src="/img/animacoes/planos-inclinados/3-quase-horizontal.svg" alt="Animação: a segunda rampa está bem menos inclinada; a bolinha sai do quadro ainda subindo" style="width:100%;height:auto;display:block;border:2px solid #ddd8cc;border-radius:18px;background:#fff;">
+      <figcaption style="font-size:29px;line-height:1.4;color:#3a3c42;"><strong style="color:#16171A;">3.</strong> Mais deitada ainda: a bolinha vai muito além do quadro, e <strong style="color:#16171A;">continua subindo</strong>.</figcaption>
+    </figure>
+    <figure style="margin:0;max-width:856px;display:flex;flex-direction:column;gap:20px;">
+      <img src="/img/animacoes/planos-inclinados/4-horizontal.svg" alt="Animação: a segunda rampa é horizontal; a bolinha segue rolando com velocidade constante" style="width:100%;height:auto;display:block;border:2px solid #ddd8cc;border-radius:18px;background:#fff;">
+      <figcaption style="font-size:29px;line-height:1.4;color:#3a3c42;"><strong style="color:#16171A;">4.</strong> Rampa horizontal: não há altura a recuperar. Sem atrito, ela seguiria <strong style="color:#16171A;">indefinidamente</strong>.</figcaption>
+    </figure>
+  </div>
+  <div style="margin-top:34px;background:var(--acento-suave);border-left:8px solid var(--acento);border-radius:0 18px 18px 0;padding:28px 38px;">
+    <span style="font-size:33px;line-height:1.4;">O movimento <strong>não precisa de causa para se manter</strong>. O que precisa de causa é a mudança do movimento.</span>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="De Galileu a Newton" data-screen-label="De Galileu a Newton" data-speaker-notes="Cuidado com a versão simplificada que aparece em muitos livros. Galileu concluiu que o movimento se conserva, mas o movimento que se conserva, para ele, é circular: a rampa horizontal ideal acompanha a curvatura da Terra, e ele era copernicano, com órbitas circulares. A linha reta é de Descartes, em 1644, e não veio de ler melhor o experimento das rampas — veio de decidir pensar o movimento longe de qualquer centro. Nenhum experimento com rampas obriga a escolher a reta." style="width:100%;height:100%;box-sizing:border-box;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;padding:90px 110px;display:flex;flex-direction:column;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Causas dos movimentos</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">De Galileu a Newton</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:52px;flex:1;">
+    <div style="background:#fff;border-radius:24px;padding:42px 40px;display:flex;flex-direction:column;gap:20px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">1638 · Galileu</span>
+      <div style="font-size:33px;font-weight:600;line-height:1.25;">O movimento se conserva sozinho</div>
+      <div style="font-size:28px;line-height:1.45;color:#3a3c42;">Mas o movimento conservado, para ele, é <strong>circular</strong>: levada ao limite, a rampa horizontal acompanha a curvatura da Terra.</div>
+    </div>
+    <div style="background:#fff;border-radius:24px;padding:42px 40px;display:flex;flex-direction:column;gap:20px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">1644 · Descartes</span>
+      <div style="font-size:33px;font-weight:600;line-height:1.25;">Em linha reta</div>
+      <div style="font-size:28px;line-height:1.45;color:#3a3c42;">Nos <strong>Princípios de Filosofia</strong>, enuncia que a matéria tende a seguir em <strong>linha reta</strong>. Foi uma decisão sobre o que idealizar: pensar o movimento sem nenhum centro.</div>
+    </div>
+    <div style="background:#fff;border-radius:24px;padding:42px 40px;display:flex;flex-direction:column;gap:20px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">1687 · Newton</span>
+      <div style="font-size:33px;font-weight:600;line-height:1.25;">Num sistema único</div>
+      <div style="font-size:28px;line-height:1.45;color:#3a3c42;">Reúne as contribuições anteriores no <strong>Principia</strong> e coloca o resultado como a <strong>primeira</strong> das três leis.</div>
+    </div>
+  </div>
+  <p style="font-size:27px;line-height:1.45;color:#54565c;margin:34px 0 0;max-width:1560px;">Nenhum experimento com rampas obriga a escolher a reta em vez do círculo. É por isso que a formulação levou quatro décadas para aparecer.</p>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Isaac Newton" data-screen-label="Isaac Newton" data-speaker-notes="Newton (1643-1727), cientista inglês, contribuiu com dinâmica, óptica e matemática (inventou o cálculo, em paralelo com Leibniz). Reservado e obcecado por seu trabalho, publicou o Principia aos 44 anos." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Causas dos movimentos</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Isaac Newton</h2>
+  </div>
+  <div style="display:flex;gap:80px;margin-top:48px;flex:1;align-items:center;">
+    <figure style="flex:0 0 460px;align-self:stretch;margin:0;position:relative;border-radius:24px;overflow:hidden;background:var(--acento-suave);">
+      <img src="./midia/isaac-newton-kneller-1689.jpg" alt="Retrato de Isaac Newton pintado por Godfrey Kneller em 1689" style="width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block;">
+      <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:14px 18px;font-family:'IBM Plex Mono',monospace;font-size:16px;color:#fff;background:linear-gradient(to top,rgba(0,0,0,.72),rgba(0,0,0,0));">Godfrey Kneller, 1689 · domínio público</figcaption>
+    </figure>
+    <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:34px;flex:1;">
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">01</span><span style="font-size:34px;line-height:1.4;">Cientista inglês (<strong>1643–1727</strong>), com contribuições decisivas em dinâmica, óptica e matemática.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">02</span><span style="font-size:34px;line-height:1.4;">Apresentou sua teoria sobre a causa dos movimentos no <strong>Principia</strong> (1687).</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">03</span><span style="font-size:34px;line-height:1.4;">A obra reúne as <strong>três leis do movimento</strong> e a <strong>Lei da Gravitação Universal</strong>.</span></li>
+    </ul>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="O Principia" data-screen-label="O Principia (1687)" data-speaker-notes="O Philosophiæ Naturalis Principia Mathematica é o livro que fundou a mecânica clássica. As quatro leis apresentadas ali seguram, sozinhas, toda a engenharia até o século XX." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Causas dos movimentos</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">1687 · Philosophiæ Naturalis Principia Mathematica</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:34px;margin-top:64px;flex:1;">
+    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:40px 34px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">Lex I</span><div style="font-size:32px;font-weight:600;">Inércia</div><div style="font-size:26px;line-height:1.4;color:#3a3c42;">Todo corpo mantém seu estado de repouso ou movimento, a menos que uma força o mude.</div></div>
+    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:40px 34px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">Lex II</span><div style="font-size:32px;font-weight:600;">Força</div><div style="font-size:26px;line-height:1.4;color:#3a3c42;">A força resultante é proporcional à aceleração produzida: F = m·a.</div></div>
+    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:40px 34px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">Lex III</span><div style="font-size:32px;font-weight:600;">Ação e reação</div><div style="font-size:26px;line-height:1.4;color:#3a3c42;">Toda ação gera uma reação igual e oposta, em corpos diferentes.</div></div>
+    <div style="display:flex;flex-direction:column;gap:20px;background:var(--acento2-suave);border-radius:24px;padding:40px 34px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento2-escuro);">Extra</span><div style="font-size:32px;font-weight:600;">Gravitação Universal</div><div style="font-size:26px;line-height:1.4;color:#3a3c42;">Toda massa atrai toda massa — o mesmo livro que explica a queda da maçã explica as órbitas dos planetas.</div></div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="§ 1ª Lei" data-screen-label="Divisor 02" data-speaker-notes="Segundo bloco: a lei da inércia, a mais contraintuitiva das três." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:center;background:#15161B;color:#F7F6F2;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
+  <span style="position:absolute;right:90px;top:60px;font-family:'Space Grotesk',sans-serif;font-size:420px;font-weight:600;color:#22242c;line-height:1;">02</span>
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.2em;text-transform:uppercase;color:var(--acento-claro);position:relative;">Bloco 02</span>
+  <h2 style="font-family:'Space Grotesk',sans-serif;font-size:104px;font-weight:600;margin:24px 0 0;letter-spacing:-0.02em;position:relative;">1ª Lei —<br>a inércia</h2>
+  <div style="width:140px;height:6px;background:var(--acento2);margin-top:44px;position:relative;"></div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Lex I" data-screen-label="Lex I (original)" data-speaker-notes="O enunciado original, em latim, como Newton escreveu no Principia. Deixe a turma tentar reconhecer palavras antes de traduzir." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:center;gap:50px;background:#15161B;color:#F7F6F2;font-family:'IBM Plex Sans',sans-serif;">
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento-claro);">1ª Lei de Newton · Lei da Inércia</span>
+  <div style="font-family:'Space Grotesk',sans-serif;font-style:italic;font-size:52px;line-height:1.5;font-weight:500;max-width:1500px;">"Lex I: Corpus omne perseverare in statu suo quiescendi vel movendi uniformiter in directum, nisi quatenus a viribus impressis cogitur statum illum mutare."</div>
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#8b8e97;">Principia, 1687</span>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Lei I · tradução" data-screen-label="Tradução da Lei I" data-speaker-notes="Lei I: Todo corpo continua em seu estado de repouso ou de movimento uniforme em linha reta, a menos que seja forçado a mudar aquele estado por forças aplicadas sobre ele." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">1ª Lei · Inércia</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Em português</h2>
+  </div>
+  <div style="flex:1;display:flex;align-items:center;justify-content:center;">
+    <div style="background:var(--acento-suave);border-radius:24px;padding:56px 70px;max-width:1400px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:var(--acento);margin-bottom:24px;">Lei I</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:600;line-height:1.45;">"Todo corpo continua em seu estado de repouso ou de movimento uniforme em uma linha reta, a menos que seja forçado a mudar aquele estado por forças aplicadas sobre ele."</div>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="O que é inércia" data-screen-label="O que é inércia" data-speaker-notes="Inércia é a tendência de um corpo em manter seu estado de movimento. Massa é a medida quantitativa dessa inércia: quanto mais massa, mais o corpo 'resiste' a mudar de estado." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">1ª Lei · Inércia</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">O que é inércia</h2>
+  </div>
+  <div style="display:flex;gap:80px;margin-top:48px;flex:1;align-items:center;">
+    <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:34px;flex:1;">
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">01</span><span style="font-size:34px;line-height:1.4;">É a <strong>tendência</strong> de todo corpo em manter seu estado de repouso ou de movimento retilíneo uniforme.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">02</span><span style="font-size:34px;line-height:1.4;">A <strong>massa</strong> é a medida da inércia de um corpo: quanto maior a massa, maior a resistência a mudar de estado.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">03</span><span style="font-size:34px;line-height:1.4;">Só uma <strong>força resultante não nula</strong> muda o estado de movimento de um corpo.</span></li>
+    </ul>
+    <div style="flex:0 0 620px;background:var(--acento-suave);border-radius:24px;padding:44px;">
+      <svg viewBox="0 0 560 340" style="width:100%;height:auto;">
+        <rect x="60" y="60" width="90" height="70" rx="10" fill="#fff" stroke="#16171A" stroke-width="5"></rect>
+        <text x="70" y="150" font-family="IBM Plex Mono, monospace" font-size="24" fill="#54565c">v = 0 (repouso)</text>
+        <line x1="140" y1="230" x2="500" y2="230" stroke="#c9ccd4" stroke-width="2" stroke-dasharray="8 8"></line>
+        <rect x="150" y="195" width="90" height="70" rx="10" style="fill:var(--acento)"></rect>
+        <line x1="260" y1="230" x2="420" y2="230" style="stroke:var(--acento2)" stroke-width="6"></line>
+        <polygon points="404,218 424,230 404,242" style="fill:var(--acento2)"></polygon>
+        <text x="150" y="300" font-family="IBM Plex Mono, monospace" font-size="24" style="fill:var(--acento)">v = constante (MRU)</text>
+      </svg>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Vídeo · inércia" data-screen-label="Vídeo: inércia em ação" data-speaker-notes="Vídeo sugerido: motociclista puxando uma toalha de um carrinho de chá sem derrubar os pratos — a inércia dos pratos os mantém parados enquanto a toalha é puxada rapidamente." style="width:100%;height:100%;box-sizing:border-box;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;padding:44px 60px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;">
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">1ª Lei · Inércia</span>
+<div class="video-slot" data-yt="vgRZDL1ueTk" data-title="Puxando a toalha da mesa sem derrubar os pratos" role="button" tabindex="0" aria-label="Reproduzir vídeo: Puxando a toalha da mesa sem derrubar os pratos" style="width:1560px;aspect-ratio:16/9;border-radius:24px;overflow:hidden;position:relative;cursor:pointer;background:repeating-linear-gradient(135deg,var(--acento-suave),var(--acento-suave) 14px,var(--acento-tracos) 14px,var(--acento-tracos) 28px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;">
+      <div style="width:96px;height:96px;border-radius:50%;background:var(--acento);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-top:22px solid transparent;border-bottom:22px solid transparent;border-left:34px solid #fff;margin-left:8px;"></div></div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;color:var(--acento);text-align:center;max-width:620px;">vídeo: puxando a toalha da mesa sem derrubar os pratos</div>
+    </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="Vídeo · inércia · explicação" data-screen-label="Vídeo: inércia em ação — explicação" data-speaker-notes="Vídeo sugerido: motociclista puxando uma toalha de um carrinho de chá sem derrubar os pratos — a inércia dos pratos os mantém parados enquanto a toalha é puxada rapidamente." style="width:100%;height:100%;box-sizing:border-box;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;padding:90px 110px;display:flex;flex-direction:column;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">1ª Lei · Inércia</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">A inércia em ação</h2>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:38px;justify-content:center;flex:1;max-width:1480px;">
+    <p style="font-size:40px;line-height:1.5;margin:0;">A toalha some em uma fração de segundo — tempo curto demais para a força de atrito acelerar os pratos de forma perceptível.</p>
+    <p style="font-size:40px;line-height:1.5;margin:0;">Pela inércia, os pratos <strong>tendem a permanecer parados</strong> e acabam pousando de volta na mesa.</p>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Exemplos" data-screen-label="Inércia no dia a dia" data-speaker-notes="Quatro situações cotidianas onde a inércia é sentida no corpo. Bom momento para pedir mais exemplos da turma." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">1ª Lei · Inércia</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">A inércia no dia a dia</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:60px;flex:1;">
+    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:40px 34px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">Freada brusca</span><div style="font-size:29px;line-height:1.4;color:#3a3c42;">O ônibus para, mas seu corpo tende a continuar em movimento — por isso vai para frente. O cinto aplica a força que muda seu estado.</div></div>
+    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:40px 34px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">Arrancada</span><div style="font-size:29px;line-height:1.4;color:#3a3c42;">O ônibus arranca, mas seu corpo tende a continuar em repouso — por isso vai para trás no banco.</div></div>
+    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:40px 34px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">Moeda no cartão</span><div style="font-size:29px;line-height:1.4;color:#3a3c42;">Um flick rápido no cartão sobre um copo derruba só o cartão — a moeda tende a ficar parada e cai dentro do copo.</div></div>
+    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:40px 34px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">Cabo de aço</span><div style="font-size:29px;line-height:1.4;color:#3a3c42;">Satélites continuam orbitando sem motor — na ausência de forças que os freiem, mantêm sua trajetória por inércia.</div></div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Referencial inercial" data-screen-label="Referencial inercial" data-speaker-notes="A 1ª Lei só vale em referenciais inerciais — aqueles que não estão acelerando. A superfície da Terra é uma ótima aproximação para o dia a dia. Já dentro de um carro fazendo curva, objetos parecem 'ser empurrados' para fora sem força real aplicada — é um efeito do referencial não inercial, não uma força de verdade." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">1ª Lei · Inércia</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Aprofundando: referencial inercial</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:56px;flex:1;">
+    <div style="background:#fff;border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:22px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">Referencial inercial</span>
+      <div style="font-size:29px;line-height:1.5;color:#3a3c42;">A 1ª Lei só vale quando observada a partir de um referencial que <strong>não acelera</strong>. Para a maioria dos problemas do dia a dia, o chão da Terra é uma aproximação excelente.</div>
+    </div>
+    <div style="background:var(--acento2-suave);border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:22px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento2-escuro);">Contraexemplo</span>
+      <div style="font-size:29px;line-height:1.5;color:#3a3c42;">Num carro fazendo uma curva fechada, você parece "ser jogado" para o lado — mas nenhuma força real faz isso. É o carro (referencial não inercial) que muda de direção sob você.</div>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Exercício" data-screen-label="Exercício: freada brusca" data-speaker-notes="Discussão dirigida: por que o passageiro em pé vai para frente quando o ônibus freia? Peça para responderem antes de revelar a resolução." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">1ª Lei · Exercício</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:56px;font-weight:600;margin:0;letter-spacing:-0.01em;">Um ônibus em movimento freia bruscamente. Por que um passageiro em pé, sem se segurar, é jogado para a frente?</h2>
+  </div>
+  <div style="flex:1;display:flex;align-items:center;margin-top:36px;">
+    <div style="background:var(--acento-suave);border-radius:24px;padding:46px 52px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:var(--acento);margin-bottom:20px;">Resolução</div>
+      <div style="font-size:33px;line-height:1.5;">O ônibus desacelera, mas o <strong>corpo do passageiro tende a manter</strong>, por inércia, sua velocidade original. Enquanto os pés freiam junto com o ônibus (atrito com o piso), a parte superior do corpo continua para frente — resultando na sensação de ser "jogado".</div>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="§ 2ª Lei" data-screen-label="Divisor 03" data-speaker-notes="Terceiro bloco: a força, a grandeza que efetivamente muda o movimento." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:center;background:#15161B;color:#F7F6F2;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
+  <span style="position:absolute;right:90px;top:60px;font-family:'Space Grotesk',sans-serif;font-size:420px;font-weight:600;color:#22242c;line-height:1;">03</span>
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.2em;text-transform:uppercase;color:var(--acento-claro);position:relative;">Bloco 03</span>
+  <h2 style="font-family:'Space Grotesk',sans-serif;font-size:104px;font-weight:600;margin:24px 0 0;letter-spacing:-0.02em;position:relative;">2ª Lei —<br>a força</h2>
+  <div style="width:140px;height:6px;background:var(--acento);margin-top:44px;position:relative;"></div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Que a força..." data-screen-label="Intro: Star Wars" data-speaker-notes="Pausa cultural antes da lei mais citada da física. A frase 'que a força esteja com você' é a senha perfeita para introduzir o conceito físico de força — e o trocadilho gruda na memória." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:44px;background:#0d0e12;color:#F7F6F2;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
+  <svg viewBox="0 0 1920 1080" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.5;">
+    <circle cx="180" cy="150" r="2" fill="#fff"></circle><circle cx="420" cy="300" r="1.6" fill="#fff"></circle><circle cx="760" cy="120" r="2" fill="#fff"></circle><circle cx="1040" cy="260" r="1.6" fill="#fff"></circle><circle cx="1320" cy="140" r="2" fill="#fff"></circle><circle cx="1620" cy="320" r="1.6" fill="#fff"></circle><circle cx="1820" cy="180" r="2" fill="#fff"></circle>
+    <circle cx="260" cy="880" r="1.6" fill="#fff"></circle><circle cx="560" cy="950" r="2" fill="#fff"></circle><circle cx="900" cy="900" r="1.6" fill="#fff"></circle><circle cx="1200" cy="960" r="2" fill="#fff"></circle><circle cx="1560" cy="880" r="1.6" fill="#fff"></circle>
+  </svg>
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.28em;text-transform:uppercase;color:var(--acento-claro);position:relative;">antes da 2ª lei, uma pausa</span>
+  <div style="font-family:'Space Grotesk',sans-serif;font-size:108px;font-weight:600;letter-spacing:-0.01em;text-align:center;position:relative;">"Que a força<br>esteja com você."</div>
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#8b8e97;position:relative;">daqui a pouco, ela também vai acelerar as coisas</span>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Lex II" data-screen-label="Lex II (original)" data-speaker-notes="O enunciado original em latim da 2ª Lei." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:center;gap:50px;background:#15161B;color:#F7F6F2;font-family:'IBM Plex Sans',sans-serif;">
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento-claro);">2ª Lei de Newton · Princípio Fundamental da Dinâmica</span>
+  <div style="font-family:'Space Grotesk',sans-serif;font-style:italic;font-size:52px;line-height:1.5;font-weight:500;max-width:1500px;">"Lex II: Mutationem motis proportionalem esse vi motrici impressae, et fieri secundum lineam rectam qua vis illa imprimitur."</div>
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#8b8e97;">Principia, 1687</span>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Lei II · tradução" data-screen-label="Tradução da Lei II" data-speaker-notes="Lei II: A mudança de movimento é proporcional à força motora imprimida, e é produzida na direção da linha reta na qual aquela força é aplicada." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">2ª Lei · Força</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Em português</h2>
+  </div>
+  <div style="flex:1;display:flex;align-items:center;justify-content:center;">
+    <div style="background:var(--acento-suave);border-radius:24px;padding:56px 70px;max-width:1400px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:var(--acento);margin-bottom:24px;">Lei II</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:600;line-height:1.45;">"A mudança de movimento é proporcional à força motora imprimida, e é produzida na direção de linha reta na qual aquela força é aplicada."</div>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="F = m·a" data-screen-label="Fórmula: F = m·a" data-speaker-notes="A 2ª Lei resumida na equação mais famosa da física: a força resultante é igual ao produto da massa pela aceleração." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">2ª Lei · Força</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">A equação que resume tudo</h2>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:50px;margin-top:auto;margin-bottom:auto;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:150px;font-weight:500;letter-spacing:0.02em;"><span style="color:var(--acento);">F</span><sub style="font-size:70px;">R</sub> = <span style="color:#16171A;">m</span> · <span style="color:var(--acento2);">a</span></div>
+    <div style="display:flex;gap:70px;">
+      <div style="text-align:center;"><div style="font-family:'IBM Plex Mono',monospace;font-size:40px;color:var(--acento);">F<sub>R</sub></div><div style="font-size:30px;color:#3a3c42;margin-top:10px;">força resultante (newton)</div></div>
+      <div style="text-align:center;"><div style="font-family:'IBM Plex Mono',monospace;font-size:40px;color:#16171A;">m</div><div style="font-size:30px;color:#3a3c42;margin-top:10px;">massa do corpo (kg)</div></div>
+      <div style="text-align:center;"><div style="font-family:'IBM Plex Mono',monospace;font-size:40px;color:var(--acento2);">a</div><div style="font-size:30px;color:#3a3c42;margin-top:10px;">aceleração (m/s²)</div></div>
+    </div>
+  </div>
+</section>
+      </div>
+
+
+      <div class="slide-frame">
+<section data-label="O que a força faz" data-screen-label="O que a força faz" data-speaker-notes="Três pontos essenciais e frequentemente confundidos pelos alunos: força gera aceleração (não velocidade), mais força = mais aceleração, e mais massa = mais difícil de acelerar." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">2ª Lei · Força</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">O que a força realmente faz</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:64px;flex:1;">
+    <div style="display:flex;flex-direction:column;gap:24px;background:#fff;border-radius:24px;padding:44px 40px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">a</span><div style="font-size:34px;font-weight:600;">Gera aceleração</div><div style="font-size:29px;line-height:1.4;color:#3a3c42;">Forças geram <strong>aceleração</strong> — não velocidades pequenas ou grandes diretamente.</div></div>
+    <div style="display:flex;flex-direction:column;gap:24px;background:#fff;border-radius:24px;padding:44px 40px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">b</span><div style="font-size:34px;font-weight:600;">Proporcional</div><div style="font-size:29px;line-height:1.4;color:#3a3c42;">Quanto <strong>maior a força</strong>, maior a aceleração que o corpo sofre.</div></div>
+    <div style="display:flex;flex-direction:column;gap:24px;background:#fff;border-radius:24px;padding:44px 40px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">c</span><div style="font-size:34px;font-weight:600;">Inversamente à massa</div><div style="font-size:29px;line-height:1.4;color:#3a3c42;">É mais difícil acelerar um corpo de <strong>grande massa</strong> do que um de pequena massa.</div></div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Massa × aceleração" data-screen-label="Massa e aceleração" data-speaker-notes="Para a mesma força aplicada, quanto maior a massa, menor a aceleração resultante — e vice-versa. É a relação inversa entre m e a em F=ma." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">2ª Lei · Força</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Para a mesma força...</h2>
+  </div>
+  <div style="display:flex;gap:70px;margin-top:40px;flex:1;align-items:center;">
+    <div style="flex:0 0 660px;background:#fff;border-radius:24px;padding:44px;">
+      <svg viewBox="0 0 560 220" style="width:100%;height:auto;">
+        <rect x="30" y="70" width="70" height="70" rx="10" style="fill:var(--acento)"></rect>
+        <line x1="100" y1="105" x2="230" y2="105" style="stroke:var(--acento2)" stroke-width="10"></line>
+        <polygon points="205,85 245,105 205,125" style="fill:var(--acento2)"></polygon>
+        <text x="30" y="170" font-family="IBM Plex Mono, monospace" font-size="24" fill="#54565c">massa pequena</text>
+        <text x="260" y="100" font-family="IBM Plex Mono, monospace" font-size="26" fill="#16171A">a ↑</text>
+      </svg>
+      <svg viewBox="0 0 560 220" style="width:100%;height:auto;">
+        <rect x="30" y="45" width="140" height="120" rx="10" style="fill:var(--acento)"></rect>
+        <line x1="170" y1="105" x2="230" y2="105" style="stroke:var(--acento2)" stroke-width="10"></line>
+        <polygon points="212,92 245,105 212,118" style="fill:var(--acento2)"></polygon>
+        <text x="30" y="200" font-family="IBM Plex Mono, monospace" font-size="24" fill="#54565c">massa grande</text>
+        <text x="260" y="100" font-family="IBM Plex Mono, monospace" font-size="26" fill="#16171A">a ↓</text>
+      </svg>
+    </div>
+    <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:34px;flex:1;">
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">01</span><span style="font-size:34px;line-height:1.4;">Aplicando a <strong>mesma força</strong> num corpo de pouca massa, a aceleração é <strong>grande</strong>.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">02</span><span style="font-size:34px;line-height:1.4;">No corpo de muita massa, a mesma força produz uma aceleração <strong>pequena</strong>.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">03</span><span style="font-size:34px;line-height:1.4;">Por isso é fácil empurrar uma bicicleta e quase impossível empurrar um caminhão sozinho.</span></li>
+    </ul>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Unidades" data-screen-label="Unidades de força" data-speaker-notes="A unidade SI de força é o newton (N). O quilograma-força (kgf) é uma unidade prática, com 1 kgf equivalendo a aproximadamente 10 N (o peso de 1 kg na Terra)." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">2ª Lei · Força</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Como medimos a força</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:56px;flex:1;">
+    <div style="background:#fff;border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:18px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:64px;font-weight:500;color:var(--acento);">N</span><div style="font-size:34px;font-weight:600;">Newton</div><div style="font-size:29px;line-height:1.45;color:#3a3c42;">Unidade do <strong>Sistema Internacional</strong>. Um newton é a força que dá 1 m/s² de aceleração a 1 kg de massa.</div></div>
+    <div style="background:var(--acento2-suave);border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:18px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:64px;font-weight:500;color:var(--acento2-escuro);">kgf</span><div style="font-size:34px;font-weight:600;">Quilograma-força</div><div style="font-size:29px;line-height:1.45;color:#3a3c42;">Unidade prática, comum em rótulos e balanças. <strong>1 kgf ≈ 10 N</strong> — é o peso de 1 kg na superfície da Terra.</div></div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Força resultante" data-screen-label="Força resultante" data-speaker-notes="Quando várias forças atuam sobre um corpo, o que importa para a 2ª Lei é a soma vetorial delas — a força resultante. O módulo da resultante depende do ângulo entre as forças, e varia entre |F1-F2| e F1+F2." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">2ª Lei · Força</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Aprofundando: força resultante</h2>
+  </div>
+  <div style="display:flex;gap:80px;margin-top:48px;flex:1;align-items:center;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:30px;">
+      <p style="font-size:35px;line-height:1.45;margin:0;">Quando <strong>várias forças</strong> atuam sobre um corpo, é a <strong>soma vetorial</strong> delas — a força resultante — que entra na 2ª Lei.</p>
+      <p style="font-size:35px;line-height:1.45;margin:0;">O módulo da resultante depende do <strong>ângulo</strong> entre as forças: é máximo quando elas apontam no mesmo sentido, e mínimo quando se opõem.</p>
+    </div>
+    <div style="flex:0 0 560px;background:var(--acento-suave);border-radius:24px;padding:48px 40px;display:flex;flex-direction:column;gap:20px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.06em;text-transform:uppercase;color:var(--acento);">faixa possível</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:40px;color:#16171A;">|F<sub>1</sub> − F<sub>2</sub>| ≤ F<sub>R</sub> ≤ F<sub>1</sub> + F<sub>2</sub></div>
+      <div style="font-size:24px;color:#54565c;">F₁ e F₂ são os módulos das forças componentes</div>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Exercício F=ma" data-screen-label="Exercício: F = m·a" data-speaker-notes="Aplicação numérica direta. Peça para calcularem antes de revelar." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">2ª Lei · Exercício</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:52px;font-weight:600;margin:0;letter-spacing:-0.01em;">Um carrinho de 4 kg recebe uma força resultante de 20 N. Qual é a aceleração do carrinho?</h2>
+  </div>
+  <div style="flex:1;display:flex;align-items:center;margin-top:36px;">
+    <div style="background:var(--acento-suave);border-radius:24px;padding:46px 52px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:var(--acento);margin-bottom:20px;">Resolução</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:38px;line-height:1.6;">F<sub>R</sub> = m·a → 20 = 4·a → <strong style="color:var(--acento);">a = 5 m/s²</strong></div>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Exercício PUC-SP" data-screen-label="Exercício: PUC-SP" data-speaker-notes="Questão clássica de vestibular sobre MRU e força resultante nula. Boa para checar se a turma internalizou a 1ª e a 2ª lei juntas." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">2ª Lei · Exercício · PUC-SP</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:48px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.3;">Quando um corpo está dotado de movimento retilíneo uniforme, a resultante das forças que sobre ele atuam é:</h2>
+  </div>
+  <div style="display:flex;gap:60px;margin-top:36px;flex:1;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:18px;font-size:33px;justify-content:center;">
+      <div>a) constante não nula</div>
+      <div>b) nula</div>
+      <div>c) função crescente do tempo</div>
+      <div>d) função decrescente do tempo</div>
+      <div>e) nada se pode afirmar</div>
+    </div>
+    <div style="flex:1;background:var(--acento-suave);border-radius:24px;padding:46px 48px;display:flex;flex-direction:column;gap:20px;justify-content:center;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:var(--acento);">Resolução</div>
+      <div style="font-size:32px;line-height:1.5;">Alternativa <strong>b</strong>. MRU é movimento com <strong>velocidade constante</strong> — logo, aceleração nula. Pela 2ª Lei, se a = 0, então F<sub>R</sub> = m·a também é nula.</div>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="§ 3ª Lei" data-screen-label="Divisor 04" data-speaker-notes="Quarto bloco: ação e reação, a lei mais mal-compreendida do ensino médio." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:center;background:#15161B;color:#F7F6F2;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
+  <span style="position:absolute;right:90px;top:60px;font-family:'Space Grotesk',sans-serif;font-size:420px;font-weight:600;color:#22242c;line-height:1;">04</span>
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.2em;text-transform:uppercase;color:var(--acento-claro);position:relative;">Bloco 04</span>
+  <h2 style="font-family:'Space Grotesk',sans-serif;font-size:104px;font-weight:600;margin:24px 0 0;letter-spacing:-0.02em;position:relative;">3ª Lei —<br>ação e reação</h2>
+  <div style="width:140px;height:6px;background:var(--acento2);margin-top:44px;position:relative;"></div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Lex III" data-screen-label="Lex III (original)" data-speaker-notes="O enunciado original em latim da 3ª Lei." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:center;gap:50px;background:#15161B;color:#F7F6F2;font-family:'IBM Plex Sans',sans-serif;">
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento-claro);">3ª Lei de Newton · Ação e Reação</span>
+  <div style="font-family:'Space Grotesk',sans-serif;font-style:italic;font-size:52px;line-height:1.5;font-weight:500;max-width:1500px;">"Lex III: Actioni contrariam semper et aequalem esse reactionem: sine corporum duorum actiones in se mutuo semper esse aequales et in partes contrarias dirigi."</div>
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:#8b8e97;">Principia, 1687</span>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Lei III · tradução" data-screen-label="Tradução da Lei III" data-speaker-notes="Lei III: A toda ação há sempre uma reação oposta e de igual intensidade: as ações mútuas de dois corpos um sobre o outro são sempre iguais e dirigidas em sentidos opostos." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">3ª Lei · Ação e reação</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Em português</h2>
+  </div>
+  <div style="flex:1;display:flex;align-items:center;justify-content:center;">
+    <div style="background:var(--acento-suave);border-radius:24px;padding:56px 70px;max-width:1400px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:var(--acento);margin-bottom:24px;">Lei III</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:600;line-height:1.45;">"A toda ação há sempre uma reação oposta e de igual intensidade: as ações mútuas de dois corpos um sobre o outro são sempre iguais e dirigidas em sentidos opostos."</div>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Cuidado!" data-screen-label="Pares de ação e reação" data-speaker-notes="O erro mais comum: achar que ação e reação se cancelam. Elas nunca se cancelam porque atuam em corpos diferentes — cada força só tem efeito sobre o corpo em que é aplicada." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">3ª Lei · Ação e reação</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Cuidado! Elas nunca se cancelam</h2>
+  </div>
+  <div style="display:flex;gap:80px;margin-top:48px;flex:1;align-items:center;">
+    <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:34px;flex:1;">
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">01</span><span style="font-size:34px;line-height:1.4;">Ação e reação são <strong>iguais em módulo</strong> e <strong>opostas em sentido</strong> — mas atuam em <strong>corpos diferentes</strong>.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">02</span><span style="font-size:34px;line-height:1.4;">Por isso, elas <strong>nunca se anulam</strong>: uma força só produz efeito no corpo em que é aplicada.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">03</span><span style="font-size:34px;line-height:1.4;">Quem "cancela" a força feita numa parede é a <strong>força normal</strong> dessa parede — não a reação da 3ª Lei.</span></li>
+    </ul>
+    <div style="flex:0 0 600px;background:var(--acento2-suave);border-radius:24px;padding:44px;">
+      <svg viewBox="0 0 560 220" style="width:100%;height:auto;">
+        <rect x="60" y="70" width="90" height="80" rx="10" style="fill:var(--acento)"></rect>
+        <rect x="410" y="70" width="90" height="80" rx="10" style="fill:var(--acento2)"></rect>
+        <line x1="150" y1="110" x2="260" y2="110" style="stroke:var(--acento)" stroke-width="8"></line>
+        <polygon points="240,95 268,110 240,125" style="fill:var(--acento)"></polygon>
+        <line x1="410" y1="140" x2="300" y2="140" style="stroke:var(--acento2)" stroke-width="8"></line>
+        <polygon points="320,125 292,140 320,155" style="fill:var(--acento2)"></polygon>
+        <text x="60" y="185" font-family="IBM Plex Mono, monospace" font-size="22" style="fill:var(--acento)">corpo A · ação</text>
+        <text x="380" y="185" font-family="IBM Plex Mono, monospace" font-size="22" style="fill:var(--acento2-escuro)">corpo B · reação</text>
+      </svg>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Vídeo · foguete" data-screen-label="Vídeo: lançamento de foguete" data-speaker-notes="Vídeo sugerido: lançamento de um foguete, com muita fumaça sendo gerada. Massa (gases) é ejetada para baixo em alta velocidade; a reação empurra o foguete para cima." style="width:100%;height:100%;box-sizing:border-box;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;padding:44px 60px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;">
+  <span style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">3ª Lei · Ação e reação</span>
+<div class="video-slot" data-yt="mYTvg2abusc" data-title="Lançamento de foguete" role="button" tabindex="0" aria-label="Reproduzir vídeo: Lançamento de foguete" style="width:1560px;aspect-ratio:16/9;border-radius:24px;overflow:hidden;position:relative;cursor:pointer;background:repeating-linear-gradient(135deg,var(--acento-suave),var(--acento-suave) 14px,var(--acento-tracos) 14px,var(--acento-tracos) 28px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;">
+      <div style="width:96px;height:96px;border-radius:50%;background:var(--acento);display:flex;align-items:center;justify-content:center;"><div style="width:0;height:0;border-top:22px solid transparent;border-bottom:22px solid transparent;border-left:34px solid #fff;margin-left:8px;"></div></div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;color:var(--acento);text-align:center;max-width:620px;">vídeo: lançamento de foguete com fumaça</div>
+    </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="Vídeo · foguete · explicação" data-screen-label="Vídeo: lançamento de foguete — explicação" data-speaker-notes="Vídeo sugerido: lançamento de um foguete, com muita fumaça sendo gerada. Massa (gases) é ejetada para baixo em alta velocidade; a reação empurra o foguete para cima." style="width:100%;height:100%;box-sizing:border-box;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;padding:90px 110px;display:flex;flex-direction:column;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">3ª Lei · Ação e reação</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">O lançamento de um foguete</h2>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:38px;justify-content:center;flex:1;max-width:1480px;">
+    <p style="font-size:40px;line-height:1.5;margin:0;">No lançamento, massa (os gases de combustão) é <strong>empurrada para fora</strong> do foguete a grande velocidade — a ação.</p>
+    <p style="font-size:40px;line-height:1.5;margin:0;">Como reação, o <strong>foguete é empurrado</strong> em sentido contrário — para cima. Não é o "empurrão no ar": funciona até no vácuo do espaço.</p>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Caminhar" data-screen-label="Exemplo: caminhar" data-speaker-notes="Ao caminhar, empurramos o chão para trás com o pé (ação); o chão nos empurra para frente (reação) — é essa reação que nos impulsiona." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">3ª Lei · Exemplos</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Por que conseguimos caminhar</h2>
+  </div>
+  <div style="display:flex;gap:80px;margin-top:56px;flex:1;align-items:center;">
+    <p style="flex:1;font-size:36px;line-height:1.5;margin:0;">Quando caminhamos, <strong>empurramos o chão para trás</strong> com o pé. Pela 3ª Lei, o chão nos <strong>empurra para frente</strong> com a mesma intensidade — é essa reação que nos impulsiona.</p>
+    <div style="flex:0 0 620px;background:#fff;border-radius:24px;padding:44px;">
+      <svg viewBox="0 0 560 260" style="width:100%;height:auto;">
+        <circle cx="220" cy="60" r="26" fill="none" stroke="#16171A" stroke-width="6"></circle>
+        <line x1="220" y1="86" x2="220" y2="170" stroke="#16171A" stroke-width="6"></line>
+        <line x1="220" y1="170" x2="170" y2="230" stroke="#16171A" stroke-width="6"></line>
+        <line x1="220" y1="170" x2="270" y2="220" stroke="#16171A" stroke-width="6"></line>
+        <line x1="220" y1="120" x2="150" y2="150" stroke="#16171A" stroke-width="6"></line>
+        <line x1="0" y1="235" x2="560" y2="235" stroke="#c9ccd4" stroke-width="3"></line>
+        <line x1="170" y1="235" x2="90" y2="235" style="stroke:var(--acento)" stroke-width="8"></line>
+        <polygon points="108,222 80,235 108,248" style="fill:var(--acento)"></polygon>
+        <text x="30" y="215" font-family="IBM Plex Mono, monospace" font-size="22" style="fill:var(--acento)">ação no chão</text>
+        <line x1="270" y1="200" x2="360" y2="150" style="stroke:var(--acento2)" stroke-width="8"></line>
+        <polygon points="335,142 366,148 348,175" style="fill:var(--acento2)"></polygon>
+        <text x="370" y="150" font-family="IBM Plex Mono, monospace" font-size="22" style="fill:var(--acento2-escuro)">reação no corpo</text>
+      </svg>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Soco na parede" data-screen-label="Exemplo: soco na parede" data-speaker-notes="Quando damos um soco na parede, dói a mão. A força da mão sobre a parede é igual à força da parede sobre a mão — cada uma atuando em um corpo diferente." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">3ª Lei · Exemplos</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Por que dói bater na parede</h2>
+  </div>
+  <div style="display:flex;gap:80px;margin-top:56px;flex:1;align-items:center;">
+    <p style="flex:1;font-size:36px;line-height:1.5;margin:0;">Ao dar um soco na parede, <strong>dói a mão</strong>. Isso ocorre porque a força que a mão faz sobre a parede é <strong>igual</strong> à força que a parede faz sobre a mão — só que aplicada de volta em você.</p>
+    <div style="flex:0 0 620px;background:#fff;border-radius:24px;padding:44px;">
+      <svg viewBox="0 0 560 220" style="width:100%;height:auto;">
+        <rect x="420" y="20" width="40" height="180" fill="#e8e6de" stroke="#16171A" stroke-width="4"></rect>
+        <circle cx="180" cy="110" r="30" style="fill:var(--acento)"></circle>
+        <line x1="210" y1="110" x2="390" y2="110" style="stroke:var(--acento)" stroke-width="8"></line>
+        <polygon points="365,95 400,110 365,125" style="fill:var(--acento)"></polygon>
+        <line x1="420" y1="140" x2="260" y2="140" style="stroke:var(--acento2)" stroke-width="8"></line>
+        <polygon points="280,125 245,140 280,155" style="fill:var(--acento2)"></polygon>
+        <text x="90" y="180" font-family="IBM Plex Mono, monospace" font-size="22" style="fill:var(--acento)">ação: mão → parede</text>
+        <text x="300" y="60" font-family="IBM Plex Mono, monospace" font-size="22" style="fill:var(--acento2-escuro)">reação: parede → mão</text>
+      </svg>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Cavalo e carroça" data-screen-label="Cavalo e carroça" data-speaker-notes="Charge clássica: se a força do cavalo na carroça é igual à força da carroça no cavalo, como há movimento? Resposta: o que move o cavalo é o atrito do chão sobre suas patas — a força da carroça sobre o cavalo apenas reduz a aceleração do conjunto, não a anula." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">3ª Lei · Charge clássica</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:48px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.3;">Se a força do cavalo na carroça é igual à força da carroça no cavalo, como o conjunto se movimenta?</h2>
+  </div>
+  <div style="display:flex;gap:60px;margin-top:36px;flex:1;align-items:center;">
+    <div style="flex:0 0 620px;background:#fff;border-radius:24px;padding:44px;">
+      <svg viewBox="0 0 560 200" style="width:100%;height:auto;">
+        <rect x="30" y="70" width="130" height="70" rx="10" style="fill:var(--acento)"></rect>
+        <text x="55" y="110" font-family="IBM Plex Mono, monospace" font-size="24" fill="#fff">cavalo</text>
+        <rect x="380" y="80" width="150" height="60" rx="10" style="fill:var(--acento2)"></rect>
+        <text x="405" y="118" font-family="IBM Plex Mono, monospace" font-size="24" fill="#fff">carroça</text>
+        <line x1="160" y1="105" x2="380" y2="105" stroke="#16171A" stroke-width="4"></line>
+        <line x1="0" y1="170" x2="560" y2="170" stroke="#c9ccd4" stroke-width="3"></line>
+        <line x1="70" y1="170" x2="10" y2="170" style="stroke:var(--acento-claro)" stroke-width="7"></line>
+        <polygon points="28,158 5,170 28,182" style="fill:var(--acento-claro)"></polygon>
+        <text x="0" y="195" font-family="IBM Plex Mono, monospace" font-size="20" style="fill:var(--acento)">atrito do chão</text>
+      </svg>
+    </div>
+    <div style="flex:1;background:var(--acento-suave);border-radius:24px;padding:46px 48px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:var(--acento);margin-bottom:20px;">Resolução</div>
+      <div style="font-size:30px;line-height:1.5;">Quem movimenta o cavalo é a <strong>força de atrito do chão</strong> sobre suas patas — não a força na carroça. A força que a carroça faz de volta no cavalo apenas <strong>reduz a aceleração</strong> do conjunto; ela não anula o movimento.</div>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Exercício ENEM" data-screen-label="Exercício: ENEM 2013" data-speaker-notes="Questão do ENEM 2013 sobre atrito no deslocamento em rampa. Boa aplicação prática da ideia de que o atrito nem sempre se opõe ao movimento do corpo como um todo." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">3ª Lei · Exercício · ENEM 2013</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.35;">Uma pessoa necessita da força de atrito em seus pés para subir uma rampa em linha reta. Qual são a direção e o sentido dessa força de atrito?</h2>
+  </div>
+  <div style="display:flex;gap:60px;margin-top:30px;flex:1;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:16px;font-size:29px;justify-content:center;">
+      <div>a) Perpendicular ao plano, no mesmo sentido do movimento</div>
+      <div>b) Paralelo ao plano, sentido contrário ao movimento</div>
+      <div>c) Paralelo ao plano, no mesmo sentido do movimento</div>
+      <div>d) Horizontal, no mesmo sentido do movimento</div>
+      <div>e) Vertical, sentido para cima</div>
+    </div>
+    <div style="flex:1;background:var(--acento-suave);border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:18px;justify-content:center;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:var(--acento);">Resolução</div>
+      <div style="font-size:29px;line-height:1.5;">Alternativa <strong>c</strong>. O pé empurra o chão para trás (ação); pela 3ª Lei, o chão empurra o pé <strong>para frente</strong>, no mesmo sentido do movimento — é essa reação que impulsiona a pessoa rampa acima.</div>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Resumo" data-screen-label="Resumo das leis" data-speaker-notes="As quatro relações que resumem o bloco inteiro: inércia como conceito, F=ma, ação-reação e o peso." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#15161B;color:#F7F6F2;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento-claro);">Síntese</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">As três leis, em uma tela</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:auto;margin-bottom:auto;">
+    <div style="background:#1e2027;border-radius:24px;padding:46px 48px;display:flex;flex-direction:column;gap:18px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:40px;font-weight:500;color:#fff;">1ª Lei — Inércia</span><span style="font-size:29px;color:#a9abb2;">Sem força resultante, o corpo mantém seu estado de repouso ou MRU.</span></div>
+    <div style="background:#1e2027;border-radius:24px;padding:46px 48px;display:flex;flex-direction:column;gap:18px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:64px;font-weight:500;"><span style="color:var(--acento-claro);">F</span><sub>R</sub> = m · a</span><span style="font-size:29px;color:#a9abb2;">2ª Lei — a força resultante define a aceleração</span></div>
+    <div style="background:#1e2027;border-radius:24px;padding:46px 48px;display:flex;flex-direction:column;gap:18px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:40px;font-weight:500;color:#fff;">3ª Lei — Ação e reação</span><span style="font-size:29px;color:#a9abb2;">Forças sempre em pares, iguais e opostas, em corpos diferentes.</span></div>
+    <div style="background:#1e2027;border-radius:24px;padding:46px 48px;display:flex;flex-direction:column;gap:18px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:64px;font-weight:500;">F<sub style="color:var(--acento2);">g</sub> = m · g</span><span style="font-size:29px;color:#a9abb2;">Peso — a força que a 1ª Lei precisa vencer para ficarmos parados</span></div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Encerramento" data-screen-label="Encerramento" data-speaker-notes="Fechamento da série. As três leis de Newton seguem em movimento uniforme na nossa vida cotidiana, mesmo sem percebermos." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:space-between;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
+  <svg viewBox="0 0 1920 1080" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.10;">
+    <line x1="-40" y1="760" x2="1980" y2="480" style="stroke:var(--acento2)" stroke-width="5"></line>
+    <circle cx="300" cy="712" r="11" style="fill:var(--acento2)"></circle>
+    <circle cx="980" cy="620" r="11" style="fill:var(--acento2)"></circle>
+    <circle cx="1660" cy="528" r="11" style="fill:var(--acento2)"></circle>
+  </svg>
+  <div style="display:flex;align-items:center;gap:18px;position:relative;">
+    <span style="width:46px;height:46px;border-radius:50%;background:var(--acento2);display:inline-block;"></span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:26px;letter-spacing:0.22em;text-transform:uppercase;color:#16171A;">Fim</span>
+  </div>
+  <h2 style="font-family:'Space Grotesk',sans-serif;font-size:110px;font-weight:600;line-height:0.98;letter-spacing:-0.02em;margin:0;position:relative;">Em movimento<br>uniforme, sem parar</h2>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;position:relative;">
+    <span style="font-size:30px;color:#16171A;">Lucas Telichevesky</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:28px;color:#54565c;">2026</span>
+  </div>
+</section>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="ui">
+    <button id="prev" class="nav-btn" aria-label="Slide anterior">‹</button>
+    <button id="next" class="nav-btn" aria-label="Próximo slide">›</button>
+    <div id="bottom-bar">
+      <span id="counter">1 / 43</span>
+      <span id="deck-title" style="font-family:'IBM Plex Sans',sans-serif;font-size:14px;color:#e7e9ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:42%;"></span>
+      <div id="progress-track"><div id="progress-bar"></div></div>
+      <button id="btn-notes" class="bar-btn" title="Notas do palestrante (N)">Notas</button>
+      <button id="btn-full" class="bar-btn" title="Tela cheia (F)">⛶ Tela cheia</button>
+      <a id="btn-portal" class="bar-btn" href="/conteudos/dinamica/" title="Voltar ao portal" style="text-decoration:none;">← Portal</a>
+    </div>
+  </div>
+  <div id="notes"></div>
+  <div id="hint">← → navegar · F tela cheia · N notas</div>
+
+  <script>
+    (function(){
+      var stage   = document.getElementById('deck-stage');
+      var frames  = Array.prototype.slice.call(document.querySelectorAll('.slide-frame'));
+      var counter = document.getElementById('counter');
+      var bar     = document.getElementById('progress-bar');
+      var notes   = document.getElementById('notes');
+      var barTitle = document.getElementById('deck-title');
+      var total   = frames.length;
+      var idx = 0;
+
+      function fit(){
+        // Reserva uma faixa inferior para a barra de navegação, para o slide
+        // nunca ser coberto por ela (nada de conteúdo cortado/escondido).
+        var chrome = 50;
+        var avail = window.innerHeight - chrome;
+        var s = Math.min(window.innerWidth / 1920, avail / 1080);
+        stage.style.top = (avail / 2) + 'px';
+        stage.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
+      }
+
+      function renderNotes(){
+        var sec = frames[idx].querySelector('section');
+        var t = (sec && sec.getAttribute('data-speaker-notes')) || '';
+        var label = (sec && sec.getAttribute('data-label')) || ('Slide ' + (idx+1));
+        notes.innerHTML = '<b>' + label + '</b><br>' + (t || '<i>sem notas</i>');
+      }
+
+      function show(i){
+        limparSlots();
+        idx = Math.max(0, Math.min(total - 1, i));
+        frames.forEach(function(f, j){ f.classList.toggle('active', j === idx); });
+        counter.textContent = (idx + 1) + ' / ' + total;
+        bar.style.width = ((idx + 1) / total * 100) + '%';
+        var s0 = frames[idx].querySelector('section');
+        if (barTitle) barTitle.textContent = (s0 && s0.getAttribute('data-screen-label')) || '';
+        renderNotes();
+        if (location.hash !== '#' + (idx + 1)) {
+          history.replaceState(null, '', '#' + (idx + 1));
+        }
+      }
+      function next(){ show(idx + 1); }
+      function prev(){ show(idx - 1); }
+
+      function toggleFull(){
+        if (!document.fullscreenElement) {
+          (document.documentElement.requestFullscreen || function(){}).call(document.documentElement);
+        } else {
+          (document.exitFullscreen || function(){}).call(document);
+        }
+      }
+
+
+      // ── Fachada de vídeo: só carrega o player ao clicar ──────────────
+      // Motivo: .slide-frame esconde com visibility:hidden, que NÃO pausa
+      // iframe. Sem isto, um vídeo iniciado continua com áudio por cima do
+      // slide seguinte, sem controle visível.
+      var slots = Array.prototype.slice.call(document.querySelectorAll('.video-slot'));
+      slots.forEach(function(s){ s.dataset.fachada = s.innerHTML; });
+
+      function tocarSlot(slot){
+        if (slot.querySelector('iframe,video')) return;
+        var yt = slot.getAttribute('data-yt');
+        var titulo = slot.getAttribute('data-title') || '';
+        var full = 'position:absolute;inset:0;width:100%;height:100%;border:0;display:block;';
+        if (!yt) return;                    // mídia ainda não definida
+        if (!navigator.onLine) {            // sem rede: avisa e oferece o link
+          slot.innerHTML = '<div style="position:absolute;inset:0;display:flex;flex-direction:column;' +
+            'align-items:center;justify-content:center;gap:16px;padding:0 40px;text-align:center;' +
+            'font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:22px;color:var(--acento);">' +
+            'sem conexão para carregar o vídeo' +
+            '<a href="https://youtu.be/' + yt + '" target="_blank" rel="noopener" ' +
+            'style="color:var(--acento);font-size:18px;">abrir no YouTube ↗</a></div>';
+          return;
+        }
+        if (slot.getAttribute('data-modo') === 'link') {
+          window.open('https://youtu.be/' + yt, '_blank', 'noopener');
+          return;                           // vídeo que não permite incorporação
+        }
+        slot.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + yt +
+          '?autoplay=1&rel=0&modestbranding=1&hl=pt-BR&playsinline=1" title="' + titulo +
+          '" style="' + full + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen"' +
+          ' referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+        slot.style.background = '#000';
+        slot.style.cursor = 'default';
+        slot.removeAttribute('tabindex');
+      }
+
+      // Desmonta os players ao trocar de slide — é o que mata o áudio.
+      function limparSlots(){
+        slots.forEach(function(s){
+          if (s.querySelector('iframe,video')) {
+            s.innerHTML = s.dataset.fachada;
+            s.style.background = '';
+            s.style.cursor = 'pointer';
+            s.setAttribute('tabindex','0');
+          }
+        });
+      }
+
+      slots.forEach(function(slot){
+        slot.addEventListener('click', function(){ tocarSlot(slot); });
+        slot.addEventListener('keydown', function(e){
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.stopPropagation(); e.preventDefault(); tocarSlot(slot);
+          }
+        });
+      });
+
+      document.getElementById('next').addEventListener('click', next);
+      document.getElementById('prev').addEventListener('click', prev);
+      document.getElementById('btn-full').addEventListener('click', toggleFull);
+      document.getElementById('btn-notes').addEventListener('click', function(){ notes.classList.toggle('open'); });
+
+      document.addEventListener('keydown', function(e){
+        switch (e.key) {
+          case 'ArrowRight': case 'PageDown': case ' ': case 'l': e.preventDefault(); next(); break;
+          case 'ArrowLeft':  case 'PageUp':   case 'h': e.preventDefault(); prev(); break;
+          case 'Home': e.preventDefault(); show(0); break;
+          case 'End':  e.preventDefault(); show(total - 1); break;
+          case 'f': case 'F': toggleFull(); break;
+          case 'n': case 'N': notes.classList.toggle('open'); break;
+        }
+      });
+
+      window.addEventListener('resize', fit);
+      fit();
+
+      var start = parseInt((location.hash || '').replace('#',''), 10);
+      show(isNaN(start) ? 0 : start - 1);
+
+      // some com a dica após alguns segundos
+      setTimeout(function(){
+        var h = document.getElementById('hint');
+        if (h) { h.style.opacity = '0'; setTimeout(function(){ h.remove(); }, 600); }
+      }, 4000);
+    })();
+  </script>
+</body>
+</html>

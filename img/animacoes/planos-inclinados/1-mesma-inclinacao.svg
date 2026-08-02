@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Experimento mental dos planos inclinados (Galileu), quadro 1 de 4.
+     Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Fonte da geometria: conteudos/dinamica/primeira-lei.html -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 220" width="720" height="440"
+     role="img" aria-labelledby="fq-titulo-1">
+  <title id="fq-titulo-1">Animação: duas rampas de madeira com a mesma inclinação. A bolinha desce pela rampa da esquerda, atravessa o trecho plano e sobe pela da direita até a altura de partida.</title>
+  <style><![CDATA[
+    svg {
+      --fq-ceu: #d7e7f4;
+      --fq-chao: #b4c0a6;
+      --fq-chao-linha: rgba(0,0,0,.30);
+      --fq-altura: #64748b;
+      --fq-rotulo: #475569;
+      --fq-marca: #475569;
+      --fq-grao: rgba(60,34,10,.28);
+      --fq-pista: #d9b483;
+      --fq-borda-mad: #6b4a27;
+      --fq-fonte: system-ui, -apple-system, 'Segoe UI', 'DM Sans', sans-serif;
+    }
+    .fq-ceu        { fill: var(--fq-ceu); }
+    .fq-chao       { fill: var(--fq-chao); }
+    .fq-chao-linha { stroke: var(--fq-chao-linha); stroke-width: 1.5; }
+    .fq-altura     { stroke: var(--fq-altura); stroke-width: 1.4; stroke-dasharray: 5 4; opacity: .85; }
+    .fq-rotulo     { fill: var(--fq-rotulo); font-size: 10px; font-family: var(--fq-fonte); }
+    .fq-marca      { fill: none; stroke: var(--fq-marca); stroke-width: 1.6; stroke-dasharray: 3 3; opacity: .9; }
+    .fq-grao       { stroke: var(--fq-grao); stroke-width: 1.2; }
+    .fq-pista      { stroke: var(--fq-pista); stroke-width: 2.5; stroke-linecap: round; fill: none; }
+    .fq-borda-mad  { stroke: var(--fq-borda-mad); stroke-width: 1.4; fill: none; stroke-linejoin: round; }
+
+    /* Quem abrir o arquivo com o sistema no modo escuro vê a versão noturna,
+       igual à do site. Embutido aqui porque o .svg carregado como imagem é um
+       documento à parte e não enxerga o data-theme da página. */
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --fq-ceu: #16202f;
+        --fq-chao: #1e2820;
+        --fq-chao-linha: rgba(255,255,255,.20);
+        --fq-altura: #94a3b8;
+        --fq-rotulo: #cbd5e1;
+        --fq-marca: #94a3b8;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      animateMotion { display: none; }
+    }
+  ]]></style>
+  <defs>
+    <clipPath id="fq-clip-1"><rect x="0" y="0" width="360" height="220" rx="9"/></clipPath>
+    <radialGradient id="fq-bola-1" cx="34%" cy="28%" r="72%">
+      <stop offset="0%" stop-color="#fff6e6"/><stop offset="16%" stop-color="#f2cd92"/>
+      <stop offset="58%" stop-color="#c4832f"/><stop offset="100%" stop-color="#5f3812"/>
+    </radialGradient>
+    <linearGradient id="fq-mad-1" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#c79a63"/><stop offset="45%" stop-color="#a97a4a"/>
+      <stop offset="100%" stop-color="#7d5730"/>
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#fq-clip-1)">
+    <rect class="fq-ceu" x="0" y="0" width="360" height="190"/>
+    <rect class="fq-chao" x="0" y="190" width="360" height="30"/>
+    <line class="fq-chao-linha" x1="0" y1="190" x2="360" y2="190"/>
+    <line class="fq-altura" x1="0" y1="60" x2="360" y2="60"/>
+    <text class="fq-rotulo" x="8" y="53">altura de partida</text>
+
+    <polygon fill="url(#fq-mad-1)" points="40,60 150,190 40,190"/>
+    <line class="fq-grao" x1="40" y1="85" x2="128.8" y2="190"/>
+    <line class="fq-grao" x1="40" y1="115" x2="103.5" y2="190"/>
+    <polygon class="fq-borda-mad" points="40,60 150,190 40,190"/>
+    <line class="fq-pista" x1="40" y1="60" x2="150" y2="190"/>
+
+    <polygon fill="url(#fq-mad-1)" points="190,190 300,60 300,190"/>
+    <line class="fq-grao" x1="211" y1="190" x2="300" y2="84.8"/>
+    <line class="fq-grao" x1="232" y1="190" x2="300" y2="109.6"/>
+    <polygon class="fq-borda-mad" points="190,190 300,60 300,190"/>
+    <line class="fq-pista" x1="190" y1="190" x2="300" y2="60"/>
+
+    <circle class="fq-marca" cx="293.1" cy="54.2" r="9"/>
+    <circle r="9" fill="url(#fq-bola-1)" stroke="#4a2c0e" stroke-width="0.8">
+      <animateMotion dur="4.5s" repeatCount="indefinite" calcMode="spline"
+        path="M46.9,54.2 L154.3,181 L185.8,181 L293.1,54.2"
+        keyPoints="0;0.4567;0.5432;1;1"
+        keyTimes="0;0.38;0.43;0.82;1"
+        keySplines="0.45 0 1 1;0 0 1 1;0 0 0.55 1;0 0 1 1"/>
+    </circle>
+  </g>
+</svg>
