@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Circuito elétrico 1 de 2, com interruptor clicável.
+     Autossuficiente: leva o próprio CSS e o próprio script.
+     ATENÇÃO: dentro de <img> o desenho aparece mas o clique NÃO funciona,
+     porque o navegador trata img como imagem estática. Para interagir, use
+     <object type="image/svg+xml" data="...">, um <iframe>, ou abra o arquivo.
+     Fonte: disciplinas/eletricidade_basica/apresentacoes/circuitos/index.html -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 420" width="780" height="504"
+     aria-labelledby="ct-titulo-1">
+  <title id="ct-titulo-1">Circuito real com interruptor: duas pilhas de 1,5 V num suporte, ligadas por fios a uma lâmpada. Clique no interruptor para abrir o circuito e apagar a lâmpada.</title>
+  <style><![CDATA[
+    svg {
+      /* Trocar qualquer um destes retematiza o desenho sem editar o resto. */
+      --fundo:            #FDF8EC;
+      --corrente:         #22D3EE;   /* 10,2:1 sobre o fio preto */
+      --corrente-escuro:  #0E7490;   /* 5,0:1 sobre o creme      */
+      --acento:           #A16207;
+      --acento2:          #1E63F0;
+      --rotulo:           #54565C;
+    }
+
+    @keyframes flow { to { stroke-dashoffset: -32; } }
+
+    .chave { cursor: pointer; }
+    .chave:focus { outline: none; }
+    .chave:hover .chave-alvo { fill-opacity: .09; }
+    .chave:focus-visible .chave-alvo { fill-opacity: .14; stroke: var(--acento); stroke-width: 2.5; }
+    .chave-lamina { transition: transform .18s cubic-bezier(.34,1.3,.64,1); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .chave-lamina { transition: none; }
+      [style*="animation:flow"] { animation: none !important; }
+      animate { display: none; }
+    }
+  ]]></style>
+  <rect width="650" height="420" rx="14" style="fill:var(--fundo)"/>
+  <defs>
+    <linearGradient id="rc-plast" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4d525c"/><stop offset="16%" stop-color="#2c3037"/>
+      <stop offset="72%" stop-color="#1a1d22"/><stop offset="100%" stop-color="#0e0f12"/>
+    </linearGradient>
+    <linearGradient id="rc-poco" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#08090b"/><stop offset="100%" stop-color="#23272e"/>
+    </linearGradient>
+    <linearGradient id="rc-celV" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#31343a"/><stop offset="13%" stop-color="#7d838d"/>
+      <stop offset="33%" stop-color="#c6ccd4"/><stop offset="50%" stop-color="#9aa1ab"/>
+      <stop offset="76%" stop-color="#575c65"/><stop offset="100%" stop-color="#26292e"/>
+    </linearGradient>
+    <linearGradient id="rc-cobreV" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6b4314"/><stop offset="13%" stop-color="#c98f31"/>
+      <stop offset="33%" stop-color="#f7dda6"/><stop offset="50%" stop-color="#d9a244"/>
+      <stop offset="76%" stop-color="#93611c"/><stop offset="100%" stop-color="#4e2f0c"/>
+    </linearGradient>
+    <linearGradient id="rc-rotV" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#191b1f"/><stop offset="30%" stop-color="#3c4149"/>
+      <stop offset="52%" stop-color="#2a2e34"/><stop offset="100%" stop-color="#111316"/>
+    </linearGradient>
+    <linearGradient id="rc-niquelV" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6e747d"/><stop offset="35%" stop-color="#d5dae1"/>
+      <stop offset="70%" stop-color="#8d949d"/><stop offset="100%" stop-color="#4b5058"/>
+    </linearGradient>
+    <linearGradient id="rc-rosca" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5d6169"/><stop offset="28%" stop-color="#c7ccd3"/>
+      <stop offset="58%" stop-color="#868c95"/><stop offset="100%" stop-color="#43474e"/>
+    </linearGradient>
+    <linearGradient id="rc-soq" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a89c84"/><stop offset="30%" stop-color="#efe7d6"/>
+      <stop offset="70%" stop-color="#d8cdb6"/><stop offset="100%" stop-color="#948871"/>
+    </linearGradient>
+    <linearGradient id="rc-haste" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3f434a"/><stop offset="32%" stop-color="#9aa1aa"/>
+      <stop offset="62%" stop-color="#5c626b"/><stop offset="100%" stop-color="#2c3036"/>
+    </linearGradient>
+    <radialGradient id="rc-vidro-frio" cx="44%" cy="38%" r="64%">
+      <stop offset="0%" stop-color="#f4f7fa" stop-opacity="0.74"/>
+      <stop offset="60%" stop-color="#e2e9f0" stop-opacity="0.56"/>
+      <stop offset="100%" stop-color="#ccd7e1" stop-opacity="0.62"/>
+    </radialGradient>
+    <radialGradient id="rc-vidro" cx="44%" cy="38%" r="64%">
+      <stop offset="0%" stop-color="#fff6d4" stop-opacity="0.95"/>
+      <stop offset="42%" stop-color="#ffe6a0" stop-opacity="0.62"/>
+      <stop offset="78%" stop-color="#f3e4c6" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#d9e2ea" stop-opacity="0.42"/>
+    </radialGradient>
+    <radialGradient id="rc-halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd166" stop-opacity="0.78"/>
+      <stop offset="45%" stop-color="#ffc247" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#ffbe3d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="rc-nucleo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fffdf2" stop-opacity="0.95"/>
+      <stop offset="55%" stop-color="#ffe9ab" stop-opacity="0.50"/>
+      <stop offset="100%" stop-color="#ffd166" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="rc-sombra" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3a3226" stop-opacity="0.40"/>
+      <stop offset="65%" stop-color="#3a3226" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#3a3226" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="rc-poca" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffcf6b" stop-opacity="0.48"/>
+      <stop offset="100%" stop-color="#ffcf6b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- halo da lâmpada, atrás de tudo -->
+  <g data-so-fechado="">
+  <circle cx="460" cy="150" r="126" fill="url(#rc-halo)">
+    <animate attributeName="opacity" values="0.82;1;0.82" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <ellipse cx="460" cy="332" rx="128" ry="24" fill="url(#rc-poca)"/>
+  </g>
+  <ellipse cx="140" cy="316" rx="76" ry="13" fill="url(#rc-sombra)"/>
+  <ellipse cx="460" cy="328" rx="72" ry="13" fill="url(#rc-sombra)"/>
+
+  <!-- ─── fios, desenhados antes das peças para parecerem encaixados ─── -->
+  
+  <path d="M140 100 C 140 76 156 70 184 70 L 330 70 C 372 70 384 104 388 150 C 391 190 396 218 404 231" fill="none" stroke="#5e1111" stroke-width="13" stroke-linecap="round"/>
+  <path d="M140 100 C 140 76 156 70 184 70 L 330 70 C 372 70 384 104 388 150 C 391 190 396 218 404 231" fill="none" stroke="#cf2a2a" stroke-width="9.5" stroke-linecap="round"/>
+  <path d="M140 100 C 140 76 156 70 184 70 L 330 70 C 372 70 384 104 388 150 C 391 190 396 218 404 231" fill="none" stroke="#ff9b9b" stroke-width="2.8" stroke-linecap="round" opacity="0.55" transform="translate(0,-2.6)"/>
+  
+  <path d="M140 312 C 140 336 156 342 184 342 L 232 342 M308 342 L 330 342 C 372 342 384 310 388 288 C 391 272 396 262 404 258" fill="none" stroke="#08090b" stroke-width="13" stroke-linecap="round"/>
+  <path d="M140 312 C 140 336 156 342 184 342 L 232 342 M308 342 L 330 342 C 372 342 384 310 388 288 C 391 272 396 262 404 258" fill="none" stroke="#2a2d33" stroke-width="9.5" stroke-linecap="round"/>
+  <path d="M140 312 C 140 336 156 342 184 342 L 232 342 M308 342 L 330 342 C 372 342 384 310 388 288 C 391 272 396 262 404 258" fill="none" stroke="#8a9099" stroke-width="2.8" stroke-linecap="round" opacity="0.55" transform="translate(0,-2.6)"/>
+
+  <!-- interruptor: chave-faca, o mesmo desenho do símbolo -->
+  <g class="chave" data-chave="" data-aberto="false" role="button" tabindex="0">
+    <rect class="chave-alvo" x="212" y="268" width="116" height="100" rx="8" fill="#16171A" fill-opacity="0"/>
+    <rect x="222" y="340" width="96" height="22" rx="4" fill="url(#rc-plast)" stroke="#07080a" stroke-width="1.2"/>
+    <rect x="226" y="343" width="88" height="4" rx="2" fill="#ffffff" opacity="0.13"/>
+    <rect x="234" y="320" width="13" height="22" rx="2" fill="url(#rc-cobreV)" stroke="#6b4314" stroke-width="1"/>
+    <rect x="296" y="320" width="13" height="22" rx="2" fill="url(#rc-cobreV)" stroke="#6b4314" stroke-width="1"/>
+    <g class="chave-lamina" data-lamina="" data-giro="rotate(-42 241 326)">
+      <rect x="236" y="320" width="74" height="11" rx="5" fill="url(#rc-niquelV)" stroke="#3b3f46" stroke-width="1.1"/>
+      <rect x="300" y="313" width="17" height="25" rx="6" fill="url(#rc-plast)" stroke="#07080a" stroke-width="1.1"/>
+    </g>
+    <circle cx="241" cy="326" r="4.5" fill="url(#rc-niquelV)" stroke="#3b3f46" stroke-width="1"/>
+  </g>
+  <text x="300" y="250" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="22" style="fill:var(--rotulo)">interruptor</text>
+  <!-- ─── suporte na vertical, com o polo + em cima ─── -->
+  <rect x="94" y="106" width="92" height="200" rx="13" fill="url(#rc-plast)"/>
+  <rect x="94" y="106" width="92" height="200" rx="13" fill="none" stroke="#07080a" stroke-width="1.5"/>
+  <rect x="99" y="112" width="5" height="188" rx="2.5" fill="#ffffff" opacity="0.13"/>
+  <rect x="104" y="116" width="72" height="180" rx="9" fill="url(#rc-poco)"/>
+  <rect x="124" y="117" width="32" height="6" rx="2" fill="url(#rc-niquelV)"/>
+  <path d="M118 199 L162 203 L118 207 L162 211" fill="none" stroke="url(#rc-niquelV)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M118 283 L162 287 L118 291 L162 295" fill="none" stroke="url(#rc-niquelV)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <clipPath id="rc-p1"><rect x="112" y="130" width="56" height="68" rx="7"/></clipPath>
+  <g clip-path="url(#rc-p1)">
+    <rect x="112" y="130" width="56" height="68" fill="url(#rc-celV)"/>
+    <rect x="112" y="130" width="56" height="19" fill="url(#rc-cobreV)"/>
+    <rect x="112" y="153" width="56" height="38" fill="url(#rc-rotV)"/>
+    <rect x="118" y="130" width="4" height="68" fill="#ffffff" opacity="0.22"/>
+    <rect x="156" y="130" width="9" height="68" fill="#000000" opacity="0.26"/>
+  </g>
+  <rect x="112" y="130" width="56" height="68" rx="7" fill="none" stroke="#0d0e11" stroke-width="1.2"/>
+  <text x="140" y="178" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="15" fill="#e8e3d8">1,5 V</text>
+  <rect x="133" y="123" width="14" height="8" rx="2" fill="url(#rc-niquelV)" stroke="#0d0e11" stroke-width="1"/>
+  
+  <clipPath id="rc-p2"><rect x="112" y="212" width="56" height="68" rx="7"/></clipPath>
+  <g clip-path="url(#rc-p2)">
+    <rect x="112" y="212" width="56" height="68" fill="url(#rc-celV)"/>
+    <rect x="112" y="212" width="56" height="19" fill="url(#rc-cobreV)"/>
+    <rect x="112" y="235" width="56" height="38" fill="url(#rc-rotV)"/>
+    <rect x="118" y="212" width="4" height="68" fill="#ffffff" opacity="0.22"/>
+    <rect x="156" y="212" width="9" height="68" fill="#000000" opacity="0.26"/>
+  </g>
+  <rect x="112" y="212" width="56" height="68" rx="7" fill="none" stroke="#0d0e11" stroke-width="1.2"/>
+  <text x="140" y="260" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="15" fill="#e8e3d8">1,5 V</text>
+  <rect x="133" y="205" width="14" height="8" rx="2" fill="url(#rc-niquelV)" stroke="#0d0e11" stroke-width="1"/>
+  <text x="196" y="126" font-family="IBM Plex Mono, monospace" font-size="24" fill="#a8452f">+</text>
+  <text x="196" y="312" font-family="IBM Plex Mono, monospace" font-size="24" style="fill:var(--rotulo)">−</text>
+
+  <!-- ─── lâmpada ─── -->
+  <ellipse cx="460" cy="314" rx="52" ry="13" fill="url(#rc-haste)" stroke="#2c3036" stroke-width="1.2"/>
+  <ellipse cx="460" cy="309" rx="52" ry="13" fill="url(#rc-niquelV)" stroke="#2c3036" stroke-width="1.2"/>
+  <rect x="450" y="266" width="20" height="46" fill="url(#rc-haste)" stroke="#2c3036" stroke-width="1.2"/>
+  <rect x="410" y="214" width="100" height="54" rx="7" fill="url(#rc-soq)" stroke="#8b8069" stroke-width="1.4"/>
+  <circle cx="411" cy="231" r="6" fill="url(#rc-cobreV)" stroke="#6b4314" stroke-width="1.1"/>
+  <circle cx="411" cy="258" r="6" fill="url(#rc-niquelV)" stroke="#3b3f46" stroke-width="1.1"/>
+  <rect x="442" y="186" width="36" height="30" rx="3" fill="url(#rc-rosca)" stroke="#3b3f46" stroke-width="1.2"/>
+  <path d="M442 193 Q 460 199 478 193 M442 201 Q 460 207 478 201 M442 209 Q 460 215 478 209" fill="none" stroke="#5d6169" stroke-width="1.6" opacity="0.85"/>
+  <path d="M446 190 C 410 174 408 120 460 102 C 512 120 510 174 474 190 Z" fill="url(#rc-vidro-frio)" stroke="#b9c2cb" stroke-width="1.6"/>
+  <path d="M446 190 C 410 174 408 120 460 102 C 512 120 510 174 474 190 Z" fill="url(#rc-vidro)" data-so-fechado=""/>
+  <path d="M430 140 C 432 119 444 109 454 110 C 444 116 438 127 438 142 Z" fill="#ffffff" opacity="0.55"/>
+  <path d="M449 188 L449 168 M471 188 L471 168" stroke="#8d949d" stroke-width="2.4" fill="none"/>
+  <g data-so-fechado="">
+    <path d="M449 168 L453 154 L457 168 L461 154 L465 168 L469 154 L471 168" fill="none" stroke="#fff4c8" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M449 168 L453 154 L457 168 L461 154 L465 168 L469 154 L471 168" fill="none" stroke="#ffffff" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="460" cy="156" r="44" fill="url(#rc-nucleo)"/>
+  </g>
+  <g data-so-aberto="" style="display:none">
+    <path d="M449 168 L453 154 L457 168 L461 154 L465 168 L469 154 L471 168" fill="none" stroke="#9aa1aa" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+  </g>
+
+  <!-- ─── rótulos, nas mesmas posições do esquema ─── -->
+  <text x="304" y="386" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="23" style="fill:var(--rotulo)">fios</text>
+  <text x="140" y="386" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="23" style="fill:var(--rotulo)">pilhas · fonte</text>
+  <text x="460" y="386" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="23" style="fill:var(--rotulo)">lâmpada</text>
+  <script><![CDATA[
+    // Interruptor: gira a lâmina e liga/desliga o que depende do circuito
+    // fechado ([data-so-fechado] some, [data-so-aberto] aparece).
+    (function () {
+      Array.prototype.forEach.call(document.querySelectorAll('[data-chave]'), function (g) {
+        var svg = g.ownerSVGElement || document.documentElement;
+        function pinta() {
+          var aberto = g.getAttribute('data-aberto') === 'true';
+          var lam = svg.querySelector('[data-lamina]');
+          if (lam) lam.setAttribute('transform', aberto ? lam.getAttribute('data-giro') : '');
+          Array.prototype.forEach.call(svg.querySelectorAll('[data-so-fechado]'), function (e) {
+            e.style.display = aberto ? 'none' : '';
+          });
+          Array.prototype.forEach.call(svg.querySelectorAll('[data-so-aberto]'), function (e) {
+            e.style.display = aberto ? '' : 'none';
+          });
+          g.setAttribute('aria-label', aberto
+            ? 'Interruptor aberto, circuito interrompido. Ative para fechar.'
+            : 'Interruptor fechado, circuito completo. Ative para abrir.');
+        }
+        function alterna() {
+          g.setAttribute('data-aberto', g.getAttribute('data-aberto') === 'true' ? 'false' : 'true');
+          pinta();
+        }
+        g.addEventListener('click', alterna);
+        g.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); alterna(); }
+        });
+        pinta();
+      });
+    })();
+  ]]></script>
+</svg>

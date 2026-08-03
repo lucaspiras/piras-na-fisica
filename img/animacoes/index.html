@@ -32,6 +32,18 @@
     }
     .anim-card img { display: block; width: 100%; height: auto; }
 
+    /* <object> não deduz a proporção sozinho como <img>, então ela é dada
+       aqui. É o embed necessário quando o SVG tem script: dentro de <img>
+       o navegador não executa nada. */
+    .anim-card object { display: block; width: 100%; aspect-ratio: 650 / 420; border: 0; }
+
+    .anim-aviso {
+      margin: 1rem 0 0; padding: .8rem 1rem;
+      background: var(--info-bg); border: 1.5px solid var(--info-border);
+      border-radius: 9px; color: var(--info-text);
+      font-size: .88rem; line-height: 1.6;
+    }
+
     .anim-info { padding: .85rem 1rem 1rem; display: flex; flex-direction: column; gap: .6rem; }
     .anim-info p { margin: 0; font-size: .88rem; line-height: 1.55; color: var(--text-muted); }
     .anim-info p strong { color: var(--texto); }
@@ -145,6 +157,57 @@
       </div>
     </section>
 
+    <section class="anim-secao">
+      <h2>Circuito elétrico · com interruptor</h2>
+      <p class="anim-nota">
+        O mesmo circuito duas vezes: como montagem de bancada e em símbolos. <strong>Clique no
+        interruptor</strong> para abrir o caminho. Na montagem a lâmpada apaga; no esquema a corrente
+        para de fluir. Usados na apresentação
+        <a href="/disciplinas/eletricidade_basica/apresentacoes/circuitos/">Circuitos Elétricos Simples</a>.
+      </p>
+
+      <div class="anim-grade">
+
+        <figure class="anim-card">
+          <object type="image/svg+xml" data="/img/animacoes/circuito/1-circuito-real.svg"
+                  title="Circuito real com interruptor clicável">
+            <img src="/img/animacoes/circuito/1-circuito-real.svg"
+                 alt="Duas pilhas de 1,5 volt num suporte, ligadas por fios a uma lâmpada acesa, com um interruptor no fio de baixo">
+          </object>
+          <figcaption class="anim-info">
+            <p><strong>1. Montagem de bancada.</strong> Abrir o interruptor apaga a lâmpada: o filamento esfria, o brilho some.</p>
+            <div class="anim-acoes">
+              <a href="/img/animacoes/circuito/1-circuito-real.svg" target="_blank" rel="noopener">abrir sozinha ↗</a>
+              <button type="button" data-copiar-obj="/img/animacoes/circuito/1-circuito-real.svg">copiar o &lt;object&gt;</button>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="anim-card">
+          <object type="image/svg+xml" data="/img/animacoes/circuito/2-circuito-esquema.svg"
+                  title="Circuito esquemático com interruptor clicável">
+            <img src="/img/animacoes/circuito/2-circuito-esquema.svg"
+                 alt="Esquema de circuito com fonte, fios, lâmpada, interruptor e a corrente animada">
+          </object>
+          <figcaption class="anim-info">
+            <p><strong>2. O mesmo, em símbolos.</strong> As peças ficam nas mesmas posições do desenho ao lado. Abrir o interruptor interrompe a corrente.</p>
+            <div class="anim-acoes">
+              <a href="/img/animacoes/circuito/2-circuito-esquema.svg" target="_blank" rel="noopener">abrir sozinha ↗</a>
+              <button type="button" data-copiar-obj="/img/animacoes/circuito/2-circuito-esquema.svg">copiar o &lt;object&gt;</button>
+            </div>
+          </figcaption>
+        </figure>
+
+      </div>
+
+      <p class="anim-aviso">
+        <strong>Estes dois têm script, e isso muda o jeito de embutir.</strong> Dentro de
+        <code>&lt;img&gt;</code> o navegador trata o SVG como imagem estática e não executa nada:
+        o desenho aparece, mas o interruptor não responde. Para o clique funcionar é preciso
+        <code>&lt;object&gt;</code> ou <code>&lt;iframe&gt;</code>, ou simplesmente abrir o arquivo.
+      </p>
+    </section>
+
     <section class="anim-uso">
       <h2>Como reaproveitar</h2>
       <dl>
@@ -153,6 +216,21 @@
           O caminho absoluto funciona de qualquer pasta.
           <pre>&lt;img src="/img/animacoes/planos-inclinados/4-horizontal.svg"
      alt="descrição do que a animação mostra"&gt;</pre>
+        </dd>
+
+        <dt>Quando o SVG tem clique</dt>
+        <dd>
+          Os circuitos levam script dentro do arquivo, e <code>&lt;img&gt;</code> não executa script.
+          Para manter a interação:
+          <pre>&lt;object type="image/svg+xml"
+        data="/img/animacoes/circuito/2-circuito-esquema.svg"
+        title="descrição do que o desenho mostra"&gt;
+  &lt;img src="/img/animacoes/circuito/2-circuito-esquema.svg" alt="…"&gt;
+&lt;/object&gt;</pre>
+          O <code>&lt;img&gt;</code> lá dentro é a reserva: aparece se o <code>&lt;object&gt;</code>
+          falhar, e serve de versão estática. Diferente de <code>&lt;img&gt;</code>,
+          <code>&lt;object&gt;</code> não deduz a proporção sozinho, então vale
+          <code>aspect-ratio: 650 / 420</code> no CSS.
         </dd>
 
         <dt>Fora do site</dt>
@@ -189,16 +267,32 @@
   <footer></footer>
   <script src="/js/include.js"></script>
   <script>
-    document.querySelectorAll('[data-copiar]').forEach(function (btn) {
+    function copiador(btn, monta) {
       btn.addEventListener('click', function () {
-        var caminho = btn.getAttribute('data-copiar');
         var alt = btn.closest('.anim-card').querySelector('img').getAttribute('alt');
-        var trecho = '<img src="' + caminho + '"\n     alt="' + alt + '">';
-        navigator.clipboard.writeText(trecho).then(function () {
+        navigator.clipboard.writeText(monta(alt)).then(function () {
           var original = btn.textContent;
           btn.textContent = '✓ Copiado!';
           setTimeout(function () { btn.textContent = original; }, 1600);
         });
+      });
+    }
+
+    document.querySelectorAll('[data-copiar]').forEach(function (btn) {
+      var caminho = btn.getAttribute('data-copiar');
+      copiador(btn, function (alt) {
+        return '<img src="' + caminho + '"\n     alt="' + alt + '">';
+      });
+    });
+
+    // Os circuitos têm script: só o <object> preserva o clique.
+    document.querySelectorAll('[data-copiar-obj]').forEach(function (btn) {
+      var caminho = btn.getAttribute('data-copiar-obj');
+      copiador(btn, function (alt) {
+        return '<object type="image/svg+xml" data="' + caminho + '"\n'
+             + '        title="' + alt + '">\n'
+             + '  <img src="' + caminho + '" alt="' + alt + '">\n'
+             + '</object>';
       });
     });
   </script>

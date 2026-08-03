@@ -46,6 +46,15 @@
   --acento2-suave:   #EEF3FF;
   --acento2-escuro:  #1E4BB8;
   --acento2-tracos:  #A9C5F0;
+
+  /* Corrente elétrica. Dois valores da mesma cor porque ela é desenhada
+     sobre dois fundos opostos: os traços correm em cima do fio preto
+     (#16171A) e os rótulos e setas ficam sobre creme ou branco.
+     O azul --acento2 dava só 3,6:1 no fio preto, e por isso saiu daqui.
+       --corrente         10,2:1 sobre o fio preto
+       --corrente-escuro   5,4:1 sobre branco · 5,0:1 sobre o creme */
+  --corrente:        #22D3EE;
+  --corrente-escuro: #0E7490;
 }
 
 /* Reserva: deck sem data-tema cai no azul original. */
@@ -237,4 +246,23 @@ body {
   @page { size: 1920px 1080px; margin: 0; }
 
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+
+/* =========================
+   INTERRUPTORES CLICÁVEIS
+   Usados nos circuitos do deck de eletricidade. O alvo de clique é um
+   retângulo transparente dentro do <g>: fill-opacity 0 ainda recebe evento,
+   o que fill="none" NÃO recebe. O anel de foco é desenhado nesse mesmo
+   retângulo porque outline em elemento SVG é irregular entre navegadores.
+========================= */
+.chave { cursor: pointer; }
+.chave:focus { outline: none; }
+.chave:hover .chave-alvo { fill-opacity: .09; }
+.chave:focus-visible .chave-alvo { fill-opacity: .14; stroke: var(--acento); stroke-width: 2.5; }
+
+/* A lâmina gira em torno do pino; a transição faz a chave abrir com peso. */
+.chave-lamina { transition: transform .18s cubic-bezier(.34,1.3,.64,1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .chave-lamina { transition: none; }
 }
