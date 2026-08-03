@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <script src="/js/theme.js"></script>
+  <meta name="description" content="Lista de questões abertas sobre circuitos elétricos: tensão e ddp, corrente, resistência, resistividade, Lei de Ohm e potência — Física Ensino Médio.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Lista 2 — Circuitos Elétricos · Piras na Física">
+  <meta property="og:description" content="Lista de questões abertas sobre circuitos elétricos: tensão e ddp, corrente, resistência, resistividade, Lei de Ohm e potência — Física Ensino Médio.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/atividades/listas/circuitos/lista_2_circuitos.html">
+  <title>Lista 2 — Circuitos Elétricos · Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/style.css" />
+  <link rel="stylesheet" href="../MRUV/style.css" />
+  <style>
+    /* Tags de dificuldade/tipo ficam no código mas invisíveis para o usuário */
+    .q-tag { display: none !important; }
+
+    .lista-aviso {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-left: 4px solid var(--amarelo);
+      border-radius: var(--radius); padding: 14px 18px;
+      margin-bottom: 24px; font-size: .9rem; color: var(--texto);
+    }
+    .la-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+
+    .lf-card { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border-radius: 9px; }
+    .lf-name { font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--azul-texto); }
+    .eq-display { font-family: var(--font-mono, 'Space Mono', monospace); font-size: .93rem; font-weight: 700; color: var(--texto-destaque, var(--texto)); }
+
+    .formulas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .formula-group { background: var(--fundo); border: 1px solid var(--border); border-radius: 9px; padding: 14px 16px; }
+    .formula-group-title {
+      font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--azul-texto); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border);
+    }
+    .formula-group ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .formula-group li { font-family: 'Space Mono', monospace; font-size: .82rem; color: var(--texto); }
+    .formula-group li span { font-family: 'DM Sans', sans-serif; font-size: .78rem; color: var(--texto-muted); margin-left: 6px; }
+
+    .question-block { scroll-margin-top: 80px; }
+
+    .dado { font-size: .85em; color: var(--texto-muted); font-style: italic; display: block; margin-top: 8px; }
+
+    .divisor-section {
+      display: flex; align-items: center; gap: 12px;
+      margin: 32px 0 20px; color: var(--texto-muted); font-size: .78rem;
+      font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    }
+    .divisor-section::before, .divisor-section::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    .footer { background: var(--surface); border-top: 1px solid var(--border); padding: 20px 24px; text-align: center; font-size: .82rem; color: var(--texto-muted); }
+
+    @media print {
+      .lista-header, .footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      #header, nav, .skip-link { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#questoes" class="skip-link">Ir para as questões</a>
+
+  <div id="header"></div>
+  <script src="../../../js/include.js"></script>
+
+  <div class="content-hero">
+    <div class="content-hero-inner">
+      <nav class="breadcrumb">
+        <a href="../../../atividades.html">Atividades</a>
+        <span>/</span>
+        <a href="../../../lista_de_exercicios.html">Listas de Exercícios</a>
+        <span>/</span>
+        <span>Lista 2 — Circuitos Elétricos</span>
+      </nav>
+      <h1 class="content-title">Lista 2 — Circuitos Elétricos<br><em>Tensão, corrente, resistência, Lei de Ohm e potência</em></h1>
+      <p class="content-subtitle">
+        Questões abertas para resolução escrita. Atenção às <strong>unidades</strong>: tempo em segundos,
+        área da secção em m² e potência em kW quando a energia for pedida em kWh.
+      </p>
+      <div class="lista-meta">
+        <span class="lista-badge azul">Eletricidade</span>
+        <span class="lista-badge roxo">20 questões</span>
+        <span class="lista-badge muted">Resposta aberta · Sem gabarito</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="main" id="questoes">
+
+    <!-- Fórmulas -->
+    <section class="lista-formulas" aria-label="Fórmulas desta lista">
+      <div class="lf-label">📐 Fórmulas desta lista</div>
+      <div class="formulas-grid">
+
+        <div class="formula-group">
+          <div class="formula-group-title">Corrente e carga</div>
+          <ul>
+            <li>i = Q / t</li>
+            <li>Q = n · e <span>(n elétrons)</span></li>
+            <li>e = 1,6 × 10⁻¹⁹ C</li>
+          </ul>
+        </div>
+
+        <div class="formula-group">
+          <div class="formula-group-title">Tensão (ddp)</div>
+          <ul>
+            <li>U = E / q</li>
+            <li>E = U · q</li>
+            <li>1 V = 1 J / 1 C</li>
+          </ul>
+        </div>
+
+        <div class="formula-group">
+          <div class="formula-group-title">Resistência</div>
+          <ul>
+            <li>V = R · i <span>(Lei de Ohm)</span></li>
+            <li>R = ρ · L / A</li>
+            <li>A = π · d² / 4 <span>(fio cilíndrico)</span></li>
+          </ul>
+        </div>
+
+        <div class="formula-group">
+          <div class="formula-group-title">Potência e energia</div>
+          <ul>
+            <li>P = V · i</li>
+            <li>P = R · i²</li>
+            <li>E = P · t</li>
+          </ul>
+        </div>
+
+        <div class="formula-group">
+          <div class="formula-group-title">Resistividades a 20 °C</div>
+          <ul>
+            <li>Cobre: 1,7 × 10⁻⁸ Ω·m</li>
+            <li>Alumínio: 2,8 × 10⁻⁸ Ω·m</li>
+            <li>Prata: 1,6 × 10⁻⁸ Ω·m</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="lista-aviso">
+      <span class="la-icon">✏️</span>
+      <div>Esta lista não possui gabarito incorporado. Resolva cada questão em folha separada, mostrando os cálculos, e entregue ao professor para correção.</div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!--  QUESTÕES TEÓRICAS (Q1–Q6)                           -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="divisor-section">Questões teóricas</div>
+
+    <!-- Q1 · Teórica · Fácil · Circuito fechado -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 1</span>
+        <span class="q-tag fácil">Fácil</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">O circuito</span>
+      </div>
+      <p class="question-text">
+        Explique por que uma lâmpada só acende quando o circuito está <strong>fechado</strong>. Descreva o que acontece com a corrente no instante em que um interruptor é aberto e justifique por que basta interromper o caminho em <strong>um único ponto</strong> para que a lâmpada apague.
+      </p>
+    </div>
+
+    <!-- Q2 · Teórica · Fácil · Conservação da corrente -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 2</span>
+        <span class="q-tag fácil">Fácil</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">Corrente</span>
+      </div>
+      <p class="question-text">
+        Um estudante afirma que a corrente que sai do polo positivo de uma pilha é maior do que a que retorna pelo polo negativo, porque "parte dela foi gasta na lâmpada". Explique por que essa afirmação está <strong>errada</strong> e diga o que, de fato, o circuito consome. Descreva uma medida com amperímetros que permitiria testar essa afirmação na bancada.
+      </p>
+    </div>
+
+    <!-- Q3 · Teórica · Médio · Velocidade de deriva -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 3</span>
+        <span class="q-tag médio">Médio</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">Velocidade de deriva</span>
+      </div>
+      <p class="question-text">
+        Num fio de cobre percorrido por corrente, cada elétron avança apenas alguns <strong>centímetros por hora</strong>. Ainda assim, a lâmpada acende praticamente no instante em que o interruptor é ligado. Explique essa aparente contradição, indicando o que de fato se propaga rapidamente pelo fio e por que o estado do fio <em>antes</em> de ligar o interruptor é decisivo para a resposta.
+      </p>
+    </div>
+
+    <!-- Q4 · Teórica · Médio · Portadores de carga -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 4</span>
+        <span class="q-tag médio">Médio</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">Portadores de carga</span>
+      </div>
+      <p class="question-text">
+        Compare o que carrega a corrente elétrica em três meios: um <strong>fio metálico</strong>, uma <strong>solução de água com sal</strong> e o <strong>ar durante um raio</strong>. Em quais deles cargas positivas e negativas se movem ao mesmo tempo? Explique também por que o <strong>sentido convencional</strong> da corrente continua sendo útil mesmo quando quem se move é negativo.
+      </p>
+    </div>
+
+    <!-- Q5 · Teórica · Médio · Ôhmico × não-ôhmico -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 5</span>
+        <span class="q-tag médio">Médio</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">Lei de Ohm</span>
+      </div>
+      <p class="question-text">
+        Dois componentes são testados em laboratório e obtêm-se seus gráficos V × i. O do componente <strong>A</strong> é uma reta que passa pela origem; o do componente <strong>B</strong> é uma curva. Qual dos dois obedece à Lei de Ohm? Explique o que a <strong>inclinação</strong> do gráfico representa e por que o filamento de uma lâmpada incandescente costuma ser não-ôhmico.
+      </p>
+    </div>
+
+    <!-- Q6 · Teórica · Difícil · Efeito Joule -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 6</span>
+        <span class="q-tag difícil">Difícil</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">Resistência · Efeito Joule</span>
+      </div>
+      <p class="question-text">
+        Explique, em termos <strong>microscópicos</strong>, por que um condutor se aquece ao ser percorrido por corrente elétrica. Em seguida, justifique por que a resistência de um chuveiro elétrico é projetada para ser <strong>baixa, porém não desprezível</strong>, enquanto a resistência dos fios que o alimentam deve ser a <strong>menor possível</strong>. O que aconteceria se os fios da instalação tivessem resistência comparável à do chuveiro?
+      </p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!--  QUESTÕES DE CÁLCULO (Q7–Q16)                        -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="divisor-section">Questões de cálculo</div>
+
+    <!-- Q7 · Cálculo · Fácil · i = Q/t -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 7</span>
+        <span class="q-tag fácil">Fácil</span>
+        <span class="q-tag tipo">Cálculo · Corrente</span>
+      </div>
+      <p class="question-text">
+        Por uma secção de um condutor passam <strong>240 C</strong> de carga em <strong>2 minutos</strong>. Calcule a intensidade da corrente elétrica.
+      </p>
+    </div>
+
+    <!-- Q8 · Cálculo · Médio · Q = i·t e número de elétrons -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 8</span>
+        <span class="q-tag médio">Médio</span>
+        <span class="q-tag tipo">Cálculo · Corrente · Quantização</span>
+      </div>
+      <p class="question-text">
+        Uma corrente de <strong>0,8 A</strong> percorre um fio durante <strong>5 minutos</strong>. Determine:
+      </p>
+      <ol class="question-text" style="padding-left: 22px; margin-top: -8px; margin-bottom: 0;">
+        <li>a carga total que atravessou uma secção do fio;</li>
+        <li>quantos elétrons correspondem a essa carga.</li>
+      </ol>
+      <p class="question-text" style="margin-top: 8px; margin-bottom: 0;">
+        <span class="dado">Dado: carga elementar e = 1,6 × 10⁻¹⁹ C.</span>
+      </p>
+    </div>
+
+    <!-- Q9 · Cálculo · Fácil · U = E/q -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 9</span>
+        <span class="q-tag fácil">Fácil</span>
+        <span class="q-tag tipo">Cálculo · Tensão</span>
+      </div>
+      <p class="question-text">
+        Uma bateria entrega <strong>108 J</strong> de energia a cada <strong>12 C</strong> de carga que a atravessa. Determine:
+      </p>
+      <ol class="question-text" style="padding-left: 22px; margin-top: -8px; margin-bottom: 0;">
+        <li>a diferença de potencial entre seus polos;</li>
+        <li>quanta energia ela entregaria a 30 C de carga.</li>
+      </ol>
+    </div>
+
+    <!-- Q10 · Cálculo · Fácil · Lei de Ohm (i) -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 10</span>
+        <span class="q-tag fácil">Fácil</span>
+        <span class="q-tag tipo">Cálculo · Lei de Ohm</span>
+      </div>
+      <p class="question-text">
+        Um resistor de <strong>40 Ω</strong> é ligado a uma fonte de <strong>12 V</strong>. Calcule a corrente que o percorre.
+      </p>
+    </div>
+
+    <!-- Q11 · Cálculo · Fácil · Lei de Ohm (R) -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 11</span>
+        <span class="q-tag fácil">Fácil</span>
+        <span class="q-tag tipo">Cálculo · Lei de Ohm</span>
+      </div>
+      <p class="question-text">
+        Uma torradeira puxa <strong>4 A</strong> quando ligada a uma tomada de <strong>220 V</strong>. Calcule a resistência da sua resistência de aquecimento.
+      </p>
+    </div>
+
+    <!-- Q12 · Cálculo · Difícil · Resistividade -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 12</span>
+        <span class="q-tag difícil">Difícil</span>
+        <span class="q-tag tipo">Cálculo · Resistividade</span>
+      </div>
+      <p class="question-text">
+        Um fio de <strong>alumínio</strong> tem <strong>50 m</strong> de comprimento e secção transversal de <strong>4 mm²</strong>. Calcule a sua resistência elétrica. Em seguida, diga se esse valor seria maior ou menor caso o fio fosse de cobre, e justifique.
+        <span class="dado">Dados: ρ<sub>alumínio</sub> = 2,8 × 10⁻⁸ Ω·m; ρ<sub>cobre</sub> = 1,7 × 10⁻⁸ Ω·m. Atenção: 1 mm² = 10⁻⁶ m².</span>
+      </p>
+    </div>
+
+    <!-- Q13 · Cálculo · Médio · P = V·i e energia em kWh -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 13</span>
+        <span class="q-tag médio">Médio</span>
+        <span class="q-tag tipo">Cálculo · Potência · Energia</span>
+      </div>
+      <p class="question-text">
+        Um forno de micro-ondas ligado em <strong>127 V</strong> opera com corrente de <strong>10 A</strong>. Determine:
+      </p>
+      <ol class="question-text" style="padding-left: 22px; margin-top: -8px; margin-bottom: 0;">
+        <li>a potência do aparelho, em watts e em quilowatts;</li>
+        <li>a energia consumida em 15 minutos de uso, em kWh.</li>
+      </ol>
+    </div>
+
+    <!-- Q14 · Cálculo · Médio · P = R·i² -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 14</span>
+        <span class="q-tag médio">Médio</span>
+        <span class="q-tag tipo">Cálculo · Efeito Joule</span>
+      </div>
+      <p class="question-text">
+        Uma resistência de <strong>15 Ω</strong> é percorrida por uma corrente de <strong>4 A</strong>. Calcule a potência dissipada por efeito Joule e a energia liberada na forma de calor em <strong>10 minutos</strong>, em joules.
+      </p>
+    </div>
+
+    <!-- Q15 · Cálculo · Médio · Corrente e disjuntor -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 15</span>
+        <span class="q-tag médio">Médio</span>
+        <span class="q-tag tipo">Cálculo · Potência · Aplicação</span>
+      </div>
+      <p class="question-text">
+        Um chuveiro elétrico de <strong>4400 W</strong> é instalado num circuito de <strong>220 V</strong>, protegido por um disjuntor de <strong>20 A</strong>. Calcule a corrente exigida pelo chuveiro e avalie se esse disjuntor é adequado. Justifique a sua resposta.
+      </p>
+    </div>
+
+    <!-- Q16 · Cálculo · Difícil · Consumo mensal e custo -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 16</span>
+        <span class="q-tag difícil">Difícil</span>
+        <span class="q-tag tipo">Cálculo · Energia · Custo</span>
+      </div>
+      <p class="question-text">
+        Uma família mantém um ar-condicionado de <strong>1,2 kW</strong> ligado durante <strong>6 horas por dia</strong>. Sabendo que a tarifa de energia elétrica é de <strong>R$ 0,75</strong> por kWh, calcule o consumo em 30 dias, em kWh, e o valor correspondente na conta de luz.
+      </p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!--  ANÁLISE E COMPARAÇÃO (Q17–Q20)                      -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="divisor-section">Análise e comparação</div>
+
+    <!-- Q17 · Difícil · Área da secção · dobrar o diâmetro -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 17</span>
+        <span class="q-tag difícil">Difícil</span>
+        <span class="q-tag tipo">Comparação · Resistividade · Área</span>
+      </div>
+      <p class="question-text">
+        Dois fios são feitos do <strong>mesmo material</strong> e têm o <strong>mesmo comprimento</strong>, mas o segundo tem o <strong>dobro do diâmetro</strong> do primeiro. Responda, justificando cada item com a relação R = ρL/A:
+      </p>
+      <ol class="question-text" style="padding-left: 22px; margin-top: -8px; margin-bottom: 0;">
+        <li>por quanto é multiplicada a área da secção quando o diâmetro dobra?</li>
+        <li>a resistência do segundo fio é quantas vezes a do primeiro?</li>
+        <li>se o primeiro fio tem resistência de 8 Ω, qual é a resistência do segundo?</li>
+      </ol>
+      <p class="question-text" style="margin-top: 8px; margin-bottom: 0;">
+        <span class="dado">Dado: a secção de um fio cilíndrico vale A = π · d² / 4.</span>
+      </p>
+    </div>
+
+    <!-- Q18 · Difícil · Comparação L e A -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 18</span>
+        <span class="q-tag difícil">Difícil</span>
+        <span class="q-tag tipo">Comparação · Resistividade</span>
+      </div>
+      <p class="question-text">
+        Um fio de cobre tem resistência <strong>R</strong>. Considere três modificações feitas <em>separadamente</em> a partir desse fio original. Em cada caso, diga o que acontece com a resistência e justifique:
+      </p>
+      <ol class="question-text" style="padding-left: 22px; margin-top: -8px; margin-bottom: 0;">
+        <li>triplicar o comprimento, mantendo a secção;</li>
+        <li>triplicar a área da secção, mantendo o comprimento;</li>
+        <li>triplicar o comprimento e a área ao mesmo tempo.</li>
+      </ol>
+      <p class="question-text" style="margin-top: 8px; margin-bottom: 0;">
+        Explique por que o comprimento e a área têm efeitos <strong>opostos</strong> sobre a resistência.
+      </p>
+    </div>
+
+    <!-- Q19 · Difícil · Gráfico V × i -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 19</span>
+        <span class="q-tag difícil">Difícil</span>
+        <span class="q-tag tipo">Gráfico · Lei de Ohm</span>
+      </div>
+      <p class="question-text">
+        Ensaiando um componente, obtêm-se dois pontos do seu gráfico V × i: <strong>(0,2 A ; 6 V)</strong> e <strong>(0,5 A ; 15 V)</strong>. Determine:
+      </p>
+      <ol class="question-text" style="padding-left: 22px; margin-top: -8px; margin-bottom: 0;">
+        <li>se o componente é ôhmico, justificando a partir dos dois pontos;</li>
+        <li>a sua resistência elétrica;</li>
+        <li>a corrente que circularia caso ele fosse ligado a uma fonte de 24 V.</li>
+      </ol>
+    </div>
+
+    <!-- Q20 · Difícil · Circuito completo -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 20</span>
+        <span class="q-tag difícil">Difícil</span>
+        <span class="q-tag tipo">Integradora · Circuito completo</span>
+      </div>
+      <p class="question-text">
+        Uma lâmpada de resistência <strong>60 Ω</strong> é ligada a uma bateria de <strong>12 V</strong> por meio de dois fios de cobre curtos, cuja resistência pode ser desprezada. Determine:
+      </p>
+      <ol class="question-text" style="padding-left: 22px; margin-top: -8px; margin-bottom: 0;">
+        <li>a corrente que percorre o circuito;</li>
+        <li>a potência dissipada pela lâmpada;</li>
+        <li>a carga que atravessa a lâmpada em 5 minutos de funcionamento;</li>
+        <li>o tempo necessário para que a lâmpada converta 1440 J de energia.</li>
+      </ol>
+      <p class="question-text" style="margin-top: 8px; margin-bottom: 0;">
+        Por fim, explique por que desprezar a resistência dos fios é razoável nesse caso, retomando o que você calculou na Questão 12.
+      </p>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p>Física · Ensino Médio · Eletricidade · Lista 2 — Circuitos Elétricos · Piras na Física</p>
+  </footer>
+</body>
+</html>
