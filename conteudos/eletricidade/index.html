@@ -41,6 +41,19 @@
     .sub-info p{font-size:.88rem;color:var(--text-muted);margin:0;line-height:1.4;}
     .sub-arrow{font-size:1.2rem;color:var(--tema-cor);font-weight:800;transition:transform .2s;flex-shrink:0;}
     .sub-link:hover .sub-arrow{transform:translateX(5px);}
+    .hub-materiais { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--border); }
+    .hub-materiais h2 { font-size: 1.3rem; font-weight: 700; color: var(--tema-strong); margin-bottom: 1rem; }
+    .ativ-links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .ativ-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.7rem 1.2rem;
+      background: color-mix(in srgb, var(--tema-cor) 7%, transparent);
+      border: 1.5px solid color-mix(in srgb, var(--tema-cor) 25%, transparent);
+      border-radius: 10px; text-decoration: none; color: var(--tema-cor);
+      font-weight: 600; font-size: 0.9rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .ativ-btn:hover { background: color-mix(in srgb, var(--tema-cor) 14%, transparent); border-color: var(--tema-cor); }
     @media(max-width:600px){.el-main{padding:2rem 1.2rem 3rem;}}
       .hub-crumb{max-width:900px;margin:0 auto;padding:1.1rem 2rem .2rem;}
     .hub-crumb .breadcrumb{opacity:1;margin-bottom:0;color:var(--text-muted);}
@@ -75,6 +88,20 @@
     <li><a href="circuitos.html" class="sub-link"><span class="sub-num">06</span><div class="sub-info"><h3>Circuitos Elétricos</h3><p>Série, paralelo e associação mista. Leis de Kirchhoff e análise de circuitos.</p></div><span class="sub-arrow">→</span></a></li>
     <li><a href="potencia-energia-eletrica.html" class="sub-link"><span class="sub-num">07</span><div class="sub-info"><h3>Potência e Energia Elétrica</h3><p>P = V·I = RI², efeito Joule, kWh, conta de luz e eficiência energética.</p></div><span class="sub-arrow">→</span></a></li>
   </ul>
+  <div class="hub-materiais">
+    <h2>🎞️ Apresentações de aula</h2>
+    <div class="ativ-links">
+      <a href="../../disciplinas/eletricidade_basica/apresentacoes/circuitos/" class="ativ-btn">▶ Circuitos Elétricos Simples — 36 slides</a>
+    </div>
+  </div>
+  <div class="hub-materiais">
+    <h2>✏️ Atividades relacionadas</h2>
+    <div class="ativ-links">
+      <a href="../../atividades/listas/circuitos/lista_1_circuitos.html" class="ativ-btn">📝 Lista 1: Circuitos — com gabarito</a>
+      <a href="../../atividades/listas/circuitos/lista_1_circuitos_avaliacao.html" class="ativ-btn">🔒 Avaliação 1: Circuitos — sem gabarito</a>
+      <a href="../../atividades/listas/circuitos/lista_2_circuitos.html" class="ativ-btn">📄 Lista 2: Circuitos — questões abertas</a>
+    </div>
+  </div>
 </main>
 <footer><p>© 2025 — Piras na Física</p></footer>
 </body>
