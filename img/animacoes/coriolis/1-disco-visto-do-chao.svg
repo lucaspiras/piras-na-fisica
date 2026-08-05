@@ -35,11 +35,27 @@
       --cf-folha:    #3f8f4e;
       --cf-folha-2:  #327a41;
       --cf-tinta:    #1e293b;
+      --cf-calcado:  #2a3342;
+      --cf-calcado-b: none;
       /* globo em projeção polar */
       --cf-oceano:   #2f74ac;
       --cf-terra:    #5aa05a;
       --cf-terra-b:  #3d7a3d;
       --cf-globo-b:  #16324a;
+      /* ônibus em corte */
+      --cf-asfalto:  #9aa1a9;
+      --cf-onibus:   #f0c33c;
+      --cf-onibus-i: #fbf3dd;
+      --cf-vidro:    #bfe0f2;
+      --cf-banco:    #7286a0;
+      --cf-roda-c:   #9aa3af;
+      --cf-poste:    #7d8590;
+      /* elevador e balança */
+      --cf-elev:     #b9c3cf;
+      --cf-elev-i:   #edf1f5;
+      --cf-balanca:  #55606e;
+      --cf-visor:    #dff2e0;
+      --cf-acel:     #b45309;
     }
     .cf-disco   { fill: var(--cf-disco); }
     .cf-borda   { fill: none; stroke: var(--cf-borda); stroke-width: 1.6; }
@@ -81,7 +97,7 @@
     .cf-olho       { fill: #ffffff; stroke: #2a3342; stroke-width: 1; }
     .cf-pupila     { fill: var(--cf-tinta); }
     .cf-traco-f    { fill: none; stroke: #2a3342; stroke-width: 1.5; stroke-linecap: round; }
-    .cf-calcado    { fill: #2a3342; }
+    .cf-calcado    { fill: var(--cf-calcado); stroke: var(--cf-calcado-b); stroke-width: 1.4; }
     .cf-oceano     { fill: var(--cf-oceano); }
     .cf-terra      { fill: var(--cf-terra); stroke: var(--cf-terra-b); stroke-width: 1; stroke-linejoin: round; }
     .cf-globo-b    { fill: none; stroke: var(--cf-globo-b); stroke-width: 2; }
@@ -91,6 +107,25 @@
     .cf-reta       { fill: none; stroke: #ffffff; stroke-width: 2.4; stroke-linecap: round; }
     .cf-rastro     { fill: none; stroke: #ef4444; stroke-width: 2.6; stroke-linecap: round; }
     .cf-rot-claro  { fill: #ffffff; font-size: 10.5px; font-family: var(--cf-fonte); }
+    .cf-asfalto    { fill: var(--cf-asfalto); }
+    .cf-onibus     { fill: var(--cf-onibus); }
+    .cf-onibus-i   { fill: var(--cf-onibus-i); }
+    .cf-onibus-b   { fill: none; stroke: #2a3342; stroke-width: 2; stroke-linejoin: round; }
+    .cf-vidro      { fill: var(--cf-vidro); }
+    .cf-banco      { fill: var(--cf-banco); }
+    .cf-roda       { fill: #2a3342; }
+    .cf-roda-c     { fill: var(--cf-roda-c); }
+    .cf-poste      { fill: var(--cf-poste); }
+    .cf-barra      { fill: none; stroke: #b9803a; stroke-width: 2.4; stroke-linecap: round; }
+    .cf-elevador   { fill: var(--cf-elev); }
+    .cf-elevador-i { fill: var(--cf-elev-i); }
+    .cf-cabo       { fill: none; stroke: var(--cf-poste); stroke-width: 3; }
+    .cf-balanca    { fill: var(--cf-balanca); }
+    .cf-visor      { fill: var(--cf-visor); }
+    .cf-leitura    { fill: var(--cf-rot-esc); font-size: 30px; font-weight: 700; font-family: var(--cf-fonte); }
+    .cf-acel       { fill: none; stroke: var(--cf-acel); stroke-width: 3.5; stroke-linecap: round; }
+    .cf-acel-p     { fill: var(--cf-acel); }
+    .cf-camisa-2   { fill: #2f8f8a; }
     .cf-couro      { fill: #ffffff; stroke: var(--cf-tinta); stroke-width: 1; }
     .cf-gomo       { fill: var(--cf-tinta); }
     .cf-costura    { fill: none; stroke: var(--cf-tinta); stroke-width: 1; }
@@ -124,10 +159,24 @@
         --cf-tronco-l: #543619;
         --cf-folha:    #2f6b3b;
         --cf-folha-2:  #26592f;
+        --cf-calcado:  #3d4657;
+        --cf-calcado-b: #8b95a8;
         --cf-oceano:   #1b4a70;
         --cf-terra:    #3f7a45;
         --cf-terra-b:  #2c5c31;
         --cf-globo-b:  #0d2537;
+        --cf-asfalto:  #343b44;
+        --cf-onibus:   #c69a26;
+        --cf-onibus-i: #2b3242;
+        --cf-vidro:    #1f3b52;
+        --cf-banco:    #47566b;
+        --cf-roda-c:   #6b7480;
+        --cf-poste:    #5a626c;
+        --cf-elev:     #39424f;
+        --cf-elev-i:   #232b36;
+        --cf-balanca:  #6b7480;
+        --cf-visor:    #24402a;
+        --cf-acel:     #e8a13c;
       }
     }
     /* Sem o movimento a bola fica no início do caminho, mas o traço da

@@ -287,8 +287,20 @@
 [data-theme="dark"] .fq-rotulo     { fill: #cbd5e1; }
 [data-theme="dark"] .fq-marca      { stroke: #94a3b8; }
 
+/* Três quadros lado a lado, para comparações de três casos. */
+.fig-sequencia.fig-trio { grid-template-columns: repeat(3, 1fr); }
+
 @media (max-width: 640px) {
-  .fig-sequencia { grid-template-columns: 1fr; }
+  .fig-sequencia,
+  .fig-sequencia.fig-trio { grid-template-columns: 1fr; }
+}
+
+/* Nota que vale para o conjunto de quadros, e não para um deles. */
+.fig-nota {
+  margin: -0.4rem 0 1.6rem;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--text-muted);
 }
 
 /* Figura sozinha, fora da grade de dois quadros. */
@@ -364,6 +376,31 @@
 .cf-reta       { fill: none; stroke: #ffffff; stroke-width: 2.4; stroke-linecap: round; }
 .cf-rastro     { fill: none; stroke: #ef4444; stroke-width: 2.6; stroke-linecap: round; }
 .cf-rot-claro  { fill: #ffffff; font-size: 10.5px; }
+
+/* Ônibus em corte, para o episódio da freada. O interior é uma cor própria
+   porque o boneco fica por cima dele e precisa de contraste nos dois temas. */
+.cf-asfalto    { fill: #9aa1a9; }
+.cf-onibus     { fill: #f0c33c; }
+.cf-onibus-i   { fill: #fbf3dd; }
+.cf-onibus-b   { fill: none; stroke: #2a3342; stroke-width: 2; stroke-linejoin: round; }
+.cf-vidro      { fill: #bfe0f2; }
+.cf-banco      { fill: #7286a0; }
+.cf-roda       { fill: #2a3342; }
+.cf-roda-c     { fill: #9aa3af; }
+.cf-poste      { fill: #7d8590; }
+.cf-barra      { fill: none; stroke: #b9803a; stroke-width: 2.4; stroke-linecap: round; }
+
+/* Elevador e balança, para o peso aparente. A seta da aceleração tem cor
+   própria: usar o roxo da força faria pensar que é a mesma grandeza. */
+.cf-elevador   { fill: #b9c3cf; }
+.cf-elevador-i { fill: #edf1f5; }
+.cf-cabo       { fill: none; stroke: #7d8590; stroke-width: 3; }
+.cf-balanca    { fill: #55606e; }
+.cf-visor      { fill: #dff2e0; }
+.cf-leitura    { fill: #1f2b3a; font-size: 30px; font-weight: 700; }
+.cf-acel       { fill: none; stroke: #b45309; stroke-width: 3.5; stroke-linecap: round; }
+.cf-acel-p     { fill: #b45309; }
+.cf-camisa-2   { fill: #2f8f8a; }
 /* A bola é branca nos dois temas: bola de futebol é branca, e sobre o céu
    noturno ela fica ainda mais legível do que sobre o diurno. */
 .cf-couro      { fill: #ffffff; stroke: #1e293b; stroke-width: 1; }
@@ -406,6 +443,26 @@
 [data-theme="dark"] .cf-oceano     { fill: #1b4a70; }
 [data-theme="dark"] .cf-terra      { fill: #3f7a45; stroke: #2c5c31; }
 [data-theme="dark"] .cf-globo-b    { stroke: #0d2537; }
+[data-theme="dark"] .cf-asfalto    { fill: #343b44; }
+[data-theme="dark"] .cf-onibus     { fill: #c69a26; }
+[data-theme="dark"] .cf-onibus-i   { fill: #2b3242; }
+[data-theme="dark"] .cf-vidro      { fill: #1f3b52; }
+[data-theme="dark"] .cf-banco      { fill: #47566b; }
+[data-theme="dark"] .cf-roda-c     { fill: #6b7480; }
+[data-theme="dark"] .cf-poste      { fill: #5a626c; }
+/* O calçado é quase preto e sumia sobre todo fundo escuro: interior do
+   elevador, corredor do ônibus e grama noturna. Clareá-lo até 3:1 daria um
+   sapato cinza-claro, então o que separa é o contorno, que alcança a razão
+   sozinho e mantém o sapato escuro. Vale para os três bonecos. */
+[data-theme="dark"] .cf-calcado    { fill: #3d4657; stroke: #8b95a8; stroke-width: 1.4; }
+[data-theme="dark"] .cf-elevador   { fill: #39424f; }
+[data-theme="dark"] .cf-elevador-i { fill: #232b36; }
+[data-theme="dark"] .cf-cabo       { stroke: #5a626c; }
+[data-theme="dark"] .cf-balanca    { fill: #6b7480; }
+[data-theme="dark"] .cf-visor      { fill: #24402a; }
+[data-theme="dark"] .cf-leitura    { fill: #dbe4ee; }
+[data-theme="dark"] .cf-acel       { stroke: #e8a13c; }
+[data-theme="dark"] .cf-acel-p     { fill: #e8a13c; }
 
 /* ---- FIGURA DENTRO DE CAIXA DE DESTAQUE ----
    A legenda herda a cor da caixa: o cinza padrão de figcaption brigaria com

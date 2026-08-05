@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Referencial girante visto de cima do disco: o alvo está parado e a bola entorta.
+<!-- A mesma freada vista de dentro do ônibus: o piso está parado e o passageiro é atirado para a frente.
      Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
      inserido em slide ou importado em editor vetorial.
      Fonte da geometria: conteudos/dinamica/aprofundamento/forcas-ficticias.html -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 250" width="720" height="500"
-     role="img" aria-labelledby="cf-titulo-disco-girante">
-  <title id="cf-titulo-disco-girante">Animação vista do disco: o disco e o alvo aparecem parados, e a bola lançada do centro descreve uma curva que se afasta da linha de mira, errando o alvo pelo mesmo ângulo.</title>
+     role="img" aria-labelledby="cf-titulo-onibus-dentro">
+  <title id="cf-titulo-onibus-dentro">Animação vista de dentro do ônibus: o ônibus aparece parado e é a rua que recua e vai parando. O passageiro em pé é atirado para a frente e se inclina, sem que nenhum corpo o toque, o que exige inventar uma força para explicar o movimento.</title>
   <style><![CDATA[
     svg {
       --cf-disco:  #e5e9f0;
@@ -186,21 +186,77 @@
       animateTransform { display: none; }
     }
   ]]></style>
-  <text class="cf-forte cf-mono" x="180" y="22" text-anchor="middle">VISTO DO DISCO</text>
-  <circle class="cf-disco" cx="180" cy="135" r="85"/>
-  <line class="cf-raio" x1="180.0" y1="220.0" x2="180.0" y2="50.0"/>
-  <line class="cf-raio" x1="119.9" y1="195.1" x2="240.1" y2="74.9"/>
-  <line class="cf-raio" x1="95.0" y1="135.0" x2="265.0" y2="135.0"/>
-  <line class="cf-raio" x1="119.9" y1="74.9" x2="240.1" y2="195.1"/>
-  <circle class="cf-borda" cx="180" cy="135" r="85"/>
-  <line class="cf-guia" x1="180" y1="135" x2="180" y2="50"/>
-  <circle class="cf-alvo-a" cx="180" cy="50" r="10"/>
-  <circle class="cf-alvo" cx="180" cy="50" r="4"/>
-  <path class="cf-traco" d="M180,135 L179.74,130.76 L178.96,126.56 L177.68,122.46 L175.89,118.5 L173.61,114.73 L170.86,111.19 L167.66,107.93 L164.04,104.98 L160.01,102.39 L155.62,100.19 L150.9,98.41 L145.87,97.1 L140.6,96.28 L135.1,95.96 L129.43,96.19 L123.63,96.98 L117.74,98.33 L111.84,100.27 L105.95,102.8 L100.13,105.93"/>
-  <circle class="cf-bola" r="6.5">
-    <animateMotion dur="4s" repeatCount="indefinite"
-      path="M180,135 L179.74,130.76 L178.96,126.56 L177.68,122.46 L175.89,118.5 L173.61,114.73 L170.86,111.19 L167.66,107.93 L164.04,104.98 L160.01,102.39 L155.62,100.19 L150.9,98.41 L145.87,97.1 L140.6,96.28 L135.1,95.96 L129.43,96.19 L123.63,96.98 L117.74,98.33 L111.84,100.27 L105.95,102.8 L100.13,105.93"
-      keyPoints="0;1;1" keyTimes="0;0.75;1"/>
-  </circle>
-  <text class="cf-rotulo cf-mono" x="180" y="240" text-anchor="middle">a bola entorta</text>
+  <text class="cf-forte cf-mono" x="180" y="20" text-anchor="middle">DE DENTRO DO ÔNIBUS</text>
+  <g>
+    <animateTransform attributeName="transform" type="translate" dur="4.5s"
+      values="0,0;-50,0;-50,0" keyTimes="0;0.67;1" calcMode="spline"
+      keySplines="0 0 0.55 1;0 0 1 1" repeatCount="indefinite"/>
+    <rect class="cf-asfalto" x="-90" y="206" width="540" height="44"/>
+    <line class="cf-chao-l" x1="-90" y1="206" x2="450" y2="206"/>
+      <rect class="cf-poste" x="18" y="150" width="4" height="56" rx="1.5"/>
+      <rect class="cf-poste" x="12" y="146" width="16" height="5" rx="2"/>
+      <rect class="cf-poste" x="128" y="150" width="4" height="56" rx="1.5"/>
+      <rect class="cf-poste" x="122" y="146" width="16" height="5" rx="2"/>
+      <rect class="cf-poste" x="238" y="150" width="4" height="56" rx="1.5"/>
+      <rect class="cf-poste" x="232" y="146" width="16" height="5" rx="2"/>
+      <rect class="cf-poste" x="348" y="150" width="4" height="56" rx="1.5"/>
+      <rect class="cf-poste" x="342" y="146" width="16" height="5" rx="2"/>
+      <rect class="cf-poste" x="458" y="150" width="4" height="56" rx="1.5"/>
+      <rect class="cf-poste" x="452" y="146" width="16" height="5" rx="2"/>
+  </g>
+  <g>
+    <rect class="cf-onibus" x="40" y="98" width="280" height="92" rx="15"/>
+    <rect class="cf-onibus-i" x="47" y="105" width="266" height="71" rx="10"/>
+    <rect class="cf-vidro" x="54" y="118" width="38" height="28" rx="4"/>
+    <rect class="cf-vidro" x="100" y="118" width="38" height="28" rx="4"/>
+    <rect class="cf-vidro" x="146" y="118" width="38" height="28" rx="4"/>
+    <rect class="cf-vidro" x="192" y="118" width="38" height="28" rx="4"/>
+    <rect class="cf-vidro" x="238" y="118" width="38" height="28" rx="4"/>
+    <rect class="cf-vidro" x="288" y="118" width="24" height="40" rx="4"/>
+    <path class="cf-barra" d="M58,112 L300,112"/>
+    <rect class="cf-banco" x="56" y="150" width="5" height="26" rx="2"/>
+    <rect class="cf-banco" x="61" y="164" width="17" height="12" rx="2"/>
+    <rect class="cf-banco" x="92" y="150" width="5" height="26" rx="2"/>
+    <rect class="cf-banco" x="97" y="164" width="17" height="12" rx="2"/>
+    <rect class="cf-banco" x="128" y="150" width="5" height="26" rx="2"/>
+    <rect class="cf-banco" x="133" y="164" width="17" height="12" rx="2"/>
+    <line class="cf-onibus-b" x1="47" y1="176" x2="313" y2="176" stroke-width="1.6"/>
+    <rect class="cf-onibus-b" x="40" y="98" width="280" height="92" rx="15"/>
+    <circle class="cf-roda" cx="105" cy="192" r="14"/>
+    <circle class="cf-roda-c" cx="105" cy="192" r="6"/>
+    <circle class="cf-roda" cx="255" cy="192" r="14"/>
+    <circle class="cf-roda-c" cx="255" cy="192" r="6"/>
+  </g>
+  <g transform="translate(150,176)">
+    <g>
+      <animateTransform attributeName="transform" type="translate" dur="4.5s"
+        values="0,0;50,0;50,0" keyTimes="0;0.67;1"
+        calcMode="spline" keySplines="0.45 0 1 1;0 0 1 1" repeatCount="indefinite"/>
+      <g transform="scale(0.68)">
+        <g>
+          <animateTransform attributeName="transform" type="rotate" dur="4.5s"
+            values="0;15;15" keyTimes="0;0.67;1" calcMode="spline" keySplines="0.45 0 1 1;0 0 1 1" repeatCount="indefinite"/>
+          <path class="cf-membro" d="M-9,-32 L-26,-48"/>
+          <path class="cf-membro" d="M9,-32 L26,-48"/>
+          <circle class="cf-pele" cx="-26" cy="-48" r="4.6"/>
+          <circle class="cf-pele" cx="26" cy="-48" r="4.6"/>
+          <path class="cf-membro" d="M-5,-18 L-7,-5"/>
+          <path class="cf-membro" d="M5,-18 L7,-5"/>
+          <ellipse class="cf-calcado" cx="-8" cy="-2.5" rx="6.4" ry="3.4"/>
+          <ellipse class="cf-calcado" cx="8" cy="-2.5" rx="6.4" ry="3.4"/>
+          <path class="cf-camisa" d="M-11,-37 q11,-4 22,0 l2,22 q-13,4 -26,0 Z"/>
+          <rect class="cf-pele" x="-3.5" y="-44" width="7" height="8" rx="2"/>
+          <circle class="cf-pele" cx="0" cy="-57" r="17"/>
+          <path class="cf-cabelo" d="M-16.6,-61 q2,-19 16.6,-19 q14.6,0 16.6,19 q-5.4,-9 -16.6,-9 q-11.2,0 -16.6,9 Z"/>
+          <circle class="cf-olho" cx="-6" cy="-59" r="5.6"/>
+          <circle class="cf-olho" cx="6" cy="-59" r="5.6"/>
+          <circle class="cf-pupila" cx="-4.6" cy="-60" r="2.3"/>
+          <circle class="cf-pupila" cx="7.4" cy="-60" r="2.3"/>
+          <path class="cf-traco-f" d="M0,-54 q4,3.4 0,6.4"/>
+          <ellipse class="cf-pupila" cx="0" cy="-43" rx="3.4" ry="4.4"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <text class="cf-rotulo-esc cf-mono" x="180" y="240" text-anchor="middle">quem empurrou?</text>
 </svg>

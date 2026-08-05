@@ -84,14 +84,14 @@
     <div class="anim-hero">
       <h1>Animações</h1>
       <p>
-        Arquivos <strong>SVG animados</strong> feitos para os textos e as apresentações do site. Cada um é
-        autossuficiente: leva junto o próprio CSS e a própria animação, e por isso pode ser aberto direto no
-        navegador, inserido num slide, colocado numa prova ou importado num editor vetorial, sem depender de
-        nada do resto do site.
+        Arquivos <strong>SVG</strong> feitos para os textos e as apresentações do site, a maioria deles
+        animados. Cada um é autossuficiente: leva junto o próprio CSS e a própria animação, e por isso pode
+        ser aberto direto no navegador, inserido num slide, colocado numa prova ou importado num editor
+        vetorial, sem depender de nada do resto do site.
       </p>
       <p>
-        Como são vetores, ampliam sem perder nitidez. A animação roda sozinha, em laço, e é ignorada por quem
-        tiver ativado a redução de movimento no sistema.
+        Como são vetores, ampliam sem perder nitidez. Onde há animação, ela roda sozinha, em laço, e é
+        ignorada por quem tiver ativado a redução de movimento no sistema.
       </p>
     </div>
 
@@ -206,6 +206,94 @@
         o desenho aparece, mas o interruptor não responde. Para o clique funcionar é preciso
         <code>&lt;object&gt;</code> ou <code>&lt;iframe&gt;</code>, ou simplesmente abrir o arquivo.
       </p>
+    </section>
+
+    <section class="anim-secao">
+      <h2>A freada do ônibus · o mesmo episódio de dois lugares</h2>
+      <p class="anim-nota">
+        O ônibus está em corte para dar a ver o corredor. Da calçada, ele freia e o passageiro segue com a
+        velocidade que já tinha; de dentro, o piso está parado e é o passageiro que arranca para a frente.
+        O escorregão é o mesmo nos dois quadros. Usados em
+        <a href="/conteudos/dinamica/aprofundamento/forcas-ficticias.html">Referenciais não inerciais e forças fictícias</a>.
+      </p>
+
+      <div class="anim-grade">
+
+        <figure class="anim-card">
+          <img src="/img/animacoes/coriolis/0a-onibus-da-calcada.svg"
+               alt="Um ônibus em corte anda para a direita e vai freando até parar, enquanto os postes da rua permanecem no lugar; o passageiro em pé segue com a mesma velocidade de antes e escorrega para a frente dentro do ônibus">
+          <figcaption class="anim-info">
+            <p><strong>Da calçada.</strong> O ônibus desacelera e o passageiro apenas mantém o movimento. Nada o empurra.</p>
+            <div class="anim-acoes">
+              <a href="/img/animacoes/coriolis/0a-onibus-da-calcada.svg" target="_blank" rel="noopener">abrir sozinha ↗</a>
+              <button type="button" data-copiar="/img/animacoes/coriolis/0a-onibus-da-calcada.svg">copiar o &lt;img&gt;</button>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="anim-card">
+          <img src="/img/animacoes/coriolis/0b-onibus-por-dentro.svg"
+               alt="A mesma freada vista de dentro: o ônibus aparece parado e é a rua que recua e vai parando, enquanto o passageiro em pé é atirado para a frente e se inclina, sem que nenhum corpo o toque">
+          <figcaption class="anim-info">
+            <p><strong>De dentro do ônibus.</strong> O piso está parado e o passageiro acelera. É aqui que aparece a força fictícia.</p>
+            <div class="anim-acoes">
+              <a href="/img/animacoes/coriolis/0b-onibus-por-dentro.svg" target="_blank" rel="noopener">abrir sozinha ↗</a>
+              <button type="button" data-copiar="/img/animacoes/coriolis/0b-onibus-por-dentro.svg">copiar o &lt;img&gt;</button>
+            </div>
+          </figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+    <section class="anim-secao">
+      <h2>Peso aparente · a balança no elevador</h2>
+      <p class="anim-nota">
+        Três quadros parados, sem animação. Uma pessoa de 70 kg sobre uma balança, com g = 10 m/s². O que a
+        balança marca sai de N = m(g + a): 70 kg sem aceleração, 84 kg acelerando para cima a 2 m/s², e zero
+        em queda livre, quando os pés deixam de tocá-la. Usados em
+        <a href="/conteudos/dinamica/aprofundamento/forcas-ficticias.html">Referenciais não inerciais e forças fictícias</a>.
+      </p>
+
+      <div class="anim-grade">
+
+        <figure class="anim-card">
+          <img src="/img/animacoes/coriolis/0c-elevador-a-zero.svg"
+               alt="Elevador parado ou em velocidade constante: a mulher está de pé sobre a balança, que marca 70 quilogramas">
+          <figcaption class="anim-info">
+            <p><strong>Sem aceleração.</strong> A balança marca os 70 kg de sempre.</p>
+            <div class="anim-acoes">
+              <a href="/img/animacoes/coriolis/0c-elevador-a-zero.svg" target="_blank" rel="noopener">abrir sozinha ↗</a>
+              <button type="button" data-copiar="/img/animacoes/coriolis/0c-elevador-a-zero.svg">copiar o &lt;img&gt;</button>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="anim-card">
+          <img src="/img/animacoes/coriolis/0d-elevador-acelerando.svg"
+               alt="Elevador acelerando para cima: a mulher continua de pé sobre a balança, que agora marca 84 quilogramas">
+          <figcaption class="anim-info">
+            <p><strong>Acelerando para cima.</strong> A balança precisa empurrar mais, e marca 84 kg.</p>
+            <div class="anim-acoes">
+              <a href="/img/animacoes/coriolis/0d-elevador-acelerando.svg" target="_blank" rel="noopener">abrir sozinha ↗</a>
+              <button type="button" data-copiar="/img/animacoes/coriolis/0d-elevador-acelerando.svg">copiar o &lt;img&gt;</button>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="anim-card">
+          <img src="/img/animacoes/coriolis/0e-elevador-queda-livre.svg"
+               alt="Elevador em queda livre: a mulher flutua com os pés fora da balança, que marca zero quilograma">
+          <figcaption class="anim-info">
+            <p><strong>Em queda livre.</strong> Ela flutua, os pés deixam a balança e ela marca zero.</p>
+            <div class="anim-acoes">
+              <a href="/img/animacoes/coriolis/0e-elevador-queda-livre.svg" target="_blank" rel="noopener">abrir sozinha ↗</a>
+              <button type="button" data-copiar="/img/animacoes/coriolis/0e-elevador-queda-livre.svg">copiar o &lt;img&gt;</button>
+            </div>
+          </figcaption>
+        </figure>
+
+      </div>
     </section>
 
     <section class="anim-secao">

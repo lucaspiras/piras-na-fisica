@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Referencial girante visto de cima do disco: o alvo está parado e a bola entorta.
+<!-- Peso aparente em queda livre: a pessoa flutua e a balança marca zero.
      Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
      inserido em slide ou importado em editor vetorial.
      Fonte da geometria: conteudos/dinamica/aprofundamento/forcas-ficticias.html -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 250" width="720" height="500"
-     role="img" aria-labelledby="cf-titulo-disco-girante">
-  <title id="cf-titulo-disco-girante">Animação vista do disco: o disco e o alvo aparecem parados, e a bola lançada do centro descreve uma curva que se afasta da linha de mira, errando o alvo pelo mesmo ângulo.</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 340" width="400" height="680"
+     role="img" aria-labelledby="cf-titulo-elev-queda">
+  <title id="cf-titulo-elev-queda">Elevador em queda livre: a mulher flutua com os pés fora da balança, que marca zero quilograma.</title>
   <style><![CDATA[
     svg {
       --cf-disco:  #e5e9f0;
@@ -186,21 +186,40 @@
       animateTransform { display: none; }
     }
   ]]></style>
-  <text class="cf-forte cf-mono" x="180" y="22" text-anchor="middle">VISTO DO DISCO</text>
-  <circle class="cf-disco" cx="180" cy="135" r="85"/>
-  <line class="cf-raio" x1="180.0" y1="220.0" x2="180.0" y2="50.0"/>
-  <line class="cf-raio" x1="119.9" y1="195.1" x2="240.1" y2="74.9"/>
-  <line class="cf-raio" x1="95.0" y1="135.0" x2="265.0" y2="135.0"/>
-  <line class="cf-raio" x1="119.9" y1="74.9" x2="240.1" y2="195.1"/>
-  <circle class="cf-borda" cx="180" cy="135" r="85"/>
-  <line class="cf-guia" x1="180" y1="135" x2="180" y2="50"/>
-  <circle class="cf-alvo-a" cx="180" cy="50" r="10"/>
-  <circle class="cf-alvo" cx="180" cy="50" r="4"/>
-  <path class="cf-traco" d="M180,135 L179.74,130.76 L178.96,126.56 L177.68,122.46 L175.89,118.5 L173.61,114.73 L170.86,111.19 L167.66,107.93 L164.04,104.98 L160.01,102.39 L155.62,100.19 L150.9,98.41 L145.87,97.1 L140.6,96.28 L135.1,95.96 L129.43,96.19 L123.63,96.98 L117.74,98.33 L111.84,100.27 L105.95,102.8 L100.13,105.93"/>
-  <circle class="cf-bola" r="6.5">
-    <animateMotion dur="4s" repeatCount="indefinite"
-      path="M180,135 L179.74,130.76 L178.96,126.56 L177.68,122.46 L175.89,118.5 L173.61,114.73 L170.86,111.19 L167.66,107.93 L164.04,104.98 L160.01,102.39 L155.62,100.19 L150.9,98.41 L145.87,97.1 L140.6,96.28 L135.1,95.96 L129.43,96.19 L123.63,96.98 L117.74,98.33 L111.84,100.27 L105.95,102.8 L100.13,105.93"
-      keyPoints="0;1;1" keyTimes="0;0.75;1"/>
-  </circle>
-  <text class="cf-rotulo cf-mono" x="180" y="240" text-anchor="middle">a bola entorta</text>
+  <text class="cf-forte cf-mono" x="100" y="16" text-anchor="middle">queda livre</text>
+  <path class="cf-cabo" d="M100,24 L100,46"/>
+  <rect class="cf-elevador" x="20" y="46" width="160" height="224" rx="8"/>
+  <rect class="cf-elevador-i" x="27" y="53" width="146" height="210" rx="5"/>
+  <path class="cf-acel" d="M42,122 L42,176"/>
+  <path class="cf-acel-p" d="M0,0 L-6,11 L6,11 Z" transform="translate(42,183) rotate(180)"/>
+  <text class="cf-acel-p cf-mono" x="53" y="154" font-size="15" font-weight="700">a</text>
+  <g transform="translate(100,233) scale(1.5)">
+  <path class="cf-membro" d="M-5,-18 L-10,-6"/>
+  <path class="cf-membro" d="M5,-18 L10,-6"/>
+  <ellipse class="cf-calcado" cx="-11" cy="-3.5" rx="6" ry="3.2"/>
+  <ellipse class="cf-calcado" cx="11" cy="-3.5" rx="6" ry="3.2"/>
+  <path class="cf-camisa-2" d="M-11,-37 q11,-4 22,0 l2,22 q-13,4 -26,0 Z"/>
+  <path class="cf-membro" d="M-10,-34 L-26,-32"/>
+  <path class="cf-membro" d="M10,-34 L26,-32"/>
+  <circle class="cf-pele" cx="-26" cy="-32" r="4.6"/>
+  <circle class="cf-pele" cx="26" cy="-32" r="4.6"/>
+  <rect class="cf-pele" x="-3.5" y="-44" width="7" height="8" rx="2"/>
+  <ellipse class="cf-cabelo" cx="0" cy="-59" rx="20" ry="22"/>
+  <rect class="cf-cabelo" x="-21" y="-62" width="9" height="34" rx="4.5"/>
+  <rect class="cf-cabelo" x="12" y="-62" width="9" height="34" rx="4.5"/>
+  <circle class="cf-pele" cx="0" cy="-57" r="17"/>
+  <path class="cf-cabelo" d="M-16.6,-61 q2,-19 16.6,-19 q14.6,0 16.6,19 q-5.4,-9 -16.6,-9 q-11.2,0 -16.6,9 Z"/>
+  <circle class="cf-olho" cx="-6" cy="-59" r="5.6"/>
+  <circle class="cf-olho" cx="6" cy="-59" r="5.6"/>
+  <circle class="cf-pupila" cx="-6" cy="-60.6" r="2.3"/>
+  <circle class="cf-pupila" cx="6" cy="-60.6" r="2.3"/>
+  <path class="cf-traco-f" d="M0,-54 q4,3.4 0,6.4"/>
+  <ellipse class="cf-pupila" cx="0" cy="-45" rx="3.2" ry="4"/>
+  </g>
+  <rect class="cf-balanca" x="62" y="249" width="76" height="14" rx="3"/>
+  <rect class="cf-visor" x="84" y="252" width="32" height="8" rx="2"/>
+  <line class="cf-onibus-b" x1="27" y1="263" x2="173" y2="263" stroke-width="1.6"/>
+  <rect class="cf-onibus-b" x="20" y="46" width="160" height="224" rx="8"/>
+  <text class="cf-leitura cf-mono" x="100" y="303" text-anchor="middle">0 kg</text>
+  <text class="cf-rotulo-esc cf-mono" x="100" y="325" text-anchor="middle">ela não marca nada</text>
 </svg>
