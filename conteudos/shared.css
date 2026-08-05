@@ -291,6 +291,131 @@
   .fig-sequencia { grid-template-columns: 1fr; }
 }
 
+/* Figura sozinha, fora da grade de dois quadros. */
+.fig-unica {
+  max-width: 560px;
+  margin: 1.6rem auto;
+}
+
+/* ---- FIGURAS DE REFERENCIAL GIRANTE (.cf-*) ----
+   Usadas nos textos de aprofundamento sobre Coriolis. Diagramas abstratos,
+   por isso a paleta é neutra, e não as cores da matéria: o que precisa de cor
+   própria é o que o leitor tem de distinguir de relance.
+     azul  = a bola / o ar em movimento
+     laranja = o alvo, que é o que se quer acertar
+     roxo  = força fictícia, sempre que ela aparece desenhada
+   Contraste conferido sobre o disco claro (#e5e9f0) e sobre o escuro. */
+.cf-disco   { fill: #e5e9f0; }
+.cf-borda   { fill: none; stroke: #64748b; stroke-width: 1.6; }
+.cf-raio    { stroke: rgba(100,116,139,.38); stroke-width: 1.1; }
+.cf-chao    { fill: #cbd5e1; }
+.cf-chao-l  { stroke: #64748b; stroke-width: 1.5; }
+.cf-alvo    { fill: #ea580c; }
+.cf-alvo-a  { fill: none; stroke: #ea580c; stroke-width: 1.8; stroke-dasharray: 3 3; }
+.cf-bola    { fill: #2563eb; }
+.cf-traco   { fill: none; stroke: #2563eb; stroke-width: 2.2; stroke-linecap: round; }
+.cf-guia    { fill: none; stroke: #94a3b8; stroke-width: 1.5; stroke-dasharray: 5 4; }
+.cf-forca   { fill: none; stroke: #7c3aed; stroke-width: 2.2; stroke-linecap: round; }
+.cf-forca-p { fill: #7c3aed; }
+.cf-baixa   { fill: #dc2626; }
+.cf-seta    { fill: #64748b; }
+.cf-seta-l  { fill: none; stroke: #64748b; stroke-width: 1.8; }
+.cf-rotulo  { fill: #475569; font-size: 11px; }
+
+/* Cenário do arremesso no equador. Aqui os rótulos caem sobre céu e grama,
+   e não sobre o fundo da página, por isso existe a variante escura: o
+   .cf-rotulo cinza dá 2,9:1 sobre a grama, que é pouco para texto. */
+.cf-rotulo-esc { fill: #1f2b3a; font-size: 11px; }
+.cf-ceu-alto   { stop-color: #a9d3ee; }
+.cf-ceu-baixo  { stop-color: #dceaf5; }
+.cf-grama      { fill: #8fbf6f; }
+.cf-grama-2    { fill: #79a95c; }
+.cf-capim      { fill: none; stroke: #4f8a3a; stroke-width: 1.8; stroke-linecap: round; }
+.cf-capim-2    { fill: none; stroke: #3f7530; stroke-width: 1.8; stroke-linecap: round; }
+.cf-sol        { fill: #f7cf3a; }
+.cf-sol-raio   { fill: none; stroke: #f7cf3a; stroke-width: 2.6; stroke-linecap: round; }
+/* Palmeira: tronco e folhas são FORMAS PREENCHIDAS, não traços. Com traço a
+   folha vira um risco e a árvore não se lê de longe. */
+.cf-tronco     { fill: #8a5a32; }
+.cf-tronco-l   { fill: none; stroke: #6b4526; stroke-width: 1.3; stroke-linecap: round; }
+.cf-folha      { fill: #3f8f4e; }
+.cf-folha-2    { fill: #327a41; }
+.cf-coco       { fill: #6b4526; }
+/* Boneco de desenho. As cores dele não mudam no tema escuro: personagem que
+   troca de cor de pele com o tema fica estranho. */
+.cf-pele       { fill: #f6cb96; }
+.cf-membro     { fill: none; stroke: #f6cb96; stroke-width: 7.5; stroke-linecap: round; }
+.cf-camisa     { fill: #e0563f; }
+.cf-cabelo     { fill: #4a3728; }
+.cf-olho       { fill: #ffffff; stroke: #2a3342; stroke-width: 1; }
+.cf-pupila     { fill: #1e293b; }
+.cf-traco-f    { fill: none; stroke: #2a3342; stroke-width: 1.5; stroke-linecap: round; }
+.cf-calcado    { fill: #2a3342; }
+
+/* Globo em projeção polar: centro = polo norte, borda = equador.
+   O rastro é vermelho e a reta é branca porque as duas precisam se ler
+   por cima de oceano azul E de continente verde. */
+.cf-oceano     { fill: #2f74ac; }
+.cf-terra      { fill: #5aa05a; stroke: #3d7a3d; stroke-width: 1; stroke-linejoin: round; }
+.cf-globo-b    { fill: none; stroke: #16324a; stroke-width: 2; }
+.cf-paralelo   { fill: none; stroke: rgba(255,255,255,.42); stroke-width: 1; stroke-dasharray: 4 4; }
+.cf-meridiano  { stroke: rgba(255,255,255,.26); stroke-width: 1; }
+.cf-projetil   { fill: #fff8e1; stroke: #16324a; stroke-width: 1.2; }
+.cf-reta       { fill: none; stroke: #ffffff; stroke-width: 2.4; stroke-linecap: round; }
+.cf-rastro     { fill: none; stroke: #ef4444; stroke-width: 2.6; stroke-linecap: round; }
+.cf-rot-claro  { fill: #ffffff; font-size: 10.5px; }
+/* A bola é branca nos dois temas: bola de futebol é branca, e sobre o céu
+   noturno ela fica ainda mais legível do que sobre o diurno. */
+.cf-couro      { fill: #ffffff; stroke: #1e293b; stroke-width: 1; }
+.cf-gomo       { fill: #1e293b; }
+.cf-costura    { fill: none; stroke: #1e293b; stroke-width: 1; }
+.cf-forte   { fill: #1e293b; font-size: 12px; font-weight: 700; }
+.cf-mono    { font-family: var(--font-mono); }
+
+[data-theme="dark"] .cf-disco   { fill: #1c2536; }
+[data-theme="dark"] .cf-borda   { stroke: #94a3b8; }
+[data-theme="dark"] .cf-raio    { stroke: rgba(148,163,184,.32); }
+[data-theme="dark"] .cf-chao    { fill: #263244; }
+[data-theme="dark"] .cf-chao-l  { stroke: #94a3b8; }
+[data-theme="dark"] .cf-alvo    { fill: #fb923c; }
+[data-theme="dark"] .cf-alvo-a  { stroke: #fb923c; }
+[data-theme="dark"] .cf-bola    { fill: #60a5fa; }
+[data-theme="dark"] .cf-traco   { stroke: #60a5fa; }
+[data-theme="dark"] .cf-guia    { stroke: #64748b; }
+[data-theme="dark"] .cf-forca   { stroke: #a78bfa; }
+[data-theme="dark"] .cf-forca-p { fill: #a78bfa; }
+[data-theme="dark"] .cf-baixa   { fill: #f87171; }
+[data-theme="dark"] .cf-seta    { fill: #94a3b8; }
+[data-theme="dark"] .cf-seta-l  { stroke: #94a3b8; }
+[data-theme="dark"] .cf-rotulo  { fill: #cbd5e1; }
+
+[data-theme="dark"] .cf-rotulo-esc { fill: #dbe4ee; }
+[data-theme="dark"] .cf-ceu-alto   { stop-color: #0d1622; }
+[data-theme="dark"] .cf-ceu-baixo  { stop-color: #1d2a38; }
+[data-theme="dark"] .cf-grama      { fill: #2f4a2c; }
+[data-theme="dark"] .cf-grama-2    { fill: #263d24; }
+[data-theme="dark"] .cf-capim      { stroke: #3f6b30; }
+[data-theme="dark"] .cf-capim-2    { stroke: #345826; }
+[data-theme="dark"] .cf-sol        { fill: #d9a406; }
+[data-theme="dark"] .cf-sol-raio   { stroke: #d9a406; }
+[data-theme="dark"] .cf-tronco     { fill: #6b4526; }
+[data-theme="dark"] .cf-tronco-l   { stroke: #543619; }
+[data-theme="dark"] .cf-folha      { fill: #2f6b3b; }
+[data-theme="dark"] .cf-folha-2    { fill: #26592f; }
+[data-theme="dark"] .cf-coco       { fill: #543619; }
+[data-theme="dark"] .cf-oceano     { fill: #1b4a70; }
+[data-theme="dark"] .cf-terra      { fill: #3f7a45; stroke: #2c5c31; }
+[data-theme="dark"] .cf-globo-b    { stroke: #0d2537; }
+
+/* ---- FIGURA DENTRO DE CAIXA DE DESTAQUE ----
+   A legenda herda a cor da caixa: o cinza padrão de figcaption brigaria com
+   o vermelho de .highlight-box.danger. */
+/* Horizontal em auto, não zero: esta regra é mais específica que a de
+   .fig-unica e, com margem lateral zerada, encostava a figura à esquerda. */
+.highlight-box .fig-quadro { margin: 1.1rem auto 0.2rem; }
+.highlight-box .fig-quadro figcaption { color: inherit; opacity: 0.9; }
+[data-theme="dark"] .cf-forte   { fill: #e2e8f0; }
+
 /* ---- PARÁGRAFO DE ABERTURA ----
    Apresenta o texto e anuncia o percurso, antes da primeira seção.
    Fica fora de .content-section, por isso traz a própria tipografia. */
@@ -1165,5 +1290,80 @@
 }
 @media (max-width: 520px) {
   .sim-embed iframe { height: 650px; }
+}
+
+/* =============================================================
+   TEXTOS DE APROFUNDAMENTO
+   Padrão criado para conteudos/<tema>/aprofundamento/*.html.
+   São textos mais longos e mais formais que os da linha básica,
+   com tratamento matemático guardado em caixas recolhíveis.
+   ============================================================= */
+
+/* ---- SELO DE APROFUNDAMENTO ----
+   Fica DENTRO do hero, acima do título. Por isso é branco translúcido e não
+   colorido com --tema-cor: o hero já é um gradiente da cor do tema, e um selo
+   em --tema-cor ficaria verde sobre verde. Mesma solução de .formula-highlight,
+   que divide o mesmo fundo. */
+.selo-aprofundamento {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.9rem;
+  padding: 0.32rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---- EPÍGRAFE ----
+   Não confundir com citação referenciada: a epígrafe abre o texto e a
+   atribuição vem só pelo nome. O indicador numérico, quando existe, é do
+   sistema de referências e entra depois da atribuição. */
+.epigrafe {
+  margin: 0 0 2rem;
+  padding: 0 0 0 1.1rem;
+  border-left: 3px solid var(--border);
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.epigrafe p { margin: 0; }
+
+.epigrafe .epigrafe-autor {
+  display: block;
+  margin-top: 0.6rem;
+  font-style: normal;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ---- FÓRMULAS EM BLOCO ----
+   Envolve cada fórmula em bloco. A rolagem horizontal fica presa AQUI:
+   sem este contêiner, uma fórmula larga empurra a página inteira e o
+   corpo do texto passa a rolar de lado no celular. */
+.formula-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 1.4rem 0;
+  padding: 0.2rem 0;
+  text-align: center;
+}
+
+/* ---- IMPRESSÃO ----
+   As caixas recolhíveis existem para não assustar quem lê na tela. No
+   papel não há o que recolher: quem imprime quer o texto inteiro, e um
+   bloco escondido viraria conteúdo perdido sem aviso. */
+@media print {
+  .curiosity-content[hidden] { display: block !important; }
+  .curiosity-toggle { display: none; }
+  .content-toc { display: none; }
 }
 

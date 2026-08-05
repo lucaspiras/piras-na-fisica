@@ -27,6 +27,7 @@ js/include.js            # injeta header/header.html e footer/footer.html
 header/, footer/         # fragmentos HTML compartilhados
 conteudos/               # 9 temas × N subtópicos (63 páginas)
 conteudos/shared.css     # estilos compartilhados entre subtópicos
+img/animacoes/           # SVG animados avulsos + catálogo (noindex, fora do sitemap)
 banco-questoes/          # banco de questões UFRGS (300 questões)
 atividades/              # estudos dirigidos e listas de exercícios interativas
 Programas/               # simulações (Canvas) publicadas como mini-apps
@@ -69,6 +70,36 @@ Cada subtópico segue o padrão:
 Estrutura da página: hero com breadcrumb + título + fórmula em destaque, seguido de seções de conteúdo. Mini-apps de simulação usam `<canvas>` com lógica JS inline. Cada arquivo HTML termina com um bloco `<!-- IMAGENS NECESSÁRIAS -->` contendo caminhos e descrições das imagens ainda não criadas.
 
 Os hubs de tema ficam em `conteudos/<tema>/index.html`; os subtópicos em `conteudos/<tema>/<subtopico>.html`.
+
+## Figuras e animações (`img/animacoes/`)
+
+**Toda figura ou animação criada para o site é disponibilizada também de forma avulsa e entra no catálogo `img/animacoes/index.html`.** Isso é padrão, não pedido especial: uma figura só existe dentro de um texto serve àquele texto uma vez; solta, ela serve a slides, provas, outros textos e a outros professores.
+
+O fluxo, em três passos:
+
+1. **Desenhar inline na página**, em SVG, dentro de `<figure class="fig-quadro">` (par de quadros vai em `<div class="fig-sequencia">`; figura sozinha ganha também `fig-unica`). Cores **sempre** em classes no CSS, com bloco `[data-theme="dark"]` correspondente. Nunca cor fixa no HTML.
+2. **Extrair para `img/animacoes/<assunto>/<n>-<nome>.svg`** com um script, nunca copiando à mão: a cópia manual diverge da publicada na primeira correção de geometria. Ver `img/animacoes/planos-inclinados/` e `img/animacoes/coriolis/` como modelo. O script deve terminar conferindo que a assinatura dos elementos do arquivo gerado é idêntica à do inline.
+3. **Cadastrar no catálogo**, em `<section class="anim-secao">` com nota explicando o conjunto e link para onde a figura é usada.
+
+O arquivo avulso é **autossuficiente**: leva o próprio `<style>`, sem buscar fonte, CSS ou script na rede. Exigências:
+
+- Conteúdo do `<style>` dentro de `<![CDATA[ ]]>`. Um `.svg` solto é lido como **XML**, e ali um `<` no CSS abre uma tag.
+- Cores em custom properties `--xx-*` declaradas em `svg { }`, para quem hospedar poder retematizar sem mexer no desenho.
+- Bloco `@media (prefers-color-scheme: dark)`. O `.svg` carregado como imagem é documento à parte e **não enxerga o `data-theme`** do site.
+- Bloco `@media (prefers-reduced-motion: reduce)` desligando `animateMotion` e `animateTransform`.
+- `aria-label` vira `<title id>` + `aria-labelledby`, que é o que o navegador lê num `.svg` solto.
+- `width`/`height` explícitos (o dobro do viewBox serve), para abrir sozinho num tamanho decente.
+
+Armadilhas já pagas, todas em XML e não em HTML:
+
+- **Atributo sem valor** (`data-chave`) é válido em HTML e **quebra** o XML. Escrever `data-chave=""`.
+- **`fill="var(--x)"` não funciona** em SVG (atributos de apresentação não aceitam `var()`). Usar `style="fill:var(--x)"` ou uma classe.
+- **`<img>` não executa `<script>`.** SVG com interação precisa de `<object>` ou `<iframe>`, e `<object>` não deduz a proporção sozinho, então pede `aspect-ratio` no CSS.
+- **O CSS `prefers-reduced-motion` não alcança SMIL** numa página. Ali é preciso `svg.setCurrentTime(t)` + `pauseAnimations()`, congelando num quadro que ainda explique a figura.
+
+Na página do texto, o bloco `<!-- IMAGENS NECESSÁRIAS -->` some quando a última imagem pendente é feita.
+
+`img/animacoes/` tem `noindex` e está na lista de exclusão de `scripts/gerar-sitemap.ps1`.
 
 ## Convenções de escrita dos textos
 

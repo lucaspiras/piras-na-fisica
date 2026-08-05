@@ -55,6 +55,12 @@
        --corrente-escuro   5,4:1 sobre branco · 5,0:1 sobre o creme */
   --corrente:        #22D3EE;
   --corrente-escuro: #0E7490;
+
+  /* Terceira cor, para o slide da 2ª Lei de Ohm: ρ, L e A precisam de três
+     matizes distintos. Dourado e azul já estavam tomados por L e A, e o
+     ciano é da corrente. Este magenta fica a 60° do matiz mais próximo,
+     que é a maior separação disponível, com 5,7:1 sobre o creme. */
+  --material:        #BE185D;
 }
 
 /* Reserva: deck sem data-tema cai no azul original. */

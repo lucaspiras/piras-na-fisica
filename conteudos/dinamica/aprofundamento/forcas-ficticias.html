@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <script src="/js/theme.js"></script>
+  <meta name="description" content="Portal gratuito de Física para o Ensino Médio: conteúdos, simuladores, estudos dirigidos e listas de exercícios.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Referenciais não inerciais e forças fictícias — Piras na Física">
+  <meta property="og:description" content="Portal gratuito de Física para o Ensino Médio: conteúdos, simuladores, estudos dirigidos e listas de exercícios.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/conteudos/dinamica/aprofundamento/forcas-ficticias.html">
+  <title>Referenciais não inerciais e forças fictícias — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <link rel="stylesheet" href="../../../css/style.css">
+  <link rel="stylesheet" href="../../shared.css">
+</head>
+<body data-tema="dinamica">
+
+<div id="header"></div>
+<script src="../../../js/include.js"></script>
+
+<div class="content-crumb">
+  <nav class="breadcrumb">
+      <a href="../../../index.html">Início</a><span>/</span>
+      <a href="../../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="../index.html">Dinâmica</a><span>/</span>
+      <span>Forças fictícias</span>
+    </nav>
+</div>
+
+<div class="content-hero">
+  <div class="content-hero-inner">
+    <span class="selo-aprofundamento">Texto de aprofundamento</span>
+    <h1 class="content-title">Referenciais não inerciais e forças fictícias</h1>
+  </div>
+</div>
+
+<div class="content-wrapper">
+
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Um ônibus que freia</a></li>
+      <li><a href="#s2">Quando o referencial acelera</a></li>
+      <li><a href="#s3">Aceleração em linha reta: o elevador</a></li>
+      <li><a href="#s4">Rotação I: a força centrífuga</a></li>
+      <li><a href="#s5">Rotação II: a força de Coriolis</a></li>
+      <li><a href="#s6">De onde veio o nome</a></li>
+      <li><a href="#s7">Como reconhecer uma força fictícia</a></li>
+      <li><a href="#s8">O que Coriolis explica na Terra</a></li>
+      <li><a href="#s9">O mito do ralo da pia</a></li>
+      <li><a href="#s10">Um nome ruim</a></li>
+      <li><a href="#referencias">Referências</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="../primeira-lei.html">← 1ª Lei de Newton</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <blockquote class="epigrafe">
+      <p>Fazei mover o navio com a velocidade que quiserdes: contanto que o movimento seja uniforme, não reconhecereis a mínima mudança em nenhum dos efeitos mencionados.</p>
+      <span class="epigrafe-autor">Galileu Galilei, <em>Diálogo sobre os dois máximos sistemas do mundo</em>, Segunda Jornada<sup class="ref"><a href="#ref-1" id="cite-1">1</a></sup></span>
+    </blockquote>
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Um ônibus que freia</h2>
+
+      <p>
+        Você está em pé no corredor de um ônibus, sem se segurar em nada, e o motorista freia. Todo mundo sabe o que acontece: você é jogado para a frente. A pergunta que interessa aqui é outra. <strong>Quem te empurrou?</strong>
+      </p>
+
+      <p>
+        Para alguém parado na calçada, a resposta é simples e não envolve nenhum empurrão. Enquanto o ônibus freava, você continuou fazendo o que já estava fazendo, que era seguir em frente com a mesma velocidade. Não foi você que se moveu para a frente. Foi o ônibus que desacelerou embaixo dos seus pés. A Primeira Lei explica o episódio inteiro sem precisar de força nenhuma na direção do movimento.
+      </p>
+
+      <p>
+        Para você, dentro do ônibus, a descrição é bem diferente. Você estava parado em relação ao piso e de repente passou a acelerar em relação a ele. Se a Segunda Lei vale, e a Segunda Lei diz que aceleração exige força, então alguma coisa te empurrou. Só que essa coisa não existe. Nenhum corpo te tocou, nenhum campo agiu sobre você, e ninguém consegue apontar o autor do empurrão.
+      </p>
+
+      <p>
+        Essa é a situação que vamos examinar. Nos próximos tópicos vamos ver o que acontece com as Leis de Newton quando o referencial está acelerado, quais forças precisam ser inventadas para salvá-las, como reconhecer essas forças inventadas, o que elas explicam de fato no nosso planeta, e por fim por que o nome que damos a elas talvez seja um dos piores da física.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> O que acontece quando o referencial acelera</h2>
+
+      <p>
+        Um <strong>referencial não inercial</strong> é aquele que está acelerado em relação a um referencial inercial. O ônibus freando é um exemplo. Um carrossel girando é outro, mesmo que gire com velocidade constante, porque movimento circular já é movimento acelerado.
+      </p>
+
+      <p>
+        Nesses referenciais, a Segunda Lei simplesmente não funciona na forma em que a aprendemos. Um corpo pode acelerar sem que nenhuma força aja sobre ele, como você no corredor do ônibus. Isso é um problema prático sério, porque quase todos os referenciais que usamos no dia a dia são desse tipo, a começar pelo chão que estamos pisando.
+      </p>
+
+      <p>
+        Existem duas saídas. A primeira é abandonar o referencial acelerado e refazer toda a análise a partir de um referencial inercial. É sempre possível, é rigorosamente correto, e às vezes é insuportavelmente trabalhoso. A segunda saída é ficar no referencial acelerado e <strong>acrescentar à conta uma força que compense a diferença</strong>. Essa força acrescentada é o que chamamos de força fictícia.
+      </p>
+
+      <p>
+        O truque funciona porque a diferença entre as duas descrições é bem comportada. Se o referencial acelera com aceleração \(\vec{A}\), a aceleração que ele mede para qualquer corpo é menor que a verdadeira por exatamente \(\vec{A}\). Multiplicando pela massa, a força que falta para fechar a conta é \(-m\vec{A}\), com o sinal negativo indicando que ela aponta no sentido oposto ao da aceleração do referencial. É por isso que você é jogado para a frente quando o ônibus freia para trás.<sup class="ref"><a href="#ref-2" id="cite-2">2</a></sup>
+      </p>
+
+      <div class="highlight-box info curiosity-box">
+        <div class="curiosity-summary">
+          <span class="hb-icon">🧮</span>
+          <span class="curiosity-title">A dedução</span>
+          <button class="curiosity-toggle" type="button" aria-expanded="false" aria-controls="deducao-referencial">Expandir</button>
+        </div>
+        <div class="curiosity-content" id="deducao-referencial" hidden>
+          <p>
+            Seja \(\vec{r}\) a posição de um corpo em relação a um referencial inercial e \(\vec{r}'\) a posição em relação a um referencial que se desloca com aceleração \(\vec{A}\). Derivando duas vezes a relação entre as duas posições, obtemos \(\vec{a} = \vec{a}' + \vec{A}\), ou seja, \(\vec{a}' = \vec{a} - \vec{A}\).
+          </p>
+          <p>
+            Multiplicando por \(m\) e usando que \(\vec{F} = m\vec{a}\) no referencial inercial:
+          </p>
+          <div class="formula-display">
+            \[m\vec{a}' = \vec{F} - m\vec{A}\]
+          </div>
+          <p>
+            No referencial acelerado, portanto, a Segunda Lei só se mantém se incluirmos o termo extra \(-m\vec{A}\) ao lado das forças reais.<sup class="ref"><a href="#ref-3" id="cite-3">3</a></sup>
+          </p>
+        </div>
+      </div>
+
+      <p>
+        Repare no que acabamos de fazer. Não descobrimos uma força nova na natureza. Escolhemos um ponto de vista inconveniente e depois inventamos um termo matemático para consertar o estrago. A força fictícia é o preço que pagamos pela conveniência de descrever o mundo a partir de onde estamos.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Aceleração em linha reta: o elevador</h2>
+
+      <p>
+        O caso mais simples é o de um referencial que acelera em linha reta, e o exemplo clássico é o elevador, porque quase todo mundo já sentiu isso no corpo.
+      </p>
+
+      <p>
+        Suba numa balança dentro de um elevador parado e ela marcará seu peso normal. No instante em que o elevador arranca para cima, com aceleração \(A\), a balança passa a marcar mais. Do lado de fora, a explicação é direta: para você acelerar para cima, a balança precisa te empurrar com força maior que seu peso, e pela Terceira Lei você a comprime com a mesma intensidade a mais. Do lado de dentro, onde você continua parado em relação ao piso, a explicação exige uma força fictícia apontando para baixo, que se soma ao peso e faz o ponteiro subir.
+      </p>
+
+      <p>
+        O que a balança marca nesse caso é o que chamamos de <strong>peso aparente</strong>. A expressão é boa, porque deixa claro que não é o peso que mudou. O que mudou foi a situação da medida.
+      </p>
+
+      <p>
+        Agora leve o raciocínio ao extremo. Se o cabo do elevador arrebentar e ele passar a cair livremente, a aceleração do referencial torna-se igual à da gravidade. A força fictícia fica com a mesma intensidade do peso e sentido oposto, e as duas se cancelam exatamente. A balança marca zero. Você flutua.
+      </p>
+
+      <p>
+        É precisamente isso que acontece na Estação Espacial Internacional, e vale insistir no ponto porque o mal-entendido é muito difundido. Os astronautas não flutuam porque estejam longe da gravidade. A 400 km de altitude, a gravidade ainda vale cerca de 89% do valor que tem aqui embaixo. Eles flutuam porque a estação inteira está em queda livre permanente, e num referencial em queda livre a força fictícia cancela o peso.<sup class="ref"><a href="#ref-4" id="cite-4">4</a></sup>
+      </p>
+
+      <p>
+        Guarde essa imagem. Vamos voltar a ela no final.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Rotação, primeira parte: a força centrífuga</h2>
+
+      <p>
+        Referenciais que giram são um caso mais rico, porque neles surgem duas forças fictícias diferentes, com comportamentos distintos. Começamos pela mais conhecida.
+      </p>
+
+      <p>
+        Imagine um carrossel girando e uma pessoa sentada na borda. Para quem observa do chão, a situação é clara: a pessoa descreve uma circunferência, portanto está acelerada em direção ao centro, e alguma força real precisa produzir essa aceleração. Essa força é o atrito do assento, ou a tração de uma barra, ou o encosto do banco. É a <strong>força centrípeta</strong>, e ela é real.
+      </p>
+
+      <p>
+        Para a pessoa no carrossel, a descrição é outra. Ela está parada, e nem por isso deixa de sentir o encosto do banco empurrando. Se ela está parada e há uma força empurrando para dentro, então precisa haver outra força equilibrando, apontando para fora. Essa é a <strong>força centrífuga</strong>, e ela existe apenas no referencial girante.
+      </p>
+
+      <div class="highlight-box danger">
+        <span class="hb-icon">⚠️</span>
+        <div class="hb-body">
+          <p><strong>Centrípeta e centrífuga não são um par de ação e reação</strong></p>
+          <p>
+            Esse é o erro mais comum no assunto, e vale enfrentá-lo de frente.
+          </p>
+          <p>
+            Um par de ação e reação envolve <strong>dois corpos diferentes</strong> e as duas forças aparecem <strong>no mesmo referencial</strong>. A reação à força que o banco exerce sobre a pessoa é a força que a pessoa exerce sobre o banco. As duas são reais, atuam em corpos distintos, e qualquer observador enxerga ambas.
+          </p>
+          <p>
+            Centrípeta e centrífuga são outra coisa. Elas atuam <strong>no mesmo corpo</strong> e pertencem a <strong>referenciais diferentes</strong>. Quem descreve o movimento do chão vê a centrípeta e não vê a centrífuga. Quem descreve do carrossel vê as duas se anulando. Nenhum observador vê a centrípeta e a centrífuga como um par de forças agindo simultaneamente sobre a pessoa, porque isso significaria escolher os dois pontos de vista ao mesmo tempo.
+          </p>
+        </div>
+      </div>
+
+      <div class="highlight-box info curiosity-box">
+        <div class="curiosity-summary">
+          <span class="hb-icon">🧮</span>
+          <span class="curiosity-title">O módulo da força centrífuga</span>
+          <button class="curiosity-toggle" type="button" aria-expanded="false" aria-controls="modulo-centrifuga">Expandir</button>
+        </div>
+        <div class="curiosity-content" id="modulo-centrifuga" hidden>
+          <p>
+            Para um corpo de massa \(m\) a uma distância \(r\) do eixo de rotação, num referencial que gira com velocidade angular \(\omega\), a força centrífuga tem módulo
+          </p>
+          <div class="formula-display">
+            \[F_{cf} = m\omega^2 r\]
+          </div>
+          <p>
+            e aponta radialmente para fora, perpendicularmente ao eixo. Na forma vetorial completa, \(\vec{F}_{cf} = -m\,\vec{\omega} \times (\vec{\omega} \times \vec{r}\,)\).<sup class="ref"><a href="#ref-5" id="cite-5">5</a></sup>
+          </p>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <span class="hb-icon">💡</span>
+        <div class="hb-body">
+          <p><strong>A força centrífuga que está escondida no g</strong></p>
+          <p>
+            A Terra gira, e portanto o chão em que você está pisando é um referencial girante. Existe uma força centrífuga atuando sobre você neste momento.
+          </p>
+          <p>
+            No equador, onde ela é máxima, o termo centrífugo vale aproximadamente \(0{,}034\) m/s², algo em torno de \(0{,}35\%\) da aceleração da gravidade. É pequeno, mas não é zero.
+          </p>
+          <p>
+            O detalhe interessante é o seguinte: <strong>nenhuma balança consegue separar as duas contribuições</strong>. O que medimos quando medimos \(g\) já é o resultado combinado da atração gravitacional da Terra e do efeito centrífugo da rotação. O valor tabelado que usamos desde o primeiro ano do ensino médio traz a rotação do planeta embutida, e ninguém precisa avisar, porque a conta já vem fechada.
+          </p>
+          <p>
+            Essa contribuição depende da latitude, e há outros efeitos envolvidos na variação de \(g\) ao longo do planeta. Esse é o assunto de um texto próprio neste site.
+            <!-- TODO: link para o texto sobre a Terra como referencial -->
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Rotação, segunda parte: a força de Coriolis</h2>
+
+      <p>
+        A segunda força fictícia dos referenciais girantes é bem menos intuitiva, e a diferença fundamental em relação à centrífuga é esta: <strong>ela só atua sobre corpos que estão em movimento em relação ao referencial girante</strong>. Para quem está parado no carrossel, ela é rigorosamente nula.
+      </p>
+
+      <div class="fig-sequencia">
+
+        <figure class="fig-quadro">
+          <svg viewBox="0 0 360 250" xmlns="http://www.w3.org/2000/svg" role="img" data-parada="3.4"
+               aria-label="Animação vista do chão: um disco gira e uma bola lançada do centro percorre uma linha reta até a borda, enquanto o alvo pintado no disco gira e sai do caminho.">
+            <text class="cf-forte cf-mono" x="180" y="22" text-anchor="middle">VISTO DO CHÃO</text>
+            <g>
+              <circle class="cf-disco" cx="180" cy="135" r="85"/>
+            <line class="cf-raio" x1="180.0" y1="220.0" x2="180.0" y2="50.0"/>
+            <line class="cf-raio" x1="119.9" y1="195.1" x2="240.1" y2="74.9"/>
+            <line class="cf-raio" x1="95.0" y1="135.0" x2="265.0" y2="135.0"/>
+            <line class="cf-raio" x1="119.9" y1="74.9" x2="240.1" y2="195.1"/>
+              <circle class="cf-borda" cx="180" cy="135" r="85"/>
+              <circle class="cf-alvo-a" cx="180" cy="50" r="10"/>
+              <circle class="cf-alvo" cx="180" cy="50" r="4"/>
+              <animateTransform attributeName="transform" type="rotate" dur="4s"
+                values="0 180 135;70 180 135;70 180 135" keyTimes="0;0.75;1" repeatCount="indefinite"/>
+            </g>
+            <path class="cf-seta-l" d="M99.7,78.8 A98,98 0 0 1 146.5,42.9"/>
+            <path class="cf-seta" d="M0,0 L-9,-4.5 L-9,4.5 Z" transform="translate(146.5,42.9) rotate(-20)"/>
+            <line class="cf-traco" x1="180" y1="135" x2="180" y2="50"/>
+            <circle class="cf-bola" r="6.5">
+              <animateMotion dur="4s" repeatCount="indefinite" path="M180,135 L180,50"
+                keyPoints="0;1;1" keyTimes="0;0.75;1"/>
+            </circle>
+            <text class="cf-rotulo cf-mono" x="180" y="240" text-anchor="middle">a bola vai reta</text>
+          </svg>
+          <figcaption><strong>Do chão.</strong> A bola sai do centro e segue em linha reta, como manda a Primeira Lei. Quem se move é o alvo, que gira junto com o disco e sai de baixo dela.</figcaption>
+        </figure>
+
+        <figure class="fig-quadro">
+          <svg viewBox="0 0 360 250" xmlns="http://www.w3.org/2000/svg" role="img" data-parada="3.4"
+               aria-label="Animação vista do disco: o disco e o alvo aparecem parados, e a bola lançada do centro descreve uma curva que se afasta da linha de mira, errando o alvo pelo mesmo ângulo.">
+            <text class="cf-forte cf-mono" x="180" y="22" text-anchor="middle">VISTO DO DISCO</text>
+            <circle class="cf-disco" cx="180" cy="135" r="85"/>
+            <line class="cf-raio" x1="180.0" y1="220.0" x2="180.0" y2="50.0"/>
+            <line class="cf-raio" x1="119.9" y1="195.1" x2="240.1" y2="74.9"/>
+            <line class="cf-raio" x1="95.0" y1="135.0" x2="265.0" y2="135.0"/>
+            <line class="cf-raio" x1="119.9" y1="74.9" x2="240.1" y2="195.1"/>
+            <circle class="cf-borda" cx="180" cy="135" r="85"/>
+            <line class="cf-guia" x1="180" y1="135" x2="180" y2="50"/>
+            <circle class="cf-alvo-a" cx="180" cy="50" r="10"/>
+            <circle class="cf-alvo" cx="180" cy="50" r="4"/>
+            <path class="cf-traco" d="M180,135 L179.74,130.76 L178.96,126.56 L177.68,122.46 L175.89,118.5 L173.61,114.73 L170.86,111.19 L167.66,107.93 L164.04,104.98 L160.01,102.39 L155.62,100.19 L150.9,98.41 L145.87,97.1 L140.6,96.28 L135.1,95.96 L129.43,96.19 L123.63,96.98 L117.74,98.33 L111.84,100.27 L105.95,102.8 L100.13,105.93"/>
+            <circle class="cf-bola" r="6.5">
+              <animateMotion dur="4s" repeatCount="indefinite"
+                path="M180,135 L179.74,130.76 L178.96,126.56 L177.68,122.46 L175.89,118.5 L173.61,114.73 L170.86,111.19 L167.66,107.93 L164.04,104.98 L160.01,102.39 L155.62,100.19 L150.9,98.41 L145.87,97.1 L140.6,96.28 L135.1,95.96 L129.43,96.19 L123.63,96.98 L117.74,98.33 L111.84,100.27 L105.95,102.8 L100.13,105.93"
+                keyPoints="0;1;1" keyTimes="0;0.75;1"/>
+            </circle>
+            <text class="cf-rotulo cf-mono" x="180" y="240" text-anchor="middle">a bola entorta</text>
+          </svg>
+          <figcaption><strong>Do disco.</strong> O alvo está parado e nada toca a bola, mas ela se afasta da linha de mira. É essa curva que obriga a inventar a força de Coriolis.</figcaption>
+        </figure>
+
+      </div>
+
+      <p>
+        O melhor jeito de entender é com um disco girante e uma bola. Você está no centro do disco e lança a bola radialmente, em direção a uma marca pintada na borda. Do ponto de vista de quem observa do chão, a bola sai em linha reta e segue em linha reta, como manda a Primeira Lei. Nada de estranho acontece com ela. O que acontece é que a marca na borda se desloca enquanto a bola viaja, de modo que a bola chega na borda em outro lugar.
+      </p>
+
+      <p>
+        Do ponto de vista de quem está no disco, girando junto, a descrição é bem mais dramática. A bola sai reta e vai <strong>entortando</strong> no caminho, curvando-se para o lado, até errar o alvo. Não há nada tocando a bola, não há vento, não há atrito relevante, e ainda assim ela desvia. Para descrever esse desvio no referencial girante, é preciso postular uma força perpendicular à velocidade da bola. Essa é a força de Coriolis.
+      </p>
+
+      <div class="highlight-box info curiosity-box">
+        <div class="curiosity-summary">
+          <span class="hb-icon">🧮</span>
+          <span class="curiosity-title">A expressão da força de Coriolis</span>
+          <button class="curiosity-toggle" type="button" aria-expanded="false" aria-controls="expressao-coriolis">Expandir</button>
+        </div>
+        <div class="curiosity-content" id="expressao-coriolis" hidden>
+          <p>
+            Para um corpo de massa \(m\) movendo-se com velocidade \(\vec{v}'\) em relação a um referencial que gira com velocidade angular \(\vec{\omega}\):
+          </p>
+          <div class="formula-display">
+            \[\vec{F}_{Cor} = -2m\,\vec{\omega} \times \vec{v}'\]
+          </div>
+          <p>
+            Duas consequências saem direto da expressão. Como envolve um produto vetorial com \(\vec{v}'\), a força é sempre perpendicular à velocidade. Isso significa que ela não realiza trabalho e <strong>não altera o módulo da velocidade</strong>: ela só muda a direção do movimento, exatamente como faz a força centrípeta num movimento circular. E como é proporcional a \(\vec{v}'\), ela desaparece para corpos em repouso no referencial girante.<sup class="ref"><a href="#ref-5" id="cite-5b">5</a>,<a href="#ref-6" id="cite-6">6</a></sup>
+          </p>
+        </div>
+      </div>
+
+      <h3>Por que o desvio é para a direita no hemisfério norte</h3>
+
+      <p>
+        Na Terra, o efeito da força de Coriolis sobre um corpo que se move horizontalmente é desviá-lo para a <strong>direita no hemisfério norte</strong> e para a <strong>esquerda no hemisfério sul</strong>. Vale entender de onde vem essa regra, porque ela costuma ser apresentada como se fosse arbitrária.
+      </p>
+
+      <p>
+        Considere um corpo que parte do equador em direção ao norte. No equador, ele já compartilhava o movimento do chão, que ali gira para leste a cerca de 1670 km/h. Conforme sobe em latitude, o chão embaixo dele passa a girar mais devagar, porque está mais perto do eixo de rotação. O corpo, que carrega consigo a velocidade que tinha na largada, fica <strong>adiantado em relação ao solo</strong>, ou seja, desvia para leste. Quem está indo para o norte tem o leste à sua direita.
+      </p>
+
+      <p>
+        Agora inverta. Um corpo que parte de uma latitude alta rumo ao equador chega a regiões onde o chão gira mais rápido do que ele. Agora é o solo que se adianta, e o corpo fica <strong>atrasado</strong>, ou seja, desvia para oeste. Quem está indo para o sul tem o oeste à sua direita. Nos dois casos, o desvio é para a direita.
+      </p>
+
+        <figure class="fig-quadro fig-unica">
+          <svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" role="img" data-parada="4.6"
+               aria-label="Animação da Terra vista de cima do polo norte, com oceanos e continentes, girando de oeste para leste. Um objeto disparado do polo em direção ao equador segue em linha reta no espaço, enquanto a Terra gira embaixo dele. O rastro que ele deixa sobre o solo é uma curva que se afasta para a direita de quem viaja, e o objeto chega ao equador longe do alvo para onde havia sido apontado.">
+            <defs>
+              <clipPath id="cf-globo-clip"><circle cx="180" cy="152" r="108"/></clipPath>
+            </defs>
+
+            <text class="cf-forte cf-mono" x="180" y="18" text-anchor="middle">VISTO DE CIMA DO POLO NORTE</text>
+
+            <g clip-path="url(#cf-globo-clip)">
+              <g>
+                <animateTransform attributeName="transform" type="rotate" dur="5s"
+                  values="0 180 152;-50 180 152;-50 180 152" keyTimes="0;0.8;1" repeatCount="indefinite"/>
+                <circle class="cf-oceano" cx="180" cy="152" r="108"/>
+                <path class="cf-meridiano" d="M180,152 L180,44 M180,152 L126,58.5 M180,152 L86.5,98 M180,152 L72,152 M180,152 L86.5,206 M180,152 L126,245.5 M180,152 L180,260 M180,152 L234,245.5 M180,152 L273.5,206 M180,152 L288,152 M180,152 L273.5,98 M180,152 L234,58.5"/>
+                <path class="cf-terra" d="M185.6,145.8 L184.6,142.2 L185.7,136.2 L189,129.7 L202.5,127 L205.5,126.5 L204,133.9 L197.9,139.9 L192.5,144.8 L187.6,146.1 Z"/>
+                <path class="cf-terra" d="M197.7,164.4 L189.3,172.8 L186.2,181.3 L194.4,187.6 L210.7,180.6 L221.3,180.9 L229.7,185.6 L242,183.6 L253.3,178.7 L256.2,161.4 L252,149.5 L251.3,142 L244,136 L234.1,132.3 L228.5,128.3 L222.7,125.3 L216.8,127.2 L214.5,135.2 L215.2,144.5 L212.4,152 L206,156.6 L201.8,162.1 Z"/>
+                <path class="cf-terra" d="M269,123.1 L263.7,107.5 L259.4,89.9 L262.7,82.6 L286.4,133.2 L276.2,131.5 Z"/>
+                <path class="cf-terra" d="M166.5,126.6 L167.3,133.1 L163.7,141.8 L164,146.8 L162,152.6 L160,160.1 L164.8,165.7 L166.6,171.9 L175,180.4 L168.9,186.2 L153,184.2 L147.6,190.6 L137.2,190.5 L127.1,185.1 L118.9,190.2 L103.3,179.9 L87.3,176.8 L82.6,165.7 L91.5,159.7 L98.4,152 L100.1,126 L108.7,120.3 L114.9,111.3 L127.4,104.6 L142.6,100.5 L151.5,100.6 L166,99.8 L176.7,104.1 L174.2,110.4 L167.3,117 L167.3,122.2 Z"/>
+                <path class="cf-terra" d="M169,89.4 L156.6,87.7 L142.5,92 L138.4,90.3 L128.3,85.8 L116.2,83.5 L107,79 L107.7,71.7 L163.1,45.3 L163.9,50.1 L174.7,51.3 L192.9,60.5 L204.6,71.7 L196.7,79.5 L189.5,84.3 L182.3,87.2 Z"/>
+                <circle class="cf-paralelo" cx="180" cy="152" r="36"/>
+                <circle class="cf-paralelo" cx="180" cy="152" r="72"/>
+                <path class="cf-rastro" d="M180,152 L179.9,154.7 L179.8,157.4 L179.5,160.1 L179.1,162.8 L178.5,165.4 L177.9,168.1 L177.1,170.7 L176.2,173.3 L175.3,175.8 L174.2,178.4 L172.9,180.8 L171.6,183.3 L170.2,185.7 L168.6,188.1 L167,190.4 L165.2,192.6 L163.4,194.8 L161.4,196.9 L159.3,199 L157.2,200.9 L154.9,202.9 L152.6,204.7 L150.1,206.4 L147.6,208.1 L145,209.7 L142.3,211.2 L139.5,212.6 L136.6,213.9 L133.7,215.1 L130.7,216.3 L127.6,217.3 L124.5,218.2 L121.3,219 L118,219.7 L114.7,220.3 L111.3,220.7 L107.8,221.1 L104.4,221.3 L100.8,221.4 L97.3,221.4" stroke-dasharray="123" stroke-dashoffset="123">
+                  <animate attributeName="stroke-dashoffset" dur="5s" values="123;0;0" keyTimes="0;0.8;1" repeatCount="indefinite"/>
+                </path>
+                <circle class="cf-alvo-a" cx="180" cy="255.2" r="9"/>
+                <circle class="cf-alvo" cx="180" cy="255.2" r="3.6"/>
+              </g>
+            </g>
+            <circle class="cf-globo-b" cx="180" cy="152" r="108"/>
+
+            <path class="cf-reta" d="M180,152 L180,260" stroke-dasharray="108" stroke-dashoffset="108">
+              <animate attributeName="stroke-dashoffset" dur="5s" values="108;0;0" keyTimes="0;0.8;1" repeatCount="indefinite"/>
+            </path>
+            <circle class="cf-projetil" r="5.5">
+              <animateMotion dur="5s" repeatCount="indefinite" path="M180,152 L180,260" keyPoints="0;1;1" keyTimes="0;0.8;1"/>
+            </circle>
+            <circle class="cf-projetil" cx="180" cy="152" r="3"/>
+
+            <path class="cf-seta-l" d="M259.6,63.6 A119,119 0 0 0 208.8,36.5"/>
+            <path class="cf-seta" d="M0,0 L-9,-4.5 L-9,4.5 Z" transform="translate(208.8,36.5) rotate(195)"/>
+
+            <text class="cf-rot-claro cf-mono" x="180" y="144" text-anchor="middle">polo N</text>
+            <text class="cf-rotulo-esc cf-mono" x="66" y="156" text-anchor="end">equador</text>
+            <text class="cf-rotulo-esc cf-mono" x="180" y="288" text-anchor="middle">branco: no espaço · vermelho: sobre o solo</text>
+          </svg>
+          <figcaption>A Terra vista de cima do polo norte, girando de oeste para leste. Um objeto disparado do polo em direção ao equador segue <strong>em linha reta no espaço</strong>, o traço branco, mas o solo gira embaixo dele. O caminho que ele percorre <strong>sobre o solo</strong> é o traço vermelho, que entorta para a direita de quem viaja, e por isso ele chega ao equador longe do alvo. A rotação está exagerada: num voo real a Terra gira bem menos que isso.</figcaption>
+        </figure>
+
+      <p>
+        No hemisfério sul, o mesmo raciocínio se aplica com os sinais trocados, e o desvio resulta para a esquerda.
+      </p>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">📚</span>
+        <div class="hb-body">
+          <p><strong>Uma honestidade necessária sobre esse argumento</strong></p>
+          <p>
+            A explicação acima, baseada na velocidade de rotação de cada latitude, funciona bem para movimentos ao longo dos meridianos, no sentido norte-sul. Ela não dá conta, sozinha, dos movimentos no sentido leste-oeste, que também sofrem desvio.
+          </p>
+          <p>
+            Para esses, o raciocínio é outro. Um corpo que se move para leste está girando em torno do eixo terrestre mais rápido que o solo, e portanto sofre um efeito centrífugo maior que o normal. Esse excesso aponta para fora do eixo de rotação, o que, na superfície, corresponde a uma componente dirigida para o equador. No hemisfério norte, o equador fica à direita de quem viaja para leste. Um corpo que se move para oeste gira mais devagar que o solo, tem efeito centrífugo menor que o normal, e é empurrado na direção do polo, que também está à sua direita.
+          </p>
+          <p>
+            A expressão vetorial da caixa anterior cobre os dois casos de uma vez, sem precisar de dois argumentos separados. Analogias intuitivas costumam ter esse limite, e é melhor saber onde ele está do que confiar nelas sem reservas.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> De onde veio o nome</h2>
+
+      <p>
+        Vale contar de onde saiu essa força, porque a história não é a que a maioria das pessoas imagina.
+      </p>
+
+      <p>
+        Gaspard-Gustave de Coriolis era professor na École Polytechnique e estudava <strong>máquinas</strong>. Seu interesse era a transferência de energia em sistemas que giram, com atenção particular a rodas d'água. Em 1832 leu na Académie des Sciences um trabalho sobre o princípio das forças vivas em movimentos relativos de máquinas, e em 1835 publicou no <em>Journal de l'École Polytechnique</em> o artigo que acabaria tornando seu nome conhecido.<sup class="ref"><a href="#ref-6" id="cite-6b">6</a>,<a href="#ref-7" id="cite-7">7</a></sup>
+      </p>
+
+      <p>
+        Em nenhum dos dois trabalhos ele fala de atmosfera, de furacões ou da rotação da Terra. O termo que ele usa não é "força de Coriolis", que é nome dado por outros, muito depois. Ele chamava o efeito de <strong>força centrífuga composta</strong>.
+      </p>
+
+      <p>
+        A leitura geofísica veio em seguida, por outras mãos, e o momento decisivo foi 1851, quando Léon Foucault pendurou seu pêndulo no Panthéon e transformou o efeito em evidência visível da rotação da Terra. É o tipo de trajetória que se repete com frequência na história da física: um conceito nasce resolvendo um problema de engenharia e termina explicando o clima de um planeta.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Como reconhecer uma força fictícia</h2>
+
+      <p>
+        Se essas forças produzem efeitos que sentimos no corpo, como distingui-las das forças de verdade? Há dois critérios, e ambos podem ser aplicados sem nenhuma matemática avançada.
+      </p>
+
+      <p>
+        <strong>O primeiro critério é a Terceira Lei.</strong> Toda força real é uma interação entre dois corpos, e por isso vem acompanhada de uma reação sobre o outro corpo. A Terra puxa a maçã e a maçã puxa a Terra. O banco empurra a pessoa e a pessoa empurra o banco. Agora tente encontrar a reação da força que te jogou para a frente no ônibus. Sobre qual corpo ela agiria? Não existe resposta, porque não existe o outro corpo. <strong>Forças fictícias não têm par de ação e reação</strong>, e isso é o sintoma mais confiável de que estamos lidando com uma delas.
+      </p>
+
+      <p>
+        <strong>O segundo critério é a proporcionalidade à massa.</strong> Repare que todas as expressões que apareceram aqui têm um \(m\) multiplicando: \(-m\vec{A}\), \(m\omega^2 r\), \(-2m\vec{\omega} \times \vec{v}'\). Isso não é coincidência. A força fictícia é construída a partir da aceleração do referencial, que é a mesma para todos os corpos, de modo que a força correspondente tem que ser proporcional à massa de cada um. Consequência prática: uma força fictícia produz a mesma aceleração em corpos leves e pesados.<sup class="ref"><a href="#ref-2" id="cite-2b">2</a></sup>
+      </p>
+
+      <p>
+        Esse segundo critério deveria estar te incomodando. <strong>A gravidade faz exatamente a mesma coisa.</strong> O peso também é proporcional à massa, e a gravidade também acelera igualmente corpos leves e pesados, como Galileu já defendia. Se a proporcionalidade à massa é o que denuncia uma força fictícia, o que fazemos com o peso?
+      </p>
+
+      <p>
+        Vamos deixar a pergunta em aberto por enquanto. Antes de voltar a ela, precisamos ver o que a força de Coriolis de fato explica no nosso planeta, e o que ela não explica.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> O que a força de Coriolis explica na Terra</h2>
+
+      <h3>Quanto ela vale</h3>
+
+      <p>
+        Para movimentos horizontais na superfície da Terra, o que importa é a componente da rotação em torno da vertical do lugar, e ela depende da latitude. A aceleração de Coriolis horizontal fica
+      </p>
+
+      <div class="formula-display">
+        \[a_{Cor} = 2\,\omega\, v\, \operatorname{sen}\lambda\]
+      </div>
+
+      <p>
+        onde \(\omega \approx 7{,}3 \times 10^{-5}\) rad/s é a velocidade angular da Terra, \(v\) é a velocidade do corpo em relação ao solo e \(\lambda\) é a latitude. A expressão diz três coisas de uma vez: o efeito cresce com a velocidade do corpo, é <strong>máximo nos polos</strong> e é <strong>nulo no equador</strong>. Guarde a ressalva de que estamos falando de movimentos horizontais, porque logo adiante ela vai fazer diferença.
+      </p>
+
+      <p>
+        Coloque números. Para um corpo a 10 m/s em latitude de 30 graus, a aceleração de Coriolis é da ordem de \(7 \times 10^{-4}\) m/s². Comparada aos quase 10 m/s² da gravidade, é ridícula. É por isso que ninguém precisa corrigir Coriolis num experimento de queda de corpos na sala de aula.
+      </p>
+
+
+      <div class="highlight-box danger">
+        <span class="hb-icon">⚠️</span>
+        <div class="hb-body">
+          <p><strong>No equador o efeito não é zero</strong></p>
+          <p>
+            A fórmula acima vale para corpos que se movem <strong>horizontalmente</strong>, e é por isso que ela se anula no equador. Para movimento vertical a história é outra, e chega a ser oposta.
+          </p>
+          <p>
+            No equador, o eixo de rotação da Terra é horizontal. Uma velocidade vertical fica então perpendicular a \(\vec{\omega}\), que é exatamente a condição em que o produto vetorial assume seu valor máximo.
+          </p>
+          <p>
+            Arremesse uma bola verticalmente para cima, no equador. Na subida, a força de Coriolis a empurra para oeste. Na descida, empurra para leste. As duas contribuições não se cancelam, porque a bola inicia a descida já com uma velocidade horizontal residual para oeste, acumulada durante a subida. O resultado é que ela <strong>cai a oeste do ponto de lançamento</strong>.
+          </p>
+
+        <figure class="fig-quadro fig-unica">
+          <svg viewBox="0 0 360 290" xmlns="http://www.w3.org/2000/svg" role="img" data-parada="3.6"
+               aria-label="Animação: numa paisagem equatorial com palmeiras, sol e capim, um menino de braços erguidos acaba de arremessar uma bola de futebol verticalmente para cima. Durante a subida a força de Coriolis empurra a bola para oeste e durante a descida para leste, e a bola cai no chão a oeste do ponto de onde saiu.">
+            <defs>
+              <linearGradient id="cf-ceu-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop class="cf-ceu-alto" offset="0"/>
+                <stop class="cf-ceu-baixo" offset="1"/>
+              </linearGradient>
+            </defs>
+
+            <rect x="0" y="0" width="360" height="225" fill="url(#cf-ceu-grad)"/>
+            <path class="cf-sol-raio" d="M75,50 L80,50 M70,62 L73.6,65.6 M58,67 L58,72 M46,62 L42.4,65.6 M41,50 L36,50 M46,38 L42.4,34.4 M58,33 L58,28 M70,38 L73.6,34.4"/>
+            <circle class="cf-sol" cx="58" cy="50" r="13"/>
+
+            <g>
+              <path class="cf-tronco" d="M22,225 C24,206 31,198 31.5,189 L38.5,189 C39,198 36,206 38,225 Z"/>
+              <path class="cf-tronco-l" d="M27.3,212 q4.5,2 9,0 M29.8,201 q3.5,2 7,0 M31.6,193 q2.8,2 5.6,0"/>
+              <circle class="cf-coco" cx="30.5" cy="192" r="2.9"/>
+              <circle class="cf-coco" cx="39" cy="193" r="2.9"/>
+              <circle class="cf-coco" cx="34.5" cy="196" r="2.9"/>
+              <path class="cf-folha" d="M35,188 Q16.7,185.7 2,197 Q20.3,199.3 35,188 Z"/>
+              <path class="cf-folha-2" d="M35,188 Q23.4,176.5 7,177 Q18.6,188.5 35,188 Z"/>
+              <path class="cf-folha" d="M35,188 Q33.8,173.1 22,164 Q23.2,178.9 35,188 Z"/>
+              <path class="cf-folha-2" d="M35,188 Q45.9,179.1 46,165 Q35.1,173.9 35,188 Z"/>
+              <path class="cf-folha" d="M35,188 Q49.1,189 58,178 Q43.9,177 35,188 Z"/>
+              <path class="cf-folha-2" d="M35,188 Q45.1,199.1 60,197 Q49.9,185.9 35,188 Z"/>
+            </g>
+            <g>
+              <path class="cf-tronco" d="M322,225 C324,206 321,198 321.5,189 L328.5,189 C329,198 336,206 338,225 Z"/>
+              <path class="cf-tronco-l" d="M323.7,212 q4.5,2 9,0 M323.2,201 q3.5,2 7,0 M322.8,193 q2.8,2 5.6,0"/>
+              <circle class="cf-coco" cx="320.5" cy="192" r="2.9"/>
+              <circle class="cf-coco" cx="329" cy="193" r="2.9"/>
+              <circle class="cf-coco" cx="324.5" cy="196" r="2.9"/>
+              <path class="cf-folha" d="M325,188 Q337.4,199.2 354,197 Q341.6,185.8 325,188 Z"/>
+              <path class="cf-folha-2" d="M325,188 Q339.7,188.4 349,177 Q334.3,176.6 325,188 Z"/>
+              <path class="cf-folha" d="M325,188 Q335.1,178.1 334,164 Q323.9,173.9 325,188 Z"/>
+              <path class="cf-folha-2" d="M325,188 Q322.5,173.2 310,165 Q312.5,179.8 325,188 Z"/>
+              <path class="cf-folha" d="M325,188 Q313.8,176.9 298,178 Q309.2,189.1 325,188 Z"/>
+              <path class="cf-folha-2" d="M325,188 Q308.4,185.8 296,197 Q312.6,199.2 325,188 Z"/>
+            </g>
+
+            <rect class="cf-grama" x="0" y="225" width="360" height="65"/>
+            <rect class="cf-grama-2" x="0" y="225" width="360" height="6"/>
+            <line class="cf-chao-l" x1="0" y1="225" x2="360" y2="225"/>
+            <path class="cf-capim" d="M14,234 q-1.6,-4.8 -2.72,-8 M18.5,234 q0.6,-6.3 1.02,-10.5 M23,234 q2.1,-4.2 3.57,-7"/>
+            <path class="cf-capim-2" d="M16.2,234 q-0.4,-3.5999999999999996 -0.68,-6 M20.8,234 q1.5,-5.159999999999999 2.55,-8.6"/>
+            <path class="cf-capim" d="M52,233 q-1.6,-3.84 -2.72,-6.4 M56.5,233 q0.6,-5.04 1.02,-8.4 M61,233 q2.1,-3.3600000000000003 3.57,-5.6000000000000005"/>
+            <path class="cf-capim-2" d="M54.2,233 q-0.4,-2.8800000000000003 -0.68,-4.800000000000001 M58.8,233 q1.5,-4.128 2.55,-6.88"/>
+            <path class="cf-capim" d="M92,235 q-1.6,-5.28 -2.72,-8.8 M96.5,235 q0.6,-6.930000000000001 1.02,-11.55 M101,235 q2.1,-4.62 3.57,-7.700000000000001"/>
+            <path class="cf-capim-2" d="M94.2,235 q-0.4,-3.96 -0.68,-6.6000000000000005 M98.8,235 q1.5,-5.676 2.55,-9.46"/>
+            <path class="cf-capim" d="M120,233 q-1.6,-4.08 -2.72,-6.8 M124.5,233 q0.6,-5.3549999999999995 1.02,-8.924999999999999 M129,233 q2.1,-3.57 3.57,-5.95"/>
+            <path class="cf-capim-2" d="M122.2,233 q-0.4,-3.0599999999999996 -0.68,-5.1 M126.8,233 q1.5,-4.385999999999999 2.55,-7.31"/>
+            <path class="cf-capim" d="M248,234 q-1.6,-4.8 -2.72,-8 M252.5,234 q0.6,-6.3 1.02,-10.5 M257,234 q2.1,-4.2 3.57,-7"/>
+            <path class="cf-capim-2" d="M250.2,234 q-0.4,-3.5999999999999996 -0.68,-6 M254.8,234 q1.5,-5.159999999999999 2.55,-8.6"/>
+            <path class="cf-capim" d="M286,233 q-1.6,-4.32 -2.72,-7.2 M290.5,233 q0.6,-5.670000000000001 1.02,-9.450000000000001 M295,233 q2.1,-3.78 3.57,-6.3"/>
+            <path class="cf-capim-2" d="M288.2,233 q-0.4,-3.24 -0.68,-5.4 M292.8,233 q1.5,-4.644 2.55,-7.74"/>
+            <path class="cf-capim" d="M318,235 q-1.6,-5.28 -2.72,-8.8 M322.5,235 q0.6,-6.930000000000001 1.02,-11.55 M327,235 q2.1,-4.62 3.57,-7.700000000000001"/>
+            <path class="cf-capim-2" d="M320.2,235 q-0.4,-3.96 -0.68,-6.6000000000000005 M324.8,235 q1.5,-5.676 2.55,-9.46"/>
+            <path class="cf-capim" d="M34,246 q-1.6,-3.5999999999999996 -2.72,-6 M38.5,246 q0.6,-4.725 1.02,-7.875 M43,246 q2.1,-3.15 3.57,-5.25"/>
+            <path class="cf-capim-2" d="M36.2,246 q-0.4,-2.6999999999999997 -0.68,-4.5 M40.8,246 q1.5,-3.869999999999999 2.55,-6.449999999999999"/>
+            <path class="cf-capim" d="M300,247 q-1.6,-3.84 -2.72,-6.4 M304.5,247 q0.6,-5.04 1.02,-8.4 M309,247 q2.1,-3.3600000000000003 3.57,-5.6000000000000005"/>
+            <path class="cf-capim-2" d="M302.2,247 q-0.4,-2.8800000000000003 -0.68,-4.800000000000001 M306.8,247 q1.5,-4.128 2.55,-6.88"/>
+
+            <text class="cf-rotulo-esc cf-mono" x="14" y="17">← OESTE</text>
+            <text class="cf-rotulo-esc cf-mono" x="346" y="17" text-anchor="end">LESTE →</text>
+            <text class="cf-forca-p cf-mono" x="180" y="17" text-anchor="middle" font-size="10.5">força de Coriolis</text>
+
+            <line class="cf-guia" x1="230" y1="42" x2="230" y2="222"/>
+            <g>
+              <path class="cf-membro" d="M259,193 L244,158"/>
+              <path class="cf-membro" d="M277,193 L292,158"/>
+              <circle class="cf-pele" cx="244" cy="158" r="4.6"/>
+              <circle class="cf-pele" cx="292" cy="158" r="4.6"/>
+              <path class="cf-membro" d="M263,207 L261,220"/>
+              <path class="cf-membro" d="M273,207 L275,220"/>
+              <ellipse class="cf-calcado" cx="260" cy="222.5" rx="6.4" ry="3.4"/>
+              <ellipse class="cf-calcado" cx="276" cy="222.5" rx="6.4" ry="3.4"/>
+              <path class="cf-camisa" d="M257,188 q11,-4 22,0 l2,22 q-13,4 -26,0 Z"/>
+              <rect class="cf-pele" x="264.5" y="181" width="7" height="8" rx="2"/>
+              <circle class="cf-pele" cx="268" cy="168" r="17"/>
+              <path class="cf-cabelo" d="M251.4,164 q2,-19 16.6,-19 q14.6,0 16.6,19 q-5.4,-9 -16.6,-9 q-11.2,0 -16.6,9 Z"/>
+              <circle class="cf-olho" cx="262" cy="166" r="5.6"/>
+              <circle class="cf-olho" cx="274" cy="166" r="5.6"/>
+              <circle class="cf-pupila" cx="260.4" cy="164" r="2.3"/>
+              <circle class="cf-pupila" cx="272.4" cy="164" r="2.3"/>
+              <path class="cf-traco-f" d="M268,171 q4,3.4 0,6.4"/>
+              <path class="cf-traco-f" d="M262,180.5 q6,5.4 12,0"/>
+            </g>
+            <path class="cf-traco" d="M230,215.5 L229.4,182.5 L227.8,153 L225.1,127 L221.7,104.5 L217.5,85.4 L212.7,69.8 L207.5,57.6 L201.8,48.9 L196,43.7 L190,42 L184,43.7 L178.2,48.9 L172.5,57.6 L167.3,69.8 L162.5,85.4 L158.3,104.5 L154.9,127 L152.2,153 L150.6,182.5 L150,215.5"/>
+            <circle class="cf-seta" cx="230" cy="215.5" r="3"/>
+
+            <line class="cf-forca" x1="252" y1="110" x2="236" y2="110"/>
+            <path class="cf-forca-p" d="M0,0 L9,-4.5 L9,4.5 Z" transform="translate(234,110)"/>
+            <text class="cf-rotulo-esc cf-mono" x="256" y="114">subida</text>
+
+            <line class="cf-forca" x1="124" y1="110" x2="140" y2="110"/>
+            <path class="cf-forca-p" d="M0,0 L-9,-4.5 L-9,4.5 Z" transform="translate(142,110)"/>
+            <text class="cf-rotulo-esc cf-mono" x="120" y="114" text-anchor="end">descida</text>
+
+            <g>
+              <animateMotion dur="4s" repeatCount="indefinite" path="M230,215.5 L229.4,182.5 L227.8,153 L225.1,127 L221.7,104.5 L217.5,85.4 L212.7,69.8 L207.5,57.6 L201.8,48.9 L196,43.7 L190,42 L184,43.7 L178.2,48.9 L172.5,57.6 L167.3,69.8 L162.5,85.4 L158.3,104.5 L154.9,127 L152.2,153 L150.6,182.5 L150,215.5" keyPoints="0;1;1" keyTimes="0;0.8;1"/>
+              <g>
+                <animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="3.2s" repeatCount="indefinite"/>
+                <circle class="cf-couro" r="9.5"/>
+                <path class="cf-gomo" d="M0,-3.6 L3.42,-1.11 L2.12,2.91 L-2.12,2.91 L-3.42,-1.11 Z"/>
+                <path class="cf-costura" d="M0,-3.6 L0,-7.6 M3.42,-1.11 L7.22,-2.35 M2.12,2.91 L4.47,6.15 M-2.12,2.91 L-4.47,6.15 M-3.42,-1.11 L-7.22,-2.35" stroke-width="0.9"/>
+              </g>
+            </g>
+
+            <line class="cf-seta-l" x1="150" y1="245" x2="150" y2="255"/>
+            <line class="cf-seta-l" x1="230" y1="245" x2="230" y2="255"/>
+            <line class="cf-seta-l" x1="150" y1="250" x2="230" y2="250"/>
+            <text class="cf-rotulo-esc cf-mono" x="190" y="270" text-anchor="middle">desvio para oeste</text>
+          </svg>
+          <figcaption>Ao arremessar um objeto verticalmente para cima, a força de Coriolis faz com que ele tenha um desvio para oeste. Esse desvio é máximo no equador e diminui ao se aproximar dos polos. <strong>O desvio está exagerado na imagem.</strong> Para um arremesso a 10&nbsp;m/s, o desvio seria de aproximadamente 1&nbsp;mm.</figcaption>
+        </figure>
+          <p>
+            Os valores são pequenos, mas não nulos: um arremesso a 10 m/s desvia cerca de 1 mm, e a 30 m/s algo em torno de 3 cm.
+          </p>
+          <p>
+            A dependência com a latitude é complementar nos dois casos: movimentos horizontais escalam com \(\operatorname{sen}\lambda\), sendo máximos nos polos, e movimentos verticais escalam com \(\operatorname{cos}\lambda\), sendo máximos no equador. <strong>A força de Coriolis não desaparece em lugar nenhum do planeta.</strong> O que muda de um lugar para outro é sobre qual direção de movimento ela age com mais intensidade.
+          </p>
+        </div>
+      </div>
+
+      <div class="highlight-box info curiosity-box">
+        <div class="curiosity-summary">
+          <span class="hb-icon">🧮</span>
+          <span class="curiosity-title">O desvio do arremesso vertical</span>
+          <button class="curiosity-toggle" type="button" aria-expanded="false" aria-controls="desvio-vertical">Expandir</button>
+        </div>
+        <div class="curiosity-content" id="desvio-vertical" hidden>
+          <p>
+            Integrando a aceleração de Coriolis em primeira ordem, ao longo de todo o voo de uma bola lançada verticalmente para cima no equador com velocidade inicial \(v_0\), o desvio horizontal na volta ao solo é
+          </p>
+          <div class="formula-display">
+            \[\Delta x = -\frac{4}{3}\,\frac{\omega\, v_0^{\,3}}{g^2}\]
+          </div>
+          <p>
+            onde o sinal negativo indica desvio para oeste.
+          </p>
+          <p>
+            Há um resultado curioso escondido nessa expressão. Um corpo simplesmente abandonado da mesma altura máxima atingida pela bola desvia para <strong>leste</strong>, e o desvio para oeste do arremesso completo é exatamente <strong>quatro vezes maior</strong> que aquele.
+          </p>
+        </div>
+      </div>
+
+      <h3>Quando ela importa</h3>
+
+      <p>
+        O ponto decisivo não é a intensidade, é o <strong>tempo</strong>. Uma aceleração minúscula que age durante segundos não produz nada perceptível. A mesma aceleração agindo durante horas acumula um deslocamento considerável, porque o desvio cresce com o quadrado do tempo.
+      </p>
+
+      <p>
+        Aquele corpo a 10 m/s em latitude 30 graus se desvia menos de um milímetro no primeiro segundo. Ao longo de uma hora, o desvio acumulado passa de 4 km.
+      </p>
+
+      <p>
+        Essa é a chave para entender o assunto inteiro. <strong>A força de Coriolis importa em fenômenos que duram horas e se estendem por centenas de quilômetros.</strong> Ela é irrelevante em tudo que acontece em segundos e em poucos metros. Todos os exemplos que seguem obedecem a esse critério, e o mito da seção seguinte falha nele.
+      </p>
+
+      <div class="highlight-box info curiosity-box">
+        <div class="curiosity-summary">
+          <span class="hb-icon">🧮</span>
+          <span class="curiosity-title">O critério formal</span>
+          <button class="curiosity-toggle" type="button" aria-expanded="false" aria-controls="numero-rossby">Expandir</button>
+        </div>
+        <div class="curiosity-content" id="numero-rossby" hidden>
+          <p>
+            A meteorologia formaliza isso pelo <strong>número de Rossby</strong>, definido como
+          </p>
+          <div class="formula-display">
+            \[Ro = \frac{v}{L\,f}\]
+          </div>
+          <p>
+            onde \(L\) é a dimensão característica do fenômeno e \(f = 2\omega \operatorname{sen}\lambda\) é o chamado parâmetro de Coriolis. Quando \(Ro \ll 1\), a força de Coriolis domina a dinâmica. Quando \(Ro \gg 1\), ela é desprezível.
+          </p>
+          <p>
+            Para um ciclone, com \(L\) de centenas de quilômetros, \(Ro\) fica bem abaixo de 1. Para a água de uma pia, com \(L\) da ordem de dezenas de centímetros, \(Ro\) é da ordem de milhares.
+          </p>
+        </div>
+      </div>
+
+      <h3>Ciclones e anticiclones</h3>
+
+      <div class="fig-sequencia">
+
+        <figure class="fig-quadro">
+          <svg viewBox="0 0 360 250" xmlns="http://www.w3.org/2000/svg" role="img" data-parada="2.4"
+               aria-label="Animação de uma Terra sem rotação: o ar converge em linha reta para o centro de baixa pressão por todos os lados e o preenche.">
+            <text class="cf-forte cf-mono" x="180" y="22" text-anchor="middle">SEM ROTAÇÃO</text>
+            <g transform="rotate(0 180 130)">
+              <path class="cf-traco" d="M180,35 L180,102" stroke-opacity=".38"/>
+              <circle class="cf-bola" r="5.5">
+                <animateMotion dur="4s" repeatCount="indefinite" path="M180,35 L180,102"/>
+              </circle>
+            </g>
+            <g transform="rotate(90 180 130)">
+              <path class="cf-traco" d="M180,35 L180,102" stroke-opacity=".38"/>
+              <circle class="cf-bola" r="5.5">
+                <animateMotion dur="4s" repeatCount="indefinite" path="M180,35 L180,102"/>
+              </circle>
+            </g>
+            <g transform="rotate(180 180 130)">
+              <path class="cf-traco" d="M180,35 L180,102" stroke-opacity=".38"/>
+              <circle class="cf-bola" r="5.5">
+                <animateMotion dur="4s" repeatCount="indefinite" path="M180,35 L180,102"/>
+              </circle>
+            </g>
+            <g transform="rotate(270 180 130)">
+              <path class="cf-traco" d="M180,35 L180,102" stroke-opacity=".38"/>
+              <circle class="cf-bola" r="5.5">
+                <animateMotion dur="4s" repeatCount="indefinite" path="M180,35 L180,102"/>
+              </circle>
+            </g>
+            <circle class="cf-baixa" cx="180" cy="130" r="19"/>
+            <text x="180" y="136" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">B</text>
+            <text class="cf-rotulo cf-mono" x="180" y="240" text-anchor="middle">o ar chega ao centro</text>
+          </svg>
+          <figcaption><strong>Se a Terra não girasse.</strong> O ar entraria direto, preencheria a região de baixa pressão e a diferença de pressão se desfaria em pouco tempo. Não haveria ciclone.</figcaption>
+        </figure>
+
+        <figure class="fig-quadro">
+          <svg viewBox="0 0 360 250" xmlns="http://www.w3.org/2000/svg" role="img" data-parada="2.4"
+               aria-label="Animação com a rotação da Terra no hemisfério sul: o ar que converge para o centro de baixa pressão é desviado para a esquerda e passa a contornar o centro no sentido horário, sem alcançá-lo.">
+            <text class="cf-forte cf-mono" x="180" y="22" text-anchor="middle">COM A ROTAÇÃO</text>
+            <g transform="rotate(0 180 130)">
+              <path class="cf-traco" d="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175" stroke-opacity=".38"/>
+              <circle class="cf-bola" r="5.5">
+                <animateMotion dur="4s" repeatCount="indefinite" path="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175"/>
+              </circle>
+            </g>
+            <g transform="rotate(90 180 130)">
+              <path class="cf-traco" d="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175" stroke-opacity=".38"/>
+              <circle class="cf-bola" r="5.5">
+                <animateMotion dur="4s" repeatCount="indefinite" path="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175"/>
+              </circle>
+            </g>
+            <g transform="rotate(180 180 130)">
+              <path class="cf-traco" d="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175" stroke-opacity=".38"/>
+              <circle class="cf-bola" r="5.5">
+                <animateMotion dur="4s" repeatCount="indefinite" path="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175"/>
+              </circle>
+            </g>
+            <g transform="rotate(270 180 130)">
+              <path class="cf-traco" d="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175" stroke-opacity=".38"/>
+              <circle class="cf-bola" r="5.5">
+                <animateMotion dur="4s" repeatCount="indefinite" path="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175"/>
+              </circle>
+            </g>
+            <circle class="cf-baixa" cx="180" cy="130" r="19"/>
+            <text x="180" y="136" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">B</text>
+            <text class="cf-rotulo cf-mono" x="180" y="240" text-anchor="middle">hemisfério sul: sentido horário</text>
+          </svg>
+          <figcaption><strong>Com a rotação.</strong> O ar é desviado para a esquerda antes de chegar ao centro e passa a contornar a baixa pressão. A circulação se sustenta por dias, e é isso que chamamos de ciclone.</figcaption>
+        </figure>
+
+      </div>
+
+      <p>
+        Este é o exemplo mais importante, e também o mais mal explicado por aí. Convém deixar claro desde já: <strong>a força de Coriolis não põe o ciclone para girar</strong>. O que ela faz é impedir que ele pare de girar.
+      </p>
+
+      <p>
+        Acompanhe o processo. Uma região da atmosfera fica com pressão mais baixa que a vizinhança. O ar em volta começa a se deslocar em direção a esse centro de baixa pressão, empurrado pela diferença de pressão. Se a Terra não girasse, o ar entraria direto, preencheria a região, e em pouco tempo a diferença de pressão se desfaria. Não haveria ciclone nenhum, apenas um sopro que se resolve sozinho.
+      </p>
+
+      <p>
+        Mas a Terra gira. Conforme o ar avança em direção ao centro, ele vai sendo desviado lateralmente, para a esquerda no hemisfério sul. O ar não consegue chegar ao centro: ele passa a <strong>contornar</strong> a região de baixa pressão, num equilíbrio entre a diferença de pressão, que puxa para dentro, e o desvio de Coriolis, que empurra para fora do caminho.
+      </p>
+
+      <p>
+        O resultado é uma circulação que se sustenta por dias. No hemisfério sul, onde o desvio é para a esquerda, os ciclones giram no <strong>sentido horário</strong>. No hemisfério norte, no <strong>sentido anti-horário</strong>. Nos anticiclones, que são centros de alta pressão, o ar sai do centro em vez de entrar, e os sentidos se invertem.
+      </p>
+
+      <p>
+        Uma consequência prática dessa dependência com a latitude: <strong>furacões não se formam nas proximidades imediatas do equador</strong>, tipicamente dentro de uma faixa de cerca de 5 graus. Ali o termo \(\operatorname{sen}\lambda\) é pequeno demais para segurar a circulação, e a tempestade não consegue se organizar.
+      </p>
+
+      <h3>Os ventos alísios</h3>
+
+      <p>
+        O mesmo mecanismo explica um padrão que a navegação conhece há séculos. O ar aquecido sobe na região equatorial e retorna à superfície por volta dos 30 graus de latitude, de onde escoa de volta em direção ao equador.
+      </p>
+
+      <p>
+        Se não houvesse rotação, esses ventos soprariam exatamente do norte no hemisfério norte e do sul no hemisfério sul. Com o desvio de Coriolis, eles chegam <strong>inclinados</strong>: de nordeste no hemisfério norte e de sudeste no hemisfério sul. São os ventos alísios, e a inclinação deles foi determinante nas rotas de navegação que ligaram a Europa à América.
+      </p>
+
+      <h3>Balística de longo alcance</h3>
+
+      <p>
+        Um projétil de artilharia que passa um ou dois minutos no ar percorre dezenas de quilômetros, e nesse tempo o desvio de Coriolis deixa de ser desprezível. Tabelas de tiro de longo alcance trazem correções de latitude e de direção do disparo por essa razão.
+      </p>
+
+      <p>
+        A comparação de escala é o que interessa aqui. Uma bola arremessada a 100 metros, que fica cerca de 4 segundos no ar, se desvia por Coriolis algo em torno de 1,5 cm em latitudes médias, o que nenhum arremessador vai notar.<sup class="ref"><a href="#ref-8" id="cite-8">8</a></sup> Um projétil que voa por dezenas de quilômetros erra o alvo por dezenas de metros. É a mesma força, e a diferença está inteira no tempo de voo.
+      </p>
+
+      <h3>O pêndulo de Foucault</h3>
+
+      <p>
+        O pêndulo de Foucault é o caso mais direto de todos, porque nele o efeito é o objeto do experimento e não um detalhe a corrigir.
+      </p>
+
+      <p>
+        Um pêndulo longo, uma vez posto a oscilar, mantém seu plano de oscilação. O que gira, embaixo dele, é a Terra. Para quem observa do chão, isso aparece como uma lenta rotação do plano de oscilação, e a força de Coriolis é exatamente o termo que descreve essa rotação no referencial terrestre.
+      </p>
+
+      <p>
+        A velocidade dessa precessão depende da latitude pelo mesmo fator \(\operatorname{sen}\lambda\) que já apareceu. Nos polos, o plano completa uma volta em cerca de 24 horas. Em Paris, onde Foucault fez a demonstração, leva aproximadamente 32 horas. Em São Paulo, cerca de 60 horas. E no equador o pêndulo não precessiona.
+      </p>
+
+      <p>
+        Esse experimento merece tratamento próprio, e é assunto de outro texto deste site.
+        <!-- TODO: link para o texto sobre a Terra como referencial -->
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s9">
+      <h2><span class="sec-num">9</span> O mito do ralo da pia</h2>
+
+      <p>
+        Agora que temos o critério, fica fácil entender por que a afirmação mais popular sobre a força de Coriolis é falsa.
+      </p>
+
+      <p>
+        Você provavelmente já ouviu que a água escoa girando em um sentido no hemisfério norte e no sentido contrário no hemisfério sul. A afirmação circula em livros, vídeos e programas de televisão. Ela não é falsa porque a força de Coriolis não exista, nem porque ela não atue sobre a água. É falsa porque, nessa escala, <strong>ela é pequena demais para competir com qualquer outra coisa</strong>.
+      </p>
+
+      <p>
+        Vale fazer a conta, porque ela é simples. A água caminhando para o ralo tem velocidade da ordem de centímetros por segundo. Aplicando a expressão da seção anterior, a aceleração de Coriolis correspondente fica na casa de \(10^{-6}\) m/s², contra os quase \(10\) m/s² da gravidade. A força de Coriolis sobre aquela água é da ordem de dez milhões de vezes menor que o peso dela.<sup class="ref"><a href="#ref-8" id="cite-8b">8</a></sup> E, sobretudo, o escoamento inteiro dura segundos, não horas.
+      </p>
+
+      <p>
+        Qualquer coisa vence uma competição desse tipo. O formato da pia, a posição da torneira, uma corrente de ar, e principalmente a rotação residual que a água ficou tendo desde que a pia foi enchida. Nada disso é controlado, e todos esses efeitos são ordens de grandeza maiores.
+      </p>
+
+      <p>
+        Em 1962, Ascher Shapiro testou a afirmação com o cuidado que ela exigia, usando um tanque circular, água em repouso por horas e um pequeno flutuador como detector de vórtice. Ele mostrou que era possível obter vórtices em qualquer sentido, dependendo apenas de como o tanque tinha sido enchido. Silveira e Axt descrevem esses experimentos em detalhe e propõem versões caseiras, que qualquer pessoa pode reproduzir na pia do banheiro.<sup class="ref"><a href="#ref-8" id="cite-8c">8</a>,<a href="#ref-9" id="cite-9">9</a></sup>
+      </p>
+
+      <p>
+        Há ainda um detalhe que interessa particularmente a quem vive no Brasil, e que reforça o ponto. <strong>No equador, a componente horizontal da força de Coriolis sobre corpos em movimento horizontal é nula</strong>, como mostra o fator \(\operatorname{sen}\lambda\). Boa parte do território brasileiro está em latitudes baixas, onde o efeito é bem menor do que a versão simplificada da história sugere.
+      </p>
+
+      <p>
+        A diferença entre a pia e o ciclone não é de natureza. É de escala, e a conta mostra exatamente onde está a fronteira.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s10">
+      <h2><span class="sec-num">10</span> Um nome ruim</h2>
+
+      <p>
+        Voltemos à pergunta que ficou em aberto.
+      </p>
+
+      <p>
+        Chamamos essas forças de fictícias porque elas não correspondem a interações entre corpos e desaparecem quando trocamos de referencial. O nome descreve bem essa origem. O problema é que ele descreve muito mal a experiência de quem está dentro do referencial acelerado. A força que te joga contra a porta do carro na curva não é fictícia no sentido de imaginária. Ela machuca. E, como acabamos de ver, uma força fictícia é capaz de organizar um furacão.
+      </p>
+
+      <p>
+        E há o incômodo da seção 7. Forças fictícias são proporcionais à massa e aceleram igualmente corpos leves e pesados, e a gravidade se comporta exatamente do mesmo modo. Dentro de um elevador fechado, sem janelas, <strong>não existe experimento local capaz de distinguir</strong> se você está parado num campo gravitacional ou acelerando no espaço vazio. Por isso parte da literatura prefere o nome <strong>forças inerciais</strong>, argumentando que, para quem as sente, seus efeitos são idênticos aos de qualquer outra força.<sup class="ref"><a href="#ref-4" id="cite-4b">4</a></sup>
+      </p>
+
+      <p>
+        Einstein levou esse incômodo a sério, e mais longe do que ninguém. Se não há experimento capaz de distinguir gravidade de aceleração, talvez a distinção não exista, e talvez a gravidade não seja uma força no sentido em que as outras são. Essa suspeita, que ele chamou de princípio de equivalência, é o ponto de partida da Relatividade Geral.<sup class="ref"><a href="#ref-10" id="cite-10">10</a></sup>
+        <!-- TODO: link para o texto sobre referencial inercial -->
+      </p>
+
+      <p>
+        O elevador em queda livre da seção 3, que parecia apenas um exemplo conveniente, é o mesmo experimento mental que reorganizou a física do século XX.
+      </p>
+
+    </section>
+
+    <section class="content-section referencias" id="referencias">
+      <h2>Referências</h2>
+
+      <ol>
+        <li id="ref-1">
+          GALILEI, Galileu. <em>Diálogo sobre os dois máximos sistemas do mundo ptolomaico e copernicano</em>. Tradução de Pablo Rubén Mariconda. São Paulo: Discurso Editorial / Imprensa Oficial, 2004. Segunda Jornada.
+          <a href="#cite-1" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-2">
+          FRENCH, Anthony P. <em>Newtonian Mechanics</em>. Nova York: W. W. Norton, 1971.
+          <a href="#cite-2" class="voltar" aria-label="Voltar à primeira citação no texto">↩ 1</a>
+          <a href="#cite-2b" class="voltar" aria-label="Voltar à segunda citação no texto">↩ 2</a>
+        </li>
+
+        <li id="ref-3">
+          NUSSENZVEIG, H. Moysés. <em>Curso de Física Básica</em>, v. 1: Mecânica. São Paulo: Blucher. <!-- VERIFICAR: edição, ano e capítulo sobre referenciais não inerciais -->
+          <a href="#cite-3" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-4">
+          LOPES DOS SANTOS, J. M. B. Forças inerciais. <em>Revista de Ciência Elementar</em>, v. 5, n. 1, 005, 2017.
+          <a href="https://rce.casadasciencias.org/rceapp/art/2017/005/" target="_blank" rel="noopener">Ler na Revista de Ciência Elementar</a>
+          <a href="#cite-4" class="voltar" aria-label="Voltar à primeira citação no texto">↩ 1</a>
+          <a href="#cite-4b" class="voltar" aria-label="Voltar à segunda citação no texto">↩ 2</a>
+        </li>
+
+        <li id="ref-5">
+          MARION, Jerry B.; THORNTON, Stephen T. <em>Classical Dynamics of Particles and Systems</em>. <!-- VERIFICAR: edição, editora e ano -->
+          <a href="#cite-5" class="voltar" aria-label="Voltar à primeira citação no texto">↩ 1</a>
+          <a href="#cite-5b" class="voltar" aria-label="Voltar à segunda citação no texto">↩ 2</a>
+        </li>
+
+        <li id="ref-6">
+          CORIOLIS, Gaspard-Gustave de. Sur les équations du mouvement relatif des systèmes de corps. <em>Journal de l'École Royale Polytechnique</em>, Paris, v. 15, 1835. <!-- VERIFICAR: paginação, aparece como 142-154 e como 144-154 em fontes diferentes -->
+          <a href="https://gallica.bnf.fr/ark:/12148/bpt6k29045h" target="_blank" rel="noopener">Ler na Gallica</a>
+          <a href="#cite-6" class="voltar" aria-label="Voltar à primeira citação no texto">↩ 1</a>
+          <a href="#cite-6b" class="voltar" aria-label="Voltar à segunda citação no texto">↩ 2</a>
+        </li>
+
+        <li id="ref-7">
+          CORIOLIS, Gaspard-Gustave de. Sur le principe des forces vives dans les mouvements relatifs des machines. <em>Journal de l'École Royale Polytechnique</em>, Paris, v. 13, 1832.
+          <a href="https://gallica.bnf.fr/ark:/12148/bpt6k29045h" target="_blank" rel="noopener">Ler na Gallica</a>
+          <a href="#cite-7" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-8">
+          SILVEIRA, Fernando Lang da; AXT, Rolando. Acerca de um mito: o vórtice de Coriolis no ralo da pia. <em>Caderno Catarinense de Ensino de Física</em>. <!-- VERIFICAR: volume, número, ano e paginação; o periódico passou a chamar-se Caderno Brasileiro de Ensino de Física em 2002 -->
+          <a href="https://www.if.ufrgs.br/~lang/Textos/Mito_vortice_%20pia.pdf" target="_blank" rel="noopener">Ler o PDF na UFRGS</a>
+          <a href="#cite-8" class="voltar" aria-label="Voltar à primeira citação no texto">↩ 1</a>
+          <a href="#cite-8b" class="voltar" aria-label="Voltar à segunda citação no texto">↩ 2</a>
+          <a href="#cite-8c" class="voltar" aria-label="Voltar à terceira citação no texto">↩ 3</a>
+        </li>
+
+        <li id="ref-9">
+          SHAPIRO, Ascher H. Bath-tub vortex. <em>Nature</em>, v. 196, 1962. <!-- VERIFICAR: paginação -->
+          <a href="https://www.nature.com/articles/1961080b0" target="_blank" rel="noopener">Ver o registro na Nature</a>
+          <a href="#cite-9" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-10">
+          EINSTEIN, Albert. <em>Sobre a teoria da relatividade especial e geral</em>. Publicado originalmente em 1917. <!-- VERIFICAR: edição brasileira, tradutor e ano -->
+          <a href="#cite-10" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+      </ol>
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="../primeira-lei.html">← Primeira Lei de Newton</a>
+    </div>
+
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+
+<script>
+(function() {
+  /* Quem pediu menos movimento recebe as figuras congeladas no quadro final.
+     O CSS prefers-reduced-motion não alcança SMIL, só a API do SVG. */
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('svg[data-parada]').forEach(function (s) {
+      if (!s.pauseAnimations) return;
+      s.setCurrentTime(parseFloat(s.getAttribute('data-parada')));
+      s.pauseAnimations();
+    });
+  }
+
+  /* Caixas recolhíveis */
+  document.querySelectorAll('.curiosity-toggle').forEach(function (btn) {
+    const target = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!target) return;
+    btn.addEventListener('click', function () {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.textContent = expanded ? 'Expandir' : 'Recolher';
+      target.hidden = expanded;
+    });
+  });
+
+  const sections = document.querySelectorAll('.content-section');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', function() {
+    let current = '';
+    sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 120) current = sec.id; });
+    tocLinks.forEach(a => {
+      a.parentElement.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+})();
+</script>
+
+
+</body>
+</html>

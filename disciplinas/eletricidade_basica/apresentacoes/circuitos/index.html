@@ -905,7 +905,7 @@
   <div style="display:flex;gap:80px;margin-top:48px;flex:1;align-items:center;">
     <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:34px;flex:1;">
       <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">01</span><span style="font-size:34px;line-height:1.4;">É a <strong>oposição</strong> que um material oferece à passagem da corrente elétrica.</span></li>
-      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">02</span><span style="font-size:34px;line-height:1.4;">Os elétrons <strong>colidem</strong> com os átomos do material e perdem energia — que se dissipa na forma de <strong>calor</strong>.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">02</span><span style="font-size:34px;line-height:1.4;">Os elétrons <strong>colidem</strong> com os átomos do material e perdem energia, que se dissipa na forma de <strong>calor</strong>.</span></li>
       <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">03</span><span style="font-size:34px;line-height:1.4;">Sua unidade é o <strong>ohm (Ω)</strong>: 1 Ω é a resistência que deixa passar 1 A sob 1 V.</span></li>
     </ul>
     <div style="flex:0 0 580px;background:var(--acento-suave);border-radius:24px;padding:48px 40px;">
@@ -947,37 +947,292 @@
   </div>
 </section>
       </div>
+
       <div class="slide-frame">
-<section data-label="Resistividade" data-screen-label="Resistividade" data-speaker-notes="A 2ª Lei de Ohm: a resistência depende do material (ρ), do comprimento (L) e da área (A). Fio mais longo resiste mais; fio mais grosso resiste menos." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+<section data-label="Código de cores" data-screen-label="O código de cores" data-speaker-notes="O resistor é pequeno demais para trazer o valor escrito, e por isso o valor vem em faixas coloridas. O padrão de quatro faixas é o que se encontra em qualquer kit de laboratório. Repare que a quarta faixa fica afastada das outras três: é assim que se descobre por qual ponta começar a ler, e vale mostrar isso à turma, porque um resistor lido de trás para frente dá um valor completamente diferente. Marrom, preto, vermelho lido ao contrário vira vermelho, preto, marrom, ou seja 200 ohms em vez de 1000. A tira embaixo tem uma ordem que ajuda a memorizar: preto é zero, e as cores seguem do escuro ao claro até o branco, que é nove." style="width:100%;height:100%;box-sizing:border-box;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;padding:78px 110px;display:flex;flex-direction:column;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Resistência</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">O código de cores</h2>
+  </div>
+  <div style="display:flex;gap:60px;margin-top:34px;align-items:center;">
+    <div style="flex:0 0 760px;">
+      <svg viewBox="0 0 700 210" style="width:100%;height:auto;" role="img"
+           aria-label="Resistor com quatro faixas coloridas: marrom, preto, vermelho, ouro.">
+        <defs>
+          <linearGradient id="rc-anat" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#efdcb6"/><stop offset="38%" stop-color="#e2cb9c"/>
+            <stop offset="72%" stop-color="#cbb079"/><stop offset="100%" stop-color="#ab8f58"/>
+          </linearGradient>
+        </defs>
+        <line x1="10" y1="130" x2="160" y2="130" stroke="#9aa1aa" stroke-width="7" stroke-linecap="round"/>
+        <line x1="540" y1="130" x2="690" y2="130" stroke="#9aa1aa" stroke-width="7" stroke-linecap="round"/>
+        <rect x="150" y="86" width="400" height="88" rx="42" fill="url(#rc-anat)"/>
+        <rect x="195" y="86" width="32" height="88" fill="#7B4A12"/>
+        <rect x="252" y="86" width="32" height="88" fill="#16171A"/>
+        <rect x="309" y="86" width="32" height="88" fill="#D42A20"/>
+        <rect x="486" y="86" width="32" height="88" fill="#C9A227"/>
+        <rect x="150" y="86" width="400" height="88" rx="42" fill="none" stroke="#8a7550" stroke-width="2"/>
+        <line x1="211" y1="67" x2="211" y2="86" stroke="#b8b2a2" stroke-width="2"/>
+        <circle cx="211" cy="48" r="19" fill="#fff" stroke="var(--acento)" stroke-width="2.5"/>
+        <text x="211" y="56" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="24" style="fill:var(--acento)">1</text>
+        <line x1="268" y1="67" x2="268" y2="86" stroke="#b8b2a2" stroke-width="2"/>
+        <circle cx="268" cy="48" r="19" fill="#fff" stroke="var(--acento)" stroke-width="2.5"/>
+        <text x="268" y="56" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="24" style="fill:var(--acento)">2</text>
+        <line x1="325" y1="67" x2="325" y2="86" stroke="#b8b2a2" stroke-width="2"/>
+        <circle cx="325" cy="48" r="19" fill="#fff" stroke="var(--acento)" stroke-width="2.5"/>
+        <text x="325" y="56" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="24" style="fill:var(--acento)">3</text>
+        <line x1="502" y1="67" x2="502" y2="86" stroke="#b8b2a2" stroke-width="2"/>
+        <circle cx="502" cy="48" r="19" fill="#fff" stroke="var(--acento)" stroke-width="2.5"/>
+        <text x="502" y="56" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="24" style="fill:var(--acento)">4</text>
+      </svg>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:18px;">
+      <p style="font-size:28px;line-height:1.45;margin:0 0 6px;">O resistor é pequeno demais para trazer o valor impresso. Ele vem em <strong>faixas coloridas</strong>, lidas a partir da ponta em que elas estão mais juntas.</p>
+        <div style="display:flex;gap:20px;align-items:flex-start;">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:25px;color:var(--acento);min-width:30px;">1</span>
+          <span style="font-size:27px;line-height:1.4;"><strong>1º dígito</strong> — <span style="color:#3a3c42;">o primeiro algarismo do valor</span></span>
+        </div>
+        <div style="display:flex;gap:20px;align-items:flex-start;">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:25px;color:var(--acento);min-width:30px;">2</span>
+          <span style="font-size:27px;line-height:1.4;"><strong>2º dígito</strong> — <span style="color:#3a3c42;">o segundo algarismo</span></span>
+        </div>
+        <div style="display:flex;gap:20px;align-items:flex-start;">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:25px;color:var(--acento);min-width:30px;">3</span>
+          <span style="font-size:27px;line-height:1.4;"><strong>multiplicador</strong> — <span style="color:#3a3c42;">por quanto multiplicar: cada cor vale uma potência de dez</span></span>
+        </div>
+        <div style="display:flex;gap:20px;align-items:flex-start;">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:25px;color:var(--acento);min-width:30px;">4</span>
+          <span style="font-size:27px;line-height:1.4;"><strong>tolerância</strong> — <span style="color:#3a3c42;">quanto o valor real pode desviar. Ouro é ±5%, prata é ±10%</span></span>
+        </div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(10,1fr);gap:14px;margin-top:auto;">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="height:50px;align-self:stretch;border-radius:8px;background:#16171A;"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:34px;font-weight:500;">0</div>
+        <div style="font-size:20px;color:#54565c;">preto</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:19px;color:#8b8e97;">×1</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="height:50px;align-self:stretch;border-radius:8px;background:#7B4A12;"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:34px;font-weight:500;">1</div>
+        <div style="font-size:20px;color:#54565c;">marrom</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:19px;color:#8b8e97;">×10</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="height:50px;align-self:stretch;border-radius:8px;background:#D42A20;"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:34px;font-weight:500;">2</div>
+        <div style="font-size:20px;color:#54565c;">vermelho</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:19px;color:#8b8e97;">×100</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="height:50px;align-self:stretch;border-radius:8px;background:#E8720C;"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:34px;font-weight:500;">3</div>
+        <div style="font-size:20px;color:#54565c;">laranja</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:19px;color:#8b8e97;">×1k</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="height:50px;align-self:stretch;border-radius:8px;background:#F2C200;"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:34px;font-weight:500;">4</div>
+        <div style="font-size:20px;color:#54565c;">amarelo</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:19px;color:#8b8e97;">×10k</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="height:50px;align-self:stretch;border-radius:8px;background:#1F8A3B;"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:34px;font-weight:500;">5</div>
+        <div style="font-size:20px;color:#54565c;">verde</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:19px;color:#8b8e97;">×100k</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="height:50px;align-self:stretch;border-radius:8px;background:#1E63F0;"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:34px;font-weight:500;">6</div>
+        <div style="font-size:20px;color:#54565c;">azul</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:19px;color:#8b8e97;">×1M</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="height:50px;align-self:stretch;border-radius:8px;background:#7C3AED;"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:34px;font-weight:500;">7</div>
+        <div style="font-size:20px;color:#54565c;">violeta</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:19px;color:#8b8e97;">×10M</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="height:50px;align-self:stretch;border-radius:8px;background:#9AA1AA;"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:34px;font-weight:500;">8</div>
+        <div style="font-size:20px;color:#54565c;">cinza</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:19px;color:#8b8e97;">×100M</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="height:50px;align-self:stretch;border-radius:8px;background:#FFFFFF;border:1.5px solid #cfc8b6;"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:34px;font-weight:500;">9</div>
+        <div style="font-size:20px;color:#54565c;">branco</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:19px;color:#8b8e97;">×1G</div>
+      </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Lendo resistores" data-screen-label="Lendo três resistores" data-speaker-notes="Três resistores comuns de qualquer kit. Faça o primeiro com a turma e deixe os outros dois por conta deles. O do meio costuma pegar: marrom no multiplicador é vezes dez, e não vezes um, porque o preto é que vale vezes um. A tolerância merece um minuto: comprar um resistor de 1000 ohms com faixa dourada não garante 1000 ohms, e sim qualquer valor entre 950 e 1050. Em circuito de laboratório isso raramente importa, mas é o tipo de coisa que explica por que uma medida com multímetro nunca bate exatamente com o valor nominal." style="width:100%;height:100%;box-sizing:border-box;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;padding:82px 110px;display:flex;flex-direction:column;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Resistência</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Lendo três resistores</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:44px;flex:1;align-content:center;">
+      <div style="background:#fff;border-radius:24px;padding:30px 28px;display:flex;flex-direction:column;gap:16px;">
+      <svg viewBox="0 0 700 130" style="width:100%;height:auto;" role="img"
+           aria-label="Resistor com quatro faixas coloridas: marrom, preto, vermelho, ouro.">
+        <defs>
+          <linearGradient id="rc-e1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#efdcb6"/><stop offset="38%" stop-color="#e2cb9c"/>
+            <stop offset="72%" stop-color="#cbb079"/><stop offset="100%" stop-color="#ab8f58"/>
+          </linearGradient>
+        </defs>
+        <line x1="6" y1="81" x2="99" y2="81" stroke="#9aa1aa" stroke-width="4" stroke-linecap="round"/>
+        <line x1="335" y1="81" x2="428" y2="81" stroke="#9aa1aa" stroke-width="4" stroke-linecap="round"/>
+        <rect x="93" y="53" width="248" height="55" rx="26" fill="url(#rc-e1)"/>
+        <rect x="121" y="53" width="20" height="55" fill="#7B4A12"/>
+        <rect x="156" y="53" width="20" height="55" fill="#16171A"/>
+        <rect x="192" y="53" width="20" height="55" fill="#D42A20"/>
+        <rect x="301" y="53" width="20" height="55" fill="#C9A227"/>
+        <rect x="93" y="53" width="248" height="55" rx="26" fill="none" stroke="#8a7550" stroke-width="2"/>
+
+      </svg>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:21px;color:#54565c;">marrom · preto · vermelho · ouro</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:30px;">1  0  × 100</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:600;line-height:1;color:var(--acento);">1 kΩ</div>
+        <div style="font-size:23px;color:#54565c;margin-top:-8px;">1 000 Ω</div>
+        <div style="font-size:23px;color:#3a3c42;border-top:1.5px solid #ece5d6;padding-top:14px;margin-top:auto;">±5% → o valor real fica entre <strong>950 a 1050 Ω</strong></div>
+      </div>
+      <div style="background:#fff;border-radius:24px;padding:30px 28px;display:flex;flex-direction:column;gap:16px;">
+      <svg viewBox="0 0 700 130" style="width:100%;height:auto;" role="img"
+           aria-label="Resistor com quatro faixas coloridas: vermelho, vermelho, marrom, ouro.">
+        <defs>
+          <linearGradient id="rc-e2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#efdcb6"/><stop offset="38%" stop-color="#e2cb9c"/>
+            <stop offset="72%" stop-color="#cbb079"/><stop offset="100%" stop-color="#ab8f58"/>
+          </linearGradient>
+        </defs>
+        <line x1="6" y1="81" x2="99" y2="81" stroke="#9aa1aa" stroke-width="4" stroke-linecap="round"/>
+        <line x1="335" y1="81" x2="428" y2="81" stroke="#9aa1aa" stroke-width="4" stroke-linecap="round"/>
+        <rect x="93" y="53" width="248" height="55" rx="26" fill="url(#rc-e2)"/>
+        <rect x="121" y="53" width="20" height="55" fill="#D42A20"/>
+        <rect x="156" y="53" width="20" height="55" fill="#D42A20"/>
+        <rect x="192" y="53" width="20" height="55" fill="#7B4A12"/>
+        <rect x="301" y="53" width="20" height="55" fill="#C9A227"/>
+        <rect x="93" y="53" width="248" height="55" rx="26" fill="none" stroke="#8a7550" stroke-width="2"/>
+
+      </svg>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:21px;color:#54565c;">vermelho · vermelho · marrom · ouro</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:30px;">2  2  × 10</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:600;line-height:1;color:var(--acento);">220 Ω</div>
+        
+        <div style="font-size:23px;color:#3a3c42;border-top:1.5px solid #ece5d6;padding-top:14px;margin-top:auto;">±5% → o valor real fica entre <strong>209 a 231 Ω</strong></div>
+      </div>
+      <div style="background:#fff;border-radius:24px;padding:30px 28px;display:flex;flex-direction:column;gap:16px;">
+      <svg viewBox="0 0 700 130" style="width:100%;height:auto;" role="img"
+           aria-label="Resistor com quatro faixas coloridas: amarelo, violeta, laranja, ouro.">
+        <defs>
+          <linearGradient id="rc-e3" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#efdcb6"/><stop offset="38%" stop-color="#e2cb9c"/>
+            <stop offset="72%" stop-color="#cbb079"/><stop offset="100%" stop-color="#ab8f58"/>
+          </linearGradient>
+        </defs>
+        <line x1="6" y1="81" x2="99" y2="81" stroke="#9aa1aa" stroke-width="4" stroke-linecap="round"/>
+        <line x1="335" y1="81" x2="428" y2="81" stroke="#9aa1aa" stroke-width="4" stroke-linecap="round"/>
+        <rect x="93" y="53" width="248" height="55" rx="26" fill="url(#rc-e3)"/>
+        <rect x="121" y="53" width="20" height="55" fill="#F2C200"/>
+        <rect x="156" y="53" width="20" height="55" fill="#7C3AED"/>
+        <rect x="192" y="53" width="20" height="55" fill="#E8720C"/>
+        <rect x="301" y="53" width="20" height="55" fill="#C9A227"/>
+        <rect x="93" y="53" width="248" height="55" rx="26" fill="none" stroke="#8a7550" stroke-width="2"/>
+
+      </svg>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:21px;color:#54565c;">amarelo · violeta · laranja · ouro</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:30px;">4  7  × 1 000</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:600;line-height:1;color:var(--acento);">47 kΩ</div>
+        <div style="font-size:23px;color:#54565c;margin-top:-8px;">47 000 Ω</div>
+        <div style="font-size:23px;color:#3a3c42;border-top:1.5px solid #ece5d6;padding-top:14px;margin-top:auto;">±5% → o valor real fica entre <strong>44,7 a 49,4 kΩ</strong></div>
+      </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Efeito Joule" data-screen-label="Efeito Joule" data-speaker-notes="A pergunta que abre o slide: o que o resistor faz com a energia? A resposta é a definição dele. Todo resistor percorrido por corrente converte energia elétrica em térmica, e converte tudo. Vale contrastar com um motor, que transforma parte em movimento, e com um LED, que transforma parte em luz; o resistor puro não tem outra saída. A conversão é irreversível: a energia que virou calor se espalha pelo ambiente e não volta a ser elétrica. Repare no quadrado da corrente em P = R·i², porque é ele que explica o resto do curso: dobrar a corrente quadruplica o calor. É por isso que a instalação de um chuveiro pede fio grosso, e é por isso que a energia é transmitida em alta tensão, para que a corrente seja pequena. Peça exemplos à turma antes de mostrar as duas colunas, e ouça em qual delas eles colocam o celular esquentando." style="width:100%;height:100%;box-sizing:border-box;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;padding:82px 110px;display:flex;flex-direction:column;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Resistência</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Efeito Joule</h2>
+  </div>
+  <div style="display:flex;gap:66px;margin-top:40px;flex:1;align-items:center;">
+
+    <div style="flex:1.05;display:flex;flex-direction:column;gap:24px;">
+      <p style="font-size:32px;line-height:1.45;margin:0;">Todo resistor percorrido por corrente <strong>converte energia elétrica em energia térmica</strong>. Não é defeito nem escolha de projeto: é o que a resistência faz.</p>
+      <p style="font-size:32px;line-height:1.45;margin:0;">E converte <strong>tudo</strong>. Um motor transforma parte da energia em movimento, um LED transforma parte em luz. O resistor não tem outra saída.</p>
+      <p style="font-size:29px;line-height:1.45;margin:0;color:#3a3c42;">A conversão é de <strong style="color:#16171A;">mão única</strong>: o calor se espalha pelo ambiente e não volta a ser energia elétrica.</p>
+      <div style="background:var(--acento-suave);border-left:8px solid var(--acento);border-radius:0 18px 18px 0;padding:24px 34px;display:flex;align-items:center;gap:30px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:56px;font-weight:500;white-space:nowrap;">P = R · i²</span>
+        <span style="font-size:25px;line-height:1.4;color:#3a3c42;">a corrente entra ao <strong style="color:#16171A;">quadrado</strong>: dobrar a corrente quadruplica o calor</span>
+      </div>
+    </div>
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:26px;">
+      <div style="background:#fff;border-radius:24px;padding:34px 32px;display:flex;flex-direction:column;gap:14px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.12em;text-transform:uppercase;color:var(--acento);">Calor útil</span>
+        <div style="font-size:31px;font-weight:600;line-height:1.25;">Quando é o produto</div>
+        <div style="font-size:26px;line-height:1.45;color:#3a3c42;">Chuveiro, ferro de passar, secador, torradeira. O aquecimento é exatamente o que se quer, e a resistência é dimensionada para produzi-lo.</div>
+      </div>
+      <div style="background:#fff;border-radius:24px;padding:34px 32px;display:flex;flex-direction:column;gap:14px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.12em;text-transform:uppercase;color:var(--acento2);">Calor indesejado</span>
+        <div style="font-size:31px;font-weight:600;line-height:1.25;">Quando é perda</div>
+        <div style="font-size:26px;line-height:1.45;color:#3a3c42;">Fios da instalação, o carregador que esquenta, as linhas de transmissão. Aqui o calor é energia que se perde no caminho, sem servir a nada.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+      </div>
+      <div class="slide-frame">
+<section data-label="Resistividade" data-screen-label="Resistividade" data-speaker-notes="A 2ª Lei de Ohm responde a uma pergunta prática: de que depende a resistência de um fio? De três coisas, e só três — o material, o comprimento e a espessura. Repare que as duas figuras contam histórias opostas: o comprimento entra multiplicando, então fio mais longo resiste mais; a área entra dividindo, então fio mais grosso resiste menos. O corte transversal está ali de propósito, porque a área não é a espessura vista de lado. Numa secção circular, A = π·d²/4, ou seja, dobrar o diâmetro QUADRUPLICA a área e derruba a resistência a um quarto. É um erro clássico achar que dobrar a espessura corta a resistência pela metade. As cores acompanham os três símbolos ao longo do slide: magenta para o material, dourado para o comprimento, azul para a área." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
   <div style="display:flex;flex-direction:column;gap:14px;">
     <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Resistividade</span>
     <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Resistividade — a 2ª Lei de Ohm</h2>
   </div>
-  <div style="display:flex;gap:70px;margin-top:44px;flex:1;align-items:center;">
-    <div style="flex:0 0 600px;display:flex;flex-direction:column;gap:40px;">
+  <div style="display:flex;gap:70px;margin-top:40px;flex:1;align-items:center;">
+    <div style="flex:0 0 620px;display:flex;flex-direction:column;gap:32px;">
       <div style="display:flex;align-items:center;gap:26px;font-family:'IBM Plex Mono',monospace;">
         <span style="font-size:88px;font-weight:500;">R = </span>
         <div style="display:flex;flex-direction:column;align-items:center;">
-          <span style="font-size:56px;border-bottom:5px solid #16171A;padding:0 18px 10px;color:var(--acento);">ρ · L</span>
+          <span style="font-size:56px;border-bottom:5px solid #16171A;padding:0 18px 10px;"><span style="color:var(--material);">ρ</span> · <span style="color:var(--acento);">L</span></span>
           <span style="font-size:56px;padding-top:10px;color:var(--acento2);">A</span>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:18px;font-size:30px;color:#3a3c42;">
-        <div><strong style="color:var(--acento);">ρ</strong> — resistividade, propriedade do material (Ω·m)</div>
-        <div><strong>L</strong> — comprimento do fio: mais longo, <strong>mais</strong> resistência</div>
+      <p style="font-size:29px;line-height:1.45;margin:0;">A 2ª Lei de Ohm liga a resistência de um fio às <strong>propriedades dele</strong>: de que material é feito, quanto mede e quão grosso é. Com ela dá para <strong>prever</strong> a resistência antes de medir.</p>
+      <div style="display:flex;flex-direction:column;gap:16px;font-size:29px;color:#3a3c42;">
+        <div><strong style="color:var(--material);">ρ</strong> — resistividade, propriedade do material (Ω·m)</div>
+        <div><strong style="color:var(--acento);">L</strong> — comprimento do fio: mais longo, <strong>mais</strong> resistência</div>
         <div><strong style="color:var(--acento2);">A</strong> — área da secção: mais grosso, <strong>menos</strong> resistência</div>
       </div>
     </div>
-    <div style="flex:1;background:var(--acento-suave);border-radius:24px;padding:44px 36px;display:flex;flex-direction:column;gap:30px;">
-      <svg viewBox="0 0 520 110" style="width:100%;height:auto;">
-        <rect x="20" y="42" width="320" height="26" rx="6" style="fill:var(--acento)"/>
-        <line x1="20" y1="88" x2="340" y2="88" stroke="#54565c" stroke-width="3"/><text x="150" y="84" font-family="IBM Plex Mono, monospace" font-size="25" fill="#54565c">L grande</text>
-        <text x="360" y="64" font-family="IBM Plex Mono, monospace" font-size="26" fill="#16171A">R ↑</text>
+    <div style="flex:1;background:var(--acento-suave);border-radius:24px;padding:40px 36px;display:flex;flex-direction:column;gap:34px;">
+      <svg viewBox="0 0 520 120" style="width:100%;height:auto;" role="img"
+           aria-label="Um fio comprido, com a medida do comprimento marcada abaixo dele: quanto maior o comprimento, maior a resistência.">
+        <rect x="24" y="18" width="300" height="26" rx="6" style="fill:var(--acento)"/>
+        <line x1="24" y1="56" x2="24" y2="72" stroke="#8b8e97" stroke-width="2"/>
+        <line x1="324" y1="56" x2="324" y2="72" stroke="#8b8e97" stroke-width="2"/>
+        <line x1="24" y1="64" x2="324" y2="64" stroke="#8b8e97" stroke-width="2"/>
+        <text x="174" y="102" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="25" style="fill:var(--acento)">L grande</text>
+        <text x="368" y="42" font-family="IBM Plex Mono, monospace" font-size="28" fill="#16171A">R ↑</text>
       </svg>
-      <svg viewBox="0 0 520 110" style="width:100%;height:auto;">
-        <rect x="20" y="32" width="320" height="46" rx="10" style="fill:var(--acento2)"/>
-        <line x1="8" y1="32" x2="8" y2="78" stroke="#54565c" stroke-width="3"/><text x="14" y="100" font-family="IBM Plex Mono, monospace" font-size="25" fill="#54565c">A grande</text>
-        <text x="360" y="64" font-family="IBM Plex Mono, monospace" font-size="26" fill="#16171A">R ↓</text>
+      <svg viewBox="0 0 520 150" style="width:100%;height:auto;" role="img"
+           aria-label="Dois fios cortados ao meio, mostrando a área da secção: um fino e um grosso. Quanto maior a área, menor a resistência.">
+        <path d="M70 44 H170 A8 20 0 0 1 170 84 H70 Z" fill="#e6e9ee" stroke="#16171A" stroke-width="2.5" stroke-linejoin="round"/>
+        <ellipse cx="70" cy="64" rx="8" ry="20" style="fill:var(--acento2)" stroke="#16171A" stroke-width="2.5"/>
+        <text x="120" y="132" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="23" fill="#8b8e97">A pequena</text>
+        <path d="M290 24 H390 A17 40 0 0 1 390 104 H290 Z" fill="#e6e9ee" stroke="#16171A" stroke-width="2.5" stroke-linejoin="round"/>
+        <ellipse cx="290" cy="64" rx="17" ry="40" style="fill:var(--acento2)" stroke="#16171A" stroke-width="2.5"/>
+        <text x="340" y="132" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="23" style="fill:var(--acento2)">A grande</text>
+        <text x="205" y="72" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="30" fill="#8b8e97">→</text>
+        <text x="452" y="74" font-family="IBM Plex Mono, monospace" font-size="28" fill="#16171A">R ↓</text>
       </svg>
     </div>
   </div>
@@ -1025,6 +1280,127 @@
   <p style="font-size:32px;color:#54565c;margin:0;text-align:center;">Para a mesma resistência, <strong>dobrar a tensão dobra a corrente</strong>.</p>
 </section>
       </div>
+
+      <div class="slide-frame">
+<section data-label="Quem manda" data-screen-label="Quem manda em quem" data-speaker-notes="Este slide existe para trocar a equação por um raciocínio. Peça para a turma prever cada linha antes de mostrar. A coluna da esquerda é a mais importante, porque é a situação real de qualquer aparelho de tomada: a tensão é imposta pela rede e não muda; quem decide a corrente é a resistência do aparelho. Dobrar a resistência corta a corrente pela metade. A coluna da direita é o caso do laboratório, com a resistência fixa e a fonte ajustável. O fecho é o que costuma destravar: a resistência não CONSOME corrente, ela LIMITA a corrente. Quem estabelece a tensão é a fonte; quem decide a corrente é a dupla tensão e resistência. Vale ligar com o engano da pilha que guardaria corrente, lá no bloco da corrente elétrica." style="width:100%;height:100%;box-sizing:border-box;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;padding:82px 110px;display:flex;flex-direction:column;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Lei de Ohm</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Quem manda em quem</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:40px;flex:1;">
+      <div style="background:#fff;border-radius:24px;padding:38px 36px;display:flex;flex-direction:column;gap:24px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:23px;letter-spacing:0.08em;color:var(--acento);">tensão fixa</span>
+        <div style="font-size:30px;line-height:1.35;">Uma fonte de <strong>12 V</strong> e três resistores diferentes:</div>
+        <div style="display:flex;flex-direction:column;gap:14px;border-top:1.5px solid #ece5d6;border-bottom:1.5px solid #ece5d6;padding:24px 0;">
+        <div style="display:flex;align-items:baseline;gap:22px;font-family:'IBM Plex Mono',monospace;font-size:38px;">
+          <span style="min-width:150px;text-align:right;color:var(--acento);">R = 6 Ω</span>
+          <span style="color:#b8b2a2;">→</span>
+          <span style="color:var(--acento2);font-weight:500;">i = 2 A</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:22px;font-family:'IBM Plex Mono',monospace;font-size:38px;">
+          <span style="min-width:150px;text-align:right;color:var(--acento);">R = 12 Ω</span>
+          <span style="color:#b8b2a2;">→</span>
+          <span style="color:var(--acento2);font-weight:500;">i = 1 A</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:22px;font-family:'IBM Plex Mono',monospace;font-size:38px;">
+          <span style="min-width:150px;text-align:right;color:var(--acento);">R = 24 Ω</span>
+          <span style="color:#b8b2a2;">→</span>
+          <span style="color:var(--acento2);font-weight:500;">i = 0,5 A</span>
+        </div>
+        </div>
+        <div style="font-size:28px;line-height:1.45;color:#3a3c42;margin-top:auto;">Cada vez que a resistência <strong style="color:#16171A;">dobra</strong>, a corrente cai <strong style="color:#16171A;">pela metade</strong>. É o caso de qualquer aparelho de tomada.</div>
+      </div>
+      <div style="background:#fff;border-radius:24px;padding:38px 36px;display:flex;flex-direction:column;gap:24px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:23px;letter-spacing:0.08em;color:var(--acento);">resistência fixa</span>
+        <div style="font-size:30px;line-height:1.35;">Um resistor de <strong>12 Ω</strong> e três tensões diferentes:</div>
+        <div style="display:flex;flex-direction:column;gap:14px;border-top:1.5px solid #ece5d6;border-bottom:1.5px solid #ece5d6;padding:24px 0;">
+        <div style="display:flex;align-items:baseline;gap:22px;font-family:'IBM Plex Mono',monospace;font-size:38px;">
+          <span style="min-width:150px;text-align:right;color:var(--acento);">V = 6 V</span>
+          <span style="color:#b8b2a2;">→</span>
+          <span style="color:var(--acento2);font-weight:500;">i = 0,5 A</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:22px;font-family:'IBM Plex Mono',monospace;font-size:38px;">
+          <span style="min-width:150px;text-align:right;color:var(--acento);">V = 12 V</span>
+          <span style="color:#b8b2a2;">→</span>
+          <span style="color:var(--acento2);font-weight:500;">i = 1 A</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:22px;font-family:'IBM Plex Mono',monospace;font-size:38px;">
+          <span style="min-width:150px;text-align:right;color:var(--acento);">V = 24 V</span>
+          <span style="color:#b8b2a2;">→</span>
+          <span style="color:var(--acento2);font-weight:500;">i = 2 A</span>
+        </div>
+        </div>
+        <div style="font-size:28px;line-height:1.45;color:#3a3c42;margin-top:auto;">Cada vez que a tensão <strong style="color:#16171A;">dobra</strong>, a corrente <strong style="color:#16171A;">dobra</strong> junto. É o caso da fonte ajustável do laboratório.</div>
+      </div>
+  </div>
+  <div style="margin-top:30px;background:var(--acento-suave);border-left:8px solid var(--acento);border-radius:0 18px 18px 0;padding:24px 36px;">
+    <span style="font-size:30px;line-height:1.45;">A resistência não <strong>consome</strong> corrente: ela <strong>limita</strong> a corrente. Quem estabelece a tensão é a fonte, e quem decide a corrente é a dupla tensão e resistência.</span>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Curto-circuito" data-screen-label="Curto-circuito" data-speaker-notes="O curto é o caso extremo do slide anterior: se diminuir a resistência aumenta a corrente, o que acontece quando a resistência vai quase a zero? A conta responde. A mesma bateria de 12 V que empurra 0,2 A por uma lâmpada de 60 ohms empurraria 240 A por um fio de 0,05 ohm, e a potência saltaria de 2,4 W para 2880 W. Mil e duzentas vezes, nas duas coisas. Toda essa potência vira calor no fio, que é fino e não foi feito para isso. Uma ressalva de honestidade, e que rende boa discussão: na prática a corrente não chega a 240 A, porque a própria bateria tem resistência interna, e ela limita. E aqui o tipo de bateria muda tudo. Uma pilha AA alcalina nova tem cerca de 0,15 ohm de resistência interna, então uma bateria de oito delas soma 1,2 ohm: a corrente no curto não passaria de 10 A. Já a bateria de carro é construída para entregar centenas de ampères ao motor de partida, e por isso tem resistência interna de poucos milésimos de ohm, uns 5 milésimos; nela a corrente chegaria a mais de 200 A, quase os 240 A previstos. Ou seja, a resistência interna é que decide, e ela varia por um fator de umas duzentas vezes entre uma bateria e outra. É exatamente por isso que encostar uma chave de fenda nos dois polos de uma bateria de carro derrete a chave e pode explodir a bateria. Aproveite para lembrar que 12 V não sai de uma pilha: pilha é uma célula só, e uma associação delas é que forma a bateria, como está no slide de pilhas e baterias. Termine no fusível e no disjuntor, que existem exatamente para abrir o circuito antes que isso aconteça." style="width:100%;height:100%;box-sizing:border-box;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;padding:70px 110px;display:flex;flex-direction:column;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Lei de Ohm</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Curto-circuito</h2>
+  </div>
+  <div style="display:flex;gap:60px;margin-top:28px;flex:1;align-items:center;">
+
+    <div style="flex:0 0 620px;background:var(--acento-suave);border-radius:24px;padding:30px 32px;">
+      <svg viewBox="0 0 620 312" style="width:100%;height:auto;" role="img"
+           aria-label="Circuito com uma bateria de 12 volts e uma lâmpada, e um fio extra ligando os dois lados da lâmpada. A corrente segue pelo fio extra, que quase não tem resistência, e a lâmpada fica apagada.">
+        <path d="M100 60 H430 M430 60 V128 M430 192 V250 M430 250 H100 M100 250 V196 M100 138 V60" fill="none" stroke="#16171A" stroke-width="5"/>
+        <line x1="76" y1="138" x2="124" y2="138" style="stroke:var(--acento)" stroke-width="6"/>
+        <line x1="88" y1="154" x2="112" y2="154" style="stroke:var(--acento)" stroke-width="9"/>
+        <line x1="76" y1="170" x2="124" y2="170" style="stroke:var(--acento)" stroke-width="6"/>
+        <line x1="88" y1="186" x2="112" y2="186" style="stroke:var(--acento)" stroke-width="9"/>
+        <text x="64" y="170" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="26" style="fill:var(--acento)">12 V</text>
+        <circle cx="430" cy="160" r="30" fill="#fff" stroke="#16171A" stroke-width="5"/>
+        <line x1="409" y1="139" x2="451" y2="181" stroke="#c9ccd2" stroke-width="5"/>
+        <line x1="451" y1="139" x2="409" y2="181" stroke="#c9ccd2" stroke-width="5"/>
+        <text x="468" y="168" font-family="IBM Plex Mono, monospace" font-size="24" fill="#8b8e97">apagada</text>
+        <path d="M300 60 V250" fill="none" stroke="#D42A20" stroke-width="9" stroke-linecap="round"/>
+        <circle cx="300" cy="60" r="8" fill="#D42A20"/>
+        <circle cx="300" cy="250" r="8" fill="#D42A20"/>
+        <text x="300" y="36" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="26" fill="#D42A20">R ≈ 0</text>
+        <text x="300" y="294" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="25" fill="#D42A20">a corrente vem toda por aqui</text>
+      </svg>
+    </div>
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:16px;">
+      <p style="font-size:30px;line-height:1.45;margin:0;">Um <strong>curto-circuito</strong> é um caminho de resistência quase nula ligando os dois polos da fonte. A corrente despreza o resto do circuito e vem toda por ali.</p>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:23px;letter-spacing:0.08em;color:var(--acento);">com uma fonte de 12 V</div>
+        <div style="display:flex;flex-direction:column;gap:10px;background:#fff;border-radius:20px;padding:22px 26px;">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:22px;color:var(--acento2);">pela lâmpada</span>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:27px;color:#3a3c42;">R = 60 Ω</div>
+          <div style="display:flex;gap:44px;">
+            <div><div style="font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:600;line-height:1;color:var(--acento2);">0,2 A</div><div style="font-family:'IBM Plex Mono',monospace;font-size:20px;color:#8b8e97;margin-top:8px;">corrente</div></div>
+            <div><div style="font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:600;line-height:1;color:var(--acento2);">2,4 W</div><div style="font-family:'IBM Plex Mono',monospace;font-size:20px;color:#8b8e97;margin-top:8px;">potência</div></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;background:#fff;border-radius:20px;padding:22px 26px;">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:22px;color:#D42A20;">pelo curto</span>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:27px;color:#3a3c42;">R = 0,05 Ω</div>
+          <div style="display:flex;gap:44px;">
+            <div><div style="font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:600;line-height:1;color:#D42A20;">240 A</div><div style="font-family:'IBM Plex Mono',monospace;font-size:20px;color:#8b8e97;margin-top:8px;">corrente</div></div>
+            <div><div style="font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:600;line-height:1;color:#D42A20;">2880 W</div><div style="font-family:'IBM Plex Mono',monospace;font-size:20px;color:#8b8e97;margin-top:8px;">potência</div></div>
+          </div>
+        </div>
+      <p style="font-size:27px;line-height:1.45;margin:0;color:#3a3c42;">A mesma fonte de 12 V, <strong style="color:#16171A;">mil e duzentas vezes</strong> mais corrente e mais potência. Tudo isso vira calor num fio fino que não foi feito para isso.</p>
+    </div>
+
+  </div>
+  <div style="margin-top:18px;display:flex;gap:36px;">
+    <div style="flex:1;background:#fff;border-radius:20px;padding:20px 28px;">
+      <span style="font-size:27px;line-height:1.45;">O <strong>fusível</strong> e o <strong>disjuntor</strong> existem para isso: abrem o circuito antes que o fio derreta.</span>
+    </div>
+    <div style="flex:1;background:#fff;border-radius:20px;padding:20px 28px;">
+      <span style="font-size:27px;line-height:1.45;color:#3a3c42;">A própria bateria tem <strong style="color:#16171A;">resistência interna</strong>, que segura a corrente: numa bateria pequena ela nem chega a 10 A. Numa de carro, quase os 240 A.</span>
+    </div>
+  </div>
+</section>
+      </div>
       <div class="slide-frame">
 <section data-label="Gráfico V×i" data-screen-label="Gráfico V x i" data-speaker-notes="No condutor ôhmico, o gráfico V x i é uma reta — a resistência (a inclinação) é constante. Quando a curva entorta, o material não obedece à Lei de Ohm." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
   <div style="display:flex;flex-direction:column;gap:14px;">
@@ -1055,7 +1431,7 @@
 </section>
       </div>
       <div class="slide-frame">
-<section data-label="Potência" data-screen-label="Potência elétrica" data-speaker-notes="Potência é a rapidez com que a energia é transformada: P = V·i. Combinando com a Lei de Ohm chega-se a P = R·i². É o que aquece o chuveiro e ilumina a lâmpada." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+<section data-label="Potência" data-screen-label="Potência elétrica" data-speaker-notes="Potência é a rapidez com que a energia é transformada: P = V·i. Combinando com a Lei de Ohm chegam-se as outras duas formas. Vale abrir a diferença entre elas, porque é fonte clássica de confusão. P = R·i² é a leitura certa quando a CORRENTE é a mesma, o que acontece ao longo de um caminho em série: ali, quem tem mais resistência dissipa mais. Já P = V²/R é a leitura certa quando a TENSÃO é fixa, que é o caso de qualquer aparelho ligado na tomada: ali, quem tem MENOS resistência puxa mais corrente e consome mais. É por isso que o chuveiro, o aparelho mais potente da casa, tem a menor resistência entre os aparelhos, e não a maior. As duas leituras não se contradizem: elas respondem a perguntas diferentes." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
   <div style="display:flex;flex-direction:column;gap:14px;">
     <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">No dia a dia</span>
     <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Potência elétrica</h2>
@@ -1064,9 +1440,10 @@
     <div style="flex:1;display:flex;flex-direction:column;gap:40px;">
       <p style="font-size:36px;line-height:1.45;margin:0;">A potência mede <strong>quão rápido</strong> a energia elétrica é convertida em outra forma.</p>
       <div style="display:flex;flex-direction:column;gap:26px;font-family:'IBM Plex Mono',monospace;">
-        <div style="font-size:78px;font-weight:500;"><span style="color:#16171A;">P</span> = <span style="color:var(--acento);">V</span> · <span style="color:var(--acento2);">i</span></div>
-        <div style="font-size:46px;font-weight:500;color:#54565c;">P = R · i²   <span style="font-size:34px;">→ unidade: watt (W)</span></div>
+        <div style="font-size:90px;font-weight:500;"><span style="color:#16171A;">P</span> = <span style="color:var(--acento);">V</span> · <span style="color:var(--acento2);">i</span></div>
+        <div style="font-size:34px;color:#8b8e97;">→ unidade: watt (W)</div>
       </div>
+      <p style="font-size:29px;line-height:1.45;margin:0;color:#3a3c42;">Um watt é <strong style="color:#16171A;">um joule por segundo</strong>. Um chuveiro de 5500 W converte 5500 joules a cada segundo em que fica ligado.</p>
     </div>
     <div style="flex:0 0 540px;background:var(--acento2-suave);border-radius:24px;padding:48px 40px;">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:25px;color:var(--acento2-escuro);margin-bottom:24px;">efeito Joule</div>
@@ -1081,6 +1458,45 @@
   </div>
 </section>
       </div>
+
+      <div class="slide-frame">
+<section data-label="Três formas" data-screen-label="As três formas da potência" data-speaker-notes="As três saem uma da outra por substituição, e vale mostrar a conta em vez de pedir que decorem. Partindo de P = V·i: se trocar V por R·i, cai em P = R·i²; se trocar i por V/R, cai em P = V²/R. São a mesma equação escrita de três jeitos, e a escolha depende só de quais duas grandezas você já conhece. A parte que rende discussão é a última linha de cada cartão, porque as duas leituras parecem se contradizer. Num fio em série a corrente é a mesma para todo mundo, então manda P = R·i² e quem tem mais resistência esquenta mais; é por isso que a resistência do chuveiro esquenta e o fio não. Já num aparelho ligado na tomada quem é fixa é a tensão, então manda P = V²/R e quem tem MENOS resistência consome mais; é por isso que o chuveiro, o aparelho mais potente da casa, tem a menor resistência entre eles. Não há contradição: as duas respondem a perguntas diferentes." style="width:100%;height:100%;box-sizing:border-box;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;padding:82px 110px;display:flex;flex-direction:column;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">No dia a dia</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">As três formas de calcular</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:40px;flex:1;">
+      <div style="background:#fff;border-radius:24px;padding:36px 32px;display:flex;flex-direction:column;gap:22px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:23px;letter-spacing:0.08em;color:var(--acento);">a definição</span>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:#8b8e97;min-height:38px;">&nbsp;</div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:0;font-family:'IBM Plex Mono',monospace;font-size:58px;font-weight:500;min-height:132px;"><span>P&nbsp;=&nbsp;</span><span style="color:var(--acento);">V</span><span>&nbsp;·&nbsp;</span><span style="color:var(--acento2);">i</span></div>
+        <div style="font-size:26px;line-height:1.45;color:#3a3c42;border-top:1.5px solid #ece5d6;padding-top:20px;">Use quando conhecer a <strong style="color:#16171A;">tensão</strong> e a <strong style="color:#16171A;">corrente</strong>.</div>
+        <div style="font-size:26px;line-height:1.45;color:#3a3c42;margin-top:auto;">Vale sempre, em qualquer trecho de qualquer circuito.</div>
+      </div>
+      <div style="background:#fff;border-radius:24px;padding:36px 32px;display:flex;flex-direction:column;gap:22px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:23px;letter-spacing:0.08em;color:var(--acento);">trocando V por R · i</span>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:#8b8e97;min-height:38px;">P = (R · i) · i</div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:0;font-family:'IBM Plex Mono',monospace;font-size:58px;font-weight:500;min-height:132px;"><span>P&nbsp;=&nbsp;R&nbsp;·&nbsp;</span><span style="color:var(--acento2);">i</span><span>²</span></div>
+        <div style="font-size:26px;line-height:1.45;color:#3a3c42;border-top:1.5px solid #ece5d6;padding-top:20px;">Use quando conhecer a <strong style="color:#16171A;">resistência</strong> e a <strong style="color:#16171A;">corrente</strong>.</div>
+        <div style="font-size:26px;line-height:1.45;color:#3a3c42;margin-top:auto;">É a leitura certa quando a <strong style="color:#16171A;">corrente é a mesma</strong>, como num fio em série: ali, quem tem mais resistência dissipa mais.</div>
+      </div>
+      <div style="background:#fff;border-radius:24px;padding:36px 32px;display:flex;flex-direction:column;gap:22px;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:23px;letter-spacing:0.08em;color:var(--acento);">trocando i por V / R</span>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:30px;color:#8b8e97;min-height:38px;">P = V · (V / R)</div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:0;font-family:'IBM Plex Mono',monospace;font-size:58px;font-weight:500;min-height:132px;"><span>P&nbsp;=&nbsp;&nbsp;</span><div style="display:flex;flex-direction:column;align-items:center;line-height:1;">
+            <span style="font-size:52px;padding:0 20px 12px;"><span style="color:var(--acento);">V²</span></span>
+            <span style="align-self:stretch;border-top:5px solid #16171A;"></span>
+            <span style="font-size:52px;padding:12px 20px 0;"><span>R</span></span>
+          </div></div>
+        <div style="font-size:26px;line-height:1.45;color:#3a3c42;border-top:1.5px solid #ece5d6;padding-top:20px;">Use quando conhecer a <strong style="color:#16171A;">tensão</strong> e a <strong style="color:#16171A;">resistência</strong>.</div>
+        <div style="font-size:26px;line-height:1.45;color:#3a3c42;margin-top:auto;">É a leitura certa quando a <strong style="color:#16171A;">tensão é fixa</strong>, como num aparelho de tomada: ali, quem tem menos resistência consome mais.</div>
+      </div>
+  </div>
+  <div style="margin-top:30px;background:var(--acento-suave);border-left:8px solid var(--acento);border-radius:0 18px 18px 0;padding:24px 36px;">
+    <span style="font-size:30px;line-height:1.45;">As três dizem <strong>a mesma coisa</strong>. O que muda é o que você já sabe do circuito, e é isso que decide qual usar.</span>
+  </div>
+</section>
+      </div>
       <div class="slide-frame">
 <section data-label="§ Dia a dia" data-screen-label="Divisor 06" data-speaker-notes="Sexto bloco: onde tudo isso aparece na vida real." style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:center;background:#15161B;color:#F7F6F2;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
   <span style="position:absolute;right:90px;top:60px;font-family:'Space Grotesk',sans-serif;font-size:420px;font-weight:600;color:#22242c;line-height:1;">06</span>
@@ -1090,15 +1506,15 @@
 </section>
       </div>
       <div class="slide-frame">
-<section data-label="Aplicações" data-screen-label="Aplicações" data-speaker-notes="Quatro exemplos: o chuveiro converte corrente em calor; a lâmpada incandescente aquece o filamento; o LED é eficiente; o fusível se rompe ao exceder a corrente segura." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+<section data-label="Aplicações" data-screen-label="Aplicações" data-speaker-notes="Quatro exemplos: o chuveiro converte corrente em calor; a lâmpada incandescente aquece o filamento; o LED é eficiente; o fusível se rompe ao exceder a corrente segura. O chuveiro merece cuidado, porque a intuição engana. Um chuveiro de 5500 W em 220 V tem resistência de apenas 8,8 ohms, cerca de trinta vezes MENOR que a de uma lâmpada incandescente de 60 W, que fica perto de 270 ohms. A resistência é baixa justamente para deixar passar 25 A. Mas ela ainda é umas cinquenta vezes maior que a dos fios que a alimentam, uns 0,17 ohm para 20 m de cabo. Pondo os dois em série e fazendo a conta: 98 por cento da potência é dissipada no chuveiro e só 2 por cento nos fios. É a comparação entre as resistências, e não o valor absoluto de uma delas, que explica por que a água esquenta e a parede não." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
   <div style="display:flex;flex-direction:column;gap:14px;">
     <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">No dia a dia</span>
     <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Os circuitos ao seu redor</h2>
   </div>
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:60px;flex:1;">
-    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:40px 34px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento2);">Efeito Joule</span><div style="font-size:34px;font-weight:600;">Chuveiro</div><div style="font-size:27px;line-height:1.4;color:#3a3c42;">Resistência alta transforma corrente em calor para aquecer a água.</div></div>
-    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:40px 34px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento2);">Filamento</span><div style="font-size:34px;font-weight:600;">Lâmpada</div><div style="font-size:27px;line-height:1.4;color:#3a3c42;">O filamento incandesce ao se aquecer — material não-ôhmico.</div></div>
-    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:40px 34px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">Semicondutor</span><div style="font-size:34px;font-weight:600;">LED</div><div style="font-size:27px;line-height:1.4;color:#3a3c42;">Emite luz com pouquíssima corrente — muito mais eficiente.</div></div>
+    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:40px 34px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento2);">Efeito Joule</span><div style="font-size:34px;font-weight:600;">Chuveiro</div><div style="font-size:27px;line-height:1.4;color:#3a3c42;">Resistência <strong style="color:#16171A;">baixa</strong>, uns 9 Ω, para puxar corrente alta. Ainda assim é bem maior que a dos fios, e por isso o calor aparece ali.</div></div>
+    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:40px 34px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento2);">Filamento</span><div style="font-size:34px;font-weight:600;">Lâmpada</div><div style="font-size:27px;line-height:1.4;color:#3a3c42;">O filamento incandesce ao se aquecer, e é material não-ôhmico.</div></div>
+    <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:40px 34px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">Semicondutor</span><div style="font-size:34px;font-weight:600;">LED</div><div style="font-size:27px;line-height:1.4;color:#3a3c42;">Emite luz com pouquíssima corrente, o que o torna muito mais eficiente.</div></div>
     <div style="display:flex;flex-direction:column;gap:20px;background:#fff;border-radius:24px;padding:40px 34px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">Proteção</span><div style="font-size:34px;font-weight:600;">Fusível</div><div style="font-size:27px;line-height:1.4;color:#3a3c42;">Rompe-se quando a corrente passa do limite seguro, abrindo o circuito.</div></div>
   </div>
 </section>
@@ -1173,7 +1589,7 @@
     <button id="prev" class="nav-btn" aria-label="Slide anterior">‹</button>
     <button id="next" class="nav-btn" aria-label="Próximo slide">›</button>
     <div id="bottom-bar">
-      <span id="counter">1 / 36</span>
+      <span id="counter">1 / 42</span>
       <span id="deck-title" style="font-family:'IBM Plex Sans',sans-serif;font-size:14px;color:#e7e9ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:42%;"></span>
       <div id="progress-track"><div id="progress-bar"></div></div>
       <button id="btn-notes" class="bar-btn" title="Notas do palestrante (N)">Notas</button>

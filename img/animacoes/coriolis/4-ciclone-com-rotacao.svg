@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Baixa pressão com a rotação da Terra: o ar contorna o centro, no sentido horário do hemisfério sul.
+     Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Fonte da geometria: conteudos/dinamica/aprofundamento/forcas-ficticias.html -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 250" width="720" height="500"
+     role="img" aria-labelledby="cf-titulo-ciclone-com">
+  <title id="cf-titulo-ciclone-com">Animação com a rotação da Terra no hemisfério sul: o ar que converge para o centro de baixa pressão é desviado para a esquerda e passa a contornar o centro no sentido horário, sem alcançá-lo.</title>
+  <style><![CDATA[
+    svg {
+      --cf-disco:  #e5e9f0;
+      --cf-borda:  #64748b;
+      --cf-raio:   rgba(100,116,139,.38);
+      --cf-chao:   #cbd5e1;
+      --cf-alvo:   #ea580c;
+      --cf-bola:   #2563eb;
+      --cf-guia:   #94a3b8;
+      --cf-forca:  #7c3aed;
+      --cf-baixa:  #dc2626;
+      --cf-rotulo: #475569;
+      --cf-forte:  #1e293b;
+      --cf-seta:   #64748b;
+      --cf-fonte:  ui-monospace, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', monospace;
+      /* cenário do arremesso no equador */
+      --cf-rot-esc:  #1f2b3a;
+      --cf-ceu-alto: #a9d3ee;
+      --cf-ceu-baix: #dceaf5;
+      --cf-grama:    #8fbf6f;
+      --cf-grama-2:  #79a95c;
+      --cf-capim:    #4f8a3a;
+      --cf-capim-2:  #3f7530;
+      --cf-sol:      #f7cf3a;
+      --cf-tronco:   #8a5a32;
+      --cf-tronco-l: #6b4526;
+      --cf-folha:    #3f8f4e;
+      --cf-folha-2:  #327a41;
+      --cf-tinta:    #1e293b;
+      /* globo em projeção polar */
+      --cf-oceano:   #2f74ac;
+      --cf-terra:    #5aa05a;
+      --cf-terra-b:  #3d7a3d;
+      --cf-globo-b:  #16324a;
+    }
+    .cf-disco   { fill: var(--cf-disco); }
+    .cf-borda   { fill: none; stroke: var(--cf-borda); stroke-width: 1.6; }
+    .cf-raio    { stroke: var(--cf-raio); stroke-width: 1.1; }
+    .cf-chao    { fill: var(--cf-chao); }
+    .cf-chao-l  { stroke: var(--cf-borda); stroke-width: 1.5; }
+    .cf-alvo    { fill: var(--cf-alvo); }
+    .cf-alvo-a  { fill: none; stroke: var(--cf-alvo); stroke-width: 1.8; stroke-dasharray: 3 3; }
+    .cf-bola    { fill: var(--cf-bola); }
+    .cf-traco   { fill: none; stroke: var(--cf-bola); stroke-width: 2.2; stroke-linecap: round; }
+    .cf-guia    { fill: none; stroke: var(--cf-guia); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .cf-forca   { fill: none; stroke: var(--cf-forca); stroke-width: 2.2; stroke-linecap: round; }
+    .cf-forca-p { fill: var(--cf-forca); }
+    .cf-baixa   { fill: var(--cf-baixa); }
+    .cf-seta    { fill: var(--cf-seta); }
+    .cf-seta-l  { fill: none; stroke: var(--cf-seta); stroke-width: 1.8; }
+    .cf-rotulo  { fill: var(--cf-rotulo); font-size: 11px; font-family: var(--cf-fonte); }
+    .cf-forte   { fill: var(--cf-forte); font-size: 12px; font-weight: 700; font-family: var(--cf-fonte); }
+    .cf-mono    { font-family: var(--cf-fonte); }
+
+    .cf-rotulo-esc { fill: var(--cf-rot-esc); font-size: 11px; font-family: var(--cf-fonte); }
+    .cf-ceu-alto   { stop-color: var(--cf-ceu-alto); }
+    .cf-ceu-baixo  { stop-color: var(--cf-ceu-baix); }
+    .cf-grama      { fill: var(--cf-grama); }
+    .cf-grama-2    { fill: var(--cf-grama-2); }
+    .cf-capim      { fill: none; stroke: var(--cf-capim); stroke-width: 1.8; stroke-linecap: round; }
+    .cf-capim-2    { fill: none; stroke: var(--cf-capim-2); stroke-width: 1.8; stroke-linecap: round; }
+    .cf-sol        { fill: var(--cf-sol); }
+    .cf-sol-raio   { fill: none; stroke: var(--cf-sol); stroke-width: 2.6; stroke-linecap: round; }
+    .cf-tronco     { fill: var(--cf-tronco); }
+    .cf-tronco-l   { fill: none; stroke: var(--cf-tronco-l); stroke-width: 1.3; stroke-linecap: round; }
+    .cf-folha      { fill: var(--cf-folha); }
+    .cf-folha-2    { fill: var(--cf-folha-2); }
+    .cf-coco       { fill: var(--cf-tronco-l); }
+    .cf-pele       { fill: #f6cb96; }
+    .cf-membro     { fill: none; stroke: #f6cb96; stroke-width: 7.5; stroke-linecap: round; }
+    .cf-camisa     { fill: #e0563f; }
+    .cf-cabelo     { fill: #4a3728; }
+    .cf-olho       { fill: #ffffff; stroke: #2a3342; stroke-width: 1; }
+    .cf-pupila     { fill: var(--cf-tinta); }
+    .cf-traco-f    { fill: none; stroke: #2a3342; stroke-width: 1.5; stroke-linecap: round; }
+    .cf-calcado    { fill: #2a3342; }
+    .cf-oceano     { fill: var(--cf-oceano); }
+    .cf-terra      { fill: var(--cf-terra); stroke: var(--cf-terra-b); stroke-width: 1; stroke-linejoin: round; }
+    .cf-globo-b    { fill: none; stroke: var(--cf-globo-b); stroke-width: 2; }
+    .cf-paralelo   { fill: none; stroke: rgba(255,255,255,.42); stroke-width: 1; stroke-dasharray: 4 4; }
+    .cf-meridiano  { stroke: rgba(255,255,255,.26); stroke-width: 1; }
+    .cf-projetil   { fill: #fff8e1; stroke: var(--cf-globo-b); stroke-width: 1.2; }
+    .cf-reta       { fill: none; stroke: #ffffff; stroke-width: 2.4; stroke-linecap: round; }
+    .cf-rastro     { fill: none; stroke: #ef4444; stroke-width: 2.6; stroke-linecap: round; }
+    .cf-rot-claro  { fill: #ffffff; font-size: 10.5px; font-family: var(--cf-fonte); }
+    .cf-couro      { fill: #ffffff; stroke: var(--cf-tinta); stroke-width: 1; }
+    .cf-gomo       { fill: var(--cf-tinta); }
+    .cf-costura    { fill: none; stroke: var(--cf-tinta); stroke-width: 1; }
+
+    /* Quem abrir o arquivo com o sistema no modo escuro vê a versão noturna,
+       igual à do site. Embutido aqui porque o .svg carregado como imagem é um
+       documento à parte e não enxerga o data-theme da página. */
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --cf-disco:  #1c2536;
+        --cf-borda:  #94a3b8;
+        --cf-raio:   rgba(148,163,184,.32);
+        --cf-chao:   #263244;
+        --cf-alvo:   #fb923c;
+        --cf-bola:   #60a5fa;
+        --cf-guia:   #64748b;
+        --cf-forca:  #a78bfa;
+        --cf-baixa:  #f87171;
+        --cf-rotulo: #cbd5e1;
+        --cf-forte:  #e2e8f0;
+        --cf-seta:   #94a3b8;
+        --cf-rot-esc:  #dbe4ee;
+        --cf-ceu-alto: #0d1622;
+        --cf-ceu-baix: #1d2a38;
+        --cf-grama:    #2f4a2c;
+        --cf-grama-2:  #263d24;
+        --cf-capim:    #3f6b30;
+        --cf-capim-2:  #345826;
+        --cf-sol:      #d9a406;
+        --cf-tronco:   #6b4526;
+        --cf-tronco-l: #543619;
+        --cf-folha:    #2f6b3b;
+        --cf-folha-2:  #26592f;
+        --cf-oceano:   #1b4a70;
+        --cf-terra:    #3f7a45;
+        --cf-terra-b:  #2c5c31;
+        --cf-globo-b:  #0d2537;
+      }
+    }
+    /* Sem o movimento a bola fica no início do caminho, mas o traço da
+       trajetória é desenhado à parte e a figura continua se explicando. */
+    @media (prefers-reduced-motion: reduce) {
+      animateMotion { display: none; }
+      animateTransform { display: none; }
+    }
+  ]]></style>
+  <text class="cf-forte cf-mono" x="180" y="22" text-anchor="middle">COM A ROTAÇÃO</text>
+  <g transform="rotate(0 180 130)">
+    <path class="cf-traco" d="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175" stroke-opacity=".38"/>
+    <circle class="cf-bola" r="5.5">
+      <animateMotion dur="4s" repeatCount="indefinite" path="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175"/>
+    </circle>
+  </g>
+  <g transform="rotate(90 180 130)">
+    <path class="cf-traco" d="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175" stroke-opacity=".38"/>
+    <circle class="cf-bola" r="5.5">
+      <animateMotion dur="4s" repeatCount="indefinite" path="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175"/>
+    </circle>
+  </g>
+  <g transform="rotate(180 180 130)">
+    <path class="cf-traco" d="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175" stroke-opacity=".38"/>
+    <circle class="cf-bola" r="5.5">
+      <animateMotion dur="4s" repeatCount="indefinite" path="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175"/>
+    </circle>
+  </g>
+  <g transform="rotate(270 180 130)">
+    <path class="cf-traco" d="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175" stroke-opacity=".38"/>
+    <circle class="cf-bola" r="5.5">
+      <animateMotion dur="4s" repeatCount="indefinite" path="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175"/>
+    </circle>
+  </g>
+  <circle class="cf-baixa" cx="180" cy="130" r="19"/>
+  <text x="180" y="136" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">B</text>
+  <text class="cf-rotulo cf-mono" x="180" y="240" text-anchor="middle">hemisfério sul: sentido horário</text>
+</svg>
