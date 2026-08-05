@@ -137,114 +137,114 @@
       animateTransform { display: none; }
     }
   ]]></style>
-  <defs>
-    <linearGradient id="cf-ceu-grad" x1="0" y1="0" x2="0" y2="1">
-      <stop class="cf-ceu-alto" offset="0"/>
-      <stop class="cf-ceu-baixo" offset="1"/>
-    </linearGradient>
-  </defs>
-
-  <rect x="0" y="0" width="360" height="225" fill="url(#cf-ceu-grad)"/>
-  <path class="cf-sol-raio" d="M75,50 L80,50 M70,62 L73.6,65.6 M58,67 L58,72 M46,62 L42.4,65.6 M41,50 L36,50 M46,38 L42.4,34.4 M58,33 L58,28 M70,38 L73.6,34.4"/>
-  <circle class="cf-sol" cx="58" cy="50" r="13"/>
-
-  <g>
-    <path class="cf-tronco" d="M22,225 C24,206 31,198 31.5,189 L38.5,189 C39,198 36,206 38,225 Z"/>
-    <path class="cf-tronco-l" d="M27.3,212 q4.5,2 9,0 M29.8,201 q3.5,2 7,0 M31.6,193 q2.8,2 5.6,0"/>
-    <circle class="cf-coco" cx="30.5" cy="192" r="2.9"/>
-    <circle class="cf-coco" cx="39" cy="193" r="2.9"/>
-    <circle class="cf-coco" cx="34.5" cy="196" r="2.9"/>
-    <path class="cf-folha" d="M35,188 Q16.7,185.7 2,197 Q20.3,199.3 35,188 Z"/>
-    <path class="cf-folha-2" d="M35,188 Q23.4,176.5 7,177 Q18.6,188.5 35,188 Z"/>
-    <path class="cf-folha" d="M35,188 Q33.8,173.1 22,164 Q23.2,178.9 35,188 Z"/>
-    <path class="cf-folha-2" d="M35,188 Q45.9,179.1 46,165 Q35.1,173.9 35,188 Z"/>
-    <path class="cf-folha" d="M35,188 Q49.1,189 58,178 Q43.9,177 35,188 Z"/>
-    <path class="cf-folha-2" d="M35,188 Q45.1,199.1 60,197 Q49.9,185.9 35,188 Z"/>
-  </g>
-  <g>
-    <path class="cf-tronco" d="M322,225 C324,206 321,198 321.5,189 L328.5,189 C329,198 336,206 338,225 Z"/>
-    <path class="cf-tronco-l" d="M323.7,212 q4.5,2 9,0 M323.2,201 q3.5,2 7,0 M322.8,193 q2.8,2 5.6,0"/>
-    <circle class="cf-coco" cx="320.5" cy="192" r="2.9"/>
-    <circle class="cf-coco" cx="329" cy="193" r="2.9"/>
-    <circle class="cf-coco" cx="324.5" cy="196" r="2.9"/>
-    <path class="cf-folha" d="M325,188 Q337.4,199.2 354,197 Q341.6,185.8 325,188 Z"/>
-    <path class="cf-folha-2" d="M325,188 Q339.7,188.4 349,177 Q334.3,176.6 325,188 Z"/>
-    <path class="cf-folha" d="M325,188 Q335.1,178.1 334,164 Q323.9,173.9 325,188 Z"/>
-    <path class="cf-folha-2" d="M325,188 Q322.5,173.2 310,165 Q312.5,179.8 325,188 Z"/>
-    <path class="cf-folha" d="M325,188 Q313.8,176.9 298,178 Q309.2,189.1 325,188 Z"/>
-    <path class="cf-folha-2" d="M325,188 Q308.4,185.8 296,197 Q312.6,199.2 325,188 Z"/>
-  </g>
-
-  <rect class="cf-grama" x="0" y="225" width="360" height="65"/>
-  <rect class="cf-grama-2" x="0" y="225" width="360" height="6"/>
-  <line class="cf-chao-l" x1="0" y1="225" x2="360" y2="225"/>
-  <path class="cf-capim" d="M14,234 q-1.6,-4.8 -2.72,-8 M18.5,234 q0.6,-6.3 1.02,-10.5 M23,234 q2.1,-4.2 3.57,-7"/>
-  <path class="cf-capim-2" d="M16.2,234 q-0.4,-3.5999999999999996 -0.68,-6 M20.8,234 q1.5,-5.159999999999999 2.55,-8.6"/>
-  <path class="cf-capim" d="M52,233 q-1.6,-3.84 -2.72,-6.4 M56.5,233 q0.6,-5.04 1.02,-8.4 M61,233 q2.1,-3.3600000000000003 3.57,-5.6000000000000005"/>
-  <path class="cf-capim-2" d="M54.2,233 q-0.4,-2.8800000000000003 -0.68,-4.800000000000001 M58.8,233 q1.5,-4.128 2.55,-6.88"/>
-  <path class="cf-capim" d="M92,235 q-1.6,-5.28 -2.72,-8.8 M96.5,235 q0.6,-6.930000000000001 1.02,-11.55 M101,235 q2.1,-4.62 3.57,-7.700000000000001"/>
-  <path class="cf-capim-2" d="M94.2,235 q-0.4,-3.96 -0.68,-6.6000000000000005 M98.8,235 q1.5,-5.676 2.55,-9.46"/>
-  <path class="cf-capim" d="M120,233 q-1.6,-4.08 -2.72,-6.8 M124.5,233 q0.6,-5.3549999999999995 1.02,-8.924999999999999 M129,233 q2.1,-3.57 3.57,-5.95"/>
-  <path class="cf-capim-2" d="M122.2,233 q-0.4,-3.0599999999999996 -0.68,-5.1 M126.8,233 q1.5,-4.385999999999999 2.55,-7.31"/>
-  <path class="cf-capim" d="M248,234 q-1.6,-4.8 -2.72,-8 M252.5,234 q0.6,-6.3 1.02,-10.5 M257,234 q2.1,-4.2 3.57,-7"/>
-  <path class="cf-capim-2" d="M250.2,234 q-0.4,-3.5999999999999996 -0.68,-6 M254.8,234 q1.5,-5.159999999999999 2.55,-8.6"/>
-  <path class="cf-capim" d="M286,233 q-1.6,-4.32 -2.72,-7.2 M290.5,233 q0.6,-5.670000000000001 1.02,-9.450000000000001 M295,233 q2.1,-3.78 3.57,-6.3"/>
-  <path class="cf-capim-2" d="M288.2,233 q-0.4,-3.24 -0.68,-5.4 M292.8,233 q1.5,-4.644 2.55,-7.74"/>
-  <path class="cf-capim" d="M318,235 q-1.6,-5.28 -2.72,-8.8 M322.5,235 q0.6,-6.930000000000001 1.02,-11.55 M327,235 q2.1,-4.62 3.57,-7.700000000000001"/>
-  <path class="cf-capim-2" d="M320.2,235 q-0.4,-3.96 -0.68,-6.6000000000000005 M324.8,235 q1.5,-5.676 2.55,-9.46"/>
-  <path class="cf-capim" d="M34,246 q-1.6,-3.5999999999999996 -2.72,-6 M38.5,246 q0.6,-4.725 1.02,-7.875 M43,246 q2.1,-3.15 3.57,-5.25"/>
-  <path class="cf-capim-2" d="M36.2,246 q-0.4,-2.6999999999999997 -0.68,-4.5 M40.8,246 q1.5,-3.869999999999999 2.55,-6.449999999999999"/>
-  <path class="cf-capim" d="M300,247 q-1.6,-3.84 -2.72,-6.4 M304.5,247 q0.6,-5.04 1.02,-8.4 M309,247 q2.1,-3.3600000000000003 3.57,-5.6000000000000005"/>
-  <path class="cf-capim-2" d="M302.2,247 q-0.4,-2.8800000000000003 -0.68,-4.800000000000001 M306.8,247 q1.5,-4.128 2.55,-6.88"/>
-
-  <text class="cf-rotulo-esc cf-mono" x="14" y="17">← OESTE</text>
-  <text class="cf-rotulo-esc cf-mono" x="346" y="17" text-anchor="end">LESTE →</text>
-  <text class="cf-forca-p cf-mono" x="180" y="17" text-anchor="middle" font-size="10.5">força de Coriolis</text>
-
-  <line class="cf-guia" x1="230" y1="42" x2="230" y2="222"/>
-  <g>
-    <path class="cf-membro" d="M259,193 L244,158"/>
-    <path class="cf-membro" d="M277,193 L292,158"/>
-    <circle class="cf-pele" cx="244" cy="158" r="4.6"/>
-    <circle class="cf-pele" cx="292" cy="158" r="4.6"/>
-    <path class="cf-membro" d="M263,207 L261,220"/>
-    <path class="cf-membro" d="M273,207 L275,220"/>
-    <ellipse class="cf-calcado" cx="260" cy="222.5" rx="6.4" ry="3.4"/>
-    <ellipse class="cf-calcado" cx="276" cy="222.5" rx="6.4" ry="3.4"/>
-    <path class="cf-camisa" d="M257,188 q11,-4 22,0 l2,22 q-13,4 -26,0 Z"/>
-    <rect class="cf-pele" x="264.5" y="181" width="7" height="8" rx="2"/>
-    <circle class="cf-pele" cx="268" cy="168" r="17"/>
-    <path class="cf-cabelo" d="M251.4,164 q2,-19 16.6,-19 q14.6,0 16.6,19 q-5.4,-9 -16.6,-9 q-11.2,0 -16.6,9 Z"/>
-    <circle class="cf-olho" cx="262" cy="166" r="5.6"/>
-    <circle class="cf-olho" cx="274" cy="166" r="5.6"/>
-    <circle class="cf-pupila" cx="260.4" cy="164" r="2.3"/>
-    <circle class="cf-pupila" cx="272.4" cy="164" r="2.3"/>
-    <path class="cf-traco-f" d="M268,171 q4,3.4 0,6.4"/>
-    <path class="cf-traco-f" d="M262,180.5 q6,5.4 12,0"/>
-  </g>
-  <path class="cf-traco" d="M230,215.5 L229.4,182.5 L227.8,153 L225.1,127 L221.7,104.5 L217.5,85.4 L212.7,69.8 L207.5,57.6 L201.8,48.9 L196,43.7 L190,42 L184,43.7 L178.2,48.9 L172.5,57.6 L167.3,69.8 L162.5,85.4 L158.3,104.5 L154.9,127 L152.2,153 L150.6,182.5 L150,215.5"/>
-  <circle class="cf-seta" cx="230" cy="215.5" r="3"/>
-
-  <line class="cf-forca" x1="252" y1="110" x2="236" y2="110"/>
-  <path class="cf-forca-p" d="M0,0 L9,-4.5 L9,4.5 Z" transform="translate(234,110)"/>
-  <text class="cf-rotulo-esc cf-mono" x="256" y="114">subida</text>
-
-  <line class="cf-forca" x1="124" y1="110" x2="140" y2="110"/>
-  <path class="cf-forca-p" d="M0,0 L-9,-4.5 L-9,4.5 Z" transform="translate(142,110)"/>
-  <text class="cf-rotulo-esc cf-mono" x="120" y="114" text-anchor="end">descida</text>
-
-  <g>
-    <animateMotion dur="4s" repeatCount="indefinite" path="M230,215.5 L229.4,182.5 L227.8,153 L225.1,127 L221.7,104.5 L217.5,85.4 L212.7,69.8 L207.5,57.6 L201.8,48.9 L196,43.7 L190,42 L184,43.7 L178.2,48.9 L172.5,57.6 L167.3,69.8 L162.5,85.4 L158.3,104.5 L154.9,127 L152.2,153 L150.6,182.5 L150,215.5" keyPoints="0;1;1" keyTimes="0;0.8;1"/>
-    <g>
-      <animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="3.2s" repeatCount="indefinite"/>
-      <circle class="cf-couro" r="9.5"/>
-      <path class="cf-gomo" d="M0,-3.6 L3.42,-1.11 L2.12,2.91 L-2.12,2.91 L-3.42,-1.11 Z"/>
-      <path class="cf-costura" d="M0,-3.6 L0,-7.6 M3.42,-1.11 L7.22,-2.35 M2.12,2.91 L4.47,6.15 M-2.12,2.91 L-4.47,6.15 M-3.42,-1.11 L-7.22,-2.35" stroke-width="0.9"/>
-    </g>
-  </g>
-
-  <line class="cf-seta-l" x1="150" y1="245" x2="150" y2="255"/>
-  <line class="cf-seta-l" x1="230" y1="245" x2="230" y2="255"/>
-  <line class="cf-seta-l" x1="150" y1="250" x2="230" y2="250"/>
+  <defs>
+    <linearGradient id="cf-ceu-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop class="cf-ceu-alto" offset="0"/>
+      <stop class="cf-ceu-baixo" offset="1"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="360" height="225" fill="url(#cf-ceu-grad)"/>
+  <path class="cf-sol-raio" d="M75,50 L80,50 M70,62 L73.6,65.6 M58,67 L58,72 M46,62 L42.4,65.6 M41,50 L36,50 M46,38 L42.4,34.4 M58,33 L58,28 M70,38 L73.6,34.4"/>
+  <circle class="cf-sol" cx="58" cy="50" r="13"/>
+
+  <g>
+    <path class="cf-tronco" d="M22,225 C24,206 31,198 31.5,189 L38.5,189 C39,198 36,206 38,225 Z"/>
+    <path class="cf-tronco-l" d="M27.3,212 q4.5,2 9,0 M29.8,201 q3.5,2 7,0 M31.6,193 q2.8,2 5.6,0"/>
+    <circle class="cf-coco" cx="30.5" cy="192" r="2.9"/>
+    <circle class="cf-coco" cx="39" cy="193" r="2.9"/>
+    <circle class="cf-coco" cx="34.5" cy="196" r="2.9"/>
+    <path class="cf-folha" d="M35,188 Q16.7,185.7 2,197 Q20.3,199.3 35,188 Z"/>
+    <path class="cf-folha-2" d="M35,188 Q23.4,176.5 7,177 Q18.6,188.5 35,188 Z"/>
+    <path class="cf-folha" d="M35,188 Q33.8,173.1 22,164 Q23.2,178.9 35,188 Z"/>
+    <path class="cf-folha-2" d="M35,188 Q45.9,179.1 46,165 Q35.1,173.9 35,188 Z"/>
+    <path class="cf-folha" d="M35,188 Q49.1,189 58,178 Q43.9,177 35,188 Z"/>
+    <path class="cf-folha-2" d="M35,188 Q45.1,199.1 60,197 Q49.9,185.9 35,188 Z"/>
+  </g>
+  <g>
+    <path class="cf-tronco" d="M322,225 C324,206 321,198 321.5,189 L328.5,189 C329,198 336,206 338,225 Z"/>
+    <path class="cf-tronco-l" d="M323.7,212 q4.5,2 9,0 M323.2,201 q3.5,2 7,0 M322.8,193 q2.8,2 5.6,0"/>
+    <circle class="cf-coco" cx="320.5" cy="192" r="2.9"/>
+    <circle class="cf-coco" cx="329" cy="193" r="2.9"/>
+    <circle class="cf-coco" cx="324.5" cy="196" r="2.9"/>
+    <path class="cf-folha" d="M325,188 Q337.4,199.2 354,197 Q341.6,185.8 325,188 Z"/>
+    <path class="cf-folha-2" d="M325,188 Q339.7,188.4 349,177 Q334.3,176.6 325,188 Z"/>
+    <path class="cf-folha" d="M325,188 Q335.1,178.1 334,164 Q323.9,173.9 325,188 Z"/>
+    <path class="cf-folha-2" d="M325,188 Q322.5,173.2 310,165 Q312.5,179.8 325,188 Z"/>
+    <path class="cf-folha" d="M325,188 Q313.8,176.9 298,178 Q309.2,189.1 325,188 Z"/>
+    <path class="cf-folha-2" d="M325,188 Q308.4,185.8 296,197 Q312.6,199.2 325,188 Z"/>
+  </g>
+
+  <rect class="cf-grama" x="0" y="225" width="360" height="65"/>
+  <rect class="cf-grama-2" x="0" y="225" width="360" height="6"/>
+  <line class="cf-chao-l" x1="0" y1="225" x2="360" y2="225"/>
+  <path class="cf-capim" d="M14,234 q-1.6,-4.8 -2.72,-8 M18.5,234 q0.6,-6.3 1.02,-10.5 M23,234 q2.1,-4.2 3.57,-7"/>
+  <path class="cf-capim-2" d="M16.2,234 q-0.4,-3.5999999999999996 -0.68,-6 M20.8,234 q1.5,-5.159999999999999 2.55,-8.6"/>
+  <path class="cf-capim" d="M52,233 q-1.6,-3.84 -2.72,-6.4 M56.5,233 q0.6,-5.04 1.02,-8.4 M61,233 q2.1,-3.3600000000000003 3.57,-5.6000000000000005"/>
+  <path class="cf-capim-2" d="M54.2,233 q-0.4,-2.8800000000000003 -0.68,-4.800000000000001 M58.8,233 q1.5,-4.128 2.55,-6.88"/>
+  <path class="cf-capim" d="M92,235 q-1.6,-5.28 -2.72,-8.8 M96.5,235 q0.6,-6.930000000000001 1.02,-11.55 M101,235 q2.1,-4.62 3.57,-7.700000000000001"/>
+  <path class="cf-capim-2" d="M94.2,235 q-0.4,-3.96 -0.68,-6.6000000000000005 M98.8,235 q1.5,-5.676 2.55,-9.46"/>
+  <path class="cf-capim" d="M120,233 q-1.6,-4.08 -2.72,-6.8 M124.5,233 q0.6,-5.3549999999999995 1.02,-8.924999999999999 M129,233 q2.1,-3.57 3.57,-5.95"/>
+  <path class="cf-capim-2" d="M122.2,233 q-0.4,-3.0599999999999996 -0.68,-5.1 M126.8,233 q1.5,-4.385999999999999 2.55,-7.31"/>
+  <path class="cf-capim" d="M248,234 q-1.6,-4.8 -2.72,-8 M252.5,234 q0.6,-6.3 1.02,-10.5 M257,234 q2.1,-4.2 3.57,-7"/>
+  <path class="cf-capim-2" d="M250.2,234 q-0.4,-3.5999999999999996 -0.68,-6 M254.8,234 q1.5,-5.159999999999999 2.55,-8.6"/>
+  <path class="cf-capim" d="M286,233 q-1.6,-4.32 -2.72,-7.2 M290.5,233 q0.6,-5.670000000000001 1.02,-9.450000000000001 M295,233 q2.1,-3.78 3.57,-6.3"/>
+  <path class="cf-capim-2" d="M288.2,233 q-0.4,-3.24 -0.68,-5.4 M292.8,233 q1.5,-4.644 2.55,-7.74"/>
+  <path class="cf-capim" d="M318,235 q-1.6,-5.28 -2.72,-8.8 M322.5,235 q0.6,-6.930000000000001 1.02,-11.55 M327,235 q2.1,-4.62 3.57,-7.700000000000001"/>
+  <path class="cf-capim-2" d="M320.2,235 q-0.4,-3.96 -0.68,-6.6000000000000005 M324.8,235 q1.5,-5.676 2.55,-9.46"/>
+  <path class="cf-capim" d="M34,246 q-1.6,-3.5999999999999996 -2.72,-6 M38.5,246 q0.6,-4.725 1.02,-7.875 M43,246 q2.1,-3.15 3.57,-5.25"/>
+  <path class="cf-capim-2" d="M36.2,246 q-0.4,-2.6999999999999997 -0.68,-4.5 M40.8,246 q1.5,-3.869999999999999 2.55,-6.449999999999999"/>
+  <path class="cf-capim" d="M300,247 q-1.6,-3.84 -2.72,-6.4 M304.5,247 q0.6,-5.04 1.02,-8.4 M309,247 q2.1,-3.3600000000000003 3.57,-5.6000000000000005"/>
+  <path class="cf-capim-2" d="M302.2,247 q-0.4,-2.8800000000000003 -0.68,-4.800000000000001 M306.8,247 q1.5,-4.128 2.55,-6.88"/>
+
+  <text class="cf-rotulo-esc cf-mono" x="14" y="17">← OESTE</text>
+  <text class="cf-rotulo-esc cf-mono" x="346" y="17" text-anchor="end">LESTE →</text>
+  <text class="cf-forca-p cf-mono" x="180" y="17" text-anchor="middle" font-size="10.5">força de Coriolis</text>
+
+  <line class="cf-guia" x1="230" y1="42" x2="230" y2="222"/>
+  <g>
+    <path class="cf-membro" d="M259,193 L244,158"/>
+    <path class="cf-membro" d="M277,193 L292,158"/>
+    <circle class="cf-pele" cx="244" cy="158" r="4.6"/>
+    <circle class="cf-pele" cx="292" cy="158" r="4.6"/>
+    <path class="cf-membro" d="M263,207 L261,220"/>
+    <path class="cf-membro" d="M273,207 L275,220"/>
+    <ellipse class="cf-calcado" cx="260" cy="222.5" rx="6.4" ry="3.4"/>
+    <ellipse class="cf-calcado" cx="276" cy="222.5" rx="6.4" ry="3.4"/>
+    <path class="cf-camisa" d="M257,188 q11,-4 22,0 l2,22 q-13,4 -26,0 Z"/>
+    <rect class="cf-pele" x="264.5" y="181" width="7" height="8" rx="2"/>
+    <circle class="cf-pele" cx="268" cy="168" r="17"/>
+    <path class="cf-cabelo" d="M251.4,164 q2,-19 16.6,-19 q14.6,0 16.6,19 q-5.4,-9 -16.6,-9 q-11.2,0 -16.6,9 Z"/>
+    <circle class="cf-olho" cx="262" cy="166" r="5.6"/>
+    <circle class="cf-olho" cx="274" cy="166" r="5.6"/>
+    <circle class="cf-pupila" cx="260.4" cy="164" r="2.3"/>
+    <circle class="cf-pupila" cx="272.4" cy="164" r="2.3"/>
+    <path class="cf-traco-f" d="M268,171 q4,3.4 0,6.4"/>
+    <path class="cf-traco-f" d="M262,180.5 q6,5.4 12,0"/>
+  </g>
+  <path class="cf-traco" d="M230,215.5 L229.4,182.5 L227.8,153 L225.1,127 L221.7,104.5 L217.5,85.4 L212.7,69.8 L207.5,57.6 L201.8,48.9 L196,43.7 L190,42 L184,43.7 L178.2,48.9 L172.5,57.6 L167.3,69.8 L162.5,85.4 L158.3,104.5 L154.9,127 L152.2,153 L150.6,182.5 L150,215.5"/>
+  <circle class="cf-seta" cx="230" cy="215.5" r="3"/>
+
+  <line class="cf-forca" x1="252" y1="110" x2="236" y2="110"/>
+  <path class="cf-forca-p" d="M0,0 L9,-4.5 L9,4.5 Z" transform="translate(234,110)"/>
+  <text class="cf-rotulo-esc cf-mono" x="256" y="114">subida</text>
+
+  <line class="cf-forca" x1="124" y1="110" x2="140" y2="110"/>
+  <path class="cf-forca-p" d="M0,0 L-9,-4.5 L-9,4.5 Z" transform="translate(142,110)"/>
+  <text class="cf-rotulo-esc cf-mono" x="120" y="114" text-anchor="end">descida</text>
+
+  <g>
+    <animateMotion dur="4s" repeatCount="indefinite" path="M230,215.5 L229.4,182.5 L227.8,153 L225.1,127 L221.7,104.5 L217.5,85.4 L212.7,69.8 L207.5,57.6 L201.8,48.9 L196,43.7 L190,42 L184,43.7 L178.2,48.9 L172.5,57.6 L167.3,69.8 L162.5,85.4 L158.3,104.5 L154.9,127 L152.2,153 L150.6,182.5 L150,215.5" keyPoints="0;1;1" keyTimes="0;0.8;1"/>
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="3.2s" repeatCount="indefinite"/>
+      <circle class="cf-couro" r="9.5"/>
+      <path class="cf-gomo" d="M0,-3.6 L3.42,-1.11 L2.12,2.91 L-2.12,2.91 L-3.42,-1.11 Z"/>
+      <path class="cf-costura" d="M0,-3.6 L0,-7.6 M3.42,-1.11 L7.22,-2.35 M2.12,2.91 L4.47,6.15 M-2.12,2.91 L-4.47,6.15 M-3.42,-1.11 L-7.22,-2.35" stroke-width="0.9"/>
+    </g>
+  </g>
+
+  <line class="cf-seta-l" x1="150" y1="245" x2="150" y2="255"/>
+  <line class="cf-seta-l" x1="230" y1="245" x2="230" y2="255"/>
+  <line class="cf-seta-l" x1="150" y1="250" x2="230" y2="250"/>
   <text class="cf-rotulo-esc cf-mono" x="190" y="270" text-anchor="middle">desvio para oeste</text>
 </svg>

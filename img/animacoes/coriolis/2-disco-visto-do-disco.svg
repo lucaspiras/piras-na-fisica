@@ -137,21 +137,21 @@
       animateTransform { display: none; }
     }
   ]]></style>
-  <text class="cf-forte cf-mono" x="180" y="22" text-anchor="middle">VISTO DO DISCO</text>
-  <circle class="cf-disco" cx="180" cy="135" r="85"/>
-  <line class="cf-raio" x1="180.0" y1="220.0" x2="180.0" y2="50.0"/>
-  <line class="cf-raio" x1="119.9" y1="195.1" x2="240.1" y2="74.9"/>
-  <line class="cf-raio" x1="95.0" y1="135.0" x2="265.0" y2="135.0"/>
-  <line class="cf-raio" x1="119.9" y1="74.9" x2="240.1" y2="195.1"/>
-  <circle class="cf-borda" cx="180" cy="135" r="85"/>
-  <line class="cf-guia" x1="180" y1="135" x2="180" y2="50"/>
-  <circle class="cf-alvo-a" cx="180" cy="50" r="10"/>
-  <circle class="cf-alvo" cx="180" cy="50" r="4"/>
-  <path class="cf-traco" d="M180,135 L179.74,130.76 L178.96,126.56 L177.68,122.46 L175.89,118.5 L173.61,114.73 L170.86,111.19 L167.66,107.93 L164.04,104.98 L160.01,102.39 L155.62,100.19 L150.9,98.41 L145.87,97.1 L140.6,96.28 L135.1,95.96 L129.43,96.19 L123.63,96.98 L117.74,98.33 L111.84,100.27 L105.95,102.8 L100.13,105.93"/>
-  <circle class="cf-bola" r="6.5">
-    <animateMotion dur="4s" repeatCount="indefinite"
-      path="M180,135 L179.74,130.76 L178.96,126.56 L177.68,122.46 L175.89,118.5 L173.61,114.73 L170.86,111.19 L167.66,107.93 L164.04,104.98 L160.01,102.39 L155.62,100.19 L150.9,98.41 L145.87,97.1 L140.6,96.28 L135.1,95.96 L129.43,96.19 L123.63,96.98 L117.74,98.33 L111.84,100.27 L105.95,102.8 L100.13,105.93"
-      keyPoints="0;1;1" keyTimes="0;0.75;1"/>
-  </circle>
+  <text class="cf-forte cf-mono" x="180" y="22" text-anchor="middle">VISTO DO DISCO</text>
+  <circle class="cf-disco" cx="180" cy="135" r="85"/>
+  <line class="cf-raio" x1="180.0" y1="220.0" x2="180.0" y2="50.0"/>
+  <line class="cf-raio" x1="119.9" y1="195.1" x2="240.1" y2="74.9"/>
+  <line class="cf-raio" x1="95.0" y1="135.0" x2="265.0" y2="135.0"/>
+  <line class="cf-raio" x1="119.9" y1="74.9" x2="240.1" y2="195.1"/>
+  <circle class="cf-borda" cx="180" cy="135" r="85"/>
+  <line class="cf-guia" x1="180" y1="135" x2="180" y2="50"/>
+  <circle class="cf-alvo-a" cx="180" cy="50" r="10"/>
+  <circle class="cf-alvo" cx="180" cy="50" r="4"/>
+  <path class="cf-traco" d="M180,135 L179.74,130.76 L178.96,126.56 L177.68,122.46 L175.89,118.5 L173.61,114.73 L170.86,111.19 L167.66,107.93 L164.04,104.98 L160.01,102.39 L155.62,100.19 L150.9,98.41 L145.87,97.1 L140.6,96.28 L135.1,95.96 L129.43,96.19 L123.63,96.98 L117.74,98.33 L111.84,100.27 L105.95,102.8 L100.13,105.93"/>
+  <circle class="cf-bola" r="6.5">
+    <animateMotion dur="4s" repeatCount="indefinite"
+      path="M180,135 L179.74,130.76 L178.96,126.56 L177.68,122.46 L175.89,118.5 L173.61,114.73 L170.86,111.19 L167.66,107.93 L164.04,104.98 L160.01,102.39 L155.62,100.19 L150.9,98.41 L145.87,97.1 L140.6,96.28 L135.1,95.96 L129.43,96.19 L123.63,96.98 L117.74,98.33 L111.84,100.27 L105.95,102.8 L100.13,105.93"
+      keyPoints="0;1;1" keyTimes="0;0.75;1"/>
+  </circle>
   <text class="cf-rotulo cf-mono" x="180" y="240" text-anchor="middle">a bola entorta</text>
 </svg>

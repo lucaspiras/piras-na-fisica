@@ -137,32 +137,32 @@
       animateTransform { display: none; }
     }
   ]]></style>
-  <text class="cf-forte cf-mono" x="180" y="22" text-anchor="middle">COM A ROTAÇÃO</text>
-  <g transform="rotate(0 180 130)">
-    <path class="cf-traco" d="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175" stroke-opacity=".38"/>
-    <circle class="cf-bola" r="5.5">
-      <animateMotion dur="4s" repeatCount="indefinite" path="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175"/>
-    </circle>
-  </g>
-  <g transform="rotate(90 180 130)">
-    <path class="cf-traco" d="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175" stroke-opacity=".38"/>
-    <circle class="cf-bola" r="5.5">
-      <animateMotion dur="4s" repeatCount="indefinite" path="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175"/>
-    </circle>
-  </g>
-  <g transform="rotate(180 180 130)">
-    <path class="cf-traco" d="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175" stroke-opacity=".38"/>
-    <circle class="cf-bola" r="5.5">
-      <animateMotion dur="4s" repeatCount="indefinite" path="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175"/>
-    </circle>
-  </g>
-  <g transform="rotate(270 180 130)">
-    <path class="cf-traco" d="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175" stroke-opacity=".38"/>
-    <circle class="cf-bola" r="5.5">
-      <animateMotion dur="4s" repeatCount="indefinite" path="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175"/>
-    </circle>
-  </g>
-  <circle class="cf-baixa" cx="180" cy="130" r="19"/>
-  <text x="180" y="136" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">B</text>
+  <text class="cf-forte cf-mono" x="180" y="22" text-anchor="middle">COM A ROTAÇÃO</text>
+  <g transform="rotate(0 180 130)">
+    <path class="cf-traco" d="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175" stroke-opacity=".38"/>
+    <circle class="cf-bola" r="5.5">
+      <animateMotion dur="4s" repeatCount="indefinite" path="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175"/>
+    </circle>
+  </g>
+  <g transform="rotate(90 180 130)">
+    <path class="cf-traco" d="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175" stroke-opacity=".38"/>
+    <circle class="cf-bola" r="5.5">
+      <animateMotion dur="4s" repeatCount="indefinite" path="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175"/>
+    </circle>
+  </g>
+  <g transform="rotate(180 180 130)">
+    <path class="cf-traco" d="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175" stroke-opacity=".38"/>
+    <circle class="cf-bola" r="5.5">
+      <animateMotion dur="4s" repeatCount="indefinite" path="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175"/>
+    </circle>
+  </g>
+  <g transform="rotate(270 180 130)">
+    <path class="cf-traco" d="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175" stroke-opacity=".38"/>
+    <circle class="cf-bola" r="5.5">
+      <animateMotion dur="4s" repeatCount="indefinite" path="M180,35 L202.9,44.7 L221.3,58.6 L232.5,77.5 L238.5,96.3 L239.6,114 L237.5,130 L232.4,144 L224,155.4 L214.2,164.2 L203.4,170.4 L191.9,174.2 L180,175"/>
+    </circle>
+  </g>
+  <circle class="cf-baixa" cx="180" cy="130" r="19"/>
+  <text x="180" y="136" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">B</text>
   <text class="cf-rotulo cf-mono" x="180" y="240" text-anchor="middle">hemisfério sul: sentido horário</text>
 </svg>
