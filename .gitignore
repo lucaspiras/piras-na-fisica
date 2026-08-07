@@ -13,3 +13,18 @@ copa_do_mundo/gincana/perguntas.html
 # Briefs de redação/correção (instruções de trabalho, não fazem parte do site)
 # Barra inicial: ignora só a pasta da raiz, não .claude/skills/briefs/
 /briefs/
+
+# ── DADOS DE ALUNO E RESULTADOS DE TURMA ──────────────────────────────
+# Respostas de teste e relatórios trazem nome de aluno, quase sempre menor de
+# idade. Nada disso vai para um repositório público. As regras são por PADRÃO,
+# e não por arquivo: qualquer export ou relatório novo já nasce fora.
+#
+# SEM EXCEÇÃO, nem para a versão anonimizada. Mesmo sem nomes, um relatório de
+# turma expõe o desempenho de um grupo identificável (a turma tal, da escola
+# tal, em tal data), e esse material é de uso interno do professor com os
+# próprios alunos. Se um dia algum relatório for mesmo para o site, ele entra
+# por caminho próprio e por decisão explícita, não por brecha nesta regra.
+atividades/testes/**/*.csv
+atividades/testes/**/relatorio*
+atividades/testes/**/respostas*
+atividades/testes/**/resultados*

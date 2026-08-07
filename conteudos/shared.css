@@ -377,6 +377,25 @@
 .cf-rastro     { fill: none; stroke: #ef4444; stroke-width: 2.6; stroke-linecap: round; }
 .cf-rot-claro  { fill: #ffffff; font-size: 10.5px; }
 
+/* Figuras do texto sobre a Terra como referencial.
+   Os três vetores do fio de prumo têm cores próprias porque o leitor precisa
+   distinguir de relance quem é quem: a resultante é a soma das outras duas. */
+.cf-estrela    { fill: #f2c94c; }
+.cf-torre      { fill: #b8ad9c; }
+.cf-torre-b    { fill: none; stroke: #7d7365; stroke-width: 1.6; }
+.cf-vet-g      { fill: none; stroke: #7c3aed; stroke-width: 2.6; stroke-linecap: round; }
+.cf-vet-g-p    { fill: #7c3aed; }
+.cf-vet-c      { fill: none; stroke: #0e7490; stroke-width: 2.6; stroke-linecap: round; }
+.cf-vet-c-p    { fill: #0e7490; }
+.cf-vet-r      { fill: none; stroke: #dc2626; stroke-width: 3; stroke-linecap: round; }
+.cf-vet-r-p    { fill: #dc2626; }
+.cf-plano      { fill: none; stroke: #2563eb; stroke-width: 2.4; stroke-linecap: round; }
+.cf-plano-old  { fill: none; stroke: #2563eb; stroke-width: 1.6; stroke-linecap: round; opacity: .22; }
+
+/* Foto dentro de uma figura: a margem automática de .content-img já centra,
+   e aqui ela brigaria com o espaçamento do <figure>. */
+.fig-quadro .content-img { margin: 0; }
+
 /* Ônibus em corte, para o episódio da freada. O interior é uma cor própria
    porque o boneco fica por cima dele e precisa de contraste nos dois temas. */
 .cf-asfalto    { fill: #9aa1a9; }
@@ -443,6 +462,17 @@
 [data-theme="dark"] .cf-oceano     { fill: #1b4a70; }
 [data-theme="dark"] .cf-terra      { fill: #3f7a45; stroke: #2c5c31; }
 [data-theme="dark"] .cf-globo-b    { stroke: #0d2537; }
+[data-theme="dark"] .cf-estrela    { fill: #f7dd7a; }
+[data-theme="dark"] .cf-torre      { fill: #4a4438; }
+[data-theme="dark"] .cf-torre-b    { stroke: #7d7365; }
+[data-theme="dark"] .cf-vet-g      { stroke: #a78bfa; }
+[data-theme="dark"] .cf-vet-g-p    { fill: #a78bfa; }
+[data-theme="dark"] .cf-vet-c      { stroke: #38bdf8; }
+[data-theme="dark"] .cf-vet-c-p    { fill: #38bdf8; }
+[data-theme="dark"] .cf-vet-r      { stroke: #f87171; }
+[data-theme="dark"] .cf-vet-r-p    { fill: #f87171; }
+[data-theme="dark"] .cf-plano      { stroke: #60a5fa; }
+[data-theme="dark"] .cf-plano-old  { stroke: #60a5fa; }
 [data-theme="dark"] .cf-asfalto    { fill: #343b44; }
 [data-theme="dark"] .cf-onibus     { fill: #c69a26; }
 [data-theme="dark"] .cf-onibus-i   { fill: #2b3242; }
@@ -1400,6 +1430,45 @@
   font-style: normal;
   font-size: 0.85rem;
   color: var(--text-muted);
+}
+
+/* ---- TABELA EM TELA ESTREITA ----
+   Envolve uma .content-table, que já é o padrão do site desde as páginas de
+   cinemática. Não substitui aquele estilo: só prende aqui a rolagem
+   horizontal. Sem isto, uma tabela de seis colunas empurra a página inteira
+   e o corpo do texto passa a rolar de lado no celular.
+   O min-width evita o outro extremo, o de espremer as colunas até a
+   ilegibilidade em vez de oferecer a rolagem. */
+.tabela-rolavel {
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 1.5rem 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabela-rolavel .content-table {
+  margin: 0;
+  min-width: 34rem;
+}
+
+/* Célula sem medida numérica, como um resultado inconclusivo: itálico
+   discreto para não ser lida como se fosse um dado. */
+.content-table .sem-dado {
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+/* Respostas curtas e repetidas numa coluna, do tipo Sim/Não: o negrito
+   deixa a tabela escaneável sem obrigar a ler linha por linha. */
+.content-table .resposta {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Indicador de referência logo abaixo de uma tabela, valendo para ela toda. */
+.tabela-fonte {
+  margin: -1rem 0 1.5rem;
+  font-size: 0.9rem;
 }
 
 /* ---- FÓRMULAS EM BLOCO ----

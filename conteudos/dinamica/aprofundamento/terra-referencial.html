@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <script src="/js/theme.js"></script>
+  <meta name="description" content="Portal gratuito de Física para o Ensino Médio: conteúdos, simuladores, estudos dirigidos e listas de exercícios.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="A Terra é um referencial inercial? — Piras na Física">
+  <meta property="og:description" content="Portal gratuito de Física para o Ensino Médio: conteúdos, simuladores, estudos dirigidos e listas de exercícios.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/conteudos/dinamica/aprofundamento/terra-referencial.html">
+  <title>A Terra é um referencial inercial? — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <link rel="stylesheet" href="../../../css/style.css">
+  <link rel="stylesheet" href="../../shared.css">
+</head>
+<body data-tema="dinamica">
+
+<div id="header"></div>
+<script src="../../../js/include.js"></script>
+
+<div class="content-crumb">
+  <nav class="breadcrumb">
+      <a href="../../../index.html">Início</a><span>/</span>
+      <a href="../../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="../index.html">Dinâmica</a><span>/</span>
+      <span>A Terra como referencial</span>
+    </nav>
+</div>
+
+<div class="content-hero">
+  <div class="content-hero-inner">
+    <span class="selo-aprofundamento">Texto de aprofundamento</span>
+    <h1 class="content-title">A Terra é um referencial inercial?</h1>
+  </div>
+</div>
+
+<div class="content-wrapper">
+
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">Como sabemos que a Terra gira?</a></li>
+      <li><a href="#s2">Três rotações sobrepostas</a></li>
+      <li><a href="#s3">O g que medimos não é só gravidade</a></li>
+      <li><a href="#s4">O fio de prumo não aponta para o centro</a></li>
+      <li><a href="#s5">As provas diretas: corpos em queda</a></li>
+      <li><a href="#s6">O pêndulo de Foucault</a></li>
+      <li><a href="#s7">Quando a Terra serve como inercial</a></li>
+      <li><a href="#s8">E onde está o referencial inercial?</a></li>
+      <li><a href="#referencias">Referências</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="forcas-ficticias.html">← Forças fictícias</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <blockquote class="epigrafe">
+      <p>Você está convidado a vir e ver a Terra girar.</p>
+      <span class="epigrafe-autor">Léon Foucault, convite à demonstração no Panthéon, 1851<sup class="ref"><a href="#ref-1" id="cite-1">1</a></sup></span>
+    </blockquote>
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> Como sabemos que a Terra gira?</h2>
+
+      <p>
+        Você aprendeu na aula de geografia que a Terra tem dois movimentos. Ela gira em torno do próprio eixo, o que dá origem ao dia e à noite, e percorre uma órbita em torno do Sol, o que dá origem ao ano e às estações. Provavelmente veio junto uma ilustração com uma esfera inclinada e uma seta curva, e o assunto foi encerrado ali.
+      </p>
+
+      <p>
+        A pergunta que quase nunca é feita é a seguinte: <strong>como alguém descobriu isso?</strong>
+      </p>
+
+      <p>
+        A resposta óbvia parece ser o céu. O Sol nasce a leste e se põe a oeste, as estrelas giram durante a noite em torno de um ponto fixo, as constelações mudam ao longo do ano. Tudo isso é compatível com uma Terra que gira, e por isso costuma ser apresentado como se fosse a prova do movimento.
+      </p>
+
+      <p>
+        Só que não é. E o motivo é mais interessante do que parece.
+      </p>
+
+      <div class="fig-sequencia">
+
+        <figure class="fig-quadro">
+          <svg viewBox="0 0 360 250" xmlns="http://www.w3.org/2000/svg" role="img" data-parada="5"
+               aria-label="Primeira hipótese: a Terra gira e o céu está parado. O observador na superfície é levado pela rotação e a linha do zênite varre o céu até alcançar a estrela destacada. Nos dois casos a mesma estrela chega ao zênite no mesmo instante.">
+            <text class="cf-forte cf-mono" x="180" y="18" text-anchor="middle">A TERRA GIRA</text>
+            <circle class="cf-estrela" cx="180" cy="44" r="3.4"/>
+            <circle class="cf-alvo" cx="256.4" cy="75.6" r="6"/>
+            <circle class="cf-alvo-a" cx="256.4" cy="75.6" r="11"/>
+            <circle class="cf-estrela" cx="288" cy="152" r="3.4"/>
+            <circle class="cf-estrela" cx="256.4" cy="228.4" r="3.4"/>
+            <circle class="cf-estrela" cx="180" cy="260" r="3.4"/>
+            <circle class="cf-estrela" cx="103.6" cy="228.4" r="3.4"/>
+            <circle class="cf-estrela" cx="72" cy="152" r="3.4"/>
+            <circle class="cf-estrela" cx="103.6" cy="75.6" r="3.4"/>
+            <g>
+              <animateTransform attributeName="transform" type="rotate" dur="6s"
+                values="0 180 152;45 180 152;45 180 152" keyTimes="0;0.8;1" repeatCount="indefinite"/>
+              <circle class="cf-oceano" cx="180" cy="152" r="42"/>
+              <path class="cf-terra" d="M150,126 q16,-10 30,-2 q14,8 6,20 q-10,14 -26,6 q-14,-8 -10,-24 Z"/>
+              <path class="cf-terra" d="M174,166 q14,-6 24,4 q6,10 -6,14 q-16,4 -20,-8 Z"/>
+              <circle class="cf-globo-b" cx="180" cy="152" r="42"/>
+              <g transform="translate(180,110)">
+                <line class="cf-chao-l" x1="-15" y1="0" x2="15" y2="0" stroke-width="2"/>
+                <circle class="cf-pele" cx="0" cy="-5" r="4"/>
+                <path class="cf-membro" d="M0,-1 L0,-3" stroke-width="4"/>
+                <line class="cf-guia" x1="0" y1="-8" x2="0" y2="-56"/>
+                <text class="cf-rotulo-esc cf-mono" x="6" y="-44" font-size="9.5">zênite</text>
+              </g>
+            </g>
+            <text class="cf-rotulo-esc cf-mono" x="180" y="240" text-anchor="middle">o zênite vai até a estrela</text>
+          </svg>
+          <figcaption><strong>A Terra gira.</strong> O observador é levado pela rotação e a linha do zênite varre um céu parado.</figcaption>
+        </figure>
+
+        <figure class="fig-quadro">
+          <svg viewBox="0 0 360 250" xmlns="http://www.w3.org/2000/svg" role="img" data-parada="5"
+               aria-label="Segunda hipótese: a Terra está parada e o céu inteiro gira no sentido contrário. O observador não se move e são as estrelas que desfilam até que a destacada chegue ao zênite. Nos dois casos a mesma estrela chega ao zênite no mesmo instante.">
+            <text class="cf-forte cf-mono" x="180" y="18" text-anchor="middle">O CÉU GIRA</text>
+            <g>
+              <animateTransform attributeName="transform" type="rotate" dur="6s"
+                values="0 180 152;-45 180 152;-45 180 152" keyTimes="0;0.8;1" repeatCount="indefinite"/>
+              <circle class="cf-estrela" cx="180" cy="44" r="3.4"/>
+              <circle class="cf-alvo" cx="256.4" cy="75.6" r="6"/>
+              <circle class="cf-alvo-a" cx="256.4" cy="75.6" r="11"/>
+              <circle class="cf-estrela" cx="288" cy="152" r="3.4"/>
+              <circle class="cf-estrela" cx="256.4" cy="228.4" r="3.4"/>
+              <circle class="cf-estrela" cx="180" cy="260" r="3.4"/>
+              <circle class="cf-estrela" cx="103.6" cy="228.4" r="3.4"/>
+              <circle class="cf-estrela" cx="72" cy="152" r="3.4"/>
+              <circle class="cf-estrela" cx="103.6" cy="75.6" r="3.4"/>
+            </g>
+            <g>
+              <circle class="cf-oceano" cx="180" cy="152" r="42"/>
+              <path class="cf-terra" d="M150,126 q16,-10 30,-2 q14,8 6,20 q-10,14 -26,6 q-14,-8 -10,-24 Z"/>
+              <path class="cf-terra" d="M174,166 q14,-6 24,4 q6,10 -6,14 q-16,4 -20,-8 Z"/>
+              <circle class="cf-globo-b" cx="180" cy="152" r="42"/>
+              <g transform="translate(180,110)">
+                <line class="cf-chao-l" x1="-15" y1="0" x2="15" y2="0" stroke-width="2"/>
+                <circle class="cf-pele" cx="0" cy="-5" r="4"/>
+                <path class="cf-membro" d="M0,-1 L0,-3" stroke-width="4"/>
+                <line class="cf-guia" x1="0" y1="-8" x2="0" y2="-56"/>
+                <text class="cf-rotulo-esc cf-mono" x="6" y="-44" font-size="9.5">zênite</text>
+              </g>
+            </g>
+            <text class="cf-rotulo-esc cf-mono" x="180" y="240" text-anchor="middle">a estrela vem até o zênite</text>
+          </svg>
+          <figcaption><strong>O céu gira.</strong> O observador fica onde está e são as estrelas que desfilam por cima dele.</figcaption>
+        </figure>
+
+      </div>
+
+      <p class="fig-nota">A mesma estrela chega ao zênite no mesmo instante nas duas descrições, e o mesmo vale para toda observação do céu. É por isso que olhar para cima não decide a questão.</p>
+
+
+      <p>
+        Imagine duas hipóteses. Na primeira, a Terra gira uma vez por dia e o céu está parado. Na segunda, a Terra está parada e o céu inteiro gira uma vez por dia, no sentido contrário. Agora pergunte-se o que cada uma dessas hipóteses prevê para a posição do Sol às três da tarde, para a altura de uma estrela à meia-noite, para o nascer da Lua amanhã.
+      </p>
+
+      <p>
+        As duas preveem exatamente a mesma coisa. Sempre. <strong>Nenhuma observação do céu consegue distinguir entre elas</strong>, porque o que observamos é apenas o movimento relativo entre nós e os astros, e movimento relativo é rigorosamente o mesmo nas duas descrições. Foi por isso que a discussão durou dois mil anos, e não porque os antigos fossem tolos. Eles tinham em mãos exatamente os mesmos dados que nós, e esses dados não decidiam a questão.<sup class="ref"><a href="#ref-2" id="cite-2">2</a></sup>
+      </p>
+
+      <p>
+        Isso não significa que a rotação da Terra seja uma hipótese arbitrária, nem que as duas descrições sejam igualmente boas. A hipótese da Terra girando é incomparavelmente mais simples, explica de uma vez só fenômenos que a outra precisa explicar um por um, e se encaixa no resto da física. Isso é uma boa evidência. Mas evidência de que uma explicação é melhor não é o mesmo que prova de que a outra é falsa.
+      </p>
+
+      <p>
+        Então de onde veio a prova? <strong>Ela não veio do céu. Veio do chão.</strong>
+      </p>
+
+      <p>
+        Se a Terra gira, ela é um referencial não inercial. E referenciais não inerciais, como vimos no texto sobre <a href="forcas-ficticias.html">forças fictícias</a>, deixam marcas mecânicas locais: coisas que se desviam, pesos que mudam, planos que giram. Essas marcas não dependem de olhar para lugar nenhum. Elas estão dentro da sala.
+      </p>
+
+      <p>
+        É isso que transforma as duas perguntas em uma só. Perguntar <strong>como sabemos que a Terra gira</strong> e perguntar <strong>se a Terra é um referencial inercial</strong> é fazer a mesma pergunta de dois lados. Nos próximos tópicos vamos percorrer as marcas que a rotação deixa, da mais discreta à mais visível, e ao final teremos as duas respostas ao mesmo tempo.
+      </p>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">📚</span>
+        <div class="hb-body">
+          <p><strong>Com a translação foi diferente</strong></p>
+          <p>
+            Vale registrar uma assimetria curiosa, porque ela mostra que a astronomia não ficou de fora da história.
+          </p>
+          <p>
+            Para o movimento de <strong>translação</strong>, o céu consegue decidir, e decidiu. Se a Terra se desloca, as estrelas próximas devem parecer oscilar levemente ao longo do ano em relação às distantes, o que se chama paralaxe, e a luz que vem delas deve chegar com uma inclinação que muda conforme a direção do nosso movimento, o que se chama aberração. Ambos os efeitos foram procurados durante séculos e ambos foram encontrados: a aberração por James Bradley em 1729<sup class="ref"><a href="#ref-3" id="cite-3">3</a></sup> e a paralaxe por Friedrich Bessel em 1838.<sup class="ref"><a href="#ref-4" id="cite-4">4</a></sup>
+          </p>
+          <p>
+            Ou seja: a translação foi provada olhando para cima, e a rotação foi provada olhando para baixo. Esse é assunto para um texto próprio, que ainda vamos escrever.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> Três rotações sobrepostas</h2>
+
+      <p>
+        Antes de procurar as marcas, convém saber o tamanho do que estamos procurando. A Terra participa de vários movimentos ao mesmo tempo, e cada um deles contribui com uma aceleração.
+      </p>
+
+      <p>
+        <strong>A rotação em torno do próprio eixo.</strong> A Terra completa uma volta em 23 horas, 56 minutos e 4 segundos, o que dá uma velocidade angular de aproximadamente \(7{,}3 \times 10^{-5}\) rad/s. No equador, onde a distância ao eixo é máxima, isso corresponde a uma aceleração centrípeta de cerca de \(0{,}034\) m/s².
+      </p>
+
+      <p>
+        <strong>A órbita em torno do Sol.</strong> Percorremos 150 milhões de quilômetros de raio a quase 30 km/s, o que resulta numa aceleração de aproximadamente \(0{,}0059\) m/s².
+      </p>
+
+      <p>
+        <strong>A órbita do Sol na galáxia.</strong> O Sol leva algo como 230 milhões de anos para dar uma volta em torno do centro da Via Láctea, e a aceleração correspondente é de cerca de \(2 \times 10^{-10}\) m/s².
+      </p>
+
+      <p>
+        O terceiro caso é tão pequeno que pode ser esquecido em qualquer aplicação terrestre. O segundo, porém, é da mesma ordem do primeiro, e isso levanta uma pergunta legítima: por que a órbita em torno do Sol não bagunça tudo?
+      </p>
+
+      <div class="highlight-box">
+        <span class="hb-icon">💡</span>
+        <div class="hb-body">
+          <p><strong>Por que a órbita solar quase não conta</strong></p>
+          <p>
+            A resposta é a mesma do elevador em queda livre, e é uma das ideias mais bonitas da mecânica.
+          </p>
+          <p>
+            A Terra não está sendo empurrada em torno do Sol por algum motor externo. Ela está <strong>caindo</strong> em direção ao Sol, permanentemente, e é essa queda que curva sua trajetória em órbita. Como toda a Terra cai junto, e nós com ela, estamos num referencial em queda livre em relação ao Sol.
+          </p>
+          <p>
+            E num referencial em queda livre, como vimos no texto sobre <a href="forcas-ficticias.html">forças fictícias</a>, a força fictícia cancela exatamente a força gravitacional que a produz. Localmente, o efeito some. Não sentimos a órbita da Terra pela mesma razão que um astronauta não sente a órbita da Estação Espacial.
+          </p>
+          <p>
+            O cancelamento não é perfeito, porque a Terra tem tamanho, e o lado voltado para o Sol está um pouco mais perto dele que o lado oposto. O que sobra dessa diferença são as <strong>marés</strong>, com aceleração da ordem de \(10^{-6}\) m/s², somando as contribuições da Lua e do Sol. É pequeno, mas é o suficiente para mover oceanos inteiros duas vezes por dia.
+          </p>
+          <p>
+            Com a rotação em torno do próprio eixo não há nada disso. Ela não é uma queda livre, e portanto não se cancela. É por isso que, das três, é ela que deixa marcas.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> Primeira pista: o g que medimos não é só gravidade</h2>
+
+      <p>
+        Comecemos pela marca mais discreta, que está numa medida que qualquer laboratório escolar faz.
+      </p>
+
+      <p>
+        A aceleração da gravidade não vale o mesmo em todo lugar. No equador, mede-se cerca de \(9{,}780\) m/s². Nos polos, cerca de \(9{,}832\) m/s². A diferença é de aproximadamente meio por cento, o que é pequeno o bastante para não atrapalhar nenhum exercício de ensino médio e grande o bastante para ser medido com facilidade desde o século XVIII.
+      </p>
+
+      <p>
+        Parte dessa diferença vem diretamente da rotação. No equador, a força centrífuga aponta para cima, contra a gravidade, e subtrai da medida aqueles \(0{,}034\) m/s² que calculamos na seção anterior. Nos polos, sobre o eixo de rotação, ela é rigorosamente nula.
+      </p>
+
+      <p>
+        Repare no que isso significa. <strong>Nenhuma balança consegue separar as duas contribuições.</strong> Quando medimos \(g\), medimos a soma da atração gravitacional com o efeito centrífugo, e não há experimento local capaz de dizer quanto é de cada um. O valor tabelado que usamos desde o primeiro ano traz a rotação do planeta embutida, sem aviso.
+      </p>
+
+      <div class="highlight-box danger">
+        <span class="hb-icon">⚠️</span>
+        <div class="hb-body">
+          <p><strong>A conta não fecha só com a centrífuga</strong></p>
+          <p>
+            É tentador atribuir toda a variação de \(g\) à força centrífuga, e essa explicação circula bastante. Ela está incompleta.
+          </p>
+          <p>
+            A diferença total entre polo e equador é de cerca de \(0{,}052\) m/s², e o termo centrífugo responde por \(0{,}034\), isto é, aproximadamente <strong>dois terços</strong>. O terço restante vem de outro lugar: a Terra <strong>não é uma esfera</strong>.
+          </p>
+          <p>
+            Nosso planeta é achatado nos polos. O raio equatorial é de cerca de 6378 km e o polar de cerca de 6357 km, uma diferença de aproximadamente 21 km. Quem está no equador está mais longe do centro da Terra, e por isso sofre atração gravitacional menor.
+          </p>
+          <p>
+            O achatamento é, ele próprio, consequência da rotação. Mas por um caminho diferente e muito mais lento: ao longo de sua história, a Terra se comportou como um fluido e se deformou até ajustar sua forma ao efeito centrífugo. Uma coisa é a força centrífuga agindo sobre você agora, outra é a marca que ela deixou na forma do planeta ao longo de bilhões de anos. As duas contribuem para a variação de \(g\), e é preciso contar as duas.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> Segunda pista: o fio de prumo não aponta para o centro da Terra</h2>
+
+      <p>
+        A segunda marca é ainda mais discreta que a primeira, e mais desconcertante quando se percebe.
+      </p>
+
+      <p>
+        Pergunte a qualquer pessoa o que é a vertical de um lugar e ela dirá que é a direção que aponta para o centro da Terra. Pergunte como se determina essa direção na prática e ela dirá que é com um fio de prumo, ou com um nível de bolha. As duas respostas parecem descrever a mesma coisa. Não descrevem.
+      </p>
+
+      <figure class="fig-quadro fig-unica">
+        <svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" role="img"
+             aria-label="Corte da Terra com um ponto a 45 graus de latitude. Do ponto saem três vetores: a atração gravitacional apontando para o centro do planeta, a força centrífuga apontando para fora do eixo de rotação, e a resultante das duas, que é a direção em que o fio de prumo se estabiliza. O desvio entre a resultante e a direção do centro está muito exagerado no desenho.">
+          <text class="cf-forte cf-mono" x="180" y="18" text-anchor="middle">O QUE O PRUMO SEGUE</text>
+          <line class="cf-guia" x1="132" y1="88" x2="132" y2="272"/>
+          <text class="cf-rotulo-esc cf-mono" x="125" y="84" text-anchor="end" font-size="9.5">eixo de rotação</text>
+          <circle class="cf-oceano" cx="132" cy="180" r="76"/>
+          <circle class="cf-globo-b" cx="132" cy="180" r="76"/>
+          <line class="cf-guia" x1="185.7" y1="126.3" x2="126" y2="186"/>
+          <line class="cf-vet-g" x1="185.7" y1="126.3" x2="150.3" y2="161.7"/>
+          <path class="cf-vet-g-p" d="M0,0 L-9,-4.2 L-9,4.2 Z" transform="translate(150.3,161.7) rotate(135)"/>
+          <line class="cf-vet-c" x1="185.7" y1="126.3" x2="215.7" y2="126.3"/>
+          <path class="cf-vet-c-p" d="M0,0 L-9,-4.2 L-9,4.2 Z" transform="translate(215.7,126.3) rotate(0)"/>
+          <line class="cf-vet-r" x1="185.7" y1="126.3" x2="180.3" y2="161.7"/>
+          <path class="cf-vet-r-p" d="M0,0 L-9,-4.2 L-9,4.2 Z" transform="translate(180.3,161.7) rotate(98.7)"/>
+          <circle class="cf-seta" cx="185.7" cy="126.3" r="3.6"/>
+          <text class="cf-rotulo-esc cf-mono" x="219.7" y="114.3" font-size="9.5">45° de latitude</text>
+          <line class="cf-seta-l" x1="191.7" y1="120.3" x2="216.7" y2="111.3" stroke-width="1"/>
+          <line class="cf-vet-g" x1="240" y1="200" x2="264" y2="200"/>
+          <path class="cf-vet-g-p" d="M0,0 L-8,-3.8 L-8,3.8 Z" transform="translate(267,200)"/>
+          <text class="cf-rotulo-esc cf-mono" x="274" y="204" font-size="10.5">gravidade</text>
+          <line class="cf-vet-c" x1="240" y1="224" x2="264" y2="224"/>
+          <path class="cf-vet-c-p" d="M0,0 L-8,-3.8 L-8,3.8 Z" transform="translate(267,224)"/>
+          <text class="cf-rotulo-esc cf-mono" x="274" y="228" font-size="10.5">centrífuga</text>
+          <line class="cf-vet-r" x1="240" y1="248" x2="264" y2="248"/>
+          <path class="cf-vet-r-p" d="M0,0 L-8,-3.8 L-8,3.8 Z" transform="translate(267,248)"/>
+          <text class="cf-rotulo-esc cf-mono" x="274" y="252" font-size="10.5">resultante</text>
+          <text class="cf-rotulo-esc cf-mono" x="180" y="288" text-anchor="middle">o prumo segue a resultante</text>
+        </svg>
+        <figcaption><strong>O prumo e o centro da Terra.</strong> A vertical que usamos para nivelar qualquer coisa é a da resultante, e ela não passa pelo centro do planeta. <strong>O desvio está muito exagerado no desenho:</strong> na latitude em que é máximo, ele mede cerca de 0,1 grau.</figcaption>
+      </figure>
+
+
+      <p>
+        O fio de prumo se alinha com a <strong>força resultante</strong> sobre o peso pendurado, e essa resultante é a soma da atração gravitacional, que aponta para o centro, com a força centrífuga, que aponta para fora do eixo de rotação. Como essas duas direções não coincidem, o prumo se estabiliza numa direção intermediária.
+      </p>
+
+      <p>
+        O desvio é máximo por volta dos 45 graus de latitude, onde chega a cerca de \(0{,}1\) grau, e se anula no equador e nos polos, porque só nesses dois lugares as duas forças ficam na mesma direção.
+      </p>
+
+      <p>
+        Cem milésimos de grau parecem nada, e para quase todos os efeitos práticos são nada mesmo. Mas o ponto conceitual é sério: <strong>a vertical que usamos é definida pelo prumo, não pela geometria</strong>. Toda vez que alguém nivela uma bancada, ergue uma parede ou monta um experimento de queda livre, está usando uma vertical que já leva a rotação da Terra embutida. Aquela linha, rigorosamente, não passa pelo centro do planeta.
+      </p>
+
+      <p>
+        Há um fechamento elegante aqui. A superfície dos oceanos também se ajusta perpendicularmente à resultante, e não à atração gravitacional pura. É exatamente esse ajuste, repetido por toda a superfície e ao longo do tempo geológico, que produziu o achatamento discutido na seção anterior. As duas pistas são a mesma coisa vista em escalas diferentes.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> As provas diretas: corpos em queda</h2>
+
+      <p>
+        As duas pistas anteriores são reais, mas têm uma limitação: elas mostram que <strong>existe</strong> um efeito centrífugo, e não que a Terra gira em relação a algum referencial. Um defensor da Terra parada poderia sempre argumentar que a distribuição de massa do planeta é assim mesmo.
+      </p>
+
+      <p>
+        A prova que interessa precisa ser diferente. Precisa ser um efeito que só apareça quando alguma coisa <strong>se move</strong> em relação ao solo, porque é isso que caracteriza um referencial em rotação. Precisa, em outras palavras, ser um efeito de Coriolis.
+      </p>
+
+      <p>
+        E o primeiro que ocorreu a alguém foi o mais simples possível: soltar uma pedra do alto de uma torre.
+      </p>
+
+      <figure class="fig-quadro fig-unica">
+        <svg viewBox="0 0 320 340" xmlns="http://www.w3.org/2000/svg" role="img" data-parada="3.4"
+             aria-label="Uma torre com uma pedra sendo abandonada da quina do alto, caindo por fora dela. O topo da torre está mais longe do eixo de rotação da Terra e por isso se desloca para leste mais rápido que a base, o que as duas setas de comprimentos diferentes indicam. A pedra carrega essa velocidade extra durante a queda e chega ao solo um pouco a leste da vertical de lançamento.">
+          <text class="cf-forte cf-mono" x="160" y="18" text-anchor="middle">A QUEDA DA TORRE</text>
+          <text class="cf-rotulo-esc cf-mono" x="12" y="38" font-size="10">← OESTE</text>
+          <text class="cf-rotulo-esc cf-mono" x="308" y="38" text-anchor="end" font-size="10">LESTE →</text>
+          <rect class="cf-grama" x="0" y="268" width="320" height="72"/>
+          <line class="cf-chao-l" x1="0" y1="268" x2="320" y2="268"/>
+          <path class="cf-torre" d="M62,268 L74,76 L106,76 L114,268 Z"/>
+          <line class="cf-torre-b" x1="71.5" y1="116" x2="107.7" y2="116" stroke-width="1"/>
+          <line class="cf-torre-b" x1="69" y1="156" x2="109.3" y2="156" stroke-width="1"/>
+          <line class="cf-torre-b" x1="66.5" y1="196" x2="111" y2="196" stroke-width="1"/>
+          <line class="cf-torre-b" x1="64" y1="236" x2="112.7" y2="236" stroke-width="1"/>
+          <path class="cf-torre-b" d="M62,268 L74,76 L106,76 L114,268 Z"/>
+          <line class="cf-acel" x1="152" y1="92" x2="214" y2="92"/>
+          <path class="cf-acel-p" d="M0,0 L-9,-4.2 L-9,4.2 Z" transform="translate(217,92)"/>
+          <text class="cf-rotulo-esc cf-mono" x="224" y="96" font-size="10">topo</text>
+          <line class="cf-acel" x1="152" y1="244" x2="186" y2="244"/>
+          <path class="cf-acel-p" d="M0,0 L-9,-4.2 L-9,4.2 Z" transform="translate(189,244)"/>
+          <text class="cf-rotulo-esc cf-mono" x="224" y="248" font-size="10">base</text>
+          <text class="cf-acel-p cf-mono" x="152" y="122" font-size="9.5">quanto mais alto, mais</text>
+          <text class="cf-acel-p cf-mono" x="152" y="135" font-size="9.5">rápido o solo corre</text>
+          <line class="cf-guia" x1="106" y1="76" x2="106" y2="290"/>
+          <path class="cf-traco" d="M106,78 L110.4,85.5 L114.8,108.1 L119.2,145.7 L123.6,198.3 L128,266" stroke-dasharray="3 4" stroke-width="1.6"/>
+          <circle class="cf-couro" r="8">
+            <animate attributeName="cx" dur="6s" values="106;128;128" keyTimes="0;0.6;1" calcMode="linear" repeatCount="indefinite"/>
+            <animate attributeName="cy" dur="6s" values="78;85.5;108.1;145.7;198.3;266;266" keyTimes="0;0.12;0.24;0.36;0.48;0.6;1" calcMode="linear" repeatCount="indefinite"/>
+          </circle>
+          <line class="cf-seta-l" x1="106" y1="282" x2="106" y2="294"/>
+          <line class="cf-seta-l" x1="128" y1="282" x2="128" y2="294"/>
+          <line class="cf-seta-l" x1="106" y1="288" x2="128" y2="288"/>
+          <text class="cf-rotulo-esc cf-mono" x="138" y="292" font-size="10">desvio para leste</text>
+        </svg>
+        <figcaption><strong>A pedra e a torre.</strong> O topo está mais longe do eixo de rotação e por isso corre para leste mais rápido que a base. A pedra leva essa velocidade a mais durante toda a queda e chega ao solo adiantada. <strong>O desvio está muito exagerado:</strong> nos 78 metros de Bolonha ele mede cerca de 10 mm.</figcaption>
+      </figure>
+
+
+      <p>
+        O topo de uma torre está mais longe do eixo de rotação da Terra que a base, e portanto se desloca para leste um pouco mais rápido. Uma pedra abandonada lá em cima carrega consigo essa velocidade a mais durante toda a queda. Ao chegar ao solo, ela deve cair <strong>um pouco a leste</strong> do ponto exatamente abaixo do lançamento.
+      </p>
+
+      <p>
+        A previsão é limpa e não tem alternativa: numa Terra parada, o desvio é zero.
+      </p>
+
+      <div class="highlight-box">
+        <span class="hb-icon">💡</span>
+        <div class="hb-body">
+          <p><strong>Queda para leste, arremesso para oeste</strong></p>
+          <p>
+            Vale conectar com o que vimos no texto sobre <a href="forcas-ficticias.html">forças fictícias</a>. Lá, um objeto arremessado verticalmente para cima e recebido de volta cai a <strong>oeste</strong> do ponto de lançamento. Aqui, um objeto simplesmente abandonado cai a <strong>leste</strong>.
+          </p>
+          <p>
+            Não há contradição. São movimentos diferentes, e o desvio total é o resultado da integração ao longo de todo o percurso. No arremesso completo, a etapa de subida domina e inverte o resultado, chegando a um desvio quatro vezes maior, em sentido oposto, ao de uma queda simples a partir da altura máxima.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        A história dessa medida é longa e vale a pena.
+      </p>
+
+      <p>
+        O primeiro registro do raciocínio aparece em 1674, num diagrama de Claude Dechales. Em novembro de 1679, numa carta a Robert Hooke, <strong>Newton</strong> propôs que o efeito fosse medido, como prova experimental direta da rotação da Terra.<sup class="ref"><a href="#ref-5" id="cite-5">5</a></sup> Hooke tentou, soltando corpos de cerca de 8 metros de altura. Naquela altura e na latitude de Londres, o desvio previsto é de uma fração de milímetro, e o resultado foi inconclusivo.
+      </p>
+
+      <p>
+        O primeiro resultado positivo veio mais de um século depois. Em 1791, em Bolonha, <strong>Giovanni Battista Guglielmini</strong> soltou dezesseis bolas de chumbo do alto da Torre degli Asinelli, com 78 metros de queda, comparando o ponto de chegada com a vertical dada por um fio de prumo. Nas décadas seguintes o experimento foi refeito em várias cidades, com precisão crescente.
+      </p>
+
+      <div class="tabela-rolavel">
+        <table class="content-table">
+          <thead>
+            <tr>
+              <th scope="col">Autor</th>
+              <th scope="col">Ano</th>
+              <th scope="col">Local</th>
+              <th scope="col">Altura</th>
+              <th scope="col">Desvio medido</th>
+              <th scope="col">Desvio previsto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Hooke</th>
+              <td>1679</td>
+              <td>Londres</td>
+              <td>8,2 m</td>
+              <td class="sem-dado">inconclusivo</td>
+              <td>~0,25 mm</td>
+            </tr>
+            <tr>
+              <th scope="row">Guglielmini</th>
+              <td>1791</td>
+              <td>Bolonha</td>
+              <td>78 m</td>
+              <td>18,9 mm</td>
+              <td>~10,7 mm</td>
+            </tr>
+            <tr>
+              <th scope="row">Benzenberg</th>
+              <td>1802</td>
+              <td>Hamburgo</td>
+              <td>76 m</td>
+              <td>9,0 mm</td>
+              <td>8,6 mm</td>
+            </tr>
+            <tr>
+              <th scope="row">Reich</th>
+              <td>1831</td>
+              <td>Freiberg</td>
+              <td>158 m</td>
+              <td>28,4 mm</td>
+              <td>29,0 mm</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="tabela-fonte"><sup class="ref"><a href="#ref-6" id="cite-6">6</a>,<a href="#ref-7" id="cite-7">7</a>,<a href="#ref-8" id="cite-8">8</a></sup></p>
+
+      <p>
+        O resultado de Reich, obtido no poço de uma mina, com 106 quedas, é impressionante para a época. A concordância com a previsão fica dentro de dois por cento.
+      </p>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">📚</span>
+        <div class="hb-body">
+          <p><strong>Duas honestidades sobre esses experimentos</strong></p>
+          <p>
+            <strong>A primeira.</strong> Repare no resultado de Guglielmini: ele mediu quase o dobro do previsto. Foi, ainda assim, celebrado como a confirmação experimental da rotação da Terra, e com alguma razão, porque o desvio existia, era para leste, e a hipótese da Terra parada previa zero. Mas o episódio serve de lembrete de que "confirmar uma teoria" raramente é uma questão de números que batem. É uma questão de julgamento sobre o que os números significam, e esse julgamento pode ser generoso demais. Só com Benzenberg e Reich, décadas depois, o acordo quantitativo apareceu de fato.
+          </p>
+          <p>
+            <strong>A segunda.</strong> Nada disso era necessário para convencer alguém. Em 1791 já fazia mais de um século que a rotação da Terra era consenso entre os que estudavam o assunto, e a translação já tinha sido provada astronomicamente por Bradley em 1729. Esses experimentos não mudaram a opinião de ninguém.
+          </p>
+          <p>
+            Isso não os torna inúteis. O valor deles é outro, e é epistemológico: eles mostraram que a rotação <strong>pode ser detectada localmente</strong>, sem olhar para o céu, com uma pedra e uma torre. Uma coisa é acreditar num modelo porque ele organiza bem as observações astronômicas. Outra é medir o efeito no seu próprio quintal.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> O pêndulo de Foucault</h2>
+
+      <p>
+        Os experimentos de queda tinham um problema de comunicação. Os desvios eram de milímetros, exigiam controle experimental sofisticado, e ninguém fora do meio científico conseguia apreciá-los. Faltava uma demonstração que qualquer pessoa pudesse ver acontecendo.
+      </p>
+
+      <p>
+        Em 1851, <strong>Léon Foucault</strong> resolveu esse problema.
+      </p>
+
+      <figure class="fig-quadro fig-unica">
+        <svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" role="img" data-parada="7.6"
+             aria-label="O pêndulo de Foucault visto de cima. A esfera oscila para a frente e para trás ao longo de uma linha, e essa linha vai girando lentamente sobre a escala graduada do chão. Os traços apagados marcam por onde o plano de oscilação já passou.">
+          <text class="cf-forte cf-mono" x="180" y="18" text-anchor="middle">VISTO DE CIMA</text>
+          <circle class="cf-elevador-i" cx="180" cy="158" r="108"/>
+          <circle class="cf-globo-b" cx="180" cy="158" r="108"/>
+          <line class="cf-seta-l" x1="180" y1="50" x2="180" y2="61" stroke-width="1.8"/>
+          <line class="cf-seta-l" x1="208" y1="53.7" x2="206.4" y2="59.5" stroke-width="1"/>
+          <line class="cf-seta-l" x1="234" y1="64.5" x2="231" y2="69.7" stroke-width="1"/>
+          <line class="cf-seta-l" x1="256.4" y1="81.6" x2="248.6" y2="89.4" stroke-width="1.8"/>
+          <line class="cf-seta-l" x1="273.5" y1="104" x2="268.3" y2="107" stroke-width="1"/>
+          <line class="cf-seta-l" x1="284.3" y1="130" x2="278.5" y2="131.6" stroke-width="1"/>
+          <line class="cf-seta-l" x1="288" y1="158" x2="277" y2="158" stroke-width="1.8"/>
+          <line class="cf-seta-l" x1="284.3" y1="186" x2="278.5" y2="184.4" stroke-width="1"/>
+          <line class="cf-seta-l" x1="273.5" y1="212" x2="268.3" y2="209" stroke-width="1"/>
+          <line class="cf-seta-l" x1="256.4" y1="234.4" x2="248.6" y2="226.6" stroke-width="1.8"/>
+          <line class="cf-seta-l" x1="234" y1="251.5" x2="231" y2="246.3" stroke-width="1"/>
+          <line class="cf-seta-l" x1="208" y1="262.3" x2="206.4" y2="256.5" stroke-width="1"/>
+          <line class="cf-seta-l" x1="180" y1="266" x2="180" y2="255" stroke-width="1.8"/>
+          <line class="cf-seta-l" x1="152" y1="262.3" x2="153.6" y2="256.5" stroke-width="1"/>
+          <line class="cf-seta-l" x1="126" y1="251.5" x2="129" y2="246.3" stroke-width="1"/>
+          <line class="cf-seta-l" x1="103.6" y1="234.4" x2="111.4" y2="226.6" stroke-width="1.8"/>
+          <line class="cf-seta-l" x1="86.5" y1="212" x2="91.7" y2="209" stroke-width="1"/>
+          <line class="cf-seta-l" x1="75.7" y1="186" x2="81.5" y2="184.4" stroke-width="1"/>
+          <line class="cf-seta-l" x1="72" y1="158" x2="83" y2="158" stroke-width="1.8"/>
+          <line class="cf-seta-l" x1="75.7" y1="130" x2="81.5" y2="131.6" stroke-width="1"/>
+          <line class="cf-seta-l" x1="86.5" y1="104" x2="91.7" y2="107" stroke-width="1"/>
+          <line class="cf-seta-l" x1="103.6" y1="81.6" x2="111.4" y2="89.4" stroke-width="1.8"/>
+          <line class="cf-seta-l" x1="126" y1="64.5" x2="129" y2="69.7" stroke-width="1"/>
+          <line class="cf-seta-l" x1="152" y1="53.7" x2="153.6" y2="59.5" stroke-width="1"/>
+          <line class="cf-plano-old" x1="180" y1="64" x2="180" y2="252"/>
+          <line class="cf-plano-old" x1="209" y1="68.6" x2="151" y2="247.4"/>
+          <line class="cf-plano-old" x1="235.3" y1="82" x2="124.7" y2="234"/>
+          <line class="cf-plano-old" x1="256" y1="102.7" x2="104" y2="213.3"/>
+          <g transform="translate(180,158)">
+            <g>
+              <animateTransform attributeName="transform" type="rotate" dur="14s"
+                values="0;72;72" keyTimes="0;0.85;1" repeatCount="indefinite"/>
+              <line class="cf-plano" x1="0" y1="-94" x2="0" y2="94"/>
+              <circle class="cf-couro" r="9">
+                <animate attributeName="cy" dur="2.2s" repeatCount="indefinite"
+                  values="-90;90;-90" calcMode="spline"
+                  keySplines="0.42 0 0.58 1;0.42 0 0.58 1"/>
+              </circle>
+            </g>
+          </g>
+          <circle class="cf-seta" cx="180" cy="158" r="3"/>
+          <text class="cf-rotulo-esc cf-mono" x="180" y="290" text-anchor="middle">o plano de oscilação gira sobre a escala do chão</text>
+        </svg>
+        <figcaption><strong>O que se vê ao longo das horas.</strong> A esfera oscila sempre no mesmo plano; o que gira, por baixo dela, é o chão. Os traços apagados marcam por onde o plano já passou. Em Paris a volta completa leva cerca de 32 horas, e no equador não acontece nunca.</figcaption>
+      </figure>
+
+
+      <p>
+        A ideia é de uma simplicidade desconcertante. Um pêndulo posto a oscilar mantém seu plano de oscilação, porque nenhuma força atua na direção perpendicular a esse plano. Se a Terra gira embaixo dele, então, para quem está no chão, o plano de oscilação <strong>parece</strong> girar lentamente. Não é o pêndulo que muda. É o observador.
+      </p>
+
+      <p>
+        Foucault fez a primeira demonstração em fevereiro de 1851, no Observatório de Paris, e em março montou a versão que ficou famosa: uma esfera de latão de 28 kg, suspensa por um fio de 67 metros na cúpula do Panthéon, com uma ponta que riscava areia espalhada no chão.<sup class="ref"><a href="#ref-9" id="cite-9">9</a></sup> O público podia acompanhar, marca a marca, o plano girando.
+      </p>
+
+      <figure class="fig-quadro fig-unica">
+        <img class="content-img" src="../img/pendulo_foucault_pessoal.jpg" width="1680" height="945"
+             loading="lazy" decoding="async"
+             alt="O pêndulo de Foucault no Panthéon, em Paris: a esfera de latão suspensa sobre um grande disco de mármore com escala graduada e pinos dispostos ao longo da circunferência, cercado por um guarda-corpo, com visitantes ao fundo.">
+        <figcaption><strong>O pêndulo do Panthéon, hoje.</strong> A esfera de latão sobre o disco graduado, com os pinos ao longo da circunferência que vão sendo derrubados conforme o plano de oscilação avança. A instalação atual substituiu por essa escala a areia espalhada no chão de 1851. <em>Foto do autor.</em></figcaption>
+      </figure>
+
+      <p>
+        A velocidade dessa rotação depende da latitude, e é aqui que o experimento fica particularmente elegante, porque a dependência é a mesma da força de Coriolis que vimos no texto anterior. O tempo que o plano leva para completar uma volta é
+      </p>
+
+      <div class="formula-display">
+        \[T = \frac{23\text{h}\,56\text{min}}{\operatorname{sen}\lambda}\]
+      </div>
+
+      <p>
+        Coloque números nessa fórmula e ela conta uma história:
+      </p>
+
+      <ul>
+        <li><span>Num dos polos, o plano completa uma volta em cerca de <strong>24 horas</strong>. É o caso mais fácil de entender: o pêndulo simplesmente fica parado enquanto a Terra roda por baixo dele.</span></li>
+        <li><span>Em <strong>Paris</strong>, na latitude de aproximadamente 49 graus, cerca de <strong>32 horas</strong>. Foucault previu 31 horas e 50 minutos, e foi o que se observou.</span></li>
+        <li><span>Em <strong>São Paulo</strong>, cerca de <strong>60 horas</strong>. No Rio de Janeiro, onde há um pêndulo de Foucault instalado na UERJ, aproximadamente 62 horas.</span></li>
+        <li><span>No <strong>equador</strong>, o plano não gira nunca.</span></li>
+      </ul>
+
+      <p>
+        Esse é o mesmo fator \(\operatorname{sen}\lambda\) que apareceu na expressão da força de Coriolis, e pela mesma razão: o que importa é a componente da rotação da Terra em torno da vertical do lugar. Perto do equador essa componente é pequena, e é por isso que a demonstração é bem mais difícil de fazer no Brasil do que na Europa.
+      </p>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">📚</span>
+        <div class="hb-body">
+          <p><strong>O que o pêndulo provou, e o que não provou</strong></p>
+          <p>
+            A frase que se repete por aí é que Foucault provou que a Terra gira. Ela precisa de duas correções.
+          </p>
+          <p>
+            <strong>Primeira:</strong> em 1851 ninguém duvidava disso. A rotação era consenso científico havia séculos, e provas experimentais locais já existiam desde Guglielmini, sessenta anos antes. Foucault não resolveu uma controvérsia aberta.
+          </p>
+          <p>
+            <strong>Segunda:</strong> a demonstração do Panthéon, apesar do enorme sucesso de público, não convenceu inteiramente a comunidade científica da época. Foi por isso que Foucault desenvolveu, no ano seguinte, um instrumento de precisão para a mesma finalidade, e batizou-o de <strong>giroscópio</strong>. O giroscópio mantém a orientação de seu eixo independentemente da latitude, o que torna a evidência mais direta.
+          </p>
+          <p>
+            O mérito do pêndulo é outro, e é grande. Ele transformou a rotação da Terra em algo que <strong>se olha</strong>. Não um cálculo, não uma medida de milímetros feita por especialistas, mas um objeto se movendo devagar num salão, ao alcance de qualquer pessoa que tivesse a paciência de esperar algumas horas. Poucos experimentos na história da ciência conseguiram tanto com tão pouco.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Quando a Terra serve como referencial inercial, afinal</h2>
+
+      <p>
+        Chegamos com material suficiente para responder à pergunta do título, e a resposta honesta é: <strong>depende da precisão que o problema exige</strong>.
+      </p>
+
+      <p>
+        Não existe referencial "inercial" ou "não inercial" no sentido absoluto do dia a dia. Existe um referencial cujos desvios em relação ao comportamento inercial são grandes ou pequenos <strong>comparados ao que você precisa medir</strong>. A Terra é péssima como referencial inercial para um meteorologista e excelente para quem estuda o choque de duas bolas numa mesa.
+      </p>
+
+      <p>
+        O critério que estabelecemos no texto sobre <a href="forcas-ficticias.html">forças fictícias</a> organiza isso bem. Os efeitos da rotação terrestre importam em fenômenos que duram <strong>horas</strong> e se estendem por <strong>centenas de quilômetros</strong>. Abaixo disso, são desprezíveis.
+      </p>
+
+      <div class="tabela-rolavel">
+        <table class="content-table">
+          <thead>
+            <tr>
+              <th scope="col">Situação</th>
+              <th scope="col">A Terra serve como inercial?</th>
+              <th scope="col">Por quê</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Colisão de carrinhos numa bancada</th>
+              <td class="resposta">Sim, com folga</td>
+              <td>Dura segundos, ocupa centímetros</td>
+            </tr>
+            <tr>
+              <th scope="row">Queda de um corpo de 2 m de altura</th>
+              <td class="resposta">Sim</td>
+              <td>Desvio da ordem de centésimos de milímetro</td>
+            </tr>
+            <tr>
+              <th scope="row">Lançamento de projétil de algumas centenas de metros</th>
+              <td class="resposta">Sim, para fins didáticos</td>
+              <td>Desvio de poucos centímetros</td>
+            </tr>
+            <tr>
+              <th scope="row">Tiro de artilharia de longo alcance</th>
+              <td class="resposta">Não</td>
+              <td>Dezenas de metros de erro no alvo</td>
+            </tr>
+            <tr>
+              <th scope="row">Ciclone</th>
+              <td class="resposta">De jeito nenhum</td>
+              <td>Sem Coriolis, o fenômeno nem existiria</td>
+            </tr>
+            <tr>
+              <th scope="row">Corrente oceânica</th>
+              <td class="resposta">De jeito nenhum</td>
+              <td>Escalas de milhares de quilômetros e meses</td>
+            </tr>
+            <tr>
+              <th scope="row">Navegação por satélite</th>
+              <td class="resposta">Não</td>
+              <td>Exige tratamento de referencial girante e ainda correções relativísticas</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Repare que os três primeiros casos cobrem essencialmente tudo o que se faz num curso de mecânica. É por isso que a aproximação funciona tão bem no ensino, e é também por isso que ela precisa ser dita como aproximação, e não como fato.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> E onde está o referencial inercial, então?</h2>
+
+      <p>
+        Fechamos com um incômodo.
+      </p>
+
+      <p>
+        A Terra não é um referencial inercial, e agora sabemos por quais marcas isso se detecta. Mas o Sol também não é: ele orbita o centro da galáxia. E a galáxia também não é: ela se move em relação às galáxias vizinhas, e o Grupo Local se move em relação ao restante do universo observável.
+      </p>
+
+      <p>
+        A escada não termina. Cada vez que apontamos um referencial melhor, ele resulta acelerado em relação a algum outro. E então a pergunta que a Primeira Lei de Newton pressupõe respondida continua sem resposta: <strong>em relação a quê, afinal, se mede a aceleração verdadeira?</strong>
+      </p>
+
+      <p>
+        Newton tinha uma resposta pronta, e ela era ousada: existe um <strong>espaço absoluto</strong>, imóvel por natureza, e é em relação a ele que os movimentos verdadeiros acontecem. Ernst Mach, dois séculos depois, achou essa resposta inaceitável, porque o espaço absoluto não pode ser observado nem medido, e propôs outra: o que define o referencial inercial é a distribuição de toda a matéria do universo, ou, na imagem que ficou famosa, <strong>as estrelas distantes</strong>.<sup class="ref"><a href="#ref-10" id="cite-10">10</a></sup>
+      </p>
+
+      <p>
+        Essa discordância não é um detalhe técnico. Ela vai ocupar duzentos anos de filosofia natural e desembocar diretamente na Relatividade Geral, e é o assunto de outro texto deste site.
+        <!-- TODO: link para o texto sobre referencial inercial -->
+      </p>
+
+    </section>
+
+    <section class="content-section referencias" id="referencias">
+      <h2>Referências</h2>
+
+      <ol>
+        <li id="ref-1">
+          CENTRE DES MONUMENTS NATIONAUX. <em>Panthéon</em>: le pendule de Foucault. <!-- VERIFICAR: URL exata da página e data de acesso -->
+          <a href="#cite-1" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-2">
+          GALILEI, Galileu. <em>Diálogo sobre os dois máximos sistemas do mundo ptolomaico e copernicano</em>. Tradução de Pablo Rubén Mariconda. São Paulo: Discurso Editorial / Imprensa Oficial, 2004. Segunda Jornada.
+          <a href="#cite-2" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-3">
+          BRADLEY, James. A letter concerning an apparent motion observed in some of the fixed stars. <em>Philosophical Transactions of the Royal Society</em>, 1729. <!-- VERIFICAR: título completo, volume e paginação -->
+          <a href="#cite-3" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-4">
+          BESSEL, Friedrich Wilhelm. Bestimmung der Entfernung des 61sten Sterns des Schwans. <em>Astronomische Nachrichten</em>, 1838. <!-- VERIFICAR: volume e paginação -->
+          <a href="#cite-4" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-5">
+          NEWTON, Isaac. Carta a Robert Hooke, 28 de novembro de 1679. Em: <em>The Correspondence of Isaac Newton</em>, v. 2. Cambridge: Cambridge University Press. <!-- VERIFICAR: ano da edição e paginação -->
+          <a href="#cite-5" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-6">
+          GUGLIELMINI, Giovanni Battista. <em>De diurno terrae motu experimentis physico-mathematicis confirmato</em>. Bolonha, 1792. <!-- VERIFICAR: título completo e editor -->
+          <a href="#cite-6" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-7">
+          BENZENBERG, Johann Friedrich. <em>Versuche über das Gesetz des Falls, über den Widerstand der Luft und über die Umdrehung der Erde</em>. Dortmund: Mallinckrodt, 1804.
+          <a href="#cite-7" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-8">
+          GIANNINI, Giulia. Gianantonio Tadini and falling bodies: a new documentary source for the reconstruction of the history of experimental proofs on the Earth's rotation. <em>History of Science</em>, 2015. <!-- VERIFICAR: volume, número e paginação -->
+          <a href="#cite-8" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-9">
+          FOUCAULT, Léon. Démonstration physique du mouvement de rotation de la Terre au moyen du pendule. <em>Comptes Rendus des Séances de l'Académie des Sciences</em>, Paris, v. 32, 1851. <!-- VERIFICAR: paginação -->
+          <a href="#cite-9" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-10">
+          MACH, Ernst. <em>Die Mechanik in ihrer Entwicklung historisch-kritisch dargestellt</em>. Leipzig, 1883. <!-- VERIFICAR: edição brasileira ou inglesa de referência -->
+          <a href="#cite-10" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+      </ol>
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="forcas-ficticias.html">← Referenciais não inerciais e forças fictícias</a>
+    </div>
+
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+
+<script>
+(function() {
+  const sections = document.querySelectorAll('.content-section');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', function() {
+    let current = '';
+    sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 120) current = sec.id; });
+    tocLinks.forEach(a => {
+      a.parentElement.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+})();
+</script>
+
+
+</body>
+</html>

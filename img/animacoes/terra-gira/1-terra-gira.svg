@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Primeira hipótese: a Terra gira e o céu está parado.
+     Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Fonte da geometria: conteudos/dinamica/aprofundamento/forcas-ficticias.html -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 250" width="720" height="500"
+     role="img" aria-labelledby="cf-titulo-th-gira">
+  <title id="cf-titulo-th-gira">Primeira hipótese: a Terra gira e o céu está parado. O observador na superfície é levado pela rotação e a linha do zênite varre o céu até alcançar a estrela destacada. Nos dois casos a mesma estrela chega ao zênite no mesmo instante.</title>
+  <style><![CDATA[
+    svg {
+      --cf-disco:  #e5e9f0;
+      --cf-borda:  #64748b;
+      --cf-raio:   rgba(100,116,139,.38);
+      --cf-chao:   #cbd5e1;
+      --cf-alvo:   #ea580c;
+      --cf-bola:   #2563eb;
+      --cf-guia:   #94a3b8;
+      --cf-forca:  #7c3aed;
+      --cf-baixa:  #dc2626;
+      --cf-rotulo: #475569;
+      --cf-forte:  #1e293b;
+      --cf-seta:   #64748b;
+      --cf-fonte:  ui-monospace, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', monospace;
+      /* cenário do arremesso no equador */
+      --cf-rot-esc:  #1f2b3a;
+      --cf-ceu-alto: #a9d3ee;
+      --cf-ceu-baix: #dceaf5;
+      --cf-grama:    #8fbf6f;
+      --cf-grama-2:  #79a95c;
+      --cf-capim:    #4f8a3a;
+      --cf-capim-2:  #3f7530;
+      --cf-sol:      #f7cf3a;
+      --cf-tronco:   #8a5a32;
+      --cf-tronco-l: #6b4526;
+      --cf-folha:    #3f8f4e;
+      --cf-folha-2:  #327a41;
+      --cf-tinta:    #1e293b;
+      --cf-calcado:  #2a3342;
+      --cf-calcado-b: none;
+      /* globo em projeção polar */
+      --cf-oceano:   #2f74ac;
+      --cf-terra:    #5aa05a;
+      --cf-terra-b:  #3d7a3d;
+      --cf-globo-b:  #16324a;
+      /* ônibus em corte */
+      --cf-asfalto:  #9aa1a9;
+      --cf-onibus:   #f0c33c;
+      --cf-onibus-i: #fbf3dd;
+      --cf-vidro:    #bfe0f2;
+      --cf-banco:    #7286a0;
+      --cf-roda-c:   #9aa3af;
+      --cf-poste:    #7d8590;
+      /* elevador e balança */
+      --cf-elev:     #b9c3cf;
+      /* figuras do texto sobre a Terra */
+      --cf-estrela:  #f2c94c;
+      --cf-torre:    #b8ad9c;
+      --cf-torre-b:  #7d7365;
+      --cf-vg:       #7c3aed;
+      --cf-vc:       #0e7490;
+      --cf-vr:       #dc2626;
+      --cf-plano:    #2563eb;
+      --cf-elev-i:   #edf1f5;
+      --cf-balanca:  #55606e;
+      --cf-visor:    #dff2e0;
+      --cf-acel:     #b45309;
+    }
+    .cf-disco   { fill: var(--cf-disco); }
+    .cf-borda   { fill: none; stroke: var(--cf-borda); stroke-width: 1.6; }
+    .cf-raio    { stroke: var(--cf-raio); stroke-width: 1.1; }
+    .cf-chao    { fill: var(--cf-chao); }
+    .cf-chao-l  { stroke: var(--cf-borda); stroke-width: 1.5; }
+    .cf-alvo    { fill: var(--cf-alvo); }
+    .cf-alvo-a  { fill: none; stroke: var(--cf-alvo); stroke-width: 1.8; stroke-dasharray: 3 3; }
+    .cf-bola    { fill: var(--cf-bola); }
+    .cf-traco   { fill: none; stroke: var(--cf-bola); stroke-width: 2.2; stroke-linecap: round; }
+    .cf-guia    { fill: none; stroke: var(--cf-guia); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .cf-forca   { fill: none; stroke: var(--cf-forca); stroke-width: 2.2; stroke-linecap: round; }
+    .cf-forca-p { fill: var(--cf-forca); }
+    .cf-baixa   { fill: var(--cf-baixa); }
+    .cf-seta    { fill: var(--cf-seta); }
+    .cf-seta-l  { fill: none; stroke: var(--cf-seta); stroke-width: 1.8; }
+    .cf-rotulo  { fill: var(--cf-rotulo); font-size: 11px; font-family: var(--cf-fonte); }
+    .cf-forte   { fill: var(--cf-forte); font-size: 12px; font-weight: 700; font-family: var(--cf-fonte); }
+    .cf-mono    { font-family: var(--cf-fonte); }
+
+    .cf-rotulo-esc { fill: var(--cf-rot-esc); font-size: 11px; font-family: var(--cf-fonte); }
+    .cf-ceu-alto   { stop-color: var(--cf-ceu-alto); }
+    .cf-ceu-baixo  { stop-color: var(--cf-ceu-baix); }
+    .cf-grama      { fill: var(--cf-grama); }
+    .cf-grama-2    { fill: var(--cf-grama-2); }
+    .cf-capim      { fill: none; stroke: var(--cf-capim); stroke-width: 1.8; stroke-linecap: round; }
+    .cf-capim-2    { fill: none; stroke: var(--cf-capim-2); stroke-width: 1.8; stroke-linecap: round; }
+    .cf-sol        { fill: var(--cf-sol); }
+    .cf-sol-raio   { fill: none; stroke: var(--cf-sol); stroke-width: 2.6; stroke-linecap: round; }
+    .cf-tronco     { fill: var(--cf-tronco); }
+    .cf-tronco-l   { fill: none; stroke: var(--cf-tronco-l); stroke-width: 1.3; stroke-linecap: round; }
+    .cf-folha      { fill: var(--cf-folha); }
+    .cf-folha-2    { fill: var(--cf-folha-2); }
+    .cf-coco       { fill: var(--cf-tronco-l); }
+    .cf-pele       { fill: #f6cb96; }
+    .cf-membro     { fill: none; stroke: #f6cb96; stroke-width: 7.5; stroke-linecap: round; }
+    .cf-camisa     { fill: #e0563f; }
+    .cf-cabelo     { fill: #4a3728; }
+    .cf-olho       { fill: #ffffff; stroke: #2a3342; stroke-width: 1; }
+    .cf-pupila     { fill: var(--cf-tinta); }
+    .cf-traco-f    { fill: none; stroke: #2a3342; stroke-width: 1.5; stroke-linecap: round; }
+    .cf-calcado    { fill: var(--cf-calcado); stroke: var(--cf-calcado-b); stroke-width: 1.4; }
+    .cf-oceano     { fill: var(--cf-oceano); }
+    .cf-terra      { fill: var(--cf-terra); stroke: var(--cf-terra-b); stroke-width: 1; stroke-linejoin: round; }
+    .cf-globo-b    { fill: none; stroke: var(--cf-globo-b); stroke-width: 2; }
+    .cf-paralelo   { fill: none; stroke: rgba(255,255,255,.42); stroke-width: 1; stroke-dasharray: 4 4; }
+    .cf-meridiano  { stroke: rgba(255,255,255,.26); stroke-width: 1; }
+    .cf-projetil   { fill: #fff8e1; stroke: var(--cf-globo-b); stroke-width: 1.2; }
+    .cf-reta       { fill: none; stroke: #ffffff; stroke-width: 2.4; stroke-linecap: round; }
+    .cf-rastro     { fill: none; stroke: #ef4444; stroke-width: 2.6; stroke-linecap: round; }
+    .cf-rot-claro  { fill: #ffffff; font-size: 10.5px; font-family: var(--cf-fonte); }
+    .cf-asfalto    { fill: var(--cf-asfalto); }
+    .cf-onibus     { fill: var(--cf-onibus); }
+    .cf-onibus-i   { fill: var(--cf-onibus-i); }
+    .cf-onibus-b   { fill: none; stroke: #2a3342; stroke-width: 2; stroke-linejoin: round; }
+    .cf-vidro      { fill: var(--cf-vidro); }
+    .cf-banco      { fill: var(--cf-banco); }
+    .cf-roda       { fill: #2a3342; }
+    .cf-roda-c     { fill: var(--cf-roda-c); }
+    .cf-poste      { fill: var(--cf-poste); }
+    .cf-barra      { fill: none; stroke: #b9803a; stroke-width: 2.4; stroke-linecap: round; }
+    .cf-estrela    { fill: var(--cf-estrela); }
+    .cf-torre      { fill: var(--cf-torre); }
+    .cf-torre-b    { fill: none; stroke: var(--cf-torre-b); stroke-width: 1.6; }
+    .cf-vet-g      { fill: none; stroke: var(--cf-vg); stroke-width: 2.6; stroke-linecap: round; }
+    .cf-vet-g-p    { fill: var(--cf-vg); }
+    .cf-vet-c      { fill: none; stroke: var(--cf-vc); stroke-width: 2.6; stroke-linecap: round; }
+    .cf-vet-c-p    { fill: var(--cf-vc); }
+    .cf-vet-r      { fill: none; stroke: var(--cf-vr); stroke-width: 3; stroke-linecap: round; }
+    .cf-vet-r-p    { fill: var(--cf-vr); }
+    .cf-plano      { fill: none; stroke: var(--cf-plano); stroke-width: 2.4; stroke-linecap: round; }
+    .cf-plano-old  { fill: none; stroke: var(--cf-plano); stroke-width: 1.6; stroke-linecap: round; opacity: .22; }
+    .cf-elevador   { fill: var(--cf-elev); }
+    .cf-elevador-i { fill: var(--cf-elev-i); }
+    .cf-cabo       { fill: none; stroke: var(--cf-poste); stroke-width: 3; }
+    .cf-balanca    { fill: var(--cf-balanca); }
+    .cf-visor      { fill: var(--cf-visor); }
+    .cf-leitura    { fill: var(--cf-rot-esc); font-size: 30px; font-weight: 700; font-family: var(--cf-fonte); }
+    .cf-acel       { fill: none; stroke: var(--cf-acel); stroke-width: 3.5; stroke-linecap: round; }
+    .cf-acel-p     { fill: var(--cf-acel); }
+    .cf-camisa-2   { fill: #2f8f8a; }
+    .cf-couro      { fill: #ffffff; stroke: var(--cf-tinta); stroke-width: 1; }
+    .cf-gomo       { fill: var(--cf-tinta); }
+    .cf-costura    { fill: none; stroke: var(--cf-tinta); stroke-width: 1; }
+
+    /* Quem abrir o arquivo com o sistema no modo escuro vê a versão noturna,
+       igual à do site. Embutido aqui porque o .svg carregado como imagem é um
+       documento à parte e não enxerga o data-theme da página. */
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --cf-disco:  #1c2536;
+        --cf-borda:  #94a3b8;
+        --cf-raio:   rgba(148,163,184,.32);
+        --cf-chao:   #263244;
+        --cf-alvo:   #fb923c;
+        --cf-bola:   #60a5fa;
+        --cf-guia:   #64748b;
+        --cf-forca:  #a78bfa;
+        --cf-baixa:  #f87171;
+        --cf-rotulo: #cbd5e1;
+        --cf-forte:  #e2e8f0;
+        --cf-seta:   #94a3b8;
+        --cf-rot-esc:  #dbe4ee;
+        --cf-ceu-alto: #0d1622;
+        --cf-ceu-baix: #1d2a38;
+        --cf-grama:    #2f4a2c;
+        --cf-grama-2:  #263d24;
+        --cf-capim:    #3f6b30;
+        --cf-capim-2:  #345826;
+        --cf-sol:      #d9a406;
+        --cf-tronco:   #6b4526;
+        --cf-tronco-l: #543619;
+        --cf-folha:    #2f6b3b;
+        --cf-folha-2:  #26592f;
+        --cf-calcado:  #3d4657;
+        --cf-calcado-b: #8b95a8;
+        --cf-oceano:   #1b4a70;
+        --cf-terra:    #3f7a45;
+        --cf-terra-b:  #2c5c31;
+        --cf-globo-b:  #0d2537;
+        --cf-asfalto:  #343b44;
+        --cf-onibus:   #c69a26;
+        --cf-onibus-i: #2b3242;
+        --cf-vidro:    #1f3b52;
+        --cf-banco:    #47566b;
+        --cf-roda-c:   #6b7480;
+        --cf-poste:    #5a626c;
+        --cf-elev:     #39424f;
+        --cf-estrela:  #f7dd7a;
+        --cf-torre:    #4a4438;
+        --cf-torre-b:  #7d7365;
+        --cf-vg:       #a78bfa;
+        --cf-vc:       #38bdf8;
+        --cf-vr:       #f87171;
+        --cf-plano:    #60a5fa;
+        --cf-elev-i:   #232b36;
+        --cf-balanca:  #6b7480;
+        --cf-visor:    #24402a;
+        --cf-acel:     #e8a13c;
+      }
+    }
+    /* Sem o movimento a bola fica no início do caminho, mas o traço da
+       trajetória é desenhado à parte e a figura continua se explicando. */
+    @media (prefers-reduced-motion: reduce) {
+      animateMotion { display: none; }
+      animateTransform { display: none; }
+    }
+  ]]></style>
+  <text class="cf-forte cf-mono" x="180" y="18" text-anchor="middle">A TERRA GIRA</text>
+  <circle class="cf-estrela" cx="180" cy="44" r="3.4"/>
+  <circle class="cf-alvo" cx="256.4" cy="75.6" r="6"/>
+  <circle class="cf-alvo-a" cx="256.4" cy="75.6" r="11"/>
+  <circle class="cf-estrela" cx="288" cy="152" r="3.4"/>
+  <circle class="cf-estrela" cx="256.4" cy="228.4" r="3.4"/>
+  <circle class="cf-estrela" cx="180" cy="260" r="3.4"/>
+  <circle class="cf-estrela" cx="103.6" cy="228.4" r="3.4"/>
+  <circle class="cf-estrela" cx="72" cy="152" r="3.4"/>
+  <circle class="cf-estrela" cx="103.6" cy="75.6" r="3.4"/>
+  <g>
+    <animateTransform attributeName="transform" type="rotate" dur="6s"
+      values="0 180 152;45 180 152;45 180 152" keyTimes="0;0.8;1" repeatCount="indefinite"/>
+    <circle class="cf-oceano" cx="180" cy="152" r="42"/>
+    <path class="cf-terra" d="M150,126 q16,-10 30,-2 q14,8 6,20 q-10,14 -26,6 q-14,-8 -10,-24 Z"/>
+    <path class="cf-terra" d="M174,166 q14,-6 24,4 q6,10 -6,14 q-16,4 -20,-8 Z"/>
+    <circle class="cf-globo-b" cx="180" cy="152" r="42"/>
+    <g transform="translate(180,110)">
+      <line class="cf-chao-l" x1="-15" y1="0" x2="15" y2="0" stroke-width="2"/>
+      <circle class="cf-pele" cx="0" cy="-5" r="4"/>
+      <path class="cf-membro" d="M0,-1 L0,-3" stroke-width="4"/>
+      <line class="cf-guia" x1="0" y1="-8" x2="0" y2="-56"/>
+      <text class="cf-rotulo-esc cf-mono" x="6" y="-44" font-size="9.5">zênite</text>
+    </g>
+  </g>
+  <text class="cf-rotulo-esc cf-mono" x="180" y="240" text-anchor="middle">o zênite vai até a estrela</text>
+</svg>
