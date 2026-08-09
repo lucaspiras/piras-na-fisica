@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Circuito em paralelo com dois resistores de 6 e 3 ohms ligados a uma fonte de 12 volts.
+     Autossuficiente: leva o proprio CSS, sem buscar fonte, folha de estilo ou
+     script na rede. Pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Fonte da geometria: disciplinas/eletricidade_basica/apresentacoes/associacao-de-resistores/index.html -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 380" width="1400" height="760"
+     role="img" aria-labelledby="ar-titulo-7">
+  <title id="ar-titulo-7">Circuito em paralelo com dois resistores de 6 e 3 ohms ligados a uma fonte de 12 volts.</title>
+  <style><![CDATA[
+    svg {
+      /* Trocar qualquer uma destas retematiza o desenho sem editar o resto. */
+      --ar-tinta:  #16171A;   /* fios, corpo dos simbolos               */
+      --ar-corpo:  #ffffff;   /* preenchimento do retangulo do resistor */
+      --ar-rotulo: #54565C;   /* valores e nomes dos componentes        */
+      --ar-acento: #A16207;   /* setas de corrente e destaques          */
+    }
+
+    /* Sem retangulo de fundo: a figura e transparente e assume o fundo de
+       quem a hospeda, seja slide, prova ou pagina. So o miolo do resistor e
+       pintado, porque ali o branco e parte do simbolo e nao pano de fundo.
+       Um .svg carregado como imagem e documento a parte e nao enxerga o
+       data-theme do site, entao o tema escuro vem por media query do sistema. */
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --ar-tinta:  #E7E9EE;
+        --ar-corpo:  #1E2027;
+        --ar-rotulo: #A9ABB2;
+        --ar-acento: #EAB308;
+      }
+    }
+  ]]></style>
+  <line x1="90" y1="90" x2="590" y2="90" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="90" y1="310" x2="590" y2="310" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="90" y1="90" x2="90" y2="170" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="90" y1="230" x2="90" y2="310" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="75" y1="180" x2="105" y2="180" stroke-width="4" style="stroke:var(--ar-tinta)"/>
+  <line x1="80" y1="205" x2="100" y2="205" stroke-width="10" style="stroke:var(--ar-tinta)"/>
+  <text x="30" y="240" font-family="IBM Plex Mono, monospace" font-size="24" style="fill:var(--ar-rotulo)">12 V</text>
+  <line x1="330" y1="90" x2="330" y2="155" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="330" y1="245" x2="330" y2="310" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <rect x="313" y="155" width="34" height="90" rx="4" stroke-width="5" style="fill:var(--ar-corpo);stroke:var(--ar-tinta)"/>
+  <text x="330" y="345" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="24" style="fill:var(--ar-rotulo)">6 Ω</text>
+  <line x1="500" y1="90" x2="500" y2="155" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="500" y1="245" x2="500" y2="310" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <rect x="483" y="155" width="34" height="90" rx="4" stroke-width="5" style="fill:var(--ar-corpo);stroke:var(--ar-tinta)"/>
+  <text x="500" y="345" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="24" style="fill:var(--ar-rotulo)">3 Ω</text>
+</svg>

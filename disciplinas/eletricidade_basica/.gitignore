@@ -1,0 +1,5 @@
+# Projeto do editor de artifacts (mestre editavel da apresentacao).
+# Nao versionar: o support.js baixa React e Babel do unpkg em tempo de
+# execucao, e o deck-stage.js pesa 136 KB. A versao publicavel, autossuficiente,
+# esta em apresentacoes/associacao-de-resistores/.
+apresentacoes/Associação de Resistores/

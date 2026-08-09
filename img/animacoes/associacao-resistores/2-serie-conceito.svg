@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Circuito em série: a fonte alimenta três resistores ligados um após o outro, R1, R2 e R3, com setas indicando que a mesma corrente atravessa todo o caminho.
+     Autossuficiente: leva o proprio CSS, sem buscar fonte, folha de estilo ou
+     script na rede. Pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Fonte da geometria: disciplinas/eletricidade_basica/apresentacoes/associacao-de-resistores/index.html -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="1520" height="760"
+     role="img" aria-labelledby="ar-titulo-2">
+  <title id="ar-titulo-2">Circuito em série: a fonte alimenta três resistores ligados um após o outro, R1, R2 e R3, com setas indicando que a mesma corrente atravessa todo o caminho.</title>
+  <style><![CDATA[
+    svg {
+      /* Trocar qualquer uma destas retematiza o desenho sem editar o resto. */
+      --ar-tinta:  #16171A;   /* fios, corpo dos simbolos               */
+      --ar-corpo:  #ffffff;   /* preenchimento do retangulo do resistor */
+      --ar-rotulo: #54565C;   /* valores e nomes dos componentes        */
+      --ar-acento: #A16207;   /* setas de corrente e destaques          */
+    }
+
+    /* Sem retangulo de fundo: a figura e transparente e assume o fundo de
+       quem a hospeda, seja slide, prova ou pagina. So o miolo do resistor e
+       pintado, porque ali o branco e parte do simbolo e nao pano de fundo.
+       Um .svg carregado como imagem e documento a parte e nao enxerga o
+       data-theme do site, entao o tema escuro vem por media query do sistema. */
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --ar-tinta:  #E7E9EE;
+        --ar-corpo:  #1E2027;
+        --ar-rotulo: #A9ABB2;
+        --ar-acento: #EAB308;
+      }
+    }
+  ]]></style>
+  <line x1="90" y1="90" x2="140" y2="90" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="230" y1="90" x2="335" y2="90" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="425" y1="90" x2="530" y2="90" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="620" y1="90" x2="670" y2="90" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="670" y1="90" x2="670" y2="310" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="670" y1="310" x2="430" y2="310" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="370" y1="310" x2="90" y2="310" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="90" y1="310" x2="90" y2="90" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="430" y1="295" x2="430" y2="325" stroke-width="4" style="stroke:var(--ar-tinta)"/>
+  <line x1="370" y1="302" x2="370" y2="318" stroke-width="10" style="stroke:var(--ar-tinta)"/>
+  <text x="440" y="286" font-family="IBM Plex Mono, monospace" font-size="26" style="fill:var(--ar-acento)">+</text>
+  <text x="352" y="352" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="26" style="fill:var(--ar-rotulo)">U</text>
+  <rect x="140" y="72" width="90" height="36" rx="4" stroke-width="5" style="fill:var(--ar-corpo);stroke:var(--ar-tinta)"/>
+  <rect x="335" y="72" width="90" height="36" rx="4" stroke-width="5" style="fill:var(--ar-corpo);stroke:var(--ar-tinta)"/>
+  <rect x="530" y="72" width="90" height="36" rx="4" stroke-width="5" style="fill:var(--ar-corpo);stroke:var(--ar-tinta)"/>
+  <text x="185" y="145" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="24" style="fill:var(--ar-rotulo)">R<tspan font-size="0.72em" baseline-shift="sub">1</tspan></text>
+  <text x="380" y="145" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="24" style="fill:var(--ar-rotulo)">R<tspan font-size="0.72em" baseline-shift="sub">2</tspan></text>
+  <text x="575" y="145" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="24" style="fill:var(--ar-rotulo)">R<tspan font-size="0.72em" baseline-shift="sub">3</tspan></text>
+  <polygon points="105,80 105,100 127,90" style="fill:var(--ar-acento)"/>
+  <text x="100" y="60" font-family="IBM Plex Mono, monospace" font-size="26" style="fill:var(--ar-acento)">I</text>
+  <polygon points="270,80 270,100 292,90" style="fill:var(--ar-acento)"/>
+  <polygon points="465,80 465,100 487,90" style="fill:var(--ar-acento)"/>
+</svg>

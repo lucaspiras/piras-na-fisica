@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Circuito em série com dois resistores de 15 e 45 ohms ligados a uma bateria de 12 volts.
+     Autossuficiente: leva o proprio CSS, sem buscar fonte, folha de estilo ou
+     script na rede. Pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Fonte da geometria: disciplinas/eletricidade_basica/apresentacoes/associacao-de-resistores/index.html -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="1520" height="760"
+     role="img" aria-labelledby="ar-titulo-4">
+  <title id="ar-titulo-4">Circuito em série com dois resistores de 15 e 45 ohms ligados a uma bateria de 12 volts.</title>
+  <style><![CDATA[
+    svg {
+      /* Trocar qualquer uma destas retematiza o desenho sem editar o resto. */
+      --ar-tinta:  #16171A;   /* fios, corpo dos simbolos               */
+      --ar-corpo:  #ffffff;   /* preenchimento do retangulo do resistor */
+      --ar-rotulo: #54565C;   /* valores e nomes dos componentes        */
+      --ar-acento: #A16207;   /* setas de corrente e destaques          */
+    }
+
+    /* Sem retangulo de fundo: a figura e transparente e assume o fundo de
+       quem a hospeda, seja slide, prova ou pagina. So o miolo do resistor e
+       pintado, porque ali o branco e parte do simbolo e nao pano de fundo.
+       Um .svg carregado como imagem e documento a parte e nao enxerga o
+       data-theme do site, entao o tema escuro vem por media query do sistema. */
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --ar-tinta:  #E7E9EE;
+        --ar-corpo:  #1E2027;
+        --ar-rotulo: #A9ABB2;
+        --ar-acento: #EAB308;
+      }
+    }
+  ]]></style>
+  <line x1="90" y1="90" x2="220" y2="90" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="330" y1="90" x2="470" y2="90" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="580" y1="90" x2="670" y2="90" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="670" y1="90" x2="670" y2="310" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="670" y1="310" x2="430" y2="310" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="370" y1="310" x2="90" y2="310" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="90" y1="310" x2="90" y2="90" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="430" y1="295" x2="430" y2="325" stroke-width="4" style="stroke:var(--ar-tinta)"/>
+  <line x1="370" y1="302" x2="370" y2="318" stroke-width="10" style="stroke:var(--ar-tinta)"/>
+  <text x="352" y="352" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="24" style="fill:var(--ar-rotulo)">12 V</text>
+  <rect x="220" y="72" width="110" height="36" rx="4" stroke-width="5" style="fill:var(--ar-corpo);stroke:var(--ar-tinta)"/>
+  <rect x="470" y="72" width="110" height="36" rx="4" stroke-width="5" style="fill:var(--ar-corpo);stroke:var(--ar-tinta)"/>
+  <text x="275" y="145" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="23" style="fill:var(--ar-rotulo)">15 Ω</text>
+  <text x="525" y="145" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="23" style="fill:var(--ar-rotulo)">45 Ω</text>
+  <polygon points="105,80 105,100 127,90" style="fill:var(--ar-acento)"/>
+</svg>

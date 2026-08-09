@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <script src="/js/theme.js"></script>
+  <meta name="description" content="Portal gratuito de Física para o Ensino Médio: conteúdos, simuladores, estudos dirigidos e listas de exercícios.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Onde está o referencial inercial? — Piras na Física">
+  <meta property="og:description" content="Portal gratuito de Física para o Ensino Médio: conteúdos, simuladores, estudos dirigidos e listas de exercícios.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/conteudos/dinamica/aprofundamento/referencial-inercial.html">
+  <title>Onde está o referencial inercial? — Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <!-- Este texto não tem nenhuma fórmula, em bloco ou em linha. O MathJax das
+       outras duas páginas de aprofundamento não é carregado aqui. -->
+  <link rel="stylesheet" href="../../../css/style.css">
+  <link rel="stylesheet" href="../../shared.css">
+</head>
+<body data-tema="dinamica">
+
+<div id="header"></div>
+<script src="../../../js/include.js"></script>
+
+<div class="content-crumb">
+  <nav class="breadcrumb">
+      <a href="../../../index.html">Início</a><span>/</span>
+      <a href="../../../conteudos.html">Conteúdos</a><span>/</span>
+      <a href="../index.html">Dinâmica</a><span>/</span>
+      <span>O referencial inercial</span>
+    </nav>
+</div>
+
+<div class="content-hero">
+  <div class="content-hero-inner">
+    <span class="selo-aprofundamento">Texto de aprofundamento</span>
+    <h1 class="content-title">Onde está o referencial inercial?</h1>
+  </div>
+</div>
+
+<div class="content-wrapper">
+
+  <aside class="content-toc">
+    <div class="toc-header">Neste texto</div>
+    <ol class="toc-list">
+      <li><a href="#s1">A pergunta que ficou</a></li>
+      <li><a href="#s2">A resposta de Newton: o espaço absoluto</a></li>
+      <li><a href="#s3">O balde</a></li>
+      <li><a href="#s4">A objeção que não pegou</a></li>
+      <li><a href="#s5">Um século e meio de silêncio</a></li>
+      <li><a href="#s6">O conserto: Neumann e Lange</a></li>
+      <li><a href="#s7">Mach: e se forem as estrelas?</a></li>
+      <li><a href="#s8">Einstein: a pergunta muda</a></li>
+      <li><a href="#s9">O que fica</a></li>
+      <li><a href="#referencias">Referências</a></li>
+    </ol>
+    <div class="toc-nav">
+      <a href="terra-referencial.html">← A Terra é um referencial inercial?</a>
+    </div>
+  </aside>
+
+  <main class="content-main">
+
+    <!-- VERIFICAR: a tradução da epígrafe é do autor do site, feita a partir do
+         texto latino de 1687, que é domínio público. Se a tradução da EDUSP for
+         adotada, trocar aqui e indicar a página na entrada da referência 1. -->
+    <blockquote class="epigrafe">
+      <p>O espaço absoluto, por sua própria natureza, sem relação com nada externo, permanece sempre semelhante e imóvel.</p>
+      <span class="epigrafe-autor">Isaac Newton, <em>Principia</em>, escólio às definições, 1687<sup class="ref"><a href="#ref-1" id="cite-1">1</a></sup></span>
+    </blockquote>
+
+    <section class="content-section" id="s1">
+      <h2><span class="sec-num">1</span> A pergunta que ficou</h2>
+
+      <p>
+        Terminamos o texto sobre <a href="terra-referencial.html">a Terra como referencial</a> com um incômodo que não foi resolvido. A Terra não é um referencial inercial, o Sol também não, a galáxia também não. Cada vez que apontamos um referencial melhor, ele resulta acelerado em relação a algum outro, e a escada não termina.
+      </p>
+
+      <p>
+        Agora vamos encarar esse incômodo de frente, porque ele é mais grave do que parece.
+      </p>
+
+      <p>
+        Volte ao enunciado da Primeira Lei. Um corpo sobre o qual não age força resultante permanece em repouso ou em movimento retilíneo uniforme. Pergunte então: <strong>retilíneo e uniforme em relação a quê?</strong>
+      </p>
+
+      <p>
+        A resposta que damos em sala de aula é: em relação a um referencial inercial. E se alguém perguntar o que é um referencial inercial, a resposta é: aquele em que a Primeira Lei vale.
+      </p>
+
+      <p>
+        Leia as duas frases de novo, juntas. A lei se define pelo referencial e o referencial se define pela lei. <strong>Isso é um círculo</strong>, e um círculo bastante fechado. Do jeito que está, a Primeira Lei não afirma nada sobre o mundo: ela apenas batiza de inercial qualquer referencial onde ela por acaso funcione.
+      </p>
+
+      <p>
+        Há ainda um segundo círculo, escondido, e ele é ainda mais desconfortável. A lei fala de corpos "sobre os quais não age força resultante". Como sabemos que um corpo está livre de forças? Na prática, verificando se ele se move em linha reta com velocidade constante. Ou seja, usamos a lei para identificar os corpos com os quais depois vamos testar a lei.
+      </p>
+
+      <p>
+        Este texto conta como esse problema foi enfrentado. É uma história de duzentos e cinquenta anos, com uma resposta metafísica de Newton, uma objeção filosófica que foi ignorada, um século e meio de silêncio, um conserto técnico feito por matemáticos alemães quase esquecidos, uma crítica radical que inspirou Einstein, e uma resposta final que ninguém dos participantes anteriores teria previsto. Nos próximos tópicos vamos percorrer essa sequência na ordem em que aconteceu.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s2">
+      <h2><span class="sec-num">2</span> A resposta de Newton: o espaço absoluto</h2>
+
+      <p>
+        Newton conhecia o problema. Ele não o formulou como círculo lógico, mas sabia perfeitamente que a Primeira Lei precisava de alguma coisa em relação à qual o movimento fosse medido, e resolveu isso do modo mais direto possível: <strong>postulando essa coisa</strong>.
+      </p>
+
+      <p>
+        No escólio que vem logo depois das definições do <em>Principia</em>, antes ainda de enunciar as leis, Newton distingue espaço absoluto de espaço relativo, e tempo absoluto de tempo relativo. O espaço absoluto é imóvel por natureza e independe de qualquer corpo. Os espaços relativos são as medidas que fazemos na prática, sempre em relação a algum corpo, e podem estar em movimento sem que percebamos. O mesmo vale para o tempo: existe um tempo verdadeiro, que flui uniformemente, e existem as medidas imperfeitas que fazemos dele com relógios e movimentos celestes.
+      </p>
+
+      <p>
+        Com isso, a Primeira Lei ganha sentido preciso. O movimento retilíneo uniforme é retilíneo e uniforme <strong>em relação ao espaço absoluto</strong>. O círculo desaparece.
+      </p>
+
+      <p>
+        O preço, porém, é alto, e Newton sabia disso melhor do que qualquer um dos seus críticos posteriores.
+      </p>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">📚</span>
+        <div class="hb-body">
+          <p><strong>Newton demonstra que sua própria resposta não pode ser testada</strong></p>
+          <p>
+            Entre os corolários das leis do movimento, no mesmo <em>Principia</em>, está o <strong>Corolário V</strong>. Ele afirma que os movimentos dos corpos contidos num dado espaço são os mesmos entre si, esteja esse espaço em repouso ou movendo-se uniformemente em linha reta.<sup class="ref"><a href="#ref-1" id="cite-1b">1</a></sup>
+          </p>
+          <p>
+            Traduzindo: nenhum experimento mecânico feito dentro de um sistema fechado revela se ele está parado ou em movimento retilíneo uniforme. É o princípio da relatividade galileana, que Newton demonstra formalmente.
+          </p>
+          <p>
+            Repare no que isso significa para o espaço absoluto. Newton postula um referencial privilegiado, imóvel por natureza, e em seguida prova que <strong>é impossível descobrir se estamos parados ou em movimento em relação a ele</strong>. O repouso absoluto existe, mas é indetectável.
+          </p>
+          <p>
+            Essa tensão está no texto original, escrita pelo próprio autor, a poucas páginas de distância. Ela é o ponto de partida de tudo o que veio depois.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        Se o movimento retilíneo uniforme em relação ao espaço absoluto é indetectável, restava a Newton mostrar que ao menos alguma coisa distinguia o movimento verdadeiro do relativo. E ele achou que tinha encontrado essa coisa na <strong>rotação</strong>.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s3">
+      <h2><span class="sec-num">3</span> O balde</h2>
+
+      <p>
+        O argumento mais famoso do escólio é um experimento simples, que qualquer pessoa pode fazer.
+      </p>
+
+      <p>
+        Pendure um balde com água por uma corda. Torça bastante a corda e solte. Newton descreve quatro momentos:
+      </p>
+
+      <p>
+        <strong>Primeiro</strong>, antes de soltar, balde e água estão parados, e a superfície da água é plana.
+      </p>
+
+      <p>
+        <strong>Segundo</strong>, logo após soltar, o balde começa a girar mas a água ainda não acompanhou. Há movimento relativo máximo entre a água e as paredes do balde, e a superfície da água continua plana.
+      </p>
+
+      <p>
+        <strong>Terceiro</strong>, depois de algum tempo, o atrito arrasta a água, que passa a girar junto com o balde. Agora não há movimento relativo entre os dois, e a superfície da água está curvada, subindo pelas bordas.
+      </p>
+
+      <p>
+        <strong>Quarto</strong>, se o balde for subitamente parado, a água continua girando por um tempo. Volta a haver movimento relativo máximo, e a superfície continua curvada.
+      </p>
+
+      <!-- TODO: figura — os quatro momentos do balde de Newton, em sequência,
+           com a superfície da água em cada um. É a figura mais valiosa do texto:
+           o argumento depende de o leitor comparar o segundo momento com o
+           terceiro, e isso é difícil de sustentar só em prosa. -->
+
+      <p>
+        Compare o segundo momento com o terceiro. No segundo há movimento relativo e superfície plana. No terceiro não há movimento relativo e a superfície está curva. <strong>A curvatura da superfície não tem nenhuma relação com o movimento da água em relação ao balde.</strong> Ela acompanha outra coisa.
+      </p>
+
+      <p>
+        Newton conclui que essa outra coisa é o movimento verdadeiro, absoluto, da água. O balde seria, portanto, uma evidência experimental de que o espaço absoluto existe e produz efeitos detectáveis.
+      </p>
+
+      <div class="highlight-box danger">
+        <span class="hb-icon">⚠️</span>
+        <div class="hb-body">
+          <p><strong>O que o balde prova e o que ele não prova</strong></p>
+          <p>
+            O experimento é impecável naquilo que demonstra: a curvatura da superfície <strong>não</strong> depende do movimento da água em relação ao balde. Isso está certo e continua certo hoje.
+          </p>
+          <p>
+            A conclusão que Newton tira dele, porém, tem uma lacuna. Do fato de que o balde não é o referencial relevante, não se segue que o referencial relevante seja o espaço absoluto. Segue apenas que é <strong>algum outro</strong> referencial.
+          </p>
+          <p>
+            E há um candidato óbvio que Newton não considerou: o restante da matéria do universo. A água poderia estar girando em relação às estrelas, e não em relação a um espaço vazio. Nos dois casos a previsão é exatamente a mesma, porque as estrelas, para todos os efeitos práticos, não giram em relação ao espaço absoluto de Newton.
+          </p>
+          <p>
+            Essa possibilidade ficou de pé por dois séculos sem que ninguém a explorasse a sério. Quem a levantou foi Ernst Mach, e vamos chegar lá.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        Newton ainda propõe um segundo argumento, com duas esferas ligadas por um cordão, num universo imaginário vazio de tudo o mais. Se o cordão estiver tensionado, diz ele, saberemos que o sistema gira, mesmo sem nenhum outro corpo para servir de referência. O experimento é engenhoso e, como o balde, pressupõe exatamente aquilo que pretende demonstrar.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s4">
+      <h2><span class="sec-num">4</span> A objeção que veio na hora certa e não pegou</h2>
+
+      <p>
+        Newton não passou incólume. A crítica mais forte veio ainda em vida, de <strong>Gottfried Leibniz</strong>, na famosa correspondência que ele manteve entre 1715 e 1716 com Samuel Clarke, que escrevia como porta-voz de Newton.<sup class="ref"><a href="#ref-2" id="cite-2">2</a></sup>
+      </p>
+
+      <p>
+        A posição de Leibniz é o que hoje se chama <strong>relacionismo</strong>. Para ele, o espaço não é uma coisa, é uma relação. Espaço é a ordem das coexistências, o modo como os corpos se situam uns em relação aos outros, e nada mais. Falar em posição absoluta é falar em nada.
+      </p>
+
+      <p>
+        O argumento que ele constrói contra Newton é elegante. Suponha que Deus tivesse criado o universo inteiro deslocado três metros para a esquerda em relação ao espaço absoluto, mantendo todas as distâncias internas. Nenhuma observação, nenhum experimento, nenhuma medida possível distinguiria esse universo do nosso. Se dois estados de coisas são indiscerníveis em absolutamente todos os aspectos, argumenta Leibniz, então eles não são dois estados de coisas. São o mesmo. E portanto a diferença entre eles, que só existia em relação ao espaço absoluto, era uma diferença fictícia.
+      </p>
+
+      <p>
+        Poucos anos depois, em 1721, <strong>George Berkeley</strong> atacou pelo mesmo flanco, num texto curto chamado <em>De Motu</em>, argumentando que atribuir movimento a algo em relação a um espaço não observável é um abuso de linguagem, e que o movimento só faz sentido em relação a corpos concretos.<sup class="ref"><a href="#ref-3" id="cite-3">3</a></sup>
+      </p>
+
+      <p>
+        Nenhuma das duas objeções teve efeito prático. E o motivo não é que os físicos fossem obtusos. É que <strong>a mecânica de Newton funcionava</strong>, espetacularmente bem, e continuou funcionando por dois séculos, prevendo órbitas de planetas, marés, o achatamento da Terra e, mais tarde, a existência de Netuno. Diante de um sucesso desses, a pergunta sobre o estatuto metafísico do espaço parecia um detalhe filosófico sem consequências. Um cientista podia ignorá-la completamente e não errar nenhum cálculo.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s5">
+      <h2><span class="sec-num">5</span> Um século e meio de silêncio</h2>
+
+      <p>
+        O que se seguiu foi um período notável de progresso técnico com desinteresse pelos fundamentos.
+      </p>
+
+      <p>
+        Euler, Lagrange, Laplace e Hamilton reconstruíram a mecânica em linguagens matemáticas cada vez mais poderosas, e nenhuma dessas reconstruções precisou tocar no problema do referencial. Trabalhava-se com coordenadas, resolviam-se equações, e a questão de saber em relação a quê aquelas coordenadas estavam definidas simplesmente não aparecia nas contas.
+      </p>
+
+      <p>
+        Houve uma exceção que vale registrar. Em 1748, <strong>Leonhard Euler</strong> publicou um texto justamente sobre espaço e tempo, no qual defende o espaço absoluto por um motivo interessante: não por convicção metafísica, mas porque, argumenta ele, a lei da inércia exige alguma coisa desse tipo para fazer sentido.<sup class="ref"><a href="#ref-4" id="cite-4">4</a></sup> É a mesma constatação que estava no escólio de Newton, agora feita por um matemático que estava tentando organizar a mecânica e esbarrou no problema.
+      </p>
+
+      <p>
+        Euler também deixou uma observação que só daria frutos muito depois: a lei da inércia pode ser usada para <strong>definir</strong> o que são intervalos de tempo iguais, a saber, aqueles em que um corpo livre percorre distâncias iguais.
+      </p>
+
+      <p>
+        Guarde essa ideia. Ela vai reaparecer, cento e vinte anos depois, como a chave do conserto.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s6">
+      <h2><span class="sec-num">6</span> O conserto: Neumann e Lange</h2>
+
+      <p>
+        Em 1869, numa aula inaugural em Leipzig, publicada no ano seguinte, o matemático <strong>Carl Neumann</strong> fez uma pergunta que ninguém vinha fazendo: se a lei da inércia afirma que um corpo livre se move em linha reta, e se ninguém consegue observar trajetórias em relação ao espaço absoluto, então <strong>o que exatamente a lei está afirmando?</strong><sup class="ref"><a href="#ref-5" id="cite-5">5</a></sup>
+      </p>
+
+      <p>
+        A resposta de Neumann foi que a lei, tal como enunciada, está incompleta. Para que ela diga alguma coisa, é preciso supor que existe em algum lugar do universo um corpo de referência, que ele chamou de <strong>corpo Alpha</strong>, em relação ao qual as trajetórias dos corpos livres são retas. Neumann não afirmava saber onde estava esse corpo, nem se ele existia. O ponto dele era lógico: sem essa suposição, a lei não é uma afirmação sobre o mundo.
+      </p>
+
+      <p>
+        E Neumann foi além, retomando a observação de Euler sobre o tempo, com um cuidado a mais. Definir tempos iguais como aqueles em que um corpo livre percorre distâncias iguais, disse ele, é arbitrário se houver um único corpo, porque qualquer movimento pode ser declarado uniforme por convenção. <strong>Mas deixa de ser arbitrário se houver dois.</strong> Afirmar que dois corpos livres percorrem distâncias mutuamente proporcionais é uma afirmação empírica de verdade, que o mundo pode confirmar ou desmentir.
+      </p>
+
+      <p>
+        Essa distinção entre a parte convencional e a parte empírica é a chave, e foi ela que <strong>Ludwig Lange</strong> transformou em definição rigorosa, em 1885, num artigo lido perante a Sociedade de Ciências da Saxônia. Lange cunhou ali a palavra <strong>Inertialsystem</strong>, sistema inercial, que é a origem direta do termo que usamos até hoje.<sup class="ref"><a href="#ref-6" id="cite-6">6</a></sup>
+      </p>
+
+      <!-- TODO: figura — a definição de Lange: três corpos livres partindo de um
+           mesmo ponto em direções não coplanares, e o quarto corpo verificando o
+           sistema construído com os três primeiros. -->
+
+      <div class="highlight-box">
+        <span class="hb-icon">💡</span>
+        <div class="hb-body">
+          <p><strong>A definição de Lange, e por que ela quebra o círculo</strong></p>
+          <p>
+            <strong>Definição.</strong> Um sistema inercial é qualquer sistema de coordenadas em relação ao qual três corpos livres, lançados de um mesmo ponto em direções que não estejam num mesmo plano, se movem em linha reta.
+          </p>
+          <p>
+            <strong>Teorema.</strong> Em relação a um sistema inercial assim construído, qualquer <strong>quarto</strong> corpo livre também se moverá em linha reta.
+          </p>
+          <p>
+            Repare na estrutura, porque ela é engenhosa. Com três corpos, sempre se consegue construir um sistema de coordenadas em que os três se movem em reta. Isso não é uma descoberta sobre a natureza: é sempre possível, para quaisquer três corpos, e portanto é <strong>convenção</strong>.
+          </p>
+          <p>
+            A afirmação sobre o mundo vem depois, com o quarto corpo. Não havia nenhuma garantia prévia de que o sistema construído com três corpos funcionasse também para todos os outros. Poderia não funcionar. O fato de que funciona, para qualquer corpo livre que se teste, <strong>é o conteúdo empírico da lei da inércia</strong>.
+          </p>
+          <p>
+            O mesmo raciocínio vale para o tempo, com a escala inercial de tempo definida a partir de um dos corpos.
+          </p>
+          <p>
+            O círculo se desfaz porque a lei foi separada em duas partes: uma definição, que estabelece o referencial, e uma afirmação empírica, que diz que esse referencial serve para todo o resto. A Primeira Lei deixa de ser uma tautologia e passa a afirmar algo forte sobre o universo: <strong>que referenciais assim existem, e que funcionam para tudo</strong>.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        Vale notar o que Lange conseguiu e o que ele não conseguiu. Ele deu ao conceito de referencial inercial uma definição operacional, que não menciona espaço absoluto e não depende de nada inobservável. Isso é muito. Mas ele não respondeu à pergunta que dá título a este texto. Saber construir um referencial inercial não é o mesmo que saber por que existem referenciais inerciais, nem por que são justamente esses.
+      </p>
+
+    </section>
+
+    <section class="content-section" id="s7">
+      <h2><span class="sec-num">7</span> Mach: e se forem as estrelas?</h2>
+
+      <p>
+        No mesmo ano de 1883, <strong>Ernst Mach</strong> publicou um livro que faria mais barulho que os artigos técnicos de Neumann e Lange: uma história crítica da mecânica, escrita com o propósito explícito de expurgar da física tudo o que não fosse observável.<sup class="ref"><a href="#ref-7" id="cite-7">7</a></sup>
+      </p>
+
+      <p>
+        O alvo principal era o espaço absoluto, e Mach foi direto ao balde.
+      </p>
+
+      <p>
+        O argumento de Newton, disse ele, tem um defeito de método. Quando Newton conclui que a água gira "em relação ao espaço absoluto", ele está ignorando que o experimento não foi feito num universo vazio. Foi feito aqui, num laboratório, com a Terra em volta, o Sol, e todas as estrelas do céu. A água que gira está girando em relação a tudo isso. Atribuir o efeito a um espaço vazio inobservável, quando há um universo inteiro de matéria disponível como referência, é escolher a explicação que não se pode testar.
+      </p>
+
+      <p>
+        Mach propõe então a leitura alternativa. A superfície da água se curva porque ela gira <strong>em relação às massas distantes do universo</strong>. E vai adiante, com uma provocação que ficou famosa: as paredes do balde de Newton são finas e não produzem efeito perceptível, mas ninguém sabe o que aconteceria se elas tivessem léguas de espessura. A diferença entre "o balde não importa" e "o balde importa pouco porque é pequeno" não pode ser decidida por um experimento de laboratório.
+      </p>
+
+      <p>
+        A consequência dessa posição é radical. Se ela estiver certa, a <strong>inércia não é uma propriedade que um corpo tem por si</strong>. Ela é o resultado da relação daquele corpo com toda a matéria do universo. Num universo vazio, um corpo solitário não teria inércia, porque não haveria em relação a que ter.
+      </p>
+
+      <p>
+        Note que Mach está retomando, com duzentos anos de atraso e com argumentos físicos em vez de metafísicos, exatamente a posição relacionista de Leibniz.
+      </p>
+
+      <div class="highlight-box info">
+        <span class="hb-icon">📚</span>
+        <div class="hb-body">
+          <p><strong>Uma ressalva sobre o "princípio de Mach"</strong></p>
+          <p>
+            A expressão <em>princípio de Mach</em> é usada com frequência, e convém saber que ela não é de Mach. Quem a cunhou foi Einstein, em 1918, para nomear a ideia que ele julgava ter encontrado em Mach e que gostaria de incorporar à sua teoria.
+          </p>
+          <p>
+            O que Mach de fato defendeu, e com que grau de compromisso, é objeto de discussão entre historiadores até hoje. Ele escrevia como crítico e epistemólogo, não como autor de uma teoria alternativa, e nunca formulou o princípio em termos matemáticos nem propôs um mecanismo. Existem várias versões diferentes do princípio de Mach na literatura, e elas não são equivalentes entre si.
+          </p>
+          <p>
+            Nada disso diminui sua influência. Mas é bom saber que, ao dizer "princípio de Mach", estamos usando um rótulo posterior sobre um conjunto de ideias que o próprio autor deixou em aberto.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s8">
+      <h2><span class="sec-num">8</span> Einstein: a pergunta muda</h2>
+
+      <p>
+        Einstein leu Mach na juventude e disse mais de uma vez que aquela crítica foi decisiva para ele. O caminho que percorreu a partir daí, no entanto, não terminou onde Mach gostaria.
+      </p>
+
+      <p>
+        O ponto de partida foi o incômodo com que fechamos o texto sobre <a href="forcas-ficticias.html">forças fictícias</a>. Forças fictícias são proporcionais à massa, e aceleram igualmente corpos leves e pesados. A gravidade faz exatamente a mesma coisa. Dentro de uma cabine fechada, nenhum experimento local distingue estar parado num campo gravitacional de estar acelerando no espaço vazio.
+      </p>
+
+      <!-- TODO: figura — a mesma cabine fechada vista duas vezes, parada num
+           campo gravitacional e acelerando no espaço vazio, com o observador
+           incapaz de distinguir os dois casos. -->
+
+      <p>
+        Einstein tomou essa coincidência como fato fundamental, e não como acidente. É o <strong>princípio de equivalência</strong>, de 1907, e foi a partir dele que ele reconstruiu a gravitação ao longo dos oito anos seguintes.<sup class="ref"><a href="#ref-8" id="cite-8">8</a></sup>
+      </p>
+
+      <p>
+        O resultado, a Relatividade Geral de 1915, responde à pergunta deste texto de um modo que nenhum dos participantes anteriores havia previsto: <strong>dissolvendo-a</strong>.
+      </p>
+
+      <p>
+        Na teoria de Einstein, o espaço-tempo não é um palco fixo onde as coisas acontecem. Ele é uma entidade dinâmica, que a matéria deforma e que, deformada, determina como a matéria se move. Não há espaço absoluto imóvel, como queria Newton, mas também não há apenas relações entre corpos, como queria Leibniz. Há uma terceira coisa, que tem propriedades próprias e obedece a equações próprias.
+      </p>
+
+      <p>
+        E a Primeira Lei sobrevive, reformulada. Um corpo livre não segue mais uma reta no espaço absoluto: ele segue uma <strong>geodésica</strong>, o caminho mais direto possível dentro de um espaço-tempo curvo. A queda livre deixa de ser movimento acelerado e passa a ser o movimento natural, o análogo relativístico do movimento retilíneo uniforme.
+      </p>
+
+      <p>
+        O referencial inercial, por sua vez, deixa de ser global e passa a ser <strong>local</strong>. Em qualquer ponto do espaço-tempo, e por um intervalo suficientemente curto, sempre existe um referencial em queda livre no qual as leis valem em sua forma mais simples. Não existe mais um único referencial inercial válido para o universo inteiro, e a pergunta "onde está o referencial inercial?" perde o sentido que tinha, do mesmo modo que "onde é o centro da superfície da Terra?" perde o sentido quando se entende a geometria da esfera.
+      </p>
+
+      <p>
+        A escada infinita do final do <a href="terra-referencial.html">texto anterior</a> não termina porque encontramos o último degrau. Ela termina porque descobrimos que a pergunta pedia um degrau que não precisava existir.
+      </p>
+
+      <div class="highlight-box danger">
+        <span class="hb-icon">⚠️</span>
+        <div class="hb-body">
+          <p><strong>A Relatividade Geral não é machiana</strong></p>
+          <p>
+            Seria bonito encerrar dizendo que Einstein deu razão a Mach. Não foi bem assim, e ele próprio acabou reconhecendo isso.
+          </p>
+          <p>
+            A Relatividade Geral incorpora <strong>efeitos</strong> de tipo machiano. O mais claro é o arrastamento de referenciais: uma massa em rotação arrasta consigo o espaço-tempo à sua volta, alterando o que conta como não girante nas proximidades. O efeito foi previsto por Lense e Thirring em 1918 e medido diretamente pela sonda Gravity Probe B, em resultados publicados em 2011.<sup class="ref"><a href="#ref-9" id="cite-9">9</a></sup> Nisso, a distribuição de matéria realmente influencia a inércia local, como Mach queria.
+          </p>
+          <p>
+            Mas a teoria admite soluções que Mach teria rejeitado. Existem soluções das equações de Einstein para universos completamente vazios, nos quais o espaço-tempo tem estrutura inercial bem definida apesar de não haver matéria nenhuma para defini-la. E Kurt Gödel encontrou, em 1949, uma solução para um universo em rotação global, o que é justamente o tipo de coisa que a posição de Mach deveria proibir.<sup class="ref"><a href="#ref-10" id="cite-10">10</a></sup>
+          </p>
+          <p>
+            O placar honesto é este: Einstein eliminou o espaço absoluto de Newton, deu ao espaço-tempo um papel dinâmico que Newton não imaginava, e incorporou parte do que Mach queria. Mas não reduziu a inércia às relações entre corpos, e a questão de quanto a estrutura inercial do universo é determinada por seu conteúdo material continua em aberto.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="content-section" id="s9">
+      <h2><span class="sec-num">9</span> O que fica</h2>
+
+      <p>
+        Vale recuperar o que essa história de três séculos deixa para quem está aprendendo mecânica agora.
+      </p>
+
+      <p>
+        <strong>A Primeira Lei não é óbvia, e não é uma definição vazia.</strong> Depois de Lange, sabemos exatamente o que ela afirma sobre o mundo: que existem referenciais nos quais todos os corpos livres se movem em linha reta, e que um referencial construído com três corpos serve para todos os demais. Isso poderia ser falso, e não é. É uma afirmação forte, e o fato de parecer trivial diz mais sobre o hábito do que sobre a lei.
+      </p>
+
+      <p>
+        <strong>O conceito de referencial inercial é posterior a Newton e nasceu de uma crítica a ele.</strong> Newton não usava esse conceito e não teria reconhecido a definição de Lange. Quando dizemos em sala de aula que a Primeira Lei define o referencial inercial, estamos usando uma formulação de 1885 para explicar um texto de 1687. Isso não é errado, desde que se saiba que é o que está sendo feito.
+      </p>
+
+      <p>
+        <strong>A pergunta do título tem resposta, e não é a que se esperava.</strong> Não existe o referencial inercial, no singular e no universo inteiro. Existem infinitos referenciais inerciais locais, um em cada ponto e em cada instante, e cada um deles vale por perto e por pouco tempo. O laboratório da sua escola é um deles, com uma aproximação excelente para tudo o que se faz lá.
+      </p>
+
+      <p>
+        E há uma lição de método, que talvez seja a mais durável. Durante dois séculos a pergunta sobre o referencial foi tratada como filosofia inconsequente, coisa que não atrapalhava os cálculos e por isso podia esperar. Quando alguém finalmente decidiu levá-la a sério, ela não produziu apenas um esclarecimento conceitual. Produziu a Relatividade Geral.
+      </p>
+
+    </section>
+
+    <section class="content-section referencias" id="referencias">
+      <h2>Referências</h2>
+
+      <!-- ATENÇÃO: nenhuma das doze entradas abaixo tem link de acesso online, e a
+           regra do site é que toda obra citada possa ser lida. Vários desses títulos
+           são de domínio público e devem estar no Archive.org, no Gallica ou no
+           e-rara; a de número 11 é uma verbete online. Levantar os links junto com
+           os dados que faltam. Ver, como modelo, o link do Archive.org que a página
+           primeira-lei.html traz para a tradução do Principia. -->
+      <ol>
+        <li id="ref-1">
+          NEWTON, Isaac. <em>Philosophiae Naturalis Principia Mathematica</em>. Londres, 1687. Escólio às definições, sobre espaço e tempo absolutos, e Corolário V dos Axiomas. <!-- VERIFICAR: dados da tradução brasileira da EDUSP, se for adotada. E MAIS: primeira-lei.html cita esta obra pela tradução inglesa de Andrew Motte (1729), em domínio público; convém decidir se as duas páginas apontam para a mesma edição. -->
+          <a href="#cite-1" class="voltar" aria-label="Voltar à primeira citação no texto">↩ 1</a>
+          <a href="#cite-1b" class="voltar" aria-label="Voltar à segunda citação no texto">↩ 2</a>
+        </li>
+
+        <li id="ref-2">
+          LEIBNIZ, Gottfried W.; CLARKE, Samuel. <em>Correspondência Leibniz-Clarke</em>. 1715-1716. <!-- VERIFICAR: edição brasileira, tradutor e ano -->
+          <a href="#cite-2" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-3">
+          BERKELEY, George. <em>De Motu</em>. 1721. <!-- VERIFICAR: edição de referência -->
+          <a href="#cite-3" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-4">
+          EULER, Leonhard. Réflexions sur l'espace et le temps. <em>Mémoires de l'Académie des Sciences de Berlin</em>, 1748. <!-- VERIFICAR: volume e paginação -->
+          <a href="#cite-4" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-5">
+          NEUMANN, Carl. <em>Über die Principien der Galilei-Newton'schen Theorie</em>. Leipzig: Teubner, 1870.
+          <a href="#cite-5" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-6">
+          LANGE, Ludwig. Über das Beharrungsgesetz. <em>Berichte über die Verhandlungen der Königlich Sächsischen Gesellschaft der Wissenschaften zu Leipzig</em>, math.-phys. Klasse, 1885. <!-- VERIFICAR: paginação, aparece como 333-351 e como 335-351 em fontes diferentes -->
+          <a href="#cite-6" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-7">
+          MACH, Ernst. <em>Die Mechanik in ihrer Entwicklung historisch-kritisch dargestellt</em>. Leipzig: Brockhaus, 1883. <!-- VERIFICAR: edição brasileira ou inglesa de referência -->
+          <a href="#cite-7" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-8">
+          EINSTEIN, Albert. <em>Sobre a teoria da relatividade especial e geral</em>. 1917. <!-- VERIFICAR: edição brasileira, tradutor e ano -->
+          <a href="#cite-8" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-9">
+          EVERITT, C. W. F. et al. Gravity Probe B: final results of a space experiment to test general relativity. <em>Physical Review Letters</em>, v. 106, 2011. <!-- VERIFICAR: número do artigo e paginação -->
+          <a href="#cite-9" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <li id="ref-10">
+          GÖDEL, Kurt. An example of a new type of cosmological solution of Einstein's field equations of gravitation. <em>Reviews of Modern Physics</em>, v. 21, 1949. <!-- VERIFICAR: paginação -->
+          <a href="#cite-10" class="voltar" aria-label="Voltar ao texto">↩</a>
+        </li>
+
+        <!-- TODO: definir chamada no corpo ou mover para leitura adicional -->
+        <li id="ref-11">
+          DiSALLE, Robert. Space and Time: Inertial Frames. <em>Stanford Encyclopedia of Philosophy</em>. <!-- VERIFICAR: ano da edição consultada e URL -->
+        </li>
+
+        <!-- TODO: definir chamada no corpo ou mover para leitura adicional -->
+        <li id="ref-12">
+          BARBOUR, Julian. <em>The Discovery of Dynamics</em>. Oxford: Oxford University Press. <!-- VERIFICAR: ano -->
+        </li>
+      </ol>
+    </section>
+
+    <div class="content-footer-nav">
+      <a href="terra-referencial.html">← A Terra é um referencial inercial?</a>
+    </div>
+
+  </main>
+</div>
+
+<footer><p>© 2025 — Piras na Física</p></footer>
+
+<script>
+(function() {
+  const sections = document.querySelectorAll('.content-section');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  window.addEventListener('scroll', function() {
+    let current = '';
+    sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 120) current = sec.id; });
+    tocLinks.forEach(a => {
+      a.parentElement.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

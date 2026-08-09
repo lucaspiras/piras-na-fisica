@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Dois circuitos, um acima do outro.
+     Autossuficiente: leva o proprio CSS, sem buscar fonte, folha de estilo ou
+     script na rede. Pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Fonte da geometria: disciplinas/eletricidade_basica/apresentacoes/associacao-de-resistores/index.html -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 560" width="1400" height="1120"
+     role="img" aria-labelledby="ar-titulo-1">
+  <title id="ar-titulo-1">Dois circuitos, um acima do outro. No de cima, a fonte alimenta um conjunto de três resistores destacado por um retângulo tracejado; no de baixo, o mesmo circuito com um único resistor equivalente no lugar do conjunto.</title>
+  <style><![CDATA[
+    svg {
+      /* Trocar qualquer uma destas retematiza o desenho sem editar o resto. */
+      --ar-tinta:  #16171A;   /* fios, corpo dos simbolos               */
+      --ar-corpo:  #ffffff;   /* preenchimento do retangulo do resistor */
+      --ar-rotulo: #54565C;   /* valores e nomes dos componentes        */
+      --ar-acento: #A16207;   /* setas de corrente e destaques          */
+    }
+
+    /* Sem retangulo de fundo: a figura e transparente e assume o fundo de
+       quem a hospeda, seja slide, prova ou pagina. So o miolo do resistor e
+       pintado, porque ali o branco e parte do simbolo e nao pano de fundo.
+       Um .svg carregado como imagem e documento a parte e nao enxerga o
+       data-theme do site, entao o tema escuro vem por media query do sistema. */
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --ar-tinta:  #E7E9EE;
+        --ar-corpo:  #1E2027;
+        --ar-rotulo: #A9ABB2;
+        --ar-acento: #EAB308;
+      }
+    }
+  ]]></style>
+  <line x1="70" y1="90" x2="222" y2="90" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="488" y1="90" x2="630" y2="90" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="630" y1="90" x2="630" y2="240" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="630" y1="240" x2="400" y2="240" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="340" y1="240" x2="70" y2="240" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="70" y1="240" x2="70" y2="90" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="400" y1="225" x2="400" y2="255" stroke-width="4" style="stroke:var(--ar-tinta)"/>
+  <line x1="340" y1="232" x2="340" y2="248" stroke-width="10" style="stroke:var(--ar-tinta)"/>
+  <text x="370" y="285" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="24" style="fill:var(--ar-rotulo)">U</text>
+  <rect x="222" y="26" width="266" height="128" rx="12" fill="none" style="stroke:var(--ar-acento)" stroke-width="4" stroke-dasharray="12 9"/>
+  <line x1="222" y1="90" x2="250" y2="90" stroke-width="5" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <rect x="250" y="77" width="52" height="26" rx="3" stroke-width="4" style="fill:var(--ar-corpo);stroke:var(--ar-tinta)"/>
+  <line x1="302" y1="90" x2="332" y2="90" stroke-width="5" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="332" y1="60" x2="332" y2="120" stroke-width="5" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="332" y1="60" x2="352" y2="60" stroke-width="5" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <rect x="352" y="47" width="52" height="26" rx="3" stroke-width="4" style="fill:var(--ar-corpo);stroke:var(--ar-tinta)"/>
+  <line x1="404" y1="60" x2="428" y2="60" stroke-width="5" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="332" y1="120" x2="352" y2="120" stroke-width="5" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <rect x="352" y="107" width="52" height="26" rx="3" stroke-width="4" style="fill:var(--ar-corpo);stroke:var(--ar-tinta)"/>
+  <line x1="404" y1="120" x2="428" y2="120" stroke-width="5" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="428" y1="60" x2="428" y2="120" stroke-width="5" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="428" y1="90" x2="488" y2="90" stroke-width="5" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <text x="355" y="182" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="23" style="fill:var(--ar-acento)">vários resistores</text>
+  <line x1="150" y1="315" x2="150" y2="358" stroke-width="5" style="stroke:var(--ar-rotulo)"/>
+  <polygon points="136,352 164,352 150,376" style="fill:#54565c"/>
+  <text x="185" y="352" font-family="IBM Plex Mono, monospace" font-size="24" style="fill:var(--ar-rotulo)">equivale a</text>
+  <line x1="70" y1="430" x2="290" y2="430" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="410" y1="430" x2="630" y2="430" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="630" y1="430" x2="630" y2="520" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="630" y1="520" x2="400" y2="520" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="340" y1="520" x2="70" y2="520" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="70" y1="520" x2="70" y2="430" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="400" y1="505" x2="400" y2="535" stroke-width="4" style="stroke:var(--ar-tinta)"/>
+  <line x1="340" y1="512" x2="340" y2="528" stroke-width="10" style="stroke:var(--ar-tinta)"/>
+  <rect x="290" y="408" width="120" height="44" rx="4" style="fill:var(--ar-corpo);stroke:var(--ar-acento)" stroke-width="5"/>
+  <text x="350" y="392" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="26" style="fill:var(--ar-acento)">R<tspan font-size="0.72em" baseline-shift="sub">eq</tspan></text>
+</svg>
