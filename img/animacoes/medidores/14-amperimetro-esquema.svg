@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Esquema de circuito com fonte e resistor, e um amperímetro representado por um círculo com a letra A inserido no próprio caminho da corrente, em série.
+     Autossuficiente: leva o proprio CSS, sem buscar fonte, folha de estilo ou
+     script na rede. Pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Fonte da geometria: disciplinas/eletricidade_basica/apresentacoes/associacao-de-resistores/index.html -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="1520" height="760"
+     role="img" aria-labelledby="ar-titulo-14">
+  <title id="ar-titulo-14">Esquema de circuito com fonte e resistor, e um amperímetro representado por um círculo com a letra A inserido no próprio caminho da corrente, em série.</title>
+  <style><![CDATA[
+    svg {
+      /* Trocar qualquer uma destas retematiza o desenho sem editar o resto. */
+      --ar-tinta:  #16171A;   /* fios, corpo dos simbolos               */
+      --ar-corpo:  #ffffff;   /* preenchimento do retangulo do resistor */
+      --ar-rotulo: #54565C;   /* valores e nomes dos componentes        */
+      --ar-acento: #A16207;   /* setas de corrente e destaques          */
+      --ar-acento2: #1E63F0;  /* segundo acento, do voltimetro          */
+    }
+
+    /* Sem retangulo de fundo: a figura e transparente e assume o fundo de
+       quem a hospeda, seja slide, prova ou pagina. So o miolo do resistor e
+       pintado, porque ali o branco e parte do simbolo e nao pano de fundo.
+       Um .svg carregado como imagem e documento a parte e nao enxerga o
+       data-theme do site, entao o tema escuro vem por media query do sistema. */
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --ar-tinta:  #E7E9EE;
+        --ar-corpo:  #1E2027;
+        --ar-rotulo: #A9ABB2;
+        --ar-acento: #EAB308;
+        --ar-acento2: #5FA0FF;
+      }
+    }
+  ]]></style>
+  <line x1="90" y1="310" x2="670" y2="310" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="670" y1="90" x2="670" y2="310" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="90" y1="90" x2="90" y2="170" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="90" y1="230" x2="90" y2="310" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="75" y1="180" x2="105" y2="180" stroke-width="4" style="stroke:var(--ar-tinta)"/>
+  <line x1="80" y1="205" x2="100" y2="205" stroke-width="10" style="stroke:var(--ar-tinta)"/>
+  <text x="46" y="174" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="26" style="fill:var(--ar-acento)">+</text>
+  <text x="40" y="246" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="24" style="fill:#54565c">U</text>
+  <line x1="90" y1="90" x2="214" y2="90" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="286" y1="90" x2="460" y2="90" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <line x1="580" y1="90" x2="670" y2="90" stroke-width="6" stroke-linecap="round" style="stroke:var(--ar-tinta)"/>
+  <circle cx="250" cy="90" r="36" style="fill:var(--ar-corpo);stroke:var(--ar-acento)" stroke-width="6"/>
+  <text x="250" y="103" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="36" style="fill:var(--ar-acento)">A</text>
+  <rect x="460" y="72" width="120" height="36" rx="4" stroke-width="5" style="fill:var(--ar-corpo);stroke:var(--ar-tinta)"/>
+  <text x="250" y="162" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="24" style="fill:var(--ar-acento)">amperímetro</text>
+  <text x="520" y="162" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="24" style="fill:#54565c">R</text>
+  <polygon points="150,80 150,100 172,90" style="fill:var(--ar-acento)"/>
+  <polygon points="380,80 380,100 402,90" style="fill:var(--ar-acento)"/>
+  <text x="148" y="58" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="26" style="fill:var(--ar-acento)">I</text>
+  <text x="380" y="355" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="24" style="fill:#54565c">entra no caminho da corrente, em série</text>
+</svg>

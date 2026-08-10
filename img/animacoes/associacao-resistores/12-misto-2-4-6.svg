@@ -14,6 +14,7 @@
       --ar-corpo:  #ffffff;   /* preenchimento do retangulo do resistor */
       --ar-rotulo: #54565C;   /* valores e nomes dos componentes        */
       --ar-acento: #A16207;   /* setas de corrente e destaques          */
+      --ar-acento2: #1E63F0;  /* segundo acento, do voltimetro          */
     }
 
     /* Sem retangulo de fundo: a figura e transparente e assume o fundo de
@@ -27,6 +28,7 @@
         --ar-corpo:  #1E2027;
         --ar-rotulo: #A9ABB2;
         --ar-acento: #EAB308;
+        --ar-acento2: #5FA0FF;
       }
     }
   ]]></style>

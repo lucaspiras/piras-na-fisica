@@ -11,12 +11,23 @@
   <style><![CDATA[
     svg {
       /* Trocar qualquer um destes retematiza o desenho sem editar o resto. */
-      --fundo:            #FDF8EC;
+      /* Transparente: a figura assume o fundo de quem a hospeda. */
+      --fundo:            transparent;
       --corrente:         #22D3EE;   /* 10,2:1 sobre o fio preto */
       --corrente-escuro:  #0E7490;   /* 5,0:1 sobre o creme      */
       --acento:           #A16207;
       --acento2:          #1E63F0;
       --rotulo:           #54565C;
+    }
+
+    /* Estas duas figuras sao desenho de material, com cobre, plastico, vidro e
+       fio vermelho. Diferente dos diagramas de linha, essa paleta nao tem como
+       ser reescrita para o escuro sem virar outro desenho. Por isso, e so aqui,
+       o tema escuro devolve um fundo proprio, e ele e CLARO: transparente sobre
+       pagina clara, que e o caso comum, e com a base creme de volta quando o
+       sistema pede escuro. Sobre base escura o traco preto sumiria. */
+    @media (prefers-color-scheme: dark) {
+      svg { --fundo: #FDF8EC; }
     }
 
     @keyframes flow { to { stroke-dashoffset: -32; } }
