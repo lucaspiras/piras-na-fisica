@@ -1372,6 +1372,40 @@ footer {
   transform: translateX(5px);
 }
 
+/* Agrupamento por grande área */
+.ed-area {
+  margin-bottom: 2.6rem;
+}
+
+.ed-area-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  padding-bottom: 0.55rem;
+  margin-bottom: 1.1rem;
+  border-bottom: 2px solid color-mix(in srgb, var(--tema-cor, var(--azul)) 30%, transparent);
+}
+
+.ed-area-head h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--tema-strong, var(--titulo));
+  margin: 0;
+}
+
+.ed-area-head a {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--tema-cor, var(--azul));
+  text-decoration: none;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.ed-area-head a:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 720px) {
   .ed-grid {
     grid-template-columns: repeat(2, 1fr);

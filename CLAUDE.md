@@ -30,6 +30,7 @@ conteudos/shared.css     # estilos compartilhados entre subtópicos
 img/animacoes/           # SVG animados avulsos + catálogo (noindex, fora do sitemap)
 banco-questoes/          # banco de questões UFRGS (300 questões)
 atividades/              # estudos dirigidos e listas de exercícios interativas
+atividades/estudos_dirigidos/<area>/ed_<slug>/   # um ED por pasta, agrupados pelas áreas de conteudos/
 Programas/               # simulações (Canvas) publicadas como mini-apps
 scripts/                 # utilitários PowerShell (sitemap, favicon, meta tags)
 copa_do_mundo/bolao/     # jogo de bolão — subprojeto separado com Supabase
@@ -100,6 +101,23 @@ Armadilhas já pagas, todas em XML e não em HTML:
 Na página do texto, o bloco `<!-- IMAGENS NECESSÁRIAS -->` some quando a última imagem pendente é feita.
 
 `img/animacoes/` tem `noindex` e está na lista de exclusão de `scripts/gerar-sitemap.ps1`.
+
+### Figuras dos estudos dirigidos
+
+A regra vale igualmente para as figuras dos EDs, e ali a extração é automática. Marque o `<svg>` inline com `class="fig"` e `data-avulso="<assunto>/<nome>"`, tire toda cor de atributo (as classes ficam no bloco `/* === CORES DAS FIGURAS === */` do `style.css` do próprio ED), acrescente uma linha no manifesto `$Figuras` e rode:
+
+```powershell
+powershell -File scripts\extrair-figuras-eds.ps1
+```
+
+O script recorta a geometria tal e qual, copia a paleta do `style.css` do ED para dentro do arquivo gerado e confere, ao final, que a assinatura de elementos bate com a do inline. Divergiu, ele falha.
+
+Dois pontos em que o ED foge do padrão dos textos de `conteudos/`:
+
+- **As páginas dos EDs são claras por decisão de projeto**, sem `data-theme`. O tema escuro exigido do `.svg` avulso não pode sair do `style.css` do ED, então mora na tabela `$TemasEscuros` do script, uma entrada por área.
+- O bloco `@media (prefers-reduced-motion: reduce)` só é emitido **quando a figura tem animação**. Nenhuma das atuais tem.
+
+Figura que já nasceu avulsa (`img/animacoes/trabalho-energia/3-referencial-epg.svg`) não passa pelo script: ela é a fonte, e o ED a consome por `<img src>`.
 
 ## Convenções de escrita dos textos
 
@@ -225,14 +243,27 @@ Subprojeto isolado com Supabase próprio. Não usa os arquivos `css/style.css` e
 
 **Geração de PDF do regulamento:** Puppeteer instalado fora do OneDrive em `C:\Users\Usuario\reg-pdf-tool\`. Rodar de lá: `node gerar_pdf_regulamento.mjs <input.html> <output.pdf>`. O script usa mídia `screen` e calcula altura real para gerar página única.
 
+## Estudos dirigidos (`atividades/estudos_dirigidos/`)
+
+Organizados por **grande área**, com os mesmos nomes de pasta usados em `conteudos/`: `grandezas-fisicas/`, `cinematica/`, `dinamica/`, `trabalho-energia/`, `eletricidade/`. Dentro de cada área, uma pasta `ed_<slug>/` por estudo, sempre com os quatro arquivos `index.html`, `style.css`, `quiz.js` e `main.js` (mais os scripts próprios de gráfico ou animação, quando houver).
+
+Os caminhos relativos partem de quatro níveis: `../../../../index.html`, `../../../../img/…`. Para outras pastas de `atividades/` são três: `../../../testes/…`.
+
+A página `estudos_dirigidos.html` lista os cards em uma `<section class="ed-area" data-tema="<area>">` por área, o que puxa as cores de tema definidas em `css/style.css`.
+
+Ao mover um ED de pasta, deixar no caminho antigo um `index.html` de redirecionamento (`meta refresh` + `link rel=canonical` + `location.replace`), como já existe em `atividades/*_estudo_dirigido/`. O `scripts/gerar-sitemap.ps1` ignora essas páginas.
+
+**Motor de quiz.** `quiz.js` expõe `window.NLQuizData`, `window.NLQuizState` e `window.NLQuizReset`; `main.js` consome esses globais para montar o relatório em `.txt`. As chaves `quizN` do banco precisam bater com os `<div class="quiz-section" id="quizN">` do HTML e com o mapa `TOPIC_NAMES` de `main.js`. A numeração das questões segue a ordem no DOM, não a das chaves.
+
 ## Scripts PowerShell (`scripts/`)
 
 Rodar sempre a partir da raiz do projeto:
 
 ```powershell
-powershell -File scripts\gerar-sitemap.ps1   # rodar ao criar/remover páginas HTML
-powershell -File scripts\inject-favicon.ps1  # injetar favicons em páginas existentes
-powershell -File scripts\add-meta-tags.ps1   # injetar meta description + OG tags
+powershell -File scripts\gerar-sitemap.ps1         # rodar ao criar/remover páginas HTML
+powershell -File scripts\inject-favicon.ps1        # injetar favicons em páginas existentes
+powershell -File scripts\add-meta-tags.ps1         # injetar meta description + OG tags
+powershell -File scripts\extrair-figuras-eds.ps1   # gerar os .svg avulsos das figuras dos EDs
 ```
 
 **Atenção:** scripts `.ps1` com caracteres acentuados precisam ser salvos com UTF-8 **com BOM** (PowerShell 5.1 no Windows lê sem BOM como ANSI e corrompe os acentos).

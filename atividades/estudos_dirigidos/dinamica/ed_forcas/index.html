@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <meta name="description" content="Estudo dirigido sobre as forças da mecânica: peso, normal, tração e atrito, com força resultante, diagrama de corpo livre, exemplos resolvidos e questões de vestibular.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Forças: Peso, Normal, Tração e Atrito — Estudo Dirigido">
+  <meta property="og:description" content="As quatro forças que aparecem em quase todo problema de mecânica, a soma vetorial que resulta delas e o diagrama de corpo livre que organiza a conta.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/atividades/estudos_dirigidos/dinamica/ed_forcas/">
+  <title>Forças: Peso, Normal, Tração e Atrito — Estudo Dirigido</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Poppins:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <noscript><style>.topic{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+  <a href="#topicos" class="skip-link">Ir para o conteúdo</a>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-deco">
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+      <div class="hero-orb orb-3"></div>
+      <div class="wave-line"></div>
+      <div class="wave-line"></div>
+      <div class="wave-line"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="tag-dot"></span>
+          Física · Dinâmica · Ensino Médio
+        </div>
+        <h1 class="hero-title">
+          As quatro<br>
+          <em>forças</em>
+        </h1>
+        <p class="hero-sub">Peso, normal, tração e atrito dão conta de quase todo problema de mecânica do Ensino Médio. Aqui cada uma é apresentada por quem a exerce, para onde aponta e quanto vale — e depois somada às outras no diagrama de corpo livre.</p>
+        <a href="#topicos" class="hero-cta">Começar o estudo ↓</a>
+      </div>
+      <div class="hero-visual">
+        <div class="energy-card"><div class="ec-icon purple">🌍</div><div><div class="ec-name">Peso</div><div class="ec-desc">A Terra atrai: P = m·g</div></div></div>
+        <div class="energy-card"><div class="ec-icon green">🧱</div><div><div class="ec-name">Normal</div><div class="ec-desc">O apoio empurra de volta</div></div></div>
+        <div class="energy-card"><div class="ec-icon deep">🪢</div><div><div class="ec-name">Tração</div><div class="ec-desc">O fio só puxa, nunca empurra</div></div></div>
+        <div class="energy-card"><div class="ec-icon orange">🛑</div><div><div class="ec-name">Atrito</div><div class="ec-desc">Estático e cinético</div></div></div>
+        <div class="energy-card"><div class="ec-icon lime">➕</div><div><div class="ec-name">Resultante e DCL</div><div class="ec-desc">Somar antes de calcular</div></div></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SUMÁRIO -->
+  <nav class="sumario" id="topicos">
+    <div class="sumario-inner">
+      <a href="../../../../index.html" class="sum-logo-link" aria-label="Piras na Física">
+        <img src="../../../../img/files/piras_na_fisica_logo_transparente.png" alt="Logo Piras na Física" class="sum-logo" />
+      </a>
+      <div class="sum-divider"></div>
+      <span class="sum-label">Tópicos</span>
+      <ol class="sum-list">
+        <li><a href="#t1">O que é força</a></li>
+        <li><a href="#t2">Peso</a></li>
+        <li><a href="#t3">Normal</a></li>
+        <li><a href="#t4">Tração</a></li>
+        <li><a href="#t5">Atrito</a></li>
+        <li><a href="#t6">Resultante</a></li>
+        <li><a href="#t7">Corpo livre</a></li>
+        <li><a href="#t8">Aplicações</a></li>
+        <li><a href="#t9">Síntese</a></li>
+      </ol>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <!-- ============ TÓPICO 1 ============ -->
+    <section class="topic" id="t1">
+      <div class="topic-header">
+        <span class="topic-num">01</span>
+        <h2>O que é uma força</h2>
+      </div>
+      <div class="topic-body">
+        <p>As leis de Newton dizem o que as forças fazem: mudam o movimento dos corpos, aos pares, na proporção da massa. Este estudo trata do passo anterior, que é onde a maioria dos erros de dinâmica se resolve: saber, diante de uma cena qualquer, <strong>quais forças existem ali</strong>. Ao longo dos próximos tópicos, cada uma das quatro forças da mecânica escolar é apresentada separadamente; depois elas voltam a se somar, na força resultante e no diagrama de corpo livre.</p>
+
+        <p>Antes de qualquer uma delas, é preciso acertar o que uma força é. Força não é uma propriedade que um corpo possui, como a massa ou a cor. Força é uma <strong>interação entre dois corpos</strong>. Não existe "a força de um objeto": existe a força que <em>a Terra faz na maçã</em>, que <em>a mesa faz no livro</em>, que <em>o pé faz na bola</em>. Sempre que você nomear uma força, deve conseguir dizer quem a exerce e sobre quem.</p>
+
+        <p>Força também é uma grandeza <strong>vetorial</strong>: tem intensidade, direção e sentido. Duas forças de 10 N cada uma podem somar 20 N, 0 N ou qualquer valor intermediário, dependendo de como estão orientadas. Por isso o que interessa à dinâmica quase nunca é uma força isolada, e sim a força resultante, assunto do tópico 06.</p>
+
+        <div class="formula-box">
+          <span class="formula-label">Unidade de força</span>
+          <span class="formula-tex">1 N = 1 kg·m/s²</span>
+          <span class="formula-unit">O newton é a força que dá a 1 kg a aceleração de 1 m/s². Em rótulos e balanças aparece também o quilograma-força: 1 kgf ≈ 10 N, o peso de 1 kg na superfície da Terra.</span>
+        </div>
+
+        <p>Uma primeira divisão organiza tudo o que vem a seguir. Forças de <strong>campo</strong> agem à distância, sem contato: o peso é a única que você encontra na mecânica escolar. Forças de <strong>contato</strong> exigem que os dois corpos se toquem, e se dividem conforme a direção em relação à superfície: a normal é perpendicular a ela, o atrito é paralelo a ela, e a tração age ao longo de um fio.</p>
+
+        <div class="energy-grid">
+          <div class="eg-card">
+            <span class="eg-icon">🌍</span>
+            <div class="eg-name">Peso</div>
+            <div class="eg-desc">A Terra atrai o corpo. Age à distância, sem contato.</div>
+          </div>
+          <div class="eg-card">
+            <span class="eg-icon">🧱</span>
+            <div class="eg-name">Normal</div>
+            <div class="eg-desc">A superfície de apoio empurra o corpo, perpendicularmente a ela.</div>
+          </div>
+          <div class="eg-card">
+            <span class="eg-icon">🪢</span>
+            <div class="eg-name">Tração</div>
+            <div class="eg-desc">O fio esticado puxa o corpo, ao longo do próprio fio.</div>
+          </div>
+          <div class="eg-card">
+            <span class="eg-icon">🛑</span>
+            <div class="eg-name">Atrito</div>
+            <div class="eg-desc">A superfície resiste ao escorregamento do corpo sobre ela.</div>
+          </div>
+          <div class="eg-card">
+            <span class="eg-icon">💪</span>
+            <div class="eg-name">Força aplicada</div>
+            <div class="eg-desc">Alguém ou algum motor empurra ou puxa o corpo.</div>
+          </div>
+          <div class="eg-card">
+            <span class="eg-icon">🌬️</span>
+            <div class="eg-name">Resistência do ar</div>
+            <div class="eg-desc">O ar se opõe ao movimento; cresce com a velocidade.</div>
+          </div>
+        </div>
+
+        <table class="units-table" aria-label="As forças mais comuns na mecânica do Ensino Médio">
+          <thead>
+            <tr><th>Força</th><th>Símbolo</th><th>Quem exerce</th><th>Direção e sentido</th><th>Expressão</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Peso</td><td>P</td><td>a Terra</td><td>vertical, para baixo</td><td class="val">P = m·g</td></tr>
+            <tr><td>Normal</td><td>N</td><td>a superfície de apoio</td><td>perpendicular à superfície</td><td class="val">depende do caso</td></tr>
+            <tr><td>Tração</td><td>T</td><td>o fio ou cabo</td><td>ao longo do fio, sempre puxando</td><td class="val">depende do caso</td></tr>
+            <tr><td>Atrito estático</td><td>Fat</td><td>a superfície</td><td>contra a tendência de escorregar</td><td class="val">Fat ≤ μ<sub>e</sub>·N</td></tr>
+            <tr><td>Atrito cinético</td><td>Fat</td><td>a superfície</td><td>contra o escorregamento</td><td class="val">Fat = μ<sub>c</sub>·N</td></tr>
+          </tbody>
+        </table>
+
+        <div class="concept-card">
+          <h4>Como saber se aquilo é mesmo uma força</h4>
+          <ul>
+            <li><strong>Tem um agente?</strong> Se você não consegue dizer <em>quem</em> exerce, provavelmente não é força.</li>
+            <li><strong>É de contato ou de campo?</strong> Toda força do Ensino Médio cai numa dessas categorias.</li>
+            <li><strong>Vem em par?</strong> Toda força tem uma parceira no outro corpo — é a 3ª Lei de Newton.</li>
+            <li><strong>Inércia não é força.</strong> É a tendência do corpo a manter a velocidade; não empurra nada.</li>
+            <li><strong>"Força centrífuga" não entra nesta lista.</strong> Ela só aparece quando descrevemos o movimento de dentro de um sistema que gira, e ali nenhum corpo a exerce.</li>
+          </ul>
+        </div>
+
+        <div class="highlight-box green-hl">
+          <span class="hb-icon">🧭</span>
+          <p><strong>Este estudo pressupõe as três leis.</strong> Se os nomes 1ª, 2ª e 3ª Lei ainda não estão firmes, comece pelo estudo dirigido <a href="../ed_leis_newton/index.html">As Três Leis de Newton</a>. Os dois se completam: lá estão as leis, aqui estão as forças com que elas trabalham.</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz1"></div>
+    </section>
+
+    <!-- ============ TÓPICO 2 ============ -->
+    <section class="topic" id="t2">
+      <div class="topic-header">
+        <span class="topic-num">02</span>
+        <h2>Peso — a atração da Terra</h2>
+      </div>
+      <div class="topic-body">
+        <p>Também chamada de <strong>força gravitacional</strong>, o peso é a força que um corpo sofre pela proximidade de outro corpo massivo. É a única força de campo da mecânica escolar: ela não precisa de contato, atravessa o vácuo e age sobre todos os pontos do corpo ao mesmo tempo.</p>
+
+        <div class="formula-box large">
+          <span class="formula-label">Força peso</span>
+          <span class="formula-tex big">P = m · g</span>
+          <span class="formula-unit">P em newtons (N) · m em kg · g em m/s². Nas proximidades da Terra, g ≈ 9,8 m/s²; neste estudo usamos <strong>g = 10 m/s²</strong> por convenção.</span>
+        </div>
+
+        <p>A direção é sempre <strong>vertical</strong> e o sentido, sempre <strong>para baixo</strong>, ou, rigorosamente, na direção do centro da Terra. Cabe perceber que isso vale mesmo quando o corpo está subindo: uma bola lançada para cima tem peso apontando para baixo durante toda a trajetória, inclusive no ponto mais alto. Nada disso muda porque a velocidade mudou.</p>
+
+        <table class="units-table" aria-label="Aceleração da gravidade em diferentes astros">
+          <thead>
+            <tr><th>Astro</th><th>g (m/s²)</th><th>Peso de um corpo de 60 kg</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Terra</td><td class="val">9,8</td><td>≈ 590 N</td></tr>
+            <tr><td>Lua</td><td class="val">1,6</td><td>≈ 96 N</td></tr>
+            <tr><td>Marte</td><td class="val">3,7</td><td>≈ 220 N</td></tr>
+            <tr><td>Júpiter</td><td class="val">24,8</td><td>≈ 1 490 N</td></tr>
+          </tbody>
+        </table>
+
+        <div class="highlight-box orange-hl">
+          <span class="hb-icon">⚖️</span>
+          <p><strong>Massa não é peso.</strong> A massa (kg) mede a quantidade de matéria e a inércia do corpo, e é a mesma na Terra, na Lua ou no espaço. O peso (N) é a <em>força</em> com que o astro atrai esse corpo, e muda de astro para astro. Na Lua a sua massa é idêntica e o seu peso é cerca de seis vezes menor. Um astronauta flutuando na Estação Espacial também não perdeu massa nem peso: ele e a estação estão em queda livre juntos, e por isso não há normal sob os pés dele — sensação bem diferente de ausência de gravidade.</p>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplo — peso e massa</h4>
+          <p>Uma mochila de 8 kg está pendurada num gancho, em repouso.</p>
+          <p class="calc-line">P = m · g = 8 × 10 = <strong>80 N</strong></p>
+          <p>Levada à Lua, a mochila continua com 8 kg de massa, mas seu peso passa a P = 8 × 1,6 ≈ <strong>13 N</strong>. O que mudou foi o astro, não a mochila.</p>
+        </div>
+
+        <div class="concept-card">
+          <h4>Pontos fundamentais</h4>
+          <ul>
+            <li>O peso aponta para baixo <strong>sempre</strong>: subindo, no topo, descendo, em repouso.</li>
+            <li>A reação do peso, pela 3ª Lei, é a força que o <em>corpo</em> exerce na Terra, puxando-a para cima.</li>
+            <li>Desprezando a resistência do ar, todo corpo em queda tem a mesma aceleração g, independentemente da massa.</li>
+            <li>Balanças comuns medem, na verdade, a força normal — e por isso "mentem" dentro de um elevador acelerado.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz2"></div>
+    </section>
+
+    <!-- ============ TÓPICO 3 ============ -->
+    <section class="topic" id="t3">
+      <div class="topic-header">
+        <span class="topic-num">03</span>
+        <h2>Normal — o apoio que empurra de volta</h2>
+      </div>
+      <div class="topic-body">
+        <p>A força <strong>normal</strong> é uma força de contato exercida entre duas superfícies, na direção <strong>perpendicular</strong> a elas. O nome vem daí: em geometria, "normal" é sinônimo de perpendicular, e não tem nada a ver com ser comum ou habitual.</p>
+
+        <p>Vale entendê-la como a força que <strong>impede um corpo de penetrar no outro</strong>. Sem ela, o livro afundaria na mesa e você atravessaria o chão. O mecanismo é o mesmo de uma mola muito rígida: as superfícies se deformam de leve sob a pressão e reagem empurrando de volta, tanto quanto for preciso para que a penetração não aconteça.</p>
+
+        <p>"Tanto quanto for preciso" é a chave. A normal <strong>não tem fórmula própria</strong>: seu valor sai da condição de que não há aceleração na direção perpendicular ao contato. Em cada situação, você a calcula, não a consulta.</p>
+
+        <figure class="fbd-figure">
+          <svg class="fig" data-avulso="forcas/1-normal-se-ajusta" viewBox="0 0 720 260" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Três painéis com o mesmo bloco de 5 quilogramas sobre uma mesa. No primeiro, apenas o bloco, e a normal vale 50 newtons. No segundo, um livro de 2 quilogramas em cima do bloco, e a normal vale 70 newtons. No terceiro, um fio puxa o bloco para cima com 20 newtons, e a normal vale 30 newtons.">
+            <defs>
+              <marker id="fn-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path class="fig-p-normal" d="M0,0 L10,5 L0,10 z"/>
+              </marker>
+              <marker id="fn-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path class="fig-p-peso" d="M0,0 L10,5 L0,10 z"/>
+              </marker>
+              <marker id="fn-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path class="fig-p-tracao" d="M0,0 L10,5 L0,10 z"/>
+              </marker>
+            </defs>
+
+            <!-- PAINEL A -->
+            <text class="fig-tit fig-med" x="22" y="24">SÓ O BLOCO</text>
+            <line class="fig-chao" x1="18" y1="182" x2="215" y2="182"/>
+            <rect class="fig-corpo" x="80" y="146" width="70" height="36" rx="3"/>
+            <text class="fig-t" x="97" y="170">5 kg</text>
+            <line class="fig-v-normal" x1="115" y1="144" x2="115" y2="86" marker-end="url(#fn-green)"/>
+            <text class="fig-r-normal fig-med" x="123" y="96">N = 50 N</text>
+            <line class="fig-v-peso" x1="115" y1="184" x2="115" y2="230" marker-end="url(#fn-purple)"/>
+            <text class="fig-r-peso fig-med" x="123" y="222">P = 50 N</text>
+            <text class="fig-t" x="22" y="252">N = P</text>
+
+            <line class="fig-divisor" x1="238" y1="14" x2="238" y2="246"/>
+
+            <!-- PAINEL B -->
+            <text class="fig-tit fig-med" x="258" y="24">COM UM LIVRO EM CIMA</text>
+            <line class="fig-chao" x1="254" y1="182" x2="451" y2="182"/>
+            <rect class="fig-corpo" x="316" y="146" width="70" height="36" rx="3"/>
+            <text class="fig-t" x="333" y="170">5 kg</text>
+            <rect class="fig-corpo-2" x="326" y="128" width="50" height="17" rx="2"/>
+            <text class="fig-t fig-peq" x="332" y="141">2 kg</text>
+            <line class="fig-v-normal" x1="351" y1="126" x2="351" y2="86" marker-end="url(#fn-green)"/>
+            <text class="fig-r-normal fig-med" x="359" y="96">N = 70 N</text>
+            <line class="fig-v-peso" x1="351" y1="184" x2="351" y2="230" marker-end="url(#fn-purple)"/>
+            <text class="fig-r-peso fig-med" x="359" y="222">P = 50 N</text>
+            <text class="fig-t" x="258" y="252">N &gt; P</text>
+
+            <line class="fig-divisor" x1="474" y1="14" x2="474" y2="246"/>
+
+            <!-- PAINEL C -->
+            <text class="fig-tit fig-med" x="494" y="24">PUXADO POR UM FIO</text>
+            <line class="fig-chao" x1="490" y1="182" x2="700" y2="182"/>
+            <rect class="fig-corpo" x="556" y="146" width="70" height="36" rx="3"/>
+            <text class="fig-t" x="573" y="170">5 kg</text>
+            <line class="fig-v-tracao" x1="608" y1="144" x2="608" y2="60" marker-end="url(#fn-blue)"/>
+            <text class="fig-r-tracao fig-med" x="616" y="70">T = 20 N</text>
+            <line class="fig-v-normal" x1="578" y1="144" x2="578" y2="104" marker-end="url(#fn-green)"/>
+            <text class="fig-r-normal fig-med" x="498" y="114">N = 30 N</text>
+            <line class="fig-v-peso" x1="591" y1="184" x2="591" y2="230" marker-end="url(#fn-purple)"/>
+            <text class="fig-r-peso fig-med" x="599" y="222">P = 50 N</text>
+            <text class="fig-t" x="494" y="252">N &lt; P</text>
+          </svg>
+          <figcaption><strong>O mesmo bloco, três normais diferentes.</strong> O peso é 50 N nos três painéis e não muda em nenhum deles. A normal, sim: ela assume o valor necessário para que a soma vertical seja nula. Esse é o teste decisivo contra o erro de dizer que N e P formam um par ação–reação — se formassem, teriam de mudar sempre juntas.</figcaption>
+        </figure>
+
+        <div class="analogy-grid">
+          <div class="analogy-card par">
+            <h4>✓ Os pares verdadeiros</h4>
+            <ul>
+              <li>N: a mesa empurra o livro / N′: o livro empurra a mesa.</li>
+              <li>P: a Terra atrai o livro / P′: o livro atrai a Terra.</li>
+            </ul>
+            <span class="ac-eq">corpos diferentes, mesma natureza</span>
+          </div>
+          <div class="analogy-card nopar">
+            <h4>✗ O par falso mais comum</h4>
+            <ul>
+              <li>P e N, no livro em repouso, têm mesma intensidade e sentidos opostos.</li>
+              <li>Mas agem no <em>mesmo</em> corpo e têm naturezas diferentes: uma é gravitacional, a outra é de contato.</li>
+              <li>Elas apenas se equilibram — isso é 1ª Lei, não 3ª.</li>
+            </ul>
+            <span class="ac-eq">mesmo corpo</span>
+          </div>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplo — a balança do elevador</h4>
+          <p>Uma pessoa de 60 kg está sobre uma balança dentro de um elevador. Use g = 10 m/s².</p>
+          <p class="calc-line">Elevador parado ou em MRU:  N − P = 0 → N = <strong>600 N</strong></p>
+          <p class="calc-line">Subindo com a = 2 m/s²:  N − P = m·a → N = 600 + 120 = <strong>720 N</strong></p>
+          <p class="calc-line">Descendo com a = 2 m/s²:  N − P = −m·a → N = 600 − 120 = <strong>480 N</strong></p>
+          <p>O peso é 600 N nos três casos. Quem muda é a normal, e é ela que a balança marca — daí a sensação de ficar mais leve ou mais pesado.</p>
+        </div>
+
+        <div class="highlight-box orange-hl">
+          <span class="hb-icon">⚠️</span>
+          <p><strong>N = P é caso particular, não regra.</strong> A igualdade só vale quando o apoio é horizontal, não há aceleração vertical e nenhuma outra força vertical age no corpo. Num plano inclinado a normal é menor que o peso; num elevador acelerado, maior ou menor; numa curva em rampa, outra coisa ainda. Escrever N = P por reflexo é um dos erros mais caros da dinâmica, porque contamina em seguida o cálculo do atrito, que depende de N.</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz3"></div>
+    </section>
+
+    <!-- ============ TÓPICO 4 ============ -->
+    <section class="topic" id="t4">
+      <div class="topic-header">
+        <span class="topic-num">04</span>
+        <h2>Tração — o fio que só puxa</h2>
+      </div>
+      <div class="topic-body">
+        <p>Fios, cordas e cabos esticados exercem sobre os corpos presos a eles uma força chamada <strong>tração</strong> (ou tensão). Ela aponta sempre <strong>ao longo do fio</strong>, no sentido que o afasta do corpo: um fio puxa, nunca empurra. Se a situação exigir empurrar, o fio simplesmente amolece e a tração cai a zero.</p>
+
+        <div class="concept-card">
+          <h4>As três propriedades que definem a tração</h4>
+          <ul>
+            <li><strong>Direção:</strong> a do próprio fio, sempre. Num fio inclinado, a tração é inclinada.</li>
+            <li><strong>Sentido:</strong> puxando o corpo em direção ao fio. Nunca de empurrão.</li>
+            <li><strong>Intensidade:</strong> não tem fórmula própria; sai da 2ª Lei aplicada aos corpos ligados.</li>
+          </ul>
+        </div>
+
+        <p>Os problemas escolares assumem o <strong>fio ideal</strong>: inextensível e de massa desprezível. Nesse caso a tração é a <em>mesma nos dois extremos</em>, e a polia ideal (sem massa e sem atrito no eixo) apenas muda a direção do fio, sem alterar o valor da tração. As duas idealizações não são detalhe menor: é delas que vem a permissão para escrever um único T em todo o fio.</p>
+
+        <div class="example-box">
+          <h4>Exemplo — corpo pendurado, em repouso</h4>
+          <p>Um lustre de 3 kg pende do teto por um fio. Use g = 10 m/s².</p>
+          <p class="calc-line">T − P = 0  →  T = P = 3 × 10 = <strong>30 N</strong></p>
+          <p>Cabe perceber que T e P agem no <em>mesmo</em> corpo (o lustre) e apenas se equilibram: elas não são um par ação–reação, pela mesma razão que N e P não são.</p>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplo — dois blocos ligados por um fio</h4>
+          <p>Os blocos A (2 kg) e B (3 kg) estão ligados por um fio ideal sobre uma mesa sem atrito. Uma força horizontal de 20 N puxa o bloco B.</p>
+          <p class="calc-line">Conjunto:  a = F / (m<sub>A</sub> + m<sub>B</sub>) = 20 / 5 = <strong>4 m/s²</strong></p>
+          <p class="calc-line">Só no bloco A:  T = m<sub>A</sub> · a = 2 × 4 = <strong>8 N</strong></p>
+          <p>Note o roteiro: a aceleração sai do conjunto, e a tração sai de um dos corpos isolado. Tentar obter as duas de uma vez, no mesmo diagrama, é a fonte usual de confusão.</p>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🪢</span>
+          <p>Todo fio real tem um <strong>valor máximo</strong> de tração que suporta antes de arrebentar. É por isso que elevadores têm limite de passageiros, gruas têm carga máxima e cordas de escalada trazem a resistência impressa. Nos exercícios o fio é ideal e nunca arrebenta; no mundo, o limite é o dado que importa.</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz4"></div>
+    </section>
+
+    <!-- ============ TÓPICO 5 ============ -->
+    <section class="topic" id="t5">
+      <div class="topic-header">
+        <span class="topic-num">05</span>
+        <h2>Atrito — estático e cinético</h2>
+      </div>
+      <div class="topic-body">
+        <p>O <strong>atrito</strong> é uma força de contato exercida entre duas superfícies, na direção <strong>paralela</strong> à região de contato, e sempre se opondo ao escorregamento ou à tendência de escorregamento. Ele nasce da rugosidade microscópica das superfícies e das ligações que se formam entre elas nos pontos onde de fato se tocam.</p>
+
+        <p>A distinção que organiza todo o assunto é entre dois regimes. Com o corpo <strong>parado</strong>, atua o atrito <strong>estático</strong>, que impede o início do movimento. Com o corpo <strong>deslizando</strong>, atua o atrito <strong>cinético</strong>, que se opõe ao movimento em curso. Eles se comportam de maneiras bem diferentes, e trocá-los é o erro clássico do tópico.</p>
+
+        <div class="formula-box">
+          <span class="formula-label">Atrito estático — corpo parado</span>
+          <span class="formula-tex">F<sub>at</sub> ≤ μ<sub>e</sub> · N</span>
+          <span class="formula-unit">O produto μ<sub>e</sub>·N é o valor <strong>máximo</strong> que o atrito pode atingir. Abaixo desse limite, o atrito vale exatamente o necessário para impedir o movimento — nem mais, nem menos.</span>
+        </div>
+
+        <div class="formula-box">
+          <span class="formula-label">Atrito cinético — corpo deslizando</span>
+          <span class="formula-tex">F<sub>at</sub> = μ<sub>c</sub> · N</span>
+          <span class="formula-unit">Aqui o valor é <strong>fixo</strong>, e não depende da força aplicada nem da velocidade. Em geral μ<sub>c</sub> &lt; μ<sub>e</sub>: custa mais começar a arrastar do que continuar.</span>
+        </div>
+
+        <figure class="fbd-figure">
+          <svg class="fig" data-avulso="forcas/2-atrito-estatico-cinetico" viewBox="0 0 720 320" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico da força de atrito em função da força aplicada. Enquanto o corpo está parado, o atrito cresce junto com a força aplicada até o valor máximo do atrito estático. No instante em que o corpo passa a deslizar, o atrito cai para o valor do atrito cinético e permanece constante.">
+            <defs>
+              <marker id="fa-axis" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path class="fig-eixo-p" d="M0,0 L10,5 L0,10 z"/>
+              </marker>
+            </defs>
+
+            <!-- eixos -->
+            <line class="fig-eixo" x1="80" y1="270" x2="690" y2="270" marker-end="url(#fa-axis)"/>
+            <line class="fig-eixo" x1="80" y1="270" x2="80" y2="40" marker-end="url(#fa-axis)"/>
+            <text class="fig-m" x="600" y="295">força aplicada F</text>
+            <text class="fig-m" x="26" y="36">atrito</text>
+
+            <!-- guias -->
+            <line class="fig-guia" x1="80" y1="105" x2="270" y2="105"/>
+            <line class="fig-guia" x1="80" y1="150" x2="660" y2="150"/>
+            <line class="fig-guia" x1="270" y1="270" x2="270" y2="105"/>
+
+            <!-- regiões -->
+            <rect class="fig-zona-ok" x="80" y="40" width="190" height="230"/>
+            <rect class="fig-zona-cin" x="270" y="40" width="390" height="230"/>
+            <text class="fig-r-ok fig-med" x="92" y="60">CORPO PARADO</text>
+            <text class="fig-t-rot" x="92" y="76">atrito estático</text>
+            <text class="fig-r-cin fig-med" x="284" y="60">CORPO DESLIZANDO</text>
+            <text class="fig-t-rot" x="284" y="76">atrito cinético</text>
+
+            <!-- curva -->
+            <line class="fig-curva-est" x1="80" y1="270" x2="270" y2="105"/>
+            <line class="fig-curva-sal" x1="270" y1="105" x2="270" y2="150"/>
+            <line class="fig-curva-cin" x1="270" y1="150" x2="660" y2="150"/>
+            <circle class="fig-no-est" cx="270" cy="105" r="5"/>
+            <circle class="fig-no-cin" cx="270" cy="150" r="5"/>
+
+            <!-- rótulos dos níveis -->
+            <text class="fig-r-ok" x="292" y="100">F</text>
+            <text class="fig-r-ok fig-peq" x="300" y="103">at,máx</text>
+            <text class="fig-r-ok" x="341" y="100">= μe · N</text>
+            <text class="fig-r-cin" x="560" y="141">μc · N</text>
+            <text class="fig-m-peq" x="205" y="292">limiar</text>
+
+            <!-- anotação da reta a 45 graus -->
+            <text class="fig-t fig-nota-ok" x="104" y="215">F</text>
+            <text class="fig-t fig-nota-ok fig-peq" x="112" y="218">at</text>
+            <text class="fig-t fig-nota-ok" x="124" y="215">= F</text>
+          </svg>
+          <figcaption><strong>O atrito estático não tem valor fixo.</strong> Enquanto o corpo está parado, ele iguala a força aplicada, ponto a ponto — é por isso que o trecho verde é uma reta a 45°. Só no limiar, quando F chega a μ<sub>e</sub>·N, o corpo começa a deslizar; nesse instante o atrito <em>cai</em> para μ<sub>c</sub>·N e ali permanece, por maior que fique a força aplicada.</figcaption>
+        </figure>
+
+        <div class="example-box">
+          <h4>Exemplo — bloco de 1 kg, μ<sub>e</sub> = 0,5</h4>
+          <p class="calc-line">N = P = 10 N  →  F<sub>at,máx</sub> = μ<sub>e</sub> · N = 0,5 × 10 = <strong>5 N</strong></p>
+        </div>
+
+        <table class="units-table" aria-label="O que acontece com o bloco conforme a força aplicada">
+          <thead>
+            <tr><th>Força aplicada</th><th>Força de atrito</th><th>O que acontece</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>F = 2 N</td><td class="val">2 N</td><td>Bloco parado — o atrito iguala a força aplicada</td></tr>
+            <tr><td>F = 4 N</td><td class="val">4 N</td><td>Bloco parado — ainda abaixo do máximo (5 N)</td></tr>
+            <tr><td>F = 5 N</td><td class="val">5 N</td><td>Limiar — no ponto de começar a deslizar</td></tr>
+            <tr><td>F = 6 N</td><td class="val">passa a cinético</td><td>F supera o máximo — o bloco entra em movimento</td></tr>
+          </tbody>
+        </table>
+
+        <table class="units-table" aria-label="Coeficientes de atrito típicos">
+          <thead>
+            <tr><th>Par de superfícies</th><th>μ<sub>e</sub> (estático)</th><th>μ<sub>c</sub> (cinético)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Borracha — asfalto seco</td><td class="val">≈ 1,0</td><td class="val">≈ 0,8</td></tr>
+            <tr><td>Aço — aço</td><td class="val">0,74</td><td class="val">0,57</td></tr>
+            <tr><td>Madeira — madeira</td><td class="val">0,42</td><td class="val">0,30</td></tr>
+            <tr><td>Gelo — gelo</td><td class="val">0,10</td><td class="val">0,03</td></tr>
+          </tbody>
+        </table>
+
+        <div class="concept-card">
+          <h4>O que afeta o atrito, e o que não afeta</h4>
+          <ul>
+            <li><strong>Afeta:</strong> o par de materiais em contato, através do coeficiente μ.</li>
+            <li><strong>Afeta:</strong> a força normal — quanto mais apertadas as superfícies, maior o atrito.</li>
+            <li><strong>Não afeta (no modelo escolar):</strong> a área de contato aparente. Um tijolo deitado ou de pé sofre o mesmo atrito.</li>
+            <li><strong>Não afeta (no modelo escolar):</strong> a velocidade, no caso do atrito cinético.</li>
+            <li>O coeficiente μ é <strong>adimensional</strong>: é a razão entre duas forças.</li>
+          </ul>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🚗</span>
+          <p><strong>Vilão ou herói?</strong> O atrito desperdiça energia nos motores e desgasta as peças, e nisso é um problema a combater. Mas é ele que permite caminhar, frear, segurar um copo, dar um nó e manter um prego na parede. Uma freada de emergência ilustra bem a diferença entre os dois regimes: com as rodas girando, o pneu não desliza sobre o asfalto e vale o atrito estático, maior; travando as rodas, o pneu passa a deslizar e vale o cinético, menor. É exatamente por isso que o freio ABS impede o travamento — para manter o atrito no regime mais forte.</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz5"></div>
+    </section>
+
+    <!-- ============ TÓPICO 6 ============ -->
+    <section class="topic" id="t6">
+      <div class="topic-header">
+        <span class="topic-num">06</span>
+        <h2>Força resultante</h2>
+      </div>
+      <div class="topic-body">
+        <p>Nenhuma das quatro forças age sozinha. O que determina o movimento de um corpo, pela 2ª Lei, é a <strong>força resultante</strong>: a soma vetorial de todas as forças que agem <em>nele</em>. Usar uma força isolada no lugar da resultante é o erro mais frequente de toda a dinâmica.</p>
+
+        <div class="formula-box">
+          <span class="formula-label">Somando forças</span>
+          <span class="formula-tex">mesma direção e sentido: F<sub>res</sub> = F₁ + F₂  ·  sentidos opostos: F<sub>res</sub> = F₁ − F₂</span>
+          <span class="formula-unit">Perpendiculares: F<sub>res</sub> = √(F₁² + F₂²). Na prática, decompõe-se em eixos e aplica-se F<sub>res,x</sub> = m·a<sub>x</sub> e F<sub>res,y</sub> = m·a<sub>y</sub> separadamente.</span>
+        </div>
+
+        <p>Como a soma é vetorial, o módulo da resultante depende do <strong>ângulo</strong> entre as forças. Duas forças de módulos F₁ e F₂ podem produzir qualquer resultante dentro de uma faixa bem definida: o máximo quando apontam no mesmo sentido, o mínimo quando se opõem.</p>
+
+        <div class="formula-box large">
+          <span class="formula-label">Faixa possível para a resultante de duas forças</span>
+          <span class="formula-tex big">|F₁ − F₂| ≤ F<sub>res</sub> ≤ F₁ + F₂</span>
+          <span class="formula-unit">Vale para quaisquer duas forças, seja qual for o ângulo entre elas.</span>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplo — o erro mais comum</h4>
+          <p>Um carrinho de 25 kg é empurrado com 60 N. O atrito com o piso vale 10 N.</p>
+          <p class="calc-line">F<sub>res</sub> = 60 − 10 = <strong>50 N</strong></p>
+          <p class="calc-line">a = F<sub>res</sub> / m = 50 / 25 = <strong>2 m/s²</strong></p>
+          <p>Usar os 60 N direto daria 2,4 m/s² — errado. A força aplicada não é a resultante.</p>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🔵</span>
+          <p><strong>Equilíbrio é ter força resultante nula</strong> — e vem em duas formas. No <em>equilíbrio estático</em>, o corpo está em repouso. No <em>equilíbrio dinâmico</em>, ele se move em linha reta com velocidade constante. Nos dois casos a = 0, e a dinâmica os trata do mesmo jeito. "Estar em equilíbrio" não é o mesmo que "estar parado".</p>
+        </div>
+
+        <div class="example-box">
+          <h4>Dois equilíbrios, uma só ideia</h4>
+          <p><strong>Lustre pendurado no teto:</strong> a tração do fio para cima equilibra exatamente o peso para baixo. Resultante nula, em repouso.</p>
+          <p><strong>Paraquedista na velocidade terminal:</strong> a resistência do ar cresce com a velocidade até igualar o peso. Resultante nula — mas descendo com velocidade constante. Note que o peso não diminuiu; foi a resistência do ar que aumentou.</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz6"></div>
+    </section>
+
+    <!-- ============ TÓPICO 7 ============ -->
+    <section class="topic" id="t7">
+      <div class="topic-header">
+        <span class="topic-num">07</span>
+        <h2>Diagrama de corpo livre</h2>
+      </div>
+      <div class="topic-body">
+        <p>O <strong>diagrama de corpo livre</strong> (DCL) é o desenho em que um corpo é isolado de tudo o que o cerca e representado sozinho, com as setas de todas as forças que agem sobre ele. É uma ferramenta modesta em aparência e decisiva na prática: a maioria dos erros de dinâmica não se resolve na conta, e sim no desenho.</p>
+
+        <div class="concept-card">
+          <h4>Diagrama de corpo livre em 5 passos</h4>
+          <ul>
+            <li><strong>1.</strong> Escolha <em>um</em> corpo e isole-o mentalmente — represente-o por um ponto ou um retângulo.</li>
+            <li><strong>2.</strong> Desenhe só as forças que agem <strong>nele</strong>. As que ele exerce em outros corpos ficam de fora.</li>
+            <li><strong>3.</strong> Nomeie cada seta dizendo quem a exerce (P, N, F<sub>at</sub>, T…). Sem agente, a força não entra.</li>
+            <li><strong>4.</strong> Escolha os eixos — em geral um deles na direção do movimento.</li>
+            <li><strong>5.</strong> Some as forças eixo por eixo e aplique F<sub>res</sub> = m·a em cada um.</li>
+          </ul>
+        </div>
+
+        <figure class="fbd-figure">
+          <svg class="fig" data-avulso="forcas/3-diagrama-corpo-livre" viewBox="0 0 720 270" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dois diagramas de corpo livre. À esquerda, bloco em superfície horizontal com força aplicada, atrito, normal e peso, onde a normal é igual ao peso. À direita, bloco em rampa, onde a normal é menor que o peso.">
+            <defs>
+              <marker id="dcl-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path class="fig-p-aplicada" d="M0,0 L10,5 L0,10 z"/>
+              </marker>
+              <marker id="dcl-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path class="fig-p-atrito" d="M0,0 L10,5 L0,10 z"/>
+              </marker>
+              <marker id="dcl-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path class="fig-p-normal" d="M0,0 L10,5 L0,10 z"/>
+              </marker>
+              <marker id="dcl-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path class="fig-p-peso" d="M0,0 L10,5 L0,10 z"/>
+              </marker>
+            </defs>
+
+            <!-- PAINEL A -->
+            <text class="fig-tit" x="26" y="24">SUPERFÍCIE HORIZONTAL</text>
+            <line class="fig-chao" x1="30" y1="170" x2="330" y2="170"/>
+            <rect class="fig-corpo" x="140" y="130" width="70" height="40" rx="3"/>
+            <line class="fig-v-aplicada" x1="212" y1="150" x2="300" y2="150" marker-end="url(#dcl-red)"/>
+            <text class="fig-r-aplicada" x="256" y="142">F</text>
+            <line class="fig-v-atrito" x1="138" y1="150" x2="66" y2="150" marker-end="url(#dcl-orange)"/>
+            <text class="fig-r-atrito" x="88" y="142">Fat</text>
+            <line class="fig-v-normal" x1="175" y1="128" x2="175" y2="58" marker-end="url(#dcl-green)"/>
+            <text class="fig-r-normal" x="183" y="68">N</text>
+            <line class="fig-v-peso" x1="175" y1="172" x2="175" y2="242" marker-end="url(#dcl-purple)"/>
+            <text class="fig-r-peso" x="183" y="230">P</text>
+            <text class="fig-t-nota" x="26" y="262">Aqui, e só aqui, N = P.</text>
+
+            <line class="fig-divisor" x1="358" y1="15" x2="358" y2="255"/>
+
+            <!-- PAINEL B: rampa -->
+            <text class="fig-tit-alerta" x="382" y="24">PLANO INCLINADO</text>
+            <polygon class="fig-rampa" points="400,225 690,225 690,105"/>
+            <polygon class="fig-corpo" points="550,131 563,160 526,176 513,146"/>
+            <line class="fig-v-normal" x1="538" y1="153" x2="515" y2="98" marker-end="url(#dcl-green)"/>
+            <text class="fig-r-normal" x="490" y="94">N</text>
+            <line class="fig-v-peso" x1="538" y1="153" x2="538" y2="238" marker-end="url(#dcl-purple)"/>
+            <text class="fig-r-peso" x="546" y="232">P</text>
+            <text class="fig-t-nota fig-nota-alerta" x="382" y="262">Aqui N ≠ P, e não são um par.</text>
+          </svg>
+          <figcaption><strong>Convenção de cores usada nos diagramas deste estudo:</strong> <span class="leg-aplicada">força aplicada / resultante</span>, <span class="leg-normal">normal</span>, <span class="leg-peso">peso</span>, <span class="leg-atrito">atrito</span>. Note o contraste entre os dois painéis: a normal só coincide com o peso em situações particulares. Na rampa, ela é perpendicular à superfície inclinada e tem intensidade menor que o peso.</figcaption>
+        </figure>
+
+        <div class="example-box">
+          <h4>Exemplo com DCL</h4>
+          <p>Caixa de 10 kg empurrada com 40 N na horizontal; atrito de 10 N. Use g = 10 m/s².</p>
+          <p class="calc-line">Eixo vertical: N − P = 0 → N = 100 N (não há aceleração vertical)</p>
+          <p class="calc-line">Eixo horizontal: F<sub>res</sub> = 40 − 10 = <strong>30 N</strong></p>
+          <p class="calc-line">a = 30 / 10 = <strong>3 m/s²</strong></p>
+        </div>
+
+        <div class="highlight-box orange-hl">
+          <span class="hb-icon">⚠️</span>
+          <p><strong>O erro que arruína o diagrama:</strong> desenhar, no corpo escolhido, a força que <em>ele</em> exerce em outro corpo. A parceira de cada força, pela 3ª Lei, está sempre no outro corpo, e por isso fica fora deste diagrama. Quem mistura as duas obtém sempre resultante nula, e conclui que nada poderia acelerar. Se uma seta do seu desenho não consegue completar a frase "alguma coisa faz esta força <em>neste</em> corpo", ela não deveria estar ali.</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz7"></div>
+    </section>
+
+    <!-- ============ TÓPICO 8 ============ -->
+    <section class="topic" id="t8">
+      <div class="topic-header">
+        <span class="topic-num">08</span>
+        <h2>Aplicações</h2>
+      </div>
+      <div class="topic-body">
+        <p>As quatro forças e o diagrama estão apresentados. Nesta seção eles vão ao trabalho em três situações clássicas de vestibular, escolhidas menos pela conta e mais pela concepção errada que cada uma delas desmonta.</p>
+
+        <div class="example-box">
+          <h4>1. Bola lançada verticalmente para cima (UFRGS e similares)</h4>
+          <p>Um menino lança uma bola para cima. Desprezando a resistência do ar, que forças atuam sobre a bola enquanto ela sobe, no ponto mais alto e enquanto desce?</p>
+          <p>Nos três momentos, a <strong>única</strong> força é o peso, apontando para baixo. Não existe uma "força do lançamento" viajando com a bola: a mão deixou de tocá-la, e força exige um agente em contato ou um campo. No ponto mais alto a velocidade é nula, mas a força e a aceleração continuam sendo as da gravidade.</p>
+          <p class="calc-line">Subindo · no topo · descendo:  F<sub>res</sub> = P = m·g, sempre para baixo</p>
+        </div>
+
+        <div class="example-box">
+          <h4>2. A laranja de Monteiro Lobato (UFSC)</h4>
+          <p>Em <em>Viagem ao Céu</em>, Monteiro Lobato escreve que uma laranja lançada para cima sobe enquanto a força que a lançou é maior que seu peso, e cai quando o peso se torna maior.</p>
+          <p>A descrição é a da teoria medieval do ímpeto, e está errada por dois motivos. Primeiro: depois que a laranja deixa a mão, <strong>só o peso atua</strong> sobre ela; a tal força do lançamento não existe. Segundo: como a = g não depende da massa, a aceleração da laranja seria a mesma se ela fosse uma melancia. Ela sobe porque já tem velocidade para cima, e o peso apenas a desacelera até invertê-la.</p>
+        </div>
+
+        <div class="example-box">
+          <h4>3. Três forças em equilíbrio (UFSC)</h4>
+          <p>Duas forças de 8 N e 5 N atuam num corpo, que é mantido em repouso por uma terceira força. Que valor essa terceira força <em>não</em> pode ter: 12 N, 8 N, 14 N, 3 N ou 4 N?</p>
+          <p class="calc-line">Resultante de F₁ e F₂:  |8 − 5| ≤ F<sub>res</sub> ≤ 8 + 5  →  3 N ≤ F<sub>res</sub> ≤ 13 N</p>
+          <p>Como o corpo está em repouso, a terceira força precisa anular essa resultante, e portanto seu módulo também está entre 3 N e 13 N. O valor impossível é <strong>14 N</strong>.</p>
+        </div>
+
+        <div class="concept-card">
+          <h4>No cotidiano</h4>
+          <ul>
+            <li><strong>Freio ABS:</strong> impede o travamento das rodas para manter o pneu no regime de atrito estático, que é o mais forte.</li>
+            <li><strong>Pneu de borracha:</strong> escolhido pelo alto coeficiente de atrito com o asfalto — perto de 1,0 no seco, bem menor no molhado.</li>
+            <li><strong>Elevador:</strong> a sensação de peso muda porque a normal muda; o peso permanece o mesmo.</li>
+            <li><strong>Carga máxima de uma grua:</strong> é o limite de tração que o cabo suporta antes de romper.</li>
+            <li><strong>Mochila pesada nas costas:</strong> as alças fazem tração para cima; sem elas, só o peso, e a mochila cai.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz8"></div>
+    </section>
+
+    <!-- ============ TÓPICO 9 ============ -->
+    <section class="topic" id="t9">
+      <div class="topic-header">
+        <span class="topic-num">09</span>
+        <h2>Síntese: mapa das quatro forças</h2>
+      </div>
+      <div class="topic-body">
+        <table class="units-table" aria-label="Síntese das quatro forças da mecânica escolar">
+          <thead>
+            <tr><th>Força</th><th>Tipo</th><th>Direção</th><th>Como se calcula</th><th>Erro comum</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="val">Peso</td>
+              <td>campo</td>
+              <td>vertical, para baixo</td>
+              <td>P = m·g, sempre</td>
+              <td>Confundir peso com massa</td>
+            </tr>
+            <tr>
+              <td class="val">Normal</td>
+              <td>contato</td>
+              <td>perpendicular à superfície</td>
+              <td>pela condição de resultante nula na perpendicular</td>
+              <td>Escrever N = P por reflexo</td>
+            </tr>
+            <tr>
+              <td class="val">Tração</td>
+              <td>contato</td>
+              <td>ao longo do fio, puxando</td>
+              <td>pela 2ª Lei aplicada aos corpos ligados</td>
+              <td>Fazer o fio empurrar</td>
+            </tr>
+            <tr>
+              <td class="val">Atrito</td>
+              <td>contato</td>
+              <td>paralela à superfície</td>
+              <td>F<sub>at</sub> ≤ μ<sub>e</sub>·N parado; F<sub>at</sub> = μ<sub>c</sub>·N deslizando</td>
+              <td>Usar μ<sub>e</sub>·N num corpo que já desliza</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="concept-card">
+          <h4>Roteiro para qualquer problema de dinâmica</h4>
+          <ul>
+            <li><strong>1.</strong> Escolha o referencial (de preferência inercial: o chão).</li>
+            <li><strong>2.</strong> Escolha o corpo e faça o diagrama de corpo livre.</li>
+            <li><strong>3.</strong> Liste as forças nomeando quem exerce cada uma.</li>
+            <li><strong>4.</strong> Escolha os eixos, um deles na direção do movimento.</li>
+            <li><strong>5.</strong> Some as forças em cada eixo e aplique F<sub>res</sub> = m·a.</li>
+            <li><strong>6.</strong> Confira o sinal e a ordem de grandeza do resultado — faz sentido fisicamente?</li>
+          </ul>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🧭</span>
+          <p>Guarde as duas ideias que sustentam tudo. A primeira: <strong>toda força tem um agente</strong>, e se você não consegue dizer quem a exerce, ela não existe. A segunda: <strong>só a resultante move o corpo</strong>, e para chegar a ela é preciso primeiro isolar o corpo e listar o que age nele. Quando um problema parecer difícil, refaça o diagrama antes de refazer a conta.</p>
+        </div>
+
+        <div class="highlight-box green-hl">
+          <span class="hb-icon">📚</span>
+          <p><strong>Para continuar.</strong> As leis que dizem o que essas forças fazem estão no estudo dirigido <a href="../ed_leis_newton/index.html">As Três Leis de Newton</a>. Os textos completos de cada força, com calculadoras e simuladores, ficam no hub de <a href="../../../../conteudos/dinamica/index.html">Dinâmica</a>: <a href="../../../../conteudos/dinamica/gravitacao-peso.html">peso</a>, <a href="../../../../conteudos/dinamica/forca-normal.html">normal</a>, <a href="../../../../conteudos/dinamica/tensao.html">tração</a>, <a href="../../../../conteudos/dinamica/atrito.html">atrito</a> e <a href="../../../../conteudos/dinamica/plano-inclinado.html">plano inclinado</a>.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PLACAR FINAL -->
+  <section class="score-section">
+    <div class="score-inner">
+      <h2>Seu Desempenho</h2>
+      <div class="score-display">
+        <span id="score-num">0</span>
+        <span class="score-sep">/</span>
+        <span id="score-total">0</span>
+      </div>
+      <p id="score-msg">Responda as questões para ver seu placar!</p>
+      <button class="reset-btn" id="resetAll">Reiniciar tudo</button>
+
+      <div class="report-name">
+        <label for="studentName" class="report-hint">Seu nome para o relatório (opcional):</label>
+        <input type="text" id="studentName" class="name-input" placeholder="Ex: João Silva" maxlength="60" autocomplete="off" />
+      </div>
+      <div class="report-actions">
+        <p class="report-hint">Salve ou compartilhe suas respostas:</p>
+        <div class="report-btns">
+          <button class="report-btn" id="downloadReportBtn">&#8595; Baixar .txt</button>
+          <button class="report-btn" id="copyReportBtn">&#128203; Copiar</button>
+          <button class="report-btn" id="emailReportBtn">&#9993; Enviar por e-mail</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Física · Ensino Médio · Forças: Peso, Normal, Tração e Atrito</p>
+  </footer>
+
+  <script src="quiz.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

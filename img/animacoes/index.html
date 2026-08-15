@@ -48,6 +48,16 @@
     .anim-info p { margin: 0; font-size: .88rem; line-height: 1.55; color: var(--text-muted); }
     .anim-info p strong { color: var(--texto); }
 
+    /* legenda de cores dos diagramas de força, no texto do card */
+    .leg-peso     { color: #9333ea; font-weight: 600; }
+    .leg-normal   { color: #16a34a; font-weight: 600; }
+    .leg-atrito   { color: #ea580c; font-weight: 600; }
+    .leg-aplicada { color: #ef4444; font-weight: 600; }
+    [data-theme="dark"] .leg-peso     { color: #c084fc; }
+    [data-theme="dark"] .leg-normal   { color: #4ade80; }
+    [data-theme="dark"] .leg-atrito   { color: #fb923c; }
+    [data-theme="dark"] .leg-aplicada { color: #f87171; }
+
     .anim-acoes { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
     .anim-acoes a, .anim-acoes button {
       font-family: var(--font-mono); font-size: .74rem; letter-spacing: .02em;
@@ -706,6 +716,146 @@
             <div class="anim-acoes">
               <a href="/img/animacoes/coriolis/5-arremesso-no-equador.svg" target="_blank" rel="noopener">abrir sozinha ↗</a>
               <button type="button" data-copiar="/img/animacoes/coriolis/5-arremesso-no-equador.svg">copiar o &lt;img&gt;</button>
+            </div>
+          </figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+    <section class="anim-secao">
+      <h2>As quatro forças · peso, normal, tração e atrito</h2>
+      <p class="anim-nota">
+        Os três quadros cobrem o que costuma dar errado nos problemas de dinâmica: achar que a normal é sempre
+        igual ao peso, tratar o atrito estático como se tivesse valor fixo, e desenhar num corpo a força que ele
+        exerce em outro. Usados no estudo dirigido
+        <a href="/atividades/estudos_dirigidos/dinamica/ed_forcas/">Forças: peso, normal, tração e atrito</a>
+        e na apresentação
+        <a href="/disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/">Forças</a>.
+      </p>
+
+      <div class="anim-grade">
+
+        <figure class="anim-card">
+          <img src="/img/animacoes/forcas/1-normal-se-ajusta.svg"
+               alt="Três painéis com o mesmo bloco de 5 kg sobre uma mesa: sozinho a normal vale 50 N, com um livro de 2 kg em cima vale 70 N, e puxado por um fio com 20 N vale 30 N; o peso é 50 N nos três">
+          <figcaption class="anim-info">
+            <p><strong>1. A normal se ajusta.</strong> O peso é o mesmo nos três painéis; a normal, não. Serve para desmontar o reflexo de escrever N = P.</p>
+            <div class="anim-acoes">
+              <a href="/img/animacoes/forcas/1-normal-se-ajusta.svg" target="_blank" rel="noopener">abrir sozinha ↗</a>
+              <button type="button" data-copiar="/img/animacoes/forcas/1-normal-se-ajusta.svg">copiar o &lt;img&gt;</button>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="anim-card">
+          <img src="/img/animacoes/forcas/2-atrito-estatico-cinetico.svg"
+               alt="Gráfico da força de atrito em função da força aplicada: enquanto o corpo está parado o atrito cresce junto com a força aplicada numa reta a 45 graus, até o máximo do atrito estático; no limiar o corpo desliza e o atrito cai para o valor cinético, que permanece constante">
+          <figcaption class="anim-info">
+            <p><strong>2. Estático × cinético.</strong> O trecho verde é uma reta a 45°: o atrito estático vale o necessário, não o máximo. No limiar ele <em>cai</em>.</p>
+            <div class="anim-acoes">
+              <a href="/img/animacoes/forcas/2-atrito-estatico-cinetico.svg" target="_blank" rel="noopener">abrir sozinha ↗</a>
+              <button type="button" data-copiar="/img/animacoes/forcas/2-atrito-estatico-cinetico.svg">copiar o &lt;img&gt;</button>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="anim-card">
+          <img src="/img/animacoes/forcas/3-diagrama-corpo-livre.svg"
+               alt="Dois diagramas de corpo livre lado a lado: um bloco em superfície horizontal com força aplicada, atrito, normal e peso, onde a normal é igual ao peso; e um bloco em rampa, com a normal perpendicular à superfície inclinada e menor que o peso">
+          <figcaption class="anim-info">
+            <p><strong>3. Diagrama de corpo livre.</strong> Fixa a convenção de cores: <span class="leg-aplicada">aplicada</span>, <span class="leg-normal">normal</span>, <span class="leg-peso">peso</span>, <span class="leg-atrito">atrito</span>.</p>
+            <div class="anim-acoes">
+              <a href="/img/animacoes/forcas/3-diagrama-corpo-livre.svg" target="_blank" rel="noopener">abrir sozinha ↗</a>
+              <button type="button" data-copiar="/img/animacoes/forcas/3-diagrama-corpo-livre.svg">copiar o &lt;img&gt;</button>
+            </div>
+          </figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+    <section class="anim-secao">
+      <h2>Leis de Newton · referencial e pares de interação</h2>
+      <p class="anim-nota">
+        Duas figuras estáticas, cada uma montada como um par de painéis que se contrapõem. Usadas no estudo dirigido
+        <a href="/atividades/estudos_dirigidos/dinamica/ed_leis_newton/">As três leis de Newton</a>.
+        Para o ônibus em movimento, com o passageiro escorregando enquanto o veículo freia, veja a versão animada
+        na seção de referenciais não inerciais acima.
+      </p>
+
+      <div class="anim-grade">
+
+        <figure class="anim-card">
+          <img src="/img/animacoes/leis-de-newton/1-onibus-dois-referenciais.svg"
+               alt="A mesma cena em dois painéis, com um ônibus urbano em corte visto de lado, com bancos, janelas e a barra do teto: o ônibus arranca e a sacola pendurada na barra se inclina para trás; visto da calçada, a seta mostra a aceleração do ônibus e a sacola apenas mantém a velocidade anterior; visto de dentro, aparece uma seta pontilhada rotulada força que não existe">
+          <figcaption class="anim-info">
+            <p><strong>1. Dois referenciais.</strong> A sacola está igualmente inclinada nos dois painéis: o que muda não é o que acontece, é a descrição.</p>
+            <div class="anim-acoes">
+              <a href="/img/animacoes/leis-de-newton/1-onibus-dois-referenciais.svg" target="_blank" rel="noopener">abrir sozinha ↗</a>
+              <button type="button" data-copiar="/img/animacoes/leis-de-newton/1-onibus-dois-referenciais.svg">copiar o &lt;img&gt;</button>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="anim-card">
+          <img src="/img/animacoes/leis-de-newton/2-pares-acao-reacao.svg"
+               alt="Diagrama do livro sobre a mesa: à esquerda, peso e normal agem no mesmo corpo e por isso não formam par ação e reação; à direita, os dois pares verdadeiros, o de contato entre livro e mesa e o gravitacional entre livro e Terra">
+          <figcaption class="anim-info">
+            <p><strong>2. Pares ação–reação.</strong> O par falso mais comum do Ensino Médio, ao lado dos dois pares verdadeiros que ele esconde.</p>
+            <div class="anim-acoes">
+              <a href="/img/animacoes/leis-de-newton/2-pares-acao-reacao.svg" target="_blank" rel="noopener">abrir sozinha ↗</a>
+              <button type="button" data-copiar="/img/animacoes/leis-de-newton/2-pares-acao-reacao.svg">copiar o &lt;img&gt;</button>
+            </div>
+          </figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+    <section class="anim-secao">
+      <h2>Trabalho e energia · o ângulo e o referencial</h2>
+      <p class="anim-nota">
+        As duas primeiras tratam do cosseno que quase sempre é esquecido no cálculo do trabalho; a terceira mostra
+        que a escolha do h = 0 muda os valores de Epg e não muda a variação. Usadas nos estudos dirigidos
+        <a href="/atividades/estudos_dirigidos/trabalho-energia/ed_trabalho_energia/">Trabalho e energia cinética</a>
+        e <a href="/atividades/estudos_dirigidos/trabalho-energia/ed_energia_potencial/">Energia potencial e conservação</a>.
+      </p>
+
+      <div class="anim-grade">
+
+        <figure class="anim-card">
+          <img src="/img/animacoes/trabalho-energia/1-tres-casos-de-trabalho.svg"
+               alt="Três painéis com o mesmo bloco sendo deslocado: com a força inclinada o trabalho é F vezes d vezes o cosseno do ângulo, com a força paralela o cosseno vale 1 e o trabalho é máximo, e com a força perpendicular o cosseno vale zero e o trabalho é nulo">
+          <figcaption class="anim-info">
+            <p><strong>1. Três casos de trabalho.</strong> O mesmo par de força e deslocamento em três ângulos: positivo, máximo e nulo.</p>
+            <div class="anim-acoes">
+              <a href="/img/animacoes/trabalho-energia/1-tres-casos-de-trabalho.svg" target="_blank" rel="noopener">abrir sozinha ↗</a>
+              <button type="button" data-copiar="/img/animacoes/trabalho-energia/1-tres-casos-de-trabalho.svg">copiar o &lt;img&gt;</button>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="anim-card">
+          <img src="/img/animacoes/trabalho-energia/2-quatro-forcas-no-carrinho.svg"
+               alt="Carrinho de supermercado empurrado ao longo de cinco metros, com as quatro forças que agem sobre ele e o trabalho de cada uma: normal e peso realizam trabalho nulo, a força da pessoa realiza mais 200 joules e o atrito, menos 30 joules">
+          <figcaption class="anim-info">
+            <p><strong>2. Quatro forças, quatro trabalhos.</strong> Na mesma cena, duas forças perpendiculares ao deslocamento não realizam trabalho algum.</p>
+            <div class="anim-acoes">
+              <a href="/img/animacoes/trabalho-energia/2-quatro-forcas-no-carrinho.svg" target="_blank" rel="noopener">abrir sozinha ↗</a>
+              <button type="button" data-copiar="/img/animacoes/trabalho-energia/2-quatro-forcas-no-carrinho.svg">copiar o &lt;img&gt;</button>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="anim-card">
+          <img src="/img/animacoes/trabalho-energia/3-referencial-epg.svg"
+               alt="Dois referenciais para a energia potencial gravitacional: no primeiro o solo é h igual a zero e a pedra parte de vinte metros; no segundo o zero está na altura de partida e o solo fica em menos vinte metros; os valores de Epg mudam e a variação delta Epg é a mesma">
+          <figcaption class="anim-info">
+            <p><strong>3. O referencial da Epg.</strong> O h = 0 é escolha livre. Os valores mudam de um painel para o outro; a variação, não.</p>
+            <div class="anim-acoes">
+              <a href="/img/animacoes/trabalho-energia/3-referencial-epg.svg" target="_blank" rel="noopener">abrir sozinha ↗</a>
+              <button type="button" data-copiar="/img/animacoes/trabalho-energia/3-referencial-epg.svg">copiar o &lt;img&gt;</button>
             </div>
           </figcaption>
         </figure>

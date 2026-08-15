@@ -2,15 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://pirasnafisica.com.br/</loc><lastmod>2026-06-10</lastmod></url>
   <url><loc>https://pirasnafisica.com.br/atividades.html</loc><lastmod>2026-07-19</lastmod></url>
-  <url><loc>https://pirasnafisica.com.br/atividades/estudos_dirigidos/ed_eletrostatica/</loc><lastmod>2026-06-27</lastmod></url>
-  <url><loc>https://pirasnafisica.com.br/atividades/estudos_dirigidos/ed_energia_potencial/</loc><lastmod>2026-06-27</lastmod></url>
-  <url><loc>https://pirasnafisica.com.br/atividades/estudos_dirigidos/ed_lancamentos/</loc><lastmod>2026-06-27</lastmod></url>
-  <url><loc>https://pirasnafisica.com.br/atividades/estudos_dirigidos/ed_leis_newton/</loc><lastmod>2026-07-29</lastmod></url>
-  <url><loc>https://pirasnafisica.com.br/atividades/estudos_dirigidos/ed_mru/</loc><lastmod>2026-06-27</lastmod></url>
-  <url><loc>https://pirasnafisica.com.br/atividades/estudos_dirigidos/ed_mruv/</loc><lastmod>2026-06-27</lastmod></url>
-  <url><loc>https://pirasnafisica.com.br/atividades/estudos_dirigidos/ed_potencial_eletrico/</loc><lastmod>2026-06-27</lastmod></url>
-  <url><loc>https://pirasnafisica.com.br/atividades/estudos_dirigidos/ed_trabalho_energia/</loc><lastmod>2026-06-27</lastmod></url>
-  <url><loc>https://pirasnafisica.com.br/atividades/estudos_dirigidos/ed_unidades/</loc><lastmod>2026-06-27</lastmod></url>
+  <url><loc>https://pirasnafisica.com.br/atividades/estudos_dirigidos/cinematica/ed_lancamentos/</loc><lastmod>2026-08-15</lastmod></url>
+  <url><loc>https://pirasnafisica.com.br/atividades/estudos_dirigidos/cinematica/ed_mru/</loc><lastmod>2026-08-15</lastmod></url>
+  <url><loc>https://pirasnafisica.com.br/atividades/estudos_dirigidos/cinematica/ed_mruv/</loc><lastmod>2026-08-15</lastmod></url>
+  <url><loc>https://pirasnafisica.com.br/atividades/estudos_dirigidos/dinamica/ed_forcas/</loc><lastmod>2026-08-15</lastmod></url>
+  <url><loc>https://pirasnafisica.com.br/atividades/estudos_dirigidos/dinamica/ed_leis_newton/</loc><lastmod>2026-08-15</lastmod></url>
+  <url><loc>https://pirasnafisica.com.br/atividades/estudos_dirigidos/eletricidade/ed_eletrostatica/</loc><lastmod>2026-08-15</lastmod></url>
+  <url><loc>https://pirasnafisica.com.br/atividades/estudos_dirigidos/eletricidade/ed_potencial_eletrico/</loc><lastmod>2026-08-15</lastmod></url>
+  <url><loc>https://pirasnafisica.com.br/atividades/estudos_dirigidos/grandezas-fisicas/ed_unidades/</loc><lastmod>2026-08-15</lastmod></url>
+  <url><loc>https://pirasnafisica.com.br/atividades/estudos_dirigidos/trabalho-energia/ed_energia_potencial/</loc><lastmod>2026-08-15</lastmod></url>
+  <url><loc>https://pirasnafisica.com.br/atividades/estudos_dirigidos/trabalho-energia/ed_trabalho_energia/</loc><lastmod>2026-08-15</lastmod></url>
   <url><loc>https://pirasnafisica.com.br/atividades/listas/circuitos/lista_1_circuitos.html</loc><lastmod>2026-08-02</lastmod></url>
   <url><loc>https://pirasnafisica.com.br/atividades/listas/circuitos/lista_1_circuitos_avaliacao.html</loc><lastmod>2026-08-02</lastmod></url>
   <url><loc>https://pirasnafisica.com.br/atividades/listas/circuitos/lista_2_circuitos.html</loc><lastmod>2026-08-02</lastmod></url>
@@ -36,7 +37,7 @@
   <url><loc>https://pirasnafisica.com.br/banco-questoes/</loc><lastmod>2026-06-19</lastmod></url>
   <url><loc>https://pirasnafisica.com.br/banco-questoes/panorama.html</loc><lastmod>2026-06-17</lastmod></url>
   <url><loc>https://pirasnafisica.com.br/conteudos.html</loc><lastmod>2026-07-19</lastmod></url>
-  <url><loc>https://pirasnafisica.com.br/conteudos/cinematica/</loc><lastmod>2026-07-19</lastmod></url>
+  <url><loc>https://pirasnafisica.com.br/conteudos/cinematica/</loc><lastmod>2026-08-15</lastmod></url>
   <url><loc>https://pirasnafisica.com.br/conteudos/cinematica/conceitos.html</loc><lastmod>2026-07-18</lastmod></url>
   <url><loc>https://pirasnafisica.com.br/conteudos/cinematica/lancamento-horizontal.html</loc><lastmod>2026-07-18</lastmod></url>
   <url><loc>https://pirasnafisica.com.br/conteudos/cinematica/lancamento-obliquo.html</loc><lastmod>2026-07-18</lastmod></url>
@@ -44,7 +45,7 @@
   <url><loc>https://pirasnafisica.com.br/conteudos/cinematica/mcu.html</loc><lastmod>2026-07-18</lastmod></url>
   <url><loc>https://pirasnafisica.com.br/conteudos/cinematica/mru.html</loc><lastmod>2026-07-18</lastmod></url>
   <url><loc>https://pirasnafisica.com.br/conteudos/cinematica/mruv.html</loc><lastmod>2026-07-18</lastmod></url>
-  <url><loc>https://pirasnafisica.com.br/conteudos/dinamica/</loc><lastmod>2026-08-02</lastmod></url>
+  <url><loc>https://pirasnafisica.com.br/conteudos/dinamica/</loc><lastmod>2026-08-15</lastmod></url>
   <url><loc>https://pirasnafisica.com.br/conteudos/dinamica/aprofundamento/forcas-ficticias.html</loc><lastmod>2026-08-07</lastmod></url>
   <url><loc>https://pirasnafisica.com.br/conteudos/dinamica/aprofundamento/referencial-inercial.html</loc><lastmod>2026-08-07</lastmod></url>
   <url><loc>https://pirasnafisica.com.br/conteudos/dinamica/aprofundamento/terra-referencial.html</loc><lastmod>2026-08-07</lastmod></url>
@@ -109,7 +110,7 @@
   <url><loc>https://pirasnafisica.com.br/disciplinas/eletricidade_basica/apresentacoes/circuitos/</loc><lastmod>2026-08-04</lastmod></url>
   <url><loc>https://pirasnafisica.com.br/disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/</loc><lastmod>2026-08-02</lastmod></url>
   <url><loc>https://pirasnafisica.com.br/disciplinas/fisica_1_mecanica/apresentacoes/leis-de-newton/</loc><lastmod>2026-08-02</lastmod></url>
-  <url><loc>https://pirasnafisica.com.br/estudos_dirigidos.html</loc><lastmod>2026-07-29</lastmod></url>
+  <url><loc>https://pirasnafisica.com.br/estudos_dirigidos.html</loc><lastmod>2026-08-15</lastmod></url>
   <url><loc>https://pirasnafisica.com.br/feedback/</loc><lastmod>2026-06-10</lastmod></url>
   <url><loc>https://pirasnafisica.com.br/footer/footer.html</loc><lastmod>2026-06-10</lastmod></url>
   <url><loc>https://pirasnafisica.com.br/google96ec9e2ea3f2a7cc.html</loc><lastmod>2026-06-10</lastmod></url>

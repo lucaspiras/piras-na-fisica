@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Trabalho de uma forca inclinada, paralela e perpendicular ao deslocamento.
+     Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Fonte da geometria: atividades/estudos_dirigidos/trabalho-energia/ed_trabalho_energia/index.html
+     Gerado por scripts/extrair-figuras-eds.ps1 — nao editar a mao. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 252" width="1440" height="504"
+     role="img" aria-labelledby="trabalho-energia-1-tres-casos-de-trabalho">
+  <title id="trabalho-energia-1-tres-casos-de-trabalho">Três painéis com o mesmo bloco sendo deslocado. Na força inclinada, o trabalho é F vezes d vezes o cosseno do ângulo e é positivo. Na força paralela ao deslocamento, o cosseno vale 1 e o trabalho é máximo. Na força perpendicular ao deslocamento, o cosseno vale zero e o trabalho é nulo.</title>
+  <style><![CDATA[
+    svg {
+      --fig-fundo:      #f8fafc;
+      --fig-fundo-b:    #e2e8f0;
+      --fig-chao:       #475569;
+      --fig-hachura:    #94a3b8;
+      --fig-corpo:      #dbeafe;
+      --fig-corpo-b:    #3b82f6;
+      --fig-roda:       #94a3b8;
+      --fig-divisor:    #e2e8f0;
+      --fig-rotulo:     #64748b;
+      --fig-texto:      #1e293b;
+      --fig-forca:      #ef4444;
+      --fig-forca-t:    #dc2626;
+      --fig-desloc:     #2563eb;
+      --fig-desloc-t:   #1d4ed8;
+      --fig-angulo:     #16a34a;
+      --fig-normal:     #16a34a;
+      --fig-normal-t:   #15803d;
+      --fig-peso:       #9333ea;
+      --fig-peso-t:     #7e22ce;
+      --fig-atrito:     #f97316;
+      --fig-atrito-t:   #ea580c;
+      --fig-nulo:       #f59e0b;
+      --fig-nulo-t:     #b45309;
+      --fig-fonte-t:    'Poppins', system-ui, sans-serif;
+    }
+
+    /* estruturas */
+    .fig-fundo    { fill: var(--fig-fundo); stroke: var(--fig-fundo-b); stroke-width: 1; }
+    .fig-chao     { fill: none; stroke: var(--fig-chao); stroke-width: 2; }
+    .fig-hachura  { stroke: var(--fig-hachura); stroke-width: 1; }
+    .fig-corpo    { fill: var(--fig-corpo); stroke: var(--fig-corpo-b); stroke-width: 1.5; }
+    .fig-roda     { fill: var(--fig-roda); stroke: var(--fig-chao); stroke-width: 1.5; }
+    .fig-cabo     { fill: none; stroke: var(--fig-chao); stroke-width: 2; }
+    .fig-divisor  { fill: none; stroke: var(--fig-divisor); stroke-width: 1.5; stroke-dasharray: 4 3; }
+
+    /* vetores */
+    .fig-v-forca  { fill: none; stroke: var(--fig-forca);  stroke-width: 2.5; }
+    .fig-v-desloc { fill: none; stroke: var(--fig-desloc); stroke-width: 2; }
+    .fig-v-desloc-tr { fill: none; stroke: var(--fig-desloc); stroke-width: 2; stroke-dasharray: 8 4; }
+    .fig-v-normal { fill: none; stroke: var(--fig-normal); stroke-width: 2.5; }
+    .fig-v-peso   { fill: none; stroke: var(--fig-peso);   stroke-width: 2.5; }
+    .fig-v-atrito { fill: none; stroke: var(--fig-atrito); stroke-width: 2.5; }
+    .fig-angulo   { fill: none; stroke: var(--fig-angulo); stroke-width: 1.5; }
+    .fig-p-forca  { fill: var(--fig-forca); }
+    .fig-p-desloc { fill: var(--fig-desloc); }
+    .fig-p-normal { fill: var(--fig-normal); }
+    .fig-p-peso   { fill: var(--fig-peso); }
+    .fig-p-atrito { fill: var(--fig-atrito); }
+    .fig-no-ok    { fill: var(--fig-angulo); }
+    .fig-no-nulo  { fill: var(--fig-nulo); }
+
+    /* textos */
+    .fig-t          { font-family: var(--fig-fonte-t); font-size: 11px; fill: var(--fig-texto); }
+    .fig-t-rot      { font-family: var(--fig-fonte-t); font-size: 12px; font-weight: 600; fill: var(--fig-rotulo); }
+    .fig-t-form     { font-family: var(--fig-fonte-t); font-size: 12px; font-weight: 600; fill: var(--fig-texto); }
+    .fig-r-forca    { font-family: var(--fig-fonte-t); font-size: 13px; font-weight: 700; font-style: italic; fill: var(--fig-forca); }
+    .fig-t-forca    { font-family: var(--fig-fonte-t); font-size: 11px; fill: var(--fig-forca-t); }
+    .fig-t-desloc   { font-family: var(--fig-fonte-t); font-size: 11px; font-style: italic; fill: var(--fig-desloc); }
+    .fig-t-desloc-f { font-family: var(--fig-fonte-t); font-size: 12px; font-style: italic; font-weight: 600; fill: var(--fig-desloc-t); }
+    .fig-t-angulo   { font-family: var(--fig-fonte-t); font-size: 12px; font-style: italic; fill: var(--fig-angulo); }
+    .fig-t-ok       { font-family: var(--fig-fonte-t); font-size: 11px; fill: var(--fig-normal-t); }
+    .fig-t-peso     { font-family: var(--fig-fonte-t); font-size: 11px; fill: var(--fig-peso-t); }
+    .fig-t-atrito   { font-family: var(--fig-fonte-t); font-size: 11px; fill: var(--fig-atrito-t); }
+    .fig-t-nulo     { font-family: var(--fig-fonte-t); font-size: 11px; fill: var(--fig-nulo-t); }
+    .fig-simb       { font-weight: 700; font-style: italic; font-size: 13px; }
+    .fig-peq        { font-size: 9px; }
+    .fig-med        { font-size: 10px; }
+
+    /* Quem abrir o arquivo com o sistema no modo escuro ve a versao noturna.
+       Embutido aqui porque o .svg carregado como imagem e um documento a
+       parte e nao enxerga o data-theme da pagina. */
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --fig-fundo:      #111827;
+        --fig-fundo-b:    #1f2937;
+        --fig-chao:       #cbd5e1;
+        --fig-hachura:    #64748b;
+        --fig-corpo:      #1e3a5f;
+        --fig-corpo-b:    #60a5fa;
+        --fig-roda:       #64748b;
+        --fig-divisor:    #334155;
+        --fig-rotulo:     #94a3b8;
+        --fig-texto:      #e2e8f0;
+        --fig-forca:      #f87171;
+        --fig-forca-t:    #fca5a5;
+        --fig-desloc:     #60a5fa;
+        --fig-desloc-t:   #93c5fd;
+        --fig-angulo:     #4ade80;
+        --fig-normal:     #4ade80;
+        --fig-normal-t:   #86efac;
+        --fig-peso:       #c084fc;
+        --fig-peso-t:     #d8b4fe;
+        --fig-atrito:     #fb923c;
+        --fig-atrito-t:   #fdba74;
+        --fig-nulo:       #fbbf24;
+        --fig-nulo-t:     #fcd34d;
+      }
+    }
+  ]]></style>
+  <defs>
+    <marker id="wk-rf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path class="fig-p-forca" d="M0,1.5 L8,5 L0,8.5 Z"/>
+    </marker>
+    <marker id="wk-bf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path class="fig-p-desloc" d="M0,1.5 L8,5 L0,8.5 Z"/>
+    </marker>
+    <pattern id="wk-ht" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+      <line class="fig-hachura" x1="0" y1="10" x2="10" y2="0"/>
+    </pattern>
+  </defs>
+
+  <!-- Fundo -->
+  <rect class="fig-fundo" width="720" height="252" rx="10"/>
+
+  <!-- Divisores -->
+  <line class="fig-divisor" x1="240" y1="12" x2="240" y2="238"/>
+  <line class="fig-divisor" x1="480" y1="12" x2="480" y2="238"/>
+
+  <!-- ===== PAINEL 1: Força inclinada ===== -->
+  <text class="fig-t-rot" x="120" y="26" text-anchor="middle">Força inclinada</text>
+  <!-- Chão -->
+  <line class="fig-chao" x1="55" y1="170" x2="205" y2="170"/>
+  <rect x="55" y="170" width="150" height="11" fill="url(#wk-ht)"/>
+  <!-- Bloco -->
+  <rect class="fig-corpo" x="96" y="138" width="48" height="32" rx="3"/>
+  <!-- Seta da força (≈40° acima da horizontal) -->
+  <line class="fig-v-forca" x1="120" y1="154" x2="159" y2="121" marker-end="url(#wk-rf)"/>
+  <text class="fig-r-forca" x="163" y="118">F</text>
+  <!-- Arco do ângulo θ -->
+  <path class="fig-angulo" d="M 142,154 A 22,22 0 0,0 137,140"/>
+  <text class="fig-t-angulo" x="148" y="148">θ</text>
+  <!-- Seta do deslocamento -->
+  <line class="fig-v-desloc" x1="55" y1="186" x2="203" y2="186" marker-end="url(#wk-bf)"/>
+  <text class="fig-t-desloc" x="124" y="199" text-anchor="middle">d</text>
+  <!-- Legenda -->
+  <text class="fig-t-form" x="120" y="217" text-anchor="middle">W = F · d · cos θ</text>
+  <circle class="fig-no-ok" cx="82" cy="232" r="4"/>
+  <text class="fig-t-ok" x="90" y="236">W &gt; 0 (positivo)</text>
+
+  <!-- ===== PAINEL 2: Força paralela ===== -->
+  <text class="fig-t-rot" x="360" y="26" text-anchor="middle">Força paralela</text>
+  <!-- Chão -->
+  <line class="fig-chao" x1="295" y1="170" x2="445" y2="170"/>
+  <rect x="295" y="170" width="150" height="11" fill="url(#wk-ht)"/>
+  <!-- Bloco -->
+  <rect class="fig-corpo" x="336" y="138" width="48" height="32" rx="3"/>
+  <!-- Seta da força (horizontal) -->
+  <line class="fig-v-forca" x1="360" y1="154" x2="413" y2="154" marker-end="url(#wk-rf)"/>
+  <text class="fig-r-forca" x="420" y="152">F</text>
+  <!-- Anotação cos 0° = 1 -->
+  <text class="fig-t-angulo" x="360" y="128" text-anchor="middle">cos 0° = 1</text>
+  <!-- Seta do deslocamento -->
+  <line class="fig-v-desloc" x1="295" y1="186" x2="443" y2="186" marker-end="url(#wk-bf)"/>
+  <text class="fig-t-desloc" x="364" y="199" text-anchor="middle">d</text>
+  <!-- Legenda -->
+  <text class="fig-t-form" x="360" y="217" text-anchor="middle">W = F · d</text>
+  <circle class="fig-no-ok" cx="310" cy="232" r="4"/>
+  <text class="fig-t-ok" x="318" y="236">W &gt; 0 (máximo)</text>
+
+  <!-- ===== PAINEL 3: Força perpendicular ===== -->
+  <text class="fig-t-rot" x="600" y="26" text-anchor="middle">Força perpendicular</text>
+  <!-- Chão -->
+  <line class="fig-chao" x1="535" y1="170" x2="685" y2="170"/>
+  <rect x="535" y="170" width="150" height="11" fill="url(#wk-ht)"/>
+  <!-- Bloco -->
+  <rect class="fig-corpo" x="576" y="138" width="48" height="32" rx="3"/>
+  <!-- Seta da força (vertical para cima) -->
+  <line class="fig-v-forca" x1="600" y1="154" x2="600" y2="103" marker-end="url(#wk-rf)"/>
+  <text class="fig-r-forca" x="606" y="101">F</text>
+  <!-- Símbolo de ângulo reto -->
+  <path class="fig-angulo" d="M 612,154 L 612,142 L 600,142"/>
+  <text class="fig-t-angulo" x="616" y="150">90°</text>
+  <!-- Seta do deslocamento -->
+  <line class="fig-v-desloc" x1="535" y1="186" x2="683" y2="186" marker-end="url(#wk-bf)"/>
+  <text class="fig-t-desloc" x="604" y="199" text-anchor="middle">d</text>
+  <!-- Legenda -->
+  <text class="fig-t-form" x="600" y="217" text-anchor="middle">W = 0  (cos 90° = 0)</text>
+  <circle class="fig-no-nulo" cx="553" cy="232" r="4"/>
+  <text class="fig-t-nulo" x="561" y="236">W = 0 (nulo)</text>
+</svg>

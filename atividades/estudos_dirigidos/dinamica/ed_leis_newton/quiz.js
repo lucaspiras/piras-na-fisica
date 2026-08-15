@@ -12,56 +12,73 @@
   // ================================================================
   const QUIZZES = {
 
-    // TÓPICO 1 — Força: a linguagem da dinâmica
+
+    // TÓPICO 1 — Causas dos movimentos: de Aristóteles a Newton
     quiz1: [
       {
-        type: 'numeric',
-        text: 'Uma mochila de 8 kg está pendurada, em repouso, num gancho. Qual é a intensidade do peso dela, em newtons? (use g = 10 m/s²)',
-        answer: 80,
-        tolerance: 0.5,
-        unit: 'N',
-        explanation: 'P = m · g = 8 × 10 = 80 N. Como a mochila está em repouso, a resultante nela é nula e a tração do gancho também vale 80 N — mas atenção: peso e tração agem no MESMO corpo (a mochila) e por isso não formam um par ação–reação; elas apenas se equilibram.'
-      },
-      {
         type: 'objective',
-        text: 'Qual afirmação descreve corretamente o que é uma força, na dinâmica?',
+        text: 'Um ciclista para de pedalar numa ciclovia plana e vai perdendo velocidade até parar. Qual explicação é newtoniana?',
         options: [
-          'É uma propriedade que um corpo possui, como a sua massa.',
-          'É uma interação entre dois corpos: sempre se pode dizer quem a exerce e sobre quem.',
-          'É a quantidade de movimento armazenada dentro de um corpo.',
-          'É uma grandeza escalar, definida apenas por um valor numérico.'
-        ],
-        correct: 1,
-        explanation: 'Não existe "a força de um objeto": existe a força que a Terra faz na maçã, que a mesa faz no livro, que o pé faz na bola. Esse é o teste mais útil para saber se você nomeou uma força de verdade — se não há agente, provavelmente não é força. E força é vetorial: tem intensidade, direção e sentido.'
-      },
-      {
-        type: 'objective',
-        text: 'Sobre a força normal, qual afirmação é correta?',
-        options: [
-          'É sempre igual ao peso do corpo, em qualquer situação.',
-          'É a reação do peso, formando com ele um par ação–reação.',
-          'É a força que a superfície exerce no corpo apoiado, perpendicular à superfície; nem sempre é igual ao peso.',
-          'Aponta sempre para baixo, no mesmo sentido do peso.'
+          'Acabou a força que mantinha a bicicleta em movimento.',
+          'A bicicleta gastou a inércia que havia acumulado ao pedalar.',
+          'Existe uma força resultante contrária ao movimento (atrito nos eixos e nos pneus, mais resistência do ar) que produz uma desaceleração; sem ela, a bicicleta seguiria indefinidamente.',
+          'A velocidade da bicicleta se transformou em massa.'
         ],
         correct: 2,
-        explanation: 'A normal é perpendicular à superfície de contato. Ela só coincide em intensidade com o peso em casos particulares (superfície horizontal, sem outras forças verticais). Num plano inclinado ela é menor que o peso, e num elevador acelerado ela muda enquanto o peso continua o mesmo. E ela não é a reação do peso: a reação do peso é a força que o corpo faz na Terra.'
+        explanation: 'Manter velocidade constante não exige força nenhuma — exige apenas resultante nula. O que faz a bicicleta parar não é a ausência de uma força "para a frente", e sim a presença de forças para trás. A primeira alternativa é a intuição aristotélica: procura o que MANTÉM o movimento, quando a pergunta certa é o que o MUDA. E inércia não é um combustível que se gasta.'
+      },
+      {
+        type: 'objective',
+        text: 'Uma bola é chutada e sobe pelo ar. Desprezando a resistência do ar, quais forças agem sobre ela enquanto sobe?',
+        options: [
+          'Uma força do chute para cima, maior que o peso.',
+          'Apenas o peso, dirigido para baixo.',
+          'Uma força para cima igual ao peso, o que a mantém subindo.',
+          'Nenhuma força, pois ela já foi chutada.'
+        ],
+        correct: 1,
+        explanation: 'Depois que o pé deixa a bola, não existe nenhuma "força do chute" viajando com ela — a única força é o peso, para baixo. Ela sobe porque já possui velocidade para cima (inércia), enquanto o peso a desacelera. Dizer que a bola carrega a força do chute é a teoria medieval do ímpeto, que a 1ª Lei substitui.'
+      },
+      {
+        type: 'objective',
+        text: 'A relação "F ∝ v" (força proporcional à velocidade) resume melhor qual pensamento?',
+        options: [
+          'O pensamento newtoniano, expresso na 2ª Lei.',
+          'A concepção aristotélica e do senso comum, na qual mais força significa mais velocidade.',
+          'A 3ª Lei de Newton.',
+          'O princípio da inércia.'
+        ],
+        correct: 1,
+        explanation: 'Aristóteles nunca escreveu essa relação — ela é um resumo moderno, feito por nós, de uma tese qualitativa que envolvia também a resistência do meio. Ainda assim ela capta bem a intuição: mais força, mais velocidade. Newton corrige o alvo: a força resultante determina a variação do movimento, não a velocidade em si, o que no caso de massa constante nos dá F_res = m·a.'
+      },
+      {
+        type: 'objective',
+        text: 'Galileu soltava esferas por uma rampa e as observava subir por outra, chegando sempre perto da altura de partida. Diminuindo a inclinação da segunda rampa, a esfera ia cada vez mais longe. Qual conclusão ele tirou ao levar o raciocínio ao limite?',
+        options: [
+          'Com a segunda rampa horizontal, a esfera nunca alcançaria a altura inicial e, sem obstáculo, não teria por que parar.',
+          'Com a segunda rampa horizontal, a esfera pararia mais rápido, por falta de inclinação que a empurrasse.',
+          'A esfera perderia toda a sua altura na primeira descida, e por isso não subiria a segunda rampa.',
+          'A altura alcançada depende da massa da esfera, e não da inclinação das rampas.'
+        ],
+        correct: 0,
+        explanation: 'O experimento em si sempre mostrava a esfera parando, porque atrito e ar existem. O passo decisivo de Galileu foi idealizar: imaginar o caso-limite, sem atrito, que ninguém nunca observou. Nele, o movimento horizontal não teria motivo para cessar — e aí está o princípio da inércia, que Newton depois enunciaria como 1ª Lei. Cabe perceber que o salto não foi observar melhor, e sim idealizar.'
+      },
+      {
+        type: 'objective',
+        text: 'Na física de Aristóteles, o que distinguia o movimento no céu do movimento na Terra?',
+        options: [
+          'Nada: as mesmas leis valiam para a pedra que cai e para os astros.',
+          'No céu os corpos eram feitos de éter, cujo movimento natural era circular e eterno; na Terra, dos quatro elementos, cada um buscando seu lugar natural.',
+          'No céu valia F ∝ v, e na Terra valia F = m·a.',
+          'No céu havia atrito, e na Terra não.'
+        ],
+        correct: 1,
+        explanation: 'Aristóteles trabalhava com duas físicas separadas: acima da Lua, o éter incorruptível em movimento circular perpétuo, onde o movimento eterno não era problema a explicar; abaixo dela, os quatro elementos e o par movimento natural / movimento violento. Uma das rupturas dos Principia foi justamente unificar as duas: as mesmas três leis descrevem a maçã que cai e a Lua que orbita.'
       }
     ],
 
-    // TÓPICO 2 — 1ª Lei: inércia e referenciais inerciais
+    // TÓPICO 2 — 1ª Lei: a inércia
     quiz2: [
-      {
-        type: 'objective',
-        text: 'Você está num ônibus que arranca. Uma sacola pendurada no corrimão se inclina para trás, aparentemente sem que nada a empurre. Como um observador na calçada descreve a mesma cena?',
-        options: [
-          'A sacola tende a manter a velocidade que tinha, e o ônibus avança à frente dela — por isso ela fica "atrasada".',
-          'Uma força de inércia real empurra a sacola para trás.',
-          'O peso da sacola aumenta enquanto o ônibus acelera.',
-          'O ar dentro do ônibus arrasta a sacola no sentido contrário ao movimento.'
-        ],
-        correct: 0,
-        explanation: 'Para quem está na calçada — um referencial inercial — não há mistério: a sacola apenas mantém a velocidade anterior enquanto o ônibus acelera. Dentro do ônibus, que é um referencial não inercial, a 1ª Lei parece falhar, e somos levados a inventar uma "força para trás" que nenhum corpo exerce. É exatamente esse o conteúdo próprio da 1ª Lei: dizer em quais referenciais as leis valem.'
-      },
       {
         type: 'objective',
         text: 'Um trenó desliza sobre gelo praticamente sem atrito, em linha reta e com velocidade constante. O que se pode afirmar sobre a força resultante nele?',
@@ -100,8 +117,60 @@
       }
     ],
 
-    // TÓPICO 3 — 2ª Lei: quantidade de movimento e F = m·a
+    // TÓPICO 3 — Referenciais inerciais
     quiz3: [
+      {
+        type: 'objective',
+        text: 'Você está num ônibus que arranca. Uma sacola pendurada na barra do teto se inclina para trás, aparentemente sem que nada a empurre. Como um observador na calçada descreve a mesma cena?',
+        options: [
+          'A sacola tende a manter a velocidade que tinha, e o ônibus avança à frente dela — por isso ela fica "atrasada".',
+          'Uma força de inércia real empurra a sacola para trás.',
+          'O peso da sacola aumenta enquanto o ônibus acelera.',
+          'O ar dentro do ônibus arrasta a sacola no sentido contrário ao movimento.'
+        ],
+        correct: 0,
+        explanation: 'Para quem está na calçada, que é um referencial inercial, não há mistério: a sacola apenas mantém a velocidade anterior enquanto o ônibus acelera. Dentro do ônibus, que é um referencial não inercial, a 1ª Lei parece falhar, e somos levados a inventar uma "força para trás" que nenhum corpo exerce. Note que a sacola está igualmente inclinada nas duas descrições: o que muda não é o que acontece, é o ponto de vista.'
+      },
+      {
+        type: 'objective',
+        text: 'Qual é a definição de <strong>referencial inercial</strong>?',
+        options: [
+          'Aquele que está parado em relação à Terra.',
+          'Aquele que não acelera — nele, e somente nele, as leis de Newton valem na forma em que as escrevemos.',
+          'Aquele em que não existe nenhuma força agindo sobre os corpos.',
+          'Aquele que se move com velocidade muito pequena.'
+        ],
+        correct: 1,
+        explanation: 'O critério é a ausência de aceleração, não a de movimento nem a de forças. Um trem que viaja a 300 km/h em linha reta e com velocidade constante é tão inercial quanto o solo, e é por isso que você consegue jogar cartas a bordo sem que nada saia do lugar sozinho. Já um ônibus freando, mesmo devagar, não é.'
+      },
+      {
+        type: 'objective',
+        text: 'Um carro faz uma curva fechada e você é "jogado" contra a porta. Qual é a descrição correta, feita da calçada?',
+        options: [
+          'Uma força centrífuga real empurra você para fora da curva.',
+          'O peso do seu corpo muda de direção durante a curva.',
+          'Você tende a seguir em linha reta, e é a porta do carro que te empurra para dentro da curva.',
+          'O atrito do banco deixa de agir enquanto o carro vira.'
+        ],
+        correct: 2,
+        explanation: 'A "força centrífuga" é o exemplo mais comum de pseudoforça: ela só aparece na descrição feita de dentro do carro, que é um referencial não inercial por estar mudando de direção. Vista da calçada, a única força horizontal relevante é a que a porta (ou o cinto, ou o atrito do banco) faz em você, apontando para dentro da curva. Sem ela, você seguiria reto — 1ª Lei.'
+      },
+      {
+        type: 'objective',
+        text: 'Qual é o teste prático para desconfiar de que você está descrevendo o movimento de um referencial não inercial?',
+        options: [
+          'Algum corpo muda de velocidade sem que você consiga apontar quem o empurrou.',
+          'A velocidade dos corpos é muito alta.',
+          'Existe atrito na superfície de contato.',
+          'A força resultante sobre os corpos não é nula.'
+        ],
+        correct: 0,
+        explanation: 'Toda força de verdade tem um agente: sempre se pode dizer quem a exerce e sobre quem. Se um corpo acelera e nenhum outro corpo é responsável, o problema não está no corpo, está no ponto de vista. As "forças" que aparecem nesses casos são as fictícias, ou pseudoforças, como a centrífuga e a de Coriolis.'
+      }
+    ],
+
+    // TÓPICO 4 — 2ª Lei: quantidade de movimento e F = m·a
+    quiz4: [
       {
         type: 'numeric',
         text: 'Um carrinho de supermercado com massa total de 25 kg é empurrado por uma força horizontal de 60 N. O atrito com o piso vale 10 N, no sentido oposto ao movimento. Qual é o módulo da aceleração do carrinho, em m/s²?',
@@ -144,19 +213,19 @@
       }
     ],
 
-    // TÓPICO 4 — 3ª Lei: pares de interação
-    quiz4: [
+    // TÓPICO 5 — 3ª Lei: pares de interação
+    quiz5: [
       {
         type: 'objective',
         text: 'Um livro está em repouso sobre a mesa. O peso do livro (para baixo) e a força normal da mesa sobre o livro (para cima) têm a mesma intensidade e sentidos opostos. Elas formam um par ação–reação?',
         options: [
           'Sim, porque têm a mesma intensidade e sentidos opostos.',
-          'Não: as duas agem no <em>mesmo</em> corpo (o livro) e têm naturezas diferentes. A reação ao peso é a força do livro sobre a Terra; a reação à normal é a força do livro sobre a mesa.',
+          'Não: as duas agem no mesmo corpo e têm naturezas diferentes.',
           'Sim, porque uma é a causa e a outra é o efeito.',
           'Não, porque a normal é sempre um pouco maior que o peso — é o que impede o livro de afundar.'
         ],
         correct: 1,
-        explanation: 'Um par ação–reação nunca atua no mesmo corpo. Aqui peso e normal apenas se equilibram no livro (isso é 1ª Lei, não 3ª), e cada uma tem o seu próprio par, em outro corpo. Um teste decisivo: coloque outro objeto sobre o livro. A normal muda; o peso do livro não. Se fossem um par, teriam de mudar juntas.'
+        explanation: 'Um par ação–reação nunca atua no mesmo corpo. Aqui peso e normal apenas se equilibram no livro (isso é 1ª Lei, não 3ª), e cada uma tem o seu próprio par, em outro corpo: a reação ao peso é a força do livro sobre a Terra, e a reação à normal é a força do livro sobre a mesa. Um teste decisivo: coloque outro objeto sobre o livro. A normal muda; o peso do livro não. Se fossem um par, teriam de mudar juntas.'
       },
       {
         type: 'objective',
@@ -193,50 +262,6 @@
         ],
         correct: 1,
         explanation: 'Pela 3ª Lei, os dois recebem forças de mesma intensidade e sentidos opostos. Como as forças do par são iguais, opostas e colineares, a quantidade de movimento total do sistema não muda: o que um ganha, o outro perde exatamente. E pela 2ª Lei, a mesma força produz menos aceleração em quem tem mais massa — daí a menor velocidade final. Inércia maior significa resistir mais à mudança, não mover-se mais.'
-      }
-    ],
-
-    // TÓPICO 5 — Força resultante, equilíbrio e DCL
-    quiz5: [
-      {
-        type: 'numeric',
-        text: 'Duas forças horizontais atuam sobre uma caixa: 30 N para a direita e 20 N para a esquerda. Qual é o módulo da força resultante, em newtons?',
-        answer: 10,
-        tolerance: 0.1,
-        unit: 'N',
-        explanation: 'Forças na mesma direção e sentidos opostos se subtraem: 30 − 20 = 10 N, apontando para a direita. Se estivessem no mesmo sentido, somariam 50 N; se fossem perpendiculares, o resultado sairia por Pitágoras.'
-      },
-      {
-        type: 'numeric',
-        text: 'Uma caixa de 10 kg é empurrada por uma força horizontal de 40 N, sobre um piso onde o atrito vale 10 N. Qual é o módulo da aceleração da caixa, em m/s²?',
-        answer: 3,
-        tolerance: 0.1,
-        unit: 'm/s²',
-        explanation: 'No eixo vertical não há aceleração: N = P = 100 N. No horizontal, F_res = 40 − 10 = 30 N, e então a = 30 / 10 = 3 m/s². É exatamente o roteiro do diagrama de corpo livre: somar as forças eixo por eixo antes de aplicar a 2ª Lei.'
-      },
-      {
-        type: 'objective',
-        text: 'Um paraquedista desce com velocidade constante (velocidade terminal). O que se pode afirmar?',
-        options: [
-          'O peso é maior que a resistência do ar, e por isso ele continua descendo.',
-          'O peso dele diminuiu até se igualar à resistência do ar.',
-          'A resistência do ar cresceu até igualar o peso; a resultante é nula e a velocidade não muda.',
-          'A resultante aponta para cima, e por isso ele desacelera continuamente.'
-        ],
-        correct: 2,
-        explanation: 'Velocidade constante implica resultante nula — é equilíbrio dinâmico. A resistência do ar aumenta com a velocidade até igualar o peso, e a partir daí a queda é uniforme. O peso não diminuiu em momento algum: o que mudou foi a força de resistência.'
-      },
-      {
-        type: 'objective',
-        text: 'Você desenha o diagrama de corpo livre de um bloco que está sendo empurrado sobre uma mesa horizontal. Qual dos itens abaixo NÃO deve aparecer nesse diagrama?',
-        options: [
-          'A força de atrito que a mesa exerce no bloco.',
-          'A força que o bloco exerce na mesa.',
-          'O peso do bloco.',
-          'A força aplicada por quem empurra o bloco.'
-        ],
-        correct: 1,
-        explanation: 'Num diagrama de corpo livre entram somente as forças que agem NO corpo isolado. A força que o bloco exerce na mesa é a parceira (3ª Lei) da normal, mas atua em outro corpo — a mesa — e portanto fica fora deste diagrama. Misturar as duas é o erro que gera resultantes sempre nulas e a conclusão falsa de que nada poderia acelerar.'
       }
     ],
 
@@ -277,74 +302,6 @@
         ],
         correct: 2,
         explanation: 'O rótulo indica qual lei responde à pergunta que está sendo feita, não que as outras desapareceram. Em toda situação real as três leis operam simultaneamente, e por baixo delas ainda há a escolha do referencial. Confundir o rótulo com a cena completa é uma das principais fontes de erro em dinâmica.'
-      }
-    ],
-
-    // TÓPICO 7 — Aristóteles × Newton
-    quiz7: [
-      {
-        type: 'objective',
-        text: 'Um ciclista para de pedalar numa ciclovia plana e vai perdendo velocidade até parar. Qual explicação é newtoniana?',
-        options: [
-          'Acabou a força que mantinha a bicicleta em movimento.',
-          'A bicicleta gastou a inércia que havia acumulado ao pedalar.',
-          'Existe uma força resultante contrária ao movimento (atrito nos eixos e nos pneus, mais resistência do ar) que produz uma desaceleração; sem ela, a bicicleta seguiria indefinidamente.',
-          'A velocidade da bicicleta se transformou em massa.'
-        ],
-        correct: 2,
-        explanation: 'Manter velocidade constante não exige força nenhuma — exige apenas resultante nula. O que faz a bicicleta parar não é a ausência de uma força "para a frente", e sim a presença de forças para trás. A primeira alternativa é a intuição aristotélica: procura o que MANTÉM o movimento, quando a pergunta certa é o que o MUDA. E inércia não é um combustível que se gasta.'
-      },
-      {
-        type: 'objective',
-        text: 'Uma bola é chutada e sobe pelo ar. Desprezando a resistência do ar, quais forças agem sobre ela enquanto sobe?',
-        options: [
-          'Uma força do chute para cima, maior que o peso.',
-          'Apenas o peso, dirigido para baixo.',
-          'Uma força para cima igual ao peso, o que a mantém subindo.',
-          'Nenhuma força, pois ela já foi chutada.'
-        ],
-        correct: 1,
-        explanation: 'Depois que o pé deixa a bola, não existe nenhuma "força do chute" viajando com ela — a única força é o peso, para baixo. Ela sobe porque já possui velocidade para cima (inércia), enquanto o peso a desacelera. Dizer que a bola carrega a força do chute é a teoria medieval do ímpeto, que a 1ª Lei substitui.'
-      },
-      {
-        type: 'objective',
-        text: 'A relação "F ∝ v" (força proporcional à velocidade) resume melhor qual pensamento?',
-        options: [
-          'O pensamento newtoniano, expresso na 2ª Lei.',
-          'A concepção aristotélica e do senso comum, na qual mais força significa mais velocidade.',
-          'A 3ª Lei de Newton.',
-          'O princípio da inércia.'
-        ],
-        correct: 1,
-        explanation: 'Aristóteles nunca escreveu essa relação — ela é um resumo moderno, feito por nós, de uma tese qualitativa que envolvia também a resistência do meio. Ainda assim ela capta bem a intuição: mais força, mais velocidade. Newton corrige o alvo: a força resultante determina a variação do movimento, não a velocidade em si, o que no caso de massa constante nos dá F_res = m·a.'
-      }
-    ],
-
-    // TÓPICO 8 — Limites de validade
-    quiz8: [
-      {
-        type: 'objective',
-        text: 'Sobre os limites de validade da mecânica newtoniana, qual afirmação é correta?',
-        options: [
-          'A relatividade e a mecânica quântica provaram que Newton estava errado, e suas leis não devem mais ser usadas.',
-          'As leis de Newton são uma aproximação excelente para velocidades muito menores que a da luz e para objetos de escala macroscópica — regime em que continuam sendo a física usada na engenharia e em missões espaciais.',
-          'As leis de Newton só falham em laboratório; na natureza elas valem sempre.',
-          'As leis de Newton valem em qualquer referencial, inercial ou não.'
-        ],
-        correct: 1,
-        explanation: 'Toda teoria física tem um domínio de validade, e delimitá-lo é o que a torna científica. Fora do domínio de Newton (velocidades próximas à da luz, escala atômica, gravidade muito intensa) usamos a relatividade e a mecânica quântica. Dentro dele, Newton é tão exato quanto se precisa.'
-      },
-      {
-        type: 'objective',
-        text: 'O que afirma o princípio da correspondência, ao comparar as teorias modernas com a mecânica de Newton?',
-        options: [
-          'Que toda teoria nova precisa contradizer a anterior para ser considerada um avanço.',
-          'Que a mecânica newtoniana e a relatividade fazem exatamente as mesmas previsões em todos os regimes.',
-          'Que as teorias modernas reproduzem os resultados newtonianos no limite de baixas velocidades e de escalas grandes.',
-          'Que Newton continua válido apenas na Terra, e a relatividade apenas no espaço.'
-        ],
-        correct: 2,
-        explanation: 'Uma teoria nova tem de explicar tudo o que a antiga já explicava bem — e é isso que a relatividade e a mecânica quântica fazem em relação a Newton nos regimes de baixa velocidade e escala macroscópica. Vale notar ainda que a formulação da 2ª Lei em termos de quantidade de movimento sobrevive na relatividade (com uma definição modificada de p), enquanto a versão F_res = m·a não sobrevive.'
       }
     ]
 

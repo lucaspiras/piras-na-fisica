@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <meta name="description" content="Estudo dirigido de Lançamentos de Projéteis: oblíquo e horizontal. Decomposição de movimentos, equações, alcance máximo, altura e tempo de voo — com simulador interativo e questões.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Lançamentos de Projéteis — Oblíquo e Horizontal">
+  <meta property="og:description" content="Estudo dirigido de Física para o Ensino Médio: lançamentos de projéteis, decomposição, equações e simulador interativo.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/atividades/estudos_dirigidos/cinematica/ed_lancamentos/">
+  <title>Lançamentos de Projéteis — Oblíquo e Horizontal</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date()); gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a href="#topicos" class="skip-link">Ir para o conteúdo</a>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg">
+      <div class="grid-lines"></div>
+      <div class="accel-track">
+        <div class="moving-dot" id="heroDot"></div>
+      </div>
+    </div>
+    <div class="hero-content">
+      <span class="hero-label">Física · 1º Ano do Ensino Médio</span>
+      <h1 class="hero-title">Lançamentos<br><em>de Projéteis</em></h1>
+      <p class="hero-sub">Projétil é todo objeto lançado no ar que, após o lançamento, está sujeito apenas à ação da gravidade. O movimento é estudado pela decomposição em duas componentes independentes: horizontal, que segue o MRU, e vertical, que segue o MRUV com aceleração g.</p>
+      <a href="#topicos" class="cta-btn">Começar o estudo ↓</a>
+    </div>
+    <div class="hero-formula">
+      <span class="formula-big">
+        v₀ₓ = v₀ · cosθ<br>
+        v₀ᵧ = v₀ · senθ<br>
+        H = v₀ᵧ² / (2g)<br>
+        R = v₀² · sen(2θ) / g
+      </span>
+    </div>
+  </header>
+
+  <!-- SUMÁRIO -->
+  <nav class="sumario" id="topicos">
+    <div class="sumario-inner">
+      <div class="sumario-header">
+        <a href="../../../../index.html" class="sumario-logo-link">
+          <img src="../../../../img/files/piras_na_fisica_logo_transparente.png" alt="Logo Piras na Física" class="sumario-logo" />
+        </a>
+        <span class="sumario-title">Tópicos</span>
+      </div>
+      <ol class="sumario-list">
+        <li><a href="#t1">Projétil</a></li>
+        <li><a href="#t2">Lanç. Oblíquo</a></li>
+        <li><a href="#t3">Componentes</a></li>
+        <li><a href="#t4">Equações</a></li>
+        <li><a href="#t5">Trajetória</a></li>
+        <li><a href="#t6">Alcance Máx.</a></li>
+        <li><a href="#t7">Altura e Tempo</a></li>
+        <li><a href="#t8">Lanç. Horizontal</a></li>
+        <li><a href="#t9">Casos Especiais</a></li>
+      </ol>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <!-- TÓPICO 1 — Movimento de Projétil -->
+    <section class="topic" id="t1">
+      <div class="topic-header">
+        <span class="topic-num">01</span>
+        <h2>Movimento de Projétil</h2>
+      </div>
+      <div class="topic-body">
+        <p>Quando lançamos um objeto no ar — uma bola, uma pedra, um projétil — ele descreve uma trajetória curva. É <strong>um único movimento</strong>, mas a Física usa uma ideia poderosa para analisá-lo: <strong>o princípio da independência das componentes</strong>.</p>
+
+        <div class="highlight-box">
+          <span class="hb-icon">⚡</span>
+          <p>O projétil realiza <strong>um único movimento</strong> no espaço, mas suas componentes <strong>horizontal</strong> e <strong>vertical</strong> comportam-se de forma completamente independente. Podemos analisar cada componente separadamente — a horizontal como MRU e a vertical como MRUV — e depois combinar os resultados para descrever o movimento completo.</p>
+        </div>
+
+        <div class="decomp-grid">
+          <div class="decomp-card horizontal">
+            <div class="dc-icon">➡️</div>
+            <h4>Movimento Horizontal</h4>
+            <p>Nenhuma força age horizontalmente (ar desprezado). A velocidade horizontal <strong>não muda</strong>.</p>
+            <span class="dc-eq">MRU: vₓ = constante</span>
+          </div>
+          <div class="decomp-card vertical">
+            <div class="dc-icon">⬇️</div>
+            <h4>Movimento Vertical</h4>
+            <p>A gravidade age para baixo com aceleração constante g. A velocidade vertical <strong>varia continuamente</strong>.</p>
+            <span class="dc-eq">MRUV: aᵧ = g = 10 m/s²</span>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <h4>Por que as componentes são independentes?</h4>
+          <ul>
+            <li>A força gravitacional age <strong>exclusivamente na direção vertical</strong> — altera vᵧ, mas não interfere em vₓ.</li>
+            <li>Não há força horizontal (ar desprezado) — vₓ permanece constante, sem que nada que ocorre na vertical a afete.</li>
+            <li>Galileu demonstrou: uma bola lançada horizontalmente e outra largada em queda livre partem da mesma altura e tocam o chão <strong>ao mesmo tempo</strong> — a componente horizontal não interfere na queda.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz1"></div>
+    </section>
+
+    <!-- TÓPICO 2 — Lançamento Oblíquo -->
+    <section class="topic" id="t2">
+      <div class="topic-header">
+        <span class="topic-num">02</span>
+        <h2>Lançamento Oblíquo</h2>
+      </div>
+      <div class="topic-body">
+        <p>O <strong>lançamento oblíquo</strong> é o caso geral dos projéteis: o objeto parte com velocidade inicial v₀ formando um ângulo θ com a horizontal. Bolas chutadas, projéteis de canhão, arremessos — todos seguem esse padrão.</p>
+
+        <div class="formula-box large">
+          <span class="formula-label">Decomposição da velocidade inicial</span>
+          <span class="formula-tex big">v₀ₓ = v₀ · cosθ &nbsp;&nbsp;&nbsp; v₀ᵧ = v₀ · senθ</span>
+          <span class="formula-unit">θ: ângulo com a horizontal &nbsp;|&nbsp; g = 10 m/s²</span>
+        </div>
+
+        <div class="decomp-grid">
+          <div class="decomp-card horizontal">
+            <div class="dc-icon">➡️</div>
+            <h4>Horizontal (MRU)</h4>
+            <p>vₓ = v₀cosθ = constante durante todo o voo.</p>
+            <span class="dc-eq">x(t) = v₀cosθ · t</span>
+          </div>
+          <div class="decomp-card vertical">
+            <div class="dc-icon">↕️</div>
+            <h4>Vertical (MRUV)</h4>
+            <p>vᵧ começa positiva, anula-se no topo e cresce negativamente na descida.</p>
+            <span class="dc-eq">y(t) = v₀senθ · t − ½gt²</span>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🎯</span>
+          <p>No <strong>ponto mais alto</strong> da trajetória: vᵧ = 0, mas vₓ = v₀cosθ continua intacta. A velocidade mínima de todo o voo ocorre no topo e vale v_min = v₀cosθ — nunca é zero (exceto se θ = 90°).</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz2"></div>
+    </section>
+
+    <!-- TÓPICO 3 — Componentes -->
+    <section class="topic" id="t3">
+      <div class="topic-header">
+        <span class="topic-num">03</span>
+        <h2>Componentes da Velocidade Inicial</h2>
+      </div>
+      <div class="topic-body">
+        <p>A decomposição de v₀ em componentes horizontal e vertical é o primeiro passo em qualquer problema de lançamento oblíquo. As componentes são calculadas com trigonometria básica:</p>
+
+        <div class="formula-box">
+          <span class="formula-label">Componente horizontal</span>
+          <span class="formula-tex big">v₀ₓ = v₀ · cosθ</span>
+          <span class="formula-unit">Permanece constante durante todo o voo — MRU horizontal</span>
+        </div>
+
+        <div class="formula-box large">
+          <span class="formula-label">Componente vertical</span>
+          <span class="formula-tex big">v₀ᵧ = v₀ · senθ</span>
+          <span class="formula-unit">Decai com o tempo pela gravidade: vᵧ(t) = v₀ᵧ − g·t</span>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplo:</h4>
+          <p>Projétil com v₀ = 50 m/s e θ = 37° (cos 37° = 0,8 e sen 37° = 0,6).</p>
+          <p>v₀ₓ = 50 × 0,8 = <strong>40 m/s</strong> &nbsp;|&nbsp; v₀ᵧ = 50 × 0,6 = <strong>30 m/s</strong></p>
+          <p>Velocidade no topo: apenas vₓ = 40 m/s (vᵧ = 0 no ponto mais alto).</p>
+        </div>
+
+        <div class="concept-card">
+          <h4>Para não esquecer:</h4>
+          <ul>
+            <li><strong>cosθ → componente horizontal</strong> (adjacente ao ângulo)</li>
+            <li><strong>senθ → componente vertical</strong> (oposta ao ângulo)</li>
+            <li>Verificação: v₀² = v₀ₓ² + v₀ᵧ² (Pitágoras)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz3"></div>
+    </section>
+
+    <!-- TÓPICO 4 — Equações do Lançamento Oblíquo -->
+    <section class="topic" id="t4">
+      <div class="topic-header">
+        <span class="topic-num">04</span>
+        <h2>Equações do Lançamento Oblíquo</h2>
+      </div>
+      <div class="topic-body">
+        <p>Com as componentes decompostas, as equações descrevem posição e velocidade a cada instante. Na vertical, aplica-se diretamente o MRUV com aceleração g para baixo:</p>
+
+        <div class="formula-box">
+          <span class="formula-label">Posição horizontal (MRU)</span>
+          <span class="formula-tex big">x(t) = v₀cosθ · t</span>
+        </div>
+
+        <div class="formula-box large">
+          <span class="formula-label">Posição vertical (MRUV)</span>
+          <span class="formula-tex big">y(t) = v₀senθ · t − ½ · g · t²</span>
+          <span class="formula-unit">y = 0 em t = 0 (partida) e t = T (pouso, mesma altura)</span>
+        </div>
+
+        <div class="formula-box">
+          <span class="formula-label">Instante de tempo de subida</span>
+          <span class="formula-tex">t_subida = v₀ᵧ / g &nbsp;&nbsp;&nbsp;(quando vᵧ = 0)</span>
+          <span class="formula-unit">Tempo total de voo: T = 2 · t_subida = 2 · v₀ᵧ / g</span>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🔗</span>
+          <p>O tempo t conecta os dois movimentos. <strong>Para encontrar o alcance R</strong>: calcule T pela equação vertical, depois use R = v₀ₓ · T na equação horizontal.</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz4"></div>
+    </section>
+
+    <!-- TÓPICO 5 — Trajetória + Simulador -->
+    <section class="topic" id="t5">
+      <div class="topic-header">
+        <span class="topic-num">05</span>
+        <h2>Trajetória e Simulador</h2>
+      </div>
+      <div class="topic-body">
+        <p>Eliminando t entre as equações x = v₀ₓ·t e y = v₀ᵧ·t − ½gt², obtemos a equação da trajetória no plano:</p>
+
+        <div class="formula-box large">
+          <span class="formula-label">Equação da trajetória — lançamento oblíquo</span>
+          <span class="formula-tex big">y = x · tanθ − g·x² / (2v₀²cos²θ)</span>
+          <span class="formula-unit">Parábola com abertura para baixo (coeficiente de x² é negativo)</span>
+        </div>
+
+        <div class="formula-box">
+          <span class="formula-label">Alcance horizontal</span>
+          <span class="formula-tex big">R = v₀² · sen(2θ) / g</span>
+          <span class="formula-unit">Usando sen(2θ) = 2·senθ·cosθ &nbsp;|&nbsp; Válido para pouso na mesma altura</span>
+        </div>
+
+        <p style="margin-top:.5rem">Use o simulador abaixo para explorar a trajetória. Ajuste v₀, θ e h₀, lance o projétil e tente acertar o alvo.</p>
+
+        <div style="margin-top:0.75rem;border-radius:12px;overflow:hidden;border:1px solid rgba(56,189,248,.2)">
+          <iframe
+            src="../../../../simulacoes/lancamento-projetil.html"
+            title="Simulador de Lançamento de Projéteis"
+            loading="lazy"
+            scrolling="no"
+            allowtransparency="true"
+            style="width:100%;height:780px;border:none;display:block;background:transparent">
+          </iframe>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz5"></div>
+    </section>
+
+    <!-- TÓPICO 6 — Alcance Máximo -->
+    <section class="topic" id="t6">
+      <div class="topic-header">
+        <span class="topic-num">06</span>
+        <h2>Alcance Máximo</h2>
+      </div>
+      <div class="topic-body">
+        <p>O <strong>alcance R</strong> é a distância horizontal total percorrida até pousar na mesma altura. Depende de v₀, g e do ângulo θ pela fórmula R = v₀²·sen(2θ)/g.</p>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🏆</span>
+          <p>R é máximo quando <strong>sen(2θ) = 1</strong>, ou seja, 2θ = 90° → <strong>θ = 45°</strong>. O alcance máximo para uma dada velocidade inicial é <strong>R_max = v₀²/g</strong>.</p>
+        </div>
+
+        <div class="concept-card">
+          <h4>Como R varia com θ (mesma v₀):</h4>
+          <ul>
+            <li><strong>θ = 0° ou 90°:</strong> R = 0 (sem alcance horizontal)</li>
+            <li><strong>θ = 45°:</strong> R = R_max = v₀²/g</li>
+            <li><strong>Ângulos complementares</strong> (ex: 30° e 60°) → <em>mesmo alcance R</em></li>
+            <li>Para ângulos próximos a 45°, R varia pouco — a curva R(θ) é plana no topo</li>
+          </ul>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplo:</h4>
+          <p>Projétil com v₀ = 20 m/s e θ = 45°:</p>
+          <p>R = 20² · sen(90°) / 10 = 400 × 1 / 10 = <strong>40 m</strong></p>
+          <p>Esse é o alcance máximo: R_max = v₀²/g = 400/10 = 40 m.</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz6"></div>
+    </section>
+
+    <!-- TÓPICO 7 — Altura Máxima e Tempo de Voo -->
+    <section class="topic" id="t7">
+      <div class="topic-header">
+        <span class="topic-num">07</span>
+        <h2>Altura Máxima e Tempo de Voo</h2>
+      </div>
+      <div class="topic-body">
+        <p>A <strong>altura máxima H</strong> e o <strong>tempo total de voo T</strong> dependem exclusivamente da componente vertical v₀ᵧ = v₀·senθ.</p>
+
+        <div class="formula-box large">
+          <span class="formula-label">Altura máxima</span>
+          <span class="formula-tex big">H = v₀ᵧ² / (2g)</span>
+          <span class="formula-unit">No topo, vᵧ = 0 → Torricelli: 0 = v₀ᵧ² − 2gH</span>
+        </div>
+
+        <div class="formula-box">
+          <span class="formula-label">Tempo total de voo (pouso na mesma altura)</span>
+          <span class="formula-tex big">T = 2 · v₀ᵧ / g</span>
+          <span class="formula-unit">T = 2 × t_subida — simetria da trajetória parabólica</span>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">📊</span>
+          <p>Enquanto o alcance máximo ocorre a <strong>θ = 45°</strong>, a altura máxima cresce com θ → 90°. Há um compromisso entre altura e alcance: maximizar um reduz o outro.</p>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplo completo (v₀ = 50 m/s, θ = 37°):</h4>
+          <p>v₀ᵧ = 30 m/s &nbsp;|&nbsp; v₀ₓ = 40 m/s</p>
+          <p>H = 30²/20 = <strong>45 m</strong> &nbsp;|&nbsp; T = 2×30/10 = <strong>6 s</strong> &nbsp;|&nbsp; R = 40×6 = <strong>240 m</strong></p>
+        </div>
+
+        <div class="calc-box">
+          <h4>🧮 Calculadora — Lançamento Oblíquo</h4>
+          <p class="calc-hint">Informe v₀ e o ângulo θ (entre 0° e 90°, exclusive).</p>
+          <div class="calc-grid">
+            <label>v₀ (m/s): <input type="number" id="calc-v0o" class="calc-inp" placeholder="ex: 50" min="0" /></label>
+            <label>θ (°): <input type="number" id="calc-theta" class="calc-inp" placeholder="ex: 37" min="1" max="89" /></label>
+          </div>
+          <button class="calc-btn" id="calcObliquo">Calcular</button>
+          <div class="calc-result" id="calc-result-o"></div>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz7"></div>
+    </section>
+
+    <!-- TÓPICO 8 — Lançamento Horizontal (caso especial) -->
+    <section class="topic" id="t8">
+      <div class="topic-header">
+        <span class="topic-num">08</span>
+        <h2>Lançamento Horizontal</h2>
+      </div>
+      <div class="topic-body">
+        <p>O <strong>lançamento horizontal</strong> é um caso especial do oblíquo com <em>θ = 0°</em>: toda a velocidade inicial é horizontal e v₀ᵧ = v₀·sen(0°) = 0. O objeto parte de uma altura h e cai enquanto avança horizontalmente.</p>
+
+        <div class="decomp-grid">
+          <div class="decomp-card horizontal">
+            <div class="dc-icon">➡️</div>
+            <h4>Horizontal (MRU)</h4>
+            <p>v₀ₓ = v₀ (toda a velocidade). Avança sem desacelerar.</p>
+            <span class="dc-eq">x = v₀ · t</span>
+          </div>
+          <div class="decomp-card vertical">
+            <div class="dc-icon">⬇️</div>
+            <h4>Vertical (Queda Livre)</h4>
+            <p>v₀ᵧ = 0. O objeto cai como se fosse largado do repouso.</p>
+            <span class="dc-eq">y = ½ · g · t²</span>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <span class="formula-label">Tempo de queda (a partir de altura h)</span>
+          <span class="formula-tex big">t = √(2h / g)</span>
+          <span class="formula-unit">O tempo depende só da altura — a velocidade horizontal não altera a queda</span>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">💡</span>
+          <p>Resultado surpreendente: uma bala disparada horizontalmente e uma largada do repouso, partindo da mesma altura, tocam o chão <strong>ao mesmo tempo</strong>. A velocidade horizontal não afeta a queda vertical.</p>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplo:</h4>
+          <p>Bola lançada horizontalmente com v₀ = 10 m/s de h = 20 m.</p>
+          <p>Tempo: t = √(2×20/10) = √4 = <strong>2 s</strong></p>
+          <p>Alcance: x = 10 × 2 = <strong>20 m</strong> &nbsp;|&nbsp; vᵧ na chegada = 10×2 = <strong>20 m/s</strong></p>
+        </div>
+
+        <div class="calc-box">
+          <h4>🧮 Calculadora — Lançamento Horizontal</h4>
+          <p class="calc-hint">Informe v₀ e a altura de lançamento h.</p>
+          <div class="calc-grid">
+            <label>v₀ (m/s): <input type="number" id="calc-v0h" class="calc-inp" placeholder="ex: 10" min="0" /></label>
+            <label>h (m): <input type="number" id="calc-hh" class="calc-inp" placeholder="ex: 20" min="0" /></label>
+          </div>
+          <button class="calc-btn" id="calcHorizontal">Calcular</button>
+          <div class="calc-result" id="calc-result-h"></div>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz8"></div>
+    </section>
+
+    <!-- TÓPICO 9 — Casos Especiais -->
+    <section class="topic" id="t9">
+      <div class="topic-header">
+        <span class="topic-num">09</span>
+        <h2>Casos Especiais</h2>
+      </div>
+      <div class="topic-body">
+        <p>Alguns resultados merecem atenção especial — pela elegância matemática e pela frequência em vestibulares.</p>
+
+        <div class="concept-card">
+          <h4>Ângulos complementares — mesmo alcance:</h4>
+          <ul>
+            <li>Se θ₁ + θ₂ = 90°, então R₁ = R₂ (para mesma v₀).</li>
+            <li>Exemplo: 30° e 60° têm exatamente o mesmo alcance R.</li>
+            <li>O de 60° sobe mais alto e leva mais tempo no ar.</li>
+            <li>Prova: sen(2θ₁) = sen(180°−2θ₁) = sen(2θ₂) quando θ₂ = 90°−θ₁.</li>
+          </ul>
+        </div>
+
+        <div class="formula-box">
+          <span class="formula-label">θ = 0° — lançamento horizontal</span>
+          <span class="formula-tex">v₀ᵧ = 0, R = 0 (sem h₀) &nbsp;&nbsp; Caso especial: θ = 0°</span>
+        </div>
+        <div class="formula-box">
+          <span class="formula-label">θ = 90° — lançamento vertical</span>
+          <span class="formula-tex">v₀ₓ = 0, R = 0 &nbsp;&nbsp; Projétil sobe e retorna ao mesmo ponto</span>
+        </div>
+        <div class="formula-box large">
+          <span class="formula-label">θ = 45° — alcance máximo</span>
+          <span class="formula-tex big">R_max = v₀² / g</span>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🤔</span>
+          <p>Para qualquer alcance R &lt; R_max, existem <strong>dois ângulos distintos</strong> que o produzem — um abaixo e um acima de 45°. Por isso artilheiros podem escolher trajetória "rasa" ou "alta" para atingir o mesmo alvo.</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz9"></div>
+    </section>
+
+  </main>
+
+  <!-- PLACAR -->
+  <section class="score-section">
+    <div class="score-inner">
+      <h2>Seu resultado</h2>
+      <div class="score-display">
+        <span id="score-num">0</span><span class="score-sep">/</span><span id="score-total">27</span>
+      </div>
+      <p id="score-msg">Responda as questões para ver seu placar!</p>
+      <button class="reset-btn" id="resetAll">↺ Reiniciar estudo</button>
+
+      <div class="report-actions">
+        <p class="report-hint">EXPORTAR RELATÓRIO DE ESTUDO</p>
+        <div class="report-name">
+          <label for="studentName" style="font-size:.85rem;color:var(--text-muted);">Seu nome (opcional):</label>
+          <input type="text" id="studentName" class="name-input" placeholder="Ex: Maria Souza" autocomplete="name" />
+        </div>
+        <div class="report-btns">
+          <button class="report-btn" id="downloadReportBtn">⬇ Baixar .txt</button>
+          <button class="report-btn" id="copyReportBtn">⎘ Copiar</button>
+          <button class="report-btn" id="emailReportBtn">✉ E-mail</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Piras na Física — <a href="../../../../index.html" style="color:var(--accent);text-decoration:none;">pirasnafisica.com.br</a></p>
+  </footer>
+
+  <script src="quiz.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

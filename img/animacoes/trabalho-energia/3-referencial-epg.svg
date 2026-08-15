@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Dois referenciais para a energia potencial gravitacional: o h = 0 muda de lugar,
+     os valores de Epg mudam, e a variação ΔEpg continua a mesma.
+     Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Esta figura nasceu avulsa, e por isso NÃO sai de scripts/extrair-figuras-eds.ps1:
+     ela é a fonte, e o estudo dirigido de Energia Potencial a consome por <img src>. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 372" width="1120" height="744"
+     role="img" aria-labelledby="trabalho-energia-3-referencial-epg">
+  <title id="trabalho-energia-3-referencial-epg">Dois referenciais para a energia potencial gravitacional. No referencial 1, o solo é h igual a zero e a pedra parte de vinte metros. No referencial 2, o h igual a zero está na altura de partida da pedra e o solo fica em menos vinte metros. Os valores de Epg são diferentes nos dois casos, mas a variação delta Epg é a mesma.</title>
+  <style><![CDATA[
+    svg {
+      --ep-fundo:    #f0f9ff;
+      --ep-titulo:   #0c4a6e;
+      --ep-texto:    #0369a1;
+      --ep-divisor:  #bae6fd;
+      --ep-eixo:     #475569;
+      --ep-chao:     #64748b;
+      --ep-hachura:  #94a3b8;
+      --ep-marca:    #0f766e;
+      --ep-corpo:    #0ea5e9;
+      --ep-corpo-t:  #ffffff;
+      --ep-negativo: #dc2626;
+      --ep-faixa:    #e0f2fe;
+      --ep-nota:     #64748b;
+      --ep-fonte:    ui-monospace, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', monospace;
+    }
+
+    .ep-fundo    { fill: var(--ep-fundo); }
+    .ep-titulo   { fill: var(--ep-titulo); font-family: var(--ep-fonte); font-size: 13px; font-weight: 700; }
+    .ep-sub      { fill: var(--ep-texto);  font-family: var(--ep-fonte); font-size: 11px; }
+    .ep-painel   { fill: var(--ep-texto);  font-family: var(--ep-fonte); font-size: 12px; font-weight: 700; }
+    .ep-divisor  { fill: none; stroke: var(--ep-divisor); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .ep-eixo     { fill: none; stroke: var(--ep-eixo); stroke-width: 1.5; }
+    .ep-eixo-p   { fill: var(--ep-eixo); }
+    .ep-eixo-t   { fill: var(--ep-eixo); font-family: var(--ep-fonte); font-size: 13px; font-weight: 700; }
+    .ep-chao     { fill: none; stroke: var(--ep-chao); stroke-width: 2; }
+    .ep-hachura  { fill: none; stroke: var(--ep-hachura); stroke-width: 1; }
+    .ep-marca    { fill: var(--ep-marca); font-family: var(--ep-fonte); font-size: 11px; font-weight: 700; }
+    .ep-marca-n  { fill: var(--ep-negativo); font-family: var(--ep-fonte); font-size: 11px; font-weight: 700; }
+    .ep-guia     { fill: none; stroke: var(--ep-corpo); stroke-width: 1; stroke-dasharray: 4 3; }
+    .ep-corpo    { fill: var(--ep-corpo); }
+    .ep-corpo-t  { fill: var(--ep-corpo-t); font-family: var(--ep-fonte); font-size: 11px; font-weight: 700; }
+    .ep-fantasma { fill: none; stroke: var(--ep-corpo); stroke-width: 1.5; stroke-dasharray: 4 3; opacity: .65; }
+    .ep-queda    { fill: none; stroke: var(--ep-eixo); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .ep-cota     { fill: none; stroke: var(--ep-corpo); stroke-width: 1.5; }
+    .ep-cota-p   { fill: var(--ep-corpo); }
+    .ep-cota-t   { fill: var(--ep-texto); font-family: var(--ep-fonte); font-size: 11px; }
+    .ep-cota-n   { fill: none; stroke: var(--ep-negativo); stroke-width: 1.5; }
+    .ep-cota-np  { fill: var(--ep-negativo); }
+    .ep-cota-nt  { fill: var(--ep-negativo); font-family: var(--ep-fonte); font-size: 11px; }
+    .ep-valor    { fill: var(--ep-texto); font-family: var(--ep-fonte); font-size: 10px; }
+    .ep-valor-n  { fill: var(--ep-negativo); font-family: var(--ep-fonte); font-size: 10px; }
+    .ep-faixa    { fill: var(--ep-faixa); }
+    .ep-faixa-t  { fill: var(--ep-titulo); font-family: var(--ep-fonte); font-size: 11px; font-weight: 700; }
+    .ep-nota     { fill: var(--ep-nota); font-family: var(--ep-fonte); font-size: 9.5px; }
+
+    /* Quem abrir o arquivo com o sistema no modo escuro vê a versão noturna.
+       Embutido aqui porque o .svg carregado como imagem é um documento à parte
+       e não enxerga o data-theme da página. */
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --ep-fundo:    #0b1220;
+        --ep-titulo:   #bae6fd;
+        --ep-texto:    #7dd3fc;
+        --ep-divisor:  #1e3a5f;
+        --ep-eixo:     #cbd5e1;
+        --ep-chao:     #94a3b8;
+        --ep-hachura:  #64748b;
+        --ep-marca:    #5eead4;
+        --ep-corpo:    #38bdf8;
+        --ep-corpo-t:  #0b1220;
+        --ep-negativo: #f87171;
+        --ep-faixa:    #12263d;
+        --ep-nota:     #94a3b8;
+      }
+    }
+  ]]></style>
+
+  <!-- Fundo -->
+  <rect class="ep-fundo" width="560" height="372" rx="10"/>
+
+  <!-- Título -->
+  <text class="ep-titulo" x="280" y="28" text-anchor="middle">O referencial h = 0 pode ser escolhido livremente</text>
+  <text class="ep-sub" x="280" y="44" text-anchor="middle">apenas a variação ΔEpg = m · g · Δh importa</text>
+
+  <!-- Divisor dos painéis -->
+  <line class="ep-divisor" x1="280" y1="52" x2="280" y2="300"/>
+
+  <!-- ═══ PAINEL ESQUERDO — Referencial 1 ═══ -->
+  <text class="ep-painel" x="140" y="66" text-anchor="middle">Referencial 1</text>
+
+  <!-- Eixo -->
+  <line class="ep-eixo" x1="70" y1="278" x2="70" y2="78"/>
+  <polygon class="ep-eixo-p" points="70,74 66,84 74,84"/>
+  <text class="ep-eixo-t" x="70" y="71" text-anchor="middle">h</text>
+
+  <!-- Solo -->
+  <line class="ep-chao" x1="80" y1="278" x2="258" y2="278"/>
+  <g class="ep-hachura">
+    <line x1="90"  y1="278" x2="80"  y2="290"/>
+    <line x1="105" y1="278" x2="95"  y2="290"/>
+    <line x1="120" y1="278" x2="110" y2="290"/>
+    <line x1="135" y1="278" x2="125" y2="290"/>
+    <line x1="150" y1="278" x2="140" y2="290"/>
+    <line x1="165" y1="278" x2="155" y2="290"/>
+    <line x1="180" y1="278" x2="170" y2="290"/>
+    <line x1="195" y1="278" x2="185" y2="290"/>
+    <line x1="210" y1="278" x2="200" y2="290"/>
+    <line x1="225" y1="278" x2="215" y2="290"/>
+    <line x1="240" y1="278" x2="230" y2="290"/>
+    <line x1="255" y1="278" x2="245" y2="290"/>
+  </g>
+
+  <!-- h = 0 -->
+  <line class="ep-eixo" x1="66" y1="278" x2="74" y2="278"/>
+  <text class="ep-marca" x="62" y="282" text-anchor="end">0</text>
+
+  <!-- h = 20 -->
+  <line class="ep-eixo" x1="66" y1="95" x2="74" y2="95"/>
+  <line class="ep-guia" x1="80" y1="95" x2="148" y2="95"/>
+  <text class="ep-marca" x="62" y="99" text-anchor="end">20</text>
+
+  <!-- Pedra no alto -->
+  <circle class="ep-corpo" cx="165" cy="95" r="16"/>
+  <text class="ep-corpo-t" x="165" y="100" text-anchor="middle">m</text>
+
+  <!-- Trajetória da queda -->
+  <line class="ep-queda" x1="165" y1="113" x2="165" y2="250"/>
+  <polygon class="ep-eixo-p" points="165,254 161,244 169,244"/>
+
+  <!-- Pedra fantasma embaixo -->
+  <circle class="ep-fantasma" cx="165" cy="266" r="12"/>
+
+  <!-- Cota da altura -->
+  <line class="ep-cota" x1="222" y1="95" x2="222" y2="278"/>
+  <polygon class="ep-cota-p" points="222,91 218,101 226,101"/>
+  <polygon class="ep-cota-p" points="222,282 218,272 226,272"/>
+  <text class="ep-cota-t" x="232" y="191">h = 20 m</text>
+
+  <!-- Valores de Epg -->
+  <text class="ep-valor" x="140" y="310" text-anchor="middle">Epg(topo) = m·g·20</text>
+  <text class="ep-valor" x="140" y="324" text-anchor="middle">Epg(base) = m·g·0 = 0</text>
+
+  <!-- ═══ PAINEL DIREITO — Referencial 2 ═══ -->
+  <text class="ep-painel" x="420" y="66" text-anchor="middle">Referencial 2</text>
+
+  <!-- Eixo -->
+  <line class="ep-eixo" x1="350" y1="278" x2="350" y2="78"/>
+  <polygon class="ep-eixo-p" points="350,74 346,84 354,84"/>
+  <text class="ep-eixo-t" x="350" y="71" text-anchor="middle">h</text>
+
+  <!-- Solo -->
+  <line class="ep-chao" x1="360" y1="278" x2="538" y2="278"/>
+  <g class="ep-hachura">
+    <line x1="370" y1="278" x2="360" y2="290"/>
+    <line x1="385" y1="278" x2="375" y2="290"/>
+    <line x1="400" y1="278" x2="390" y2="290"/>
+    <line x1="415" y1="278" x2="405" y2="290"/>
+    <line x1="430" y1="278" x2="420" y2="290"/>
+    <line x1="445" y1="278" x2="435" y2="290"/>
+    <line x1="460" y1="278" x2="450" y2="290"/>
+    <line x1="475" y1="278" x2="465" y2="290"/>
+    <line x1="490" y1="278" x2="480" y2="290"/>
+    <line x1="505" y1="278" x2="495" y2="290"/>
+    <line x1="520" y1="278" x2="510" y2="290"/>
+    <line x1="535" y1="278" x2="525" y2="290"/>
+  </g>
+
+  <!-- h = 0 na altura de partida -->
+  <line class="ep-eixo" x1="346" y1="95" x2="354" y2="95"/>
+  <line class="ep-guia" x1="360" y1="95" x2="428" y2="95"/>
+  <text class="ep-marca" x="342" y="99" text-anchor="end">0</text>
+
+  <!-- h = -20 no solo -->
+  <line class="ep-eixo" x1="346" y1="278" x2="354" y2="278"/>
+  <text class="ep-marca-n" x="342" y="282" text-anchor="end">&#8722;20</text>
+
+  <!-- Pedra no alto -->
+  <circle class="ep-corpo" cx="445" cy="95" r="16"/>
+  <text class="ep-corpo-t" x="445" y="100" text-anchor="middle">m</text>
+
+  <!-- Trajetória da queda -->
+  <line class="ep-queda" x1="445" y1="113" x2="445" y2="250"/>
+  <polygon class="ep-eixo-p" points="445,254 441,244 449,244"/>
+
+  <!-- Pedra fantasma embaixo -->
+  <circle class="ep-fantasma" cx="445" cy="266" r="12"/>
+
+  <!-- Cota da altura, negativa -->
+  <line class="ep-cota-n" x1="492" y1="95" x2="492" y2="278"/>
+  <polygon class="ep-cota-np" points="492,91 488,101 496,101"/>
+  <polygon class="ep-cota-np" points="492,282 488,272 496,272"/>
+  <text class="ep-cota-nt" x="502" y="191">h = &#8722;20 m</text>
+
+  <!-- Valores de Epg -->
+  <text class="ep-valor" x="420" y="310" text-anchor="middle">Epg(topo) = m·g·0 = 0</text>
+  <text class="ep-valor-n" x="420" y="324" text-anchor="middle">Epg(base) = m·g·(&#8722;20)</text>
+
+  <!-- Rodapé: ΔEpg igual nos dois -->
+  <rect class="ep-faixa" x="90" y="336" width="380" height="22" rx="4"/>
+  <text class="ep-faixa-t" x="280" y="351" text-anchor="middle">&#916;Epg = &#8722;m&#183;g&#183;20  (igual nos dois referenciais)</text>
+
+  <!-- Nota sobre o sentido de h -->
+  <text class="ep-nota" x="280" y="368" text-anchor="middle">h sempre cresce para cima; valores negativos indicam posição abaixo do referencial</text>
+
+</svg>

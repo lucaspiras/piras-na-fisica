@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <meta name="description" content="Portal gratuito de Física para o Ensino Médio: conteúdos, simuladores, estudos dirigidos e listas de exercícios.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Energia Potencial e Conservação — Estudo Dirigido">
+  <meta property="og:description" content="Portal gratuito de Física para o Ensino Médio: conteúdos, simuladores, estudos dirigidos e listas de exercícios.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/atividades/estudos_dirigidos/trabalho-energia/ed_energia_potencial/">
+  <title>Energia Potencial e Conservação — Estudo Dirigido</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Poppins:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a href="#topicos" class="skip-link">Ir para o conteúdo</a>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-deco">
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+      <div class="hero-orb orb-3"></div>
+      <div class="wave-line"></div>
+      <div class="wave-line"></div>
+      <div class="wave-line"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="tag-dot"></span>
+          Física · Energia Potencial e Conservação · Ensino Médio
+        </div>
+        <h1 class="hero-title">
+          Energia Potencial<br>
+          <em>e Conservação</em>
+        </h1>
+        <p class="hero-sub">Energia armazenada na posição e configuração dos sistemas — da gravidade às molas — e o princípio que governa todas as transformações energéticas.</p>
+        <a href="#topicos" class="hero-cta">Começar o estudo ↓</a>
+      </div>
+      <div class="hero-visual">
+        <div class="energy-card"><div class="ec-icon purple">🌍</div><div><div class="ec-name">Ep Gravitacional</div><div class="ec-desc">Energia armazenada pela altura</div></div></div>
+        <div class="energy-card"><div class="ec-icon blue">🌀</div><div><div class="ec-name">Ep Elástica</div><div class="ec-desc">Energia armazenada na mola</div></div></div>
+        <div class="energy-card"><div class="ec-icon green">⚖️</div><div><div class="ec-name">Energia Mecânica</div><div class="ec-desc">Ec + Ep do sistema</div></div></div>
+        <div class="energy-card"><div class="ec-icon yellow">♾️</div><div><div class="ec-name">Conservação</div><div class="ec-desc">Em₁ = Em₂ (sem atrito)</div></div></div>
+        <div class="energy-card"><div class="ec-icon orange">🔥</div><div><div class="ec-name">Dissipação</div><div class="ec-desc">Em₁ = Em₂ + Q</div></div></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SUMÁRIO -->
+  <nav class="sumario" id="topicos">
+    <div class="sumario-inner">
+      <a href="../../../../index.html" class="sum-logo-link" aria-label="Piras na Física">
+        <img src="../../../../img/files/piras_na_fisica_logo_transparente.png" alt="Logo Piras na Física" class="sum-logo" />
+      </a>
+      <div class="sum-divider"></div>
+      <span class="sum-label">Tópicos</span>
+      <ol class="sum-list">
+        <li><a href="#t4">Ep Gravitacional</a></li>
+        <li><a href="#tEpe">Ep Elástica</a></li>
+        <li><a href="#tEm">En. Mecânica</a></li>
+        <li><a href="#tConserv">Conservação</a></li>
+        <li><a href="#t7">Exemplos</a></li>
+        <li><a href="#tDissip">Dissipação</a></li>
+      </ol>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <!-- TÓPICO 1 — Energia Potencial Gravitacional -->
+    <section class="topic" id="t4">
+      <div class="topic-header">
+        <span class="topic-num">01</span>
+        <h2>Energia Potencial Gravitacional</h2>
+      </div>
+      <div class="topic-body">
+        <p>A <strong>energia potencial gravitacional</strong> (Epg) é a energia armazenada em um objeto em função de sua posição no campo gravitacional. Quanto mais alto, maior a energia potencial gravitacional armazenada e maior a energia cinética que o objeto pode ganhar ao cair.</p>
+
+        <div class="formula-box">
+          <span class="formula-label">Energia Potencial Gravitacional</span>
+          <span class="formula-tex">Epg = m · g · h</span>
+          <span class="formula-unit">m = massa (kg) · g = aceleração gravitacional local (m/s²) · h = altura em relação a um referencial (m) · Epg em joules (J)</span>
+        </div>
+
+        <div class="highlight-box orange-hl">
+          <span class="hb-icon">⚠️</span>
+          <div>
+            <p><strong>Atenção:</strong> a expressão Epg = mgh vale nas <strong>proximidades da superfície</strong> da Terra (ou de outro planeta), onde g pode ser tratado como constante. Para a Terra, usamos g ≈ 10 m/s².</p>
+            <p>Para grandes distâncias ou distribuições de massa diferentes, g varia com a posição e a expressão correta é outra (gravitação universal).</p>
+          </div>
+        </div>
+
+        <div class="concept-card">
+          <h4>A lógica da energia potencial gravitacional:</h4>
+          <ul>
+            <li>A energia potencial gravitacional depende da <strong>posição</strong>, não do movimento.</li>
+            <li>O referencial (h = 0) pode ser escolhido livremente. Apenas a <strong>variação</strong> de energia potencial gravitacional importa nos cálculos.</li>
+          </ul>
+          <figure style="margin:10px 0 12px;">
+            <img src="../../../../img/animacoes/trabalho-energia/3-referencial-epg.svg" alt="Dois referenciais para Epg: a variação ΔEpg é igual em ambos" style="max-width:82%;height:auto;border-radius:var(--r);display:block;margin:0 auto;"/>
+          </figure>
+          <ul>
+            <li>Quando um objeto cai sem resistência do ar nem outras forças agindo, a energia potencial gravitacional diminui e a energia cinética aumenta, pela conservação de energia.</li>
+            <li>Para levantar um objeto, é preciso realizar trabalho contra a gravidade. Essa energia fica armazenada como energia potencial gravitacional.</li>
+          </ul>
+        </div>
+
+        <div class="example-box">
+          <h4>Conservação de energia: queda livre</h4>
+          <p>Uma pedra de <strong>2 kg</strong> é largada do repouso de <strong>20 m</strong> de altura, sem resistência do ar (g = 10 m/s²):</p>
+          <p class="calc-line">Epg inicial = 2 × 10 × 20 = <strong>400 J</strong></p>
+          <p>No chão (h = 0), toda a energia potencial gravitacional se converteu em energia cinética:</p>
+          <p class="calc-line">Epg = Ec → ½ × 2 × v² = 400</p>
+          <p class="calc-line">v² = 400 → <strong>v = 20 m/s</strong></p>
+          <p>Verificação de energia total:</p>
+          <p class="calc-line">400 J (topo) = 400 J (base). ✓</p>
+        </div>
+
+      </div>
+      <div class="quiz-section" id="quiz4"></div>
+    </section>
+
+    <!-- TÓPICO 2 — Energia Potencial Elástica -->
+    <section class="topic" id="tEpe">
+      <div class="topic-header">
+        <span class="topic-num">02</span>
+        <h2>Energia Potencial Elástica</h2>
+      </div>
+      <div class="topic-body">
+
+        <p>A <strong>energia potencial elástica</strong> (Epe) é a energia armazenada em um corpo elástico deformado — como uma mola comprimida ou esticada. Ao ser liberado, o corpo exerce força e converte essa energia em energia cinética.</p>
+
+        <div class="formula-box">
+          <span class="formula-label">Lei de Hooke — mola ideal</span>
+          <span class="formula-tex">F = k · x</span>
+          <span class="formula-unit">F = força elástica (N) · k = constante elástica da mola (N/m) · x = deformação em relação à posição de equilíbrio (m)</span>
+        </div>
+
+        <div class="formula-box">
+          <span class="formula-label">Energia Potencial Elástica</span>
+          <span class="formula-tex">Epe = ½ · k · x²</span>
+          <span class="formula-unit">k = constante elástica (N/m) · x = deformação da mola (m) · Epe em joules (J)</span>
+        </div>
+
+        <div class="concept-card">
+          <h4>O modelo da mola ideal:</h4>
+          <ul>
+            <li>A força exercida pela mola é proporcional à deformação: <strong>F = kx</strong>. Quanto maior a deformação, maior a força de restauração em direção ao equilíbrio.</li>
+            <li>A constante k mede a <strong>rigidez</strong> da mola: uma mola com k maior exige mais força para a mesma deformação e armazena mais energia.</li>
+            <li>A energia potencial elástica cresce com o <strong>quadrado da deformação</strong>: dobrar x quadruplica Epe.</li>
+            <li>É um modelo idealizado. Molas reais têm limites de deformação além dos quais o comportamento deixa de ser proporcional.</li>
+          </ul>
+        </div>
+
+        <div class="example-box">
+          <h4>Animação — sistema massa-mola em oscilação ideal</h4>
+          <p>Um bloco preso a uma mola oscila horizontalmente sem atrito e sem resistência do ar. A energia potencial elástica e a energia cinética se alternam, mantendo a energia mecânica constante.</p>
+          <div style="border-radius:var(--r);overflow:hidden;margin:12px 0 0;background:#f8fafc;">
+            <canvas id="mola-anim" style="width:100%;display:block;"></canvas>
+          </div>
+          <div style="text-align:center;margin:8px 0 0;display:flex;justify-content:center;gap:6px;">
+            <button id="mola-prev" style="font-family:monospace;font-size:0.85rem;padding:6px 14px;border-radius:6px;border:1px solid #cbd5e1;background:white;color:#0c4a6e;cursor:pointer;" title="Recuar um frame">&#9664;</button>
+            <button id="mola-playpause" style="font-family:monospace;font-size:0.85rem;padding:6px 18px;border-radius:6px;border:1px solid #cbd5e1;background:white;color:#0c4a6e;cursor:pointer;">⏸ Pausar</button>
+            <button id="mola-next" style="font-family:monospace;font-size:0.85rem;padding:6px 14px;border-radius:6px;border:1px solid #cbd5e1;background:white;color:#0c4a6e;cursor:pointer;" title="Avançar um frame">&#9654;</button>
+          </div>
+        </div>
+        <script src="spring-animation.js"></script>
+        <script>initSpringAnimation('mola-anim', { buttonId: 'mola-playpause', prevId: 'mola-prev', nextId: 'mola-next' });</script>
+
+      </div>
+      <div class="quiz-section" id="quizEpe"></div>
+    </section>
+
+    <!-- TÓPICO 3 — Energia Mecânica -->
+    <section class="topic" id="tEm">
+      <div class="topic-header">
+        <span class="topic-num">03</span>
+        <h2>Energia Mecânica</h2>
+      </div>
+      <div class="topic-body">
+
+        <p>A <strong>energia mecânica</strong> de um sistema é a soma de sua energia cinética com suas energias potenciais. Ela reúne, em uma única grandeza, a energia associada ao movimento e a energia armazenada em função da posição ou configuração do sistema.</p>
+
+        <div class="formula-box">
+          <span class="formula-label">Energia Mecânica</span>
+          <span class="formula-tex">Em = Ec + Ep</span>
+          <span class="formula-unit">Ec = energia cinética = ½mv² · Ep = energia potencial, podendo incluir a gravitacional (mgh), a elástica (½kx²) e outras · Em em joules (J)</span>
+        </div>
+
+        <div class="concept-card">
+          <h4>Quando a energia mecânica se conserva:</h4>
+          <ul>
+            <li>Quando apenas <strong>forças conservativas</strong> realizam trabalho sobre o sistema. A gravidade e a força elástica de uma mola são forças conservativas: o trabalho que realizam depende apenas das posições inicial e final, não do caminho percorrido.</li>
+            <li>Quando <strong>não há forças dissipativas</strong> agindo: nem atrito cinético, nem resistência do ar, nem outras interações que convertam energia mecânica em energia térmica.</li>
+            <li>É uma situação <strong>idealizada</strong>. Na prática, algum grau de dissipação sempre existe. Ainda assim, essa aproximação é fisicamente razoável em muitas situações e muito útil para os cálculos.</li>
+          </ul>
+        </div>
+
+        <div class="example-box">
+          <h4>Pêndulo ideal</h4>
+          <p>Um pêndulo é solto do repouso de uma posição a <strong>1,25 m</strong> acima do ponto mais baixo da trajetória (sem atrito, sem resistência do ar, g = 10 m/s²).</p>
+          <p>No ponto mais alto, a velocidade é zero. Toda a energia mecânica é potencial gravitacional:</p>
+          <p class="calc-line">Em = mgh</p>
+          <p>No ponto mais baixo (escolhendo esse ponto como referencial, h = 0), toda a energia mecânica é cinética:</p>
+          <p class="calc-line">Em = ½mv²</p>
+          <p>Aplicando conservação de energia mecânica:</p>
+          <p class="calc-line">mgh = ½mv²  →  v² = 2gh = 2 × 10 × 1,25 = 25</p>
+          <p class="calc-line">v = <strong>5 m/s</strong></p>
+          <p>A massa do pêndulo cancela: a velocidade no ponto mais baixo depende apenas da altura de soltura.</p>
+        </div>
+
+        <div class="concept-card">
+          <h4>Pêndulo ideal × pêndulo real:</h4>
+          <ul>
+            <li><strong>Ideal:</strong> sem resistência do ar e sem atrito no ponto de suspensão. A amplitude das oscilações permanece constante indefinidamente. A energia mecânica se conserva a cada ciclo.</li>
+            <li><strong>Real:</strong> a resistência do ar e o atrito no ponto de suspensão dissipam energia a cada oscilação. A amplitude diminui gradualmente e o pêndulo eventualmente para. Toda a energia mecânica inicial foi convertida em energia térmica.</li>
+          </ul>
+        </div>
+
+        <div class="example-box">
+          <h4>Animação — pêndulo ideal e real</h4>
+          <p>Ajuste a resistência do ar para comparar o comportamento ideal (energia mecânica conservada) com o real (energia dissipada progressivamente). As barras mostram como a energia se distribui a cada instante.</p>
+          <div style="margin:10px 0 8px;">
+            <span style="font-family:monospace;font-size:0.85rem;color:#475569;">Resistência do ar: </span><strong id="pend-resist-label" style="font-family:monospace;font-size:0.85rem;color:#0c4a6e;"></strong>
+            <input type="range" id="pend-resist" min="0" max="100" value="0" style="width:100%;margin-top:5px;display:block;accent-color:#ef4444;">
+          </div>
+          <div style="border-radius:var(--r);overflow:hidden;margin:8px 0 0;background:#f8fafc;">
+            <canvas id="pend-anim" style="width:100%;display:block;"></canvas>
+          </div>
+          <div style="text-align:center;margin:8px 0 0;display:flex;justify-content:center;gap:6px;flex-wrap:wrap;">
+            <button id="pend-prev" style="font-family:monospace;font-size:0.85rem;padding:6px 14px;border-radius:6px;border:1px solid #cbd5e1;background:white;color:#0c4a6e;cursor:pointer;" title="Recuar um frame">&#9664;</button>
+            <button id="pend-playpause" style="font-family:monospace;font-size:0.85rem;padding:6px 18px;border-radius:6px;border:1px solid #cbd5e1;background:white;color:#0c4a6e;cursor:pointer;">⏸ Pausar</button>
+            <button id="pend-next" style="font-family:monospace;font-size:0.85rem;padding:6px 14px;border-radius:6px;border:1px solid #cbd5e1;background:white;color:#0c4a6e;cursor:pointer;" title="Avançar um frame">&#9654;</button>
+            <button id="pend-reset" style="font-family:monospace;font-size:0.85rem;padding:6px 14px;border-radius:6px;border:1px solid #cbd5e1;background:white;color:#0c4a6e;cursor:pointer;" title="Reiniciar animação">&#8635; Reiniciar</button>
+          </div>
+        </div>
+        <script src="pendulum-animation.js"></script>
+        <script>initPendulumAnimation('pend-anim', {
+          buttonId: 'pend-playpause',
+          prevId:   'pend-prev',
+          nextId:   'pend-next',
+          resetId:  'pend-reset',
+          resistanceId:      'pend-resist',
+          resistanceLabelId: 'pend-resist-label'
+        });</script>
+
+      </div>
+      <div class="quiz-section" id="quizEm"></div>
+    </section>
+
+    <!-- TÓPICO 4 — Conservação da Energia Mecânica -->
+    <section class="topic" id="tConserv">
+      <div class="topic-header">
+        <span class="topic-num">04</span>
+        <h2>Conservação da Energia Mecânica</h2>
+      </div>
+      <div class="topic-body">
+
+        <p>Quando apenas forças conservativas realizam trabalho sobre um sistema, a energia mecânica se mantém constante ao longo de toda a trajetória. Isso significa que qualquer ganho de energia cinética vem de uma perda equivalente de energia potencial, e vice-versa.</p>
+
+        <div class="formula-box">
+          <span class="formula-label">Conservação de Energia Mecânica (sem forças dissipativas)</span>
+          <span class="formula-tex">Em₁ = Em₂</span>
+          <span class="formula-unit">Ec₁ + Ep₁ = Ec₂ + Ep₂ · Os índices 1 e 2 indicam dois instantes quaisquer da trajetória.</span>
+        </div>
+
+        <div class="highlight-box green-hl">
+          <span class="hb-icon">🔗</span>
+          <p>A conservação de energia mecânica é uma ferramenta poderosa: <strong>substitui a análise força a força do movimento</strong>. Para encontrar velocidades em qualquer ponto basta comparar os estados de energia — sem precisar conhecer as forças em cada ponto da trajetória.</p>
+        </div>
+
+        <div class="concept-card">
+          <h4>Estratégia geral:</h4>
+          <ul>
+            <li>Escolha dois instantes da trajetória: inicial (1) e final (2).</li>
+            <li>Identifique quais formas de energia existem em cada instante (Ec, Epg, Epe).</li>
+            <li>Escreva: <strong>Ec₁ + Ep₁ = Ec₂ + Ep₂</strong>.</li>
+            <li>Resolva para a incógnita. A massa cancela na maioria dos casos com apenas forças gravitacionais.</li>
+          </ul>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplo 1 — Esquiador descendo uma ladeira</h4>
+          <p>Um esquiador parte do repouso do topo de uma ladeira a <strong>45 m</strong> de altura em relação à base. Desconsiderando atrito e resistência do ar (g = 10 m/s²), qual é a velocidade na base?</p>
+          <p>O esquiador é tratado como uma partícula em translação. Aplicando conservação de energia mecânica:</p>
+          <p class="calc-line">mgh = ½mv²  →  v² = 2gh = 2 × 10 × 45 = 900</p>
+          <p class="calc-line">v = <strong>30 m/s</strong></p>
+          <p>A massa cancela: dois esquiadores de massas diferentes, partindo da mesma altura sem atrito, atingem a mesma velocidade na base.</p>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🎿</span>
+          <p>Esse resultado vale para objetos em <strong>translação pura</strong>: blocos deslizando, pessoas em esquis, carrinhos sobre trilhos sem atrito. Para objetos que <strong>rolam</strong> (bolas, cilindros), parte da energia mecânica vai para a rotação e a velocidade de translação na base seria <em>menor</em>.</p>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplo 2 — Lançamento vertical</h4>
+          <p>Bola lançada para cima com v₀ = 20 m/s, sem resistência do ar. Qual a altura máxima? (g = 10 m/s²)</p>
+          <p>No topo: v = 0. Toda a energia cinética se converteu em energia potencial gravitacional.</p>
+          <p class="calc-line">½mv₀² = mgh  (m cancela)  →  ½v₀² = gh</p>
+          <p class="calc-line">h = v₀² / (2g) = 400 / 20 = <strong>20 m</strong></p>
+        </div>
+
+      </div>
+      <div class="quiz-section" id="quizConserv"></div>
+    </section>
+
+    <!-- TÓPICO 5 — Exemplos de Conservação -->
+    <section class="topic" id="t7">
+      <div class="topic-header">
+        <span class="topic-num">05</span>
+        <h2>Exemplos de Conservação de Energia</h2>
+      </div>
+      <div class="topic-body">
+        <p>A conservação de energia é uma ferramenta poderosa para resolver problemas: em vez de analisar forças em cada ponto da trajetória, basta <em>comparar o estado inicial e o estado final</em>.</p>
+
+        <div class="concept-card">
+          <h4>Estratégia geral para usar conservação de energia:</h4>
+          <ul>
+            <li>Escolha o estado inicial e o estado final do problema.</li>
+            <li>Identifique quais formas de energia existem em cada estado.</li>
+            <li>Escreva: <strong>Energia total inicial = Energia total final</strong>.</li>
+            <li>Resolva para a incógnita. Se houver atrito, inclua o calor gerado.</li>
+          </ul>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplo 1 — Montanha-russa</h4>
+
+          <p><strong>1. O motor insere energia no sistema.</strong> No início do percurso, um motor (geralmente uma corrente de arraste) puxa o carrinho até a altura máxima da pista — o ponto mais alto de todo o trajeto. É nesse momento que toda a energia mecânica é fornecida ao sistema.</p>
+
+          <p><strong>2. A partir daí, o carrinho se move sozinho.</strong> Sem o motor, o carrinho sobe, desce e faz loopings convertendo ciclicamente energia potencial gravitacional (Epg) em energia cinética (Ec) e vice-versa. A conservação de energia garante que o carrinho <em>nunca pode ultrapassar a altura máxima inicial</em> — cada subida só é possível porque a descida anterior acumulou a energia cinética necessária.</p>
+
+          <p><strong>3. Na prática, a dissipação reduz as alturas ao longo do percurso.</strong> Atrito nos trilhos e resistência do ar dissipam uma parte da energia mecânica a cada metro percorrido, convertendo-a em calor. Por isso, cada morro subsequente da pista é projetado um pouco mais baixo que o anterior: o carrinho já não tem energia suficiente para atingir a altura máxima original.</p>
+
+          <p style="margin-top:1rem">Calculando a velocidade em um ponto com h = 0, partindo do repouso em h = 15 m (sem atrito, g = 10 m/s²):</p>
+          <p class="calc-line">mgh = ½mv² → gh = v²/2</p>
+          <p class="calc-line">10 × 15 = v²/2 → v² = 300 → <strong>v ≈ 17,3 m/s</strong></p>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplo 2 — Com atrito</h4>
+          <p>Bloco de 2 kg desce h = 5 m por uma rampa com atrito. Velocidade no final: v = 8 m/s. Qual a energia dissipada pelo atrito? (g = 10 m/s²)</p>
+          <p class="calc-line">Ep inicial = 2 × 10 × 5 = <strong>100 J</strong></p>
+          <p class="calc-line">Ec final = ½ × 2 × 8² = <strong>64 J</strong></p>
+          <p class="calc-line">Energia dissipada = 100 − 64 = <strong>36 J</strong> (viraram calor)</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz7"></div>
+    </section>
+
+    <!-- TÓPICO 6 — Energia Térmica e Dissipação -->
+    <section class="topic" id="tDissip">
+      <div class="topic-header">
+        <span class="topic-num">06</span>
+        <h2>Energia Térmica e Dissipação</h2>
+      </div>
+      <div class="topic-body">
+
+        <p>Nos sistemas reais, parte da energia mecânica é inevitavelmente convertida em <strong>energia térmica</strong>. Essa conversão acontece sempre que forças dissipativas estão presentes — principalmente o atrito cinético e a resistência de fluidos (ar, água).</p>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🔥</span>
+          <div>
+            <p>A <strong>energia térmica</strong> é a energia associada à agitação aleatória das moléculas de um material. Quando um bloco desliza sobre uma superfície rugosa, as irregularidades microscópicas em contato vibram mais intensamente: o bloco e a superfície ficam levemente mais quentes.</p>
+            <p>Essa energia não "desaparece" — ela se transforma, passando da forma mecânica organizada (movimento coletivo do bloco) para a forma térmica desordenada (agitação molecular).</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <span class="formula-label">Energia Mecânica com Forças Dissipativas</span>
+          <span class="formula-tex">Em₁ = Em₂ + Q</span>
+          <span class="formula-unit">Em₁ = energia mecânica inicial (J) · Em₂ = energia mecânica final (J) · Q = energia dissipada como calor (J, sempre positiva)</span>
+        </div>
+
+        <div class="concept-card">
+          <h4>Forças dissipativas mais comuns:</h4>
+          <ul>
+            <li><strong>Atrito cinético:</strong> entre sólidos em movimento relativo. O calor gerado é proporcional à força de atrito e ao deslocamento: Q = f × d.</li>
+            <li><strong>Resistência do ar e de fluidos:</strong> cresce com a velocidade e com o quadrado dela em velocidades mais altas. É a razão principal pela qual veículos rápidos consomem muito mais energia.</li>
+            <li><strong>Deformações inelásticas:</strong> quando materiais absorvem energia sem devolvê-la (amortecedores, colisões parcialmente inelásticas).</li>
+          </ul>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplo 1 — Freios de um carro</h4>
+          <p>Um carro de <strong>1 000 kg</strong> viaja a <strong>20 m/s</strong> e freia até parar completamente. Toda a energia cinética se converte em calor nas pastilhas e discos de freio (g = 10 m/s²).</p>
+          <p class="calc-line">Ec = ½ × 1000 × 20² = <strong>200 000 J = 200 kJ</strong></p>
+          <p>Essa energia aquece as pastilhas de freio e os discos. Em frenagens intensas, os discos podem atingir temperaturas de centenas de graus Celsius. Por isso, freios de alta performance usam materiais com grande capacidade de absorver e dissipar calor.</p>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplo 2 — Reentrada de cápsulas espaciais</h4>
+          <p>Uma cápsula espacial retornando à Terra entra na atmosfera com velocidade de vários km/s. A resistência do ar converte a maior parte da energia cinética em calor de forma muito intensa: a temperatura da blindagem térmica pode ultrapassar 1 500 °C. O escudo térmico é projetado especificamente para absorver e dissipar esse calor sem danificar a estrutura interna.</p>
+        </div>
+
+        <div class="example-box">
+          <h4>Exemplo 3 — Cálculo com dissipação</h4>
+          <p>Um bloco de <strong>3 kg</strong> desce uma rampa de <strong>h = 10 m</strong> e chega ao fundo com <strong>v = 12 m/s</strong>. Qual é a energia dissipada pelo atrito? (g = 10 m/s²)</p>
+          <p class="calc-line">Em₁ = Epg = mgh = 3 × 10 × 10 = <strong>300 J</strong></p>
+          <p class="calc-line">Em₂ = Ec = ½mv² = ½ × 3 × 144 = <strong>216 J</strong></p>
+          <p class="calc-line">Q = Em₁ − Em₂ = 300 − 216 = <strong>84 J</strong></p>
+          <p>Esses 84 J foram transferidos ao bloco e à rampa na forma de calor.</p>
+        </div>
+
+        <div class="highlight-box orange-hl">
+          <span class="hb-icon">🌍</span>
+          <div>
+            <p><strong>A lei de conservação de energia total nunca é violada.</strong> Quando a energia mecânica do sistema diminui, ela não desaparece — migra para o ambiente na forma de energia térmica. A soma de toda a energia do universo permanece constante. O que chamamos de "perda" é sempre uma transformação de energia mecânica em outras formas menos organizadas.</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="quiz-section" id="quizDissip"></div>
+    </section>
+
+  </main>
+
+  <!-- PLACAR FINAL -->
+  <section class="score-section">
+    <div class="score-inner">
+      <h2>Seu Desempenho</h2>
+      <div class="score-display">
+        <span id="score-num">0</span>
+        <span class="score-sep">/</span>
+        <span id="score-total">0</span>
+      </div>
+      <p id="score-msg">Responda as questões para ver seu placar!</p>
+      <button class="reset-btn" id="resetAll">Reiniciar tudo</button>
+
+      <div class="report-name">
+        <label for="studentName" class="report-hint">Seu nome para o relatório (opcional):</label>
+        <input type="text" id="studentName" class="name-input" placeholder="Ex: João Silva" maxlength="60" autocomplete="off" />
+      </div>
+      <div class="report-actions">
+        <p class="report-hint">Salve ou compartilhe suas respostas:</p>
+        <div class="report-btns">
+          <button class="report-btn" id="downloadReportBtn">&#8595; Baixar .txt</button>
+          <button class="report-btn" id="copyReportBtn">&#128203; Copiar</button>
+          <button class="report-btn" id="emailReportBtn">&#9993; Enviar por e-mail</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Física · Ensino Médio · Energia Potencial, Conservação e Dissipação</p>
+  </footer>
+
+  <script src="quiz.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

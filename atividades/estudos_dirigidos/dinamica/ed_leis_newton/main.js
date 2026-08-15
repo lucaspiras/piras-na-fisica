@@ -52,14 +52,12 @@
   // EXPORTAR RELATÓRIO
   // ================================================================
   const TOPIC_NAMES = {
-    quiz1: 'Tópico 01 — Força: a linguagem da dinâmica',
-    quiz2: 'Tópico 02 — 1ª Lei: inércia e referenciais inerciais',
-    quiz3: 'Tópico 03 — 2ª Lei: quantidade de movimento e F = m·a',
-    quiz4: 'Tópico 04 — 3ª Lei: pares de interação',
-    quiz5: 'Tópico 05 — Força resultante, equilíbrio e DCL',
+    quiz1: 'Tópico 01 — Causas dos movimentos: de Aristóteles a Newton',
+    quiz2: 'Tópico 02 — 1ª Lei: a inércia',
+    quiz3: 'Tópico 03 — Referenciais inerciais',
+    quiz4: 'Tópico 04 — 2ª Lei: quantidade de movimento e F = m·a',
+    quiz5: 'Tópico 05 — 3ª Lei: pares de interação',
     quiz6: 'Tópico 06 — Nenhuma situação é de uma lei só',
-    quiz7: 'Tópico 07 — Aristóteles × Newton',
-    quiz8: 'Tópico 08 — Limites de validade',
   };
 
   function stripHtml(str) { return str.replace(/<[^>]+>/g, ''); }

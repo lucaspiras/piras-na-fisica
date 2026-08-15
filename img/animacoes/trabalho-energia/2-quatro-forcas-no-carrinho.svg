@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- As quatro forcas no carrinho e o trabalho que cada uma realiza.
+     Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Fonte da geometria: atividades/estudos_dirigidos/trabalho-energia/ed_trabalho_energia/index.html
+     Gerado por scripts/extrair-figuras-eds.ps1 — nao editar a mao. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 270" width="1040" height="540"
+     role="img" aria-labelledby="trabalho-energia-2-quatro-forcas-no-carrinho">
+  <title id="trabalho-energia-2-quatro-forcas-no-carrinho">Carrinho de supermercado empurrado ao longo de cinco metros, com as quatro forças que agem sobre ele. A normal e o peso são perpendiculares ao deslocamento e realizam trabalho nulo. A força da pessoa realiza mais duzentos joules e o atrito, menos trinta joules.</title>
+  <style><![CDATA[
+    svg {
+      --fig-fundo:      #f8fafc;
+      --fig-fundo-b:    #e2e8f0;
+      --fig-chao:       #475569;
+      --fig-hachura:    #94a3b8;
+      --fig-corpo:      #dbeafe;
+      --fig-corpo-b:    #3b82f6;
+      --fig-roda:       #94a3b8;
+      --fig-divisor:    #e2e8f0;
+      --fig-rotulo:     #64748b;
+      --fig-texto:      #1e293b;
+      --fig-forca:      #ef4444;
+      --fig-forca-t:    #dc2626;
+      --fig-desloc:     #2563eb;
+      --fig-desloc-t:   #1d4ed8;
+      --fig-angulo:     #16a34a;
+      --fig-normal:     #16a34a;
+      --fig-normal-t:   #15803d;
+      --fig-peso:       #9333ea;
+      --fig-peso-t:     #7e22ce;
+      --fig-atrito:     #f97316;
+      --fig-atrito-t:   #ea580c;
+      --fig-nulo:       #f59e0b;
+      --fig-nulo-t:     #b45309;
+      --fig-fonte-t:    'Poppins', system-ui, sans-serif;
+    }
+
+    /* estruturas */
+    .fig-fundo    { fill: var(--fig-fundo); stroke: var(--fig-fundo-b); stroke-width: 1; }
+    .fig-chao     { fill: none; stroke: var(--fig-chao); stroke-width: 2; }
+    .fig-hachura  { stroke: var(--fig-hachura); stroke-width: 1; }
+    .fig-corpo    { fill: var(--fig-corpo); stroke: var(--fig-corpo-b); stroke-width: 1.5; }
+    .fig-roda     { fill: var(--fig-roda); stroke: var(--fig-chao); stroke-width: 1.5; }
+    .fig-cabo     { fill: none; stroke: var(--fig-chao); stroke-width: 2; }
+    .fig-divisor  { fill: none; stroke: var(--fig-divisor); stroke-width: 1.5; stroke-dasharray: 4 3; }
+
+    /* vetores */
+    .fig-v-forca  { fill: none; stroke: var(--fig-forca);  stroke-width: 2.5; }
+    .fig-v-desloc { fill: none; stroke: var(--fig-desloc); stroke-width: 2; }
+    .fig-v-desloc-tr { fill: none; stroke: var(--fig-desloc); stroke-width: 2; stroke-dasharray: 8 4; }
+    .fig-v-normal { fill: none; stroke: var(--fig-normal); stroke-width: 2.5; }
+    .fig-v-peso   { fill: none; stroke: var(--fig-peso);   stroke-width: 2.5; }
+    .fig-v-atrito { fill: none; stroke: var(--fig-atrito); stroke-width: 2.5; }
+    .fig-angulo   { fill: none; stroke: var(--fig-angulo); stroke-width: 1.5; }
+    .fig-p-forca  { fill: var(--fig-forca); }
+    .fig-p-desloc { fill: var(--fig-desloc); }
+    .fig-p-normal { fill: var(--fig-normal); }
+    .fig-p-peso   { fill: var(--fig-peso); }
+    .fig-p-atrito { fill: var(--fig-atrito); }
+    .fig-no-ok    { fill: var(--fig-angulo); }
+    .fig-no-nulo  { fill: var(--fig-nulo); }
+
+    /* textos */
+    .fig-t          { font-family: var(--fig-fonte-t); font-size: 11px; fill: var(--fig-texto); }
+    .fig-t-rot      { font-family: var(--fig-fonte-t); font-size: 12px; font-weight: 600; fill: var(--fig-rotulo); }
+    .fig-t-form     { font-family: var(--fig-fonte-t); font-size: 12px; font-weight: 600; fill: var(--fig-texto); }
+    .fig-r-forca    { font-family: var(--fig-fonte-t); font-size: 13px; font-weight: 700; font-style: italic; fill: var(--fig-forca); }
+    .fig-t-forca    { font-family: var(--fig-fonte-t); font-size: 11px; fill: var(--fig-forca-t); }
+    .fig-t-desloc   { font-family: var(--fig-fonte-t); font-size: 11px; font-style: italic; fill: var(--fig-desloc); }
+    .fig-t-desloc-f { font-family: var(--fig-fonte-t); font-size: 12px; font-style: italic; font-weight: 600; fill: var(--fig-desloc-t); }
+    .fig-t-angulo   { font-family: var(--fig-fonte-t); font-size: 12px; font-style: italic; fill: var(--fig-angulo); }
+    .fig-t-ok       { font-family: var(--fig-fonte-t); font-size: 11px; fill: var(--fig-normal-t); }
+    .fig-t-peso     { font-family: var(--fig-fonte-t); font-size: 11px; fill: var(--fig-peso-t); }
+    .fig-t-atrito   { font-family: var(--fig-fonte-t); font-size: 11px; fill: var(--fig-atrito-t); }
+    .fig-t-nulo     { font-family: var(--fig-fonte-t); font-size: 11px; fill: var(--fig-nulo-t); }
+    .fig-simb       { font-weight: 700; font-style: italic; font-size: 13px; }
+    .fig-peq        { font-size: 9px; }
+    .fig-med        { font-size: 10px; }
+
+    /* Quem abrir o arquivo com o sistema no modo escuro ve a versao noturna.
+       Embutido aqui porque o .svg carregado como imagem e um documento a
+       parte e nao enxerga o data-theme da pagina. */
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --fig-fundo:      #111827;
+        --fig-fundo-b:    #1f2937;
+        --fig-chao:       #cbd5e1;
+        --fig-hachura:    #64748b;
+        --fig-corpo:      #1e3a5f;
+        --fig-corpo-b:    #60a5fa;
+        --fig-roda:       #64748b;
+        --fig-divisor:    #334155;
+        --fig-rotulo:     #94a3b8;
+        --fig-texto:      #e2e8f0;
+        --fig-forca:      #f87171;
+        --fig-forca-t:    #fca5a5;
+        --fig-desloc:     #60a5fa;
+        --fig-desloc-t:   #93c5fd;
+        --fig-angulo:     #4ade80;
+        --fig-normal:     #4ade80;
+        --fig-normal-t:   #86efac;
+        --fig-peso:       #c084fc;
+        --fig-peso-t:     #d8b4fe;
+        --fig-atrito:     #fb923c;
+        --fig-atrito-t:   #fdba74;
+        --fig-nulo:       #fbbf24;
+        --fig-nulo-t:     #fcd34d;
+      }
+    }
+  ]]></style>
+  <defs>
+    <marker id="ca-r" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path class="fig-p-forca" d="M0,1.5 L8,5 L0,8.5 Z"/>
+    </marker>
+    <marker id="ca-o" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path class="fig-p-atrito" d="M0,1.5 L8,5 L0,8.5 Z"/>
+    </marker>
+    <marker id="ca-g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path class="fig-p-normal" d="M0,1.5 L8,5 L0,8.5 Z"/>
+    </marker>
+    <marker id="ca-p" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path class="fig-p-peso" d="M0,1.5 L8,5 L0,8.5 Z"/>
+    </marker>
+    <marker id="ca-b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path class="fig-p-desloc" d="M0,1.5 L8,5 L0,8.5 Z"/>
+    </marker>
+    <pattern id="ca-ht" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+      <line class="fig-hachura" x1="0" y1="10" x2="10" y2="0"/>
+    </pattern>
+  </defs>
+  <!-- Fundo -->
+  <rect class="fig-fundo" width="520" height="270" rx="10"/>
+  <!-- Chão -->
+  <line class="fig-chao" x1="50" y1="207" x2="470" y2="207"/>
+  <rect x="50" y="207" width="420" height="12" fill="url(#ca-ht)"/>
+  <!-- Corpo do carrinho -->
+  <rect class="fig-corpo" x="214" y="130" width="86" height="59" rx="3"/>
+  <!-- Rodas -->
+  <circle class="fig-roda" cx="232" cy="198" r="9"/>
+  <circle class="fig-roda" cx="278" cy="198" r="9"/>
+  <!-- Cabo -->
+  <line class="fig-cabo" x1="214" y1="148" x2="188" y2="120"/>
+  <line class="fig-cabo" x1="184" y1="117" x2="200" y2="117"/>
+  <!-- Normal (verde ↑) -->
+  <line class="fig-v-normal" x1="246" y1="130" x2="246" y2="52" marker-end="url(#ca-g)"/>
+  <text class="fig-t-ok fig-simb" x="252" y="49">N</text>
+  <text class="fig-t-ok fig-med" x="252" y="63">W = 0 J</text>
+  <!-- Peso (roxo ↓) -->
+  <line class="fig-v-peso" x1="270" y1="160" x2="270" y2="228" marker-end="url(#ca-p)"/>
+  <text class="fig-t-peso fig-simb" x="276" y="224">P</text>
+  <text class="fig-t-peso fig-med" x="276" y="238">W = 0 J</text>
+  <!-- Força da pessoa (vermelho →) -->
+  <line class="fig-v-forca" x1="300" y1="152" x2="398" y2="152" marker-end="url(#ca-r)"/>
+  <text class="fig-t-forca" x="403" y="148"><tspan class="fig-simb">F</tspan><tspan class="fig-peq" dy="3">pessoa</tspan></text>
+  <text class="fig-t-forca fig-med" x="403" y="163">+200 J</text>
+  <!-- Atrito (laranja ←) -->
+  <line class="fig-v-atrito" x1="214" y1="170" x2="108" y2="170" marker-end="url(#ca-o)"/>
+  <text class="fig-t-atrito" x="103" y="165" text-anchor="end"><tspan class="fig-simb">F</tspan><tspan class="fig-peq" dy="3">atrito</tspan></text>
+  <text class="fig-t-atrito fig-med" x="103" y="181" text-anchor="end">−30 J</text>
+  <!-- Deslocamento (azul tracejado →) -->
+  <line class="fig-v-desloc-tr" x1="55" y1="250" x2="453" y2="250" marker-end="url(#ca-b)"/>
+  <text class="fig-t-desloc-f" x="255" y="265" text-anchor="middle">d = 5 m</text>
+</svg>

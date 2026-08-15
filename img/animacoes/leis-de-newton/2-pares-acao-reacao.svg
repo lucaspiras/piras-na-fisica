@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Peso e normal no livro nao formam par; cada um tem o seu, em outro corpo.
+     Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Fonte da geometria: atividades/estudos_dirigidos/dinamica/ed_leis_newton/index.html
+     Gerado por scripts/extrair-figuras-eds.ps1 — nao editar a mao. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="1440" height="600"
+     role="img" aria-labelledby="leis-de-newton-2-pares-acao-reacao">
+  <title id="leis-de-newton-2-pares-acao-reacao">Diagrama do livro sobre a mesa. À esquerda, o peso e a normal agem no mesmo corpo e por isso não formam par ação e reação. À direita, os dois pares verdadeiros: normal da mesa no livro com a força do livro na mesa, e peso com a força do livro na Terra.</title>
+  <style><![CDATA[
+    svg {
+      --fig-superficie:  #f1f5f9;
+      --fig-superficie-2:#f8fafc;
+      --fig-corpo:       #f1f5f9;
+      --fig-corpo-b:     #334155;
+      --fig-apoio:       #64748b;
+      --fig-guia:        #cbd5e1;
+      --fig-divisor:     #e2e8f0;
+      --fig-texto:       #334155;
+      --fig-rotulo:      #64748b;
+      --fig-peso:        #9333ea;
+      --fig-peso-suave:  #faf5ff;
+      --fig-normal:      #16a34a;
+      --fig-normal-suave:#f0fdf4;
+      --fig-atrito:      #ea580c;
+      --fig-aplicada:    #ef4444;
+      --fig-tracao:      #0e7490;
+      --fig-ok:          #15803d;
+      --fig-ok-suave:    #dcfce7;
+      --fig-alerta:      #a16207;
+      --fig-alerta-suave:#fef3c7;
+      --fig-erro:        #dc2626;
+      --fig-cinza:       #94a3b8;
+      --fig-cinetico:    #c2410c;
+      --fig-onibus:      #f0c33c;
+      --fig-onibus-i:    #fbf3dd;
+      --fig-vidro:       #bfe0f2;
+      --fig-banco:       #7286a0;
+      --fig-pneu:        #2a3342;
+      --fig-calota:      #9aa3af;
+      --fig-poste:       #7d8590;
+      --fig-asfalto:     #9aa1a9;
+      --fig-barra:       #b9803a;
+      --fig-contorno:    #2a3342;
+      --fig-fonte-m:     'Space Mono', ui-monospace, monospace;
+      --fig-fonte-t:     'Poppins', system-ui, sans-serif;
+    }
+
+
+    /* estruturas */
+    .fig-chao      { fill: none; stroke: var(--fig-apoio);   stroke-width: 3; }
+    .fig-chao-fino { fill: none; stroke: var(--fig-guia);    stroke-width: 2; }
+    .fig-corpo     { fill: var(--fig-corpo);      stroke: var(--fig-corpo-b); stroke-width: 2; }
+    .fig-corpo-2   { fill: var(--fig-divisor);    stroke: var(--fig-apoio);   stroke-width: 1.5; }
+    .fig-rampa     { fill: var(--fig-superficie-2); stroke: var(--fig-apoio); stroke-width: 2.5; }
+    .fig-haste     { fill: none; stroke: var(--fig-corpo-b); stroke-width: 2; }
+    .fig-divisor   { fill: none; stroke: var(--fig-divisor); stroke-width: 2; stroke-dasharray: 5 4; }
+    .fig-guia      { fill: none; stroke: var(--fig-guia);    stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .fig-eixo      { fill: none; stroke: var(--fig-texto);   stroke-width: 2; }
+    .fig-eixo-p    { fill: var(--fig-texto); }
+    .fig-cerca     { fill: none; stroke: var(--fig-erro);    stroke-width: 2; stroke-dasharray: 6 4; }
+
+    /* caixas de apoio */
+    .fig-caixa-normal { fill: var(--fig-normal-suave); stroke: var(--fig-normal); stroke-width: 1.5; }
+    .fig-caixa-peso   { fill: var(--fig-peso-suave);   stroke: var(--fig-peso);   stroke-width: 1.5; }
+    .fig-zona-ok      { fill: var(--fig-ok);      opacity: .05; }
+    .fig-zona-cin     { fill: var(--fig-cinetico); opacity: .05; }
+
+    /* vetores — traço e ponta seguem a mesma grandeza */
+    .fig-v-peso     { fill: none; stroke: var(--fig-peso);     stroke-width: 3; }
+    .fig-v-normal   { fill: none; stroke: var(--fig-normal);   stroke-width: 3; }
+    .fig-v-atrito   { fill: none; stroke: var(--fig-atrito);   stroke-width: 3; }
+    .fig-v-aplicada { fill: none; stroke: var(--fig-aplicada); stroke-width: 3; }
+    .fig-v-tracao   { fill: none; stroke: var(--fig-tracao);   stroke-width: 3; }
+    .fig-v-fantasma { fill: none; stroke: var(--fig-cinza);    stroke-width: 3; stroke-dasharray: 4 3; }
+    .fig-p-peso     { fill: var(--fig-peso); }
+    .fig-p-normal   { fill: var(--fig-normal); }
+    .fig-p-atrito   { fill: var(--fig-atrito); }
+    .fig-p-aplicada { fill: var(--fig-aplicada); }
+    .fig-p-tracao   { fill: var(--fig-tracao); }
+    .fig-p-fantasma { fill: var(--fig-cinza); }
+
+    /* curva do gráfico de atrito */
+    .fig-curva-est { fill: none; stroke: var(--fig-ok);       stroke-width: 3.5; }
+    .fig-curva-cin { fill: none; stroke: var(--fig-cinetico); stroke-width: 3.5; }
+    .fig-curva-sal { fill: none; stroke: var(--fig-cinetico); stroke-width: 3.5; stroke-dasharray: 6 4; }
+    .fig-no-est    { fill: var(--fig-ok); }
+    .fig-no-cin    { fill: var(--fig-cinetico); }
+
+    /* corpos coloridos */
+    .fig-obj-ok     { fill: var(--fig-ok-suave);     stroke: var(--fig-ok);     stroke-width: 2; }
+    .fig-obj-alerta { fill: var(--fig-alerta-suave); stroke: var(--fig-alerta); stroke-width: 2; }
+
+    /* ônibus urbano em corte (figura dos referenciais inerciais) */
+    .fig-asfalto   { fill: var(--fig-asfalto); }
+    .fig-onibus    { fill: var(--fig-onibus); }
+    .fig-onibus-i  { fill: var(--fig-onibus-i); }
+    .fig-onibus-b  { fill: none; stroke: var(--fig-contorno); stroke-width: 2; stroke-linejoin: round; }
+    .fig-vidro     { fill: var(--fig-vidro); }
+    .fig-banco     { fill: var(--fig-banco); }
+    .fig-barra     { fill: none; stroke: var(--fig-barra); stroke-width: 2.4; stroke-linecap: round; }
+    .fig-piso      { fill: none; stroke: var(--fig-contorno); stroke-width: 1.6; }
+    .fig-pneu      { fill: var(--fig-pneu); }
+    .fig-calota    { fill: var(--fig-calota); }
+    .fig-poste     { fill: var(--fig-poste); }
+    .fig-alca-ok     { fill: none; stroke: var(--fig-ok);     stroke-width: 2; }
+    .fig-alca-alerta { fill: none; stroke: var(--fig-alerta); stroke-width: 2; }
+    .fig-caixa-alerta { fill: var(--fig-alerta-suave); }
+
+    /* textos */
+    .fig-t         { font-family: var(--fig-fonte-t); font-size: 11px;   fill: var(--fig-texto); }
+    .fig-t-rot     { font-family: var(--fig-fonte-t); font-size: 10px;   fill: var(--fig-rotulo); }
+    .fig-t-nota    { font-family: var(--fig-fonte-t); font-size: 11.5px; font-weight: 600; fill: var(--fig-texto); }
+    .fig-m         { font-family: var(--fig-fonte-m); font-size: 12px;   fill: var(--fig-texto); }
+    .fig-m-peq     { font-family: var(--fig-fonte-m); font-size: 11px;   fill: var(--fig-rotulo); }
+    .fig-tit       { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-ok); }
+    .fig-tit-alerta{ font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-alerta); }
+    .fig-tit-erro  { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-erro); }
+    .fig-r-peso    { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-peso); }
+    .fig-r-normal  { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-normal); }
+    .fig-r-atrito  { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-atrito); }
+    .fig-r-aplicada{ font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-aplicada); }
+    .fig-r-tracao  { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-tracao); }
+    .fig-r-ok      { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-ok); }
+    .fig-r-cin     { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-cinetico); }
+    .fig-r-erro    { font-family: var(--fig-fonte-m); font-size: 15px;   font-weight: 700; fill: var(--fig-erro); }
+    .fig-peq       { font-size: 9.5px; }
+    .fig-med       { font-size: 11.5px; }
+    .fig-nota-ok     { fill: var(--fig-ok); }
+    .fig-nota-alerta { fill: var(--fig-alerta); }
+    .fig-nota-erro   { fill: var(--fig-erro); }
+
+    /* Quem abrir o arquivo com o sistema no modo escuro ve a versao noturna.
+       Embutido aqui porque o .svg carregado como imagem e um documento a
+       parte e nao enxerga o data-theme da pagina. */
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --fig-superficie:  #1e293b;
+        --fig-superficie-2:#172033;
+        --fig-corpo:       #1e293b;
+        --fig-corpo-b:     #cbd5e1;
+        --fig-apoio:       #94a3b8;
+        --fig-guia:        #475569;
+        --fig-divisor:     #334155;
+        --fig-texto:       #e2e8f0;
+        --fig-rotulo:      #94a3b8;
+        --fig-peso:        #c084fc;
+        --fig-peso-suave:  #2e1065;
+        --fig-normal:      #4ade80;
+        --fig-normal-suave:#052e16;
+        --fig-atrito:      #fb923c;
+        --fig-aplicada:    #f87171;
+        --fig-tracao:      #22d3ee;
+        --fig-ok:          #4ade80;
+        --fig-ok-suave:    #14532d;
+        --fig-alerta:      #fbbf24;
+        --fig-alerta-suave:#451a03;
+        --fig-erro:        #f87171;
+        --fig-cinza:       #64748b;
+        --fig-cinetico:    #fb923c;
+        --fig-onibus:      #c9a032;
+        --fig-onibus-i:    #2b2a22;
+        --fig-vidro:       #24485e;
+        --fig-banco:       #3f4d61;
+        --fig-pneu:        #0b0f16;
+        --fig-calota:      #6b7280;
+        --fig-poste:       #4b5563;
+        --fig-asfalto:     #2c3138;
+        --fig-barra:       #8a5f2b;
+        --fig-contorno:    #0b0f16;
+      }
+    }
+  ]]></style>
+  <defs>
+    <marker id="nl2-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path class="fig-p-normal" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+    <marker id="nl2-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path class="fig-p-peso" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+
+  <!-- PAINEL A: a cena -->
+  <text class="fig-tit-erro" x="26" y="26">AS DUAS FORÇAS NO LIVRO</text>
+  <!-- mesa -->
+  <line class="fig-chao" x1="40" y1="185" x2="300" y2="185"/>
+  <line class="fig-chao" x1="70" y1="185" x2="70" y2="245"/>
+  <line class="fig-chao" x1="270" y1="185" x2="270" y2="245"/>
+  <!-- livro -->
+  <rect class="fig-corpo" x="135" y="157" width="105" height="28" rx="3"/>
+  <text class="fig-t fig-med" x="152" y="176">livro</text>
+  <!-- N para cima -->
+  <line class="fig-v-normal" x1="187" y1="155" x2="187" y2="82" marker-end="url(#nl2-green)"/>
+  <text class="fig-r-normal" x="196" y="92">N</text>
+  <text class="fig-t-rot" x="196" y="106">mesa → livro</text>
+  <!-- P para baixo -->
+  <line class="fig-v-peso" x1="187" y1="187" x2="187" y2="258" marker-end="url(#nl2-purple)"/>
+  <text class="fig-r-peso" x="196" y="243">P</text>
+  <text class="fig-t-rot" x="196" y="257">Terra → livro</text>
+  <!-- cerca vermelha -->
+  <rect class="fig-cerca" x="120" y="70" width="145" height="200" rx="10"/>
+  <text class="fig-t-nota fig-nota-erro" x="26" y="288">Mesmo corpo → NÃO é par ação–reação.</text>
+
+  <!-- divisor -->
+  <line class="fig-divisor" x1="330" y1="15" x2="330" y2="285"/>
+
+  <!-- PAINEL B: os pares verdadeiros -->
+  <text class="fig-tit" x="355" y="26">OS PARES VERDADEIROS</text>
+
+  <rect class="fig-caixa-normal" x="352" y="45" width="340" height="98" rx="10"/>
+  <text class="fig-r-normal fig-peq" x="366" y="68">PAR 1 · contato</text>
+  <line class="fig-v-normal" x1="380" y1="115" x2="380" y2="86" marker-end="url(#nl2-green)"/>
+  <text class="fig-t" x="394" y="96">N: mesa → livro</text>
+  <line class="fig-v-normal" x1="380" y1="122" x2="380" y2="132" marker-end="url(#nl2-green)"/>
+  <text class="fig-t" x="394" y="133">N′: livro → mesa</text>
+
+  <rect class="fig-caixa-peso" x="352" y="158" width="340" height="98" rx="10"/>
+  <text class="fig-r-peso fig-peq" x="366" y="181">PAR 2 · gravitacional</text>
+  <line class="fig-v-peso" x1="380" y1="199" x2="380" y2="228" marker-end="url(#nl2-purple)"/>
+  <text class="fig-t" x="394" y="209">P: Terra → livro</text>
+  <line class="fig-v-peso" x1="380" y1="248" x2="380" y2="238" marker-end="url(#nl2-purple)"/>
+  <text class="fig-t" x="394" y="246">P′: livro → Terra</text>
+
+  <text class="fig-t-nota fig-nota-ok" x="355" y="288">Cada par: corpos diferentes, mesma natureza.</text>
+</svg>

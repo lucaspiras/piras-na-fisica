@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Grafico da forca de atrito em funcao da forca aplicada, do regime estatico ao cinetico.
+     Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Fonte da geometria: atividades/estudos_dirigidos/dinamica/ed_forcas/index.html
+     Gerado por scripts/extrair-figuras-eds.ps1 — nao editar a mao. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" width="1440" height="640"
+     role="img" aria-labelledby="forcas-2-atrito-estatico-cinetico">
+  <title id="forcas-2-atrito-estatico-cinetico">Gráfico da força de atrito em função da força aplicada. Enquanto o corpo está parado, o atrito cresce junto com a força aplicada até o valor máximo do atrito estático. No instante em que o corpo passa a deslizar, o atrito cai para o valor do atrito cinético e permanece constante.</title>
+  <style><![CDATA[
+    svg {
+      --fig-superficie:  #f1f5f9;
+      --fig-superficie-2:#f8fafc;
+      --fig-corpo:       #f1f5f9;
+      --fig-corpo-b:     #334155;
+      --fig-apoio:       #64748b;
+      --fig-guia:        #cbd5e1;
+      --fig-divisor:     #e2e8f0;
+      --fig-texto:       #334155;
+      --fig-rotulo:      #64748b;
+      --fig-peso:        #9333ea;
+      --fig-peso-suave:  #faf5ff;
+      --fig-normal:      #16a34a;
+      --fig-normal-suave:#f0fdf4;
+      --fig-atrito:      #ea580c;
+      --fig-aplicada:    #ef4444;
+      --fig-tracao:      #0e7490;
+      --fig-ok:          #15803d;
+      --fig-ok-suave:    #dcfce7;
+      --fig-alerta:      #a16207;
+      --fig-alerta-suave:#fef3c7;
+      --fig-erro:        #dc2626;
+      --fig-cinza:       #94a3b8;
+      --fig-cinetico:    #c2410c;
+      --fig-onibus:      #f0c33c;
+      --fig-onibus-i:    #fbf3dd;
+      --fig-vidro:       #bfe0f2;
+      --fig-banco:       #7286a0;
+      --fig-pneu:        #2a3342;
+      --fig-calota:      #9aa3af;
+      --fig-poste:       #7d8590;
+      --fig-asfalto:     #9aa1a9;
+      --fig-barra:       #b9803a;
+      --fig-contorno:    #2a3342;
+      --fig-fonte-m:     'Space Mono', ui-monospace, monospace;
+      --fig-fonte-t:     'Poppins', system-ui, sans-serif;
+    }
+
+
+    /* estruturas */
+    .fig-chao      { fill: none; stroke: var(--fig-apoio);   stroke-width: 3; }
+    .fig-chao-fino { fill: none; stroke: var(--fig-guia);    stroke-width: 2; }
+    .fig-corpo     { fill: var(--fig-corpo);      stroke: var(--fig-corpo-b); stroke-width: 2; }
+    .fig-corpo-2   { fill: var(--fig-divisor);    stroke: var(--fig-apoio);   stroke-width: 1.5; }
+    .fig-rampa     { fill: var(--fig-superficie-2); stroke: var(--fig-apoio); stroke-width: 2.5; }
+    .fig-haste     { fill: none; stroke: var(--fig-corpo-b); stroke-width: 2; }
+    .fig-divisor   { fill: none; stroke: var(--fig-divisor); stroke-width: 2; stroke-dasharray: 5 4; }
+    .fig-guia      { fill: none; stroke: var(--fig-guia);    stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .fig-eixo      { fill: none; stroke: var(--fig-texto);   stroke-width: 2; }
+    .fig-eixo-p    { fill: var(--fig-texto); }
+    .fig-cerca     { fill: none; stroke: var(--fig-erro);    stroke-width: 2; stroke-dasharray: 6 4; }
+
+    /* caixas de apoio */
+    .fig-caixa-normal { fill: var(--fig-normal-suave); stroke: var(--fig-normal); stroke-width: 1.5; }
+    .fig-caixa-peso   { fill: var(--fig-peso-suave);   stroke: var(--fig-peso);   stroke-width: 1.5; }
+    .fig-zona-ok      { fill: var(--fig-ok);      opacity: .05; }
+    .fig-zona-cin     { fill: var(--fig-cinetico); opacity: .05; }
+
+    /* vetores — traço e ponta seguem a mesma grandeza */
+    .fig-v-peso     { fill: none; stroke: var(--fig-peso);     stroke-width: 3; }
+    .fig-v-normal   { fill: none; stroke: var(--fig-normal);   stroke-width: 3; }
+    .fig-v-atrito   { fill: none; stroke: var(--fig-atrito);   stroke-width: 3; }
+    .fig-v-aplicada { fill: none; stroke: var(--fig-aplicada); stroke-width: 3; }
+    .fig-v-tracao   { fill: none; stroke: var(--fig-tracao);   stroke-width: 3; }
+    .fig-v-fantasma { fill: none; stroke: var(--fig-cinza);    stroke-width: 3; stroke-dasharray: 4 3; }
+    .fig-p-peso     { fill: var(--fig-peso); }
+    .fig-p-normal   { fill: var(--fig-normal); }
+    .fig-p-atrito   { fill: var(--fig-atrito); }
+    .fig-p-aplicada { fill: var(--fig-aplicada); }
+    .fig-p-tracao   { fill: var(--fig-tracao); }
+    .fig-p-fantasma { fill: var(--fig-cinza); }
+
+    /* curva do gráfico de atrito */
+    .fig-curva-est { fill: none; stroke: var(--fig-ok);       stroke-width: 3.5; }
+    .fig-curva-cin { fill: none; stroke: var(--fig-cinetico); stroke-width: 3.5; }
+    .fig-curva-sal { fill: none; stroke: var(--fig-cinetico); stroke-width: 3.5; stroke-dasharray: 6 4; }
+    .fig-no-est    { fill: var(--fig-ok); }
+    .fig-no-cin    { fill: var(--fig-cinetico); }
+
+    /* corpos coloridos */
+    .fig-obj-ok     { fill: var(--fig-ok-suave);     stroke: var(--fig-ok);     stroke-width: 2; }
+    .fig-obj-alerta { fill: var(--fig-alerta-suave); stroke: var(--fig-alerta); stroke-width: 2; }
+
+    /* ônibus urbano em corte (figura dos referenciais inerciais) */
+    .fig-asfalto   { fill: var(--fig-asfalto); }
+    .fig-onibus    { fill: var(--fig-onibus); }
+    .fig-onibus-i  { fill: var(--fig-onibus-i); }
+    .fig-onibus-b  { fill: none; stroke: var(--fig-contorno); stroke-width: 2; stroke-linejoin: round; }
+    .fig-vidro     { fill: var(--fig-vidro); }
+    .fig-banco     { fill: var(--fig-banco); }
+    .fig-barra     { fill: none; stroke: var(--fig-barra); stroke-width: 2.4; stroke-linecap: round; }
+    .fig-piso      { fill: none; stroke: var(--fig-contorno); stroke-width: 1.6; }
+    .fig-pneu      { fill: var(--fig-pneu); }
+    .fig-calota    { fill: var(--fig-calota); }
+    .fig-poste     { fill: var(--fig-poste); }
+    .fig-alca-ok     { fill: none; stroke: var(--fig-ok);     stroke-width: 2; }
+    .fig-alca-alerta { fill: none; stroke: var(--fig-alerta); stroke-width: 2; }
+    .fig-caixa-alerta { fill: var(--fig-alerta-suave); }
+
+    /* textos */
+    .fig-t         { font-family: var(--fig-fonte-t); font-size: 11px;   fill: var(--fig-texto); }
+    .fig-t-rot     { font-family: var(--fig-fonte-t); font-size: 10px;   fill: var(--fig-rotulo); }
+    .fig-t-nota    { font-family: var(--fig-fonte-t); font-size: 11.5px; font-weight: 600; fill: var(--fig-texto); }
+    .fig-m         { font-family: var(--fig-fonte-m); font-size: 12px;   fill: var(--fig-texto); }
+    .fig-m-peq     { font-family: var(--fig-fonte-m); font-size: 11px;   fill: var(--fig-rotulo); }
+    .fig-tit       { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-ok); }
+    .fig-tit-alerta{ font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-alerta); }
+    .fig-tit-erro  { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-erro); }
+    .fig-r-peso    { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-peso); }
+    .fig-r-normal  { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-normal); }
+    .fig-r-atrito  { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-atrito); }
+    .fig-r-aplicada{ font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-aplicada); }
+    .fig-r-tracao  { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-tracao); }
+    .fig-r-ok      { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-ok); }
+    .fig-r-cin     { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-cinetico); }
+    .fig-r-erro    { font-family: var(--fig-fonte-m); font-size: 15px;   font-weight: 700; fill: var(--fig-erro); }
+    .fig-peq       { font-size: 9.5px; }
+    .fig-med       { font-size: 11.5px; }
+    .fig-nota-ok     { fill: var(--fig-ok); }
+    .fig-nota-alerta { fill: var(--fig-alerta); }
+    .fig-nota-erro   { fill: var(--fig-erro); }
+
+    /* Quem abrir o arquivo com o sistema no modo escuro ve a versao noturna.
+       Embutido aqui porque o .svg carregado como imagem e um documento a
+       parte e nao enxerga o data-theme da pagina. */
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --fig-superficie:  #1e293b;
+        --fig-superficie-2:#172033;
+        --fig-corpo:       #1e293b;
+        --fig-corpo-b:     #cbd5e1;
+        --fig-apoio:       #94a3b8;
+        --fig-guia:        #475569;
+        --fig-divisor:     #334155;
+        --fig-texto:       #e2e8f0;
+        --fig-rotulo:      #94a3b8;
+        --fig-peso:        #c084fc;
+        --fig-peso-suave:  #2e1065;
+        --fig-normal:      #4ade80;
+        --fig-normal-suave:#052e16;
+        --fig-atrito:      #fb923c;
+        --fig-aplicada:    #f87171;
+        --fig-tracao:      #22d3ee;
+        --fig-ok:          #4ade80;
+        --fig-ok-suave:    #14532d;
+        --fig-alerta:      #fbbf24;
+        --fig-alerta-suave:#451a03;
+        --fig-erro:        #f87171;
+        --fig-cinza:       #64748b;
+        --fig-cinetico:    #fb923c;
+        --fig-onibus:      #c9a032;
+        --fig-onibus-i:    #2b2a22;
+        --fig-vidro:       #24485e;
+        --fig-banco:       #3f4d61;
+        --fig-pneu:        #0b0f16;
+        --fig-calota:      #6b7280;
+        --fig-poste:       #4b5563;
+        --fig-asfalto:     #2c3138;
+        --fig-barra:       #8a5f2b;
+        --fig-contorno:    #0b0f16;
+      }
+    }
+  ]]></style>
+  <defs>
+    <marker id="fa-axis" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path class="fig-eixo-p" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+
+  <!-- eixos -->
+  <line class="fig-eixo" x1="80" y1="270" x2="690" y2="270" marker-end="url(#fa-axis)"/>
+  <line class="fig-eixo" x1="80" y1="270" x2="80" y2="40" marker-end="url(#fa-axis)"/>
+  <text class="fig-m" x="600" y="295">força aplicada F</text>
+  <text class="fig-m" x="26" y="36">atrito</text>
+
+  <!-- guias -->
+  <line class="fig-guia" x1="80" y1="105" x2="270" y2="105"/>
+  <line class="fig-guia" x1="80" y1="150" x2="660" y2="150"/>
+  <line class="fig-guia" x1="270" y1="270" x2="270" y2="105"/>
+
+  <!-- regiões -->
+  <rect class="fig-zona-ok" x="80" y="40" width="190" height="230"/>
+  <rect class="fig-zona-cin" x="270" y="40" width="390" height="230"/>
+  <text class="fig-r-ok fig-med" x="92" y="60">CORPO PARADO</text>
+  <text class="fig-t-rot" x="92" y="76">atrito estático</text>
+  <text class="fig-r-cin fig-med" x="284" y="60">CORPO DESLIZANDO</text>
+  <text class="fig-t-rot" x="284" y="76">atrito cinético</text>
+
+  <!-- curva -->
+  <line class="fig-curva-est" x1="80" y1="270" x2="270" y2="105"/>
+  <line class="fig-curva-sal" x1="270" y1="105" x2="270" y2="150"/>
+  <line class="fig-curva-cin" x1="270" y1="150" x2="660" y2="150"/>
+  <circle class="fig-no-est" cx="270" cy="105" r="5"/>
+  <circle class="fig-no-cin" cx="270" cy="150" r="5"/>
+
+  <!-- rótulos dos níveis -->
+  <text class="fig-r-ok" x="292" y="100">F</text>
+  <text class="fig-r-ok fig-peq" x="300" y="103">at,máx</text>
+  <text class="fig-r-ok" x="341" y="100">= μe · N</text>
+  <text class="fig-r-cin" x="560" y="141">μc · N</text>
+  <text class="fig-m-peq" x="205" y="292">limiar</text>
+
+  <!-- anotação da reta a 45 graus -->
+  <text class="fig-t fig-nota-ok" x="104" y="215">F</text>
+  <text class="fig-t fig-nota-ok fig-peq" x="112" y="218">at</text>
+  <text class="fig-t fig-nota-ok" x="124" y="215">= F</text>
+</svg>
