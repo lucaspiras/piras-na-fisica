@@ -53,6 +53,22 @@ $Figuras = @(
   @{ Ed = 'atividades/estudos_dirigidos/trabalho-energia/ed_trabalho_energia'
      Slug = 'trabalho-energia/2-quatro-forcas-no-carrinho'
      Resumo = 'As quatro forcas no carrinho e o trabalho que cada uma realiza.' }
+
+  @{ Ed = 'atividades/estudos_dirigidos/eletricidade/ed_circuitos'
+     Slug = 'circuitos/1-do-real-ao-esquema'
+     Resumo = 'O mesmo circuito em dois desenhos: o pictorico e o esquema, peca por peca.' }
+
+  @{ Ed = 'atividades/estudos_dirigidos/eletricidade/ed_circuitos'
+     Slug = 'circuitos/2-corrente-nao-se-gasta'
+     Resumo = 'Dois amperimetros, antes e depois da lampada, marcando o mesmo valor.' }
+
+  @{ Ed = 'atividades/estudos_dirigidos/eletricidade/ed_circuitos'
+     Slug = 'circuitos/3-codigo-de-cores'
+     Resumo = 'Resistor de quatro faixas: marrom, preto, vermelho e ouro, com a leitura.' }
+
+  @{ Ed = 'atividades/estudos_dirigidos/eletricidade/ed_circuitos'
+     Slug = 'circuitos/4-grafico-ohmico'
+     Resumo = 'Grafico V x i: a reta do condutor ohmico e a curva do filamento.' }
 )
 
 # ----------------------------------------------------------------------------
@@ -96,6 +112,38 @@ $TemasEscuros = @{
         --fig-asfalto:     #2c3138;
         --fig-barra:       #8a5f2b;
         --fig-contorno:    #0b0f16;
+      }
+'@
+
+  'eletricidade' = @'
+      svg {
+        --fig-fundo:      #111827;
+        --fig-fundo-b:    #1f2937;
+        --fig-fio:        #cbd5e1;
+        --fig-corpo:      #1e293b;
+        --fig-corpo-b:    #cbd5e1;
+        --fig-pilha:      #b8860b;
+        --fig-pilha-b:    #fbbf24;
+        --fig-lampada:    #3a2f10;
+        --fig-lampada-b:  #fbbf24;
+        --fig-luz:        #fde047;
+        --fig-resistor:   #4a3a14;
+        --fig-resistor-b: #fbbf24;
+        --fig-medidor:    #1e293b;
+        --fig-medidor-b:  #cbd5e1;
+        --fig-corrente:   #22d3ee;
+        --fig-tensao:     #fbbf24;
+        --fig-texto:      #e2e8f0;
+        --fig-rotulo:     #94a3b8;
+        --fig-guia:       #475569;
+        --fig-divisor:    #334155;
+        --fig-ok:         #4ade80;
+        --fig-ok-suave:   #052e16;
+        --fig-alerta:     #fbbf24;
+        --fig-alerta-suave:#3a2f10;
+        --fig-erro:       #f87171;
+        --fig-ohmico:     #4ade80;
+        --fig-nohmico:    #fb923c;
       }
 '@
 

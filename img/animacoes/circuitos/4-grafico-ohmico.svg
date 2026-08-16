@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Grafico V x i: a reta do condutor ohmico e a curva do filamento.
+     Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Fonte da geometria: atividades/estudos_dirigidos/eletricidade/ed_circuitos/index.html
+     Gerado por scripts/extrair-figuras-eds.ps1 — nao editar a mao. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" width="1360" height="680"
+     role="img" aria-labelledby="circuitos-4-grafico-ohmico">
+  <title id="circuitos-4-grafico-ohmico">Gráfico da tensão em função da corrente. A reta verde, que passa pela origem, representa um condutor ôhmico, cuja resistência é a inclinação e se mantém constante. A curva laranja, que sobe cada vez mais rápido, representa o filamento de uma lâmpada, cuja resistência cresce com a temperatura.</title>
+  <style><![CDATA[
+    svg {
+      --fig-fundo:      #ffffff;
+      --fig-fundo-b:    #e2e8f0;
+      --fig-fio:        #334155;
+      --fig-corpo:      #f1f5f9;
+      --fig-corpo-b:    #334155;
+      --fig-pilha:      #eab308;
+      --fig-pilha-b:    #a16207;
+      --fig-lampada:    #fef3c7;
+      --fig-lampada-b:  #a16207;
+      --fig-luz:        #fbbf24;
+      --fig-resistor:   #fde68a;
+      --fig-resistor-b: #92400e;
+      --fig-medidor:    #ffffff;
+      --fig-medidor-b:  #334155;
+      --fig-corrente:   #0e7490;
+      --fig-tensao:     #a16207;
+      --fig-texto:      #334155;
+      --fig-rotulo:     #64748b;
+      --fig-guia:       #cbd5e1;
+      --fig-divisor:    #e2e8f0;
+      --fig-ok:         #15803d;
+      --fig-ok-suave:   #f0fdf4;
+      --fig-alerta:     #a16207;
+      --fig-alerta-suave:#fef3c7;
+      --fig-erro:       #dc2626;
+      --fig-ohmico:     #15803d;
+      --fig-nohmico:    #c2410c;
+      --fig-fonte-m:    'Space Mono', ui-monospace, monospace;
+      --fig-fonte-t:    'Poppins', system-ui, sans-serif;
+    }
+
+    /* As faixas do código de cores NÃO são retematizáveis: uma faixa marrom
+       precisa continuar marrom em qualquer tema, senão o resistor deixa de
+       poder ser lido. Por isso ficam fora do bloco escuro mais abaixo. */
+    :root {
+      --fig-b-preto:    #1a1a1a;
+      --fig-b-marrom:   #7b4a12;
+      --fig-b-vermelho: #c0392b;
+      --fig-b-laranja:  #e67e22;
+      --fig-b-amarelo:  #f1c40f;
+      --fig-b-verde:    #27ae60;
+      --fig-b-azul:     #2980b9;
+      --fig-b-violeta:  #8e44ad;
+      --fig-b-cinza:    #7f8c8d;
+      --fig-b-branco:   #ecf0f1;
+      --fig-b-ouro:     #c9a227;
+    }
+
+
+    /* estruturas do circuito */
+    .fig-fundo     { fill: var(--fig-fundo); stroke: var(--fig-fundo-b); stroke-width: 1; }
+    .fig-fio       { fill: none; stroke: var(--fig-fio); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .fig-fio-fino  { fill: none; stroke: var(--fig-fio); stroke-width: 2; stroke-linecap: round; }
+    .fig-no        { fill: var(--fig-fio); }
+    .fig-corpo     { fill: var(--fig-corpo); stroke: var(--fig-corpo-b); stroke-width: 2; }
+    .fig-pilha     { fill: var(--fig-pilha); stroke: var(--fig-pilha-b); stroke-width: 2; }
+    .fig-pilha-tp  { fill: var(--fig-pilha-b); }
+    .fig-polo      { fill: none; stroke: var(--fig-fio); stroke-width: 3; stroke-linecap: round; }
+    .fig-lampada   { fill: var(--fig-lampada); stroke: var(--fig-lampada-b); stroke-width: 2; }
+    .fig-lampada-x { fill: none; stroke: var(--fig-lampada-b); stroke-width: 2; }
+    .fig-luz       { fill: none; stroke: var(--fig-luz); stroke-width: 2.5; stroke-linecap: round; }
+    .fig-filamento { fill: none; stroke: var(--fig-resistor-b); stroke-width: 2; }
+    .fig-resistor  { fill: var(--fig-resistor); stroke: var(--fig-resistor-b); stroke-width: 2; }
+    .fig-medidor   { fill: var(--fig-medidor); stroke: var(--fig-medidor-b); stroke-width: 2; }
+    .fig-guia      { fill: none; stroke: var(--fig-guia); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .fig-divisor   { fill: none; stroke: var(--fig-divisor); stroke-width: 2; stroke-dasharray: 5 4; }
+    .fig-eixo      { fill: none; stroke: var(--fig-texto); stroke-width: 2; }
+    .fig-eixo-p    { fill: var(--fig-texto); }
+    .fig-caixa-ok     { fill: var(--fig-ok-suave); stroke: var(--fig-ok); stroke-width: 1.5; }
+    .fig-caixa-alerta { fill: var(--fig-alerta-suave); stroke: var(--fig-alerta); stroke-width: 1.5; }
+
+    /* corrente e tensão */
+    .fig-v-corrente { fill: none; stroke: var(--fig-corrente); stroke-width: 3; stroke-linecap: round; }
+    .fig-p-corrente { fill: var(--fig-corrente); }
+    .fig-v-tensao   { fill: none; stroke: var(--fig-tensao); stroke-width: 3; stroke-linecap: round; }
+    .fig-p-tensao   { fill: var(--fig-tensao); }
+
+    /* curvas do gráfico V × i */
+    .fig-curva-ohm  { fill: none; stroke: var(--fig-ohmico);  stroke-width: 3.5; stroke-linecap: round; }
+    .fig-curva-noh  { fill: none; stroke: var(--fig-nohmico); stroke-width: 3.5; stroke-linecap: round; }
+    .fig-no-ohm     { fill: var(--fig-ohmico); }
+    .fig-no-noh     { fill: var(--fig-nohmico); }
+
+    /* faixas do resistor */
+    .fig-corpo-res  { fill: var(--fig-resistor); stroke: var(--fig-resistor-b); stroke-width: 1.5; }
+    .fig-terminal   { fill: none; stroke: var(--fig-fio); stroke-width: 3; stroke-linecap: round; }
+    .fig-fx-preto    { fill: var(--fig-b-preto); }
+    .fig-fx-marrom   { fill: var(--fig-b-marrom); }
+    .fig-fx-vermelho { fill: var(--fig-b-vermelho); }
+    .fig-fx-laranja  { fill: var(--fig-b-laranja); }
+    .fig-fx-amarelo  { fill: var(--fig-b-amarelo); }
+    .fig-fx-verde    { fill: var(--fig-b-verde); }
+    .fig-fx-azul     { fill: var(--fig-b-azul); }
+    .fig-fx-violeta  { fill: var(--fig-b-violeta); }
+    .fig-fx-cinza    { fill: var(--fig-b-cinza); }
+    .fig-fx-branco   { fill: var(--fig-b-branco); stroke: var(--fig-rotulo); stroke-width: .7; }
+    .fig-fx-ouro     { fill: var(--fig-b-ouro); }
+
+    /* textos */
+    .fig-t          { font-family: var(--fig-fonte-t); font-size: 11px;   fill: var(--fig-texto); }
+    .fig-t-rot      { font-family: var(--fig-fonte-t); font-size: 10px;   fill: var(--fig-rotulo); }
+    .fig-t-nota     { font-family: var(--fig-fonte-t); font-size: 11.5px; font-weight: 600; fill: var(--fig-texto); }
+    .fig-m          { font-family: var(--fig-fonte-m); font-size: 12px;   fill: var(--fig-texto); }
+    .fig-m-peq      { font-family: var(--fig-fonte-m); font-size: 11px;   fill: var(--fig-rotulo); }
+    .fig-tit        { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-alerta); }
+    .fig-tit-ok     { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-ok); }
+    .fig-tit-erro   { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-erro); }
+    .fig-r-corrente { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-corrente); }
+    .fig-r-tensao   { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-tensao); }
+    .fig-r-ohm      { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-ohmico); }
+    .fig-r-noh      { font-family: var(--fig-fonte-m); font-size: 12px;   font-weight: 700; fill: var(--fig-nohmico); }
+    .fig-visor      { font-family: var(--fig-fonte-m); font-size: 13px;   font-weight: 700; fill: var(--fig-corrente); }
+    .fig-peq        { font-size: 9.5px; }
+    .fig-med        { font-size: 11.5px; }
+    .fig-nota-ok     { fill: var(--fig-ok); }
+    .fig-nota-alerta { fill: var(--fig-alerta); }
+    .fig-nota-erro   { fill: var(--fig-erro); }
+
+    /* ================================================================
+       COMPONENTES ESPECÍFICOS DE CIRCUITOS
+       ================================================================ */
+
+    /* === FORMULA BOX — variantes de destaque === */
+    .formula-box.large { padding: 26px 28px; border-left-width: 5px; align-items: center; text-align: center; }
+    .formula-tex.big   { font-size: 1.9rem; letter-spacing: .02em; }
+
+    /* === LAW CARD — enunciado preciso × simplificação === */
+    .law-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md);
+    }
+    .law-tier { padding: 22px 26px; }
+    .law-tier + .law-tier { border-top: 1px solid var(--border); }
+    .law-tier.precise { background: linear-gradient(180deg, rgba(113,63,18,.055), rgba(113,63,18,.02)); }
+    .law-tier.simple  { background: var(--surface); }
+
+    .tier-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-mono); font-size: .62rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 100px; margin-bottom: 14px;
+    }
+    .law-tier.precise .tier-tag { color: #fff; background: var(--accent-d); }
+    .law-tier.simple  .tier-tag {
+      color: var(--accent-d); background: rgba(21,128,61,.12);
+      border: 1px solid rgba(21,128,61,.28);
+    }
+
+    .law-statement { font-family: var(--font-display); font-size: 1.06rem; line-height: 1.62; color: var(--text); }
+    .law-statement strong { color: var(--accent-d); }
+    .law-statement em     { font-style: italic; color: var(--accent-d); }
+    .law-note { margin-top: 14px; font-size: .86rem; line-height: 1.7; color: var(--text-muted); }
+    .law-note strong { color: var(--text-mid); }
+
+    /* === FIGURA / DIAGRAMA DE CORPO LIVRE === */
+    .fbd-figure { margin: 4px 0; }
+    .fbd-figure svg {
+      display: block; width: 100%; max-width: 680px; height: auto; margin: 0 auto;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); box-shadow: var(--shadow);
+    }
+    .fbd-figure figcaption {
+      margin: 12px auto 0; max-width: 620px; text-align: center;
+      font-size: .8rem; line-height: 1.6; color: var(--text-muted);
+    }
+    .fbd-figure figcaption strong { color: var(--text-mid); }
+
+    /* === ANALOGY CARD — "o engano" × "o que de fato acontece" === */
+    .analogy-card.certo   { border-top: 3px solid var(--accent2); }
+    .analogy-card.erro { border-top: 3px solid #ef4444; }
+    .analogy-card.certo   h4 { color: var(--accent2); }
+    .analogy-card.erro h4 { color: #dc2626; }
+    .analogy-card.certo   li::before { color: var(--accent2); }
+    .analogy-card.erro li::before { color: #dc2626; }
+
+    /* Quem abrir o arquivo com o sistema no modo escuro ve a versao noturna.
+       Embutido aqui porque o .svg carregado como imagem e um documento a
+       parte e nao enxerga o data-theme da pagina. */
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --fig-fundo:      #111827;
+        --fig-fundo-b:    #1f2937;
+        --fig-fio:        #cbd5e1;
+        --fig-corpo:      #1e293b;
+        --fig-corpo-b:    #cbd5e1;
+        --fig-pilha:      #b8860b;
+        --fig-pilha-b:    #fbbf24;
+        --fig-lampada:    #3a2f10;
+        --fig-lampada-b:  #fbbf24;
+        --fig-luz:        #fde047;
+        --fig-resistor:   #4a3a14;
+        --fig-resistor-b: #fbbf24;
+        --fig-medidor:    #1e293b;
+        --fig-medidor-b:  #cbd5e1;
+        --fig-corrente:   #22d3ee;
+        --fig-tensao:     #fbbf24;
+        --fig-texto:      #e2e8f0;
+        --fig-rotulo:     #94a3b8;
+        --fig-guia:       #475569;
+        --fig-divisor:    #334155;
+        --fig-ok:         #4ade80;
+        --fig-ok-suave:   #052e16;
+        --fig-alerta:     #fbbf24;
+        --fig-alerta-suave:#3a2f10;
+        --fig-erro:       #f87171;
+        --fig-ohmico:     #4ade80;
+        --fig-nohmico:    #fb923c;
+      }
+    }
+  ]]></style>
+  <defs>
+    <marker id="ci4-eixo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path class="fig-eixo-p" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+
+  <!-- eixos -->
+  <path class="fig-eixo" d="M90,280 L640,280" marker-end="url(#ci4-eixo)"/>
+  <path class="fig-eixo" d="M90,280 L90,40" marker-end="url(#ci4-eixo)"/>
+  <text class="fig-m" x="546" y="306">corrente i (A)</text>
+  <text class="fig-m" x="34" y="34">tensão V (V)</text>
+
+  <!-- reta ôhmica -->
+  <path class="fig-curva-ohm" d="M90,280 L470,80"/>
+  <circle class="fig-no-ohm" cx="470" cy="80" r="5"/>
+  <text class="fig-r-ohm" x="146" y="106">condutor ôhmico</text>
+  <text class="fig-t-rot" x="146" y="122">R é a inclinação, e é constante:</text>
+  <text class="fig-t-rot" x="146" y="137">R = ΔV / Δi</text>
+
+  <!-- curva não-ôhmica: filamento -->
+  <path class="fig-curva-noh" d="M90,280 C230,258 330,214 400,150 C440,114 452,86 460,58"/>
+  <circle class="fig-no-noh" cx="460" cy="58" r="5"/>
+  <text class="fig-r-noh" x="486" y="62">filamento</text>
+  <text class="fig-t-rot" x="486" y="78">R cresce com a temperatura</text>
+
+  <!-- triângulo da inclinação -->
+  <path class="fig-guia" d="M242,199 L338,199"/>
+  <path class="fig-guia" d="M338,199 L338,149"/>
+  <text class="fig-t-rot" x="290" y="215" text-anchor="middle">Δi</text>
+  <text class="fig-t-rot" x="348" y="178">ΔV</text>
+
+  <text class="fig-t-nota" x="90" y="326">Reta pela origem: ôhmico. Qualquer entortada: não-ôhmico.</text>
+</svg>

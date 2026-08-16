@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <meta name="description" content="Estudo dirigido de circuitos elétricos: os três elementos do circuito, tensão e ddp, corrente e sentido convencional, resistência e código de cores, Lei de Ohm, potência e efeito Joule, com questões de verificação.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Circuitos Elétricos — Estudo Dirigido">
+  <meta property="og:description" content="Do que é um circuito à Lei de Ohm: tensão, corrente, resistência e potência, com o que a corrente faz e o que ela não faz.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/atividades/estudos_dirigidos/eletricidade/ed_circuitos/">
+  <title>Circuitos Elétricos — Estudo Dirigido</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Poppins:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <noscript><style>.topic{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+  <a href="#topicos" class="skip-link">Ir para o conteúdo</a>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-deco">
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+      <div class="hero-orb orb-3"></div>
+      <div class="wave-line"></div>
+      <div class="wave-line"></div>
+      <div class="wave-line"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="tag-dot"></span>
+          Física · Eletricidade · Ensino Médio
+        </div>
+        <h1 class="hero-title">
+          Circuitos<br>
+          <em>Elétricos</em>
+        </h1>
+        <p class="hero-sub">Três grandezas explicam quase tudo o que acontece num circuito: tensão, corrente e resistência. Aqui elas são apresentadas uma a uma, e depois amarradas pela relação que as liga.</p>
+        <a href="#topicos" class="hero-cta">Começar o estudo ↓</a>
+      </div>
+      <div class="hero-visual">
+        <div class="energy-card"><div class="ec-icon yellow">🔌</div><div><div class="ec-name">O circuito</div><div class="ec-desc">Fonte, condutores e consumidor</div></div></div>
+        <div class="energy-card"><div class="ec-icon orange">🔋</div><div><div class="ec-name">Tensão</div><div class="ec-desc">A ddp que empurra as cargas</div></div></div>
+        <div class="energy-card"><div class="ec-icon deep">⚡</div><div><div class="ec-name">Corrente</div><div class="ec-desc">i = Q / t, e o que ela não é</div></div></div>
+        <div class="energy-card"><div class="ec-icon purple">🧱</div><div><div class="ec-name">Resistência</div><div class="ec-desc">Material, geometria e cores</div></div></div>
+        <div class="energy-card"><div class="ec-icon green">📐</div><div><div class="ec-name">Lei de Ohm</div><div class="ec-desc">V = R · i</div></div></div>
+        <div class="energy-card"><div class="ec-icon lime">🔥</div><div><div class="ec-name">Potência</div><div class="ec-desc">Efeito Joule e o kWh da conta</div></div></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SUMÁRIO -->
+  <nav class="sumario" id="topicos">
+    <div class="sumario-inner">
+      <a href="../../../../index.html" class="sum-logo-link" aria-label="Piras na Física">
+        <img src="../../../../img/files/piras_na_fisica_logo_transparente.png" alt="Logo Piras na Física" class="sum-logo" />
+      </a>
+      <div class="sum-divider"></div>
+      <span class="sum-label">Tópicos</span>
+      <ol class="sum-list">
+        <li><a href="#t1">O circuito</a></li>
+        <li><a href="#t2">Tensão</a></li>
+        <li><a href="#t3">Corrente</a></li>
+        <li><a href="#t4">Resistência</a></li>
+        <li><a href="#t5">Lei de Ohm</a></li>
+        <li><a href="#t6">Potência</a></li>
+        <li><a href="#t7">Aplicações</a></li>
+        <li><a href="#t8">Síntese</a></li>
+      </ol>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <!-- ============ TÓPICO 1 ============ -->
+    <section class="topic" id="t1">
+      <div class="topic-header">
+        <span class="topic-num">01</span>
+        <h2>O que é um circuito</h2>
+      </div>
+      <div class="topic-body">
+        <p>Um <strong>circuito elétrico</strong> é um caminho fechado por onde a carga elétrica circula. A palavra <em>fechado</em> não é enfeite: basta soltar um fio de um dos bornes da pilha para a lâmpada apagar na hora. Sem caminho de volta, não há circulação, e sem circulação não há corrente.</p>
+
+        <p>Todo circuito simples tem <strong>três papéis</strong> a cumprir, e vale identificá-los antes de qualquer conta. Alguém <em>fornece</em> energia, alguém <em>conduz</em> e alguém <em>consome</em>. Nos próximos tópicos, cada uma das grandezas envolvidas é tratada separadamente; aqui interessa reconhecer as peças.</p>
+
+        <div class="energy-grid">
+          <div class="eg-card">
+            <span class="eg-icon">🔋</span>
+            <div class="eg-name">Fonte de tensão</div>
+            <div class="eg-desc">Mantém a diferença de potencial que empurra as cargas. Pilha, bateria, tomada.</div>
+          </div>
+          <div class="eg-card">
+            <span class="eg-icon">🔗</span>
+            <div class="eg-name">Fios condutores</div>
+            <div class="eg-desc">Oferecem um caminho de resistência baixa. Em geral, cobre.</div>
+          </div>
+          <div class="eg-card">
+            <span class="eg-icon">💡</span>
+            <div class="eg-name">Consumidor</div>
+            <div class="eg-desc">Converte a energia em luz, calor ou movimento. Lâmpada, motor, resistor.</div>
+          </div>
+        </div>
+
+        <p>O desenho que se faz no caderno e na prova não é a fotografia do circuito, e sim o <strong>esquema</strong>: cada peça vira um símbolo padronizado, e os fios viram linhas retas. A troca é vantajosa porque a única coisa que o esquema precisa preservar é <em>o que está ligado a quê</em>. O comprimento do fio no desenho não significa nada.</p>
+
+        <figure class="fbd-figure">
+          <svg class="fig" data-avulso="circuitos/1-do-real-ao-esquema" viewBox="0 0 720 300" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="O mesmo circuito desenhado de duas formas. À esquerda, o desenho pictórico: duas pilhas ligadas por fios a uma lâmpada acesa. À direita, o esquema com os símbolos padronizados: a pilha vira pares de barras longa e curta, os fios viram linhas retas e a lâmpada vira um círculo com um xis. As peças ocupam a mesma posição nos dois desenhos.">
+            <defs>
+              <marker id="ci1-seta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path class="fig-p-corrente" d="M0,0 L10,5 L0,10 z"/>
+              </marker>
+            </defs>
+
+            <!-- ============ PAINEL A — pictórico ============ -->
+            <text class="fig-tit" x="20" y="26">O CIRCUITO REAL</text>
+
+            <!-- fios do laço -->
+            <path class="fig-fio" d="M70,232 L70,117 L168,117"/>
+            <path class="fig-fio" d="M192,117 L290,117 L290,232"/>
+            <path class="fig-fio" d="M70,232 L112,232"/>
+            <path class="fig-fio" d="M248,232 L290,232"/>
+
+            <!-- duas pilhas em série -->
+            <rect class="fig-pilha" x="112" y="220" width="64" height="24" rx="4"/>
+            <rect class="fig-pilha-tp" x="176" y="226" width="8" height="12" rx="2"/>
+            <rect class="fig-pilha" x="184" y="220" width="64" height="24" rx="4"/>
+            <rect class="fig-pilha-tp" x="248" y="226" width="6" height="12" rx="2"/>
+            <text class="fig-m-peq fig-peq" x="180" y="262" text-anchor="middle">duas pilhas de 1,5 V</text>
+            <text class="fig-r-tensao fig-med" x="180" y="276" text-anchor="middle">3 V no total</text>
+
+            <!-- lâmpada acesa -->
+            <circle class="fig-lampada" cx="180" cy="88" r="24"/>
+            <path class="fig-filamento" d="M172,96 L176,84 L180,96 L184,84 L188,96"/>
+            <rect class="fig-corpo" x="168" y="110" width="24" height="14" rx="2"/>
+            <path class="fig-luz" d="M180,52 L180,44"/>
+            <path class="fig-luz" d="M206,66 L213,60"/>
+            <path class="fig-luz" d="M154,66 L147,60"/>
+            <path class="fig-luz" d="M216,90 L225,90"/>
+            <path class="fig-luz" d="M144,90 L135,90"/>
+            <text class="fig-m-peq fig-peq" x="180" y="140" text-anchor="middle">lâmpada</text>
+
+            <!-- divisor -->
+            <line class="fig-divisor" x1="360" y1="14" x2="360" y2="286"/>
+
+            <!-- ============ PAINEL B — esquema ============ -->
+            <text class="fig-tit-ok" x="392" y="26">O ESQUEMA</text>
+
+            <!-- laço, nas mesmas posições -->
+            <path class="fig-fio-fino" d="M442,232 L442,110 L522,110"/>
+            <path class="fig-fio-fino" d="M582,110 L662,110 L662,232"/>
+            <path class="fig-fio-fino" d="M442,232 L520,232"/>
+            <path class="fig-fio-fino" d="M600,232 L662,232"/>
+
+            <!-- símbolo da pilha: pares de barra longa e curta -->
+            <path class="fig-polo" d="M520,214 L520,250"/>
+            <path class="fig-polo" d="M536,222 L536,242"/>
+            <path class="fig-fio-fino" d="M536,232 L552,232"/>
+            <path class="fig-polo" d="M552,214 L552,250"/>
+            <path class="fig-polo" d="M568,222 L568,242"/>
+            <path class="fig-fio-fino" d="M568,232 L600,232"/>
+            <text class="fig-r-tensao fig-med" x="552" y="276" text-anchor="middle">3 V</text>
+            <text class="fig-m-peq fig-peq" x="552" y="262" text-anchor="middle">símbolo da fonte</text>
+
+            <!-- símbolo da lâmpada: círculo com X -->
+            <circle class="fig-lampada" cx="552" cy="110" r="22"/>
+            <path class="fig-lampada-x" d="M537,95 L567,125"/>
+            <path class="fig-lampada-x" d="M567,95 L537,125"/>
+            <text class="fig-m-peq fig-peq" x="552" y="152" text-anchor="middle">símbolo da lâmpada</text>
+
+            <!-- sentido convencional -->
+            <path class="fig-v-corrente" d="M662,180 L662,150" marker-end="url(#ci1-seta)"/>
+            <text class="fig-r-corrente fig-med" x="676" y="176">i</text>
+          </svg>
+          <figcaption><strong>Peça por peça, no mesmo lugar.</strong> As pilhas viraram o par de barras, os fios viraram linhas retas e a lâmpada virou o círculo com o xis. Vale percorrer a correspondência em voz alta uma vez: é o esquema, e não a fotografia, que você vai desenhar e ler pelo resto do curso.</figcaption>
+        </figure>
+
+        <div class="concept-card">
+          <h4>Três condições para existir corrente</h4>
+          <ul>
+            <li><strong>Uma diferença de potencial.</strong> Alguém precisa empurrar as cargas: pilha, bateria, gerador, tomada.</li>
+            <li><strong>Um caminho fechado.</strong> As cargas precisam ter por onde circular e voltar. Interruptor aberto, corrente zero.</li>
+            <li><strong>Portadores livres.</strong> O material precisa ter cargas que possam se mover: elétrons livres nos metais, íons nas soluções.</li>
+          </ul>
+          <p style="margin-top:12px;font-size:.85rem;color:var(--text-muted)">Faltando qualquer uma das três, não há corrente. É por isso que um fio de cobre solto na gaveta, cheio de elétrons livres, não conduz coisa alguma.</p>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🔗</span>
+          <p>Um circuito <strong>aberto</strong> é aquele em que o caminho foi interrompido, e nele a corrente é nula. Um circuito <strong>fechado</strong> tem o caminho completo, e a corrente circula. O interruptor da parede não faz nada além de abrir e fechar esse caminho, e é essa a razão de a luz acender no instante em que você o aciona.</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz1"></div>
+    </section>
+
+    <!-- ============ TÓPICO 2 ============ -->
+    <section class="topic" id="t2">
+      <div class="topic-header">
+        <span class="topic-num">02</span>
+        <h2>Tensão — o empurrão que a fonte dá</h2>
+      </div>
+      <div class="topic-body">
+        <p>A <strong>fonte</strong> é quem fornece energia ao circuito. Para isso ela realiza trabalho separando cargas: acumula cargas positivas junto a um polo e negativas junto ao outro, e mantém esse desequilíbrio enquanto tiver combustível químico para gastar. É esse desequilíbrio que empurra as cargas pelo circuito.</p>
+
+        <p>A grandeza que mede o tamanho do empurrão é a <strong>diferença de potencial</strong>, ou ddp, também chamada de tensão. Ela diz quanta energia a fonte entrega a cada unidade de carga que percorre o circuito.</p>
+
+        <div class="formula-box large">
+          <span class="formula-label">Diferença de potencial</span>
+          <span class="formula-tex big">U = E / q</span>
+          <span class="formula-unit">U em volts (V) · E em joules (J) · q em coulombs (C). Um volt é um joule por coulomb: 1 V = 1 J/C.</span>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">⛰️</span>
+          <p><strong>A analogia do desnível.</strong> Pense numa bola que rola de onde está mais alto para onde está mais baixo. Com as cargas positivas é parecido: elas tendem a ir do ponto de maior potencial para o de menor potencial. A ddp é o tamanho dessa queda, e quanto maior ela for, mais energia cada carga recebe ao percorrer o circuito. A analogia tem um limite que vale guardar: a fonte não é a origem das cargas, é a bomba que as recoloca no alto.</p>
+        </div>
+
+        <p>Três palavras circulam por aí para coisas próximas mas distintas, e a confusão entre elas é frequente. Todas se medem em <strong>volts</strong>.</p>
+
+        <table class="units-table" aria-label="Tensão, ddp e força eletromotriz">
+          <thead>
+            <tr><th>Termo</th><th>Símbolo</th><th>O que é</th><th>Onde aparece</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Força eletromotriz</td><td class="val">ε</td><td>A energia que a <em>fonte</em> entrega a cada carga. Apesar do nome, não é força.</td><td>Característica da pilha ou do gerador</td></tr>
+            <tr><td>Diferença de potencial</td><td class="val">U</td><td>Compara o potencial elétrico entre <em>dois pontos</em> do circuito.</td><td>É o que o voltímetro mede</td></tr>
+            <tr><td>Tensão</td><td class="val">U ou V</td><td>Termo geral, usado como sinônimo de ddp.</td><td>O nome do dia a dia</td></tr>
+          </tbody>
+        </table>
+
+        <div class="concept-card">
+          <h4>Contínua e alternada</h4>
+          <ul>
+            <li><strong>Tensão contínua (CC).</strong> Mantém o mesmo sinal e os polos ficam fixos, então a corrente flui sempre no mesmo sentido. É o caso de pilhas, baterias e da maioria dos eletrônicos.</li>
+            <li><strong>Tensão alternada (CA).</strong> Inverte de sinal periodicamente, 60 vezes por segundo no Brasil, e a corrente muda de sentido junto. É a forma que a rede distribui, e é o que chega na tomada.</li>
+            <li>As siglas CC e CA vêm da corrente, mas a mesma classificação vale para a tensão que a origina.</li>
+            <li>Neste estudo trabalhamos apenas com <strong>corrente contínua</strong>.</li>
+          </ul>
+        </div>
+
+        <div class="example-box">
+          <h4>Pilha e bateria não são a mesma coisa</h4>
+          <p>Pilhas e baterias convertem energia química em elétrica, por reações de oxirredução dentro de células eletroquímicas. A diferença entre as duas palavras é o <strong>número de células</strong>.</p>
+          <p><strong>Pilha:</strong> uma única célula. A pilha AA fornece 1,5 V, e esse valor não depende do tamanho dela: a pilha AAA também dá 1,5 V, e dura menos.</p>
+          <p><strong>Bateria:</strong> uma associação de células, em geral em série para somar a tensão. A bateria de carro tem seis células de cerca de 2 V, e por isso fornece 12 V.</p>
+        </div>
+
+        <table class="units-table" aria-label="Valores típicos de tensão">
+          <thead>
+            <tr><th>Onde</th><th>Tensão</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Pilha AA</td><td class="val">1,5 V</td></tr>
+            <tr><td>Carregador USB</td><td class="val">5 V</td></tr>
+            <tr><td>Bateria de carro</td><td class="val">12 V</td></tr>
+            <tr><td>Tomada residencial</td><td class="val">127 V ou 220 V</td></tr>
+            <tr><td>Raio</td><td class="val">≈ 10<sup>8</sup> V</td></tr>
+          </tbody>
+        </table>
+
+        <div class="highlight-box orange-hl">
+          <span class="hb-icon">📏</span>
+          <p>Repare no salto entre a última linha e as anteriores. Da pilha à tomada há um fator de cem; da tomada ao raio, um fator de um milhão. Todo o nosso cotidiano elétrico cabe numa faixa muito estreita, e é fácil perder a noção de escala quando os valores aparecem só como números numa tabela.</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz2"></div>
+    </section>
+
+    <!-- ============ TÓPICO 3 ============ -->
+    <section class="topic" id="t3">
+      <div class="topic-header">
+        <span class="topic-num">03</span>
+        <h2>Corrente elétrica</h2>
+      </div>
+      <div class="topic-body">
+        <p>A <strong>corrente elétrica</strong> é o movimento ordenado de cargas através de um condutor. A palavra <em>ordenado</em> importa: os elétrons de um metal já se movem o tempo todo, em altíssima velocidade e em todas as direções, e esse vaivém desordenado não é corrente. Corrente aparece quando há um sentido preferencial.</p>
+
+        <div class="formula-box large">
+          <span class="formula-label">Intensidade da corrente</span>
+          <span class="formula-tex big">i = Q / t</span>
+          <span class="formula-unit">i em ampères (A) · Q em coulombs (C) · t em segundos (s). Um ampère é um coulomb por segundo, e é muita carga: cerca de 6 × 10<sup>18</sup> elétrons a cada segundo.</span>
+        </div>
+
+        <p>Sobre o <strong>sentido</strong> da corrente há uma convenção histórica que confunde todo mundo na primeira vez. Num fio metálico, quem se move são os elétrons, que são negativos e vão do polo negativo para o positivo: esse é o <strong>sentido real</strong>. Mas o combinado feito no século XVIII, antes de o elétron ser conhecido, foi adotar o sentido contrário, do positivo para o negativo, e é ele que se usa em todos os cálculos: o <strong>sentido convencional</strong>.</p>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🧭</span>
+          <p>A convenção não é um erro que ficou por aí. Ela define o sentido pelo que uma <em>carga positiva</em> faria, e é justamente isso que permite usar a mesma regra em qualquer material, inclusive naqueles em que quem se move é positivo, ou em que os dois sinais se movem ao mesmo tempo. Adotar o sentido convencional não muda nenhum resultado físico.</p>
+        </div>
+
+        <p>A corrente é também o assunto que mais acumula enganos, e vale enfrentá-los de frente antes de seguir.</p>
+
+        <div class="analogy-grid">
+          <div class="analogy-card erro">
+            <h4>✗ O que se costuma pensar</h4>
+            <ul>
+              <li>"A lâmpada gasta a corrente": chega mais corrente do que sai.</li>
+              <li>"A corrente sai dos dois polos" e se encontra na lâmpada.</li>
+              <li>"A pilha guarda corrente" e a entrega aos poucos.</li>
+            </ul>
+            <span class="ac-eq">a carga se gastaria</span>
+          </div>
+          <div class="analogy-card certo">
+            <h4>✓ O que de fato acontece</h4>
+            <ul>
+              <li>Num circuito simples a corrente é <strong>a mesma em todos os pontos</strong>.</li>
+              <li>Ela tem um sentido só e percorre o circuito inteiro.</li>
+              <li>A pilha fornece <strong>ddp</strong>. Quem decide a corrente é o circuito.</li>
+            </ul>
+            <span class="ac-eq">a carga circula e volta</span>
+          </div>
+        </div>
+
+        <figure class="fbd-figure">
+          <svg class="fig" data-avulso="circuitos/2-corrente-nao-se-gasta" viewBox="0 0 640 280" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Circuito com uma pilha e uma lâmpada, com um amperímetro antes e outro depois da lâmpada. Os dois marcam o mesmo valor, meio ampère, mostrando que a corrente não é consumida pela lâmpada.">
+            <defs>
+              <marker id="ci2-seta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path class="fig-p-corrente" d="M0,0 L10,5 L0,10 z"/>
+              </marker>
+            </defs>
+
+            <text class="fig-tit-ok" x="20" y="26">A MESMA CORRENTE ANTES E DEPOIS</text>
+
+            <!-- laço -->
+            <path class="fig-fio-fino" d="M80,212 L80,100 L152,100"/>
+            <path class="fig-fio-fino" d="M208,100 L272,100"/>
+            <path class="fig-fio-fino" d="M368,100 L432,100"/>
+            <path class="fig-fio-fino" d="M488,100 L560,100 L560,212"/>
+            <path class="fig-fio-fino" d="M80,212 L288,212"/>
+            <path class="fig-fio-fino" d="M352,212 L560,212"/>
+
+            <!-- fonte -->
+            <path class="fig-polo" d="M288,194 L288,230"/>
+            <path class="fig-polo" d="M304,202 L304,222"/>
+            <path class="fig-fio-fino" d="M304,212 L320,212"/>
+            <path class="fig-polo" d="M320,194 L320,230"/>
+            <path class="fig-polo" d="M336,202 L336,222"/>
+            <path class="fig-fio-fino" d="M336,212 L352,212"/>
+            <text class="fig-r-tensao fig-med" x="320" y="252" text-anchor="middle">3 V</text>
+
+            <!-- amperímetro 1 -->
+            <circle class="fig-medidor" cx="180" cy="100" r="28"/>
+            <text class="fig-visor" x="180" y="97" text-anchor="middle">A</text>
+            <text class="fig-visor fig-peq" x="180" y="112" text-anchor="middle">0,5 A</text>
+            <text class="fig-m-peq fig-peq" x="180" y="146" text-anchor="middle">antes</text>
+
+            <!-- lâmpada -->
+            <circle class="fig-lampada" cx="320" cy="100" r="24"/>
+            <path class="fig-lampada-x" d="M303,83 L337,117"/>
+            <path class="fig-lampada-x" d="M337,83 L303,117"/>
+            <text class="fig-m-peq fig-peq" x="320" y="146" text-anchor="middle">lâmpada</text>
+
+            <!-- amperímetro 2 -->
+            <circle class="fig-medidor" cx="460" cy="100" r="28"/>
+            <text class="fig-visor" x="460" y="97" text-anchor="middle">A</text>
+            <text class="fig-visor fig-peq" x="460" y="112" text-anchor="middle">0,5 A</text>
+            <text class="fig-m-peq fig-peq" x="460" y="146" text-anchor="middle">depois</text>
+
+            <!-- sentido convencional -->
+            <path class="fig-v-corrente" d="M80,180 L80,148" marker-end="url(#ci2-seta)"/>
+            <text class="fig-r-corrente fig-med" x="52" y="170">i</text>
+            <path class="fig-v-corrente" d="M560,148 L560,180" marker-end="url(#ci2-seta)"/>
+            <text class="fig-r-corrente fig-med" x="574" y="170">i</text>
+
+            <text class="fig-t-nota fig-nota-ok" x="20" y="272">O que a lâmpada consome é energia, não carga.</text>
+          </svg>
+          <figcaption><strong>Um amperímetro de cada lado resolve a discussão.</strong> Os dois marcam o mesmo valor, sempre. O que sai de um polo da fonte chega inteiro ao outro: a carga circula e volta. O que fica pelo caminho, virando luz e calor, é a <span class="leg-tensao">energia</span>, e é isso que a fonte precisa repor.</figcaption>
+        </figure>
+
+        <div class="example-box">
+          <h4>Devagar, mas todos juntos</h4>
+          <p>Com uma corrente de 1 A num fio de cobre de 1 mm², cada elétron avança cerca de <strong>25 cm por hora</strong>. Se é assim, por que a lâmpada acende no instante em que você aciona o interruptor?</p>
+          <p>Porque o fio <strong>já está cheio de elétrons</strong> antes de você ligar. Ligar não coloca elétrons no fio: apenas põe todos a marchar ao mesmo tempo. O que percorre o fio a quase 200 mil km/s não é o elétron, é o campo elétrico que o põe em movimento.</p>
+          <p>A imagem que fecha o raciocínio é a de um cano já cheio de bolinhas: empurre uma de um lado e outra sai do outro <em>no mesmo instante</em>, sem que nenhuma tenha atravessado o cano.</p>
+        </div>
+
+        <table class="units-table" aria-label="Quem são os portadores de carga em cada material">
+          <thead>
+            <tr><th>Material</th><th>Quem se move</th><th>Detalhe</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Metais (cobre, alumínio)</td><td class="val">só elétrons livres</td><td>São negativos, e andam no sentido contrário ao convencional. Os núcleos ficam presos na rede.</td></tr>
+            <tr><td>Soluções (água salgada)</td><td class="val">íons dos dois sinais</td><td>Na⁺ vai para o eletrodo negativo e Cl⁻ para o positivo. As duas contribuições se somam.</td></tr>
+            <tr><td>Gases ionizados (raio)</td><td class="val">íons e elétrons</td><td>O gás perde a neutralidade e conduz com os dois tipos de portador ao mesmo tempo.</td></tr>
+          </tbody>
+        </table>
+
+        <table class="units-table" aria-label="Valores típicos de corrente">
+          <thead>
+            <tr><th>Onde</th><th>Corrente</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>LED indicador</td><td class="val">0,02 A</td></tr>
+            <tr><td>Carregador de celular</td><td class="val">0,5 A</td></tr>
+            <tr><td>Chuveiro elétrico</td><td class="val">30 A</td></tr>
+            <tr><td>Raio, no pico</td><td class="val">≈ 30 000 A</td></tr>
+          </tbody>
+        </table>
+
+        <div class="highlight-box orange-hl">
+          <span class="hb-icon">⚠️</span>
+          <p>Correntes acima de poucos centésimos de ampère já são perigosas para o corpo humano. Repare que o LED indicador da primeira linha, que ninguém considera perigoso, opera exatamente nessa ordem de grandeza: o que protege você da tomada não é o valor pequeno da corrente disponível, e sim a resistência da pele e o fato de o circuito não se fechar através do seu corpo.</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz3"></div>
+    </section>
+
+    <!-- ============ TÓPICO 4 ============ -->
+    <section class="topic" id="t4">
+      <div class="topic-header">
+        <span class="topic-num">04</span>
+        <h2>Resistência elétrica</h2>
+      </div>
+      <div class="topic-body">
+        <p>A <strong>resistência</strong> é a oposição que um material oferece à passagem da corrente. O mecanismo é microscópico: ao atravessar o material, os elétrons colidem com os átomos da rede e perdem energia a cada colisão. Essa energia não some, vira calor.</p>
+
+        <div class="formula-box">
+          <span class="formula-label">Unidade</span>
+          <span class="formula-tex">1 Ω = 1 V / 1 A</span>
+          <span class="formula-unit">O ohm (Ω) é a resistência que deixa passar 1 A quando submetida a 1 V.</span>
+        </div>
+
+        <p>O <strong>resistor</strong> é o componente feito de propósito para ter uma resistência conhecida. Ele não é um defeito do circuito: existe para limitar a corrente e proteger o que vem depois. Há os de valor fixo, que são a maioria, e os variáveis, como o potenciômetro que você gira no controle de volume.</p>
+
+        <p>Um resistor comum é pequeno demais para trazer o valor impresso, e por isso ele vem em <strong>faixas coloridas</strong>. A leitura começa pela ponta em que as faixas estão mais juntas: as duas primeiras dão os algarismos, a terceira diz por quanto multiplicar e a quarta, afastada das outras, dá a tolerância.</p>
+
+        <figure class="fbd-figure">
+          <svg class="fig" data-avulso="circuitos/3-codigo-de-cores" viewBox="0 0 680 340" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Resistor visto de lado com quatro faixas coloridas: marrom, preto, vermelho e ouro, com a quarta afastada das outras três. Cada faixa é identificada pelo seu papel: primeiro dígito, segundo dígito, multiplicador e tolerância. A leitura resulta em mil ohms com cinco por cento de tolerância.">
+            <text class="fig-tit" x="20" y="26">LENDO UM RESISTOR DE QUATRO FAIXAS</text>
+
+            <!-- terminais e corpo -->
+            <path class="fig-terminal" d="M40,188 L150,188"/>
+            <path class="fig-terminal" d="M530,188 L640,188"/>
+            <rect class="fig-corpo-res" x="150" y="150" width="380" height="76" rx="34"/>
+
+            <!-- faixas: marrom, preto, vermelho ... ouro -->
+            <rect class="fig-fx-marrom"   x="196" y="152" width="26" height="72"/>
+            <rect class="fig-fx-preto"    x="248" y="152" width="26" height="72"/>
+            <rect class="fig-fx-vermelho" x="300" y="152" width="26" height="72"/>
+            <rect class="fig-fx-ouro"     x="452" y="152" width="26" height="72"/>
+
+            <!-- chamadas, em três alturas para não se sobreporem -->
+            <path class="fig-guia" d="M209,148 L209,114"/>
+            <text class="fig-m-peq" x="209" y="106" text-anchor="middle">1º dígito = 1</text>
+            <path class="fig-guia" d="M261,148 L261,86"/>
+            <text class="fig-m-peq" x="261" y="78" text-anchor="middle">2º dígito = 0</text>
+            <path class="fig-guia" d="M313,148 L313,58"/>
+            <text class="fig-m-peq" x="313" y="50" text-anchor="middle">multiplicador = × 100</text>
+            <path class="fig-guia" d="M465,228 L465,252"/>
+            <text class="fig-m-peq" x="465" y="266" text-anchor="middle">tolerância = ± 5%</text>
+
+            <!-- nomes das cores -->
+            <text class="fig-t-rot" x="209" y="244" text-anchor="middle">marrom</text>
+            <text class="fig-t-rot" x="261" y="244" text-anchor="middle">preto</text>
+            <text class="fig-t-rot" x="313" y="244" text-anchor="middle">vermelho</text>
+            <text class="fig-t-rot" x="465" y="244" text-anchor="middle">ouro</text>
+
+            <!-- resultado -->
+            <rect class="fig-caixa-alerta" x="40" y="288" width="272" height="42" rx="8"/>
+            <text class="fig-r-tensao" x="176" y="308" text-anchor="middle">10 × 100 = 1 000 Ω = 1 kΩ</text>
+            <text class="fig-t-rot" x="176" y="322" text-anchor="middle">na prática, entre 950 Ω e 1 050 Ω</text>
+
+            <text class="fig-t-nota" x="340" y="306">A quarta faixa é a afastada:</text>
+            <text class="fig-t-nota" x="340" y="322">é por ela que se acha o lado certo de ler.</text>
+          </svg>
+          <figcaption><strong>Marrom, preto, vermelho e ouro.</strong> As duas primeiras faixas dão os algarismos 1 e 0; a terceira multiplica por 100; a quarta diz que o valor real pode desviar 5%. Cabe perceber que comprar um resistor de 1 kΩ com faixa dourada não garante 1 kΩ: garante um valor entre 950 Ω e 1 050 Ω, e é por isso que circuitos de precisão pedem tolerância menor.</figcaption>
+        </figure>
+
+        <table class="units-table" aria-label="Código de cores dos resistores">
+          <thead>
+            <tr><th>Cor</th><th>Dígito</th><th>Multiplicador</th><th>Cor</th><th>Dígito</th><th>Multiplicador</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Preto</td><td class="val">0</td><td>× 1</td><td>Verde</td><td class="val">5</td><td>× 100 k</td></tr>
+            <tr><td>Marrom</td><td class="val">1</td><td>× 10</td><td>Azul</td><td class="val">6</td><td>× 1 M</td></tr>
+            <tr><td>Vermelho</td><td class="val">2</td><td>× 100</td><td>Violeta</td><td class="val">7</td><td>× 10 M</td></tr>
+            <tr><td>Laranja</td><td class="val">3</td><td>× 1 k</td><td>Cinza</td><td class="val">8</td><td>× 100 M</td></tr>
+            <tr><td>Amarelo</td><td class="val">4</td><td>× 10 k</td><td>Branco</td><td class="val">9</td><td>× 1 G</td></tr>
+          </tbody>
+        </table>
+
+        <div class="highlight-box orange-hl">
+          <span class="hb-icon">🔥</span>
+          <p><strong>Efeito Joule.</strong> Todo resistor percorrido por corrente converte energia elétrica em energia térmica, e converte <em>tudo</em>. Não é defeito nem escolha de projeto: é o que a resistência faz. Vale contrastar com um motor, que transforma parte da energia em movimento, e com um LED, que transforma parte em luz; o resistor puro não tem outra saída. E a conversão é de mão única, porque o calor se espalha pelo ambiente e não volta a ser energia elétrica.</p>
+        </div>
+
+        <p>De que depende a resistência de um fio? De três coisas, e só três: o material de que ele é feito, o comprimento e a espessura. É o que diz a <strong>2ª Lei de Ohm</strong>, que permite prever a resistência antes de medir.</p>
+
+        <div class="formula-box large">
+          <span class="formula-label">2ª Lei de Ohm — resistência de um fio</span>
+          <span class="formula-tex big">R = ρ · L / A</span>
+          <span class="formula-unit">ρ é a resistividade do material (Ω·m) · L é o comprimento (m) · A é a área da secção (m²).</span>
+        </div>
+
+        <div class="concept-card">
+          <h4>Lendo a fórmula</h4>
+          <ul>
+            <li>O comprimento entra <strong>multiplicando</strong>: fio mais longo resiste mais, porque há mais colisões pelo caminho.</li>
+            <li>A área entra <strong>dividindo</strong>: fio mais grosso resiste menos, porque há mais caminhos em paralelo.</li>
+            <li>A resistividade ρ é propriedade só do <strong>material</strong>, e não depende da forma da peça.</li>
+            <li>Resistência e resistividade não são a mesma grandeza: ρ descreve a substância, R descreve o objeto.</li>
+          </ul>
+        </div>
+
+        <table class="units-table" aria-label="Resistividade de alguns materiais a 20 graus Celsius">
+          <thead>
+            <tr><th>Material</th><th>Tipo</th><th>ρ (Ω·m) a 20 °C</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Prata</td><td>condutor</td><td class="val">1,6 × 10<sup>−8</sup></td></tr>
+            <tr><td>Cobre</td><td>condutor</td><td class="val">1,7 × 10<sup>−8</sup></td></tr>
+            <tr><td>Alumínio</td><td>condutor</td><td class="val">2,8 × 10<sup>−8</sup></td></tr>
+            <tr><td>Silício</td><td>semicondutor</td><td class="val">≈ 6,4 × 10<sup>2</sup></td></tr>
+            <tr><td>Vidro</td><td>isolante</td><td class="val">10<sup>10</sup> – 10<sup>14</sup></td></tr>
+            <tr><td>Borracha</td><td>isolante</td><td class="val">≈ 10<sup>13</sup></td></tr>
+          </tbody>
+        </table>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🥈</span>
+          <p>A prata conduz melhor que o cobre, e mesmo assim a fiação das casas é de cobre. A razão é econômica, e a diferença de desempenho é pequena: 1,6 contra 1,7, cerca de 6%. Repare também na largura da tabela inteira: do cobre à borracha são <strong>vinte e uma ordens de grandeza</strong>. Condutor e isolante não são duas categorias separadas na natureza, são as duas pontas de uma escala contínua.</p>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🌡️</span>
+          <p><strong>A temperatura muda a resistência.</strong> Nos metais, aquecer aumenta a resistividade, porque os íons da rede vibram mais e atrapalham mais a passagem dos elétrons. O efeito é grande: o filamento de tungstênio de uma lâmpada incandescente opera a cerca de 2700 °C, e a resistência dele quente é aproximadamente dez vezes maior que a frio. É por isso que essas lâmpadas quase sempre queimam no instante em que são ligadas, quando o filamento ainda está frio e a corrente é máxima.</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz4"></div>
+    </section>
+
+    <!-- ============ TÓPICO 5 ============ -->
+    <section class="topic" id="t5">
+      <div class="topic-header">
+        <span class="topic-num">05</span>
+        <h2>Lei de Ohm</h2>
+      </div>
+      <div class="topic-body">
+        <p>Tensão, corrente e resistência foram apresentadas separadamente. A <strong>Lei de Ohm</strong> é a relação que amarra as três numa única equação, e é a espinha dorsal de tudo o que se calcula em circuitos.</p>
+
+        <div class="formula-box large">
+          <span class="formula-label">1ª Lei de Ohm</span>
+          <span class="formula-tex big">V = R · i</span>
+          <span class="formula-unit">V em volts (V) · R em ohms (Ω) · i em ampères (A).</span>
+        </div>
+
+        <div class="law-card">
+          <div class="law-tier precise">
+            <span class="tier-tag">Quem manda em quem</span>
+            <p class="law-statement">Quem estabelece a tensão é a <strong>fonte</strong>. Quem decide a corrente é a dupla <strong>tensão e resistência</strong>. A resistência não consome corrente: ela <em>limita</em> a corrente.</p>
+            <p class="law-note">Vale trocar a equação por um raciocínio, porque é assim que ela se usa na prática. Numa tomada, a tensão é imposta pela rede e não muda; quem decide a corrente que o aparelho puxa é a resistência dele. Numa fonte ajustável de laboratório, ao contrário, a resistência é a do componente e o que você varia é a tensão.</p>
+          </div>
+        </div>
+
+        <table class="units-table" aria-label="Dois cenários da Lei de Ohm">
+          <thead>
+            <tr><th>Tensão fixa em 12 V</th><th>Corrente</th><th>Resistência fixa em 12 Ω</th><th>Corrente</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>R = 6 Ω</td><td class="val">2 A</td><td>V = 6 V</td><td class="val">0,5 A</td></tr>
+            <tr><td>R = 12 Ω</td><td class="val">1 A</td><td>V = 12 V</td><td class="val">1 A</td></tr>
+            <tr><td>R = 24 Ω</td><td class="val">0,5 A</td><td>V = 24 V</td><td class="val">2 A</td></tr>
+          </tbody>
+        </table>
+
+        <p>As duas colunas contam histórias opostas, e vale ler cada uma em voz alta. Com a tensão fixa, cada vez que a resistência <strong>dobra</strong>, a corrente cai <strong>pela metade</strong>. Com a resistência fixa, cada vez que a tensão dobra, a corrente <strong>dobra junto</strong>.</p>
+
+        <p>A Lei de Ohm não vale para tudo. Ela descreve os materiais chamados <strong>ôhmicos</strong>, aqueles em que a resistência se mantém constante enquanto a tensão varia. Quando a resistência muda com a corrente, o material é <strong>não-ôhmico</strong>, e o gráfico denuncia a diferença na hora.</p>
+
+        <figure class="fbd-figure">
+          <svg class="fig" data-avulso="circuitos/4-grafico-ohmico" viewBox="0 0 680 340" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico da tensão em função da corrente. A reta verde, que passa pela origem, representa um condutor ôhmico, cuja resistência é a inclinação e se mantém constante. A curva laranja, que sobe cada vez mais rápido, representa o filamento de uma lâmpada, cuja resistência cresce com a temperatura.">
+            <defs>
+              <marker id="ci4-eixo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path class="fig-eixo-p" d="M0,0 L10,5 L0,10 z"/>
+              </marker>
+            </defs>
+
+            <!-- eixos -->
+            <path class="fig-eixo" d="M90,280 L640,280" marker-end="url(#ci4-eixo)"/>
+            <path class="fig-eixo" d="M90,280 L90,40" marker-end="url(#ci4-eixo)"/>
+            <text class="fig-m" x="546" y="306">corrente i (A)</text>
+            <text class="fig-m" x="34" y="34">tensão V (V)</text>
+
+            <!-- reta ôhmica -->
+            <path class="fig-curva-ohm" d="M90,280 L470,80"/>
+            <circle class="fig-no-ohm" cx="470" cy="80" r="5"/>
+            <text class="fig-r-ohm" x="146" y="106">condutor ôhmico</text>
+            <text class="fig-t-rot" x="146" y="122">R é a inclinação, e é constante:</text>
+            <text class="fig-t-rot" x="146" y="137">R = ΔV / Δi</text>
+
+            <!-- curva não-ôhmica: filamento -->
+            <path class="fig-curva-noh" d="M90,280 C230,258 330,214 400,150 C440,114 452,86 460,58"/>
+            <circle class="fig-no-noh" cx="460" cy="58" r="5"/>
+            <text class="fig-r-noh" x="486" y="62">filamento</text>
+            <text class="fig-t-rot" x="486" y="78">R cresce com a temperatura</text>
+
+            <!-- triângulo da inclinação -->
+            <path class="fig-guia" d="M242,199 L338,199"/>
+            <path class="fig-guia" d="M338,199 L338,149"/>
+            <text class="fig-t-rot" x="290" y="215" text-anchor="middle">Δi</text>
+            <text class="fig-t-rot" x="348" y="178">ΔV</text>
+
+            <text class="fig-t-nota" x="90" y="326">Reta pela origem: ôhmico. Qualquer entortada: não-ôhmico.</text>
+          </svg>
+          <figcaption>No <span class="leg-ohmico">condutor ôhmico</span>, o gráfico V × i é uma reta que passa pela origem, e a resistência é a inclinação dela. No <span class="leg-nohmico">filamento</span>, a curva sobe cada vez mais rápido: conforme a corrente aquece o metal, a resistência aumenta, e é preciso mais tensão para cada ampère adicional. Diodo, LED e transistor também são não-ôhmicos.</figcaption>
+        </figure>
+
+        <div class="example-box">
+          <h4>Curto-circuito: o caso extremo</h4>
+          <p>Se diminuir a resistência aumenta a corrente, o que acontece quando a resistência vai quase a zero? Um <strong>curto-circuito</strong> é justamente isso: um caminho de resistência quase nula ligando os dois polos da fonte. A corrente despreza o resto do circuito e vem toda por ali.</p>
+          <p>Compare os dois caminhos, com a mesma fonte de 12 V:</p>
+          <p class="calc-line">Pela lâmpada, R = 60 Ω:  i = 12 / 60 = <strong>0,2 A</strong>  ·  P = 2,4 W</p>
+          <p class="calc-line">Pelo curto, R = 0,05 Ω:  i = 12 / 0,05 = <strong>240 A</strong>  ·  P = 2 880 W</p>
+          <p>Mil e duzentas vezes mais corrente e mais potência, tudo virando calor num fio fino que não foi feito para isso. O fusível e o disjuntor existem exatamente para esse caso: abrem o circuito antes que o fio derreta.</p>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🔋</span>
+          <p>Na prática a corrente de curto não chega ao valor da conta, porque <strong>a própria fonte tem resistência</strong>. Essa resistência interna segura a corrente: numa pilha pequena ela nem chega perto de 10 A, e é por isso que um curto numa pilha AA a esquenta em vez de fundir o fio. Numa bateria de carro, que tem resistência interna baixíssima, a conta acima fica bem mais próxima da realidade, e o curto é perigoso de verdade.</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz5"></div>
+    </section>
+
+    <!-- ============ TÓPICO 6 ============ -->
+    <section class="topic" id="t6">
+      <div class="topic-header">
+        <span class="topic-num">06</span>
+        <h2>Potência e energia elétrica</h2>
+      </div>
+      <div class="topic-body">
+        <p>A <strong>potência elétrica</strong> mede quão rápido a energia elétrica é convertida em outra forma. Um watt é um joule por segundo, e um chuveiro de 5 500 W converte 5 500 joules a cada segundo em que fica ligado.</p>
+
+        <div class="formula-box large">
+          <span class="formula-label">Potência elétrica</span>
+          <span class="formula-tex big">P = V · i</span>
+          <span class="formula-unit">P em watts (W) · V em volts (V) · i em ampères (A).</span>
+        </div>
+
+        <p>Combinando essa definição com a Lei de Ohm saem outras duas formas, e não vale a pena decorar as três: vale ver de onde elas vêm. Trocando V por R·i, chega-se a P = R·i². Trocando i por V/R, chega-se a P = V²/R.</p>
+
+        <table class="units-table" aria-label="As três formas de calcular a potência">
+          <thead>
+            <tr><th>Forma</th><th>Use quando conhecer</th><th>A leitura certa é</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="val">P = V · i</td><td>a tensão e a corrente</td><td>Vale sempre, em qualquer trecho de qualquer circuito</td></tr>
+            <tr><td class="val">P = R · i²</td><td>a resistência e a corrente</td><td>Quando a <strong>corrente</strong> é a mesma: aí quem tem mais resistência dissipa mais</td></tr>
+            <tr><td class="val">P = V² / R</td><td>a tensão e a resistência</td><td>Quando a <strong>tensão</strong> é fixa: aí quem tem menos resistência consome mais</td></tr>
+          </tbody>
+        </table>
+
+        <div class="highlight-box orange-hl">
+          <span class="hb-icon">🔀</span>
+          <p>As duas últimas linhas parecem se contradizer, e é aí que quase todo mundo tropeça. Uma diz que mais resistência dissipa mais; a outra, que menos resistência consome mais. <strong>As três fórmulas dizem a mesma coisa</strong>, e o que muda é o que está fixo na situação. Se o que é comum aos componentes é a corrente, use P = R·i². Se o que é comum é a tensão, use P = V²/R. Perguntar "o que é igual para os dois?" resolve a escolha antes de qualquer conta.</p>
+        </div>
+
+        <div class="formula-box">
+          <span class="formula-label">Calor dissipado pelo efeito Joule</span>
+          <span class="formula-tex">Q = R · i² · t</span>
+          <span class="formula-unit">Q em joules (J) · t em segundos (s). A corrente entra ao quadrado: dobrar a corrente <strong>quadruplica</strong> o calor.</span>
+        </div>
+
+        <p>A energia consumida é a potência multiplicada pelo tempo. Na conta de luz ela não vem em joules, e sim em <strong>quilowatt-hora</strong>, que é a energia de um aparelho de 1 kW ligado por uma hora.</p>
+
+        <div class="formula-box">
+          <span class="formula-label">Energia elétrica e conversão</span>
+          <span class="formula-tex">E = P · t   ·   1 kWh = 3,6 × 10<sup>6</sup> J</span>
+          <span class="formula-unit">Com P em kW e t em horas, E sai direto em kWh, que é a unidade da conta.</span>
+        </div>
+
+        <div class="example-box">
+          <h4>Quanto custa o banho</h4>
+          <p>Um chuveiro de 4 400 W, usado por duas pessoas, 10 minutos cada, todos os dias. Tarifa de R$ 0,90 por kWh.</p>
+          <p class="calc-line">Tempo diário: 20 min = 1/3 h</p>
+          <p class="calc-line">Consumo diário: 4,4 kW × (1/3) h = <strong>1,47 kWh</strong></p>
+          <p class="calc-line">Consumo mensal: 1,47 × 30 = <strong>44 kWh</strong></p>
+          <p class="calc-line">Custo mensal: 44 × 0,90 = <strong>R$ 39,60</strong></p>
+          <p>Note que o chuveiro fica ligado 20 minutos por dia e mesmo assim pesa na conta. Quem decide o consumo não é o tempo sozinho, é o produto da potência pelo tempo, e a potência do chuveiro é a maior da casa.</p>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🧾</span>
+          <p>O medidor da casa registra o total de kWh, e o valor cobrado é esse total multiplicado pela tarifa, mais encargos, impostos e o adicional da bandeira tarifária. Cabe perceber que a bandeira não muda o seu consumo: ela muda o preço de cada kWh consumido.</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz6"></div>
+    </section>
+
+    <!-- ============ TÓPICO 7 ============ -->
+    <section class="topic" id="t7">
+      <div class="topic-header">
+        <span class="topic-num">07</span>
+        <h2>Os circuitos ao seu redor</h2>
+      </div>
+      <div class="topic-body">
+        <p>Tudo o que apareceu até aqui está em funcionamento a poucos metros de você. Nesta seção, quatro aparelhos servem para reler as grandezas dos tópicos anteriores em situações concretas.</p>
+
+        <div class="energy-grid">
+          <div class="eg-card">
+            <span class="eg-icon">🚿</span>
+            <div class="eg-name">Chuveiro</div>
+            <div class="eg-desc">Resistência baixa para puxar corrente alta. O aquecimento é o produto desejado.</div>
+          </div>
+          <div class="eg-card">
+            <span class="eg-icon">💡</span>
+            <div class="eg-name">Lâmpada incandescente</div>
+            <div class="eg-desc">O filamento incandesce ao se aquecer. Material não-ôhmico.</div>
+          </div>
+          <div class="eg-card">
+            <span class="eg-icon">🔆</span>
+            <div class="eg-name">LED</div>
+            <div class="eg-desc">Emite luz com pouquíssima corrente. Bem mais eficiente.</div>
+          </div>
+          <div class="eg-card">
+            <span class="eg-icon">🛡️</span>
+            <div class="eg-name">Fusível</div>
+            <div class="eg-desc">Rompe-se ao passar do limite seguro, abrindo o circuito.</div>
+          </div>
+        </div>
+
+        <div class="example-box">
+          <h4>O chuveiro contraria a intuição</h4>
+          <p>Um chuveiro de 5 500 W ligado em 220 V. Qual é a resistência dele?</p>
+          <p class="calc-line">i = P / V = 5 500 / 220 = <strong>25 A</strong></p>
+          <p class="calc-line">R = V / i = 220 / 25 = <strong>8,8 Ω</strong></p>
+          <p>Menos de nove ohms. É cerca de trinta vezes <strong>menor</strong> que a resistência de uma lâmpada incandescente comum, e a intuição costuma esperar o contrário: como o chuveiro esquenta muito, parece que ele deveria "resistir" muito. Com a tensão fixa da tomada vale P = V²/R, e nessa forma quem tem <em>menos</em> resistência consome mais.</p>
+          <p>A resistência do chuveiro é baixa, mas ainda é bem maior que a dos fios que o alimentam. É por isso que o calor aparece no chuveiro, e não ao longo da fiação da casa.</p>
+        </div>
+
+        <div class="concept-card">
+          <h4>Por que o fusível funciona</h4>
+          <ul>
+            <li>Ele é um fio propositalmente <strong>fino</strong>, feito de um metal de ponto de fusão baixo.</li>
+            <li>Por ser fino, tem área pequena, e por isso resistência maior que a do resto da fiação.</li>
+            <li>Pelo efeito Joule, o calor gerado nele cresce com o <strong>quadrado</strong> da corrente.</li>
+            <li>Passando do limite, ele derrete primeiro e abre o circuito, antes que a fiação da casa aqueça.</li>
+            <li>O disjuntor faz o mesmo serviço por meio magnético ou térmico, com a vantagem de poder ser rearmado.</li>
+          </ul>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🔆</span>
+          <p>A lâmpada incandescente e o LED fazem a mesma coisa do ponto de vista do usuário e são opostos por dentro. A incandescente <em>precisa</em> do efeito Joule: ela aquece um filamento até ele brilhar, e joga fora como calor a maior parte da energia. O LED produz luz por um mecanismo semicondutor, sem precisar aquecer nada, e é por isso que entrega o mesmo brilho com uma fração da potência.</p>
+        </div>
+      </div>
+      <div class="quiz-section" id="quiz7"></div>
+    </section>
+
+    <!-- ============ TÓPICO 8 ============ -->
+    <section class="topic" id="t8">
+      <div class="topic-header">
+        <span class="topic-num">08</span>
+        <h2>Síntese</h2>
+      </div>
+      <div class="topic-body">
+        <table class="units-table" aria-label="As grandezas dos circuitos elétricos">
+          <thead>
+            <tr><th>Grandeza</th><th>Símbolo</th><th>Unidade</th><th>O que mede</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Carga</td><td class="val">Q</td><td>coulomb (C)</td><td>Quanta eletricidade há</td></tr>
+            <tr><td>Tensão, ddp</td><td class="val">U ou V</td><td>volt (V)</td><td>Energia entregue a cada unidade de carga</td></tr>
+            <tr><td>Corrente</td><td class="val">i</td><td>ampère (A)</td><td>Carga que passa por segundo</td></tr>
+            <tr><td>Resistência</td><td class="val">R</td><td>ohm (Ω)</td><td>Oposição à passagem da corrente</td></tr>
+            <tr><td>Potência</td><td class="val">P</td><td>watt (W)</td><td>Energia convertida por segundo</td></tr>
+          </tbody>
+        </table>
+
+        <table class="units-table" aria-label="As quatro relações que guiam tudo">
+          <thead>
+            <tr><th>Relação</th><th>O que ela responde</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="val">i = Q / t</td><td>Quanta carga passa por segundo</td></tr>
+            <tr><td class="val">R = ρ · L / A</td><td>Quanto resiste um fio, pelo material e pela geometria</td></tr>
+            <tr><td class="val">V = R · i</td><td>Como tensão, resistência e corrente se amarram</td></tr>
+            <tr><td class="val">P = V · i</td><td>Quão rápido a energia é convertida</td></tr>
+          </tbody>
+        </table>
+
+        <div class="concept-card">
+          <h4>Roteiro para qualquer circuito simples</h4>
+          <ul>
+            <li><strong>1.</strong> Confira se o circuito está fechado. Aberto, a corrente é zero e não há mais nada a calcular.</li>
+            <li><strong>2.</strong> Identifique a fonte e anote a tensão que ela impõe.</li>
+            <li><strong>3.</strong> Identifique os consumidores e as resistências deles.</li>
+            <li><strong>4.</strong> Use V = R·i para achar a grandeza que falta.</li>
+            <li><strong>5.</strong> Para a potência, pergunte antes o que é comum aos componentes: a corrente ou a tensão.</li>
+            <li><strong>6.</strong> Confira a ordem de grandeza. Uma corrente de 300 A numa tomada é sinal de conta errada, ou de curto.</li>
+          </ul>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">🧭</span>
+          <p>Guarde as duas ideias que sustentam o resto. A primeira: <strong>o que o circuito consome é energia, não carga</strong>. A carga circula e volta inteira; a energia é entregue no caminho e vira luz, calor ou movimento. A segunda: <strong>a fonte impõe a tensão, e a resistência decide a corrente</strong>. Quase toda pergunta de circuito simples se responde sabendo qual das duas está fixa.</p>
+        </div>
+
+        <div class="highlight-box green-hl">
+          <span class="hb-icon">➡️</span>
+          <p><strong>O próximo passo.</strong> Aqui tudo foi tratado num circuito de um componente só. Quando há vários, aparecem as associações em série, em paralelo e mista, cada uma com a sua regra para a resistência equivalente. Os textos completos estão no hub de <a href="../../../../conteudos/eletricidade/index.html">Eletricidade</a>: <a href="../../../../conteudos/eletricidade/corrente-eletrica.html">corrente</a>, <a href="../../../../conteudos/eletricidade/resistencia-ohm.html">resistência e Lei de Ohm</a>, <a href="../../../../conteudos/eletricidade/potencia-energia-eletrica.html">potência</a> e <a href="../../../../conteudos/eletricidade/circuitos.html">associação de resistores</a>.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PLACAR FINAL -->
+  <section class="score-section">
+    <div class="score-inner">
+      <h2>Seu Desempenho</h2>
+      <div class="score-display">
+        <span id="score-num">0</span>
+        <span class="score-sep">/</span>
+        <span id="score-total">0</span>
+      </div>
+      <p id="score-msg">Responda as questões para ver seu placar!</p>
+      <button class="reset-btn" id="resetAll">Reiniciar tudo</button>
+
+      <div class="report-name">
+        <label for="studentName" class="report-hint">Seu nome para o relatório (opcional):</label>
+        <input type="text" id="studentName" class="name-input" placeholder="Ex: João Silva" maxlength="60" autocomplete="off" />
+      </div>
+      <div class="report-actions">
+        <p class="report-hint">Salve ou compartilhe suas respostas:</p>
+        <div class="report-btns">
+          <button class="report-btn" id="downloadReportBtn">&#8595; Baixar .txt</button>
+          <button class="report-btn" id="copyReportBtn">&#128203; Copiar</button>
+          <button class="report-btn" id="emailReportBtn">&#9993; Enviar por e-mail</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Física · Ensino Médio · Circuitos Elétricos</p>
+  </footer>
+
+  <script src="quiz.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
