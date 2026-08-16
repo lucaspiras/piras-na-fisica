@@ -56,9 +56,10 @@
     quiz2: 'Tópico 02 — Tensão: o empurrão que a fonte dá',
     quiz3: 'Tópico 03 — Corrente elétrica',
     quiz4: 'Tópico 04 — Resistência elétrica',
-    quiz5: 'Tópico 05 — Lei de Ohm',
-    quiz6: 'Tópico 06 — Potência e energia elétrica',
-    quiz7: 'Tópico 07 — Os circuitos ao seu redor',
+    quiz5: 'Tópico 05 — 2ª Lei de Ohm: a resistência de um fio',
+    quiz6: 'Tópico 06 — Lei de Ohm',
+    quiz7: 'Tópico 07 — Potência e energia elétrica',
+    quiz8: 'Tópico 08 — Os circuitos ao seu redor',
   };
 
   function stripHtml(str) { return str.replace(/<[^>]+>/g, ''); }

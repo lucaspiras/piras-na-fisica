@@ -281,6 +281,20 @@ body {
 .hb-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
 .highlight-box p { color: var(--text-mid); margin: 0; }
 
+/* Coluna de conteúdo do quadro, para quando ele leva uma figura junto do texto.
+   O min-width:0 é o que deixa o SVG encolher dentro do flex. */
+.hb-corpo { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.hb-figura { margin: 0; }
+.hb-figura svg {
+  display: block; width: 100%; height: auto;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--r);
+}
+.hb-figura figcaption {
+  margin: 10px 2px 0; font-size: .8rem; line-height: 1.6; color: var(--text-muted);
+}
+.hb-figura figcaption strong { color: var(--text-mid); }
+
 /* === CONCEPT CARD === */
 .concept-card {
   background: var(--surface); border: 1px solid var(--border);
@@ -512,6 +526,7 @@ body {
   --fig-medidor-b:  #334155;
   --fig-corrente:   #0e7490;
   --fig-tensao:     #a16207;
+  --fig-carga-txt:  #ffffff;
   --fig-texto:      #334155;
   --fig-rotulo:     #64748b;
   --fig-guia:       #cbd5e1;
@@ -571,6 +586,22 @@ body {
 .fig-eixo-p    { fill: var(--fig-texto); }
 .fig-caixa-ok     { fill: var(--fig-ok-suave); stroke: var(--fig-ok); stroke-width: 1.5; }
 .fig-caixa-alerta { fill: var(--fig-alerta-suave); stroke: var(--fig-alerta); stroke-width: 1.5; }
+
+/* analogia do desnível — a rampa por onde as cargas descem */
+.fig-nivel     { fill: none; stroke: var(--fig-guia); stroke-width: 2; stroke-dasharray: 6 6; }
+.fig-rampa     { fill: none; stroke: var(--fig-fio); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.fig-cota-u    { fill: none; stroke: var(--fig-tensao); stroke-width: 3; stroke-dasharray: 7 7; }
+.fig-carga     { fill: var(--fig-tensao); }
+.fig-carga-txt { fill: var(--fig-carga-txt); font-family: var(--fig-fonte-m); font-size: 15px; font-weight: 700; }
+
+/* Quadro parado para quem pede menos movimento. O CSS não alcança o SMIL, então
+   em vez de tentar pausar a animação trocamos o grupo animado por um grupo
+   estático já posicionado. Vale igual no inline e no .svg avulso. */
+.fig-cargas-paradas { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .fig-cargas-animadas { display: none; }
+  .fig-cargas-paradas  { display: inline; }
+}
 
 /* corrente e tensão */
 .fig-v-corrente { fill: none; stroke: var(--fig-corrente); stroke-width: 3; stroke-linecap: round; }

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- O mesmo circuito em dois desenhos: o pictorico e o esquema, peca por peca.
+<!-- Grafico V x i: a reta do condutor ohmico e a curva do filamento.
      Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
      inserido em slide ou importado em editor vetorial.
      Fonte da geometria: atividades/estudos_dirigidos/eletricidade/ed_circuitos/index.html
      Gerado por scripts/extrair-figuras-eds.ps1 — nao editar a mao. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="1440" height="600"
-     role="img" aria-labelledby="circuitos-1-do-real-ao-esquema">
-  <title id="circuitos-1-do-real-ao-esquema">O mesmo circuito desenhado de duas formas. À esquerda, o desenho pictórico: duas pilhas ligadas por fios a uma lâmpada acesa. À direita, o esquema com os símbolos padronizados: a pilha vira pares de barras longa e curta, os fios viram linhas retas e a lâmpada vira um círculo com um xis. As peças ocupam a mesma posição nos dois desenhos.</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" width="1360" height="680"
+     role="img" aria-labelledby="circuitos-5-grafico-ohmico">
+  <title id="circuitos-5-grafico-ohmico">Gráfico da tensão em função da corrente. A reta verde, que passa pela origem, representa um condutor ôhmico, cuja resistência é a inclinação e se mantém constante. A curva laranja, que sobe cada vez mais rápido, representa o filamento de uma lâmpada, cuja resistência cresce com a temperatura.</title>
   <style><![CDATA[
     svg {
       --fig-fundo:      #ffffff;
@@ -238,68 +238,42 @@
     }
   ]]></style>
   <defs>
-    <marker id="ci1-seta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-      <path class="fig-p-corrente" d="M0,0 L10,5 L0,10 z"/>
+    <marker id="ci4-eixo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path class="fig-eixo-p" d="M0,0 L10,5 L0,10 z"/>
     </marker>
   </defs>
 
-  <!-- ============ PAINEL A — pictórico ============ -->
-  <text class="fig-tit" x="20" y="26">O CIRCUITO REAL</text>
+  <!-- eixos -->
+  <path class="fig-eixo" d="M90,280 L640,280" marker-end="url(#ci4-eixo)"/>
+  <path class="fig-eixo" d="M90,280 L90,40" marker-end="url(#ci4-eixo)"/>
+  <text class="fig-m" x="546" y="306">corrente i (A)</text>
+  <text class="fig-m" x="34" y="34">tensão V (V)</text>
 
-  <!-- fios do laço -->
-  <path class="fig-fio" d="M70,232 L70,117 L168,117"/>
-  <path class="fig-fio" d="M192,117 L290,117 L290,232"/>
-  <path class="fig-fio" d="M70,232 L112,232"/>
-  <path class="fig-fio" d="M248,232 L290,232"/>
+  <!-- reta ôhmica -->
+  <path class="fig-curva-ohm" d="M90,280 L470,80"/>
+  <circle class="fig-no-ohm" cx="470" cy="80" r="5"/>
 
-  <!-- duas pilhas em série -->
-  <rect class="fig-pilha" x="112" y="220" width="64" height="24" rx="4"/>
-  <rect class="fig-pilha-tp" x="176" y="226" width="8" height="12" rx="2"/>
-  <rect class="fig-pilha" x="184" y="220" width="64" height="24" rx="4"/>
-  <rect class="fig-pilha-tp" x="248" y="226" width="6" height="12" rx="2"/>
-  <text class="fig-m-peq fig-peq" x="180" y="262" text-anchor="middle">duas pilhas de 1,5 V</text>
-  <text class="fig-r-tensao fig-med" x="180" y="276" text-anchor="middle">3 V no total</text>
+  <!-- curva não-ôhmica: filamento -->
+  <path class="fig-curva-noh" d="M90,280 C230,258 330,214 400,150 C440,114 452,86 460,58"/>
+  <circle class="fig-no-noh" cx="460" cy="58" r="5"/>
 
-  <!-- lâmpada acesa -->
-  <circle class="fig-lampada" cx="180" cy="88" r="24"/>
-  <path class="fig-filamento" d="M172,96 L176,84 L180,96 L184,84 L188,96"/>
-  <rect class="fig-corpo" x="168" y="110" width="24" height="14" rx="2"/>
-  <path class="fig-luz" d="M180,52 L180,44"/>
-  <path class="fig-luz" d="M206,66 L213,60"/>
-  <path class="fig-luz" d="M154,66 L147,60"/>
-  <path class="fig-luz" d="M216,90 L225,90"/>
-  <path class="fig-luz" d="M144,90 L135,90"/>
-  <text class="fig-m-peq fig-peq" x="180" y="140" text-anchor="middle">lâmpada</text>
+  <!-- As duas legendas ficam juntas no canto inferior direito, que é a
+       região vazia do plano. Como o texto fica longe da curva, cada bloco
+       leva um traço da própria cor para poder ser atribuído. -->
+  <path class="fig-curva-ohm" d="M418,186 L444,186"/>
+  <text class="fig-r-ohm" x="454" y="190">condutor ôhmico</text>
+  <text class="fig-t-rot" x="454" y="206">R é a inclinação, e é constante:</text>
+  <text class="fig-t-rot" x="454" y="221">R = ΔV / Δi</text>
 
-  <!-- divisor -->
-  <line class="fig-divisor" x1="360" y1="14" x2="360" y2="286"/>
+  <path class="fig-curva-noh" d="M418,246 L444,246"/>
+  <text class="fig-r-noh" x="454" y="250">filamento</text>
+  <text class="fig-t-rot" x="454" y="266">R cresce com a temperatura</text>
 
-  <!-- ============ PAINEL B — esquema ============ -->
-  <text class="fig-tit-ok" x="392" y="26">O ESQUEMA</text>
+  <!-- triângulo da inclinação -->
+  <path class="fig-guia" d="M242,199 L338,199"/>
+  <path class="fig-guia" d="M338,199 L338,149"/>
+  <text class="fig-t-rot" x="290" y="215" text-anchor="middle">Δi</text>
+  <text class="fig-t-rot" x="348" y="178">ΔV</text>
 
-  <!-- laço, nas mesmas posições -->
-  <path class="fig-fio-fino" d="M442,232 L442,110 L530,110"/>
-  <path class="fig-fio-fino" d="M574,110 L662,110 L662,232"/>
-  <path class="fig-fio-fino" d="M442,232 L520,232"/>
-  <path class="fig-fio-fino" d="M600,232 L662,232"/>
-
-  <!-- símbolo da pilha: pares de barra longa e curta -->
-  <path class="fig-polo" d="M520,214 L520,250"/>
-  <path class="fig-polo" d="M536,222 L536,242"/>
-  <path class="fig-fio-fino" d="M536,232 L552,232"/>
-  <path class="fig-polo" d="M552,214 L552,250"/>
-  <path class="fig-polo" d="M568,222 L568,242"/>
-  <path class="fig-fio-fino" d="M568,232 L600,232"/>
-  <text class="fig-r-tensao fig-med" x="552" y="276" text-anchor="middle">3 V</text>
-  <text class="fig-m-peq fig-peq" x="552" y="262" text-anchor="middle">símbolo da fonte</text>
-
-  <!-- símbolo da lâmpada: círculo com X -->
-  <circle class="fig-lampada" cx="552" cy="110" r="22"/>
-  <path class="fig-lampada-x" d="M537,95 L567,125"/>
-  <path class="fig-lampada-x" d="M567,95 L537,125"/>
-  <text class="fig-m-peq fig-peq" x="552" y="152" text-anchor="middle">símbolo da lâmpada</text>
-
-  <!-- sentido convencional -->
-  <path class="fig-v-corrente" d="M662,150 L662,180" marker-end="url(#ci1-seta)"/>
-  <text class="fig-r-corrente fig-med" x="676" y="176">i</text>
+  <text class="fig-t-nota" x="90" y="326">Reta pela origem: ôhmico. Qualquer entortada: não-ôhmico.</text>
 </svg>

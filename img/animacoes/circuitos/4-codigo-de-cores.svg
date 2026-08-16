@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Grafico V x i: a reta do condutor ohmico e a curva do filamento.
+<!-- Resistor de quatro faixas: marrom, preto, vermelho e ouro, com a leitura.
      Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
      inserido em slide ou importado em editor vetorial.
      Fonte da geometria: atividades/estudos_dirigidos/eletricidade/ed_circuitos/index.html
      Gerado por scripts/extrair-figuras-eds.ps1 — nao editar a mao. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" width="1360" height="680"
-     role="img" aria-labelledby="circuitos-4-grafico-ohmico">
-  <title id="circuitos-4-grafico-ohmico">Gráfico da tensão em função da corrente. A reta verde, que passa pela origem, representa um condutor ôhmico, cuja resistência é a inclinação e se mantém constante. A curva laranja, que sobe cada vez mais rápido, representa o filamento de uma lâmpada, cuja resistência cresce com a temperatura.</title>
+     role="img" aria-labelledby="circuitos-4-codigo-de-cores">
+  <title id="circuitos-4-codigo-de-cores">Resistor visto de lado com quatro faixas coloridas: marrom, preto, vermelho e ouro, com a quarta afastada das outras três. Cada faixa é identificada pelo seu papel: primeiro dígito, segundo dígito, multiplicador e tolerância. A leitura resulta em mil ohms com cinco por cento de tolerância.</title>
   <style><![CDATA[
     svg {
       --fig-fundo:      #ffffff;
@@ -25,6 +25,7 @@
       --fig-medidor-b:  #334155;
       --fig-corrente:   #0e7490;
       --fig-tensao:     #a16207;
+      --fig-carga-txt:  #ffffff;
       --fig-texto:      #334155;
       --fig-rotulo:     #64748b;
       --fig-guia:       #cbd5e1;
@@ -79,6 +80,22 @@
     .fig-eixo-p    { fill: var(--fig-texto); }
     .fig-caixa-ok     { fill: var(--fig-ok-suave); stroke: var(--fig-ok); stroke-width: 1.5; }
     .fig-caixa-alerta { fill: var(--fig-alerta-suave); stroke: var(--fig-alerta); stroke-width: 1.5; }
+
+    /* analogia do desnível — a rampa por onde as cargas descem */
+    .fig-nivel     { fill: none; stroke: var(--fig-guia); stroke-width: 2; stroke-dasharray: 6 6; }
+    .fig-rampa     { fill: none; stroke: var(--fig-fio); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+    .fig-cota-u    { fill: none; stroke: var(--fig-tensao); stroke-width: 3; stroke-dasharray: 7 7; }
+    .fig-carga     { fill: var(--fig-tensao); }
+    .fig-carga-txt { fill: var(--fig-carga-txt); font-family: var(--fig-fonte-m); font-size: 15px; font-weight: 700; }
+
+    /* Quadro parado para quem pede menos movimento. O CSS não alcança o SMIL, então
+       em vez de tentar pausar a animação trocamos o grupo animado por um grupo
+       estático já posicionado. Vale igual no inline e no .svg avulso. */
+    .fig-cargas-paradas { display: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .fig-cargas-animadas { display: none; }
+      .fig-cargas-paradas  { display: inline; }
+    }
 
     /* corrente e tensão */
     .fig-v-corrente { fill: none; stroke: var(--fig-corrente); stroke-width: 3; stroke-linecap: round; }
@@ -205,6 +222,7 @@
         --fig-medidor-b:  #cbd5e1;
         --fig-corrente:   #22d3ee;
         --fig-tensao:     #fbbf24;
+        --fig-carga-txt:  #1c1408;
         --fig-texto:      #e2e8f0;
         --fig-rotulo:     #94a3b8;
         --fig-guia:       #475569;
@@ -219,36 +237,40 @@
       }
     }
   ]]></style>
-  <defs>
-    <marker id="ci4-eixo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-      <path class="fig-eixo-p" d="M0,0 L10,5 L0,10 z"/>
-    </marker>
-  </defs>
+  <text class="fig-tit" x="20" y="26">LENDO UM RESISTOR DE QUATRO FAIXAS</text>
 
-  <!-- eixos -->
-  <path class="fig-eixo" d="M90,280 L640,280" marker-end="url(#ci4-eixo)"/>
-  <path class="fig-eixo" d="M90,280 L90,40" marker-end="url(#ci4-eixo)"/>
-  <text class="fig-m" x="546" y="306">corrente i (A)</text>
-  <text class="fig-m" x="34" y="34">tensão V (V)</text>
+  <!-- terminais e corpo -->
+  <path class="fig-terminal" d="M40,188 L150,188"/>
+  <path class="fig-terminal" d="M530,188 L640,188"/>
+  <rect class="fig-corpo-res" x="150" y="150" width="380" height="76" rx="34"/>
 
-  <!-- reta ôhmica -->
-  <path class="fig-curva-ohm" d="M90,280 L470,80"/>
-  <circle class="fig-no-ohm" cx="470" cy="80" r="5"/>
-  <text class="fig-r-ohm" x="146" y="106">condutor ôhmico</text>
-  <text class="fig-t-rot" x="146" y="122">R é a inclinação, e é constante:</text>
-  <text class="fig-t-rot" x="146" y="137">R = ΔV / Δi</text>
+  <!-- faixas: marrom, preto, vermelho ... ouro -->
+  <rect class="fig-fx-marrom"   x="196" y="152" width="26" height="72"/>
+  <rect class="fig-fx-preto"    x="248" y="152" width="26" height="72"/>
+  <rect class="fig-fx-vermelho" x="300" y="152" width="26" height="72"/>
+  <rect class="fig-fx-ouro"     x="452" y="152" width="26" height="72"/>
 
-  <!-- curva não-ôhmica: filamento -->
-  <path class="fig-curva-noh" d="M90,280 C230,258 330,214 400,150 C440,114 452,86 460,58"/>
-  <circle class="fig-no-noh" cx="460" cy="58" r="5"/>
-  <text class="fig-r-noh" x="486" y="62">filamento</text>
-  <text class="fig-t-rot" x="486" y="78">R cresce com a temperatura</text>
+  <!-- chamadas, em três alturas para não se sobreporem -->
+  <path class="fig-guia" d="M209,148 L209,114"/>
+  <text class="fig-m-peq" x="209" y="106" text-anchor="middle">1º dígito = 1</text>
+  <path class="fig-guia" d="M261,148 L261,86"/>
+  <text class="fig-m-peq" x="261" y="78" text-anchor="middle">2º dígito = 0</text>
+  <path class="fig-guia" d="M313,148 L313,58"/>
+  <text class="fig-m-peq" x="313" y="50" text-anchor="middle">multiplicador = × 100</text>
+  <path class="fig-guia" d="M465,228 L465,252"/>
+  <text class="fig-m-peq" x="465" y="266" text-anchor="middle">tolerância = ± 5%</text>
 
-  <!-- triângulo da inclinação -->
-  <path class="fig-guia" d="M242,199 L338,199"/>
-  <path class="fig-guia" d="M338,199 L338,149"/>
-  <text class="fig-t-rot" x="290" y="215" text-anchor="middle">Δi</text>
-  <text class="fig-t-rot" x="348" y="178">ΔV</text>
+  <!-- nomes das cores -->
+  <text class="fig-t-rot" x="209" y="244" text-anchor="middle">marrom</text>
+  <text class="fig-t-rot" x="261" y="244" text-anchor="middle">preto</text>
+  <text class="fig-t-rot" x="313" y="244" text-anchor="middle">vermelho</text>
+  <text class="fig-t-rot" x="465" y="244" text-anchor="middle">ouro</text>
 
-  <text class="fig-t-nota" x="90" y="326">Reta pela origem: ôhmico. Qualquer entortada: não-ôhmico.</text>
+  <!-- resultado -->
+  <rect class="fig-caixa-alerta" x="40" y="288" width="272" height="42" rx="8"/>
+  <text class="fig-r-tensao" x="176" y="308" text-anchor="middle">10 × 100 = 1 000 Ω = 1 kΩ</text>
+  <text class="fig-t-rot" x="176" y="322" text-anchor="middle">na prática, entre 950 Ω e 1 050 Ω</text>
+
+  <text class="fig-t-nota" x="340" y="306">A quarta faixa é a afastada:</text>
+  <text class="fig-t-nota" x="340" y="322">é por ela que se acha o lado certo de ler.</text>
 </svg>

@@ -16,7 +16,7 @@
     quiz1: [
       {
         type: 'objective',
-        text: 'Uma lâmpada ligada a uma pilha apaga no instante em que um dos fios se solta do borne. Por quê?',
+        text: 'Uma lâmpada ligada a uma pilha apaga no instante em que um dos fios se solta do polo da pilha. Por quê?',
         options: [
           'Porque a pilha descarrega instantaneamente quando o fio se solta.',
           'Porque o circuito deixa de ser fechado, e sem caminho de volta não há corrente.',
@@ -163,12 +163,64 @@
         explanation: 'Marrom = 1 e preto = 0, formando o número 10. Vermelho como multiplicador vale × 100, então 10 × 100 = 1 000 Ω = 1 kΩ. A faixa ouro dá tolerância de ±5%, o que significa que o valor real está entre 950 Ω e 1 050 Ω. A leitura começa pela ponta em que as faixas estão mais juntas: a faixa afastada é a última.'
       },
       {
+        type: 'objective',
+        text: 'De onde vem, microscopicamente, a resistência de um material?',
+        options: [
+          'Da falta de elétrons livres, que precisam ser criados pela fonte.',
+          'Das colisões dos elétrons com os átomos do material, em que eles perdem energia que vira calor.',
+          'Do atrito entre a corrente e a parede interna do fio.',
+          'Da tensão da fonte, que se desgasta ao atravessar o material.'
+        ],
+        correct: 1,
+        explanation: 'Ao atravessar o material, os elétrons colidem com os átomos da rede e perdem energia a cada colisão. Essa energia não some: vira calor. É esse mecanismo que a resistência mede, e é dele que vem o efeito Joule. Note que os elétrons livres já estão no material antes de a fonte entrar em cena.'
+      },
+      {
+        type: 'objective',
+        text: 'Um resistor puro percorrido por corrente converte a energia elétrica em quê?',
+        options: [
+          'Parte em calor e parte em luz, como um LED.',
+          'Parte em calor e parte em movimento, como um motor.',
+          'Toda ela em energia térmica.',
+          'Nada: ele apenas bloqueia a passagem da corrente, sem converter energia.'
+        ],
+        correct: 2,
+        explanation: 'É o efeito Joule, e o resistor puro não tem outra saída: converte tudo em calor. Vale contrastar com o motor, que transforma parte em movimento, e com o LED, que transforma parte em luz. A conversão é ainda de mão única, porque o calor se espalha pelo ambiente e não volta a ser energia elétrica.'
+      },
+      {
+        type: 'objective',
+        text: 'Num chuveiro elétrico e num fusível, a resistência cumpre papéis diferentes. Quais são eles?',
+        options: [
+          'No chuveiro o aquecimento é o produto desejado; no fusível ele é o mecanismo de proteção, que rompe o fio ao passar do limite.',
+          'Nos dois a resistência serve para aquecer a água que passa pelo aparelho.',
+          'No chuveiro a resistência bloqueia a corrente; no fusível ela a aumenta.',
+          'No fusível o aquecimento é o produto desejado; no chuveiro, um efeito indesejado.'
+        ],
+        correct: 0,
+        explanation: 'É o mesmo efeito Joule com duas finalidades. No chuveiro, na torradeira e no ferro de passar, o calor é exatamente o que se quer. No fusível, o aquecimento serve para romper o fio antes que a fiação da casa aqueça, protegendo o resto do circuito. Já o aquecimento dos fios de transmissão é o caso em que o efeito é só perda.'
+      }
+    ],
+
+    // TÓPICO 5 — 2ª Lei de Ohm: a resistência de um fio
+    quiz5: [
+      {
         type: 'numeric',
         text: 'Um fio tem resistência de 4 Ω. Outro fio, do mesmo material e mesma espessura, tem o triplo do comprimento. Qual é a resistência desse segundo fio, em ohms?',
         answer: 12,
         tolerance: 0.1,
         unit: 'Ω',
         explanation: 'Na 2ª Lei de Ohm, R = ρ·L/A, o comprimento entra multiplicando: triplicar L triplica R, então 4 × 3 = 12 Ω. A leitura física é simples: fio mais longo significa mais colisões pelo caminho. Se em vez do comprimento tivéssemos triplicado a área, a resistência cairia para um terço, porque A entra dividindo.'
+      },
+      {
+        type: 'objective',
+        text: 'Dois fios são do mesmo material e têm o mesmo comprimento, mas um é mais grosso que o outro. O que se pode afirmar?',
+        options: [
+          'O mais grosso tem resistência maior, porque tem mais material pelo caminho.',
+          'O mais grosso tem resistência menor, porque a área entra dividindo em R = ρ·L/A.',
+          'Os dois têm a mesma resistência, porque o material e o comprimento são iguais.',
+          'Não é possível comparar sem conhecer a tensão aplicada.'
+        ],
+        correct: 1,
+        explanation: 'A área entra dividindo, então mais grosso significa menos resistência. A leitura física é a de caminhos em paralelo: quanto maior a secção, mais rotas os elétrons têm à disposição. É a mesma razão por que a fiação de um chuveiro é mais grossa que a de uma lâmpada, já que precisa conduzir muito mais corrente sem aquecer.'
       },
       {
         type: 'objective',
@@ -180,7 +232,7 @@
           'A resistividade se mede em ohms e a resistência, em ohms vezes metro.'
         ],
         correct: 2,
-        explanation: 'ρ descreve a substância e vale para o cobre em qualquer formato. R descreve aquela peça específica, e sai de ρ combinada com a geometria: R = ρ·L/A. Dois fios de cobre podem ter resistências bem diferentes e a mesma resistividade. As unidades também distinguem: ρ em Ω·m, R em Ω.'
+        explanation: 'ρ descreve a substância: tabelado o cobre a 20 °C, aquele valor serve para qualquer peça de cobre na mesma temperatura. R descreve a peça específica, e sai de ρ combinada com a geometria: R = ρ·L/A. Dois fios de cobre podem ter resistências bem diferentes e a mesma resistividade. As unidades também distinguem: ρ em Ω·m, R em Ω.'
       },
       {
         type: 'objective',
@@ -196,8 +248,8 @@
       }
     ],
 
-    // TÓPICO 5 — Lei de Ohm
-    quiz5: [
+    // TÓPICO 6 — Lei de Ohm
+    quiz6: [
       {
         type: 'numeric',
         text: 'Um resistor de 220 Ω é ligado a uma fonte de 110 V. Qual é a corrente que o percorre, em ampères?',
@@ -240,8 +292,8 @@
       }
     ],
 
-    // TÓPICO 6 — Potência e energia
-    quiz6: [
+    // TÓPICO 7 — Potência e energia
+    quiz7: [
       {
         type: 'numeric',
         text: 'Um aparelho ligado em 220 V é percorrido por uma corrente de 5 A. Qual é a potência dele, em watts?',
@@ -284,8 +336,8 @@
       }
     ],
 
-    // TÓPICO 7 — Aplicações
-    quiz7: [
+    // TÓPICO 8 — Aplicações
+    quiz8: [
       {
         type: 'numeric',
         text: 'Um chuveiro de 5 500 W funciona ligado em 220 V. Qual é a resistência dele, em ohms? (uma casa decimal)',

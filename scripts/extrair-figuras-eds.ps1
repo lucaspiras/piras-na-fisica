@@ -59,15 +59,19 @@ $Figuras = @(
      Resumo = 'O mesmo circuito em dois desenhos: o pictorico e o esquema, peca por peca.' }
 
   @{ Ed = 'atividades/estudos_dirigidos/eletricidade/ed_circuitos'
-     Slug = 'circuitos/2-corrente-nao-se-gasta'
+     Slug = 'circuitos/2-analogia-do-desnivel'
+     Resumo = 'Cargas positivas descendo uma rampa: a ddp como o tamanho da queda.' }
+
+  @{ Ed = 'atividades/estudos_dirigidos/eletricidade/ed_circuitos'
+     Slug = 'circuitos/3-corrente-nao-se-gasta'
      Resumo = 'Dois amperimetros, antes e depois da lampada, marcando o mesmo valor.' }
 
   @{ Ed = 'atividades/estudos_dirigidos/eletricidade/ed_circuitos'
-     Slug = 'circuitos/3-codigo-de-cores'
+     Slug = 'circuitos/4-codigo-de-cores'
      Resumo = 'Resistor de quatro faixas: marrom, preto, vermelho e ouro, com a leitura.' }
 
   @{ Ed = 'atividades/estudos_dirigidos/eletricidade/ed_circuitos'
-     Slug = 'circuitos/4-grafico-ohmico'
+     Slug = 'circuitos/5-grafico-ohmico'
      Resumo = 'Grafico V x i: a reta do condutor ohmico e a curva do filamento.' }
 )
 
@@ -133,6 +137,7 @@ $TemasEscuros = @{
         --fig-medidor-b:  #cbd5e1;
         --fig-corrente:   #22d3ee;
         --fig-tensao:     #fbbf24;
+        --fig-carga-txt:  #1c1408;
         --fig-texto:      #e2e8f0;
         --fig-rotulo:     #94a3b8;
         --fig-guia:       #475569;

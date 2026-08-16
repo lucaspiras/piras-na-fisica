@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Resistor de quatro faixas: marrom, preto, vermelho e ouro, com a leitura.
+<!-- Dois amperimetros, antes e depois da lampada, marcando o mesmo valor.
      Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
      inserido em slide ou importado em editor vetorial.
      Fonte da geometria: atividades/estudos_dirigidos/eletricidade/ed_circuitos/index.html
      Gerado por scripts/extrair-figuras-eds.ps1 — nao editar a mao. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" width="1360" height="680"
-     role="img" aria-labelledby="circuitos-3-codigo-de-cores">
-  <title id="circuitos-3-codigo-de-cores">Resistor visto de lado com quatro faixas coloridas: marrom, preto, vermelho e ouro, com a quarta afastada das outras três. Cada faixa é identificada pelo seu papel: primeiro dígito, segundo dígito, multiplicador e tolerância. A leitura resulta em mil ohms com cinco por cento de tolerância.</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 280" width="1280" height="560"
+     role="img" aria-labelledby="circuitos-3-corrente-nao-se-gasta">
+  <title id="circuitos-3-corrente-nao-se-gasta">Circuito com uma pilha e uma lâmpada, com um amperímetro antes e outro depois da lâmpada. Os dois marcam o mesmo valor, meio ampère, mostrando que a corrente não é consumida pela lâmpada.</title>
   <style><![CDATA[
     svg {
       --fig-fundo:      #ffffff;
@@ -25,6 +25,7 @@
       --fig-medidor-b:  #334155;
       --fig-corrente:   #0e7490;
       --fig-tensao:     #a16207;
+      --fig-carga-txt:  #ffffff;
       --fig-texto:      #334155;
       --fig-rotulo:     #64748b;
       --fig-guia:       #cbd5e1;
@@ -79,6 +80,22 @@
     .fig-eixo-p    { fill: var(--fig-texto); }
     .fig-caixa-ok     { fill: var(--fig-ok-suave); stroke: var(--fig-ok); stroke-width: 1.5; }
     .fig-caixa-alerta { fill: var(--fig-alerta-suave); stroke: var(--fig-alerta); stroke-width: 1.5; }
+
+    /* analogia do desnível — a rampa por onde as cargas descem */
+    .fig-nivel     { fill: none; stroke: var(--fig-guia); stroke-width: 2; stroke-dasharray: 6 6; }
+    .fig-rampa     { fill: none; stroke: var(--fig-fio); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+    .fig-cota-u    { fill: none; stroke: var(--fig-tensao); stroke-width: 3; stroke-dasharray: 7 7; }
+    .fig-carga     { fill: var(--fig-tensao); }
+    .fig-carga-txt { fill: var(--fig-carga-txt); font-family: var(--fig-fonte-m); font-size: 15px; font-weight: 700; }
+
+    /* Quadro parado para quem pede menos movimento. O CSS não alcança o SMIL, então
+       em vez de tentar pausar a animação trocamos o grupo animado por um grupo
+       estático já posicionado. Vale igual no inline e no .svg avulso. */
+    .fig-cargas-paradas { display: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .fig-cargas-animadas { display: none; }
+      .fig-cargas-paradas  { display: inline; }
+    }
 
     /* corrente e tensão */
     .fig-v-corrente { fill: none; stroke: var(--fig-corrente); stroke-width: 3; stroke-linecap: round; }
@@ -205,6 +222,7 @@
         --fig-medidor-b:  #cbd5e1;
         --fig-corrente:   #22d3ee;
         --fig-tensao:     #fbbf24;
+        --fig-carga-txt:  #1c1408;
         --fig-texto:      #e2e8f0;
         --fig-rotulo:     #94a3b8;
         --fig-guia:       #475569;
@@ -219,40 +237,54 @@
       }
     }
   ]]></style>
-  <text class="fig-tit" x="20" y="26">LENDO UM RESISTOR DE QUATRO FAIXAS</text>
+  <defs>
+    <marker id="ci2-seta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path class="fig-p-corrente" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
 
-  <!-- terminais e corpo -->
-  <path class="fig-terminal" d="M40,188 L150,188"/>
-  <path class="fig-terminal" d="M530,188 L640,188"/>
-  <rect class="fig-corpo-res" x="150" y="150" width="380" height="76" rx="34"/>
+  <text class="fig-tit-ok" x="20" y="26">A MESMA CORRENTE ANTES E DEPOIS</text>
 
-  <!-- faixas: marrom, preto, vermelho ... ouro -->
-  <rect class="fig-fx-marrom"   x="196" y="152" width="26" height="72"/>
-  <rect class="fig-fx-preto"    x="248" y="152" width="26" height="72"/>
-  <rect class="fig-fx-vermelho" x="300" y="152" width="26" height="72"/>
-  <rect class="fig-fx-ouro"     x="452" y="152" width="26" height="72"/>
+  <!-- laço -->
+  <path class="fig-fio-fino" d="M80,212 L80,100 L152,100"/>
+  <path class="fig-fio-fino" d="M208,100 L272,100"/>
+  <path class="fig-fio-fino" d="M368,100 L432,100"/>
+  <path class="fig-fio-fino" d="M488,100 L560,100 L560,212"/>
+  <path class="fig-fio-fino" d="M80,212 L288,212"/>
+  <path class="fig-fio-fino" d="M352,212 L560,212"/>
 
-  <!-- chamadas, em três alturas para não se sobreporem -->
-  <path class="fig-guia" d="M209,148 L209,114"/>
-  <text class="fig-m-peq" x="209" y="106" text-anchor="middle">1º dígito = 1</text>
-  <path class="fig-guia" d="M261,148 L261,86"/>
-  <text class="fig-m-peq" x="261" y="78" text-anchor="middle">2º dígito = 0</text>
-  <path class="fig-guia" d="M313,148 L313,58"/>
-  <text class="fig-m-peq" x="313" y="50" text-anchor="middle">multiplicador = × 100</text>
-  <path class="fig-guia" d="M465,228 L465,252"/>
-  <text class="fig-m-peq" x="465" y="266" text-anchor="middle">tolerância = ± 5%</text>
+  <!-- fonte -->
+  <path class="fig-polo" d="M288,194 L288,230"/>
+  <path class="fig-polo" d="M304,202 L304,222"/>
+  <path class="fig-fio-fino" d="M304,212 L320,212"/>
+  <path class="fig-polo" d="M320,194 L320,230"/>
+  <path class="fig-polo" d="M336,202 L336,222"/>
+  <path class="fig-fio-fino" d="M336,212 L352,212"/>
+  <text class="fig-r-tensao fig-med" x="320" y="252" text-anchor="middle">3 V</text>
 
-  <!-- nomes das cores -->
-  <text class="fig-t-rot" x="209" y="244" text-anchor="middle">marrom</text>
-  <text class="fig-t-rot" x="261" y="244" text-anchor="middle">preto</text>
-  <text class="fig-t-rot" x="313" y="244" text-anchor="middle">vermelho</text>
-  <text class="fig-t-rot" x="465" y="244" text-anchor="middle">ouro</text>
+  <!-- amperímetro 1 -->
+  <circle class="fig-medidor" cx="180" cy="100" r="28"/>
+  <text class="fig-visor" x="180" y="97" text-anchor="middle">A</text>
+  <text class="fig-visor fig-peq" x="180" y="112" text-anchor="middle">0,5 A</text>
+  <text class="fig-m-peq fig-peq" x="180" y="146" text-anchor="middle">antes</text>
 
-  <!-- resultado -->
-  <rect class="fig-caixa-alerta" x="40" y="288" width="272" height="42" rx="8"/>
-  <text class="fig-r-tensao" x="176" y="308" text-anchor="middle">10 × 100 = 1 000 Ω = 1 kΩ</text>
-  <text class="fig-t-rot" x="176" y="322" text-anchor="middle">na prática, entre 950 Ω e 1 050 Ω</text>
+  <!-- lâmpada -->
+  <circle class="fig-lampada" cx="320" cy="100" r="24"/>
+  <path class="fig-lampada-x" d="M303,83 L337,117"/>
+  <path class="fig-lampada-x" d="M337,83 L303,117"/>
+  <text class="fig-m-peq fig-peq" x="320" y="146" text-anchor="middle">lâmpada</text>
 
-  <text class="fig-t-nota" x="340" y="306">A quarta faixa é a afastada:</text>
-  <text class="fig-t-nota" x="340" y="322">é por ela que se acha o lado certo de ler.</text>
+  <!-- amperímetro 2 -->
+  <circle class="fig-medidor" cx="460" cy="100" r="28"/>
+  <text class="fig-visor" x="460" y="97" text-anchor="middle">A</text>
+  <text class="fig-visor fig-peq" x="460" y="112" text-anchor="middle">0,5 A</text>
+  <text class="fig-m-peq fig-peq" x="460" y="146" text-anchor="middle">depois</text>
+
+  <!-- sentido convencional -->
+  <path class="fig-v-corrente" d="M80,180 L80,148" marker-end="url(#ci2-seta)"/>
+  <text class="fig-r-corrente fig-med" x="52" y="170">i</text>
+  <path class="fig-v-corrente" d="M560,148 L560,180" marker-end="url(#ci2-seta)"/>
+  <text class="fig-r-corrente fig-med" x="574" y="170">i</text>
+
+  <text class="fig-t-nota fig-nota-ok" x="20" y="272">O que a lâmpada consome é energia, não carga.</text>
 </svg>

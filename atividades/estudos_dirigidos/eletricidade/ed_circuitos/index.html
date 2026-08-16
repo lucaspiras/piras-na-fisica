@@ -26,7 +26,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400;1,900&family=Poppins:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght0,400;0,700;0,900;1,400;1,900&family=Poppins:wght300;400;500;600&family=Space+Mono:wght400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <noscript><style>.topic{opacity:1!important;transform:none!important}</style></noscript>
 </head>
@@ -60,7 +60,8 @@
         <div class="energy-card"><div class="ec-icon yellow">🔌</div><div><div class="ec-name">O circuito</div><div class="ec-desc">Fonte, condutores e consumidor</div></div></div>
         <div class="energy-card"><div class="ec-icon orange">🔋</div><div><div class="ec-name">Tensão</div><div class="ec-desc">A ddp que empurra as cargas</div></div></div>
         <div class="energy-card"><div class="ec-icon deep">⚡</div><div><div class="ec-name">Corrente</div><div class="ec-desc">i = Q / t, e o que ela não é</div></div></div>
-        <div class="energy-card"><div class="ec-icon purple">🧱</div><div><div class="ec-name">Resistência</div><div class="ec-desc">Material, geometria e cores</div></div></div>
+        <div class="energy-card"><div class="ec-icon purple">🧱</div><div><div class="ec-name">Resistência</div><div class="ec-desc">Resistores, cores e efeito Joule</div></div></div>
+        <div class="energy-card"><div class="ec-icon yellow">📏</div><div><div class="ec-name">2ª Lei de Ohm</div><div class="ec-desc">R = ρ·L/A: material e geometria</div></div></div>
         <div class="energy-card"><div class="ec-icon green">📐</div><div><div class="ec-name">Lei de Ohm</div><div class="ec-desc">V = R · i</div></div></div>
         <div class="energy-card"><div class="ec-icon lime">🔥</div><div><div class="ec-name">Potência</div><div class="ec-desc">Efeito Joule e o kWh da conta</div></div></div>
       </div>
@@ -80,10 +81,11 @@
         <li><a href="#t2">Tensão</a></li>
         <li><a href="#t3">Corrente</a></li>
         <li><a href="#t4">Resistência</a></li>
-        <li><a href="#t5">Lei de Ohm</a></li>
-        <li><a href="#t6">Potência</a></li>
-        <li><a href="#t7">Aplicações</a></li>
-        <li><a href="#t8">Síntese</a></li>
+        <li><a href="#t5">2ª Lei de Ohm</a></li>
+        <li><a href="#t6">Lei de Ohm</a></li>
+        <li><a href="#t7">Potência</a></li>
+        <li><a href="#t8">Aplicações</a></li>
+        <li><a href="#t9">Síntese</a></li>
       </ol>
     </div>
   </nav>
@@ -97,7 +99,7 @@
         <h2>O que é um circuito</h2>
       </div>
       <div class="topic-body">
-        <p>Um <strong>circuito elétrico</strong> é um caminho fechado por onde a carga elétrica circula. A palavra <em>fechado</em> não é enfeite: basta soltar um fio de um dos bornes da pilha para a lâmpada apagar na hora. Sem caminho de volta, não há circulação, e sem circulação não há corrente.</p>
+        <p>Um <strong>circuito elétrico</strong> é um caminho fechado por onde a carga elétrica circula. A palavra <em>fechado</em> não é enfeite: basta soltar um fio de um dos polos da pilha para a lâmpada apagar na hora. Sem caminho de volta, não há circulação, e sem circulação não há corrente.</p>
 
         <p>Todo circuito simples tem <strong>três papéis</strong> a cumprir, e vale identificá-los antes de qualquer conta. Alguém <em>fornece</em> energia, alguém <em>conduz</em> e alguém <em>consome</em>. Nos próximos tópicos, cada uma das grandezas envolvidas é tratada separadamente; aqui interessa reconhecer as peças.</p>
 
@@ -164,8 +166,8 @@
             <text class="fig-tit-ok" x="392" y="26">O ESQUEMA</text>
 
             <!-- laço, nas mesmas posições -->
-            <path class="fig-fio-fino" d="M442,232 L442,110 L522,110"/>
-            <path class="fig-fio-fino" d="M582,110 L662,110 L662,232"/>
+            <path class="fig-fio-fino" d="M442,232 L442,110 L530,110"/>
+            <path class="fig-fio-fino" d="M574,110 L662,110 L662,232"/>
             <path class="fig-fio-fino" d="M442,232 L520,232"/>
             <path class="fig-fio-fino" d="M600,232 L662,232"/>
 
@@ -186,7 +188,7 @@
             <text class="fig-m-peq fig-peq" x="552" y="152" text-anchor="middle">símbolo da lâmpada</text>
 
             <!-- sentido convencional -->
-            <path class="fig-v-corrente" d="M662,180 L662,150" marker-end="url(#ci1-seta)"/>
+            <path class="fig-v-corrente" d="M662,150 L662,180" marker-end="url(#ci1-seta)"/>
             <text class="fig-r-corrente fig-med" x="676" y="176">i</text>
           </svg>
           <figcaption><strong>Peça por peça, no mesmo lugar.</strong> As pilhas viraram o par de barras, os fios viraram linhas retas e a lâmpada virou o círculo com o xis. Vale percorrer a correspondência em voz alta uma vez: é o esquema, e não a fotografia, que você vai desenhar e ler pelo resto do curso.</figcaption>
@@ -229,7 +231,68 @@
 
         <div class="highlight-box">
           <span class="hb-icon">⛰️</span>
-          <p><strong>A analogia do desnível.</strong> Pense numa bola que rola de onde está mais alto para onde está mais baixo. Com as cargas positivas é parecido: elas tendem a ir do ponto de maior potencial para o de menor potencial. A ddp é o tamanho dessa queda, e quanto maior ela for, mais energia cada carga recebe ao percorrer o circuito. A analogia tem um limite que vale guardar: a fonte não é a origem das cargas, é a bomba que as recoloca no alto.</p>
+          <div class="hb-corpo">
+            <p><strong>A analogia do desnível.</strong> Pense numa bola que rola de onde está mais alto para onde está mais baixo. Com as cargas positivas é parecido: elas tendem a ir do ponto de maior potencial para o de menor potencial. A ddp é o tamanho dessa queda, e quanto maior ela for, mais energia cada carga recebe ao percorrer o circuito.</p>
+            <figure class="hb-figura">
+            <svg class="fig" data-avulso="circuitos/2-analogia-do-desnivel" viewBox="0 0 700 320" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Analogia do desnível: um platô alto ligado por uma rampa a um platô baixo. Três cargas positivas percorrem o caminho, andando devagar no platô de cima, acelerando ao descer a rampa e seguindo rápido no platô de baixo. Uma cota vertical à direita marca a diferença de potencial entre os dois níveis.">
+              <!-- guias de nível -->
+              <path class="fig-nivel" d="M210,100 L672,100"/>
+              <path class="fig-nivel" d="M500,250 L672,250"/>
+
+              <!-- platôs e rampa -->
+              <path class="fig-rampa" d="M70,100 L210,100 L500,250 L640,250"/>
+
+              <!-- a queda de potencial -->
+              <path class="fig-cota-u" d="M668,106 L668,244"/>
+              <polygon class="fig-p-tensao" points="662,114 668,100 674,114"/>
+              <polygon class="fig-p-tensao" points="662,236 668,250 674,236"/>
+              <text class="fig-r-tensao" x="640" y="180" text-anchor="end">U</text>
+
+              <!-- rótulos, fora do caminho das cargas -->
+              <text class="fig-m-peq" x="70" y="54">maior potencial</text>
+              <text class="fig-m-peq" x="500" y="278">menor potencial</text>
+
+              <!-- Cargas positivas: constantes no platô de cima, acelerando na rampa,
+                   rápidas no de baixo. É a aceleração que traduz a queda de potencial. -->
+              <g class="fig-cargas-animadas">
+                <g>
+                  <circle class="fig-carga" cx="0" cy="-16" r="14"/>
+                  <text class="fig-carga-txt" x="0" y="-10" text-anchor="middle">+</text>
+                  <animateMotion dur="2.6s" repeatCount="indefinite" calcMode="linear"
+                    keyPoints="0;0.231;0.37;0.53;0.769;1" keyTimes="0;0.32;0.50;0.66;0.84;1"
+                    path="M70,100 L210,100 L500,250 L640,250"/>
+                </g>
+                <g>
+                  <circle class="fig-carga" cx="0" cy="-16" r="14"/>
+                  <text class="fig-carga-txt" x="0" y="-10" text-anchor="middle">+</text>
+                  <animateMotion dur="2.6s" begin="0.87s" repeatCount="indefinite" calcMode="linear"
+                    keyPoints="0;0.231;0.37;0.53;0.769;1" keyTimes="0;0.32;0.50;0.66;0.84;1"
+                    path="M70,100 L210,100 L500,250 L640,250"/>
+                </g>
+                <g>
+                  <circle class="fig-carga" cx="0" cy="-16" r="14"/>
+                  <text class="fig-carga-txt" x="0" y="-10" text-anchor="middle">+</text>
+                  <animateMotion dur="2.6s" begin="1.74s" repeatCount="indefinite" calcMode="linear"
+                    keyPoints="0;0.231;0.37;0.53;0.769;1" keyTimes="0;0.32;0.50;0.66;0.84;1"
+                    path="M70,100 L210,100 L500,250 L640,250"/>
+                </g>
+              </g>
+
+              <!-- Mesmo quadro, congelado, para quem pede menos movimento. -->
+              <g class="fig-cargas-paradas">
+                <circle class="fig-carga" cx="110" cy="84" r="14"/>
+                <text class="fig-carga-txt" x="110" y="90" text-anchor="middle">+</text>
+                <circle class="fig-carga" cx="239" cy="99" r="14"/>
+                <text class="fig-carga-txt" x="239" y="105" text-anchor="middle">+</text>
+                <circle class="fig-carga" cx="384" cy="174" r="14"/>
+                <text class="fig-carga-txt" x="384" y="180" text-anchor="middle">+</text>
+              </g>
+
+              <text class="fig-t-nota" x="70" y="308">Quanto maior a queda, mais energia cada carga recebe no caminho.</text>
+            </svg>
+              <figcaption>Repare que as cargas andam devagar no platô de cima e vão <em>acelerando</em> ao descer: é aí que a energia é entregue a elas. E a analogia tem um limite que vale guardar: a fonte não é a origem das cargas, e sim a bomba que as recoloca lá em cima.</figcaption>
+            </figure>
+          </div>
         </div>
 
         <p>Três palavras circulam por aí para coisas próximas mas distintas, e a confusão entre elas é frequente. Todas se medem em <strong>volts</strong>.</p>
@@ -329,7 +392,7 @@
         </div>
 
         <figure class="fbd-figure">
-          <svg class="fig" data-avulso="circuitos/2-corrente-nao-se-gasta" viewBox="0 0 640 280" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Circuito com uma pilha e uma lâmpada, com um amperímetro antes e outro depois da lâmpada. Os dois marcam o mesmo valor, meio ampère, mostrando que a corrente não é consumida pela lâmpada.">
+          <svg class="fig" data-avulso="circuitos/3-corrente-nao-se-gasta" viewBox="0 0 640 280" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Circuito com uma pilha e uma lâmpada, com um amperímetro antes e outro depois da lâmpada. Os dois marcam o mesmo valor, meio ampère, mostrando que a corrente não é consumida pela lâmpada.">
             <defs>
               <marker id="ci2-seta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
                 <path class="fig-p-corrente" d="M0,0 L10,5 L0,10 z"/>
@@ -442,7 +505,7 @@
         <p>Um resistor comum é pequeno demais para trazer o valor impresso, e por isso ele vem em <strong>faixas coloridas</strong>. A leitura começa pela ponta em que as faixas estão mais juntas: as duas primeiras dão os algarismos, a terceira diz por quanto multiplicar e a quarta, afastada das outras, dá a tolerância.</p>
 
         <figure class="fbd-figure">
-          <svg class="fig" data-avulso="circuitos/3-codigo-de-cores" viewBox="0 0 680 340" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Resistor visto de lado com quatro faixas coloridas: marrom, preto, vermelho e ouro, com a quarta afastada das outras três. Cada faixa é identificada pelo seu papel: primeiro dígito, segundo dígito, multiplicador e tolerância. A leitura resulta em mil ohms com cinco por cento de tolerância.">
+          <svg class="fig" data-avulso="circuitos/4-codigo-de-cores" viewBox="0 0 680 340" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Resistor visto de lado com quatro faixas coloridas: marrom, preto, vermelho e ouro, com a quarta afastada das outras três. Cada faixa é identificada pelo seu papel: primeiro dígito, segundo dígito, multiplicador e tolerância. A leitura resulta em mil ohms com cinco por cento de tolerância.">
             <text class="fig-tit" x="20" y="26">LENDO UM RESISTOR DE QUATRO FAIXAS</text>
 
             <!-- terminais e corpo -->
@@ -501,7 +564,43 @@
           <p><strong>Efeito Joule.</strong> Todo resistor percorrido por corrente converte energia elétrica em energia térmica, e converte <em>tudo</em>. Não é defeito nem escolha de projeto: é o que a resistência faz. Vale contrastar com um motor, que transforma parte da energia em movimento, e com um LED, que transforma parte em luz; o resistor puro não tem outra saída. E a conversão é de mão única, porque o calor se espalha pelo ambiente e não volta a ser energia elétrica.</p>
         </div>
 
-        <p>De que depende a resistência de um fio? De três coisas, e só três: o material de que ele é feito, o comprimento e a espessura. É o que diz a <strong>2ª Lei de Ohm</strong>, que permite prever a resistência antes de medir.</p>
+        <p>Nem sempre esse calor é desperdício. Em alguns aparelhos a resistência está lá <strong>justamente para aquecer</strong>, e é o produto que se quer; em outros ela é o preço a pagar. Vale reconhecer os quatro casos mais comuns antes de calcular qualquer coisa com eles.</p>
+
+        <div class="energy-grid">
+          <div class="eg-card">
+            <span class="eg-icon">🚿</span>
+            <div class="eg-name">Chuveiro</div>
+            <div class="eg-desc">Resistência baixa para puxar corrente alta. O aquecimento é o produto desejado.</div>
+          </div>
+          <div class="eg-card">
+            <span class="eg-icon">💡</span>
+            <div class="eg-name">Lâmpada incandescente</div>
+            <div class="eg-desc">O filamento incandesce ao se aquecer. Material não-ôhmico.</div>
+          </div>
+          <div class="eg-card">
+            <span class="eg-icon">🔆</span>
+            <div class="eg-name">LED</div>
+            <div class="eg-desc">Emite luz com pouquíssima corrente. Bem mais eficiente.</div>
+          </div>
+          <div class="eg-card">
+            <span class="eg-icon">🛡️</span>
+            <div class="eg-name">Fusível</div>
+            <div class="eg-desc">Rompe-se ao passar do limite seguro, abrindo o circuito.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="quiz-section" id="quiz4"></div>
+    </section>
+
+    <!-- ============ TÓPICO 5 ============ -->
+    <section class="topic" id="t5">
+      <div class="topic-header">
+        <span class="topic-num">05</span>
+        <h2>2ª Lei de Ohm — a resistência de um fio</h2>
+      </div>
+      <div class="topic-body">
+        <p>De que depende a resistência de um fio? Fixadas as condições de trabalho, três informações bastam para prever o valor antes de medir: uma <strong>característica do material</strong>, o <strong>comprimento</strong> e a <strong>área da secção</strong>. É o que diz a <strong>2ª Lei de Ohm</strong>, e é o que a torna útil na prática, porque as três são fáceis de obter.</p>
 
         <div class="formula-box large">
           <span class="formula-label">2ª Lei de Ohm — resistência de um fio</span>
@@ -514,9 +613,15 @@
           <ul>
             <li>O comprimento entra <strong>multiplicando</strong>: fio mais longo resiste mais, porque há mais colisões pelo caminho.</li>
             <li>A área entra <strong>dividindo</strong>: fio mais grosso resiste menos, porque há mais caminhos em paralelo.</li>
-            <li>A resistividade ρ é propriedade só do <strong>material</strong>, e não depende da forma da peça.</li>
-            <li>Resistência e resistividade não são a mesma grandeza: ρ descreve a substância, R descreve o objeto.</li>
+            <li>Só a geometria, portanto, já responde por boa parte do resultado, e ela é a parte fácil de medir.</li>
+            <li>Todo o resto está espremido dentro de <strong>ρ</strong>, a resistividade. Ela não é uma constante da natureza: é um valor <em>medido em condições declaradas</em>, e é por isso que as tabelas sempre dizem a que temperatura ele vale.</li>
+            <li>Resistência e resistividade não são a mesma grandeza: ρ descreve a substância, R descreve aquela peça.</li>
           </ul>
+        </div>
+
+        <div class="highlight-box orange-hl">
+          <span class="hb-icon">🧪</span>
+          <p><strong>O que ρ esconde.</strong> Dizer que a resistência depende do material, do comprimento e da área é verdadeiro e é o que se usa, mas cabe perceber que a primeira dessas três não é uma informação simples. Dentro de ρ estão a estrutura do metal, o grau de pureza, as deformações que a peça sofreu ao ser fabricada e, principalmente, a <strong>temperatura</strong> em que ele está. A fórmula não erra: ela apenas empacota tudo isso num número só, e cobra que você o consulte na condição certa.</p>
         </div>
 
         <table class="units-table" aria-label="Resistividade de alguns materiais a 20 graus Celsius">
@@ -540,16 +645,26 @@
 
         <div class="highlight-box">
           <span class="hb-icon">🌡️</span>
-          <p><strong>A temperatura muda a resistência.</strong> Nos metais, aquecer aumenta a resistividade, porque os íons da rede vibram mais e atrapalham mais a passagem dos elétrons. O efeito é grande: o filamento de tungstênio de uma lâmpada incandescente opera a cerca de 2700 °C, e a resistência dele quente é aproximadamente dez vezes maior que a frio. É por isso que essas lâmpadas quase sempre queimam no instante em que são ligadas, quando o filamento ainda está frio e a corrente é máxima.</p>
+          <p><strong>A temperatura muda a resistência.</strong> É a dependência mais forte de todas, e a que você encontra primeiro. Nos metais, aquecer aumenta a resistividade, porque os íons da rede vibram mais e atrapalham mais a passagem dos elétrons. O efeito é grande: o filamento de tungstênio de uma lâmpada incandescente opera a cerca de 2700 °C, e a resistência dele quente é aproximadamente dez vezes maior que a frio. É por isso que essas lâmpadas quase sempre queimam no instante em que são ligadas, quando o filamento ainda está frio e a corrente é máxima.</p>
+        </div>
+
+        <div class="highlight-box orange-hl">
+          <span class="hb-icon">🌀</span>
+          <p><strong>E se eu enrolar o fio?</strong> A pergunta é boa, e a resposta depende do tipo de corrente. Em <strong>corrente contínua</strong>, que é a deste estudo, enrolar não muda nada: o comprimento é o mesmo, a secção é a mesma, e R também. Em <strong>corrente alternada</strong>, muda. A corrente deixa de se espalhar por igual pela secção e se concentra na casca do fio, e o campo das espiras vizinhas empurra ainda mais essa concentração. Como a área efetivamente usada encolhe, a resistência <em>observada</em> sobe, e é por isso que existem fios especiais, feitos de muitos filamentos finos isolados entre si, para bobinas de alta frequência.</p>
+        </div>
+
+        <div class="highlight-box">
+          <span class="hb-icon">📐</span>
+          <p>Vale separar duas coisas que a bobina mistura. Parte da oposição que ela oferece à corrente alternada <strong>não é resistência</strong>: é reatância, e não dissipa energia, apenas a devolve ao circuito a cada ciclo. Só a outra parte, a que vem da corrente se concentrar na casca, é resistência de verdade, e essa aquece o fio. A rigor, a própria resistividade também responde a campo magnético e a pressão. Nenhum desses efeitos aparece nos circuitos de corrente contínua que resolvemos aqui, mas eles são a razão de a fórmula valer <em>sob condições</em>, e não sempre.</p>
         </div>
       </div>
-      <div class="quiz-section" id="quiz4"></div>
+      <div class="quiz-section" id="quiz5"></div>
     </section>
 
-    <!-- ============ TÓPICO 5 ============ -->
-    <section class="topic" id="t5">
+    <!-- ============ TÓPICO 6 ============ -->
+    <section class="topic" id="t6">
       <div class="topic-header">
-        <span class="topic-num">05</span>
+        <span class="topic-num">06</span>
         <h2>Lei de Ohm</h2>
       </div>
       <div class="topic-body">
@@ -585,7 +700,7 @@
         <p>A Lei de Ohm não vale para tudo. Ela descreve os materiais chamados <strong>ôhmicos</strong>, aqueles em que a resistência se mantém constante enquanto a tensão varia. Quando a resistência muda com a corrente, o material é <strong>não-ôhmico</strong>, e o gráfico denuncia a diferença na hora.</p>
 
         <figure class="fbd-figure">
-          <svg class="fig" data-avulso="circuitos/4-grafico-ohmico" viewBox="0 0 680 340" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico da tensão em função da corrente. A reta verde, que passa pela origem, representa um condutor ôhmico, cuja resistência é a inclinação e se mantém constante. A curva laranja, que sobe cada vez mais rápido, representa o filamento de uma lâmpada, cuja resistência cresce com a temperatura.">
+          <svg class="fig" data-avulso="circuitos/5-grafico-ohmico" viewBox="0 0 680 340" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gráfico da tensão em função da corrente. A reta verde, que passa pela origem, representa um condutor ôhmico, cuja resistência é a inclinação e se mantém constante. A curva laranja, que sobe cada vez mais rápido, representa o filamento de uma lâmpada, cuja resistência cresce com a temperatura.">
             <defs>
               <marker id="ci4-eixo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
                 <path class="fig-eixo-p" d="M0,0 L10,5 L0,10 z"/>
@@ -601,15 +716,22 @@
             <!-- reta ôhmica -->
             <path class="fig-curva-ohm" d="M90,280 L470,80"/>
             <circle class="fig-no-ohm" cx="470" cy="80" r="5"/>
-            <text class="fig-r-ohm" x="146" y="106">condutor ôhmico</text>
-            <text class="fig-t-rot" x="146" y="122">R é a inclinação, e é constante:</text>
-            <text class="fig-t-rot" x="146" y="137">R = ΔV / Δi</text>
 
             <!-- curva não-ôhmica: filamento -->
             <path class="fig-curva-noh" d="M90,280 C230,258 330,214 400,150 C440,114 452,86 460,58"/>
             <circle class="fig-no-noh" cx="460" cy="58" r="5"/>
-            <text class="fig-r-noh" x="486" y="62">filamento</text>
-            <text class="fig-t-rot" x="486" y="78">R cresce com a temperatura</text>
+
+            <!-- As duas legendas ficam juntas no canto inferior direito, que é a
+                 região vazia do plano. Como o texto fica longe da curva, cada bloco
+                 leva um traço da própria cor para poder ser atribuído. -->
+            <path class="fig-curva-ohm" d="M418,186 L444,186"/>
+            <text class="fig-r-ohm" x="454" y="190">condutor ôhmico</text>
+            <text class="fig-t-rot" x="454" y="206">R é a inclinação, e é constante:</text>
+            <text class="fig-t-rot" x="454" y="221">R = ΔV / Δi</text>
+
+            <path class="fig-curva-noh" d="M418,246 L444,246"/>
+            <text class="fig-r-noh" x="454" y="250">filamento</text>
+            <text class="fig-t-rot" x="454" y="266">R cresce com a temperatura</text>
 
             <!-- triângulo da inclinação -->
             <path class="fig-guia" d="M242,199 L338,199"/>
@@ -636,13 +758,13 @@
           <p>Na prática a corrente de curto não chega ao valor da conta, porque <strong>a própria fonte tem resistência</strong>. Essa resistência interna segura a corrente: numa pilha pequena ela nem chega perto de 10 A, e é por isso que um curto numa pilha AA a esquenta em vez de fundir o fio. Numa bateria de carro, que tem resistência interna baixíssima, a conta acima fica bem mais próxima da realidade, e o curto é perigoso de verdade.</p>
         </div>
       </div>
-      <div class="quiz-section" id="quiz5"></div>
+      <div class="quiz-section" id="quiz6"></div>
     </section>
 
-    <!-- ============ TÓPICO 6 ============ -->
-    <section class="topic" id="t6">
+    <!-- ============ TÓPICO 7 ============ -->
+    <section class="topic" id="t7">
       <div class="topic-header">
-        <span class="topic-num">06</span>
+        <span class="topic-num">07</span>
         <h2>Potência e energia elétrica</h2>
       </div>
       <div class="topic-body">
@@ -701,40 +823,17 @@
           <p>O medidor da casa registra o total de kWh, e o valor cobrado é esse total multiplicado pela tarifa, mais encargos, impostos e o adicional da bandeira tarifária. Cabe perceber que a bandeira não muda o seu consumo: ela muda o preço de cada kWh consumido.</p>
         </div>
       </div>
-      <div class="quiz-section" id="quiz6"></div>
+      <div class="quiz-section" id="quiz7"></div>
     </section>
 
-    <!-- ============ TÓPICO 7 ============ -->
-    <section class="topic" id="t7">
+    <!-- ============ TÓPICO 8 ============ -->
+    <section class="topic" id="t8">
       <div class="topic-header">
-        <span class="topic-num">07</span>
+        <span class="topic-num">08</span>
         <h2>Os circuitos ao seu redor</h2>
       </div>
       <div class="topic-body">
-        <p>Tudo o que apareceu até aqui está em funcionamento a poucos metros de você. Nesta seção, quatro aparelhos servem para reler as grandezas dos tópicos anteriores em situações concretas.</p>
-
-        <div class="energy-grid">
-          <div class="eg-card">
-            <span class="eg-icon">🚿</span>
-            <div class="eg-name">Chuveiro</div>
-            <div class="eg-desc">Resistência baixa para puxar corrente alta. O aquecimento é o produto desejado.</div>
-          </div>
-          <div class="eg-card">
-            <span class="eg-icon">💡</span>
-            <div class="eg-name">Lâmpada incandescente</div>
-            <div class="eg-desc">O filamento incandesce ao se aquecer. Material não-ôhmico.</div>
-          </div>
-          <div class="eg-card">
-            <span class="eg-icon">🔆</span>
-            <div class="eg-name">LED</div>
-            <div class="eg-desc">Emite luz com pouquíssima corrente. Bem mais eficiente.</div>
-          </div>
-          <div class="eg-card">
-            <span class="eg-icon">🛡️</span>
-            <div class="eg-name">Fusível</div>
-            <div class="eg-desc">Rompe-se ao passar do limite seguro, abrindo o circuito.</div>
-          </div>
-        </div>
+        <p>Os quatro aparelhos do tópico 04 voltam aqui, agora com os números. Cada um deles serve para reler uma das grandezas dos tópicos anteriores numa situação concreta, e o primeiro contraria frontalmente a intuição.</p>
 
         <div class="example-box">
           <h4>O chuveiro contraria a intuição</h4>
@@ -761,13 +860,13 @@
           <p>A lâmpada incandescente e o LED fazem a mesma coisa do ponto de vista do usuário e são opostos por dentro. A incandescente <em>precisa</em> do efeito Joule: ela aquece um filamento até ele brilhar, e joga fora como calor a maior parte da energia. O LED produz luz por um mecanismo semicondutor, sem precisar aquecer nada, e é por isso que entrega o mesmo brilho com uma fração da potência.</p>
         </div>
       </div>
-      <div class="quiz-section" id="quiz7"></div>
+      <div class="quiz-section" id="quiz8"></div>
     </section>
 
-    <!-- ============ TÓPICO 8 ============ -->
-    <section class="topic" id="t8">
+    <!-- ============ TÓPICO 9 ============ -->
+    <section class="topic" id="t9">
       <div class="topic-header">
-        <span class="topic-num">08</span>
+        <span class="topic-num">09</span>
         <h2>Síntese</h2>
       </div>
       <div class="topic-body">
