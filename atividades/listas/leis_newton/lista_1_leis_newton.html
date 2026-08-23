@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <script src="/js/theme.js"></script>
+  <meta name="description" content="Lista de questões abertas sobre as três leis de Newton: inércia, referenciais, F = m·a e ação e reação, sempre a partir de situações do cotidiano — Física Ensino Médio.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Lista 1 — As Três Leis de Newton · Piras na Física">
+  <meta property="og:description" content="Quinze questões abertas sobre as três leis de Newton, a partir de situações do cotidiano: o ônibus que freia, a bola arremessada, o passo que damos e o soco na parede.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/atividades/listas/leis_newton/lista_1_leis_newton.html">
+  <title>Lista 1 — As Três Leis de Newton · Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/style.css" />
+  <link rel="stylesheet" href="../MRUV/style.css" />
+  <style>
+    /* Tags de dificuldade/tipo ficam no código mas invisíveis para o usuário */
+    .q-tag { display: none !important; }
+
+    .lista-aviso {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-left: 4px solid var(--amarelo);
+      border-radius: var(--radius); padding: 14px 18px;
+      margin-bottom: 24px; font-size: .9rem; color: var(--texto);
+    }
+    .la-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+
+    .formulas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .formula-group { background: var(--fundo); border: 1px solid var(--border); border-radius: 9px; padding: 14px 16px; }
+    .formula-group-title {
+      font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--azul-texto); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border);
+    }
+    .formula-group ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .formula-group li { font-family: 'Space Mono', monospace; font-size: .82rem; color: var(--texto); }
+    .formula-group li span { font-family: 'DM Sans', sans-serif; font-size: .78rem; color: var(--texto-muted); margin-left: 6px; }
+
+    /* Notação vetorial: seta desenhada sobre a letra por pseudo-elemento.
+       Preferido ao caractere combinante U+20D7, que desalinha ou some em boa
+       parte das fontes, sobretudo nas monoespaçadas. A seta cobre só a letra,
+       nunca o índice: por isso o <sub> fica fora do .vec. */
+    .vec { position: relative; white-space: nowrap; }
+    .vec::after {
+      content: "→";
+      position: absolute;
+      left: 0; right: 0; top: -.62em;
+      font-size: .66em;
+      line-height: 1;
+      font-weight: 400;
+      text-align: center;
+    }
+    /* O cartão reestiliza qualquer <span> como texto de apoio; o .vec precisa
+       escapar dessa regra e herdar a tipografia de onde estiver. */
+    .formula-group li .vec {
+      font-family: inherit; font-size: inherit; color: inherit; margin-left: 0;
+    }
+    /* folga para a seta não encostar na linha de cima, só onde há vetor */
+    .formula-group li:has(.vec), .question-text:has(.vec) { padding-top: .2em; }
+
+    .question-block { scroll-margin-top: 80px; }
+    .question-block ol.sub-itens { padding-left: 22px; margin-top: -8px; margin-bottom: 0; }
+    .question-block ol.sub-itens li { margin-bottom: 4px; }
+
+    .divisor-section {
+      display: flex; align-items: center; gap: 12px;
+      margin: 32px 0 20px; color: var(--texto-muted); font-size: .78rem;
+      font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    }
+    .divisor-section::before, .divisor-section::after {
+      content: ""; flex: 1; height: 1px; background: var(--border);
+    }
+
+    .footer { background: var(--surface); border-top: 1px solid var(--border); padding: 20px 24px; text-align: center; font-size: .82rem; color: var(--texto-muted); }
+
+    @media print {
+      .lista-header, .footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      #header, nav, .skip-link { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#questoes" class="skip-link">Ir para as questões</a>
+
+  <div id="header"></div>
+  <script src="../../../js/include.js"></script>
+
+  <div class="content-hero">
+    <div class="content-hero-inner">
+      <nav class="breadcrumb">
+        <a href="../../../atividades.html">Atividades</a>
+        <span>/</span>
+        <a href="../../../lista_de_exercicios.html">Listas de Exercícios</a>
+        <span>/</span>
+        <span>Lista 1 — As Três Leis de Newton</span>
+      </nav>
+      <h1 class="content-title">Lista 1 — As Três Leis de Newton<br><em>Inércia, força e aceleração, ação e reação</em></h1>
+      <p class="content-subtitle">
+        Questões abertas, para resolução escrita. Nenhuma delas pede conta: todas pedem
+        <strong>explicação</strong>. Sempre que citar uma força, diga <strong>quem a exerce</strong> e
+        <strong>sobre quem</strong>.
+      </p>
+      <div class="lista-meta">
+        <span class="lista-badge azul">Dinâmica</span>
+        <span class="lista-badge roxo">15 questões</span>
+        <span class="lista-badge muted">Resposta aberta · Sem gabarito</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="main" id="questoes">
+
+    <!-- Referência -->
+    <section class="lista-formulas" aria-label="As três leis, para consulta">
+      <div class="lf-label">📐 As três leis, para consulta</div>
+      <div class="formulas-grid">
+
+        <div class="formula-group">
+          <div class="formula-group-title">1ª Lei · Inércia</div>
+          <ul>
+            <li><span class="vec">F</span><sub>res</sub> = 0 ⇒ <span class="vec">v</span> = constante</li>
+            <li><span>repouso ou MRU, num referencial inercial</span></li>
+          </ul>
+        </div>
+
+        <div class="formula-group">
+          <div class="formula-group-title">2ª Lei · Dinâmica</div>
+          <ul>
+            <li><span class="vec">F</span><sub>res</sub> = m · <span class="vec">a</span></li>
+            <li><span>a aceleração tem a direção e o sentido da resultante, não da velocidade</span></li>
+          </ul>
+        </div>
+
+        <div class="formula-group">
+          <div class="formula-group-title">3ª Lei · Ação e reação</div>
+          <ul>
+            <li><span class="vec">F</span><sub>AB</sub> = − <span class="vec">F</span><sub>BA</sub></li>
+            <li><span>mesma intensidade, sentidos opostos, em corpos diferentes</span></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="lista-aviso">
+      <span class="la-icon">✏️</span>
+      <div>
+        <strong>Sem gabarito incorporado.</strong>
+        Responda em folha separada, com frases completas. Duas orientações valem para todas as questões:
+        nomeie o agente de cada força que citar, e deixe claro de onde você está descrevendo a cena,
+        sempre que isso fizer diferença.
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!--  CAUSAS DOS MOVIMENTOS (Q1–Q2)                        -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="divisor-section">Causas dos movimentos</div>
+
+    <!-- Q1 · Fácil · Aristóteles × Newton -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 1</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">Aristóteles × Newton</span>
+      </div>
+      <p class="question-text">
+        Você empurra um armário pelo chão da sala. Enquanto empurra, ele anda; assim que você para de empurrar, ele para. Um colega conclui: <em>"está provado, para um corpo se manter em movimento é preciso uma força agindo o tempo todo sobre ele"</em>. Essa é, em essência, a explicação que Aristóteles daria.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Explique por que essa conclusão parece funcionar tão bem no dia a dia.</li>
+        <li>Diga o que, de fato, faz o armário parar.</li>
+        <li>Descreva o que aconteceria com o armário se essa causa pudesse ser eliminada por completo.</li>
+      </ol>
+    </div>
+
+    <!-- Q2 · Médio · Galileu e os planos inclinados -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 2</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">Galileu · idealização</span>
+      </div>
+      <p class="question-text">
+        Galileu soltava esferas por uma rampa e as observava subir por outra. Notou que a esfera chegava sempre perto da altura de onde havia partido, e que quanto mais <strong>deitada</strong> a segunda rampa, maior a distância que ela percorria para alcançar essa mesma altura. Descreva a conclusão a que ele chegou ao imaginar a segunda rampa perfeitamente <strong>horizontal</strong>. Explique por que essa conclusão não podia ser tirada da observação direta de nenhum experimento real, e o que Galileu precisou fazer para chegar até ela.
+      </p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!--  1ª LEI: INÉRCIA E REFERENCIAIS (Q3–Q7)               -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="divisor-section">1ª Lei · Inércia e referenciais</div>
+
+    <!-- Q3 · Fácil · Bola arremessada para cima -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 3</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">Inércia · a "força do arremesso"</span>
+      </div>
+      <p class="question-text">
+        Você arremessa uma bola verticalmente para cima. Ela sobe, vai ficando cada vez mais lenta, para por um instante no ponto mais alto e então desce. Desprezando a resistência do ar:
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Liste todas as forças que agem sobre a bola <strong>enquanto ela sobe</strong>, dizendo quem exerce cada uma.</li>
+        <li>Explique por que ela para de subir.</li>
+        <li>Responda ao colega que afirma que <em>"a força do arremesso vai se gastando até acabar, e é por isso que a bola desce"</em>.</li>
+        <li>Diga o que acontece com a força sobre a bola exatamente no ponto mais alto, onde a velocidade é nula.</li>
+      </ol>
+    </div>
+
+    <!-- Q4 · Fácil · Ônibus e cinto de segurança -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 4</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">Inércia no transporte</span>
+      </div>
+      <p class="question-text">
+        Um passageiro viaja em pé num ônibus, sem se segurar em nada. Descrevendo a cena do ponto de vista de quem está parado na <strong>calçada</strong>, explique o que acontece com o corpo dele quando o ônibus <strong>arranca</strong> e quando ele <strong>freia bruscamente</strong>. Em seguida, explique qual é a função do <strong>cinto de segurança</strong> num carro: que força ele aplica, em que sentido, e por que ela é necessária.
+      </p>
+    </div>
+
+    <!-- Q5 · Médio · Toalha e moeda -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 5</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">Inércia e tempo de ação</span>
+      </div>
+      <p class="question-text">
+        Num truque conhecido, puxa-se a toalha de uma mesa posta com um movimento muito rápido e os pratos quase não saem do lugar. Uma versão mais simples usa um cartão apoiado sobre a boca de um copo, com uma moeda em cima: um peteleco arremessa o cartão para longe e a moeda cai dentro do copo. Explique o que os dois truques têm em comum. Na sua resposta, diga <strong>se existe ou não</strong> força de atrito agindo sobre os pratos e sobre a moeda, e explique por que a <strong>rapidez</strong> do movimento é decisiva para que o truque funcione.
+      </p>
+    </div>
+
+    <!-- Q6 · Médio · Sonda espacial × carrinho -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 6</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">Inércia sem atrito</span>
+      </div>
+      <p class="question-text">
+        Uma sonda espacial, longe de qualquer astro, desliga os motores e continua em linha reta com velocidade constante, indefinidamente. Na Terra, um carrinho empurrado sobre o chão sempre acaba parando. As duas situações parecem opostas, mas são descritas pela <strong>mesma lei</strong>. Explique por quê. Diga também o que precisaria acontecer no chão da sala para que o carrinho passasse a se comportar como a sonda.
+      </p>
+    </div>
+
+    <!-- Q7 · Médio · Curva de carro e "força centrífuga" -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 7</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">Referencial não inercial</span>
+      </div>
+      <p class="question-text">
+        Num carro que faz uma curva fechada para a esquerda, os passageiros se sentem "jogados" contra a porta da direita, e é comum dizer que uma <em>força centrífuga</em> os empurrou para fora da curva. Descreva a mesma cena do ponto de vista de alguém parado na calçada. Na sua descrição, identifique <strong>qual corpo de fato empurra o passageiro</strong> e para que lado. Explique por que a tal "força centrífuga" não aparece nessa descrição, e o que caracteriza o ponto de vista em que ela parece existir.
+      </p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!--  2ª LEI: FORÇA E ACELERAÇÃO (Q8–Q11)                  -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="divisor-section">2ª Lei · Força e aceleração</div>
+
+    <!-- Q8 · Fácil · O que F = m·a diz -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 8</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">Significado da 2ª Lei</span>
+      </div>
+      <p class="question-text">
+        A 2ª Lei de Newton costuma ser escrita como <strong><span class="vec">F</span><sub>res</sub> = m · <span class="vec">a</span></strong>. Explique, com suas palavras:
+      </p>
+      <ol class="question-text sub-itens">
+        <li>o que a força resultante produz num corpo: velocidade ou aceleração;</li>
+        <li>por que é a força <strong>resultante</strong>, e não uma força qualquer, que entra na equação;</li>
+        <li>o que a lei prevê quando a força resultante é nula, e como esse caso se relaciona com a 1ª Lei;</li>
+        <li>por que um carro que faz uma curva com o velocímetro parado ainda assim tem força resultante sobre ele.</li>
+      </ol>
+    </div>
+
+    <!-- Q9 · Fácil · Mesma força, massas diferentes -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 9</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">Massa e inércia</span>
+      </div>
+      <p class="question-text">
+        Empurrando com a mesma força, é fácil pôr uma bicicleta em movimento e praticamente impossível mover um caminhão sozinho. Explique essa diferença a partir da 2ª Lei. Em seguida, explique por que um carrinho de supermercado <strong>cheio</strong> é mais difícil de acelerar do que o mesmo carrinho <strong>vazio</strong>, e diga que grandeza física está sendo medida por essa "dificuldade".
+      </p>
+    </div>
+
+    <!-- Q10 · Médio · Airbag e capacete -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 10</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">Força e tempo de frenagem</span>
+      </div>
+      <p class="question-text">
+        Numa batida, o airbag <strong>não impede</strong> que o corpo do motorista pare: ele faz com que essa parada aconteça ao longo de um tempo maior. Explique por que isso reduz a força sobre o motorista, mesmo que a variação de velocidade seja exatamente a mesma com airbag ou sem ele. Em seguida, cite <strong>duas outras</strong> situações do cotidiano que usam o mesmo princípio, explicando brevemente cada uma.
+      </p>
+    </div>
+
+    <!-- Q11 · Médio · Força resultante e equilíbrio dinâmico -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 11</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">Força resultante</span>
+      </div>
+      <p class="question-text">
+        Duas pessoas empurram um armário no mesmo sentido e ele desliza pelo chão com <strong>velocidade constante</strong>.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>O que se pode afirmar sobre a força resultante que age no armário? Justifique.</li>
+        <li>Compare a intensidade da soma das forças aplicadas pelas duas pessoas com a intensidade da força de atrito, indicando o sentido de cada uma.</li>
+        <li>Se uma terceira pessoa passasse a empurrar junto, o que mudaria no movimento do armário? Explique.</li>
+        <li>Explique por que dizer que "o armário está em equilíbrio" não é o mesmo que dizer que "o armário está parado".</li>
+      </ol>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!--  3ª LEI: AÇÃO E REAÇÃO (Q12–Q15)                      -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="divisor-section">3ª Lei · Ação e reação</div>
+
+    <!-- Q12 · Fácil · Como caminhamos -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 12</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">Caminhar</span>
+      </div>
+      <p class="question-text">
+        Descreva, usando a 3ª Lei de Newton, o que acontece a cada passo que você dá. Identifique com clareza <strong>quem exerce força em quem</strong> e em que sentido, e diga <strong>qual das duas forças do par</strong> é a responsável por você ir para a frente. Explique também por que é tão difícil caminhar sobre uma superfície muito lisa, como uma pista de gelo, e o que falta ali.
+      </p>
+    </div>
+
+    <!-- Q13 · Médio · Soco na parede -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 13</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">Pares que não se cancelam</span>
+      </div>
+      <p class="question-text">
+        Ao dar um soco numa parede, a mão dói. Explique por quê, nomeando as duas forças do par ação–reação envolvido e dizendo em que corpo cada uma delas age. Em seguida, responda ao colega que argumenta assim: <em>"se as duas forças têm a mesma intensidade e sentidos opostos, elas deveriam se cancelar, e então nada deveria doer nem se mover"</em>. Aponte exatamente onde está o erro desse raciocínio.
+      </p>
+    </div>
+
+    <!-- Q14 · Médio · Foguete no vácuo -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 14</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">Propulsão</span>
+      </div>
+      <p class="question-text">
+        Um foguete acelera no <strong>vácuo</strong> do espaço, onde não há ar. Muita gente imagina que os motores "empurram o ar" para trás e que, sem ar, o foguete não teria como se mover. Explique por que ele funciona mesmo assim, identificando o par ação–reação envolvido. Diga também o que o foguete precisa <strong>carregar consigo</strong> para que isso seja possível, e relacione essa resposta com o fato de ele ir ficando mais leve durante a subida.
+      </p>
+    </div>
+
+    <!-- Q15 · Difícil · O par falso: peso e normal -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 15</span>
+        <span class="q-tag dif">Difícil</span>
+        <span class="q-tag tipo">Teórica</span>
+        <span class="q-tag tipo">Par falso · peso e normal</span>
+      </div>
+      <p class="question-text">
+        Um livro está em repouso sobre uma mesa. Sobre ele agem o <strong>peso</strong>, para baixo, e a <strong>força normal</strong> da mesa, para cima, com a mesma intensidade e sentidos opostos. Um colega conclui que essas duas forças formam um par ação–reação.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Explique por que essa conclusão está errada, apontando a característica do par ação–reação que ela desrespeita.</li>
+        <li>Identifique o verdadeiro par de cada uma das duas forças, dizendo em que corpo cada parceira age.</li>
+        <li>Proponha uma alteração simples na cena que faça peso e normal deixarem de ter a mesma intensidade, e explique por que isso encerra a discussão.</li>
+      </ol>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p>Física · Ensino Médio · Dinâmica · Lista 1 — As Três Leis de Newton · Piras na Física</p>
+  </footer>
+</body>
+</html>
