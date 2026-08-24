@@ -1,3 +1,14 @@
+/* ════════════════════════════════════════════════════════════════════
+   listas.css — folha única das listas de exercícios (atividades/listas/)
+
+   Toda lista carrega, nesta ordem:
+     ../../../css/style.css   (tokens globais do site e o dark mode)
+     ../listas.css            (este arquivo)
+
+   Não abrir bloco <style> na página. O que for específico de uma lista
+   entra aqui, com o escopo indicado no comentário da seção.
+   ════════════════════════════════════════════════════════════════════ */
+
 /* ===== HERO DO CONTEÚDO (mesma estrutura de conteudos/shared.css) ===== */
 .content-hero {
   background: linear-gradient(135deg, #1e2a78 0%, #2f5bea 50%, #6a2fe8 100%);
@@ -342,12 +353,6 @@ body {
 }
 .report-btn:hover { background: var(--azul); }
 
-/* ===== FOOTER ===== */
-.footer {
-  padding: 24px; text-align: center; border-top: 1px solid var(--border);
-  color: var(--texto-muted); font-size: .82rem;
-}
-
 /* ===== RESPONSIVE ===== */
 @media (max-width: 600px) {
   .numeric-inp { width: 100%; }
@@ -387,6 +392,9 @@ body {
 .frac-num { padding: 0 .35em .08em; border-bottom: 2px solid currentColor; }
 .frac-den { padding: .08em .35em 0; }
 
+/* Radicando com o traço por cima, para √2 e √3 não ficarem soltos. */
+.raiz { border-top: 1.2px solid currentColor; padding: 0 .05em; }
+
 /* Caixa de fórmulas da lista */
 .lista-formulas {
   background: var(--surface);
@@ -421,12 +429,226 @@ body {
 /* Aviso de modo (avaliação / como funciona) */
 .lista-aviso {
   display: flex; gap: 12px; align-items: flex-start;
-  background: rgba(217,119,6,.07);
-  border: 1px solid rgba(217,119,6,.3);
-  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--amarelo);
+  border-radius: var(--radius);
   padding: 14px 18px;
-  margin-bottom: 26px;
+  margin-bottom: 24px;
   font-size: .9rem; line-height: 1.6; color: var(--texto);
 }
-.lista-aviso .la-icon { font-size: 1.1rem; line-height: 1.4; }
+.la-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; line-height: 1.4; }
 .lista-aviso strong { display: block; margin-bottom: 2px; color: var(--texto-destaque); }
+
+/* ══════════════════════════════════════════════════════════════════════
+   GRADE DE FÓRMULAS
+   Cartões enumerando as fórmulas liberadas para a lista. Convive com o
+   par .lf-row/.lf-card acima, que é o formato das listas mais antigas.
+   ══════════════════════════════════════════════════════════════════════ */
+
+.formulas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+.formula-group {
+  background: var(--fundo); border: 1px solid var(--border);
+  border-radius: 9px; padding: 14px 16px;
+}
+.formula-group-title {
+  font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--azul-texto); margin-bottom: 8px; padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+.formula-group ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.formula-group li { font-family: var(--fonte-mono); font-size: .82rem; color: var(--texto); }
+/* o <span> dentro do item é a glosa entre parênteses, em texto corrido */
+.formula-group li span {
+  font-family: var(--fonte); font-size: .78rem; color: var(--texto-muted); margin-left: 6px;
+}
+/* ...e a fração, a raiz e o vetor precisam escapar dessa regra */
+.formula-group li .frac,
+.formula-group li .frac > span,
+.formula-group li .raiz,
+.formula-group li .vec {
+  font-family: inherit; font-size: inherit; color: inherit; margin-left: 0;
+}
+.formula-group li:has(.frac) { padding: .12em 0; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   NOTAÇÃO VETORIAL
+   Seta desenhada sobre a letra por pseudo-elemento. Preferida ao caractere
+   combinante U+20D7, que desalinha ou some em boa parte das fontes,
+   sobretudo nas monoespaçadas. A seta cobre só a letra, nunca o índice:
+   por isso o <sub> fica fora do .vec.
+   ══════════════════════════════════════════════════════════════════════ */
+
+.vec { position: relative; white-space: nowrap; }
+.vec::after {
+  content: "→";
+  position: absolute;
+  left: 0; right: 0; top: -.62em;
+  font-size: .66em; line-height: 1; font-weight: 400; text-align: center;
+}
+/* folga para a seta não encostar na linha de cima, só onde há vetor */
+.formula-group li:has(.vec), .question-text:has(.vec) { padding-top: .2em; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   ESTRUTURA DA LISTA
+   ══════════════════════════════════════════════════════════════════════ */
+
+.question-block { scroll-margin-top: 80px; }
+.question-block ol.sub-itens { padding-left: 22px; margin-top: -8px; margin-bottom: 0; }
+.question-block ol.sub-itens li { margin-bottom: 4px; }
+
+/* dado numérico avulso, solto ao pé do enunciado */
+.dado {
+  font-size: .85em; color: var(--texto-muted); font-style: italic;
+  display: block; margin-top: 8px;
+}
+
+/* separador entre os blocos temáticos da lista */
+.divisor-section {
+  display: flex; align-items: center; gap: 12px;
+  margin: 32px 0 20px; color: var(--texto-muted); font-size: .78rem;
+  font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+}
+.divisor-section::before, .divisor-section::after {
+  content: ""; flex: 1; height: 1px; background: var(--border);
+}
+
+/* Listas de resposta aberta não mostram a etiqueta de dificuldade ao aluno.
+   A etiqueta continua no HTML, que é onde ela serve de referência para quem
+   monta a lista. Basta pôr class="sem-tags" no <body>. */
+.sem-tags .q-tag { display: none !important; }
+
+/* rodapé próprio das listas, distinto do <footer> global do site */
+.footer {
+  background: var(--surface); border-top: 1px solid var(--border);
+  padding: 20px 24px; text-align: center;
+  font-size: .82rem; color: var(--texto-muted);
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   FIGURAS DAS LISTAS
+   Toda cor vem de custom property, para o SVG acompanhar o tema e para o
+   script de extração conseguir copiar a paleta ao gerar o arquivo avulso
+   em img/animacoes/. Nunca escrever cor no atributo do elemento.
+   Convenção das setas: peso roxo · normal verde · tração ciano ·
+   força aplicada vermelha · velocidade azul · aceleração laranja.
+   ══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --fig-bloco:    #dbeafe;
+  --fig-bloco-b:  #3b82f6;
+  --fig-bloco2:   #e9d5ff;
+  --fig-bloco2-b: #9333ea;
+  --fig-apoio:    #475569;
+  --fig-hachura:  #94a3b8;
+  --fig-rampa:    #f1f5f9;
+  --fig-fio:      #334155;
+  --fig-polia:    #cbd5e1;
+  --fig-polia-b:  #475569;
+  --fig-peso:     #9333ea;
+  --fig-normal:   #16a34a;
+  --fig-tracao:   #0e7490;
+  --fig-forca:    #ef4444;
+  --fig-angulo:   #c2410c;
+  --fig-texto:    #1e293b;
+  --fig-rotulo:   #64748b;
+  --fig-guia:     #cbd5e1;
+  --fig-cabine:   #f8fafc;
+  --fig-pessoa:   #0f766e;
+  --fig-balanca:  #e2e8f0;
+  --fig-veloc:    #2563eb;
+  /* declaradas aqui, e nao herdadas de --fonte, porque o .svg avulso
+     gerado a partir desta seção leva a paleta e mais nada */
+  --fig-fonte-t:  'DM Sans', system-ui, sans-serif;
+  --fig-fonte-m:  'Space Mono', ui-monospace, monospace;
+}
+[data-theme="dark"] {
+  --fig-bloco:    #1e3a5f;
+  --fig-bloco-b:  #60a5fa;
+  --fig-bloco2:   #3b1f5e;
+  --fig-bloco2-b: #c084fc;
+  --fig-apoio:    #cbd5e1;
+  --fig-hachura:  #64748b;
+  --fig-rampa:    #1e293b;
+  --fig-fio:      #cbd5e1;
+  --fig-polia:    #475569;
+  --fig-polia-b:  #cbd5e1;
+  --fig-peso:     #c084fc;
+  --fig-normal:   #4ade80;
+  --fig-tracao:   #22d3ee;
+  --fig-forca:    #f87171;
+  --fig-angulo:   #fb923c;
+  --fig-texto:    #e2e8f0;
+  --fig-rotulo:   #94a3b8;
+  --fig-guia:     #475569;
+  --fig-cabine:   #172033;
+  --fig-pessoa:   #5eead4;
+  --fig-balanca:  #334155;
+  --fig-veloc:    #60a5fa;
+}
+
+.fig-svg {
+  display: block; width: 100%; max-width: 440px; height: auto;
+  margin: 14px auto 4px;
+  background: var(--fundo); border: 1px solid var(--border); border-radius: 9px;
+}
+.fig-legenda {
+  text-align: center; font-size: .78rem; color: var(--texto-muted);
+  margin: 0 auto 4px; max-width: 440px;
+}
+/* pontas de seta compartilhadas pelas figuras da página, fora do fluxo */
+.fig-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.fg-chao    { fill: none; stroke: var(--fig-apoio); stroke-width: 3; stroke-linecap: round; }
+.fg-hachura { fill: none; stroke: var(--fig-hachura); stroke-width: 1.5; }
+.fg-bloco   { fill: var(--fig-bloco); stroke: var(--fig-bloco-b); stroke-width: 2; }
+.fg-bloco2  { fill: var(--fig-bloco2); stroke: var(--fig-bloco2-b); stroke-width: 2; }
+.fg-rampa   { fill: var(--fig-rampa); stroke: var(--fig-apoio); stroke-width: 2.5; stroke-linejoin: round; }
+.fg-fio     { fill: none; stroke: var(--fig-fio); stroke-width: 2.5; stroke-linecap: round; }
+.fg-polia   { fill: var(--fig-polia); stroke: var(--fig-polia-b); stroke-width: 2; }
+.fg-eixo    { fill: var(--fig-polia-b); }
+.fg-guia    { fill: none; stroke: var(--fig-guia); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.fg-ang     { fill: none; stroke: var(--fig-angulo); stroke-width: 1.8; }
+.fg-cabine  { fill: var(--fig-cabine); stroke: var(--fig-apoio); stroke-width: 2.5; }
+.fg-balanca { fill: var(--fig-balanca); stroke: var(--fig-apoio); stroke-width: 2; }
+.fg-pessoa  { fill: var(--fig-pessoa); }
+.fg-membro  { fill: none; stroke: var(--fig-pessoa); stroke-width: 3.2; stroke-linecap: round; }
+.fg-fixo    { fill: none; stroke: var(--fig-apoio); stroke-width: 2; }
+
+.fg-v-peso   { fill: none; stroke: var(--fig-peso);   stroke-width: 2.5; }
+.fg-v-normal { fill: none; stroke: var(--fig-normal); stroke-width: 2.5; }
+.fg-v-tracao { fill: none; stroke: var(--fig-tracao); stroke-width: 2.5; }
+.fg-v-forca  { fill: none; stroke: var(--fig-forca);  stroke-width: 2.5; }
+.fg-v-veloc  { fill: none; stroke: var(--fig-veloc);  stroke-width: 2.5; }
+.fg-v-acel   { fill: none; stroke: var(--fig-angulo); stroke-width: 2.5; }
+.fg-p-peso   { fill: var(--fig-peso); }
+.fg-p-normal { fill: var(--fig-normal); }
+.fg-p-tracao { fill: var(--fig-tracao); }
+.fg-p-forca  { fill: var(--fig-forca); }
+.fg-p-veloc  { fill: var(--fig-veloc); }
+.fg-p-acel   { fill: var(--fig-angulo); }
+
+.fg-t     { font-family: var(--fig-fonte-t); font-size: 12px; fill: var(--fig-texto); }
+.fg-rot   { font-family: var(--fig-fonte-t); font-size: 11px; fill: var(--fig-rotulo); }
+.fg-m     { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-texto); }
+.fg-peso  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-peso); }
+.fg-norm  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-normal); }
+.fg-trac  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-tracao); }
+.fg-forc  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-forca); }
+.fg-angt  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-angulo); }
+.fg-vel   { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-veloc); }
+
+/* ══════════════════════════════════════════════════════════════════════
+   IMPRESSÃO
+   ══════════════════════════════════════════════════════════════════════ */
+
+@media print {
+  .lista-header, .footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  #header, nav, .skip-link { display: none !important; }
+  .fig-svg, .question-block { break-inside: avoid; }
+}

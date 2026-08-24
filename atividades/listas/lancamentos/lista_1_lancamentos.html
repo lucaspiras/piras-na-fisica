@@ -13,6 +13,7 @@
   <meta property="og:description" content="Lista de questões abertas sobre queda livre, lançamento vertical, horizontal e oblíquo — Física Ensino Médio.">
   <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
   <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/atividades/listas/lancamentos/lista_1_lancamentos.html">
   <title>Lista 1 — Lançamentos · Piras na Física</title>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
   <script>
@@ -25,61 +26,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../../css/style.css" />
-  <link rel="stylesheet" href="../MRUV/style.css" />
-  <style>
-    /* Tags de dificuldade/tipo ficam no código mas invisíveis para o usuário */
-    .q-tag { display: none !important; }
-
-    .lista-aviso {
-      display: flex; align-items: flex-start; gap: 12px;
-      background: var(--surface); border: 1px solid var(--border);
-      border-left: 4px solid var(--amarelo);
-      border-radius: var(--radius); padding: 14px 18px;
-      margin-bottom: 24px; font-size: .9rem; color: var(--texto);
-    }
-    .la-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
-
-    .lf-card { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border-radius: 9px; }
-    .lf-name { font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--azul-texto); }
-    .eq-display { font-family: var(--font-mono, 'Space Mono', monospace); font-size: .93rem; font-weight: 700; color: var(--texto-destaque, var(--texto)); }
-
-    .formulas-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .formula-group { background: var(--fundo); border: 1px solid var(--border); border-radius: 9px; padding: 14px 16px; }
-    .formula-group-title {
-      font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-      color: var(--azul-texto); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid var(--border);
-    }
-    .formula-group ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
-    .formula-group li { font-family: 'Space Mono', monospace; font-size: .82rem; color: var(--texto); }
-    .formula-group li span { font-family: 'DM Sans', sans-serif; font-size: .78rem; color: var(--texto-muted); margin-left: 6px; }
-
-    .question-block { scroll-margin-top: 80px; }
-
-    .dado { font-size: .85em; color: var(--texto-muted); font-style: italic; display: block; margin-top: 8px; }
-
-    .divisor-section {
-      display: flex; align-items: center; gap: 12px;
-      margin: 32px 0 20px; color: var(--texto-muted); font-size: .78rem;
-      font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-    }
-    .divisor-section::before, .divisor-section::after {
-      content: ''; flex: 1; height: 1px; background: var(--border);
-    }
-
-    .footer { background: var(--surface); border-top: 1px solid var(--border); padding: 20px 24px; text-align: center; font-size: .82rem; color: var(--texto-muted); }
-
-    @media print {
-      .lista-header, .footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      #header, nav, .skip-link { display: none !important; }
-    }
-  </style>
+  <link rel="stylesheet" href="../listas.css" />
 </head>
-<body>
+<body class="sem-tags">
   <a href="#questoes" class="skip-link">Ir para as questões</a>
 
   <div id="header"></div>

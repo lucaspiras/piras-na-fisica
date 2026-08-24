@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Dois blocos ligados por um fio sobre a mesa, puxados por uma forca horizontal.
+     Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Fonte da geometria: atividades/listas/forcas/lista_1_peso_normal_tracao.html
+     Gerado por scripts/extrair-figuras-listas.ps1 — nao editar a mao. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 170" width="880" height="340"
+     role="img" aria-labelledby="forcas-6-dois-blocos-ligados-por-fio">
+  <title id="forcas-6-dois-blocos-ligados-por-fio">Dois blocos sobre uma mesa horizontal ligados por um fio, com a tração indicada. O bloco A está à esquerda; o bloco B, maior, à direita. A força F puxa o bloco B para a direita.</title>
+  <style><![CDATA[
+    svg {
+      --fig-bloco:    #dbeafe;
+      --fig-bloco-b:  #3b82f6;
+      --fig-bloco2:   #e9d5ff;
+      --fig-bloco2-b: #9333ea;
+      --fig-apoio:    #475569;
+      --fig-hachura:  #94a3b8;
+      --fig-rampa:    #f1f5f9;
+      --fig-fio:      #334155;
+      --fig-polia:    #cbd5e1;
+      --fig-polia-b:  #475569;
+      --fig-peso:     #9333ea;
+      --fig-normal:   #16a34a;
+      --fig-tracao:   #0e7490;
+      --fig-forca:    #ef4444;
+      --fig-angulo:   #c2410c;
+      --fig-texto:    #1e293b;
+      --fig-rotulo:   #64748b;
+      --fig-guia:     #cbd5e1;
+      --fig-cabine:   #f8fafc;
+      --fig-pessoa:   #0f766e;
+      --fig-balanca:  #e2e8f0;
+      --fig-veloc:    #2563eb;
+      /* declaradas aqui, e nao herdadas de --fonte, porque o .svg avulso
+         gerado a partir desta seção leva a paleta e mais nada */
+      --fig-fonte-t:  'DM Sans', system-ui, sans-serif;
+      --fig-fonte-m:  'Space Mono', ui-monospace, monospace;
+    }
+
+    /* Quem abrir o arquivo com o sistema no modo escuro ve a versao noturna.
+       Embutido aqui porque o .svg carregado como imagem e um documento a
+       parte e nao enxerga o data-theme da pagina. */
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --fig-bloco:    #1e3a5f;
+        --fig-bloco-b:  #60a5fa;
+        --fig-bloco2:   #3b1f5e;
+        --fig-bloco2-b: #c084fc;
+        --fig-apoio:    #cbd5e1;
+        --fig-hachura:  #64748b;
+        --fig-rampa:    #1e293b;
+        --fig-fio:      #cbd5e1;
+        --fig-polia:    #475569;
+        --fig-polia-b:  #cbd5e1;
+        --fig-peso:     #c084fc;
+        --fig-normal:   #4ade80;
+        --fig-tracao:   #22d3ee;
+        --fig-forca:    #f87171;
+        --fig-angulo:   #fb923c;
+        --fig-texto:    #e2e8f0;
+        --fig-rotulo:   #94a3b8;
+        --fig-guia:     #475569;
+        --fig-cabine:   #172033;
+        --fig-pessoa:   #5eead4;
+        --fig-balanca:  #334155;
+        --fig-veloc:    #60a5fa;
+      }
+    }
+
+    .fg-chao    { fill: none; stroke: var(--fig-apoio); stroke-width: 3; stroke-linecap: round; }
+    .fg-hachura { fill: none; stroke: var(--fig-hachura); stroke-width: 1.5; }
+    .fg-bloco   { fill: var(--fig-bloco); stroke: var(--fig-bloco-b); stroke-width: 2; }
+    .fg-bloco2  { fill: var(--fig-bloco2); stroke: var(--fig-bloco2-b); stroke-width: 2; }
+    .fg-rampa   { fill: var(--fig-rampa); stroke: var(--fig-apoio); stroke-width: 2.5; stroke-linejoin: round; }
+    .fg-fio     { fill: none; stroke: var(--fig-fio); stroke-width: 2.5; stroke-linecap: round; }
+    .fg-polia   { fill: var(--fig-polia); stroke: var(--fig-polia-b); stroke-width: 2; }
+    .fg-eixo    { fill: var(--fig-polia-b); }
+    .fg-guia    { fill: none; stroke: var(--fig-guia); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .fg-ang     { fill: none; stroke: var(--fig-angulo); stroke-width: 1.8; }
+    .fg-cabine  { fill: var(--fig-cabine); stroke: var(--fig-apoio); stroke-width: 2.5; }
+    .fg-balanca { fill: var(--fig-balanca); stroke: var(--fig-apoio); stroke-width: 2; }
+    .fg-pessoa  { fill: var(--fig-pessoa); }
+    .fg-membro  { fill: none; stroke: var(--fig-pessoa); stroke-width: 3.2; stroke-linecap: round; }
+    .fg-fixo    { fill: none; stroke: var(--fig-apoio); stroke-width: 2; }
+    .fg-v-peso   { fill: none; stroke: var(--fig-peso);   stroke-width: 2.5; }
+    .fg-v-normal { fill: none; stroke: var(--fig-normal); stroke-width: 2.5; }
+    .fg-v-tracao { fill: none; stroke: var(--fig-tracao); stroke-width: 2.5; }
+    .fg-v-forca  { fill: none; stroke: var(--fig-forca);  stroke-width: 2.5; }
+    .fg-v-veloc  { fill: none; stroke: var(--fig-veloc);  stroke-width: 2.5; }
+    .fg-v-acel   { fill: none; stroke: var(--fig-angulo); stroke-width: 2.5; }
+    .fg-p-peso   { fill: var(--fig-peso); }
+    .fg-p-normal { fill: var(--fig-normal); }
+    .fg-p-tracao { fill: var(--fig-tracao); }
+    .fg-p-forca  { fill: var(--fig-forca); }
+    .fg-p-veloc  { fill: var(--fig-veloc); }
+    .fg-p-acel   { fill: var(--fig-angulo); }
+    .fg-t     { font-family: var(--fig-fonte-t); font-size: 12px; fill: var(--fig-texto); }
+    .fg-rot   { font-family: var(--fig-fonte-t); font-size: 11px; fill: var(--fig-rotulo); }
+    .fg-m     { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-texto); }
+    .fg-peso  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-peso); }
+    .fg-norm  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-normal); }
+    .fg-trac  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-tracao); }
+    .fg-forc  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-forca); }
+    .fg-angt  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-angulo); }
+    .fg-vel   { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-veloc); }
+  ]]></style>
+  <defs>
+    <marker id="sf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+            <path class="fg-p-forca" d="M0,0 L10,5 L0,10 z"/>
+          </marker>
+  </defs>
+  <line class="fg-chao" x1="20" y1="120" x2="420" y2="120"/>
+  <path class="fg-hachura" d="M30,120 L18,134 M60,120 L48,134 M90,120 L78,134 M120,120 L108,134 M150,120 L138,134 M180,120 L168,134 M210,120 L198,134 M240,120 L228,134 M270,120 L258,134 M300,120 L288,134 M330,120 L318,134 M360,120 L348,134 M390,120 L378,134"/>
+
+  <rect class="fg-bloco" x="70" y="76" width="60" height="44" rx="3"/>
+  <text class="fg-t" x="100" y="103" text-anchor="middle">A</text>
+
+  <line class="fg-fio" x1="130" y1="98" x2="230" y2="98"/>
+  <text class="fg-trac" x="180" y="88" text-anchor="middle">T</text>
+
+  <rect class="fg-bloco" x="230" y="70" width="72" height="50" rx="3"/>
+  <text class="fg-t" x="266" y="100" text-anchor="middle">B</text>
+
+  <line class="fg-v-forca" x1="302" y1="95" x2="392" y2="95" marker-end="url(#sf)"/>
+  <text class="fg-forc" x="342" y="84">F</text>
+
+  <text class="fg-rot" x="20" y="156">mesa horizontal, sem atrito · fio ideal</text>
+</svg>

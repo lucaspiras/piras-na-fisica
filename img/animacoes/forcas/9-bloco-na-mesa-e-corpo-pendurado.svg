@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Bloco na mesa ligado por fio que passa na polia da borda ate um corpo pendurado.
+     Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Fonte da geometria: atividades/listas/forcas/lista_1_peso_normal_tracao.html
+     Gerado por scripts/extrair-figuras-listas.ps1 — nao editar a mao. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 250" width="880" height="500"
+     role="img" aria-labelledby="forcas-9-bloco-na-mesa-e-corpo-pendurado">
+  <title id="forcas-9-bloco-na-mesa-e-corpo-pendurado">Bloco A sobre uma mesa horizontal, ligado por um fio que passa por uma polia na borda da mesa ao corpo B, pendurado ao lado.</title>
+  <style><![CDATA[
+    svg {
+      --fig-bloco:    #dbeafe;
+      --fig-bloco-b:  #3b82f6;
+      --fig-bloco2:   #e9d5ff;
+      --fig-bloco2-b: #9333ea;
+      --fig-apoio:    #475569;
+      --fig-hachura:  #94a3b8;
+      --fig-rampa:    #f1f5f9;
+      --fig-fio:      #334155;
+      --fig-polia:    #cbd5e1;
+      --fig-polia-b:  #475569;
+      --fig-peso:     #9333ea;
+      --fig-normal:   #16a34a;
+      --fig-tracao:   #0e7490;
+      --fig-forca:    #ef4444;
+      --fig-angulo:   #c2410c;
+      --fig-texto:    #1e293b;
+      --fig-rotulo:   #64748b;
+      --fig-guia:     #cbd5e1;
+      --fig-cabine:   #f8fafc;
+      --fig-pessoa:   #0f766e;
+      --fig-balanca:  #e2e8f0;
+      --fig-veloc:    #2563eb;
+      /* declaradas aqui, e nao herdadas de --fonte, porque o .svg avulso
+         gerado a partir desta seção leva a paleta e mais nada */
+      --fig-fonte-t:  'DM Sans', system-ui, sans-serif;
+      --fig-fonte-m:  'Space Mono', ui-monospace, monospace;
+    }
+
+    /* Quem abrir o arquivo com o sistema no modo escuro ve a versao noturna.
+       Embutido aqui porque o .svg carregado como imagem e um documento a
+       parte e nao enxerga o data-theme da pagina. */
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --fig-bloco:    #1e3a5f;
+        --fig-bloco-b:  #60a5fa;
+        --fig-bloco2:   #3b1f5e;
+        --fig-bloco2-b: #c084fc;
+        --fig-apoio:    #cbd5e1;
+        --fig-hachura:  #64748b;
+        --fig-rampa:    #1e293b;
+        --fig-fio:      #cbd5e1;
+        --fig-polia:    #475569;
+        --fig-polia-b:  #cbd5e1;
+        --fig-peso:     #c084fc;
+        --fig-normal:   #4ade80;
+        --fig-tracao:   #22d3ee;
+        --fig-forca:    #f87171;
+        --fig-angulo:   #fb923c;
+        --fig-texto:    #e2e8f0;
+        --fig-rotulo:   #94a3b8;
+        --fig-guia:     #475569;
+        --fig-cabine:   #172033;
+        --fig-pessoa:   #5eead4;
+        --fig-balanca:  #334155;
+        --fig-veloc:    #60a5fa;
+      }
+    }
+
+    .fg-chao    { fill: none; stroke: var(--fig-apoio); stroke-width: 3; stroke-linecap: round; }
+    .fg-hachura { fill: none; stroke: var(--fig-hachura); stroke-width: 1.5; }
+    .fg-bloco   { fill: var(--fig-bloco); stroke: var(--fig-bloco-b); stroke-width: 2; }
+    .fg-bloco2  { fill: var(--fig-bloco2); stroke: var(--fig-bloco2-b); stroke-width: 2; }
+    .fg-rampa   { fill: var(--fig-rampa); stroke: var(--fig-apoio); stroke-width: 2.5; stroke-linejoin: round; }
+    .fg-fio     { fill: none; stroke: var(--fig-fio); stroke-width: 2.5; stroke-linecap: round; }
+    .fg-polia   { fill: var(--fig-polia); stroke: var(--fig-polia-b); stroke-width: 2; }
+    .fg-eixo    { fill: var(--fig-polia-b); }
+    .fg-guia    { fill: none; stroke: var(--fig-guia); stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .fg-ang     { fill: none; stroke: var(--fig-angulo); stroke-width: 1.8; }
+    .fg-cabine  { fill: var(--fig-cabine); stroke: var(--fig-apoio); stroke-width: 2.5; }
+    .fg-balanca { fill: var(--fig-balanca); stroke: var(--fig-apoio); stroke-width: 2; }
+    .fg-pessoa  { fill: var(--fig-pessoa); }
+    .fg-membro  { fill: none; stroke: var(--fig-pessoa); stroke-width: 3.2; stroke-linecap: round; }
+    .fg-fixo    { fill: none; stroke: var(--fig-apoio); stroke-width: 2; }
+    .fg-v-peso   { fill: none; stroke: var(--fig-peso);   stroke-width: 2.5; }
+    .fg-v-normal { fill: none; stroke: var(--fig-normal); stroke-width: 2.5; }
+    .fg-v-tracao { fill: none; stroke: var(--fig-tracao); stroke-width: 2.5; }
+    .fg-v-forca  { fill: none; stroke: var(--fig-forca);  stroke-width: 2.5; }
+    .fg-v-veloc  { fill: none; stroke: var(--fig-veloc);  stroke-width: 2.5; }
+    .fg-v-acel   { fill: none; stroke: var(--fig-angulo); stroke-width: 2.5; }
+    .fg-p-peso   { fill: var(--fig-peso); }
+    .fg-p-normal { fill: var(--fig-normal); }
+    .fg-p-tracao { fill: var(--fig-tracao); }
+    .fg-p-forca  { fill: var(--fig-forca); }
+    .fg-p-veloc  { fill: var(--fig-veloc); }
+    .fg-p-acel   { fill: var(--fig-angulo); }
+    .fg-t     { font-family: var(--fig-fonte-t); font-size: 12px; fill: var(--fig-texto); }
+    .fg-rot   { font-family: var(--fig-fonte-t); font-size: 11px; fill: var(--fig-rotulo); }
+    .fg-m     { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-texto); }
+    .fg-peso  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-peso); }
+    .fg-norm  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-normal); }
+    .fg-trac  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-tracao); }
+    .fg-forc  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-forca); }
+    .fg-angt  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-angulo); }
+    .fg-vel   { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-veloc); }
+  ]]></style>
+  <defs>
+    <marker id="sp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+            <path class="fg-p-peso" d="M0,0 L10,5 L0,10 z"/>
+          </marker>
+  </defs>
+  <line class="fg-chao" x1="30" y1="100" x2="310" y2="100"/>
+  <line class="fg-chao" x1="60" y1="100" x2="60" y2="200"/>
+  <line class="fg-chao" x1="280" y1="100" x2="280" y2="200"/>
+
+  <rect class="fg-bloco" x="110" y="58" width="64" height="42" rx="3"/>
+  <text class="fg-t" x="142" y="84" text-anchor="middle">A</text>
+
+  <line class="fg-fio" x1="174" y1="78" x2="310" y2="78"/>
+  <text class="fg-trac" x="234" y="68" text-anchor="middle">T</text>
+
+  <circle class="fg-polia" cx="310" cy="100" r="22"/>
+  <circle class="fg-eixo" cx="310" cy="100" r="4.5"/>
+
+  <line class="fg-fio" x1="332" y1="100" x2="332" y2="150"/>
+  <rect class="fg-bloco2" x="296" y="150" width="72" height="46" rx="3"/>
+  <text class="fg-t" x="332" y="178" text-anchor="middle">B</text>
+
+  <line class="fg-v-peso" x1="332" y1="198" x2="332" y2="232" marker-end="url(#sp)"/>
+
+  <text class="fg-rot" x="30" y="228">mesa sem atrito · fio e polia ideais</text>
+</svg>

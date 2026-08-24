@@ -31,6 +31,8 @@ img/animacoes/           # SVG animados avulsos + catálogo (noindex, fora do si
 banco-questoes/          # banco de questões UFRGS (300 questões)
 atividades/              # estudos dirigidos e listas de exercícios interativas
 atividades/estudos_dirigidos/<area>/ed_<slug>/   # um ED por pasta, agrupados pelas áreas de conteudos/
+atividades/listas/<assunto>/                     # listas de exercícios, uma pasta por assunto
+atividades/listas/listas.css                     # folha única de todas as listas
 Programas/               # simulações (Canvas) publicadas como mini-apps
 scripts/                 # utilitários PowerShell (sitemap, favicon, meta tags)
 copa_do_mundo/bolao/     # jogo de bolão — subprojeto separado com Supabase
@@ -118,6 +120,23 @@ Dois pontos em que o ED foge do padrão dos textos de `conteudos/`:
 - O bloco `@media (prefers-reduced-motion: reduce)` só é emitido **quando a figura tem animação**. Nenhuma das atuais tem.
 
 Figura que já nasceu avulsa (`img/animacoes/trabalho-energia/3-referencial-epg.svg`) não passa pelo script: ela é a fonte, e o ED a consome por `<img src>`.
+
+### Figuras das listas de exercícios
+
+Mesma regra, script próprio. Marque o `<svg class="fig-svg">` com `data-avulso="<assunto>/<nome>"`,
+acrescente a linha no manifesto `$Figuras` e rode:
+
+```powershell
+powershell -File scripts\extrair-figuras-listas.ps1
+```
+
+Três diferenças em relação ao script dos EDs, todas ditadas pela estrutura das listas:
+
+- A paleta é **uma só**, na seção `FIGURAS DAS LISTAS` de `atividades/listas/listas.css`. Não há folha por lista.
+- As páginas das listas acompanham o tema do site, então o tema escuro do `.svg` avulso sai do próprio bloco `[data-theme="dark"]`. Não há tabela escrita à mão.
+- As pontas de seta ficam num `<svg class="fig-defs">` compartilhado pela página. O arquivo avulso precisa levar as suas, senão o `marker-end` aponta para nada; o script copia só os `<marker>` que aquela figura usa e os desconsidera na conferência de assinatura.
+
+As famílias tipográficas das figuras têm tokens próprios (`--fig-fonte-t`, `--fig-fonte-m`) dentro do bloco de paleta, e não herdam `--fonte`: o arquivo avulso leva a paleta e mais nada.
 
 ## Convenções de escrita dos textos
 
@@ -243,6 +262,25 @@ Subprojeto isolado com Supabase próprio. Não usa os arquivos `css/style.css` e
 
 **Geração de PDF do regulamento:** Puppeteer instalado fora do OneDrive em `C:\Users\Usuario\reg-pdf-tool\`. Rodar de lá: `node gerar_pdf_regulamento.mjs <input.html> <output.pdf>`. O script usa mídia `screen` e calcula altura real para gerar página única.
 
+## Listas de exercícios (`atividades/listas/`)
+
+Uma pasta por assunto (`MRUV/`, `circuitos/`, `forcas/`, `lancamentos/`, `leis_newton/`), na ordem dos conteúdos: Cinemática, Dinâmica, Eletricidade. A página `lista_de_exercicios.html` da raiz lista os cards em uma `<section class="ed-area" data-tema="<area>">` por área, e o rótulo de cada card usa o **subtópico**, não a área.
+
+**Todo o CSS mora em `atividades/listas/listas.css`.** Nenhuma página de lista abre bloco `<style>`. O `<head>` carrega, nesta ordem:
+
+```html
+<link rel="stylesheet" href="../../../css/style.css" />
+<link rel="stylesheet" href="../listas.css" />
+```
+
+O que for específico de uma lista entra na folha comum, com o escopo indicado no comentário da seção. Duas opções são ligadas por classe no `<body>`, não por CSS avulso:
+
+- `class="sem-tags"` esconde as etiquetas de dificuldade. A etiqueta continua no HTML, que é onde ela serve de referência para quem monta a lista. É o padrão das listas de resposta aberta.
+
+Blocos de marcação disponíveis: `content-hero` com `breadcrumb`, `lista-meta`/`lista-badge`, `lista-formulas` com `formulas-grid`/`formula-group`, `lista-aviso`, `divisor-section`, `question-block` com `question-header`/`question-num`/`q-tag`/`question-text`/`ol.sub-itens`. Notação: `.frac` com `.frac-num`/`.frac-den` para fração, `.raiz` para o radicando, `.vec` para a seta sobre a variável (o `<sub>` fica **fora** do `.vec`, para a seta cobrir só a letra).
+
+As avaliações (mesma lista sem gabarito) continuam em disco, mas fora de `lista_de_exercicios.html`.
+
 ## Estudos dirigidos (`atividades/estudos_dirigidos/`)
 
 Organizados por **grande área**, com os mesmos nomes de pasta usados em `conteudos/`: `grandezas-fisicas/`, `cinematica/`, `dinamica/`, `trabalho-energia/`, `eletricidade/`. Dentro de cada área, uma pasta `ed_<slug>/` por estudo, sempre com os quatro arquivos `index.html`, `style.css`, `quiz.js` e `main.js` (mais os scripts próprios de gráfico ou animação, quando houver).
@@ -264,6 +302,7 @@ powershell -File scripts\gerar-sitemap.ps1         # rodar ao criar/remover pág
 powershell -File scripts\inject-favicon.ps1        # injetar favicons em páginas existentes
 powershell -File scripts\add-meta-tags.ps1         # injetar meta description + OG tags
 powershell -File scripts\extrair-figuras-eds.ps1   # gerar os .svg avulsos das figuras dos EDs
+powershell -File scripts\extrair-figuras-listas.ps1 # idem, para as figuras das listas
 ```
 
 **Atenção:** scripts `.ps1` com caracteres acentuados precisam ser salvos com UTF-8 **com BOM** (PowerShell 5.1 no Windows lê sem BOM como ANSI e corrompe os acentos).

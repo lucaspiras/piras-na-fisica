@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <script src="/js/theme.js"></script>
+  <meta name="description" content="Lista de 20 exercícios de cálculo sobre peso, força normal e tração, com dificuldade progressiva: plano inclinado, elevador, polias e blocos ligados — Física Ensino Médio.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Lista 1 — Peso, Normal e Tração · Piras na Física">
+  <meta property="og:description" content="Vinte problemas de cálculo em ordem crescente de dificuldade, do P = m·g ao bloco na rampa ligado por polia a um corpo pendurado.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/atividades/listas/forcas/lista_1_peso_normal_tracao.html">
+  <title>Lista 1 — Peso, Normal e Tração · Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/style.css" />
+  <link rel="stylesheet" href="../listas.css" />
+</head>
+<body>
+  <a href="#questoes" class="skip-link">Ir para as questões</a>
+
+  <div id="header"></div>
+  <script src="../../../js/include.js"></script>
+
+  <!-- Pontas de seta, definidas uma vez e usadas por todas as figuras. -->
+  <svg class="fig-defs" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="sp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path class="fg-p-peso" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+      <marker id="sn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path class="fg-p-normal" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+      <marker id="st" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path class="fg-p-tracao" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+      <marker id="sf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path class="fg-p-forca" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+      <marker id="sv" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path class="fg-p-veloc" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+      <marker id="sa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path class="fg-p-acel" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+  </svg>
+
+  <div class="content-hero">
+    <div class="content-hero-inner">
+      <nav class="breadcrumb">
+        <a href="../../../atividades.html">Atividades</a>
+        <span>/</span>
+        <a href="../../../lista_de_exercicios.html">Listas de Exercícios</a>
+        <span>/</span>
+        <span>Lista 1 — Peso, Normal e Tração</span>
+      </nav>
+      <h1 class="content-title">Lista 1 — Peso, Normal e Tração<br><em>Vinte problemas em ordem crescente de dificuldade</em></h1>
+      <p class="content-subtitle">
+        Use <strong>g = 10 m/s²</strong>, salvo indicação em contrário. Antes de calcular, faça
+        sempre o <strong>diagrama de corpo livre</strong> do corpo em questão: é ele que diz quais
+        forças entram na conta.
+      </p>
+      <div class="lista-meta">
+        <span class="lista-badge azul">Dinâmica</span>
+        <span class="lista-badge roxo">20 questões</span>
+        <span class="lista-badge muted">Cálculo · Sem gabarito</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="main" id="questoes">
+
+    <!-- Fórmulas -->
+    <section class="lista-formulas" aria-label="Fórmulas desta lista">
+      <div class="lf-label">📐 Fórmulas desta lista</div>
+      <div class="formulas-grid">
+
+        <div class="formula-group">
+          <div class="formula-group-title">Peso e 2ª Lei</div>
+          <ul>
+            <li>P = m · g</li>
+            <li>F<sub>res</sub> = m · a</li>
+          </ul>
+        </div>
+
+        <div class="formula-group">
+          <div class="formula-group-title">Aceleração da gravidade</div>
+          <ul>
+            <li>g<sub>Terra</sub> = 10 m/s² <span>(adotado)</span></li>
+            <li>g<sub>Lua</sub> = 1,6 m/s²</li>
+            <li>g<sub>Marte</sub> = 3,7 m/s²</li>
+          </ul>
+        </div>
+
+        <div class="formula-group">
+          <div class="formula-group-title">Senos e cossenos</div>
+          <ul>
+            <li>sen 30° = cos 60° = <span class="frac"><span class="frac-num">1</span><span class="frac-den">2</span></span></li>
+            <li>sen 45° = cos 45° = <span class="frac"><span class="frac-num">√<span class="raiz">2</span></span><span class="frac-den">2</span></span></li>
+            <li>sen 60° = cos 30° = <span class="frac"><span class="frac-num">√<span class="raiz">3</span></span><span class="frac-den">2</span></span></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="lista-aviso">
+      <span class="la-icon">✏️</span>
+      <div>
+        <strong>Sem gabarito incorporado.</strong>
+        Resolva em folha separada, mostrando os cálculos. As questões estão em ordem crescente de
+        dificuldade: as primeiras aplicam uma fórmula direta, as últimas exigem montar o sistema
+        de equações de dois corpos.
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!--  PESO (Q1–Q4)                                          -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="divisor-section">Força peso</div>
+
+    <!-- Q1 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 1</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Peso · P = m·g</span>
+      </div>
+      <p class="question-text">
+        Uma pessoa tem massa de <strong>60 kg</strong>. Determine:
+      </p>
+      <ol class="question-text sub-itens">
+        <li>o peso dela na Terra;</li>
+        <li>a massa e o peso dela na Lua, onde g = 1,6 m/s²;</li>
+        <li>quantas vezes o peso na Terra é maior que o peso na Lua.</li>
+      </ol>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 2</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Peso · massa a partir do peso</span>
+      </div>
+      <p class="question-text">
+        Um objeto pesa <strong>45 N</strong> na superfície da Terra. Determine a massa dele e o peso
+        que ele teria em Marte, onde g = 3,7 m/s².
+      </p>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 3</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Peso · contexto</span>
+      </div>
+      <p class="question-text">
+        Uma companhia aérea limita a bagagem despachada a <strong>23 kg</strong> por mala. Uma mala está
+        exatamente no limite.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Qual é o peso dessa mala?</li>
+        <li>A balança do check-in mostra "23,0" no visor. Que grandeza ela de fato mede, e por que o número exibido não vem em newtons?</li>
+        <li>Se a mesma mala fosse pesada numa balança idêntica na Lua, o visor mostraria o mesmo número? Justifique com os valores.</li>
+      </ol>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 4</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Peso · sistema</span>
+      </div>
+      <p class="question-text">
+        Um astronauta de <strong>80 kg</strong> veste um traje de <strong>40 kg</strong>. Calcule o peso do
+        conjunto na Terra e na Lua (g = 1,6 m/s²). Comente, com base nos dois valores, por que o traje
+        é praticamente inviável de usar na Terra e perfeitamente utilizável na Lua.
+      </p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!--  NORMAL (Q5–Q10)                                       -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="divisor-section">Força normal</div>
+
+    <!-- Q5 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 5</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Normal · caso básico</span>
+      </div>
+      <p class="question-text">
+        Um bloco de <strong>8 kg</strong> está em repouso sobre uma mesa horizontal. Calcule a intensidade
+        da força normal que a mesa exerce sobre ele e explique, em uma frase, por que ela vale exatamente isso.
+      </p>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 6</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Normal · corpos empilhados</span>
+      </div>
+      <p class="question-text">
+        Sobre o mesmo bloco de <strong>8 kg</strong> da questão anterior é colocado um livro de
+        <strong>2 kg</strong>. Determine:
+      </p>
+      <ol class="question-text sub-itens">
+        <li>a força normal que o bloco exerce sobre o livro;</li>
+        <li>a força normal que a mesa exerce sobre o bloco;</li>
+        <li>por que os dois valores são diferentes.</li>
+      </ol>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 7</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Normal · com tração vertical</span>
+      </div>
+      <p class="question-text">
+        Um bloco de <strong>5 kg</strong> está em repouso sobre uma mesa horizontal. Um fio vertical preso
+        ao bloco o puxa para cima com força de <strong>20 N</strong>, sem tirá-lo da mesa. Calcule a força
+        normal nessa situação e determine que valor de tração faria o bloco perder o contato com a mesa.
+      </p>
+    </div>
+
+    <!-- Q8 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 8</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Normal · força inclinada</span>
+      </div>
+      <p class="question-text">
+        O bloco <strong>A</strong>, de <strong>10 kg</strong>, é empurrado sobre um piso horizontal
+        pela força <strong>F</strong>, de <strong>40 N</strong>, que forma <strong>30°</strong> com a
+        horizontal e aponta para baixo, como mostra a figura. Determine a força normal e compare-a com o
+        peso do bloco.
+      </p>
+      <svg class="fig-svg" data-avulso="forcas/4-forca-inclinada-e-normal" viewBox="0 0 420 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bloco A apoiado num piso horizontal. A força F, inclinada trinta graus abaixo da horizontal, empurra o bloco para a direita e para baixo. Estão indicadas a força normal para cima e o peso para baixo.">
+        <line class="fg-chao" x1="30" y1="150" x2="390" y2="150"/>
+        <path class="fg-hachura" d="M40,150 L28,164 M70,150 L58,164 M100,150 L88,164 M130,150 L118,164 M160,150 L148,164 M190,150 L178,164 M220,150 L208,164 M250,150 L238,164 M280,150 L268,164 M310,150 L298,164 M340,150 L328,164 M370,150 L358,164"/>
+        <rect class="fg-bloco" x="160" y="108" width="72" height="42" rx="3"/>
+        <text class="fg-t" x="196" y="134" text-anchor="middle">A</text>
+
+        <!-- força aplicada, 30° abaixo da horizontal -->
+        <line class="fg-v-forca" x1="96" y1="70" x2="154" y2="104" marker-end="url(#sf)"/>
+        <text class="fg-forc" x="102" y="66">F</text>
+        <!-- horizontal de referência e o ângulo -->
+        <line class="fg-guia" x1="96" y1="70" x2="200" y2="70"/>
+        <path class="fg-ang" d="M136,70 A40,40 0 0,1 131,93"/>
+        <text class="fg-angt" x="142" y="90">30°</text>
+
+        <!-- normal e peso -->
+        <line class="fg-v-normal" x1="196" y1="106" x2="196" y2="48" marker-end="url(#sn)"/>
+        <text class="fg-norm" x="204" y="56">N</text>
+        <line class="fg-v-peso" x1="196" y1="152" x2="196" y2="196" marker-end="url(#sp)"/>
+        <text class="fg-peso" x="204" y="188">P</text>
+      </svg>
+      <p class="fig-legenda">A força aponta para baixo e para a frente: a componente vertical dela aperta o bloco contra o piso.</p>
+    </div>
+
+    <!-- Q9 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 9</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Normal · elevador</span>
+      </div>
+      <p class="question-text">
+        Uma pessoa de <strong>70 kg</strong> está em pé sobre uma balança dentro de um elevador. Determine
+        a leitura da balança, em newtons, em cada situação:
+      </p>
+      <ol class="question-text sub-itens">
+        <li>elevador parado;</li>
+        <li>elevador subindo com velocidade constante de 3 m/s;</li>
+        <li>elevador subindo com aceleração de 2 m/s²;</li>
+        <li>elevador descendo com aceleração de 2 m/s²;</li>
+        <li>o cabo se rompe e o elevador cai livremente.</li>
+      </ol>
+      <span class="dado">Em qual dos casos o peso da pessoa mudou? Responda junto com os cálculos.</span>
+    </div>
+
+    <!-- Q10 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 10</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Normal · plano inclinado</span>
+      </div>
+      <p class="question-text">
+        O bloco <strong>A</strong>, de <strong>6 kg</strong>, está apoiado num plano inclinado de
+        <strong>30°</strong>, sem atrito, como mostra a figura. Decompondo o peso nas direções paralela e perpendicular à rampa, determine:
+      </p>
+      <ol class="question-text sub-itens">
+        <li>a componente do peso paralela à rampa;</li>
+        <li>a componente perpendicular e o valor da força normal;</li>
+        <li>a aceleração com que o bloco desce.</li>
+      </ol>
+      <svg class="fig-svg" data-avulso="forcas/5-normal-no-plano-inclinado" viewBox="0 0 440 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bloco A apoiado sobre um plano inclinado de trinta graus. A força normal sai do centro do bloco perpendicularmente à superfície da rampa, e o peso sai do mesmo ponto, na vertical, para baixo.">
+        <polygon class="fg-rampa" points="40,210 340,210 340,37"/>
+        <path class="fg-ang" d="M96,210 A56,56 0 0,0 88,182"/>
+        <text class="fg-angt" x="102" y="204">30°</text>
+
+        <g transform="translate(190,124) rotate(-30)">
+          <rect class="fg-bloco" x="-32" y="-26" width="64" height="26" rx="3"/>
+          <text class="fg-t" x="0" y="-9" text-anchor="middle">A</text>
+        </g>
+
+        <line class="fg-v-normal" x1="177" y1="101" x2="150" y2="54" marker-end="url(#sn)"/>
+        <text class="fg-norm" x="120" y="49">N</text>
+        <line class="fg-v-peso" x1="190" y1="126" x2="190" y2="196" marker-end="url(#sp)"/>
+        <text class="fg-peso" x="198" y="190">P</text>
+
+        <text class="fg-rot" x="40" y="240">plano inclinado, sem atrito</text>
+      </svg>
+      <p class="fig-legenda">A normal é perpendicular à <em>rampa</em>, e não à vertical: é essa diferença que faz N ser menor que P.</p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!--  TRAÇÃO (Q11–Q16)                                      -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="divisor-section">Força de tração</div>
+
+    <!-- Q11 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 11</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Tração · corpo pendurado</span>
+      </div>
+      <p class="question-text">
+        Um lustre de <strong>4 kg</strong> está pendurado no teto por um único fio, em repouso. Calcule a
+        tração no fio e explique por que tração e peso, nesse caso, <strong>não</strong> formam um par
+        ação–reação, apesar de terem o mesmo valor.
+      </p>
+    </div>
+
+    <!-- Q12 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 12</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Tração · elevador</span>
+      </div>
+      <p class="question-text">
+        O mesmo lustre de <strong>4 kg</strong> agora está pendurado no teto de um elevador. Calcule a tração
+        no fio quando o elevador sobe com aceleração de <strong>3 m/s²</strong> e quando desce com a mesma
+        aceleração. Diga em qual das duas situações o fio corre mais risco de arrebentar.
+      </p>
+    </div>
+
+    <!-- Q13 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 13</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Tração · blocos ligados</span>
+      </div>
+      <p class="question-text">
+        Os blocos <strong>A</strong>, de <strong>3 kg</strong>, e <strong>B</strong>, de
+        <strong>5 kg</strong>, estão ligados por um fio ideal sobre uma mesa horizontal sem atrito. A força
+        <strong>F</strong>, de <strong>24 N</strong>, puxa o bloco B, como mostra a figura. Determine a aceleração do conjunto e a tração no fio.
+      </p>
+      <svg class="fig-svg" data-avulso="forcas/6-dois-blocos-ligados-por-fio" viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dois blocos sobre uma mesa horizontal ligados por um fio, com a tração indicada. O bloco A está à esquerda; o bloco B, maior, à direita. A força F puxa o bloco B para a direita.">
+        <line class="fg-chao" x1="20" y1="120" x2="420" y2="120"/>
+        <path class="fg-hachura" d="M30,120 L18,134 M60,120 L48,134 M90,120 L78,134 M120,120 L108,134 M150,120 L138,134 M180,120 L168,134 M210,120 L198,134 M240,120 L228,134 M270,120 L258,134 M300,120 L288,134 M330,120 L318,134 M360,120 L348,134 M390,120 L378,134"/>
+
+        <rect class="fg-bloco" x="70" y="76" width="60" height="44" rx="3"/>
+        <text class="fg-t" x="100" y="103" text-anchor="middle">A</text>
+
+        <line class="fg-fio" x1="130" y1="98" x2="230" y2="98"/>
+        <text class="fg-trac" x="180" y="88" text-anchor="middle">T</text>
+
+        <rect class="fg-bloco" x="230" y="70" width="72" height="50" rx="3"/>
+        <text class="fg-t" x="266" y="100" text-anchor="middle">B</text>
+
+        <line class="fg-v-forca" x1="302" y1="95" x2="392" y2="95" marker-end="url(#sf)"/>
+        <text class="fg-forc" x="342" y="84">F</text>
+
+        <text class="fg-rot" x="20" y="156">mesa horizontal, sem atrito · fio ideal</text>
+      </svg>
+    </div>
+
+    <!-- Q14 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 14</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Tração · dois fios em ângulo</span>
+      </div>
+      <p class="question-text">
+        Uma luminária, o corpo <strong>A</strong> da figura, tem massa de <strong>6 kg</strong> e é
+        sustentada por dois fios simétricos, cada um formando <strong>30°</strong> com o teto horizontal. Determine a tração em cada fio.
+        Em seguida, explique o que acontece com essa tração se os fios forem <em>afastados</em>, passando a
+        formar apenas 10° com o teto.
+      </p>
+      <svg class="fig-svg" data-avulso="forcas/7-luminaria-em-dois-fios" viewBox="0 0 420 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Corpo A pendurado por dois fios simétricos presos ao teto, cada um formando trinta graus com o teto horizontal. As trações apontam de cada fio para o respectivo ponto de fixação e o peso aponta para baixo.">
+        <line class="fg-chao" x1="30" y1="40" x2="390" y2="40"/>
+        <path class="fg-hachura" d="M40,40 L28,26 M70,40 L58,26 M100,40 L88,26 M130,40 L118,26 M160,40 L148,26 M190,40 L178,26 M220,40 L208,26 M250,40 L238,26 M280,40 L268,26 M310,40 L298,26 M340,40 L328,26 M370,40 L358,26"/>
+
+        <line class="fg-fio" x1="106" y1="40" x2="210" y2="100"/>
+        <line class="fg-fio" x1="314" y1="40" x2="210" y2="100"/>
+
+        <!-- ângulos com o teto -->
+        <path class="fg-ang" d="M140,40 A34,34 0 0,1 135,58"/>
+        <text class="fg-angt" x="142" y="60">30°</text>
+        <path class="fg-ang" d="M280,40 A34,34 0 0,0 285,58"/>
+        <text class="fg-angt" x="252" y="60">30°</text>
+
+        <!-- trações ao longo dos fios, saindo da luminária -->
+        <line class="fg-v-tracao" x1="204" y1="96" x2="140" y2="59" marker-end="url(#st)"/>
+        <text class="fg-trac" x="150" y="86">T</text>
+        <line class="fg-v-tracao" x1="216" y1="96" x2="280" y2="59" marker-end="url(#st)"/>
+        <text class="fg-trac" x="252" y="86">T</text>
+
+        <rect class="fg-bloco" x="176" y="100" width="68" height="34" rx="4"/>
+        <text class="fg-t" x="210" y="122" text-anchor="middle">A</text>
+
+        <line class="fg-v-peso" x1="210" y1="136" x2="210" y2="188" marker-end="url(#sp)"/>
+        <text class="fg-peso" x="218" y="180">P</text>
+      </svg>
+      <p class="fig-legenda">Os dois fios são simétricos, então a tração é a mesma nos dois.</p>
+    </div>
+
+    <!-- Q15 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 15</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Tração · máquina de Atwood</span>
+      </div>
+      <p class="question-text">
+        Os corpos <strong>A</strong>, de <strong>3 kg</strong>, e <strong>B</strong>, de
+        <strong>5 kg</strong>, estão ligados por um fio ideal que passa por uma polia fixa no teto, também
+        ideal. O sistema é abandonado do repouso. Determine a aceleração
+        dos corpos e a tração no fio.
+      </p>
+      <svg class="fig-svg" data-avulso="forcas/8-maquina-de-atwood" viewBox="0 0 360 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Máquina de Atwood: uma polia fixa no teto, com um fio passando por ela sustentando o corpo A de um lado e o corpo B, maior, do outro, em alturas diferentes.">
+        <line class="fg-chao" x1="50" y1="30" x2="310" y2="30"/>
+        <path class="fg-hachura" d="M60,30 L48,16 M90,30 L78,16 M120,30 L108,16 M150,30 L138,16 M180,30 L168,16 M210,30 L198,16 M240,30 L228,16 M270,30 L258,16 M300,30 L288,16"/>
+        <line class="fg-fio" x1="180" y1="30" x2="180" y2="46"/>
+
+        <circle class="fg-polia" cx="180" cy="74" r="28"/>
+        <circle class="fg-eixo" cx="180" cy="74" r="5"/>
+
+        <line class="fg-fio" x1="152" y1="74" x2="152" y2="166"/>
+        <line class="fg-fio" x1="208" y1="74" x2="208" y2="116"/>
+
+        <rect class="fg-bloco" x="122" y="166" width="60" height="38" rx="3"/>
+        <text class="fg-t" x="152" y="190" text-anchor="middle">A</text>
+
+        <rect class="fg-bloco2" x="174" y="116" width="68" height="42" rx="3"/>
+        <text class="fg-t" x="208" y="142" text-anchor="middle">B</text>
+
+        <text class="fg-rot" x="50" y="232">polia e fio ideais · abandonado do repouso</text>
+      </svg>
+    </div>
+
+    <!-- Q16 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 16</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Tração · mesa e polia</span>
+      </div>
+      <p class="question-text">
+        O bloco <strong>A</strong>, de <strong>4 kg</strong>, está sobre uma mesa horizontal sem atrito,
+        ligado por um fio ideal que passa por uma polia na borda da mesa ao corpo <strong>B</strong>, de
+        <strong>6 kg</strong>, pendurado, como mostra a figura. Determine a aceleração do sistema e a tração no fio.
+      </p>
+      <svg class="fig-svg" data-avulso="forcas/9-bloco-na-mesa-e-corpo-pendurado" viewBox="0 0 440 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bloco A sobre uma mesa horizontal, ligado por um fio que passa por uma polia na borda da mesa ao corpo B, pendurado ao lado.">
+        <line class="fg-chao" x1="30" y1="100" x2="310" y2="100"/>
+        <line class="fg-chao" x1="60" y1="100" x2="60" y2="200"/>
+        <line class="fg-chao" x1="280" y1="100" x2="280" y2="200"/>
+
+        <rect class="fg-bloco" x="110" y="58" width="64" height="42" rx="3"/>
+        <text class="fg-t" x="142" y="84" text-anchor="middle">A</text>
+
+        <line class="fg-fio" x1="174" y1="78" x2="310" y2="78"/>
+        <text class="fg-trac" x="234" y="68" text-anchor="middle">T</text>
+
+        <circle class="fg-polia" cx="310" cy="100" r="22"/>
+        <circle class="fg-eixo" cx="310" cy="100" r="4.5"/>
+
+        <line class="fg-fio" x1="332" y1="100" x2="332" y2="150"/>
+        <rect class="fg-bloco2" x="296" y="150" width="72" height="46" rx="3"/>
+        <text class="fg-t" x="332" y="178" text-anchor="middle">B</text>
+
+        <line class="fg-v-peso" x1="332" y1="198" x2="332" y2="232" marker-end="url(#sp)"/>
+
+        <text class="fg-rot" x="30" y="228">mesa sem atrito · fio e polia ideais</text>
+      </svg>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!--  INTEGRADAS (Q17–Q20)                                  -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="divisor-section">Problemas integrados</div>
+
+    <!-- Q17 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 17</span>
+        <span class="q-tag dif">Difícil</span>
+        <span class="q-tag tipo">Normal e tração juntas</span>
+      </div>
+      <p class="question-text">
+        Um elevador <strong>desce freando</strong>, com desaceleração de <strong>2 m/s²</strong>. Dentro dele
+        há uma pessoa de <strong>60 kg</strong> em pé sobre uma balança e um lustre de <strong>3 kg</strong>
+        pendurado no teto por um fio.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Determine o sentido do vetor aceleração do elevador. Cuidado: ele desce, mas está freando.</li>
+        <li>Calcule a leitura da balança.</li>
+        <li>Calcule a tração no fio do lustre.</li>
+        <li>Compare os dois resultados com os valores que seriam obtidos com o elevador parado.</li>
+      </ol>
+
+      <svg class="fig-svg" data-avulso="forcas/10-elevador-freando-na-descida" viewBox="0 0 440 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Corte de uma cabine de elevador suspensa por um cabo. Dentro dela, uma pessoa em pé sobre uma balança no piso e um lustre pendurado no teto por um fio. Do lado de fora, uma seta azul para baixo indica a velocidade e uma seta laranja para cima indica a aceleração, porque o elevador desce freando.">
+        <line class="fg-fio" x1="222" y1="14" x2="222" y2="44"/>
+        <rect class="fg-cabine" x="112" y="44" width="220" height="202" rx="6"/>
+
+        <line class="fg-fio" x1="272" y1="46" x2="272" y2="86"/>
+        <rect class="fg-bloco2" x="248" y="86" width="48" height="30" rx="4"/>
+                <text class="fg-rot" x="272" y="134" text-anchor="middle">lustre</text>
+
+        <line class="fg-chao" x1="118" y1="246" x2="326" y2="246"/>
+        <rect class="fg-balanca" x="140" y="226" width="70" height="20" rx="3"/>
+        <text class="fg-rot" x="216" y="241">balança</text>
+
+        <circle class="fg-pessoa" cx="175" cy="164" r="13"/>
+        <line class="fg-membro" x1="175" y1="177" x2="175" y2="204"/>
+        <line class="fg-membro" x1="157" y1="188" x2="193" y2="188"/>
+        <line class="fg-membro" x1="175" y1="204" x2="165" y2="226"/>
+        <line class="fg-membro" x1="175" y1="204" x2="185" y2="226"/>
+        <text class="fg-rot" x="120" y="150">pessoa</text>
+
+        <line class="fg-v-veloc" x1="70" y1="112" x2="70" y2="172" marker-end="url(#sv)"/>
+        <text class="fg-vel" x="46" y="106">v</text>
+        <text class="fg-rot" x="20" y="192">desce</text>
+
+        <line class="fg-v-acel" x1="378" y1="172" x2="378" y2="112" marker-end="url(#sa)"/>
+        <text class="fg-angt" x="388" y="150">a</text>
+        <text class="fg-rot" x="360" y="192">freando</text>
+
+        <text class="fg-rot" x="20" y="278">corte da cabine · a balança marca a normal que o piso faz na pessoa</text>
+      </svg>
+      <p class="fig-legenda">Descer freando significa velocidade para baixo e aceleração para cima: é o sinal da aceleração que entra na conta.</p>
+    </div>
+
+    <!-- Q18 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 18</span>
+        <span class="q-tag dif">Difícil</span>
+        <span class="q-tag tipo">Tração · três corpos em série</span>
+      </div>
+      <p class="question-text">
+        Os blocos <strong>A</strong>, de <strong>1 kg</strong>, <strong>B</strong>, de
+        <strong>2 kg</strong>, e <strong>C</strong>, de <strong>3 kg</strong>, estão sobre uma mesa horizontal
+        sem atrito, alinhados nessa ordem e ligados em série por dois fios ideais: o fio de tração
+        T<sub>1</sub> liga A a B, e o fio de tração T<sub>2</sub> liga B a C. A força horizontal
+        <strong>F</strong>, de <strong>12 N</strong>, é aplicada ao bloco C, como mostra a figura. Determine:
+      </p>
+      <ol class="question-text sub-itens">
+        <li>a aceleração do conjunto;</li>
+        <li>a tração T<sub>2</sub>, no fio entre C e B;</li>
+        <li>a tração T<sub>1</sub>, no fio entre B e A;</li>
+        <li>por que as duas trações são diferentes, se o fio é o mesmo tipo em ambos os casos.</li>
+      </ol>
+
+      <svg class="fig-svg" data-avulso="forcas/11-tres-blocos-em-serie" viewBox="0 0 460 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Três blocos alinhados sobre uma mesa horizontal, ligados em série por dois fios. Da esquerda para a direita: bloco A, o fio de tração T um, bloco B, o fio de tração T dois, e bloco C, o maior dos três. A força F puxa o bloco C para a direita.">
+        <line class="fg-chao" x1="20" y1="126" x2="440" y2="126"/>
+        <path class="fg-hachura" d="M30,126 L18,140 M60,126 L48,140 M90,126 L78,140 M120,126 L108,140 M150,126 L138,140 M180,126 L168,140 M210,126 L198,140 M240,126 L228,140 M270,126 L258,140 M300,126 L288,140 M330,126 L318,140 M360,126 L348,140 M390,126 L378,140 M420,126 L408,140"/>
+
+        <rect class="fg-bloco" x="44" y="94" width="46" height="32" rx="3"/>
+        <text class="fg-t" x="67" y="115" text-anchor="middle">A</text>
+
+        <line class="fg-fio" x1="90" y1="110" x2="136" y2="110"/>
+        <text class="fg-trac" x="113" y="102" text-anchor="middle">T₁</text>
+
+        <rect class="fg-bloco" x="136" y="84" width="58" height="42" rx="3"/>
+        <text class="fg-t" x="165" y="110" text-anchor="middle">B</text>
+
+        <line class="fg-fio" x1="194" y1="110" x2="246" y2="110"/>
+        <text class="fg-trac" x="220" y="102" text-anchor="middle">T₂</text>
+
+        <rect class="fg-bloco" x="246" y="72" width="70" height="54" rx="3"/>
+        <text class="fg-t" x="281" y="104" text-anchor="middle">C</text>
+
+        <line class="fg-v-forca" x1="316" y1="99" x2="410" y2="99" marker-end="url(#sf)"/>
+        <text class="fg-forc" x="356" y="88">F</text>
+
+        <text class="fg-rot" x="20" y="166">mesa horizontal, sem atrito · fios ideais</text>
+      </svg>
+    </div>
+
+    <!-- Q19 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 19</span>
+        <span class="q-tag dif">Difícil</span>
+        <span class="q-tag tipo">Rampa · bloco preso por fio</span>
+      </div>
+      <p class="question-text">
+        O bloco <strong>A</strong>, de <strong>4 kg</strong>, é mantido em repouso sobre um plano
+        inclinado de <strong>30°</strong>, sem atrito, por um fio preso ao topo da rampa e
+        <strong>paralelo</strong> à superfície dela. Determine
+        a tração no fio e a força normal. Em seguida, calcule quanto passaria a valer a tração se a inclinação
+        subisse para 60°, e comente o que acontece com a normal nesse caso.
+      </p>
+
+      <svg class="fig-svg" data-avulso="forcas/12-bloco-preso-na-rampa" viewBox="0 0 440 275" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bloco A em repouso sobre um plano inclinado de trinta graus, preso por um fio paralelo à superfície da rampa e fixado num suporte no topo dela. Estão indicadas a tração ao longo da rampa, a normal perpendicular à superfície e o peso na vertical.">
+        <polygon class="fg-rampa" points="40,230 340,230 340,57"/>
+        <path class="fg-ang" d="M96,230 A56,56 0 0,0 88,202"/>
+        <text class="fg-angt" x="102" y="224">30°</text>
+
+        <g transform="translate(166,157) rotate(-30)">
+          <rect class="fg-bloco" x="-30" y="-26" width="60" height="26" rx="3"/>
+          <text class="fg-t" x="0" y="-9" text-anchor="middle">A</text>
+        </g>
+
+        <line class="fg-fio" x1="186" y1="131" x2="338" y2="45"/>
+        <line class="fg-chao" x1="340" y1="57" x2="340" y2="42"/>
+        <rect class="fg-balanca" x="322" y="30" width="36" height="12" rx="2"/>
+        <text class="fg-rot" x="340" y="22" text-anchor="middle">suporte fixo</text>
+
+        <line class="fg-v-tracao" x1="187" y1="119" x2="235" y2="92" marker-end="url(#st)"/>
+        <text class="fg-trac" x="240" y="88">T</text>
+        <line class="fg-v-normal" x1="153" y1="134" x2="125" y2="86" marker-end="url(#sn)"/>
+        <text class="fg-norm" x="98" y="80">N</text>
+        <line class="fg-v-peso" x1="166" y1="159" x2="166" y2="222" marker-end="url(#sp)"/>
+        <text class="fg-peso" x="174" y="216">P</text>
+
+        <text class="fg-rot" x="40" y="262">rampa sem atrito · fio paralelo à superfície, preso no topo</text>
+      </svg>
+    </div>
+
+    <!-- Q20 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 20</span>
+        <span class="q-tag dif">Difícil</span>
+        <span class="q-tag tipo">Integradora · rampa, polia e corpo pendurado</span>
+      </div>
+      <p class="question-text">
+        Na configuração da figura, o bloco <strong>A, de 2 kg</strong>, está sobre um plano inclinado de
+        <strong>30°</strong> sem atrito e é ligado por um fio ideal, que passa por uma polia no topo da rampa,
+        ao corpo <strong>B, de 3 kg</strong>, pendurado. O sistema é abandonado do repouso.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Determine, com justificativa, para que lado o sistema se move.</li>
+        <li>Calcule a aceleração do sistema.</li>
+        <li>Calcule a tração no fio.</li>
+        <li>Verifique o resultado aplicando a 2ª Lei ao <em>outro</em> corpo, e mostre que a tração encontrada é a mesma.</li>
+      </ol>
+      <svg class="fig-svg" data-avulso="forcas/13-rampa-com-polia-no-topo" viewBox="0 0 460 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Plano inclinado de trinta graus com o bloco A apoiado sobre ele. Um fio sai do bloco, sobe paralelo à rampa, passa por uma polia montada no topo e desce verticalmente até o corpo B, pendurado fora da rampa.">
+        <polygon class="fg-rampa" points="30,220 280,220 280,76"/>
+        <path class="fg-ang" d="M86,220 A56,56 0 0,0 78,192"/>
+        <text class="fg-angt" x="92" y="214">30°</text>
+
+        <g transform="translate(142,155) rotate(-30)">
+          <rect class="fg-bloco" x="-30" y="-24" width="60" height="24" rx="3"/>
+          <text class="fg-t" x="0" y="-8" text-anchor="middle">A</text>
+        </g>
+
+        <line class="fg-fio" x1="168" y1="123" x2="298" y2="48"/>
+        <text class="fg-trac" x="232" y="78">T</text>
+
+        <line class="fg-fio" x1="280" y1="76" x2="306" y2="62"/>
+        <circle class="fg-polia" cx="306" cy="62" r="16"/>
+        <circle class="fg-eixo" cx="306" cy="62" r="4"/>
+
+        <line class="fg-fio" x1="322" y1="62" x2="322" y2="122"/>
+        <rect class="fg-bloco2" x="290" y="122" width="64" height="44" rx="3"/>
+        <text class="fg-t" x="322" y="149" text-anchor="middle">B</text>
+        <line class="fg-v-peso" x1="322" y1="168" x2="322" y2="212" marker-end="url(#sp)"/>
+        <text class="fg-peso" x="330" y="204">P<tspan font-size="9">B</tspan></text>
+
+        <text class="fg-rot" x="30" y="250">rampa sem atrito · fio e polia ideais</text>
+      </svg>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p>Física · Ensino Médio · Dinâmica · Lista 1 — Peso, Normal e Tração · Piras na Física</p>
+  </footer>
+</body>
+</html>
