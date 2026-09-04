@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Piano acima do horizonte curvo da Terra, com o peso apontando para o centro do planeta.
+     Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Fonte da geometria: disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html
+     Gerado por scripts/extrair-figuras-paginas.ps1 — nao editar a mao. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 300" width="940" height="600"
+     role="img" aria-labelledby="gravitacao-2-piano-e-a-terra">
+  <title id="gravitacao-2-piano-e-a-terra">Um piano suspenso acima da superfície curva da Terra, com uma seta vermelha vertical apontando do piano para o solo, rotulada P igual a m vezes g. Uma linha tracejada segue da ponta da seta para dentro do planeta, na direção do centro.</title>
+  <style><![CDATA[
+    svg {
+      --figa-sol:        #F4A024;
+      --figa-sol-halo:   #FBE3BB;
+      --figa-terra:      #2F6FD0;
+      --figa-continente: #2F9E5E;
+      --figa-contorno:   #16171A;
+      --figa-vetor:      #B3261E;
+      --figa-guia:       #A8ABB2;
+      --figa-texto:      #16171A;
+      --figa-rotulo:     #54565C;
+      --figa-piano:      #23252B;
+      --figa-piano-2:    #3A3D45;
+      --figa-teclas:     #F7F6F2;
+      --figa-solo:       #2F9E5E;
+      --figa-rotulo-claro: #DCE6F5;
+      /* declaradas aqui, e não herdadas do deck, porque o .svg avulso gerado a
+         partir desta seção leva a paleta e mais nada */
+      --figa-fonte-t:    'IBM Plex Sans', system-ui, sans-serif;
+      --figa-fonte-m:    'IBM Plex Mono', ui-monospace, monospace;
+    }
+
+    /* Quem abrir o arquivo com o sistema no modo escuro ve a versao noturna.
+       Embutido aqui porque o .svg carregado como imagem e um documento a
+       parte e nao enxerga o data-theme da pagina. */
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --figa-sol:          #F4B95A;
+        --figa-sol-halo:     #4A3A1C;
+        --figa-terra:        #3F7FD8;
+        --figa-continente:   #3FBB74;
+        --figa-contorno:     #E6E7EA;
+        --figa-vetor:        #F87171;
+        --figa-guia:         #6B7280;
+        --figa-texto:        #E6E7EA;
+        --figa-rotulo:       #A8ABB2;
+        --figa-piano:        #0F1013;
+        --figa-piano-2:      #23252B;
+        --figa-teclas:       #E8E6E0;
+        --figa-solo:         #3FBB74;
+        --figa-rotulo-claro: #DCE6F5;
+      }
+    }
+
+    .fga-sol        { fill: var(--figa-sol); stroke: var(--figa-contorno); stroke-width: 3; }
+    .fga-halo       { fill: none; stroke: var(--figa-sol-halo); stroke-width: 10; }
+    .fga-raio       { fill: none; stroke: var(--figa-sol); stroke-width: 5; stroke-linecap: round; }
+    .fga-terra      { fill: var(--figa-terra); stroke: var(--figa-contorno); stroke-width: 3; }
+    .fga-continente { fill: var(--figa-continente); }
+    .fga-crosta     { fill: none; stroke: var(--figa-solo); stroke-width: 12; }
+    .fga-guia       { fill: none; stroke: var(--figa-guia); stroke-width: 2; stroke-dasharray: 7 6; }
+    .fga-cota       { fill: none; stroke: var(--figa-guia); stroke-width: 2; }
+    .fga-vetor      { fill: none; stroke: var(--figa-vetor); stroke-width: 5; }
+    .fga-ponta      { fill: var(--figa-vetor); }
+    .fga-piano      { fill: var(--figa-piano); stroke: var(--figa-contorno); stroke-width: 3; }
+    .fga-piano-2    { fill: var(--figa-piano-2); stroke: var(--figa-contorno); stroke-width: 3; }
+    .fga-teclas     { fill: var(--figa-teclas); stroke: var(--figa-contorno); stroke-width: 2.5; }
+    .fga-tecla-p    { fill: var(--figa-piano); }
+    .fga-t          { font-family: var(--figa-fonte-t); font-size: 20px; font-weight: 600; fill: var(--figa-texto); }
+    .fga-rot        { font-family: var(--figa-fonte-t); font-size: 17px; fill: var(--figa-rotulo); }
+    .fga-rot-claro  { font-family: var(--figa-fonte-t); font-size: 17px; fill: var(--figa-rotulo-claro); }
+    .fga-m          { font-family: var(--figa-fonte-m); font-size: 20px; font-weight: 500; fill: var(--figa-vetor); }
+    .fga-mg         { font-family: var(--figa-fonte-m); font-size: 19px; font-weight: 500; fill: var(--figa-rotulo); }
+  ]]></style>
+  <defs>
+    <marker id="fga-seta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path class="fga-ponta" d="M0,0 L10,5 L0,10 z"/>
+              </marker>
+  </defs>
+  <path class="fga-terra" d="M-6,250 Q241,180 488,250 L488,306 L-6,306 Z"/>
+  <path class="fga-crosta" d="M-6,250 Q241,180 488,250"/>
+
+  <rect class="fga-piano-2" x="150" y="26" width="182" height="14" rx="4"/>
+  <rect class="fga-piano" x="160" y="40" width="162" height="64" rx="4"/>
+  <rect class="fga-teclas" x="170" y="80" width="142" height="24" rx="2"/>
+  <path class="fga-tecla-p" d="M181,80 h9 v15 h-9 Z M199,80 h9 v15 h-9 Z M226,80 h9 v15 h-9 Z M244,80 h9 v15 h-9 Z M262,80 h9 v15 h-9 Z M289,80 h9 v15 h-9 Z"/>
+  <rect class="fga-piano-2" x="170" y="104" width="13" height="18" rx="2"/>
+  <rect class="fga-piano-2" x="299" y="104" width="13" height="18" rx="2"/>
+
+  <line class="fga-vetor" x1="241" y1="128" x2="241" y2="196" marker-end="url(#fga-seta)"/>
+  <text class="fga-m" x="258" y="170">P = m · g</text>
+  <path class="fga-guia" d="M241,216 L241,292"/>
+  <text class="fga-rot-claro" x="258" y="274">para o centro da Terra</text>
+</svg>

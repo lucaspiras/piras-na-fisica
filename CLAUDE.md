@@ -121,22 +121,28 @@ Dois pontos em que o ED foge do padrão dos textos de `conteudos/`:
 
 Figura que já nasceu avulsa (`img/animacoes/trabalho-energia/3-referencial-epg.svg`) não passa pelo script: ela é a fonte, e o ED a consome por `<img src>`.
 
-### Figuras das listas de exercícios
+### Figuras das listas e das apresentações
 
-Mesma regra, script próprio. Marque o `<svg class="fig-svg">` com `data-avulso="<assunto>/<nome>"`,
-acrescente a linha no manifesto `$Figuras` e rode:
+Mesma regra, um script só para as duas. Marque o `<svg>` com `data-avulso="<assunto>/<nome>"`, acrescente a linha no manifesto `$Figuras` e rode:
 
 ```powershell
-powershell -File scripts\extrair-figuras-listas.ps1
+powershell -File scripts\extrair-figuras-paginas.ps1
 ```
 
-Três diferenças em relação ao script dos EDs, todas ditadas pela estrutura das listas:
+Cada figura declara um **perfil**, que diz de onde sai a paleta e como se resolve o tema escuro do arquivo avulso:
 
-- A paleta é **uma só**, na seção `FIGURAS DAS LISTAS` de `atividades/listas/listas.css`. Não há folha por lista.
-- As páginas das listas acompanham o tema do site, então o tema escuro do `.svg` avulso sai do próprio bloco `[data-theme="dark"]`. Não há tabela escrita à mão.
-- As pontas de seta ficam num `<svg class="fig-defs">` compartilhado pela página. O arquivo avulso precisa levar as suas, senão o `marker-end` aponta para nada; o script copia só os `<marker>` que aquela figura usa e os desconsidera na conferência de assinatura.
+| Perfil | Folha e seção | Classes | Tema escuro |
+|---|---|---|---|
+| `lista` (padrão) | `atividades/listas/listas.css` · `FIGURAS DAS LISTAS` | `.fg-*` | do próprio `[data-theme="dark"]` |
+| `apresentacao` | `css/apresentacoes.css` · `FIGURAS DAS APRESENTAÇÕES` | `.fga-*` | da tabela `$TemasEscuros` |
 
-As famílias tipográficas das figuras têm tokens próprios (`--fig-fonte-t`, `--fig-fonte-m`) dentro do bloco de paleta, e não herdam `--fonte`: o arquivo avulso leva a paleta e mais nada.
+A diferença de tema não é arbitrária: as páginas das listas acompanham o tema do site e já têm o bloco escuro na folha, enquanto os decks são claros por decisão de projeto e não devem ganhar um bloco escuro só para alimentar o script.
+
+Um ponto vale para os dois perfis: as pontas de seta ficam num `<svg>` de defs compartilhado pela página (`fig-defs` nas listas, `fga-defs` nos decks). O arquivo avulso precisa levar as suas, senão o `marker-end` aponta para nada; o script copia só os `<marker>` que aquela figura usa e os desconsidera na conferência de assinatura.
+
+As famílias tipográficas têm tokens próprios dentro do bloco de paleta (`--fig-fonte-*`, `--figa-fonte-*`) e não herdam a fonte da página: o arquivo avulso leva a paleta e mais nada.
+
+Nos decks, a regra vale para o **desenho explicativo**, marcado com `data-avulso`. Os ícones decorativos dos cards seguem com cor no atributo e ficam de fora.
 
 ## Convenções de escrita dos textos
 
@@ -293,6 +299,36 @@ Ao mover um ED de pasta, deixar no caminho antigo um `index.html` de redireciona
 
 **Motor de quiz.** `quiz.js` expõe `window.NLQuizData`, `window.NLQuizState` e `window.NLQuizReset`; `main.js` consome esses globais para montar o relatório em `.txt`. As chaves `quizN` do banco precisam bater com os `<div class="quiz-section" id="quizN">` do HTML e com o mapa `TOPIC_NAMES` de `main.js`. A numeração das questões segue a ordem no DOM, não a das chaves.
 
+## Apresentações (`disciplinas/<disciplina>/apresentacoes/<slug>/`)
+
+Deck HTML de uma página só, sem build. Cada slide é um `<section>` envolvido num `<div class="slide-frame">`; o primeiro leva também `active`. Todo o CSS mora em `css/apresentacoes.css` e o script de navegação vai inline no fim do arquivo. O deck se monta sozinho a partir dos `<section>` presentes: **acrescentar ou remover slide não exige mexer em contador nenhum**.
+
+Três atributos comandam o slide:
+
+| Atributo | Para que serve |
+|---|---|
+| `data-label` | agrupa slides do mesmo assunto; é o rótulo curto da barra inferior |
+| `data-screen-label` | nome do slide no seletor e no rodapé |
+| `data-speaker-notes` | notas do apresentador, abertas com a tecla `n` |
+
+O slide roda em 1920×1080 e é escalado por transform, então os tamanhos vão em `px` no `style` inline, não em `rem`. As cores de tema saem de `var(--acento)`, `var(--acento-suave)`, `var(--acento2-suave)` e `var(--acento2-escuro)`, definidas por `data-tema` no `<body>`, com os mesmos nomes de área de `conteudos/`.
+
+### Exercício ocupa dois slides
+
+**Todo exercício entra em dois slides: um só com o enunciado, e a resolução no slide seguinte.** Enunciado e resposta juntos na mesma tela tiram da turma a chance de tentar, que é o motivo de o exercício estar ali.
+
+Como fica cada um dos dois:
+
+- **Enunciado.** Olho da seção, a pergunta em corpo grande, e o que a turma precisa para trabalhar: os dados, as alternativas, a figura, a tabela a preencher. Onde a resolução ficava, entra o que orienta sem entregar — a pista, o dado que falta calcular, a coluna vazia. As notas do apresentador pedem a resposta antes de virar o slide e dizem qual erro costuma aparecer.
+- **Resolução.** Retoma o enunciado em corpo menor, para ninguém perder o contexto, e traz a resolução na caixa `var(--acento-suave)`. Em questão de múltipla escolha, as alternativas voltam e a correta fica destacada na cor de acento.
+- `data-screen-label` termina em `· enunciado` e `· resolução`; o `data-label` é o mesmo nos dois, para o par ficar junto na barra.
+
+### Figuras dos slides
+
+Desenho explicativo de slide segue a regra geral das figuras: cor só em classe, na seção `FIGURAS DAS APRESENTAÇÕES` de `css/apresentacoes.css`, e `data-avulso` no `<svg>` para o script gerar o `.svg` solto e o card do catálogo. Ícone decorativo de card não entra nessa conta.
+
+Serve de modelo a apresentação de associação de resistores, que já nasceu nesse formato (`Exemplo N · problema` / `Exemplo N · solução`).
+
 ## Scripts PowerShell (`scripts/`)
 
 Rodar sempre a partir da raiz do projeto:
@@ -302,7 +338,7 @@ powershell -File scripts\gerar-sitemap.ps1         # rodar ao criar/remover pág
 powershell -File scripts\inject-favicon.ps1        # injetar favicons em páginas existentes
 powershell -File scripts\add-meta-tags.ps1         # injetar meta description + OG tags
 powershell -File scripts\extrair-figuras-eds.ps1   # gerar os .svg avulsos das figuras dos EDs
-powershell -File scripts\extrair-figuras-listas.ps1 # idem, para as figuras das listas
+powershell -File scripts\extrair-figuras-paginas.ps1 # idem, para listas e apresentações
 ```
 
 **Atenção:** scripts `.ps1` com caracteres acentuados precisam ser salvos com UTF-8 **com BOM** (PowerShell 5.1 no Windows lê sem BOM como ANSI e corrompe os acentos).

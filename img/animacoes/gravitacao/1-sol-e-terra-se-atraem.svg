@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sol e Terra se atraindo: o par de setas tem o mesmo tamanho nos dois corpos.
+     Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Fonte da geometria: disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html
+     Gerado por scripts/extrair-figuras-paginas.ps1 — nao editar a mao. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 300" width="940" height="600"
+     role="img" aria-labelledby="gravitacao-1-sol-e-terra-se-atraem">
+  <title id="gravitacao-1-sol-e-terra-se-atraem">O Sol, grande, à esquerda, e a Terra, pequena, à direita. Uma seta parte do Sol na direção da Terra e outra parte da Terra na direção do Sol; as duas têm o mesmo comprimento e estão rotuladas F g, porque as duas forças do par têm o mesmo módulo. Embaixo, uma cota marca a distância d entre os centros.</title>
+  <style><![CDATA[
+    svg {
+      --figa-sol:        #F4A024;
+      --figa-sol-halo:   #FBE3BB;
+      --figa-terra:      #2F6FD0;
+      --figa-continente: #2F9E5E;
+      --figa-contorno:   #16171A;
+      --figa-vetor:      #B3261E;
+      --figa-guia:       #A8ABB2;
+      --figa-texto:      #16171A;
+      --figa-rotulo:     #54565C;
+      --figa-piano:      #23252B;
+      --figa-piano-2:    #3A3D45;
+      --figa-teclas:     #F7F6F2;
+      --figa-solo:       #2F9E5E;
+      --figa-rotulo-claro: #DCE6F5;
+      /* declaradas aqui, e não herdadas do deck, porque o .svg avulso gerado a
+         partir desta seção leva a paleta e mais nada */
+      --figa-fonte-t:    'IBM Plex Sans', system-ui, sans-serif;
+      --figa-fonte-m:    'IBM Plex Mono', ui-monospace, monospace;
+    }
+
+    /* Quem abrir o arquivo com o sistema no modo escuro ve a versao noturna.
+       Embutido aqui porque o .svg carregado como imagem e um documento a
+       parte e nao enxerga o data-theme da pagina. */
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --figa-sol:          #F4B95A;
+        --figa-sol-halo:     #4A3A1C;
+        --figa-terra:        #3F7FD8;
+        --figa-continente:   #3FBB74;
+        --figa-contorno:     #E6E7EA;
+        --figa-vetor:        #F87171;
+        --figa-guia:         #6B7280;
+        --figa-texto:        #E6E7EA;
+        --figa-rotulo:       #A8ABB2;
+        --figa-piano:        #0F1013;
+        --figa-piano-2:      #23252B;
+        --figa-teclas:       #E8E6E0;
+        --figa-solo:         #3FBB74;
+        --figa-rotulo-claro: #DCE6F5;
+      }
+    }
+
+    .fga-sol        { fill: var(--figa-sol); stroke: var(--figa-contorno); stroke-width: 3; }
+    .fga-halo       { fill: none; stroke: var(--figa-sol-halo); stroke-width: 10; }
+    .fga-raio       { fill: none; stroke: var(--figa-sol); stroke-width: 5; stroke-linecap: round; }
+    .fga-terra      { fill: var(--figa-terra); stroke: var(--figa-contorno); stroke-width: 3; }
+    .fga-continente { fill: var(--figa-continente); }
+    .fga-crosta     { fill: none; stroke: var(--figa-solo); stroke-width: 12; }
+    .fga-guia       { fill: none; stroke: var(--figa-guia); stroke-width: 2; stroke-dasharray: 7 6; }
+    .fga-cota       { fill: none; stroke: var(--figa-guia); stroke-width: 2; }
+    .fga-vetor      { fill: none; stroke: var(--figa-vetor); stroke-width: 5; }
+    .fga-ponta      { fill: var(--figa-vetor); }
+    .fga-piano      { fill: var(--figa-piano); stroke: var(--figa-contorno); stroke-width: 3; }
+    .fga-piano-2    { fill: var(--figa-piano-2); stroke: var(--figa-contorno); stroke-width: 3; }
+    .fga-teclas     { fill: var(--figa-teclas); stroke: var(--figa-contorno); stroke-width: 2.5; }
+    .fga-tecla-p    { fill: var(--figa-piano); }
+    .fga-t          { font-family: var(--figa-fonte-t); font-size: 20px; font-weight: 600; fill: var(--figa-texto); }
+    .fga-rot        { font-family: var(--figa-fonte-t); font-size: 17px; fill: var(--figa-rotulo); }
+    .fga-rot-claro  { font-family: var(--figa-fonte-t); font-size: 17px; fill: var(--figa-rotulo-claro); }
+    .fga-m          { font-family: var(--figa-fonte-m); font-size: 20px; font-weight: 500; fill: var(--figa-vetor); }
+    .fga-mg         { font-family: var(--figa-fonte-m); font-size: 19px; font-weight: 500; fill: var(--figa-rotulo); }
+  ]]></style>
+  <defs>
+    <marker id="fga-seta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                <path class="fga-ponta" d="M0,0 L10,5 L0,10 z"/>
+              </marker>
+  </defs>
+  <circle class="fga-halo" cx="86" cy="140" r="66"/>
+  <path class="fga-raio" d="M86,44 L86,28 M18,140 L2,140 M38,92 L26,80 M38,188 L26,200 M134,92 L146,80 M134,188 L146,200 M86,236 L86,252"/>
+  <circle class="fga-sol" cx="86" cy="140" r="56"/>
+  <text class="fga-t" x="86" y="146" text-anchor="middle">Sol</text>
+
+  <circle class="fga-terra" cx="386" cy="140" r="30"/>
+  <path class="fga-continente" d="M368,124 q12,-8 22,-2 q8,5 2,12 q-10,8 -20,3 q-8,-5 -4,-13 Z M378,152 q10,-4 16,2 q4,6 -4,9 q-9,3 -14,-3 q-3,-5 2,-8 Z"/>
+  <text class="fga-t" x="386" y="196" text-anchor="middle">Terra</text>
+
+  <line class="fga-vetor" x1="150" y1="140" x2="214" y2="140" marker-end="url(#fga-seta)"/>
+  <text class="fga-m" x="182" y="126" text-anchor="middle">F<tspan baseline-shift="sub" font-size="14">g</tspan></text>
+
+  <line class="fga-vetor" x1="350" y1="140" x2="286" y2="140" marker-end="url(#fga-seta)"/>
+  <text class="fga-m" x="318" y="126" text-anchor="middle">F<tspan baseline-shift="sub" font-size="14">g</tspan></text>
+
+  <path class="fga-cota" d="M86,252 L86,272 M386,252 L386,272 M86,264 L386,264"/>
+  <text class="fga-mg" x="236" y="290" text-anchor="middle">d</text>
+</svg>

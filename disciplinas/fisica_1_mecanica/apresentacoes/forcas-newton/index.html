@@ -32,6 +32,13 @@
 <body data-tema="dinamica">
   <div id="deck-wrap">
     <div id="deck-stage">
+      <svg class="fga-defs" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden;" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="fga-seta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+            <path class="fga-ponta" d="M0,0 L10,5 L0,10 z"/>
+          </marker>
+        </defs>
+      </svg>
       <div class="slide-frame active">
 <section data-label="Capa" data-screen-label="Capa" data-speaker-notes="Peso · Normal · Tração · Atrito" style="width:100%;height:100%;box-sizing:border-box;padding:110px 120px;display:flex;flex-direction:column;justify-content:space-between;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;position:relative;overflow:hidden;">
   <div style="display:flex;align-items:center;gap:18px;position:relative;">
@@ -110,25 +117,75 @@
       </div>
 
       <div class="slide-frame">
-<section data-label="Força Peso" data-screen-label="Força peso" data-speaker-notes="O peso é a força gravitacional que um corpo sofre pela proximidade com outros corpos massivos. Nas proximidades da Terra, Fg = m·g, com g ≈ 9,81 m/s² (ou 10 m/s² para simplificar)." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+<section data-label="Força gravitacional" data-screen-label="Força gravitacional (Newton)" data-speaker-notes="Newton uniu dois fenômenos que ninguém juntava: a maçã que cai e a Lua que não cai. A mesma lei descreve os dois. Chame atenção para o par de setas do desenho — o Sol puxa a Terra com a mesma intensidade com que a Terra puxa o Sol, apesar da diferença de tamanho. É a 3ª Lei aparecendo aqui." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força peso · gravitação</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">A lei da gravitação universal</h2>
+  </div>
+  <div style="display:flex;gap:70px;margin-top:38px;flex:1;align-items:center;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:26px;">
+      <p style="font-size:32px;line-height:1.45;margin:0;">Newton percebeu que a maçã que cai e a Lua que orbita obedecem à mesma regra: <strong>dois corpos quaisquer se atraem</strong>, com intensidade que cresce com as massas e cai com o quadrado da distância.</p>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:52px;font-weight:500;display:flex;align-items:center;">F<sub style="font-size:26px;">g</sub>&nbsp;=&nbsp;G&nbsp;·&nbsp;<span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.15;margin:0 .18em;"><span style="padding:0 .3em .06em;border-bottom:3px solid currentColor;">M · m</span><span style="padding:.06em .3em 0;">d²</span></span></div>
+      <div style="font-size:25px;line-height:1.55;color:#54565c;"><strong style="color:#16171A;">M</strong> e <strong style="color:#16171A;">m</strong>: as massas dos dois corpos · <strong style="color:#16171A;">d</strong>: distância entre os centros<br>G = 6,67 × 10<sup>−11</sup> N·m²/kg², a mesma em todo o universo</div>
+    </div>
+    <div style="flex:0 0 560px;background:var(--acento-suave);border-radius:24px;padding:38px 34px;">
+      <svg data-avulso="gravitacao/1-sol-e-terra-se-atraem" viewBox="0 0 470 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="O Sol, grande, à esquerda, e a Terra, pequena, à direita. Uma seta parte do Sol na direção da Terra e outra parte da Terra na direção do Sol; as duas têm o mesmo comprimento e estão rotuladas F g, porque as duas forças do par têm o mesmo módulo. Embaixo, uma cota marca a distância d entre os centros." style="width:100%;height:auto;">
+        <circle class="fga-halo" cx="86" cy="140" r="66"/>
+        <path class="fga-raio" d="M86,44 L86,28 M18,140 L2,140 M38,92 L26,80 M38,188 L26,200 M134,92 L146,80 M134,188 L146,200 M86,236 L86,252"/>
+        <circle class="fga-sol" cx="86" cy="140" r="56"/>
+        <text class="fga-t" x="86" y="146" text-anchor="middle">Sol</text>
+
+        <circle class="fga-terra" cx="386" cy="140" r="30"/>
+        <path class="fga-continente" d="M368,124 q12,-8 22,-2 q8,5 2,12 q-10,8 -20,3 q-8,-5 -4,-13 Z M378,152 q10,-4 16,2 q4,6 -4,9 q-9,3 -14,-3 q-3,-5 2,-8 Z"/>
+        <text class="fga-t" x="386" y="196" text-anchor="middle">Terra</text>
+
+        <line class="fga-vetor" x1="150" y1="140" x2="214" y2="140" marker-end="url(#fga-seta)"/>
+        <text class="fga-m" x="182" y="126" text-anchor="middle">F<tspan baseline-shift="sub" font-size="14">g</tspan></text>
+
+        <line class="fga-vetor" x1="350" y1="140" x2="286" y2="140" marker-end="url(#fga-seta)"/>
+        <text class="fga-m" x="318" y="126" text-anchor="middle">F<tspan baseline-shift="sub" font-size="14">g</tspan></text>
+
+        <path class="fga-cota" d="M86,252 L86,272 M386,252 L386,272 M86,264 L386,264"/>
+        <text class="fga-mg" x="236" y="290" text-anchor="middle">d</text>
+      </svg>
+      <p style="font-size:24px;line-height:1.45;color:#3a3c42;margin:14px 4px 0;text-align:center;">As duas setas têm o mesmo tamanho: o Sol puxa a Terra tanto quanto a Terra puxa o Sol.</p>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Força Peso" data-screen-label="Da gravitação ao peso: P = m·g" data-speaker-notes="Aqui a expressão geral vira a fórmula do dia a dia. Perto da superfície, M e d não mudam: M é sempre a massa da Terra e d é sempre o raio do planeta. O que sobra entre parênteses é constante, e é a ela que chamamos g. Vale a pena dizer o limite: a 10 km de altitude, d mudou 0,16% em relação ao raio, e por isso a simplificação se sustenta." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
   <div style="display:flex;flex-direction:column;gap:14px;">
     <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força peso</span>
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">O que é a força peso</h2>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Perto da Terra, tudo vira P = m · g</h2>
   </div>
-  <div style="display:flex;gap:70px;margin-top:44px;flex:1;align-items:center;">
-    <div style="flex:1;display:flex;flex-direction:column;gap:30px;">
-      <p style="font-size:34px;line-height:1.45;margin:0;">Também chamada de força <strong>gravitacional</strong>, é a força que um corpo sofre pela proximidade com outros corpos massivos.</p>
-      <p style="font-size:34px;line-height:1.45;margin:0;">Nas proximidades da Terra, o peso vale:</p>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:64px;font-weight:500;">F<sub style="font-size:32px;">g</sub> = m · g</div>
-      <div style="font-size:26px;color:#54565c;">g ≈ 9,81 m/s² (frequentemente adotado como 10 m/s²)</div>
+  <div style="display:flex;gap:70px;margin-top:38px;flex:1;align-items:center;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:24px;">
+      <p style="font-size:32px;line-height:1.45;margin:0;">Na superfície da Terra, dois dos três fatores param de variar: <strong>M</strong> é sempre a massa do planeta e <strong>d</strong> é sempre o raio dele.</p>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:38px;font-weight:500;display:flex;align-items:center;flex-wrap:wrap;gap:0 10px;">F<sub style="font-size:20px;">g</sub> = <span style="display:inline-flex;align-items:center;">(&nbsp;G&nbsp;·&nbsp;<span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.15;margin:0 .18em;"><span style="padding:0 .3em .06em;border-bottom:3px solid currentColor;">M<sub style="font-size:20px;">T</sub></span><span style="padding:.06em .3em 0;">R<sub style="font-size:20px;">T</sub>²</span></span>&nbsp;)</span> · m</div>
+      <p style="font-size:30px;line-height:1.45;margin:0;">O que está entre parênteses é uma constante. Chamamos essa constante de <strong>g</strong>:</p>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:58px;font-weight:500;color:var(--acento);">P = m · g</div>
+      <div style="font-size:25px;line-height:1.5;color:#54565c;">g ≈ 9,8 m/s² na superfície da Terra, adotado como 10 m/s² quando o problema pede conta de cabeça. A simplificação vale enquanto a altura for pequena diante do raio do planeta — o que cobre tudo que fazemos por aqui.</div>
     </div>
-    <div style="flex:0 0 480px;background:var(--acento-suave);border-radius:24px;padding:44px;display:flex;align-items:center;justify-content:center;">
-      <svg viewBox="0 0 300 300" style="width:100%;height:auto;">
-        <rect x="110" y="60" width="80" height="60" rx="8" style="fill:var(--acento)"></rect>
-        <line x1="150" y1="120" x2="150" y2="230" stroke="#16171A" stroke-width="7"></line>
-        <polygon points="130,205 150,245 170,205" fill="#16171A"></polygon>
-        <text x="168" y="185" font-family="IBM Plex Mono, monospace" font-size="28" fill="#16171A">F<tspan baseline-shift="sub" font-size="18">g</tspan></text>
+    <div style="flex:0 0 560px;background:var(--acento-suave);border-radius:24px;padding:38px 34px;">
+      <svg data-avulso="gravitacao/2-piano-e-a-terra" viewBox="0 0 470 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Um piano suspenso acima da superfície curva da Terra, com uma seta vermelha vertical apontando do piano para o solo, rotulada P igual a m vezes g. Uma linha tracejada segue da ponta da seta para dentro do planeta, na direção do centro." style="width:100%;height:auto;">
+        <path class="fga-terra" d="M-6,250 Q241,180 488,250 L488,306 L-6,306 Z"/>
+        <path class="fga-crosta" d="M-6,250 Q241,180 488,250"/>
+
+        <rect class="fga-piano-2" x="150" y="26" width="182" height="14" rx="4"/>
+        <rect class="fga-piano" x="160" y="40" width="162" height="64" rx="4"/>
+        <rect class="fga-teclas" x="170" y="80" width="142" height="24" rx="2"/>
+        <path class="fga-tecla-p" d="M181,80 h9 v15 h-9 Z M199,80 h9 v15 h-9 Z M226,80 h9 v15 h-9 Z M244,80 h9 v15 h-9 Z M262,80 h9 v15 h-9 Z M289,80 h9 v15 h-9 Z"/>
+        <rect class="fga-piano-2" x="170" y="104" width="13" height="18" rx="2"/>
+        <rect class="fga-piano-2" x="299" y="104" width="13" height="18" rx="2"/>
+
+        <line class="fga-vetor" x1="241" y1="128" x2="241" y2="196" marker-end="url(#fga-seta)"/>
+        <text class="fga-m" x="258" y="170">P = m · g</text>
+        <path class="fga-guia" d="M241,216 L241,292"/>
+        <text class="fga-rot-claro" x="258" y="274">para o centro da Terra</text>
       </svg>
+      <p style="font-size:24px;line-height:1.45;color:#3a3c42;margin:14px 4px 0;text-align:center;">O peso é a mesma força gravitacional da lei geral, escrita de um jeito mais curto.</p>
     </div>
   </div>
 </section>
@@ -259,10 +316,27 @@
       </div>
 
       <div class="slide-frame">
-<section data-label="Atrito estático" data-screen-label="Atrito estático + exercício" data-speaker-notes="O valor máximo do atrito estático é Faemáx = μe·N. Exercício: bloco de 1 kg, μe=0,5 (N=10N, Faemáx=5N). Para F=2N e F=4N o bloco fica parado e o atrito iguala F. Para F=5N, está no limiar. Para F=6N, o bloco passa a se mover, pois a força aplicada supera o atrito estático máximo." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+<section data-label="Atrito estático" data-screen-label="Atrito estático · enunciado" data-speaker-notes="Bloco de 1 kg sobre superfície horizontal, μe = 0,5, portanto N = 10 N. Peça à turma que preencha as duas colunas vazias para as quatro forças aplicadas antes de virar o slide. O caso F = 6 N é o que separa quem entendeu o limiar." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
   <div style="display:flex;flex-direction:column;gap:14px;">
-    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força de atrito</span>
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:56px;font-weight:600;margin:0;letter-spacing:-0.01em;">Atrito estático — bloco de 1 kg, μₑ = 0,5</h2>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força de atrito · Exercício</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:56px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.15;">Atrito estático — bloco de 1 kg, μₑ = 0,5</h2>
+  </div>
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:32px;margin-top:24px;">N = 10 N · F<sub style="font-size:18px;">aeMáx</sub> = μₑ · N = <strong style="color:var(--acento);">?</strong></div>
+  <div style="margin-top:30px;flex:1;display:flex;flex-direction:column;">
+    <div style="display:grid;grid-template-columns:1fr 1fr 2fr;padding:16px 28px;font-family:'IBM Plex Mono',monospace;font-size:22px;color:#54565c;text-transform:uppercase;letter-spacing:0.06em;"><span>Força aplicada</span><span>Atrito estático</span><span>O que acontece</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 2fr;padding:18px 28px;font-size:28px;border-top:2px solid #16171A;align-items:center;"><span>F = 2 N</span><span style="color:#54565c;">?</span><span style="color:#54565c;">?</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 2fr;padding:18px 28px;font-size:28px;border-top:1px solid #d8d8d2;align-items:center;"><span>F = 4 N</span><span style="color:#54565c;">?</span><span style="color:#54565c;">?</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 2fr;padding:18px 28px;font-size:28px;border-top:1px solid #d8d8d2;align-items:center;"><span>F = 5 N</span><span style="color:#54565c;">?</span><span style="color:#54565c;">?</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 2fr;padding:18px 28px;font-size:28px;border-top:1px solid #d8d8d2;align-items:center;"><span>F = 6 N</span><span style="color:#54565c;">?</span><span style="color:#54565c;">?</span></div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Atrito estático" data-screen-label="Atrito estático · resolução" data-speaker-notes="O valor máximo do atrito estático é FaeMáx = μe·N = 5 N. Para F = 2 N e F = 4 N o bloco fica parado e o atrito iguala F. Para F = 5 N, está no limiar. Para F = 6 N, o bloco passa a se mover, pois a força aplicada supera o atrito estático máximo." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força de atrito · Exercício · resolução</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:56px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.15;">Atrito estático — bloco de 1 kg, μₑ = 0,5</h2>
   </div>
   <div style="font-family:'IBM Plex Mono',monospace;font-size:32px;margin-top:24px;">F<sub style="font-size:18px;">aeMáx</sub> = μₑ · N = 0,5 · 10 = <strong style="color:var(--acento);">5 N</strong></div>
   <div style="margin-top:30px;flex:1;display:flex;flex-direction:column;">
@@ -301,14 +375,37 @@
       </div>
 
       <div class="slide-frame">
-<section data-label="Exercício UFSC" data-screen-label="Exercício: UFSC (3 forças)" data-speaker-notes="Questão sobre faixa possível da força resultante de duas forças conhecidas. Relaciona-se diretamente com o slide de força resultante do bloco 03." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+<section data-label="Exercício UFSC" data-screen-label="Exercício: UFSC (3 forças) · enunciado" data-speaker-notes="Questão sobre a faixa possível da resultante de duas forças conhecidas. Relaciona-se diretamente com o slide de força resultante do bloco 03. Deixe a turma testar valores antes de virar o slide." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
   <div style="display:flex;flex-direction:column;gap:14px;">
     <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Exercício · UFSC</span>
     <h2 style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.3;">Uma força de 8 N e outra de 5 N atuam num corpo, mantido em repouso por uma terceira força. Que valor essa força NÃO pode ter?</h2>
   </div>
-  <div style="display:flex;gap:60px;margin-top:30px;flex:1;">
-    <div style="flex:1;display:flex;flex-direction:column;gap:16px;font-size:32px;justify-content:center;">
-      <div>a) 12 N</div><div>b) 8 N</div><div>c) 14 N</div><div>d) 3 N</div><div>e) 4 N</div>
+  <div style="flex:1;display:flex;align-items:center;justify-content:center;margin-top:30px;gap:70px;">
+    <div style="background:#fff;border-radius:24px;padding:46px 60px;display:flex;flex-direction:column;gap:14px;font-size:36px;min-width:420px;">
+      <div style="padding:10px 20px;">a) 12 N</div>
+      <div style="padding:10px 20px;">b) 8 N</div>
+      <div style="padding:10px 20px;">c) 14 N</div>
+      <div style="padding:10px 20px;">d) 3 N</div>
+      <div style="padding:10px 20px;">e) 4 N</div>
+    </div>
+    <div style="flex:0 0 640px;background:#fff;border-radius:24px;padding:44px 46px;font-size:31px;line-height:1.5;color:#3a3c42;">Se o corpo está em repouso, a terceira força tem de anular a resultante das outras duas. Pergunte-se primeiro entre que valores essa resultante pode ficar.</div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Exercício UFSC" data-screen-label="Exercício: UFSC (3 forças) · resolução" data-speaker-notes="A resultante de duas forças varia entre a diferença e a soma dos módulos, conforme o ângulo entre elas." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Exercício · UFSC · resolução</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.35;">Uma força de 8 N e outra de 5 N atuam num corpo, mantido em repouso por uma terceira força. Que valor essa força NÃO pode ter?</h2>
+  </div>
+  <div style="display:flex;gap:60px;margin-top:26px;flex:1;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:14px;font-size:30px;justify-content:center;">
+      <div style="padding:10px 20px;">a) 12 N</div>
+      <div style="padding:10px 20px;">b) 8 N</div>
+      <div style="background:var(--acento-suave);border-radius:10px;padding:10px 20px;color:var(--acento);font-weight:600;">c) 14 N</div>
+      <div style="padding:10px 20px;">d) 3 N</div>
+      <div style="padding:10px 20px;">e) 4 N</div>
     </div>
     <div style="flex:1;background:var(--acento-suave);border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:16px;justify-content:center;">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:var(--acento);">Resolução</div>
@@ -319,13 +416,37 @@
       </div>
 
       <div class="slide-frame">
-<section data-label="Exercício bola" data-screen-label="Exercício: bola lançada" data-speaker-notes="Clássico de vestibular sobre as forças em um lançamento vertical, desprezando a resistência do ar. Em qualquer ponto da trajetória — subindo, no topo ou descendo — a única força atuante é o peso." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+<section data-label="Exercício bola" data-screen-label="Exercício: bola lançada · enunciado" data-speaker-notes="Clássico de vestibular sobre as forças em um lançamento vertical. Peça o diagrama de corpo livre nos três pontos antes de virar o slide; o ponto B, com velocidade nula, é onde a turma costuma escrever que não há força alguma." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
   <div style="display:flex;flex-direction:column;gap:14px;">
     <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Exercício · lançamento vertical</span>
     <h2 style="font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.3;">Um menino lança uma bola verticalmente para cima. Desprezando a resistência do ar, qual força atua sobre a bola enquanto ela sobe, no topo e enquanto desce?</h2>
   </div>
-  <div style="flex:1;display:flex;align-items:center;margin-top:30px;gap:60px;">
-    <div style="flex:0 0 460px;background:#fff;border-radius:24px;padding:36px;">
+  <div style="flex:1;display:flex;align-items:center;justify-content:center;margin-top:30px;gap:70px;">
+    <div style="flex:0 0 420px;background:#fff;border-radius:24px;padding:36px;">
+      <svg viewBox="0 0 300 300" style="width:100%;height:auto;">
+        <line x1="150" y1="30" x2="150" y2="270" stroke="#c9ccd4" stroke-width="2" stroke-dasharray="6 6"></line>
+        <circle cx="150" cy="250" r="16" style="fill:var(--acento)"></circle>
+        <circle cx="150" cy="150" r="16" style="fill:var(--acento)"></circle>
+        <circle cx="150" cy="60" r="16" style="fill:var(--acento)"></circle>
+        <line x1="150" y1="270" x2="150" y2="300" stroke="#16171A" stroke-width="5"></line>
+        <text x="15" y="255" font-family="IBM Plex Mono, monospace" font-size="24" fill="#54565c">A</text>
+        <text x="15" y="155" font-family="IBM Plex Mono, monospace" font-size="24" fill="#54565c">B</text>
+        <text x="15" y="65" font-family="IBM Plex Mono, monospace" font-size="24" fill="#54565c">C</text>
+      </svg>
+    </div>
+    <div style="flex:0 0 620px;background:#fff;border-radius:24px;padding:44px 46px;font-size:31px;line-height:1.5;color:#3a3c42;">Desenhe o diagrama de corpo livre da bola nos três pontos: <strong>A</strong>, subindo; <strong>B</strong>, no ponto mais alto; <strong>C</strong>, descendo.</div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Exercício bola" data-screen-label="Exercício: bola lançada · resolução" data-speaker-notes="Em qualquer ponto da trajetória — subindo, no topo ou descendo — a única força atuante é o peso." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Exercício · lançamento vertical · resolução</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.35;">Um menino lança uma bola verticalmente para cima. Desprezando a resistência do ar, qual força atua sobre a bola enquanto ela sobe, no topo e enquanto desce?</h2>
+  </div>
+  <div style="flex:1;display:flex;align-items:center;margin-top:26px;gap:60px;">
+    <div style="flex:0 0 400px;background:#fff;border-radius:24px;padding:32px;">
       <svg viewBox="0 0 300 300" style="width:100%;height:auto;">
         <line x1="150" y1="30" x2="150" y2="270" stroke="#c9ccd4" stroke-width="2" stroke-dasharray="6 6"></line>
         <circle cx="150" cy="250" r="16" style="fill:var(--acento)"></circle>
@@ -338,26 +459,44 @@
       </svg>
     </div>
     <div style="flex:1;background:var(--acento-suave);border-radius:24px;padding:44px 46px;">
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:var(--acento);margin-bottom:16px;">Resolução</div>
-      <div style="font-size:30px;line-height:1.5;">Em <strong>A, B e C</strong>, a única força atuante é o <strong>peso</strong>, apontando sempre para baixo — mesmo quando a bola sobe. No topo (B), a velocidade é nula, mas a força (e a aceleração) continua sendo a gravidade, constante.</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:var(--acento);">Resolução</div>
+      <div style="font-size:30px;line-height:1.5;margin-top:16px;">Em <strong>A, B e C</strong>, a única força atuante é o <strong>peso</strong>, apontando sempre para baixo — mesmo quando a bola sobe. No topo (B), a velocidade é nula, mas a força (e a aceleração) continua sendo a gravidade, constante.</div>
     </div>
   </div>
 </section>
       </div>
 
       <div class="slide-frame">
-<section data-label="Exercício laranja" data-screen-label="Exercício: laranja de Monteiro Lobato" data-speaker-notes="Baseado em trecho de Monteiro Lobato sobre uma laranja lançada para cima. Serve para desconstruir a ideia (errada) de que existe uma 'força do lançamento' que continua agindo durante a subida." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+<section data-label="Exercício laranja" data-screen-label="Exercício: laranja de Monteiro Lobato · enunciado" data-speaker-notes="Baseado em trecho de Monteiro Lobato sobre uma laranja lançada para cima. É questão de somatório: peça a soma antes de virar o slide. A afirmação 01 costuma ser marcada por quase todo mundo, e é justamente a que carrega a ideia errada." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
   <div style="display:flex;flex-direction:column;gap:14px;">
     <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Exercício · UFSC-SC</span>
     <h2 style="font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.35;">Em "Viagem ao Céu", Monteiro Lobato afirma que uma laranja lançada para cima sobe enquanto a força que a lançou é maior que seu peso, e cai quando o peso se torna maior. O que está correto?</h2>
   </div>
-  <div style="display:flex;gap:60px;margin-top:24px;flex:1;">
-    <div style="flex:1;display:flex;flex-direction:column;gap:12px;font-size:26px;justify-content:center;">
-      <div>01) Na subida há uma força maior que o peso, empurrando a laranja para cima</div>
-      <div>02) No ponto mais alto, a velocidade é nula e todas as forças se anulam</div>
-      <div>04) Desprezando o ar, só a força peso atua sobre a laranja após o lançamento</div>
-      <div>08) Para a laranja parar de subir, a gravidade precisa ficar maior que a tal força</div>
-      <div>16) Desprezando o ar, a aceleração da laranja independe de sua massa</div>
+  <div style="flex:1;display:flex;align-items:center;justify-content:center;margin-top:24px;">
+    <div style="background:#fff;border-radius:24px;padding:40px 52px;display:flex;flex-direction:column;gap:12px;font-size:28px;min-width:1180px;">
+      <div style="padding:10px 20px;">01) Na subida há uma força maior que o peso, empurrando a laranja para cima</div>
+      <div style="padding:10px 20px;">02) No ponto mais alto, a velocidade é nula e todas as forças se anulam</div>
+      <div style="padding:10px 20px;">04) Desprezando o ar, só a força peso atua sobre a laranja após o lançamento</div>
+      <div style="padding:10px 20px;">08) Para a laranja parar de subir, a gravidade precisa ficar maior que a tal força</div>
+      <div style="padding:10px 20px;">16) Desprezando o ar, a aceleração da laranja independe de sua massa</div>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Exercício laranja" data-screen-label="Exercício: laranja de Monteiro Lobato · resolução" data-speaker-notes="Serve para desconstruir a ideia (errada) de que existe uma "força do lançamento" que continua agindo durante a subida." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Exercício · UFSC-SC · resolução</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.35;">Em "Viagem ao Céu", Monteiro Lobato afirma que uma laranja lançada para cima sobe enquanto a força que a lançou é maior que seu peso, e cai quando o peso se torna maior. O que está correto?</h2>
+  </div>
+  <div style="display:flex;gap:60px;margin-top:22px;flex:1;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:10px;font-size:25px;justify-content:center;">
+      <div style="padding:10px 20px;">01) Na subida há uma força maior que o peso, empurrando a laranja para cima</div>
+      <div style="padding:10px 20px;">02) No ponto mais alto, a velocidade é nula e todas as forças se anulam</div>
+      <div style="background:var(--acento-suave);border-radius:10px;padding:10px 20px;color:var(--acento);font-weight:600;">04) Desprezando o ar, só a força peso atua sobre a laranja após o lançamento</div>
+      <div style="padding:10px 20px;">08) Para a laranja parar de subir, a gravidade precisa ficar maior que a tal força</div>
+      <div style="background:var(--acento-suave);border-radius:10px;padding:10px 20px;color:var(--acento);font-weight:600;">16) Desprezando o ar, a aceleração da laranja independe de sua massa</div>
     </div>
     <div style="flex:1;background:var(--acento-suave);border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:14px;justify-content:center;">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:var(--acento);">Resolução: 04 + 16 (soma = 20)</div>

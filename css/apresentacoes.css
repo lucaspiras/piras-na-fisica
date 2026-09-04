@@ -255,6 +255,58 @@ body {
 }
 
 /* =========================
+   FIGURAS DAS APRESENTAÇÕES
+   Desenhos explicativos dos slides, distintos dos ícones decorativos que vão
+   com cor no atributo. Toda cor vem de custom property, para o mesmo desenho
+   ser extraído em .svg avulso por scripts/extrair-figuras-paginas.ps1 e entrar
+   no catálogo img/animacoes/. Marque o <svg> com data-avulso="<assunto>/<nome>".
+========================= */
+
+:root {
+  --figa-sol:        #F4A024;
+  --figa-sol-halo:   #FBE3BB;
+  --figa-terra:      #2F6FD0;
+  --figa-continente: #2F9E5E;
+  --figa-contorno:   #16171A;
+  --figa-vetor:      #B3261E;
+  --figa-guia:       #A8ABB2;
+  --figa-texto:      #16171A;
+  --figa-rotulo:     #54565C;
+  --figa-piano:      #23252B;
+  --figa-piano-2:    #3A3D45;
+  --figa-teclas:     #F7F6F2;
+  --figa-solo:       #2F9E5E;
+  --figa-rotulo-claro: #DCE6F5;
+  /* declaradas aqui, e não herdadas do deck, porque o .svg avulso gerado a
+     partir desta seção leva a paleta e mais nada */
+  --figa-fonte-t:    'IBM Plex Sans', system-ui, sans-serif;
+  --figa-fonte-m:    'IBM Plex Mono', ui-monospace, monospace;
+}
+
+.fga-sol        { fill: var(--figa-sol); stroke: var(--figa-contorno); stroke-width: 3; }
+.fga-halo       { fill: none; stroke: var(--figa-sol-halo); stroke-width: 10; }
+.fga-raio       { fill: none; stroke: var(--figa-sol); stroke-width: 5; stroke-linecap: round; }
+.fga-terra      { fill: var(--figa-terra); stroke: var(--figa-contorno); stroke-width: 3; }
+.fga-continente { fill: var(--figa-continente); }
+.fga-crosta     { fill: none; stroke: var(--figa-solo); stroke-width: 12; }
+.fga-guia       { fill: none; stroke: var(--figa-guia); stroke-width: 2; stroke-dasharray: 7 6; }
+.fga-cota       { fill: none; stroke: var(--figa-guia); stroke-width: 2; }
+
+.fga-vetor      { fill: none; stroke: var(--figa-vetor); stroke-width: 5; }
+.fga-ponta      { fill: var(--figa-vetor); }
+
+.fga-piano      { fill: var(--figa-piano); stroke: var(--figa-contorno); stroke-width: 3; }
+.fga-piano-2    { fill: var(--figa-piano-2); stroke: var(--figa-contorno); stroke-width: 3; }
+.fga-teclas     { fill: var(--figa-teclas); stroke: var(--figa-contorno); stroke-width: 2.5; }
+.fga-tecla-p    { fill: var(--figa-piano); }
+
+.fga-t          { font-family: var(--figa-fonte-t); font-size: 20px; font-weight: 600; fill: var(--figa-texto); }
+.fga-rot        { font-family: var(--figa-fonte-t); font-size: 17px; fill: var(--figa-rotulo); }
+.fga-rot-claro  { font-family: var(--figa-fonte-t); font-size: 17px; fill: var(--figa-rotulo-claro); }
+.fga-m          { font-family: var(--figa-fonte-m); font-size: 20px; font-weight: 500; fill: var(--figa-vetor); }
+.fga-mg         { font-family: var(--figa-fonte-m); font-size: 19px; font-weight: 500; fill: var(--figa-rotulo); }
+
+/* =========================
    INTERRUPTORES CLICÁVEIS
    Usados nos circuitos do deck de eletricidade. O alvo de clique é um
    retângulo transparente dentro do <g>: fill-opacity 0 ainda recebe evento,

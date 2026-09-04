@@ -3,7 +3,7 @@
      Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
      inserido em slide ou importado em editor vetorial.
      Fonte da geometria: atividades/listas/forcas/lista_1_peso_normal_tracao.html
-     Gerado por scripts/extrair-figuras-listas.ps1 — nao editar a mao. -->
+     Gerado por scripts/extrair-figuras-paginas.ps1 — nao editar a mao. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 180" width="920" height="360"
      role="img" aria-labelledby="forcas-11-tres-blocos-em-serie">
   <title id="forcas-11-tres-blocos-em-serie">Três blocos alinhados sobre uma mesa horizontal, ligados em série por dois fios. Da esquerda para a direita: bloco A, o fio de tração T um, bloco B, o fio de tração T dois, e bloco C, o maior dos três. A força F puxa o bloco C para a direita.</title>
