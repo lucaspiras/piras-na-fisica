@@ -22,6 +22,12 @@
 # avulso precisa levar as suas, senao o marker-end aponta para nada; o script
 # copia so os <marker> que a figura usa e os desconsidera na conferencia.
 #
+# Figura com animacao: use CSS (@keyframes), nao SMIL. O prefers-reduced-motion
+# do CSS nao alcanca SMIL, e resolver ali exigiria JavaScript no deck E no
+# arquivo avulso. Com @keyframes, uma media query resolve nos dois. O script
+# copia os @keyframes e o bloco de movimento reduzido apenas para as figuras
+# que usam alguma classe com animation:.
+#
 # Ao final, confere que a assinatura de elementos do desenho gerado e' igual a
 # do inline, desconsiderando o <defs> injetado. Divergiu, falha.
 #
@@ -107,6 +113,81 @@ $Figuras = @(
      Perfil = 'apresentacao'
      Slug = 'forcas/15-normal-no-impacto'
      Resumo = 'Corpo que cai de uma altura h e para numa deformacao d: a normal fica h/d vezes o peso.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'forcas/16-tensao-em-quatro-situacoes'
+     Resumo = 'A tensao puxando em quatro arranjos de fio, com direcao e sentido em cada extremo.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'forcas/17-tensao-no-cabo-do-elevador'
+     Resumo = 'O cabo do elevador nos tres estados: T igual, maior e menor que o peso da cabine.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'forcas/18-par-do-peso'
+     Resumo = 'Vaso sobre a mesa sobre o planeta: o par acao-reacao do peso, uma forca em cada corpo.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'forcas/19-par-da-normal'
+     Resumo = 'A mesma cena com o outro par: a normal no vaso e a normal na mesa, no ponto de contato.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'forcas/20-o-que-e-o-atrito'
+     Resumo = 'Treno puxado na neve: a normal perpendicular ao contato e o atrito paralelo a ele.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'forcas/21-por-que-existe-atrito'
+     Resumo = 'Duas superficies ampliadas: contato real em poucos pontos, e o filme de oleo separando.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'forcas/22-atrito-estatico'
+     Resumo = 'Sofa parado: o atrito tem o tamanho exato da forca aplicada, e ha um par de setas nos dois corpos.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'forcas/23-atrito-cinetico'
+     Resumo = 'O mesmo sofa deslizando: sem forca aplicada, o atrito se opoe a velocidade.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'forcas/24-bloco-empurrado-na-mesa'
+     Resumo = 'Bloco na mesa com as quatro forcas, para montar o problema de atrito estatico.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'forcas/25-frenagem-seco-e-molhado'
+     Resumo = 'A 80 km/h, a distancia de frenagem dobra do asfalto seco para o molhado.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'forcas/26-roda-travada-e-girando'
+     Resumo = 'Roda travada desliza e cai no atrito cinetico; roda girando fica no estatico, maior.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'forcas/27-rampa-que-inclina'
+     Resumo = 'Animacao: a prancha vai subindo e a caixa escorrega quando o angulo passa do limiar.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'forcas/28-da-cena-ao-corpo-isolado'
+     Resumo = 'A mesma cena e o corpo isolado ao lado, so com as forcas que agem nele.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'forcas/29-eixos-e-decomposicao'
+     Resumo = 'Eixos alinhados com a rampa: so o peso precisa ser decomposto.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'forcas/30-bloco-na-rampa-com-atrito'
+     Resumo = 'Bloco abandonado numa rampa com atrito, com as tres forcas marcadas.' }
 )
 
 # ----------------------------------------------------------------------------
@@ -168,6 +249,25 @@ $TemasEscuros = @{
         --figa-peso:         #C084FC;
         --figa-normal:       #4ADE80;
         --figa-atrito:       #FB923C;
+        --figa-tracao:       #22D3EE;
+        --figa-fio:          #CBD5E1;
+        --figa-polia:        #475569;
+        --figa-polia-b:      #CBD5E1;
+        --figa-cabine:       #172033;
+        --figa-vaso:         #8A5433;
+        --figa-vaso-b:       #D89A6C;
+        --figa-folha:        #4FB877;
+        --figa-oleo:         #3F6E9E;
+        --figa-sofa:         #47637E;
+        --figa-sofa-2:       #5E7C99;
+        --figa-sofa-b:       #A9C0D6;
+        --figa-veloc:        #60A5FA;
+        --figa-carro:        #A84238;
+        --figa-carro-b:      #E8A79F;
+        --figa-vidro:        #3E5A73;
+        --figa-pneu:         #0F1013;
+        --figa-roda:         #6B7078;
+        --figa-eixo:         #A8ABB2;
 '@
 }
 
@@ -239,7 +339,21 @@ foreach ($nome in ($Figuras | ForEach-Object { if ($_.Perfil) { $_.Perfil } else
             ForEach-Object { '    ' + $_.Value }
   if ($regras.Count -lt 8) { throw "poucas regras .$($perfil.Classe)* em $($perfil.Folha) ($($regras.Count))" }
 
-  $Paletas[$nome] = @{ Claro = $claro; Escuro = $escuro; Regras = ($regras -join "`n") }
+  # Blocos multilinha: @keyframes e o bloco de movimento reduzido. Ficam de fora
+  # da varredura de regras acima, que so' pega classe de uma linha so'.
+  $blocos = @()
+  foreach ($m in [regex]::Matches($secao, '(?s)@keyframes\s+[\w-]+\s*\{.*?\n\}')) {
+    $blocos += (Indenta (Remove-Indentacao $m.Value) 4)
+  }
+  foreach ($m in [regex]::Matches($secao, '(?s)@media \(prefers-reduced-motion: reduce\)\s*\{.*?\n\}')) {
+    $blocos += (Indenta (Remove-Indentacao $m.Value) 4)
+  }
+  # De que classes estamos falando: as que tem animation: na propria regra.
+  $animadas = [regex]::Matches(($regras -join "`n"), '(?m)^\s*\.([\w-]+)[^\r\n]*animation:') |
+              ForEach-Object { $_.Groups[1].Value }
+
+  $Paletas[$nome] = @{ Claro = $claro; Escuro = $escuro; Regras = ($regras -join "`n")
+                       Blocos = ($blocos -join "`n`n"); Animadas = $animadas }
 }
 
 # ----------------------------------------------------------------------------
@@ -345,6 +459,16 @@ foreach ($fig in $Figuras) {
   [void]$sb.AppendLine('    }')
   [void]$sb.AppendLine('')
   [void]$sb.AppendLine($pal.Regras)
+  # Os keyframes so viajam com quem usa uma classe animada, para nao inchar as
+  # outras 25 figuras com regras que elas nunca chamam.
+  $usaAnimacao = $false
+  foreach ($c in $pal.Animadas) {
+    if ($inline -match ('class="[^"]*\b' + $c + '\b')) { $usaAnimacao = $true }
+  }
+  if ($usaAnimacao -and $pal.Blocos) {
+    [void]$sb.AppendLine('')
+    [void]$sb.AppendLine($pal.Blocos)
+  }
   [void]$sb.AppendLine('  ]]></style>')
   if ($blocoDefs) { [void]$sb.Append($blocoDefs) }
   [void]$sb.AppendLine($corpo)

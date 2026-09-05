@@ -293,6 +293,25 @@ body {
   --figa-peso:         #9333EA;
   --figa-normal:       #16A34A;
   --figa-atrito:       #C2410C;
+  --figa-tracao:       #0E7490;
+  --figa-fio:          #334155;
+  --figa-polia:        #CBD5E1;
+  --figa-polia-b:      #475569;
+  --figa-cabine:       #F1F3F6;
+  --figa-vaso:         #C97B4A;
+  --figa-vaso-b:       #8A4B22;
+  --figa-folha:        #3F9E5E;
+  --figa-oleo:         #7FB6E8;
+  --figa-sofa:         #6E8CA8;
+  --figa-sofa-2:       #8FA9C0;
+  --figa-sofa-b:       #3E5670;
+  --figa-veloc:        #2563EB;
+  --figa-carro:        #C2544A;
+  --figa-carro-b:      #7A2E27;
+  --figa-vidro:        #BFD8EC;
+  --figa-pneu:         #23252B;
+  --figa-roda:         #A8ABB2;
+  --figa-eixo:         #54565C;
   /* declaradas aqui, e não herdadas do deck, porque o .svg avulso gerado a
      partir desta seção leva a paleta e mais nada */
   --figa-fonte-t:    'IBM Plex Sans', system-ui, sans-serif;
@@ -323,13 +342,68 @@ body {
 .fga-v-peso     { fill: none; stroke: var(--figa-peso); stroke-width: 4; }
 .fga-v-normal   { fill: none; stroke: var(--figa-normal); stroke-width: 4; }
 .fga-v-atrito   { fill: none; stroke: var(--figa-atrito); stroke-width: 4; }
+.fga-v-tracao   { fill: none; stroke: var(--figa-tracao); stroke-width: 4; }
+.fga-v-acel     { fill: none; stroke: var(--figa-atrito); stroke-width: 4; }
+.fga-fio        { fill: none; stroke: var(--figa-fio); stroke-width: 3; stroke-linecap: round; }
+.fga-polia      { fill: var(--figa-polia); stroke: var(--figa-polia-b); stroke-width: 2.5; }
+.fga-eixo       { fill: var(--figa-polia-b); }
+.fga-cabine     { fill: var(--figa-cabine); stroke: var(--figa-apoio); stroke-width: 2.5; }
+.fga-vaso       { fill: var(--figa-vaso); stroke: var(--figa-vaso-b); stroke-width: 2.5; }
+.fga-folha      { fill: var(--figa-folha); }
+.fga-caule      { fill: none; stroke: var(--figa-folha); stroke-width: 3; stroke-linecap: round; }
+.fga-patim      { fill: none; stroke: var(--figa-apoio); stroke-width: 5; stroke-linecap: round; }
+.fga-contato    { fill: none; stroke: var(--figa-atrito); stroke-width: 3; }
+.fga-oleo       { fill: var(--figa-oleo); }
+.fga-perp       { fill: none; stroke: var(--figa-rotulo); stroke-width: 2; }
+.fga-sofa       { fill: var(--figa-sofa); stroke: var(--figa-sofa-b); stroke-width: 2.5; }
+.fga-sofa-2     { fill: var(--figa-sofa-2); stroke: var(--figa-sofa-b); stroke-width: 2.5; }
+.fga-pe         { fill: var(--figa-caixa-b); }
+.fga-v-veloc    { fill: none; stroke: var(--figa-veloc); stroke-width: 4; }
+.fga-p-veloc    { fill: var(--figa-veloc); }
+.fga-m-veloc    { font-family: var(--figa-fonte-m); font-size: 19px; font-weight: 700; fill: var(--figa-veloc); }
+.fga-carro      { fill: var(--figa-carro); stroke: var(--figa-carro-b); stroke-width: 2.5; }
+.fga-vidro      { fill: var(--figa-vidro); stroke: var(--figa-carro-b); stroke-width: 2; }
+.fga-pneu       { fill: var(--figa-pneu); }
+.fga-roda       { fill: var(--figa-roda); }
+.fga-travada    { fill: none; stroke: var(--figa-vetor); stroke-width: 5; stroke-linecap: round; }
+.fga-marca      { fill: none; stroke: var(--figa-pneu); stroke-width: 4; opacity: .45; }
+.fga-giro       { fill: none; stroke: var(--figa-veloc); stroke-width: 4; }
+.fga-eixo-x     { fill: none; stroke: var(--figa-eixo); stroke-width: 2.5; }
+.fga-eixo-p     { fill: var(--figa-eixo); }
+.fga-eixo-t     { font-family: var(--figa-fonte-m); font-size: 20px; font-weight: 700; fill: var(--figa-eixo); }
+.fga-decomp     { fill: none; stroke: var(--figa-peso); stroke-width: 2.5; stroke-dasharray: 7 5; }
+.fga-tilt       { transform-box: view-box; transform-origin: 60px 179px; animation: fga-inclina 7s ease-in-out infinite; }
+.fga-desce      { animation: fga-desliza 7s ease-in-out infinite; }
+
+/* A prancha sobe devagar, a caixa segura enquanto o atrito dá conta, e escorrega
+   de uma vez quando o ângulo passa do limiar. O ciclo volta ao começo no fim. */
+@keyframes fga-inclina {
+  0%, 8%    { transform: rotate(0deg); }
+  54%, 82%  { transform: rotate(-27deg); }
+  96%, 100% { transform: rotate(0deg); }
+}
+@keyframes fga-desliza {
+  0%, 56%   { transform: translateX(0); }
+  74%, 88%  { transform: translateX(-112px); }
+  96%, 100% { transform: translateX(0); }
+}
+
+/* Quem pediu menos movimento no sistema recebe a cena já resolvida: prancha
+   inclinada e caixa embaixo, que é o quadro que ainda explica a figura. */
+@media (prefers-reduced-motion: reduce) {
+  .fga-tilt, .fga-desce { animation: none; }
+  .fga-tilt  { transform: rotate(-27deg); }
+  .fga-desce { transform: translateX(-112px); }
+}
 .fga-v-forca    { fill: none; stroke: var(--figa-vetor); stroke-width: 4; }
 .fga-p-peso     { fill: var(--figa-peso); }
 .fga-p-normal   { fill: var(--figa-normal); }
 .fga-p-atrito   { fill: var(--figa-atrito); }
+.fga-p-tracao   { fill: var(--figa-tracao); }
 .fga-m-peso     { font-family: var(--figa-fonte-m); font-size: 19px; font-weight: 700; fill: var(--figa-peso); }
 .fga-m-normal   { font-family: var(--figa-fonte-m); font-size: 19px; font-weight: 700; fill: var(--figa-normal); }
 .fga-m-atrito   { font-family: var(--figa-fonte-m); font-size: 19px; font-weight: 700; fill: var(--figa-atrito); }
+.fga-m-tracao   { font-family: var(--figa-fonte-m); font-size: 19px; font-weight: 700; fill: var(--figa-tracao); }
 .fga-tit        { font-family: var(--figa-fonte-t); font-size: 19px; font-weight: 700; fill: var(--figa-texto); }
 .fga-rel        { font-family: var(--figa-fonte-m); font-size: 20px; font-weight: 700; fill: var(--figa-texto); }
 .fga-cota-t     { font-family: var(--figa-fonte-m); font-size: 18px; font-weight: 700; fill: var(--figa-rotulo); }
