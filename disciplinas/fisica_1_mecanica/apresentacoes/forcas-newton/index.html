@@ -37,6 +37,15 @@
           <marker id="fga-seta" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
             <path class="fga-ponta" d="M0,0 L10,5 L0,10 z"/>
           </marker>
+          <marker id="fga-seta-p" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+            <path class="fga-p-peso" d="M0,0 L10,5 L0,10 z"/>
+          </marker>
+          <marker id="fga-seta-n" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+            <path class="fga-p-normal" d="M0,0 L10,5 L0,10 z"/>
+          </marker>
+          <marker id="fga-seta-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+            <path class="fga-p-atrito" d="M0,0 L10,5 L0,10 z"/>
+          </marker>
         </defs>
       </svg>
       <div class="slide-frame active">
@@ -125,7 +134,7 @@
   <div style="display:flex;gap:70px;margin-top:38px;flex:1;align-items:center;">
     <div style="flex:1;display:flex;flex-direction:column;gap:26px;">
       <p style="font-size:32px;line-height:1.45;margin:0;">Newton percebeu que a maçã que cai e a Lua que orbita obedecem à mesma regra: <strong>dois corpos quaisquer se atraem</strong>, com intensidade que cresce com as massas e cai com o quadrado da distância.</p>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:52px;font-weight:500;display:flex;align-items:center;">F<sub style="font-size:26px;">g</sub>&nbsp;=&nbsp;G&nbsp;·&nbsp;<span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.15;margin:0 .18em;"><span style="padding:0 .3em .06em;border-bottom:3px solid currentColor;">M · m</span><span style="padding:.06em .3em 0;">d²</span></span></div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:52px;font-weight:500;line-height:1.15;">F<sub style="font-size:.55em;">g</sub> = G · <span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.15;margin:0 .2em;"><span style="padding:0 .34em .06em;border-bottom:3px solid currentColor;">M · m</span><span style="padding:.06em .34em 0;">d²</span></span></div>
       <div style="font-size:25px;line-height:1.55;color:#54565c;"><strong style="color:#16171A;">M</strong> e <strong style="color:#16171A;">m</strong>: as massas dos dois corpos · <strong style="color:#16171A;">d</strong>: distância entre os centros<br>G = 6,67 × 10<sup>−11</sup> N·m²/kg², a mesma em todo o universo</div>
     </div>
     <div style="flex:0 0 560px;background:var(--acento-suave);border-radius:24px;padding:38px 34px;">
@@ -140,10 +149,10 @@
         <text class="fga-t" x="386" y="196" text-anchor="middle">Terra</text>
 
         <line class="fga-vetor" x1="150" y1="140" x2="214" y2="140" marker-end="url(#fga-seta)"/>
-        <text class="fga-m" x="182" y="126" text-anchor="middle">F<tspan baseline-shift="sub" font-size="14">g</tspan></text>
+        <text class="fga-m" x="178" y="118" text-anchor="middle">F<tspan baseline-shift="sub" font-size="14">g</tspan></text>
 
         <line class="fga-vetor" x1="350" y1="140" x2="286" y2="140" marker-end="url(#fga-seta)"/>
-        <text class="fga-m" x="318" y="126" text-anchor="middle">F<tspan baseline-shift="sub" font-size="14">g</tspan></text>
+        <text class="fga-m" x="322" y="118" text-anchor="middle">F<tspan baseline-shift="sub" font-size="14">g</tspan></text>
 
         <path class="fga-cota" d="M86,252 L86,272 M386,252 L386,272 M86,264 L386,264"/>
         <text class="fga-mg" x="236" y="290" text-anchor="middle">d</text>
@@ -155,35 +164,65 @@
       </div>
 
       <div class="slide-frame">
-<section data-label="Força Peso" data-screen-label="Da gravitação ao peso: P = m·g" data-speaker-notes="Aqui a expressão geral vira a fórmula do dia a dia. Perto da superfície, M e d não mudam: M é sempre a massa da Terra e d é sempre o raio do planeta. O que sobra entre parênteses é constante, e é a ela que chamamos g. Vale a pena dizer o limite: a 10 km de altitude, d mudou 0,16% em relação ao raio, e por isso a simplificação se sustenta." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+<section data-label="Força Peso" data-screen-label="O caso particular da Terra" data-speaker-notes="A expressão geral vira aqui a fórmula do dia a dia. Perto da superfície, dois dos três fatores param de variar: a massa que atrai é sempre a da Terra e a distância é sempre o raio do planeta. O que sobra entre parênteses é constante, e é a ela que chamamos g. Vale dizer o limite em voz alta: a 10 km de altitude a distância ao centro mudou 0,16% em relação ao raio, e é por isso que a troca se sustenta." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
   <div style="display:flex;flex-direction:column;gap:14px;">
     <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força peso</span>
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">Perto da Terra, tudo vira P = m · g</h2>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">O caso particular da Terra</h2>
   </div>
   <div style="display:flex;gap:70px;margin-top:38px;flex:1;align-items:center;">
-    <div style="flex:1;display:flex;flex-direction:column;gap:24px;">
-      <p style="font-size:32px;line-height:1.45;margin:0;">Na superfície da Terra, dois dos três fatores param de variar: <strong>M</strong> é sempre a massa do planeta e <strong>d</strong> é sempre o raio dele.</p>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:38px;font-weight:500;display:flex;align-items:center;flex-wrap:wrap;gap:0 10px;">F<sub style="font-size:20px;">g</sub> = <span style="display:inline-flex;align-items:center;">(&nbsp;G&nbsp;·&nbsp;<span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.15;margin:0 .18em;"><span style="padding:0 .3em .06em;border-bottom:3px solid currentColor;">M<sub style="font-size:20px;">T</sub></span><span style="padding:.06em .3em 0;">R<sub style="font-size:20px;">T</sub>²</span></span>&nbsp;)</span> · m</div>
-      <p style="font-size:30px;line-height:1.45;margin:0;">O que está entre parênteses é uma constante. Chamamos essa constante de <strong>g</strong>:</p>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:58px;font-weight:500;color:var(--acento);">P = m · g</div>
-      <div style="font-size:25px;line-height:1.5;color:#54565c;">g ≈ 9,8 m/s² na superfície da Terra, adotado como 10 m/s² quando o problema pede conta de cabeça. A simplificação vale enquanto a altura for pequena diante do raio do planeta — o que cobre tudo que fazemos por aqui.</div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:22px;">
+      <p style="font-size:32px;line-height:1.45;margin:0;">Na superfície do planeta, dois dos três fatores param de variar: a massa que atrai é sempre a da <strong>Terra</strong>, e a distância é sempre o <strong>raio</strong> dela.</p>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:36px;font-weight:500;line-height:1.15;">F<sub style="font-size:.55em;">g</sub> = ( G · <span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.15;margin:0 .2em;"><span style="padding:0 .34em .06em;border-bottom:3px solid currentColor;">M<sub style="font-size:.55em;">T</sub></span><span style="padding:.06em .34em 0;">R<sub style="font-size:.55em;">T</sub>²</span></span> ) · m</div>
+      <p style="font-size:30px;line-height:1.45;margin:0;">O que ficou entre parênteses é o mesmo para qualquer corpo aqui embaixo. É a essa grandeza que damos o nome de <strong>g</strong>:</p>
+      <div style="align-self:flex-start;background:var(--acento-suave);border-radius:16px;padding:16px 34px;font-family:'IBM Plex Mono',monospace;font-size:54px;font-weight:500;color:var(--acento);">P = m · g</div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:24px;line-height:1.5;color:#54565c;">
+        <div><strong style="color:#16171A;">g ≈ 9,8 m/s²</strong> na superfície da Terra, ou 10 m/s² quando a conta é de cabeça.</div>
+        <div>A troca vale enquanto a altura for pequena diante do raio do planeta, o que cobre tudo que fazemos por aqui.</div>
+      </div>
     </div>
     <div style="flex:0 0 560px;background:var(--acento-suave);border-radius:24px;padding:38px 34px;">
-      <svg data-avulso="gravitacao/2-piano-e-a-terra" viewBox="0 0 470 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Um piano suspenso acima da superfície curva da Terra, com uma seta vermelha vertical apontando do piano para o solo, rotulada P igual a m vezes g. Uma linha tracejada segue da ponta da seta para dentro do planeta, na direção do centro." style="width:100%;height:auto;">
-        <path class="fga-terra" d="M-6,250 Q241,180 488,250 L488,306 L-6,306 Z"/>
-        <path class="fga-crosta" d="M-6,250 Q241,180 488,250"/>
+      <svg data-avulso="gravitacao/2-piano-e-a-terra" viewBox="0 0 470 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Um piano de cauda, visto de perfil e com o tampo levantado, apoiado em três pés iguais, suspenso acima do horizonte curvo da Terra. Abaixo do piano, uma seta vermelha vertical aponta para o solo, rotulada P igual a m vezes g, e segue em linha tracejada para dentro do planeta, na direção do centro. O planeta aparece em corte, com oceano, continentes e uma faixa de atmosfera sobre o horizonte." style="width:100%;height:auto;">
+        <defs>
+          <linearGradient id="fga-oceano" x1="0" y1="0" x2="0" y2="1">
+            <stop class="fga-oc-raso" offset="0"/>
+            <stop class="fga-oc-fundo" offset="1"/>
+          </linearGradient>
+          <clipPath id="fga-globo">
+            <path d="M-6,252 Q241,178 488,252 L488,308 L-6,308 Z"/>
+          </clipPath>
+        </defs>
 
-        <rect class="fga-piano-2" x="150" y="26" width="182" height="14" rx="4"/>
-        <rect class="fga-piano" x="160" y="40" width="162" height="64" rx="4"/>
-        <rect class="fga-teclas" x="170" y="80" width="142" height="24" rx="2"/>
-        <path class="fga-tecla-p" d="M181,80 h9 v15 h-9 Z M199,80 h9 v15 h-9 Z M226,80 h9 v15 h-9 Z M244,80 h9 v15 h-9 Z M262,80 h9 v15 h-9 Z M289,80 h9 v15 h-9 Z"/>
-        <rect class="fga-piano-2" x="170" y="104" width="13" height="18" rx="2"/>
-        <rect class="fga-piano-2" x="299" y="104" width="13" height="18" rx="2"/>
+        <path class="fga-atm" d="M-14,244 Q241,168 496,244"/>
+        <path fill="url(#fga-oceano)" d="M-6,252 Q241,178 488,252 L488,308 L-6,308 Z"/>
+        <g clip-path="url(#fga-globo)">
+          <path class="fga-cont" d="M26,206 Q66,197 100,212 Q134,203 156,220 Q146,247 112,251 Q74,257 48,244 Q23,233 26,206 Z"/>
+          <path class="fga-cont-luz" d="M52,214 Q76,208 96,218 Q86,230 62,230 Q46,224 52,214 Z"/>
+          <path class="fga-cont" d="M258,201 Q296,193 330,208 Q361,222 346,245 Q310,259 276,248 Q247,234 258,201 Z"/>
+          <path class="fga-cont-luz" d="M288,210 Q312,205 328,216 Q318,229 296,228 Q282,220 288,210 Z"/>
+          <path class="fga-cont" d="M392,213 Q418,207 441,220 Q453,233 438,247 Q411,255 393,244 Q379,232 392,213 Z"/>
+        </g>
+        <path class="fga-crosta" d="M-6,252 Q241,178 488,252"/>
 
-        <line class="fga-vetor" x1="241" y1="128" x2="241" y2="196" marker-end="url(#fga-seta)"/>
-        <text class="fga-m" x="258" y="170">P = m · g</text>
-        <path class="fga-guia" d="M241,216 L241,292"/>
-        <text class="fga-rot-claro" x="258" y="274">para o centro da Terra</text>
+        <g>
+          <path class="fga-piano-2" d="M158,80 L286,52 L288,60 L160,88 Z"/>
+          <path class="fga-haste" d="M254,68 L254,86"/>
+          <path class="fga-piano" d="M110,104 H152 V109 q0,3 -3,3 H113 q-3,0 -3,-3 Z"/>
+          <path class="fga-teclas" d="M111,93 H152 V104 H111 q-4,0 -4,-4 v-3 q0,-4 4,-4 Z"/>
+          <path class="fga-tecla-p" d="M128,88 H150 V93 H125 Z"/>
+          <rect class="fga-piano" x="152" y="84" width="148" height="30" rx="5"/>
+          <rect class="fga-piano-luz" x="162" y="88" width="110" height="4" rx="2"/>
+          <path class="fga-piano-2" d="M158,114 H172 L170.5,144 H159.5 Z"/>
+          <path class="fga-piano-2" d="M221,114 H231 L229.5,136 H222.5 Z"/>
+          <path class="fga-piano-2" d="M282,114 H296 L294.5,144 H283.5 Z"/>
+          <circle class="fga-piano-2" cx="165" cy="147" r="3.5"/>
+          <circle class="fga-piano-2" cx="226" cy="138.5" r="2.8"/>
+          <circle class="fga-piano-2" cx="289" cy="147" r="3.5"/>
+        </g>
+
+        <line class="fga-vetor" x1="205" y1="160" x2="205" y2="202" marker-end="url(#fga-seta)"/>
+        <text class="fga-m" x="222" y="188">P = m · g</text>
+        <path class="fga-guia" d="M205,216 L205,292"/>
+        <text class="fga-rot-claro" x="222" y="272">para o centro da Terra</text>
       </svg>
       <p style="font-size:24px;line-height:1.45;color:#3a3c42;margin:14px 4px 0;text-align:center;">O peso é a mesma força gravitacional da lei geral, escrita de um jeito mais curto.</p>
     </div>
@@ -192,18 +231,207 @@
       </div>
 
       <div class="slide-frame">
-<section data-label="Peso pelo universo" data-screen-label="Peso em outros astros" data-speaker-notes="A aceleração da gravidade muda de astro para astro — por isso o peso de um corpo (não sua massa) varia conforme onde ele está." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+<section data-label="Peso pelo universo" data-screen-label="Peso em outros astros" data-speaker-notes="Cada barra e' o peso do MESMO corpo de 1 kg, e aqui a altura e' o proprio peso: escala linear, ao contrario do slide de tensao no cotidiano, em que a altura era o logaritmo. Da para comparar as barras direto: a da Lua tem um sexto da altura da Terra, e a de Jupiter e' duas vezes e meia a nossa. Os numeros sao os mesmos do slide anterior, onde eram m/s2, e vale explicar por que: com m = 1 kg, o produto m.g devolve o proprio valor de g. Perguntar quanto pesaria uma pessoa de 60 kg em Jupiter costuma render a conta na hora." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
   <div style="display:flex;flex-direction:column;gap:14px;">
     <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força peso</span>
     <h2 style="font-family:'Space Grotesk',sans-serif;font-size:62px;font-weight:600;margin:0;letter-spacing:-0.01em;">O mesmo corpo, pesos diferentes</h2>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:auto;margin-bottom:auto;">
-    <div style="display:flex;flex-direction:column;gap:14px;border-top:3px solid var(--acento);padding-top:24px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:72px;font-weight:600;line-height:1;">9,8<span style="font-size:32px;color:#54565c;"> m/s²</span></span><span style="font-size:28px;color:#3a3c42;">Terra</span></div>
-    <div style="display:flex;flex-direction:column;gap:14px;border-top:3px solid var(--acento);padding-top:24px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:72px;font-weight:600;line-height:1;">1,6<span style="font-size:32px;color:#54565c;"> m/s²</span></span><span style="font-size:28px;color:#3a3c42;">Lua</span></div>
-    <div style="display:flex;flex-direction:column;gap:14px;border-top:3px solid var(--acento);padding-top:24px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:72px;font-weight:600;line-height:1;">3,7<span style="font-size:32px;color:#54565c;"> m/s²</span></span><span style="font-size:28px;color:#3a3c42;">Marte</span></div>
-    <div style="display:flex;flex-direction:column;gap:14px;border-top:3px solid var(--acento2);padding-top:24px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:72px;font-weight:600;line-height:1;color:var(--acento2);">24,8<span style="font-size:32px;color:#54565c;"> m/s²</span></span><span style="font-size:28px;color:#3a3c42;">Júpiter</span></div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:30px;align-items:end;margin-top:auto;margin-bottom:70px;">
+    <div style="display:flex;flex-direction:column;justify-content:flex-end;">
+      <div style="height:26.8px;background:var(--acento);border-radius:4px 4px 0 0;"></div>
+      <div style="display:flex;flex-direction:column;gap:16px;border-top:3px solid var(--acento);padding-top:26px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:72px;font-weight:600;line-height:1;">1,6<span style="font-size:34px;color:#54565c;"> N</span></span><span style="font-size:28px;color:#3a3c42;">Lua</span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;justify-content:flex-end;">
+      <div style="height:62.1px;background:var(--acento);border-radius:4px 4px 0 0;"></div>
+      <div style="display:flex;flex-direction:column;gap:16px;border-top:3px solid var(--acento);padding-top:26px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:72px;font-weight:600;line-height:1;">3,7<span style="font-size:34px;color:#54565c;"> N</span></span><span style="font-size:28px;color:#3a3c42;">Marte</span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;justify-content:flex-end;">
+      <div style="height:164.4px;background:var(--acento);border-radius:4px 4px 0 0;"></div>
+      <div style="display:flex;flex-direction:column;gap:16px;border-top:3px solid var(--acento);padding-top:26px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:72px;font-weight:600;line-height:1;">9,8<span style="font-size:34px;color:#54565c;"> N</span></span><span style="font-size:28px;color:#3a3c42;">Terra</span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;justify-content:flex-end;">
+      <div style="height:416px;background:var(--acento2);border-radius:4px 4px 0 0;"></div>
+      <div style="display:flex;flex-direction:column;gap:16px;border-top:3px solid var(--acento2);padding-top:26px;"><span style="font-family:'Space Grotesk',sans-serif;font-size:72px;font-weight:600;line-height:1; color:var(--acento2);">24,8<span style="font-size:34px;color:#54565c;"> N</span></span><span style="font-size:28px;color:#3a3c42;">Júpiter</span></div>
+    </div>
   </div>
-  <p style="font-size:30px;color:#54565c;margin:0;">A massa não muda de planeta para planeta — só o peso. Por isso um astronauta "pesa" menos na Lua, mas continua com a mesma massa.</p>
+  <p style="font-size:30px;line-height:1.45;color:#54565c;margin:0;max-width:1660px;">Cada barra é o peso de um corpo de <strong style="color:#16171A;">1 kg</strong>, e a altura dela é o próprio peso: a escala é linear, então as barras se comparam direto. A massa não muda de astro para astro; o peso, sim.</p>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Exercício Terra-Lua" data-screen-label="Exercício: atração Terra-Lua · enunciado" data-speaker-notes="Primeira aplicação numérica da lei geral. Peça a montagem antes de virar o slide. O tropeço mais comum não é a fórmula: é esquecer de elevar o d ao quadrado, ou errar a potência de dez do denominador. A figura existe para deixar claro que d vai de centro a centro, e não de superfície a superfície." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força peso · Exercício</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:54px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.2;">Com que força a Terra e a Lua se atraem?</h2>
+  </div>
+  <div style="display:flex;gap:56px;margin-top:34px;flex:1;align-items:center;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:20px;">
+      <div style="background:#fff;border-radius:24px;padding:30px 44px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:21px;letter-spacing:.08em;text-transform:uppercase;color:var(--acento);margin-bottom:16px;">Dados do problema</div><div style="font-family:'IBM Plex Mono',monospace;font-size:29px;line-height:1.7;">M<sub style="font-size:.55em;">T</sub> = 6,0 × 10²⁴ kg<br>M<sub style="font-size:.55em;">L</sub> = 7,3 × 10²² kg<br>d = 3,8 × 10⁸ m<br>G = 6,67 × 10⁻¹¹ N·m²/kg²</div></div>
+      <div style="background:#fff;border-radius:24px;padding:30px 40px;font-size:28px;line-height:1.5;color:#3a3c42;">A distância <strong>d</strong> vai de <strong>centro a centro</strong>, e entra na conta <strong>ao quadrado</strong>.</div>
+    </div>
+    <div style="flex:0 0 660px;background:var(--acento-suave);border-radius:24px;padding:30px 28px;">
+      <svg data-avulso="gravitacao/3-terra-e-lua-do-problema" viewBox="0 0 470 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A Terra, grande e à esquerda, e a Lua, pequena e à direita. Acima de cada astro está a sua massa, M índice T e M índice L. Um par de setas de mesmo comprimento, marcadas F índice g, aponta um astro para o outro. Embaixo, uma cota com linhas de chamada saindo do centro de cada astro marca a distância d." style="width:100%;height:auto;">
+        <text class="fga-t" x="110" y="58" text-anchor="middle">M<tspan baseline-shift="sub" font-size="13">T</tspan></text>
+        <circle class="fga-terra" cx="110" cy="130" r="56"/>
+        <path class="fga-continente" d="M78,112 q22,-14 42,-4 q16,9 4,22 q-19,14 -38,5 q-15,-9 -8,-23 Z M104,158 q19,-8 30,4 q8,11 -7,17 q-17,6 -26,-6 q-6,-9 3,-15 Z"/>
+        <text class="fga-t" x="110" y="234" text-anchor="middle">Terra</text>
+
+        <text class="fga-t" x="370" y="88" text-anchor="middle">M<tspan baseline-shift="sub" font-size="13">L</tspan></text>
+        <circle class="fga-lua" cx="370" cy="130" r="24"/>
+        <circle class="fga-cratera" cx="362" cy="122" r="6"/>
+        <circle class="fga-cratera" cx="379" cy="136" r="4"/>
+        <circle class="fga-cratera" cx="364" cy="142" r="3"/>
+        <text class="fga-t" x="370" y="234" text-anchor="middle">Lua</text>
+
+        <line class="fga-vetor" x1="174" y1="130" x2="214" y2="130" marker-end="url(#fga-seta)"/>
+        <text class="fga-m" x="184" y="102" text-anchor="middle">F<tspan baseline-shift="sub" font-size="13">g</tspan></text>
+        <line class="fga-vetor" x1="306" y1="130" x2="266" y2="130" marker-end="url(#fga-seta)"/>
+        <text class="fga-m" x="292" y="102" text-anchor="middle">F<tspan baseline-shift="sub" font-size="13">g</tspan></text>
+
+        <path class="fga-guia" d="M110,132 V206 M370,132 V206"/>
+        <circle class="fga-centro" cx="110" cy="130" r="3.5"/>
+        <circle class="fga-centro" cx="370" cy="130" r="3.5"/>
+        <path class="fga-cota" d="M110,192 V208 M370,192 V208 M110,200 H370"/>
+        <text class="fga-mg" x="240" y="194" text-anchor="middle">d</text>
+      </svg>
+      <p style="font-size:23px;line-height:1.45;color:#3a3c42;margin:12px 4px 0;text-align:center;">As duas setas têm o mesmo tamanho: a Terra puxa a Lua tanto quanto a Lua puxa a Terra.</p>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Exercício Terra-Lua" data-screen-label="Exercício: atração Terra-Lua · resolução" data-speaker-notes="O que essa força faz é curvar a trajetória da Lua: sem ela, a Lua seguiria em linha reta e nos deixaria. Cuidado para não dizer que é ela que levanta as marés: a maré vem da DIFERENÇA de atração entre o centro da Terra e as duas pontas do planeta, não do valor total. Pela 3ª Lei a Lua puxa a Terra com o mesmo valor, e por isso os dois giram em torno de um ponto comum a uns 4 700 km do centro da Terra, que ainda está dentro do planeta." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força peso · Exercício · resolução</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.3;">Com que força a Terra e a Lua se atraem?</h2>
+  </div>
+  <div style="display:flex;gap:56px;margin-top:30px;flex:1;align-items:center;">
+    <div style="flex:0 0 940px;"><div style="background:var(--acento-suave);border-radius:24px;padding:36px 44px;display:flex;flex-direction:column;gap:20px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:var(--acento);">Resolução</div>
+      <div style="display:flex;flex-direction:column;gap:20px;font-family:'IBM Plex Mono',monospace;font-size:27px;"><div>F<sub style="font-size:.55em;">g</sub> = G · <span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.25;margin:0 .3em;"><span style="padding:0 .45em .12em;border-bottom:2.5px solid currentColor;">M<sub style="font-size:.55em;">T</sub> · M<sub style="font-size:.55em;">L</sub></span><span style="padding:.12em .45em 0;">d²</span></span></div><div>F<sub style="font-size:.55em;">g</sub> = <span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.25;margin:0 .3em;"><span style="padding:0 .45em .12em;border-bottom:2.5px solid currentColor;">6,67×10⁻¹¹ × 6,0×10²⁴ × 7,3×10²²</span><span style="padding:.12em .45em 0;">(3,8×10⁸)²</span></span></div><div>F<sub style="font-size:.55em;">g</sub> = <span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.25;margin:0 .3em;"><span style="padding:0 .45em .12em;border-bottom:2.5px solid currentColor;">2,92×10³⁷</span><span style="padding:.12em .45em 0;">1,44×10¹⁷</span></span></div><div>F<sub style="font-size:.55em;">g</sub> ≈ <strong style="color:var(--acento);">2,0 × 10²⁰ N</strong></div></div>
+    </div></div>
+    <div style="flex:1;"><div style="background:#fff;border-radius:24px;padding:30px 40px;font-size:26px;line-height:1.5;color:#3a3c42;">É essa força que <strong>curva a trajetória</strong> da Lua. Sem ela, a Lua seguiria em linha reta e iria embora.<br><br>Pela <strong>3ª Lei</strong>, a Lua puxa a Terra com os mesmos 2,0 × 10²⁰ N. Por isso os dois giram em torno de um ponto comum, a cerca de <strong>4 700 km</strong> do centro da Terra, ainda dentro do planeta.</div></div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Exercício caixas" data-screen-label="Exercício: duas caixas · enunciado" data-speaker-notes="Antes da conta, pergunte se alguém já viu duas caixas deslizarem uma na direção da outra. A turma costuma responder que a força não existe. Ela existe: o que não existe é escala para percebê-la. O item c é o que dá sentido aos dois primeiros." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força peso · Exercício</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:48px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.25;">Qual é a força gravitacional entre duas caixas no chão?</h2>
+  </div>
+  <div style="display:flex;gap:56px;margin-top:30px;flex:1;align-items:center;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:18px;">
+      <p style="font-size:29px;line-height:1.45;margin:0;">Duas caixas iguais estão paradas no chão da sala, com os centros a 1,0 m uma da outra.</p>
+      <div style="background:#fff;border-radius:24px;padding:30px 44px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:21px;letter-spacing:.08em;text-transform:uppercase;color:var(--acento);margin-bottom:16px;">Dados do problema</div><div style="font-family:'IBM Plex Mono',monospace;font-size:27px;line-height:1.7;">m<sub style="font-size:.55em;">1</sub> = m<sub style="font-size:.55em;">2</sub> = 50 kg<br>d = 1,0 m<br>G = 6,67 × 10⁻¹¹ N·m²/kg²<br>g = 9,8 m/s²</div></div>
+      <div style="background:#fff;border-radius:24px;padding:30px 40px;font-size:26px;line-height:1.5;color:#3a3c42;">Determine:<br><strong>a)</strong> a força de atração gravitacional entre as duas caixas;<br><strong>b)</strong> o peso de uma delas;<br><strong>c)</strong> quantas vezes o peso é maior que essa atração.</div>
+    </div>
+    <div style="flex:0 0 640px;background:var(--acento-suave);border-radius:24px;padding:30px 28px;">
+      <svg data-avulso="gravitacao/4-duas-caixas-no-chao" viewBox="0 0 470 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Duas caixas iguais apoiadas no chão, afastadas uma da outra, com a massa escrita dentro de cada uma: m índice 1 e m índice 2. Entre elas, um par de setas de mesmo comprimento marcadas F aponta uma caixa para a outra. Em cima, uma cota com linhas de chamada saindo do centro de cada caixa marca a distância d." style="width:100%;height:auto;">
+        <rect class="fga-caixa" x="70" y="110" width="80" height="60" rx="3"/>
+        <path class="fga-ripa" d="M70,126 H150 M70,154 H150"/>
+        <text class="fga-t" x="110" y="146" text-anchor="middle">m<tspan baseline-shift="sub" font-size="13">1</tspan></text>
+
+        <rect class="fga-caixa" x="290" y="110" width="80" height="60" rx="3"/>
+        <path class="fga-ripa" d="M290,126 H370 M290,154 H370"/>
+        <text class="fga-t" x="330" y="146" text-anchor="middle">m<tspan baseline-shift="sub" font-size="13">2</tspan></text>
+
+        <line class="fga-vetor" x1="156" y1="140" x2="194" y2="140" marker-end="url(#fga-seta)"/>
+        <text class="fga-m" x="172" y="120" text-anchor="middle">F</text>
+        <line class="fga-vetor" x1="284" y1="140" x2="246" y2="140" marker-end="url(#fga-seta)"/>
+        <text class="fga-m" x="268" y="120" text-anchor="middle">F</text>
+
+        <path class="fga-guia" d="M110,138 V64 M330,138 V64"/>
+        <circle class="fga-centro" cx="110" cy="140" r="3.5"/>
+        <circle class="fga-centro" cx="330" cy="140" r="3.5"/>
+        <path class="fga-cota" d="M110,58 V74 M330,58 V74 M110,66 H330"/>
+        <text class="fga-mg" x="220" y="52" text-anchor="middle">d</text>
+
+        <line class="fga-chao" x1="30" y1="170" x2="440" y2="170"/>
+        <path class="fga-hachura" d="M40,170 L28,184 M70,170 L58,184 M100,170 L88,184 M130,170 L118,184 M160,170 L148,184 M190,170 L178,184 M220,170 L208,184 M250,170 L238,184 M280,170 L268,184 M310,170 L298,184 M340,170 L328,184 M370,170 L358,184 M400,170 L388,184 M430,170 L418,184"/>
+      </svg>
+      <p style="font-size:23px;line-height:1.45;color:#3a3c42;margin:12px 4px 0;text-align:center;">Também aqui o <strong>d</strong> é medido de centro a centro.</p>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Exercício caixas" data-screen-label="Exercício: duas caixas · resolução" data-speaker-notes="O número da razão é o argumento inteiro do slide: quase 3 bilhões. Cabe contar que Cavendish mediu uma atração dessa ordem em 1798, com uma balança de torção protegida do vento numa sala fechada, e foi assim que G ficou conhecido. Não é força pequena demais para existir: é pequena demais para o nosso corpo." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força peso · Exercício · resolução</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.3;">Qual é a força gravitacional entre duas caixas no chão?</h2>
+  </div>
+  <div style="display:flex;gap:50px;margin-top:26px;flex:1;align-items:center;">
+    <div style="flex:0 0 820px;"><div style="background:var(--acento-suave);border-radius:24px;padding:36px 44px;display:flex;flex-direction:column;gap:20px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:var(--acento);">Resolução</div>
+      <div style="display:flex;flex-direction:column;gap:20px;font-family:'IBM Plex Mono',monospace;font-size:26px;"><div>a) F = G · <span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.25;margin:0 .3em;"><span style="padding:0 .45em .12em;border-bottom:2.5px solid currentColor;">m<sub style="font-size:.55em;">1</sub> · m<sub style="font-size:.55em;">2</sub></span><span style="padding:.12em .45em 0;">d²</span></span></div><div>&nbsp;&nbsp;&nbsp;F = <span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.25;margin:0 .3em;"><span style="padding:0 .45em .12em;border-bottom:2.5px solid currentColor;">6,67×10⁻¹¹ × 50 × 50</span><span style="padding:.12em .45em 0;">1,0²</span></span></div><div>&nbsp;&nbsp;&nbsp;F ≈ <strong style="color:var(--acento);">1,7 × 10⁻⁷ N</strong></div><div>b) P = m · g = 50 × 9,8 = <strong style="color:var(--acento);">490 N</strong></div><div>c) <span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.25;margin:0 .3em;"><span style="padding:0 .45em .12em;border-bottom:2.5px solid currentColor;">490</span><span style="padding:.12em .45em 0;">1,7 × 10⁻⁷</span></span> ≈ <strong style="color:var(--acento);">3 × 10⁹</strong></div></div>
+    </div></div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:16px;">
+      <p style="font-size:27px;line-height:1.45;margin:0;"><strong>Por que ninguém nota.</strong> O peso de uma caixa é quase <strong>3 bilhões</strong> de vezes maior que a atração entre as duas.</p>
+      <div style="font-size:25px;line-height:1.5;color:#3a3c42;display:flex;flex-direction:column;gap:12px;">
+        <div><strong style="color:#16171A;">G é minúsculo.</strong> A atração só fica sensível quando pelo menos uma das massas é astronômica.</div>
+        <div><strong style="color:#16171A;">A gravidade não se cancela.</strong> Só existe massa positiva, então a de todos os átomos da Terra se soma. A força elétrica é muito mais forte, mas tem dois sinais e quase sempre se anula.</div>
+        <div><strong style="color:#16171A;">O atrito segura.</strong> Para a caixa andar, essa atração teria de vencer o atrito estático com o piso.</div>
+      </div>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Exercício piano" data-screen-label="Exercício: peso do piano · enunciado" data-speaker-notes="Aplicação direta do P = m·g, agora sem passar pela lei geral. O item c é o que separa quem entendeu: a massa não muda, e não há conta a fazer. Se alguém responder 52 kg, dividindo por 6, é exatamente a confusão entre massa e peso que o slide quer pegar." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força peso · Exercício</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:56px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.2;">Quanto pesa um piano de cauda?</h2>
+  </div>
+  <div style="display:flex;gap:60px;margin-top:36px;flex:1;align-items:center;">
+    <div style="background:#fff;border-radius:24px;padding:30px 44px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:21px;letter-spacing:.08em;text-transform:uppercase;color:var(--acento);margin-bottom:16px;">Dados do problema</div><div style="font-family:'IBM Plex Mono',monospace;font-size:30px;line-height:1.7;">m = 320 kg<br>g<sub style="font-size:.55em;">Terra</sub> = 9,8 m/s²<br>g<sub style="font-size:.55em;">Lua</sub> = 1,6 m/s²</div></div>
+    <div style="flex:1;"><div style="background:#fff;border-radius:24px;padding:30px 40px;font-size:28px;line-height:1.5;color:#3a3c42;">Determine:<br><strong>a)</strong> o peso do piano na Terra;<br><strong>b)</strong> o peso do mesmo piano na Lua;<br><strong>c)</strong> a massa dele na Lua.</div></div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Exercício piano" data-screen-label="Exercício: peso do piano · resolução" data-speaker-notes="A razão entre os dois pesos é a mesma razão entre os dois valores de g, 6,1, e é o número que apareceu no slide das barras. Vale fechar dizendo que daria para resolver pela lei geral, usando massa e raio de cada astro: o g já traz essa conta pronta." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força peso · Exercício · resolução</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.3;">Quanto pesa um piano de cauda?</h2>
+  </div>
+  <div style="display:flex;gap:56px;margin-top:30px;flex:1;align-items:center;">
+    <div style="flex:0 0 680px;"><div style="background:var(--acento-suave);border-radius:24px;padding:40px 46px;display:flex;flex-direction:column;gap:18px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:var(--acento);">Resolução</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:28px;line-height:2;">a)  P = 320 × 9,8 = <strong style="color:var(--acento);">3 136 N</strong><br>b)  P = 320 × 1,6 = <strong style="color:var(--acento);">512 N</strong><br>c)  m = <strong style="color:var(--acento);">320 kg</strong>, a mesma</div>
+    </div></div>
+    <div style="flex:1;"><div style="background:#fff;border-radius:24px;padding:38px 44px;font-size:27px;line-height:1.5;color:#3a3c42;">O piano pesa <strong>6,1 vezes menos</strong> na Lua, a mesma razão entre os dois valores de g. A <strong>massa não muda</strong>: ela não depende de onde o corpo está.<br><br>Daria para resolver pela lei geral, com a massa e o raio de cada astro. O <strong>g</strong> já traz essa conta pronta.</div></div>
+  </div>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="g e rotação" data-screen-label="O g embute a rotação da Terra" data-speaker-notes="Ponto fino, mas que fecha a sequência. O g de 9,8 não é o G·M/R² puro: é o que uma balança marca para quem está em pé num chão que gira. A força centrífuga é força de inércia, existe só porque o referencial gira, e mesmo assim entra na medida, porque a balança gira junto. Dá para amarrar com o slide de referencial inercial da aula de Leis de Newton. Curiosidade que costuma pegar bem: é por isso que se lança foguete perto do equador e para leste, onde além do g menor se ganham de graça os 465 m/s da rotação." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força peso · além da conta</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:56px;font-weight:600;margin:0;letter-spacing:-0.01em;line-height:1.2;">O g que medimos não é só gravidade</h2>
+  </div>
+  <div style="display:flex;gap:64px;margin-top:32px;flex:1;align-items:center;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:22px;">
+      <p style="font-size:30px;line-height:1.45;margin:0;">O 9,8 m/s² não sai apenas de G·M<sub style="font-size:.6em;">T</sub>/R<sub style="font-size:.6em;">T</sub>². Ele é o que uma <strong>balança marca</strong>, e quem segura a balança está em pé num chão que <strong>gira</strong>.</p>
+      <p style="font-size:30px;line-height:1.45;margin:0;">Nesse referencial aparece uma <strong>força centrífuga</strong>, apontando para fora do eixo de rotação. Ela é máxima no equador, nula nos polos, e desconta do peso medido. Some-se o <strong>achatamento</strong>: o raio equatorial é 21 km maior, e G·M/R² já é menor lá.</p>
+      <div style="display:flex;gap:14px;">
+        <div style="flex:1;background:#fff;border-radius:16px;padding:20px 24px;"><div style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:600;line-height:1;">9,832</div><div style="font-size:24px;color:#54565c;margin-top:8px;">m/s² no polo</div></div>
+        <div style="flex:1;background:#fff;border-radius:16px;padding:20px 24px;"><div style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:600;line-height:1;">9,780</div><div style="font-size:24px;color:#54565c;margin-top:8px;">m/s² no equador</div></div>
+        <div style="flex:1;background:var(--acento-suave);border-radius:16px;padding:20px 24px;"><div style="font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:600;line-height:1;color:var(--acento);">0,034</div><div style="font-size:24px;color:#54565c;margin-top:8px;">m/s² só da rotação</div></div>
+      </div>
+      <p style="font-size:26px;line-height:1.45;margin:0;color:#54565c;">Dos 0,052 m/s² de diferença entre polo e equador, dois terços vêm da rotação. Uma pessoa de 80 kg pesa cerca de <strong style="color:#16171A;">4 N a menos</strong> no equador.</p>
+    </div>
+    <div style="flex:0 0 480px;background:var(--acento-suave);border-radius:24px;padding:32px 30px;">
+      <img src="/img/animacoes/terra-gira/3-fio-de-prumo.svg" alt="Corte da Terra com um ponto a 45 graus de latitude. Do ponto saem a atração gravitacional, apontando para o centro, a força centrífuga, apontando para fora do eixo, e a resultante das duas, que é a direção do fio de prumo." style="display:block;width:100%;height:auto;">
+      <p style="font-size:23px;line-height:1.45;color:#3a3c42;margin:14px 4px 0;text-align:center;">Nem o prumo aponta para o centro da Terra: ele segue a resultante. O desvio está exagerado no desenho.</p>
+    </div>
+  </div>
 </section>
       </div>
 
@@ -240,9 +468,98 @@
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:56px;flex:1;">
     <div style="background:var(--acento2-suave);border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:22px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento2-escuro);">Peso</span><div style="font-size:29px;line-height:1.5;color:#3a3c42;">A reação do peso é uma força <strong>peso que o corpo faz na Terra</strong>, puxando-a para cima (imperceptível, mas existe).</div></div>
-    <div style="background:var(--acento-suave);border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:22px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">Normal</span><div style="font-size:29px;line-height:1.5;color:#3a3c42;">A reação da normal é uma força <strong>normal que o corpo faz na superfície</strong> — dois pares completamente diferentes.</div></div>
+    <div style="background:var(--acento-suave);border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:22px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:24px;color:var(--acento);">Normal</span><div style="font-size:29px;line-height:1.5;color:#3a3c42;">A reação da normal é uma força <strong>normal que o corpo faz na superfície</strong>. São dois pares completamente diferentes.</div></div>
   </div>
   <p style="font-size:28px;color:#54565c;margin-top:36px;">O cálculo da normal depende da situação: em geral, ela é obtida impondo que não há aceleração na direção perpendicular ao contato.</p>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Normal em situações" data-screen-label="A normal em três situações" data-speaker-notes="A pergunta que abre o slide é sempre a mesma: qual é a direção perpendicular ao contato, e o que precisa se anular nela. Na mesa, a normal iguala o peso porque não há aceleração vertical. Na rampa, quem se anula é a componente perpendicular do peso, e por isso entra o cosseno: quanto mais inclinada a rampa, menor a normal, e a 90 graus ela zera. Na parede, a normal não tem nada a ver com o peso: ela vale o que a mão está empurrando, e quem segura o corpo é o atrito. Vale perguntar o que acontece com a normal se a pessoa empurrar mais forte." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px 80px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força normal</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:56px;font-weight:600;margin:0;letter-spacing:-0.01em;">A mesma força, três situações</h2>
+  </div>
+  <div style="flex:1;display:flex;align-items:center;margin-top:24px;">
+    <svg data-avulso="forcas/14-normal-em-tres-situacoes" viewBox="0 0 760 268" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Três quadros com a mesma força normal em situações diferentes. No primeiro, um bloco sobre uma mesa horizontal: a normal aponta para cima e tem o mesmo tamanho do peso. No segundo, um bloco num plano inclinado de trinta graus: a normal é perpendicular à rampa e menor que o peso, que continua vertical. No terceiro, um bloco pressionado contra uma parede vertical por uma força horizontal: a normal é horizontal e vale o mesmo que essa força, enquanto o peso é equilibrado pelo atrito." style="width:100%;height:auto;">
+        <text class="fga-tit" x="130" y="30" text-anchor="middle">Sobre a mesa</text>
+        <line class="fga-chao" x1="45" y1="170" x2="215" y2="170"/>
+        <path class="fga-hachura" d="M55,170 L45,182 M80,170 L70,182 M105,170 L95,182 M130,170 L120,182 M155,170 L145,182 M180,170 L170,182 M205,170 L195,182"/>
+        <rect class="fga-bloco" x="102" y="130" width="56" height="40" rx="3"/>
+        <line class="fga-v-normal" x1="130" y1="128" x2="130" y2="72" marker-end="url(#fga-seta-n)"/>
+        <text class="fga-m-normal" x="142" y="84">N</text>
+        <line class="fga-v-peso" x1="130" y1="172" x2="130" y2="224" marker-end="url(#fga-seta-p)"/>
+        <text class="fga-m-peso" x="142" y="212">P</text>
+        <text class="fga-rel" x="130" y="256" text-anchor="middle">N = P</text>
+
+        <text class="fga-tit" x="370" y="30" text-anchor="middle">No plano inclinado</text>
+        <polygon class="fga-rampa" points="280,170 460,170 460,66"/>
+        <path class="fga-ang" d="M320,170 A40,40 0 0,0 314.6,150"/>
+        <text class="fga-m-atrito" x="330" y="165">30°</text>
+        <g transform="translate(370,118) rotate(-30)">
+          <rect class="fga-bloco" x="-28" y="-24" width="56" height="24" rx="3"/>
+        </g>
+        <line class="fga-v-normal" x1="358" y1="97" x2="331" y2="50" marker-end="url(#fga-seta-n)"/>
+        <text class="fga-m-normal" x="314" y="46">N</text>
+        <line class="fga-v-peso" x1="370" y1="124" x2="370" y2="204" marker-end="url(#fga-seta-p)"/>
+        <text class="fga-m-peso" x="382" y="192">P</text>
+        <text class="fga-rel" x="370" y="256" text-anchor="middle">N = P · cos θ</text>
+
+        <text class="fga-tit" x="628" y="30" text-anchor="middle">Contra a parede</text>
+        <line class="fga-chao" x1="700" y1="44" x2="700" y2="206"/>
+        <path class="fga-hachura" d="M700,54 L712,44 M700,79 L712,69 M700,104 L712,94 M700,129 L712,119 M700,154 L712,144 M700,179 L712,169 M700,204 L712,194"/>
+        <rect class="fga-bloco" x="642" y="106" width="58" height="46" rx="3"/>
+        <line class="fga-v-forca" x1="558" y1="120" x2="624" y2="120" marker-end="url(#fga-seta)"/>
+        <text class="fga-m" x="584" y="106">F</text>
+        <line class="fga-v-normal" x1="696" y1="142" x2="632" y2="142" marker-end="url(#fga-seta-n)"/>
+        <text class="fga-m-normal" x="612" y="164">N</text>
+        <line class="fga-v-atrito" x1="656" y1="104" x2="656" y2="58" marker-end="url(#fga-seta-a)"/>
+        <text class="fga-m-atrito" x="626" y="52">F<tspan baseline-shift="sub" font-size="12">at</tspan></text>
+        <line class="fga-v-peso" x1="672" y1="154" x2="672" y2="206" marker-end="url(#fga-seta-p)"/>
+        <text class="fga-m-peso" x="684" y="196">P</text>
+        <text class="fga-rel" x="628" y="256" text-anchor="middle">N = F</text>
+      </svg>
+  </div>
+  <p style="font-size:29px;line-height:1.45;color:#54565c;margin:22px 0 0;max-width:1660px;">A normal é sempre <strong style="color:#16171A;">perpendicular ao contato</strong>, e o valor dela sai de impor que nada acelera nessa direção. Só no primeiro caso isso resulta em N = P.</p>
+</section>
+      </div>
+
+      <div class="slide-frame">
+<section data-label="Normal no impacto" data-screen-label="A normal pode passar muito do peso" data-speaker-notes="Aqui a ideia de que a normal se ajusta chega ao extremo. Faça a conta com a turma: a normal média multiplicada pela distância de parada tem de dar a energia que o corpo trazia, e daí sai que a razão entre normal e peso é a razão entre a altura de queda e a distância de parada. Dois mil gramas caindo de um metro e meio e parando em cinco milímetros chegam a quase seis mil newtons, o peso de 600 kg. Se o piso for mais duro e a parada cair para meio milímetro, a normal vira dez vezes maior. É esse o princípio do capacete, do tatame e do airbag: nenhum deles reduz a energia, todos aumentam o d." style="width:100%;height:100%;box-sizing:border-box;padding:90px 110px 80px;display:flex;flex-direction:column;background:#F7F6F2;color:#16171A;font-family:'IBM Plex Sans',sans-serif;">
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:24px;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);">Força normal</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:54px;font-weight:600;margin:0;letter-spacing:-0.01em;">Quando a normal passa muito do peso</h2>
+  </div>
+  <div style="display:flex;gap:56px;margin-top:26px;flex:1;align-items:center;">
+    <div style="flex:1;display:flex;flex-direction:column;gap:20px;">
+      <p style="font-size:29px;line-height:1.45;margin:0;">Um corpo de <strong>2,0 kg</strong> cai de <strong>1,5 m</strong> e para ao bater no chão, depois de se deformar <strong>5 mm</strong>. Toda a energia da queda tem de ser absorvida nesses 5 mm:</p>
+      <div style="background:var(--acento-suave);border-radius:20px;padding:26px 34px;display:flex;flex-direction:column;gap:16px;font-family:'IBM Plex Mono',monospace;font-size:26px;"><div>N · d = m · g · (h + d)</div><div>N = <span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.25;margin:0 .3em;"><span style="padding:0 .45em .12em;border-bottom:2.5px solid currentColor;">2,0 × 9,8 × 1,505</span><span style="padding:.12em .45em 0;">0,005</span></span> ≈ <strong style="color:var(--acento);">5 900 N</strong></div></div>
+      <div style="display:flex;gap:14px;"><div style="flex:1;background:#fff;border-radius:16px;padding:20px 24px;"><div style="font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:600;line-height:1;">5 900 N</div><div style="font-size:23px;color:#54565c;margin-top:8px;">a normal no impacto</div></div><div style="flex:1;background:#fff;border-radius:16px;padding:20px 24px;"><div style="font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:600;line-height:1;">300 ×</div><div style="font-size:23px;color:#54565c;margin-top:8px;">o peso do corpo</div></div><div style="flex:1;background:var(--acento-suave);border-radius:16px;padding:20px 24px;"><div style="font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:600;line-height:1; color:var(--acento);">600 kg</div><div style="font-size:23px;color:#54565c;margin-top:8px;">é o que sustentaria parado</div></div></div>
+      <p style="font-size:25px;line-height:1.5;color:#54565c;margin:0;">A razão entre as duas forças é a razão entre as duas distâncias: <strong style="color:#16171A;">N/P ≈ h/d</strong>. Cortar o d pela metade dobra a normal. É por isso que capacete, tatame e airbag funcionam: nenhum deles diminui a energia, todos aumentam o d.</p>
+    </div>
+    <div style="flex:0 0 420px;background:var(--acento-suave);border-radius:24px;padding:30px 28px;">
+      <svg data-avulso="forcas/15-normal-no-impacto" viewBox="0 0 320 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Um corpo cai de uma altura h, marcada por uma cota alta à esquerda. Embaixo, o contorno tracejado mostra o corpo no instante em que toca o chão e o corpo cheio mostra o mesmo corpo já amassado; a diferença entre os dois é a distância de parada d, marcada por uma cota curta ao lado. A seta da normal é desenhada muito maior que a do peso." style="width:100%;height:auto;">
+        <rect class="fga-bloco" x="96" y="34" width="52" height="34" rx="3"/>
+        <path class="fga-cota" d="M52,68 V232 M44,68 H60 M44,232 H60"/>
+        <text class="fga-cota-t" x="34" y="154" text-anchor="middle">h</text>
+
+        <rect class="fga-guia" x="96" y="198" width="52" height="34" rx="3"/>
+        <rect class="fga-bloco" x="96" y="216" width="52" height="16" rx="3"/>
+        <path class="fga-cota" d="M158,198 H176 M158,216 H176 M167,198 V216"/>
+        <text class="fga-cota-t" x="186" y="213">d</text>
+
+        <line class="fga-v-normal" x1="122" y1="230" x2="122" y2="86" marker-end="url(#fga-seta-n)"/>
+        <text class="fga-m-normal" x="134" y="112">N</text>
+        <line class="fga-v-peso" x1="142" y1="234" x2="142" y2="264" marker-end="url(#fga-seta-p)"/>
+        <text class="fga-m-peso" x="154" y="258">P</text>
+
+        <line class="fga-chao" x1="30" y1="232" x2="290" y2="232"/>
+        <path class="fga-hachura" d="M42,232 L32,244 M67,232 L57,244 M92,232 L82,244 M117,232 L107,244 M167,232 L157,244 M192,232 L182,244 M217,232 L207,244 M242,232 L232,244 M267,232 L257,244"/>
+
+        <text class="fga-rot" x="160" y="290" text-anchor="middle">o d está exagerado no desenho</text>
+      </svg>
+    </div>
+  </div>
 </section>
       </div>
 
@@ -256,7 +573,7 @@
     <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:34px;flex:1;">
       <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">01</span><span style="font-size:34px;line-height:1.4;">Fios e cordas esticados exercem e estão submetidos a uma força chamada <strong>tensão</strong>.</span></li>
       <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">02</span><span style="font-size:34px;line-height:1.4;">A tensão sempre aponta na <strong>direção do fio</strong>, e é considerada igual nos dois extremos.</span></li>
-      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">03</span><span style="font-size:34px;line-height:1.4;">Fios suportam um <strong>valor máximo</strong> de tensão — por isso elevadores têm limite de passageiros.</span></li>
+      <li style="display:flex;gap:24px;align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace;font-size:26px;color:var(--acento);min-width:42px;">03</span><span style="font-size:34px;line-height:1.4;">Fios suportam um <strong>valor máximo</strong> de tensão, e é por isso que elevadores têm limite de passageiros.</span></li>
     </ul>
     <div style="flex:0 0 560px;background:var(--acento-suave);border-radius:24px;padding:44px;">
       <svg viewBox="0 0 420 200" style="width:100%;height:auto;">
@@ -409,7 +726,7 @@
     </div>
     <div style="flex:1;background:var(--acento-suave);border-radius:24px;padding:44px 46px;display:flex;flex-direction:column;gap:16px;justify-content:center;">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:var(--acento);">Resolução</div>
-      <div style="font-size:29px;line-height:1.5;">Alternativa <strong>c</strong>. A resultante de F₁=8N e F₂=5N varia entre |8−5|=3N e 8+5=13N. Como o corpo está em repouso, a terceira força deve anular essa resultante — logo, seu módulo está entre 3N e 13N. <strong>14 N</strong> está fora dessa faixa.</div>
+      <div style="font-size:29px;line-height:1.5;">Alternativa <strong>c</strong>. A resultante de F₁=8N e F₂=5N varia entre |8−5|=3N e 8+5=13N. Como o corpo está em repouso, a terceira força deve anular essa resultante, e por isso seu módulo está entre 3N e 13N. <strong>14 N</strong> está fora dessa faixa.</div>
     </div>
   </div>
 </section>
@@ -460,7 +777,7 @@
     </div>
     <div style="flex:1;background:var(--acento-suave);border-radius:24px;padding:44px 46px;">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;letter-spacing:0.08em;text-transform:uppercase;color:var(--acento);">Resolução</div>
-      <div style="font-size:30px;line-height:1.5;margin-top:16px;">Em <strong>A, B e C</strong>, a única força atuante é o <strong>peso</strong>, apontando sempre para baixo — mesmo quando a bola sobe. No topo (B), a velocidade é nula, mas a força (e a aceleração) continua sendo a gravidade, constante.</div>
+      <div style="font-size:30px;line-height:1.5;margin-top:16px;">Em <strong>A, B e C</strong>, a única força atuante é o <strong>peso</strong>, apontando sempre para baixo, mesmo quando a bola sobe. No topo (B), a velocidade é nula, mas a força (e a aceleração) continua sendo a gravidade, constante.</div>
     </div>
   </div>
 </section>

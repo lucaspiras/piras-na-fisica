@@ -87,6 +87,26 @@ $Figuras = @(
      Perfil = 'apresentacao'
      Slug = 'gravitacao/2-piano-e-a-terra'
      Resumo = 'Piano acima do horizonte curvo da Terra, com o peso apontando para o centro do planeta.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'gravitacao/3-terra-e-lua-do-problema'
+     Resumo = 'Terra e Lua com as massas marcadas e a reta que une os centros, para montar a conta.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'gravitacao/4-duas-caixas-no-chao'
+     Resumo = 'Duas caixas no chao, com as massas marcadas e a reta de centro a centro.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'forcas/14-normal-em-tres-situacoes'
+     Resumo = 'A normal na mesa, na rampa e contra a parede, com a relacao que vale em cada caso.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'forcas/15-normal-no-impacto'
+     Resumo = 'Corpo que cai de uma altura h e para numa deformacao d: a normal fica h/d vezes o peso.' }
 )
 
 # ----------------------------------------------------------------------------
@@ -120,18 +140,34 @@ $TemasEscuros = @{
   'apresentacao' = @'
         --figa-sol:          #F4B95A;
         --figa-sol-halo:     #4A3A1C;
-        --figa-terra:        #3F7FD8;
-        --figa-continente:   #3FBB74;
+        --figa-terra:        #0B2F5E;
+        --figa-terra-claro:  #2A6BB8;
+        --figa-terra-borda:  #7FAEE4;
+        --figa-atmosfera:    #4E7CB4;
+        --figa-continente:   #2E8B57;
+        --figa-continente-2: #46A96C;
         --figa-contorno:     #E6E7EA;
         --figa-vetor:        #F87171;
         --figa-guia:         #6B7280;
         --figa-texto:        #E6E7EA;
         --figa-rotulo:       #A8ABB2;
-        --figa-piano:        #0F1013;
+        --figa-rotulo-claro: #EAF1FC;
+        --figa-piano:        #0B0C0E;
         --figa-piano-2:      #23252B;
+        --figa-piano-luz:    #3C4049;
         --figa-teclas:       #E8E6E0;
-        --figa-solo:         #3FBB74;
-        --figa-rotulo-claro: #DCE6F5;
+        --figa-lua:          #8B909A;
+        --figa-cratera:      #6B7078;
+        --figa-caixa:        #7A5A31;
+        --figa-caixa-b:      #D2AE79;
+        --figa-apoio:        #A8ABB2;
+        --figa-hachura:      #6B7280;
+        --figa-bloco:        #1E3A5F;
+        --figa-bloco-b:      #60A5FA;
+        --figa-rampa:        #1E293B;
+        --figa-peso:         #C084FC;
+        --figa-normal:       #4ADE80;
+        --figa-atrito:       #FB923C;
 '@
 }
 
@@ -260,8 +296,13 @@ foreach ($fig in $Figuras) {
   $tituloId = "$assunto-$nome"
 
   # --- so os marcadores que esta figura usa --------------------------------
+  # o que a figura define nela mesma (gradiente, recorte) ja viaja no corpo;
+  # do bloco compartilhado da pagina so precisa vir o que ela referencia sem definir
+  $proprios = [regex]::Matches($inline, 'id="([^"]+)"') | ForEach-Object { $_.Groups[1].Value }
   $usados = [regex]::Matches($inline, 'url\(#([^)]+)\)') |
-            ForEach-Object { $_.Groups[1].Value } | Select-Object -Unique | Sort-Object
+            ForEach-Object { $_.Groups[1].Value } |
+            Where-Object { $proprios -notcontains $_ } |
+            Select-Object -Unique | Sort-Object
   $blocoDefs = ''
   if ($usados.Count -gt 0) {
     $partes = foreach ($u in $usados) {

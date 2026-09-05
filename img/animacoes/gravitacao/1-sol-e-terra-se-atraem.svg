@@ -9,20 +9,36 @@
   <title id="gravitacao-1-sol-e-terra-se-atraem">O Sol, grande, à esquerda, e a Terra, pequena, à direita. Uma seta parte do Sol na direção da Terra e outra parte da Terra na direção do Sol; as duas têm o mesmo comprimento e estão rotuladas F g, porque as duas forças do par têm o mesmo módulo. Embaixo, uma cota marca a distância d entre os centros.</title>
   <style><![CDATA[
     svg {
-      --figa-sol:        #F4A024;
-      --figa-sol-halo:   #FBE3BB;
-      --figa-terra:      #2F6FD0;
-      --figa-continente: #2F9E5E;
-      --figa-contorno:   #16171A;
-      --figa-vetor:      #B3261E;
-      --figa-guia:       #A8ABB2;
-      --figa-texto:      #16171A;
-      --figa-rotulo:     #54565C;
-      --figa-piano:      #23252B;
-      --figa-piano-2:    #3A3D45;
-      --figa-teclas:     #F7F6F2;
-      --figa-solo:       #2F9E5E;
-      --figa-rotulo-claro: #DCE6F5;
+      --figa-sol:          #F4A024;
+      --figa-sol-halo:     #FBE3BB;
+      --figa-terra:        #144E96;
+      --figa-terra-claro:  #3D86DB;
+      --figa-terra-borda:  #0C3A73;
+      --figa-atmosfera:    #9CC6F2;
+      --figa-continente:   #2F9E5E;
+      --figa-continente-2: #57BE7E;
+      --figa-contorno:     #16171A;
+      --figa-vetor:        #B3261E;
+      --figa-guia:         #A8ABB2;
+      --figa-texto:        #16171A;
+      --figa-rotulo:       #54565C;
+      --figa-rotulo-claro: #EAF1FC;
+      --figa-piano:        #1B1D22;
+      --figa-piano-2:      #33363E;
+      --figa-piano-luz:    #4A4E58;
+      --figa-teclas:       #F7F6F2;
+      --figa-lua:          #C9CCD4;
+      --figa-cratera:      #A2A6AE;
+      --figa-caixa:        #E0BE8E;
+      --figa-caixa-b:      #8A6234;
+      --figa-apoio:        #54565C;
+      --figa-hachura:      #A8ABB2;
+      --figa-bloco:        #DBEAFE;
+      --figa-bloco-b:      #3B82F6;
+      --figa-rampa:        #EDEFF2;
+      --figa-peso:         #9333EA;
+      --figa-normal:       #16A34A;
+      --figa-atrito:       #C2410C;
       /* declaradas aqui, e não herdadas do deck, porque o .svg avulso gerado a
          partir desta seção leva a paleta e mais nada */
       --figa-fonte-t:    'IBM Plex Sans', system-ui, sans-serif;
@@ -36,18 +52,34 @@
       svg {
         --figa-sol:          #F4B95A;
         --figa-sol-halo:     #4A3A1C;
-        --figa-terra:        #3F7FD8;
-        --figa-continente:   #3FBB74;
+        --figa-terra:        #0B2F5E;
+        --figa-terra-claro:  #2A6BB8;
+        --figa-terra-borda:  #7FAEE4;
+        --figa-atmosfera:    #4E7CB4;
+        --figa-continente:   #2E8B57;
+        --figa-continente-2: #46A96C;
         --figa-contorno:     #E6E7EA;
         --figa-vetor:        #F87171;
         --figa-guia:         #6B7280;
         --figa-texto:        #E6E7EA;
         --figa-rotulo:       #A8ABB2;
-        --figa-piano:        #0F1013;
+        --figa-rotulo-claro: #EAF1FC;
+        --figa-piano:        #0B0C0E;
         --figa-piano-2:      #23252B;
+        --figa-piano-luz:    #3C4049;
         --figa-teclas:       #E8E6E0;
-        --figa-solo:         #3FBB74;
-        --figa-rotulo-claro: #DCE6F5;
+        --figa-lua:          #8B909A;
+        --figa-cratera:      #6B7078;
+        --figa-caixa:        #7A5A31;
+        --figa-caixa-b:      #D2AE79;
+        --figa-apoio:        #A8ABB2;
+        --figa-hachura:      #6B7280;
+        --figa-bloco:        #1E3A5F;
+        --figa-bloco-b:      #60A5FA;
+        --figa-rampa:        #1E293B;
+        --figa-peso:         #C084FC;
+        --figa-normal:       #4ADE80;
+        --figa-atrito:       #FB923C;
       }
     }
 
@@ -56,13 +88,43 @@
     .fga-raio       { fill: none; stroke: var(--figa-sol); stroke-width: 5; stroke-linecap: round; }
     .fga-terra      { fill: var(--figa-terra); stroke: var(--figa-contorno); stroke-width: 3; }
     .fga-continente { fill: var(--figa-continente); }
-    .fga-crosta     { fill: none; stroke: var(--figa-solo); stroke-width: 12; }
+    .fga-oc-raso    { stop-color: var(--figa-terra-claro); }
+    .fga-oc-fundo   { stop-color: var(--figa-terra); }
+    .fga-cont       { fill: var(--figa-continente); }
+    .fga-cont-luz   { fill: var(--figa-continente-2); }
+    .fga-crosta     { fill: none; stroke: var(--figa-terra-borda); stroke-width: 3; }
+    .fga-lua        { fill: var(--figa-lua); stroke: var(--figa-contorno); stroke-width: 2.5; }
+    .fga-cratera    { fill: var(--figa-cratera); }
+    .fga-centro     { fill: var(--figa-teclas); stroke: var(--figa-contorno); stroke-width: 1.5; }
+    .fga-caixa      { fill: var(--figa-caixa); stroke: var(--figa-caixa-b); stroke-width: 2.5; }
+    .fga-ripa       { fill: none; stroke: var(--figa-caixa-b); stroke-width: 2; }
+    .fga-chao       { fill: none; stroke: var(--figa-apoio); stroke-width: 3; stroke-linecap: round; }
+    .fga-hachura    { fill: none; stroke: var(--figa-hachura); stroke-width: 1.6; }
+    .fga-bloco      { fill: var(--figa-bloco); stroke: var(--figa-bloco-b); stroke-width: 2.5; }
+    .fga-rampa      { fill: var(--figa-rampa); stroke: var(--figa-apoio); stroke-width: 2.5; stroke-linejoin: round; }
+    .fga-ang        { fill: none; stroke: var(--figa-atrito); stroke-width: 1.8; }
+    .fga-v-peso     { fill: none; stroke: var(--figa-peso); stroke-width: 4; }
+    .fga-v-normal   { fill: none; stroke: var(--figa-normal); stroke-width: 4; }
+    .fga-v-atrito   { fill: none; stroke: var(--figa-atrito); stroke-width: 4; }
+    .fga-v-forca    { fill: none; stroke: var(--figa-vetor); stroke-width: 4; }
+    .fga-p-peso     { fill: var(--figa-peso); }
+    .fga-p-normal   { fill: var(--figa-normal); }
+    .fga-p-atrito   { fill: var(--figa-atrito); }
+    .fga-m-peso     { font-family: var(--figa-fonte-m); font-size: 19px; font-weight: 700; fill: var(--figa-peso); }
+    .fga-m-normal   { font-family: var(--figa-fonte-m); font-size: 19px; font-weight: 700; fill: var(--figa-normal); }
+    .fga-m-atrito   { font-family: var(--figa-fonte-m); font-size: 19px; font-weight: 700; fill: var(--figa-atrito); }
+    .fga-tit        { font-family: var(--figa-fonte-t); font-size: 19px; font-weight: 700; fill: var(--figa-texto); }
+    .fga-rel        { font-family: var(--figa-fonte-m); font-size: 20px; font-weight: 700; fill: var(--figa-texto); }
+    .fga-cota-t     { font-family: var(--figa-fonte-m); font-size: 18px; font-weight: 700; fill: var(--figa-rotulo); }
+    .fga-atm        { fill: none; stroke: var(--figa-atmosfera); stroke-width: 12; opacity: .55; }
     .fga-guia       { fill: none; stroke: var(--figa-guia); stroke-width: 2; stroke-dasharray: 7 6; }
     .fga-cota       { fill: none; stroke: var(--figa-guia); stroke-width: 2; }
     .fga-vetor      { fill: none; stroke: var(--figa-vetor); stroke-width: 5; }
     .fga-ponta      { fill: var(--figa-vetor); }
-    .fga-piano      { fill: var(--figa-piano); stroke: var(--figa-contorno); stroke-width: 3; }
-    .fga-piano-2    { fill: var(--figa-piano-2); stroke: var(--figa-contorno); stroke-width: 3; }
+    .fga-piano      { fill: var(--figa-piano); stroke: var(--figa-contorno); stroke-width: 2.5; }
+    .fga-piano-2    { fill: var(--figa-piano-2); stroke: var(--figa-contorno); stroke-width: 2.5; }
+    .fga-piano-luz  { fill: var(--figa-piano-luz); }
+    .fga-haste      { fill: none; stroke: var(--figa-piano-luz); stroke-width: 4; stroke-linecap: round; }
     .fga-teclas     { fill: var(--figa-teclas); stroke: var(--figa-contorno); stroke-width: 2.5; }
     .fga-tecla-p    { fill: var(--figa-piano); }
     .fga-t          { font-family: var(--figa-fonte-t); font-size: 20px; font-weight: 600; fill: var(--figa-texto); }
@@ -86,10 +148,10 @@
   <text class="fga-t" x="386" y="196" text-anchor="middle">Terra</text>
 
   <line class="fga-vetor" x1="150" y1="140" x2="214" y2="140" marker-end="url(#fga-seta)"/>
-  <text class="fga-m" x="182" y="126" text-anchor="middle">F<tspan baseline-shift="sub" font-size="14">g</tspan></text>
+  <text class="fga-m" x="178" y="118" text-anchor="middle">F<tspan baseline-shift="sub" font-size="14">g</tspan></text>
 
   <line class="fga-vetor" x1="350" y1="140" x2="286" y2="140" marker-end="url(#fga-seta)"/>
-  <text class="fga-m" x="318" y="126" text-anchor="middle">F<tspan baseline-shift="sub" font-size="14">g</tspan></text>
+  <text class="fga-m" x="322" y="118" text-anchor="middle">F<tspan baseline-shift="sub" font-size="14">g</tspan></text>
 
   <path class="fga-cota" d="M86,252 L86,272 M386,252 L386,272 M86,264 L386,264"/>
   <text class="fga-mg" x="236" y="290" text-anchor="middle">d</text>

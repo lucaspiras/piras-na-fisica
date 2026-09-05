@@ -263,20 +263,36 @@ body {
 ========================= */
 
 :root {
-  --figa-sol:        #F4A024;
-  --figa-sol-halo:   #FBE3BB;
-  --figa-terra:      #2F6FD0;
-  --figa-continente: #2F9E5E;
-  --figa-contorno:   #16171A;
-  --figa-vetor:      #B3261E;
-  --figa-guia:       #A8ABB2;
-  --figa-texto:      #16171A;
-  --figa-rotulo:     #54565C;
-  --figa-piano:      #23252B;
-  --figa-piano-2:    #3A3D45;
-  --figa-teclas:     #F7F6F2;
-  --figa-solo:       #2F9E5E;
-  --figa-rotulo-claro: #DCE6F5;
+  --figa-sol:          #F4A024;
+  --figa-sol-halo:     #FBE3BB;
+  --figa-terra:        #144E96;
+  --figa-terra-claro:  #3D86DB;
+  --figa-terra-borda:  #0C3A73;
+  --figa-atmosfera:    #9CC6F2;
+  --figa-continente:   #2F9E5E;
+  --figa-continente-2: #57BE7E;
+  --figa-contorno:     #16171A;
+  --figa-vetor:        #B3261E;
+  --figa-guia:         #A8ABB2;
+  --figa-texto:        #16171A;
+  --figa-rotulo:       #54565C;
+  --figa-rotulo-claro: #EAF1FC;
+  --figa-piano:        #1B1D22;
+  --figa-piano-2:      #33363E;
+  --figa-piano-luz:    #4A4E58;
+  --figa-teclas:       #F7F6F2;
+  --figa-lua:          #C9CCD4;
+  --figa-cratera:      #A2A6AE;
+  --figa-caixa:        #E0BE8E;
+  --figa-caixa-b:      #8A6234;
+  --figa-apoio:        #54565C;
+  --figa-hachura:      #A8ABB2;
+  --figa-bloco:        #DBEAFE;
+  --figa-bloco-b:      #3B82F6;
+  --figa-rampa:        #EDEFF2;
+  --figa-peso:         #9333EA;
+  --figa-normal:       #16A34A;
+  --figa-atrito:       #C2410C;
   /* declaradas aqui, e não herdadas do deck, porque o .svg avulso gerado a
      partir desta seção leva a paleta e mais nada */
   --figa-fonte-t:    'IBM Plex Sans', system-ui, sans-serif;
@@ -288,15 +304,46 @@ body {
 .fga-raio       { fill: none; stroke: var(--figa-sol); stroke-width: 5; stroke-linecap: round; }
 .fga-terra      { fill: var(--figa-terra); stroke: var(--figa-contorno); stroke-width: 3; }
 .fga-continente { fill: var(--figa-continente); }
-.fga-crosta     { fill: none; stroke: var(--figa-solo); stroke-width: 12; }
+/* o oceano do globo em corte usa um gradiente: as cores ficam nas paradas */
+.fga-oc-raso    { stop-color: var(--figa-terra-claro); }
+.fga-oc-fundo   { stop-color: var(--figa-terra); }
+.fga-cont       { fill: var(--figa-continente); }
+.fga-cont-luz   { fill: var(--figa-continente-2); }
+.fga-crosta     { fill: none; stroke: var(--figa-terra-borda); stroke-width: 3; }
+.fga-lua        { fill: var(--figa-lua); stroke: var(--figa-contorno); stroke-width: 2.5; }
+.fga-cratera    { fill: var(--figa-cratera); }
+.fga-centro     { fill: var(--figa-teclas); stroke: var(--figa-contorno); stroke-width: 1.5; }
+.fga-caixa      { fill: var(--figa-caixa); stroke: var(--figa-caixa-b); stroke-width: 2.5; }
+.fga-ripa       { fill: none; stroke: var(--figa-caixa-b); stroke-width: 2; }
+.fga-chao       { fill: none; stroke: var(--figa-apoio); stroke-width: 3; stroke-linecap: round; }
+.fga-hachura    { fill: none; stroke: var(--figa-hachura); stroke-width: 1.6; }
+.fga-bloco      { fill: var(--figa-bloco); stroke: var(--figa-bloco-b); stroke-width: 2.5; }
+.fga-rampa      { fill: var(--figa-rampa); stroke: var(--figa-apoio); stroke-width: 2.5; stroke-linejoin: round; }
+.fga-ang        { fill: none; stroke: var(--figa-atrito); stroke-width: 1.8; }
+.fga-v-peso     { fill: none; stroke: var(--figa-peso); stroke-width: 4; }
+.fga-v-normal   { fill: none; stroke: var(--figa-normal); stroke-width: 4; }
+.fga-v-atrito   { fill: none; stroke: var(--figa-atrito); stroke-width: 4; }
+.fga-v-forca    { fill: none; stroke: var(--figa-vetor); stroke-width: 4; }
+.fga-p-peso     { fill: var(--figa-peso); }
+.fga-p-normal   { fill: var(--figa-normal); }
+.fga-p-atrito   { fill: var(--figa-atrito); }
+.fga-m-peso     { font-family: var(--figa-fonte-m); font-size: 19px; font-weight: 700; fill: var(--figa-peso); }
+.fga-m-normal   { font-family: var(--figa-fonte-m); font-size: 19px; font-weight: 700; fill: var(--figa-normal); }
+.fga-m-atrito   { font-family: var(--figa-fonte-m); font-size: 19px; font-weight: 700; fill: var(--figa-atrito); }
+.fga-tit        { font-family: var(--figa-fonte-t); font-size: 19px; font-weight: 700; fill: var(--figa-texto); }
+.fga-rel        { font-family: var(--figa-fonte-m); font-size: 20px; font-weight: 700; fill: var(--figa-texto); }
+.fga-cota-t     { font-family: var(--figa-fonte-m); font-size: 18px; font-weight: 700; fill: var(--figa-rotulo); }
+.fga-atm        { fill: none; stroke: var(--figa-atmosfera); stroke-width: 12; opacity: .55; }
 .fga-guia       { fill: none; stroke: var(--figa-guia); stroke-width: 2; stroke-dasharray: 7 6; }
 .fga-cota       { fill: none; stroke: var(--figa-guia); stroke-width: 2; }
 
 .fga-vetor      { fill: none; stroke: var(--figa-vetor); stroke-width: 5; }
 .fga-ponta      { fill: var(--figa-vetor); }
 
-.fga-piano      { fill: var(--figa-piano); stroke: var(--figa-contorno); stroke-width: 3; }
-.fga-piano-2    { fill: var(--figa-piano-2); stroke: var(--figa-contorno); stroke-width: 3; }
+.fga-piano      { fill: var(--figa-piano); stroke: var(--figa-contorno); stroke-width: 2.5; }
+.fga-piano-2    { fill: var(--figa-piano-2); stroke: var(--figa-contorno); stroke-width: 2.5; }
+.fga-piano-luz  { fill: var(--figa-piano-luz); }
+.fga-haste      { fill: none; stroke: var(--figa-piano-luz); stroke-width: 4; stroke-linecap: round; }
 .fga-teclas     { fill: var(--figa-teclas); stroke: var(--figa-contorno); stroke-width: 2.5; }
 .fga-tecla-p    { fill: var(--figa-piano); }
 

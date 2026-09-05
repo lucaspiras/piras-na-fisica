@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Piano acima do horizonte curvo da Terra, com o peso apontando para o centro do planeta.
+<!-- Duas caixas no chao, com as massas marcadas e a reta de centro a centro.
      Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
      inserido em slide ou importado em editor vetorial.
      Fonte da geometria: disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html
      Gerado por scripts/extrair-figuras-paginas.ps1 — nao editar a mao. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 300" width="940" height="600"
-     role="img" aria-labelledby="gravitacao-2-piano-e-a-terra">
-  <title id="gravitacao-2-piano-e-a-terra">Um piano de cauda, visto de perfil e com o tampo levantado, apoiado em três pés iguais, suspenso acima do horizonte curvo da Terra. Abaixo do piano, uma seta vermelha vertical aponta para o solo, rotulada P igual a m vezes g, e segue em linha tracejada para dentro do planeta, na direção do centro. O planeta aparece em corte, com oceano, continentes e uma faixa de atmosfera sobre o horizonte.</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 200" width="940" height="400"
+     role="img" aria-labelledby="gravitacao-4-duas-caixas-no-chao">
+  <title id="gravitacao-4-duas-caixas-no-chao">Duas caixas iguais apoiadas no chão, afastadas uma da outra, com a massa escrita dentro de cada uma: m índice 1 e m índice 2. Entre elas, um par de setas de mesmo comprimento marcadas F aponta uma caixa para a outra. Em cima, uma cota com linhas de chamada saindo do centro de cada caixa marca a distância d.</title>
   <style><![CDATA[
     svg {
       --figa-sol:          #F4A024;
@@ -138,45 +138,25 @@
                 <path class="fga-ponta" d="M0,0 L10,5 L0,10 z"/>
               </marker>
   </defs>
-  <defs>
-    <linearGradient id="fga-oceano" x1="0" y1="0" x2="0" y2="1">
-      <stop class="fga-oc-raso" offset="0"/>
-      <stop class="fga-oc-fundo" offset="1"/>
-    </linearGradient>
-    <clipPath id="fga-globo">
-      <path d="M-6,252 Q241,178 488,252 L488,308 L-6,308 Z"/>
-    </clipPath>
-  </defs>
+  <rect class="fga-caixa" x="70" y="110" width="80" height="60" rx="3"/>
+  <path class="fga-ripa" d="M70,126 H150 M70,154 H150"/>
+  <text class="fga-t" x="110" y="146" text-anchor="middle">m<tspan baseline-shift="sub" font-size="13">1</tspan></text>
 
-  <path class="fga-atm" d="M-14,244 Q241,168 496,244"/>
-  <path fill="url(#fga-oceano)" d="M-6,252 Q241,178 488,252 L488,308 L-6,308 Z"/>
-  <g clip-path="url(#fga-globo)">
-    <path class="fga-cont" d="M26,206 Q66,197 100,212 Q134,203 156,220 Q146,247 112,251 Q74,257 48,244 Q23,233 26,206 Z"/>
-    <path class="fga-cont-luz" d="M52,214 Q76,208 96,218 Q86,230 62,230 Q46,224 52,214 Z"/>
-    <path class="fga-cont" d="M258,201 Q296,193 330,208 Q361,222 346,245 Q310,259 276,248 Q247,234 258,201 Z"/>
-    <path class="fga-cont-luz" d="M288,210 Q312,205 328,216 Q318,229 296,228 Q282,220 288,210 Z"/>
-    <path class="fga-cont" d="M392,213 Q418,207 441,220 Q453,233 438,247 Q411,255 393,244 Q379,232 392,213 Z"/>
-  </g>
-  <path class="fga-crosta" d="M-6,252 Q241,178 488,252"/>
+  <rect class="fga-caixa" x="290" y="110" width="80" height="60" rx="3"/>
+  <path class="fga-ripa" d="M290,126 H370 M290,154 H370"/>
+  <text class="fga-t" x="330" y="146" text-anchor="middle">m<tspan baseline-shift="sub" font-size="13">2</tspan></text>
 
-  <g>
-    <path class="fga-piano-2" d="M158,80 L286,52 L288,60 L160,88 Z"/>
-    <path class="fga-haste" d="M254,68 L254,86"/>
-    <path class="fga-piano" d="M110,104 H152 V109 q0,3 -3,3 H113 q-3,0 -3,-3 Z"/>
-    <path class="fga-teclas" d="M111,93 H152 V104 H111 q-4,0 -4,-4 v-3 q0,-4 4,-4 Z"/>
-    <path class="fga-tecla-p" d="M128,88 H150 V93 H125 Z"/>
-    <rect class="fga-piano" x="152" y="84" width="148" height="30" rx="5"/>
-    <rect class="fga-piano-luz" x="162" y="88" width="110" height="4" rx="2"/>
-    <path class="fga-piano-2" d="M158,114 H172 L170.5,144 H159.5 Z"/>
-    <path class="fga-piano-2" d="M221,114 H231 L229.5,136 H222.5 Z"/>
-    <path class="fga-piano-2" d="M282,114 H296 L294.5,144 H283.5 Z"/>
-    <circle class="fga-piano-2" cx="165" cy="147" r="3.5"/>
-    <circle class="fga-piano-2" cx="226" cy="138.5" r="2.8"/>
-    <circle class="fga-piano-2" cx="289" cy="147" r="3.5"/>
-  </g>
+  <line class="fga-vetor" x1="156" y1="140" x2="194" y2="140" marker-end="url(#fga-seta)"/>
+  <text class="fga-m" x="172" y="120" text-anchor="middle">F</text>
+  <line class="fga-vetor" x1="284" y1="140" x2="246" y2="140" marker-end="url(#fga-seta)"/>
+  <text class="fga-m" x="268" y="120" text-anchor="middle">F</text>
 
-  <line class="fga-vetor" x1="205" y1="160" x2="205" y2="202" marker-end="url(#fga-seta)"/>
-  <text class="fga-m" x="222" y="188">P = m · g</text>
-  <path class="fga-guia" d="M205,216 L205,292"/>
-  <text class="fga-rot-claro" x="222" y="272">para o centro da Terra</text>
+  <path class="fga-guia" d="M110,138 V64 M330,138 V64"/>
+  <circle class="fga-centro" cx="110" cy="140" r="3.5"/>
+  <circle class="fga-centro" cx="330" cy="140" r="3.5"/>
+  <path class="fga-cota" d="M110,58 V74 M330,58 V74 M110,66 H330"/>
+  <text class="fga-mg" x="220" y="52" text-anchor="middle">d</text>
+
+  <line class="fga-chao" x1="30" y1="170" x2="440" y2="170"/>
+  <path class="fga-hachura" d="M40,170 L28,184 M70,170 L58,184 M100,170 L88,184 M130,170 L118,184 M160,170 L148,184 M190,170 L178,184 M220,170 L208,184 M250,170 L238,184 M280,170 L268,184 M310,170 L298,184 M340,170 L328,184 M370,170 L358,184 M400,170 L388,184 M430,170 L418,184"/>
 </svg>
