@@ -1,0 +1,17 @@
+# Configuracao do build do GitHub Pages (Jekyll).
+#
+# O site nao usa recurso nenhum do Jekyll: todo .html e' copiado como esta'.
+# Este arquivo existe por um motivo so, e vale a pena deixar escrito.
+#
+# Texto de conteudos/ que ainda nao passou por revisao humana fica fora do ar
+# renomeado para conteudos/<tema>/_<nome>.html. O Jekyll ja ignora, por conta
+# propria, qualquer entrada que comece com _, e e' isso que tira o arquivo do
+# site sem apagar nada. As linhas abaixo repetem a regra de forma explicita,
+# para que ela nao dependa de alguem conhecer a convencao.
+#
+# Estado de cada texto: scripts/revisao-textos.json
+# Aplicacao:            powershell -File scripts\aplicar-revisao.ps1
+
+exclude:
+  - "conteudos/*/_*.html"
+  - "_em-revisao.html"

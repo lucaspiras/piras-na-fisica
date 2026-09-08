@@ -15,6 +15,7 @@ $excluir = @(
   '/disciplinas/',       # em construcao (ver excecoes abaixo)
   '/img/animacoes/',     # catalogo de assets, util para mim e nao para o aluno
   '/not_commit/',        # rascunhos locais, ignorados pelo git
+  '/_[^/]*\.html$',      # texto em revisao e a propria fila (o GitHub Pages nao publica)
   '/Provas_vestibulares/', # PDFs e gabaritos originais, ignorados pelo git
   'feedback/admin.html'  # painel administrativo
 )
@@ -39,8 +40,13 @@ $urls = Get-ChildItem -Path $root -Recurse -Filter *.html |
     $norm = $_.FullName.Replace('\', '/')
     # A excecao e avaliada ANTES da exclusao: uma pagina da allowlist entra
     # mesmo estando dentro de uma pasta bloqueada.
+    # Pagina com noindex nao tem o que fazer num sitemap: as duas coisas dizem
+    # o contrario uma da outra. Vale para o talao dos textos em revisao (ver
+    # scripts/aplicar-revisao.ps1) e para qualquer pagina futura.
+    $conteudo = Get-Content $_.FullName -Raw
     ($norm -match $padraoIncluir -or $norm -notmatch $padraoExcluir) -and
-    (Get-Content $_.FullName -Raw) -notmatch 'http-equiv="refresh"'
+    $conteudo -notmatch 'http-equiv="refresh"' -and
+    $conteudo -notmatch 'name="robots"[^>]*noindex'
   } |
   ForEach-Object {
     $rel = $_.FullName.Substring($root.Length + 1).Replace('\', '/')

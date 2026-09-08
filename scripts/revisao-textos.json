@@ -1,0 +1,100 @@
+﻿{
+  "_nota": [
+    "Estado de revisao humana de cada texto de conteudos/. Aplicado por",
+    "scripts/aplicar-revisao.ps1, que poe o disco e o HTML em acordo com este arquivo.",
+    "",
+    "  revisado    o texto esta no ar; ja foi lido, a fisica conferida e o texto corrigido",
+    "  em-revisao  fora do ar; o arquivo real vira _<nome>.html e a URL publica recebe um aviso",
+    "  a-conferir  no ar, mas ainda nao revisado; e' a fila da proxima leva",
+    "",
+    "Para pos um texto no ar: troque em-revisao por revisado e rode",
+    "  powershell -File scripts\\aplicar-revisao.ps1",
+    "  powershell -File scripts\\gerar-sitemap.ps1",
+    "",
+    "A ordem das chaves segue a ordem do hub do tema. Chaves com _ na frente sao ignoradas."
+  ],
+
+  "grandezas-fisicas": {
+    "o-que-e-fisica": "a-conferir",
+    "grandezas-unidades": "a-conferir",
+    "sistema-internacional": "a-conferir",
+    "notacao-cientifica": "a-conferir",
+    "algarismos-significativos": "a-conferir"
+  },
+
+  "cinematica": {
+    "conceitos": "a-conferir",
+    "mru": "a-conferir",
+    "mruv": "a-conferir",
+    "lancamento-vertical": "a-conferir",
+    "lancamento-horizontal": "a-conferir",
+    "lancamento-obliquo": "a-conferir",
+    "mcu": "a-conferir"
+  },
+
+  "dinamica": {
+    "introducao_dinamica": "revisado",
+    "primeira-lei": "revisado",
+    "segunda-lei": "revisado",
+    "terceira-lei": "revisado",
+    "gravitacao-peso": "revisado",
+    "forca-normal": "revisado",
+    "tensao": "revisado",
+    "atrito": "revisado",
+    "plano-inclinado": "revisado",
+    "forca-centripeta": "revisado"
+  },
+
+  "trabalho-energia": {
+    "trabalho": "a-conferir",
+    "potencia": "a-conferir",
+    "energia-cinetica": "a-conferir",
+    "energia-potencial": "a-conferir",
+    "conservacao-energia": "a-conferir"
+  },
+
+  "optica": {
+    "natureza-da-luz": "em-revisao",
+    "reflexao": "em-revisao",
+    "espelhos-planos": "em-revisao",
+    "espelhos-esfericos": "em-revisao",
+    "refracao": "em-revisao",
+    "lentes": "em-revisao",
+    "olho-humano": "em-revisao"
+  },
+
+  "eletricidade": {
+    "carga-eletrica": "em-revisao",
+    "lei-coulomb": "em-revisao",
+    "campo-eletrico": "em-revisao",
+    "corrente-eletrica": "em-revisao",
+    "resistencia-ohm": "em-revisao",
+    "circuitos": "em-revisao",
+    "potencia-energia-eletrica": "em-revisao"
+  },
+
+  "termodinamica": {
+    "temperatura": "em-revisao",
+    "calor": "em-revisao",
+    "dilatacao": "em-revisao",
+    "calorimetria": "em-revisao",
+    "mudancas-estado": "em-revisao",
+    "gases": "em-revisao",
+    "leis-termodinamicas": "em-revisao"
+  },
+
+  "ondulatoria": {
+    "caracteristicas-ondas": "em-revisao",
+    "fenomenos-ondulatorios": "em-revisao",
+    "som": "em-revisao",
+    "efeito-doppler": "em-revisao",
+    "espectro-eletromagnetico": "em-revisao"
+  },
+
+  "fisica-moderna": {
+    "relatividade": "em-revisao",
+    "efeito-fotoeletrico": "em-revisao",
+    "modelos-atomicos": "em-revisao",
+    "radioatividade": "em-revisao"
+  }
+}

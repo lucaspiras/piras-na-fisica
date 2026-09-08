@@ -74,6 +74,34 @@ Estrutura da página: hero com breadcrumb + título + fórmula em destaque, segu
 
 Os hubs de tema ficam em `conteudos/<tema>/index.html`; os subtópicos em `conteudos/<tema>/<subtopico>.html`.
 
+### Estado de revisão dos textos
+
+A página `sobre.html` afirma que a verificação da física e a correção dos textos são feitas por gente. Para que isso seja verdade, **texto que ainda não passou por revisão humana não fica publicado**. O estado de cada um dos 57 textos de `conteudos/` vive em `scripts/revisao-textos.json`, e `scripts/aplicar-revisao.ps1` põe o disco e o HTML em acordo com ele.
+
+| Estado | Arquivo real | URL pública | Hub do tema |
+|---|---|---|---|
+| `revisado` | `optica/refracao.html` | o texto | link normal |
+| `em-revisao` | `optica/_refracao.html` | talão "em revisão" | item desativado, com selo |
+| `a-conferir` | `optica/refracao.html` | o texto | link normal |
+
+`a-conferir` é a fila da próxima leva: está no ar, mas ainda não foi lido. Só aparece no resumo do script e em `_em-revisao.html`.
+
+O que tira o arquivo do ar é o **prefixo `_`**: o GitHub Pages roda o Jekyll padrão, que não publica entradas começadas por `_` (e `_config.yml` repete a regra explicitamente). O arquivo continua versionado, no mesmo diretório, então `../../css/style.css` e `../shared.css` seguem resolvendo e a revisão local funciona sem ajuste nenhum.
+
+Para pôr um texto de volta no ar, troque `em-revisao` por `revisado` no manifesto e rode:
+
+```powershell
+powershell -File scripts\aplicar-revisao.ps1 -Simular   # confere antes
+powershell -File scripts\aplicar-revisao.ps1
+powershell -File scripts\gerar-sitemap.ps1              # sempre depois
+```
+
+O script é idempotente, renomeia com `git mv` (o histórico do arquivo não se perde), e **falha sem alterar nada** se o manifesto e o site divergirem. `conteudos.html` e os hubs são alterados por ele, não à mão; o item que já está na forma certa não é reformatado, para o diff mostrar só o que mudou de fato.
+
+A fila de trabalho fica em `_em-revisao.html` na raiz, gerada pelo script e também fora do ar. É por ela que se abre cada texto pendente no servidor local.
+
+`scripts/gerar-sitemap.ps1` exclui do sitemap tanto os arquivos `_*.html` quanto qualquer página com `robots` `noindex`, que é o caso do talão.
+
 ## Figuras e animações (`img/animacoes/`)
 
 **Toda figura ou animação criada para o site é disponibilizada também de forma avulsa e entra no catálogo `img/animacoes/index.html`.** Isso é padrão, não pedido especial: uma figura só existe dentro de um texto serve àquele texto uma vez; solta, ela serve a slides, provas, outros textos e a outros professores.
@@ -335,6 +363,7 @@ Rodar sempre a partir da raiz do projeto:
 
 ```powershell
 powershell -File scripts\gerar-sitemap.ps1         # rodar ao criar/remover páginas HTML
+powershell -File scripts\aplicar-revisao.ps1       # aplica o estado de revisão dos textos
 powershell -File scripts\inject-favicon.ps1        # injetar favicons em páginas existentes
 powershell -File scripts\add-meta-tags.ps1         # injetar meta description + OG tags
 powershell -File scripts\extrair-figuras-eds.ps1   # gerar os .svg avulsos das figuras dos EDs
