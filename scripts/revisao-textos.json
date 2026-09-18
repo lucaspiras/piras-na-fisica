@@ -1,4 +1,4 @@
-﻿{
+{
   "_nota": [
     "Estado de revisao humana de cada texto de conteudos/. Aplicado por",
     "scripts/aplicar-revisao.ps1, que poe o disco e o HTML em acordo com este arquivo.",
@@ -15,11 +15,11 @@
   ],
 
   "grandezas-fisicas": {
-    "o-que-e-fisica": "a-conferir",
-    "grandezas-unidades": "a-conferir",
-    "sistema-internacional": "a-conferir",
-    "notacao-cientifica": "a-conferir",
-    "algarismos-significativos": "a-conferir"
+    "o-que-e-fisica": "revisado",
+    "grandezas-unidades": "revisado",
+    "sistema-internacional": "revisado",
+    "notacao-cientifica": "revisado",
+    "algarismos-significativos": "revisado"
   },
 
   "cinematica": {

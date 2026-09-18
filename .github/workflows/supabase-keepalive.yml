@@ -18,6 +18,16 @@ on:
 #     create policy "anon toca keepalive" on keepalive for all to anon using (true) with check (true);
 # O bolão está em outra conta, nunca pausou e não tem a tabela: segue com GET.
 # Se um dia ele pausar, criar a tabela lá e trocar metodo para PATCH.
+#
+# Mesmo com escrita diária, o projeto de feedbacks já pausou de novo em
+# 2026-09 (quatro dias seguidos de falha antes de alguém notar pelo site
+# fora do ar). Como não há garantia de que a escrita automática sempre baste,
+# os dois passos finais abrem uma Issue no repositório quando um projeto
+# falha e a fecham sozinhos quando ele volta — assim a falha aparece no
+# GitHub em vez de só ser descoberta quando o site quebra.
+
+permissions:
+  issues: write
 
 jobs:
   ping:
@@ -40,6 +50,7 @@ jobs:
             key: sb_publishable_Zh1Kq8RsRjK1OUiGsVTVkw_AhkMK275
     steps:
       - name: Manter ${{ matrix.nome }} ativo (${{ matrix.metodo }})
+        id: ping
         run: |
           if [ "${{ matrix.metodo }}" = "PATCH" ]; then
             STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X PATCH \
@@ -55,8 +66,90 @@ jobs:
               -H "apikey: ${{ matrix.key }}")
           fi
           echo "[${{ matrix.nome }}] ${{ matrix.metodo }} -> HTTP $STATUS"
+          echo "status=$STATUS" >> "$GITHUB_OUTPUT"
           if [ "$STATUS" -lt 200 ] || [ "$STATUS" -ge 400 ]; then
             echo "[${{ matrix.nome }}] ERRO: resposta inesperada (HTTP $STATUS)"
             exit 1
           fi
           echo "[${{ matrix.nome }}] Projeto ativo."
+
+      # Roda só quando o passo acima falha. Evita Issue duplicada em falhas
+      # seguidas: se já existe uma aberta para este projeto (identificada
+      # pelo marcador no corpo), só comenta nela.
+      - name: Abrir alerta se o keep-alive falhou
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const nome = '${{ matrix.nome }}';
+            const status = '${{ steps.ping.outputs.status }}';
+            const marcador = `keepalive:${nome}`;
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+
+            const abertas = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'keepalive',
+              per_page: 100,
+            });
+            const existente = abertas.data.find(i => i.body && i.body.includes(marcador));
+
+            if (existente) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existente.number,
+                body: `Continua falhando em ${new Date().toISOString()} — HTTP ${status || 'sem resposta'}. [Execução](${runUrl})`,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `Supabase "${nome}" não respondeu ao keep-alive`,
+                labels: ['keepalive'],
+                body: [
+                  `O ping diário do projeto **${nome}** falhou (HTTP ${status || 'sem resposta'}).`,
+                  '',
+                  'Causa mais provável: o projeto pausou por inatividade no Supabase, apesar do keep-alive. Reative em https://supabase.com/dashboard e confirme com um curl manual — esta Issue fecha sozinha no próximo ping bem-sucedido.',
+                  '',
+                  `[Execução que falhou](${runUrl})`,
+                  '',
+                  marcador,
+                ].join('\n'),
+              });
+            }
+
+      # Roda só quando o passo do ping teve sucesso. Se havia uma Issue
+      # aberta para este projeto (de uma falha anterior), fecha sozinho.
+      - name: Fechar alerta se o projeto voltou
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const nome = '${{ matrix.nome }}';
+            const marcador = `keepalive:${nome}`;
+
+            const abertas = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'keepalive',
+              per_page: 100,
+            });
+            const existente = abertas.data.find(i => i.body && i.body.includes(marcador));
+
+            if (existente) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existente.number,
+                body: `Voltou a responder em ${new Date().toISOString()}. Fechando.`,
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existente.number,
+                state: 'closed',
+              });
+            }
