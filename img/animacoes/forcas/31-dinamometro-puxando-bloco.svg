@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Bloco em repouso na rampa de 30 graus, preso por fio paralelo a superficie.
+<!-- Bloco na mesa puxado por um dinamometro de mola mantido na horizontal.
      Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
      inserido em slide ou importado em editor vetorial.
-     Fonte da geometria: atividades/listas/forcas/lista_1_peso_normal_tracao.html
+     Fonte da geometria: atividades/listas/forcas/lista_2_atrito.html
      Gerado por scripts/extrair-figuras-paginas.ps1 — nao editar a mao. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 275" width="880" height="550"
-     role="img" aria-labelledby="forcas-12-bloco-preso-na-rampa">
-  <title id="forcas-12-bloco-preso-na-rampa">Bloco A em repouso sobre um plano inclinado de trinta graus, preso por um fio paralelo à superfície da rampa e fixado num suporte no topo dela. Estão indicadas a tração ao longo da rampa, a normal perpendicular à superfície e o peso na vertical.</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 170" width="880" height="340"
+     role="img" aria-labelledby="forcas-31-dinamometro-puxando-bloco">
+  <title id="forcas-31-dinamometro-puxando-bloco">Bloco A sobre uma mesa horizontal, preso a um dinamômetro de mola que é puxado para a direita pela força F, mantida na horizontal.</title>
   <style><![CDATA[
     svg {
       --fig-bloco:    #dbeafe;
@@ -110,36 +110,23 @@
     .fg-atr   { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-atrito); }
   ]]></style>
   <defs>
-    <marker id="sn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-            <path class="fg-p-normal" d="M0,0 L10,5 L0,10 z"/>
-          </marker>
-    <marker id="sp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-            <path class="fg-p-peso" d="M0,0 L10,5 L0,10 z"/>
-          </marker>
-    <marker id="st" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-            <path class="fg-p-tracao" d="M0,0 L10,5 L0,10 z"/>
+    <marker id="sf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+            <path class="fg-p-forca" d="M0,0 L10,5 L0,10 z"/>
           </marker>
   </defs>
-  <polygon class="fg-rampa" points="40,230 340,230 340,57"/>
-  <path class="fg-ang" d="M96,230 A56,56 0 0,0 88,202"/>
-  <text class="fg-angt" x="102" y="224">30°</text>
+  <line class="fg-chao" x1="20" y1="120" x2="420" y2="120"/>
+  <path class="fg-hachura" d="M30,120 L18,134 M60,120 L48,134 M90,120 L78,134 M120,120 L108,134 M150,120 L138,134 M180,120 L168,134 M210,120 L198,134 M240,120 L228,134 M270,120 L258,134 M300,120 L288,134 M330,120 L318,134 M360,120 L348,134 M390,120 L378,134"/>
 
-  <g transform="translate(166,157) rotate(-30)">
-    <rect class="fg-bloco" x="-30" y="-26" width="60" height="26" rx="3"/>
-    <text class="fg-t" x="0" y="-9" text-anchor="middle">A</text>
-  </g>
+  <rect class="fg-bloco" x="70" y="74" width="80" height="46" rx="3"/>
+  <text class="fg-t" x="110" y="102" text-anchor="middle">A</text>
 
-  <line class="fg-fio" x1="186" y1="131" x2="338" y2="45"/>
-  <line class="fg-chao" x1="340" y1="57" x2="340" y2="42"/>
-  <rect class="fg-balanca" x="322" y="30" width="36" height="12" rx="2"/>
-  <text class="fg-rot" x="340" y="22" text-anchor="middle">suporte fixo</text>
+  <line class="fg-fio" x1="150" y1="97" x2="180" y2="97"/>
+  <rect class="fg-balanca" x="180" y="84" width="110" height="26" rx="4"/>
+  <path class="fg-fio" d="M186,97 l5,-7 l8,14 l8,-14 l8,14 l8,-14 l8,14 l8,-14 l5,7 L284,97"/>
+  <text class="fg-rot" x="235" y="76" text-anchor="middle">dinamômetro</text>
 
-  <line class="fg-v-tracao" x1="187" y1="119" x2="235" y2="92" marker-end="url(#st)"/>
-  <text class="fg-trac" x="240" y="88">T</text>
-  <line class="fg-v-normal" x1="153" y1="134" x2="125" y2="86" marker-end="url(#sn)"/>
-  <text class="fg-norm" x="98" y="80">N</text>
-  <line class="fg-v-peso" x1="166" y1="159" x2="166" y2="222" marker-end="url(#sp)"/>
-  <text class="fg-peso" x="174" y="216">P</text>
+  <line class="fg-v-forca" x1="292" y1="97" x2="382" y2="97" marker-end="url(#sf)"/>
+  <text class="fg-forc" x="332" y="86">F</text>
 
-  <text class="fg-rot" x="40" y="262">rampa sem atrito · fio paralelo à superfície, preso no topo</text>
+  <text class="fg-rot" x="20" y="156">mesa horizontal · dinamômetro mantido na horizontal</text>
 </svg>

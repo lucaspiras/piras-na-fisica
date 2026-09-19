@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Bloco em repouso na rampa de 30 graus, preso por fio paralelo a superficie.
+<!-- Caminhonete em movimento com uma caixa solta sobre a carroceria.
      Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
      inserido em slide ou importado em editor vetorial.
-     Fonte da geometria: atividades/listas/forcas/lista_1_peso_normal_tracao.html
+     Fonte da geometria: atividades/listas/forcas/lista_2_atrito.html
      Gerado por scripts/extrair-figuras-paginas.ps1 — nao editar a mao. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 275" width="880" height="550"
-     role="img" aria-labelledby="forcas-12-bloco-preso-na-rampa">
-  <title id="forcas-12-bloco-preso-na-rampa">Bloco A em repouso sobre um plano inclinado de trinta graus, preso por um fio paralelo à superfície da rampa e fixado num suporte no topo dela. Estão indicadas a tração ao longo da rampa, a normal perpendicular à superfície e o peso na vertical.</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 200" width="920" height="400"
+     role="img" aria-labelledby="forcas-42-caixa-na-carroceria">
+  <title id="forcas-42-caixa-na-carroceria">Caminhonete vista de lado, andando para a direita, com a cabine à frente. Sobre a carroceria horizontal, atrás da cabine, há uma caixa solta. Uma seta azul acima da cabine indica o sentido da velocidade.</title>
   <style><![CDATA[
     svg {
       --fig-bloco:    #dbeafe;
@@ -110,36 +110,27 @@
     .fg-atr   { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-atrito); }
   ]]></style>
   <defs>
-    <marker id="sn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-            <path class="fg-p-normal" d="M0,0 L10,5 L0,10 z"/>
-          </marker>
-    <marker id="sp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-            <path class="fg-p-peso" d="M0,0 L10,5 L0,10 z"/>
-          </marker>
-    <marker id="st" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-            <path class="fg-p-tracao" d="M0,0 L10,5 L0,10 z"/>
+    <marker id="sv" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+            <path class="fg-p-veloc" d="M0,0 L10,5 L0,10 z"/>
           </marker>
   </defs>
-  <polygon class="fg-rampa" points="40,230 340,230 340,57"/>
-  <path class="fg-ang" d="M96,230 A56,56 0 0,0 88,202"/>
-  <text class="fg-angt" x="102" y="224">30°</text>
+  <line class="fg-chao" x1="20" y1="170" x2="440" y2="170"/>
+  <path class="fg-hachura" d="M30,170 L18,184 M60,170 L48,184 M90,170 L78,184 M120,170 L108,184 M150,170 L138,184 M180,170 L168,184 M210,170 L198,184 M240,170 L228,184 M270,170 L258,184 M300,170 L288,184 M330,170 L318,184 M360,170 L348,184 M390,170 L378,184 M420,170 L408,184"/>
 
-  <g transform="translate(166,157) rotate(-30)">
-    <rect class="fg-bloco" x="-30" y="-26" width="60" height="26" rx="3"/>
-    <text class="fg-t" x="0" y="-9" text-anchor="middle">A</text>
-  </g>
+  <rect class="fg-cabine" x="60" y="110" width="250" height="26" rx="3"/>
+  <rect class="fg-cabine" x="310" y="66" width="80" height="70" rx="6"/>
+  <rect class="fg-balanca" x="350" y="76" width="30" height="24" rx="3"/>
 
-  <line class="fg-fio" x1="186" y1="131" x2="338" y2="45"/>
-  <line class="fg-chao" x1="340" y1="57" x2="340" y2="42"/>
-  <rect class="fg-balanca" x="322" y="30" width="36" height="12" rx="2"/>
-  <text class="fg-rot" x="340" y="22" text-anchor="middle">suporte fixo</text>
+  <circle class="fg-polia" cx="110" cy="150" r="18"/>
+  <circle class="fg-eixo" cx="110" cy="150" r="5"/>
+  <circle class="fg-polia" cx="340" cy="150" r="18"/>
+  <circle class="fg-eixo" cx="340" cy="150" r="5"/>
 
-  <line class="fg-v-tracao" x1="187" y1="119" x2="235" y2="92" marker-end="url(#st)"/>
-  <text class="fg-trac" x="240" y="88">T</text>
-  <line class="fg-v-normal" x1="153" y1="134" x2="125" y2="86" marker-end="url(#sn)"/>
-  <text class="fg-norm" x="98" y="80">N</text>
-  <line class="fg-v-peso" x1="166" y1="159" x2="166" y2="222" marker-end="url(#sp)"/>
-  <text class="fg-peso" x="174" y="216">P</text>
+  <rect class="fg-bloco" x="160" y="76" width="60" height="34" rx="3"/>
+  <text class="fg-t" x="190" y="98" text-anchor="middle">caixa</text>
 
-  <text class="fg-rot" x="40" y="262">rampa sem atrito · fio paralelo à superfície, preso no topo</text>
+  <line class="fg-v-veloc" x1="330" y1="40" x2="400" y2="40" marker-end="url(#sv)"/>
+  <text class="fg-vel" x="360" y="32">v</text>
+
+  <text class="fg-rot" x="20" y="197">carroceria horizontal · a caixa não está presa</text>
 </svg>

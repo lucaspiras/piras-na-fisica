@@ -31,6 +31,7 @@
       --fig-pessoa:   #0f766e;
       --fig-balanca:  #e2e8f0;
       --fig-veloc:    #2563eb;
+      --fig-atrito:   #db2777;
       /* declaradas aqui, e nao herdadas de --fonte, porque o .svg avulso
          gerado a partir desta seção leva a paleta e mais nada */
       --fig-fonte-t:  'DM Sans', system-ui, sans-serif;
@@ -64,6 +65,7 @@
         --fig-pessoa:   #5eead4;
         --fig-balanca:  #334155;
         --fig-veloc:    #60a5fa;
+        --fig-atrito:   #f472b6;
       }
     }
 
@@ -88,12 +90,14 @@
     .fg-v-forca  { fill: none; stroke: var(--fig-forca);  stroke-width: 2.5; }
     .fg-v-veloc  { fill: none; stroke: var(--fig-veloc);  stroke-width: 2.5; }
     .fg-v-acel   { fill: none; stroke: var(--fig-angulo); stroke-width: 2.5; }
+    .fg-v-atrito { fill: none; stroke: var(--fig-atrito); stroke-width: 2.5; }
     .fg-p-peso   { fill: var(--fig-peso); }
     .fg-p-normal { fill: var(--fig-normal); }
     .fg-p-tracao { fill: var(--fig-tracao); }
     .fg-p-forca  { fill: var(--fig-forca); }
     .fg-p-veloc  { fill: var(--fig-veloc); }
     .fg-p-acel   { fill: var(--fig-angulo); }
+    .fg-p-atrito { fill: var(--fig-atrito); }
     .fg-t     { font-family: var(--fig-fonte-t); font-size: 12px; fill: var(--fig-texto); }
     .fg-rot   { font-family: var(--fig-fonte-t); font-size: 11px; fill: var(--fig-rotulo); }
     .fg-m     { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-texto); }
@@ -103,6 +107,7 @@
     .fg-forc  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-forca); }
     .fg-angt  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-angulo); }
     .fg-vel   { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-veloc); }
+    .fg-atr   { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-atrito); }
   ]]></style>
   <defs>
     <marker id="sn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">

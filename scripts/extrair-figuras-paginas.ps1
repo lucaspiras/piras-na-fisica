@@ -41,6 +41,7 @@ $ErrorActionPreference = 'Stop'
 # MANIFESTO
 # ----------------------------------------------------------------------------
 $LISTA_FORCAS = 'atividades/listas/forcas/lista_1_peso_normal_tracao.html'
+$LISTA_ATRITO = 'atividades/listas/forcas/lista_2_atrito.html'
 
 $Figuras = @(
   @{ Html = $LISTA_FORCAS
@@ -82,6 +83,62 @@ $Figuras = @(
   @{ Html = $LISTA_FORCAS
      Slug = 'forcas/13-rampa-com-polia-no-topo'
      Resumo = 'Rampa de 30 graus com polia no topo e corpo pendurado do outro lado do fio.' }
+
+  @{ Html = $LISTA_ATRITO
+     Slug = 'forcas/31-dinamometro-puxando-bloco'
+     Resumo = 'Bloco na mesa puxado por um dinamometro de mola mantido na horizontal.' }
+
+  @{ Html = $LISTA_ATRITO
+     Slug = 'forcas/32-forca-inclinada-puxando-com-atrito'
+     Resumo = 'Bloco puxado por corda a 37 graus acima da horizontal, com normal, peso e atrito.' }
+
+  @{ Html = $LISTA_ATRITO
+     Slug = 'forcas/33-apagador-contra-o-quadro'
+     Resumo = 'Apagador apertado contra o quadro vertical: o atrito para cima equilibra o peso.' }
+
+  @{ Html = $LISTA_ATRITO
+     Slug = 'forcas/34-bloco-parado-na-rampa-com-atrito'
+     Resumo = 'Bloco em repouso na rampa de 37 graus, com o atrito apontando rampa acima.' }
+
+  @{ Html = $LISTA_ATRITO
+     Slug = 'forcas/35-caixa-empurrada-rampa-acima'
+     Resumo = 'Caixa empurrada rampa acima por forca paralela, subindo com velocidade constante.' }
+
+  @{ Html = $LISTA_ATRITO
+     Slug = 'forcas/36-blocos-encostados-com-atrito'
+     Resumo = 'Dois blocos encostados no piso com atrito, empurrados por uma forca horizontal.' }
+
+  @{ Html = $LISTA_ATRITO
+     Slug = 'forcas/37-blocos-ligados-com-atrito'
+     Resumo = 'Dois blocos ligados por fio no piso com atrito, puxados por uma forca horizontal.' }
+
+  @{ Html = $LISTA_ATRITO
+     Slug = 'forcas/38-mesa-com-atrito-e-corpo-pendurado'
+     Resumo = 'Bloco na mesa com atrito ligado, pela polia da borda, a um corpo pendurado.' }
+
+  @{ Html = $LISTA_ATRITO
+     Slug = 'forcas/39-bloco-sobre-bloco'
+     Resumo = 'Bloco apoiado sobre outro, puxado por baixo: atrito entre os blocos, piso liso.' }
+
+  @{ Html = $LISTA_ATRITO
+     Slug = 'forcas/40-rampa-com-atrito-e-polia'
+     Resumo = 'Rampa de 37 graus com atrito e polia no topo, com corpo pendurado do outro lado.' }
+
+  @{ Html = $LISTA_ATRITO
+     Slug = 'forcas/41-mesa-entre-dois-corpos-pendurados'
+     Resumo = 'Bloco na mesa com atrito entre dois corpos pendurados, um em cada borda.' }
+
+  @{ Html = $LISTA_ATRITO
+     Slug = 'forcas/42-caixa-na-carroceria'
+     Resumo = 'Caminhonete em movimento com uma caixa solta sobre a carroceria.' }
+
+  @{ Html = $LISTA_ATRITO
+     Slug = 'forcas/43-bloco-lancado-rampa-acima'
+     Resumo = 'Bloco lancado da base de uma rampa de 37 graus com atrito, subindo.' }
+
+  @{ Html = $LISTA_ATRITO
+     Slug = 'forcas/44-forca-inclinada-empurrando-com-atrito'
+     Resumo = 'Bloco em repouso empurrado por forca a 37 graus abaixo da horizontal: a normal passa do peso.' }
 
 
   @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'

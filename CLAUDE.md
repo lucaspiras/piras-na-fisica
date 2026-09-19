@@ -307,11 +307,11 @@ Uma pasta por assunto (`MRUV/`, `circuitos/`, `forcas/`, `lancamentos/`, `leis_n
 <link rel="stylesheet" href="../listas.css" />
 ```
 
-O que for específico de uma lista entra na folha comum, com o escopo indicado no comentário da seção. Duas opções são ligadas por classe no `<body>`, não por CSS avulso:
+O que for específico de uma lista entra na folha comum, com o escopo indicado no comentário da seção.
 
-- `class="sem-tags"` esconde as etiquetas de dificuldade. A etiqueta continua no HTML, que é onde ela serve de referência para quem monta a lista. É o padrão das listas de resposta aberta.
+As etiquetas de dificuldade e de tema (`q-tag`) ficam no HTML, como referência de quem monta a lista, mas não aparecem para quem resolve: sinalizam o caminho da questão e criam expectativa antes da leitura. `listas.css` as esconde por padrão; `class="com-tags"` no `<body>` reverte, para o dia em que alguma lista precisar mostrá-las.
 
-Blocos de marcação disponíveis: `content-hero` com `breadcrumb`, `lista-meta`/`lista-badge`, `lista-formulas` com `formulas-grid`/`formula-group`, `lista-aviso`, `divisor-section`, `question-block` com `question-header`/`question-num`/`q-tag`/`question-text`/`ol.sub-itens`. Notação: `.frac` com `.frac-num`/`.frac-den` para fração, `.raiz` para o radicando, `.vec` para a seta sobre a variável (o `<sub>` fica **fora** do `.vec`, para a seta cobrir só a letra).
+Blocos de marcação disponíveis: `content-hero` com `breadcrumb`, `lista-meta`/`lista-badge`, `lista-formulas` com `formulas-grid`/`formula-group`, `lista-aviso`, `divisor-section`, `question-block` com `question-header`/`question-num`/`q-tag`/`question-text`/`ol.sub-itens`. Numeração: questão em algarismo (1, 2, 3), subitem em letra (a, b, c) e subsubitem, um `<ol>` dentro do `<li>`, em romano (i, ii, iii). O marcador sai do CSS; basta usar `ol.sub-itens`, sem `style` inline. Notação: `.frac` com `.frac-num`/`.frac-den` para fração, `.raiz` para o radicando, `.vec` para a seta sobre a variável (o `<sub>` fica **fora** do `.vec`, para a seta cobrir só a letra).
 
 As avaliações (mesma lista sem gabarito) continuam em disco, mas fora de `lista_de_exercicios.html`.
 

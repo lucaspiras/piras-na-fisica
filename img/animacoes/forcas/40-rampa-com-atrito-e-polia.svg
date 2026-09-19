@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Bloco em repouso na rampa de 30 graus, preso por fio paralelo a superficie.
+<!-- Rampa de 37 graus com atrito e polia no topo, com corpo pendurado do outro lado.
      Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
      inserido em slide ou importado em editor vetorial.
-     Fonte da geometria: atividades/listas/forcas/lista_1_peso_normal_tracao.html
+     Fonte da geometria: atividades/listas/forcas/lista_2_atrito.html
      Gerado por scripts/extrair-figuras-paginas.ps1 — nao editar a mao. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 275" width="880" height="550"
-     role="img" aria-labelledby="forcas-12-bloco-preso-na-rampa">
-  <title id="forcas-12-bloco-preso-na-rampa">Bloco A em repouso sobre um plano inclinado de trinta graus, preso por um fio paralelo à superfície da rampa e fixado num suporte no topo dela. Estão indicadas a tração ao longo da rampa, a normal perpendicular à superfície e o peso na vertical.</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 290" width="920" height="580"
+     role="img" aria-labelledby="forcas-40-rampa-com-atrito-e-polia">
+  <title id="forcas-40-rampa-com-atrito-e-polia">Rampa com atrito inclinada trinta e sete graus, com o bloco A apoiado sobre ela. Um fio sai do bloco, sobe paralelo à rampa, passa por uma polia montada no topo e desce verticalmente até o corpo B, pendurado fora da rampa.</title>
   <style><![CDATA[
     svg {
       --fig-bloco:    #dbeafe;
@@ -110,36 +110,31 @@
     .fg-atr   { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-atrito); }
   ]]></style>
   <defs>
-    <marker id="sn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-            <path class="fg-p-normal" d="M0,0 L10,5 L0,10 z"/>
-          </marker>
     <marker id="sp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
             <path class="fg-p-peso" d="M0,0 L10,5 L0,10 z"/>
           </marker>
-    <marker id="st" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-            <path class="fg-p-tracao" d="M0,0 L10,5 L0,10 z"/>
-          </marker>
   </defs>
-  <polygon class="fg-rampa" points="40,230 340,230 340,57"/>
-  <path class="fg-ang" d="M96,230 A56,56 0 0,0 88,202"/>
-  <text class="fg-angt" x="102" y="224">30°</text>
+  <polygon class="fg-rampa" points="30,240 250,240 250,74"/>
+  <path class="fg-ang" d="M80,240 A50,50 0 0,0 70,210"/>
+  <text class="fg-angt" x="86" y="232">37°</text>
 
-  <g transform="translate(166,157) rotate(-30)">
-    <rect class="fg-bloco" x="-30" y="-26" width="60" height="26" rx="3"/>
-    <text class="fg-t" x="0" y="-9" text-anchor="middle">A</text>
+  <g transform="translate(110,180) rotate(-37)">
+    <rect class="fg-bloco" x="-30" y="-24" width="60" height="24" rx="3"/>
+    <text class="fg-t" x="0" y="-8" text-anchor="middle">A</text>
   </g>
 
-  <line class="fg-fio" x1="186" y1="131" x2="338" y2="45"/>
-  <line class="fg-chao" x1="340" y1="57" x2="340" y2="42"/>
-  <rect class="fg-balanca" x="322" y="30" width="36" height="12" rx="2"/>
-  <text class="fg-rot" x="340" y="22" text-anchor="middle">suporte fixo</text>
+  <line class="fg-fio" x1="127" y1="152" x2="258" y2="53"/>
+  <text class="fg-trac" x="184" y="94">T</text>
 
-  <line class="fg-v-tracao" x1="187" y1="119" x2="235" y2="92" marker-end="url(#st)"/>
-  <text class="fg-trac" x="240" y="88">T</text>
-  <line class="fg-v-normal" x1="153" y1="134" x2="125" y2="86" marker-end="url(#sn)"/>
-  <text class="fg-norm" x="98" y="80">N</text>
-  <line class="fg-v-peso" x1="166" y1="159" x2="166" y2="222" marker-end="url(#sp)"/>
-  <text class="fg-peso" x="174" y="216">P</text>
+  <line class="fg-fio" x1="250" y1="74" x2="266" y2="65"/>
+  <circle class="fg-polia" cx="266" cy="65" r="14"/>
+  <circle class="fg-eixo" cx="266" cy="65" r="4"/>
 
-  <text class="fg-rot" x="40" y="262">rampa sem atrito · fio paralelo à superfície, preso no topo</text>
+  <line class="fg-fio" x1="280" y1="65" x2="280" y2="130"/>
+  <rect class="fg-bloco2" x="250" y="130" width="60" height="44" rx="3"/>
+  <text class="fg-t" x="280" y="157" text-anchor="middle">B</text>
+  <line class="fg-v-peso" x1="280" y1="176" x2="280" y2="218" marker-end="url(#sp)"/>
+  <text class="fg-peso" x="288" y="210">P<tspan font-size="9">B</tspan></text>
+
+  <text class="fg-rot" x="30" y="275">rampa com atrito · fio e polia ideais</text>
 </svg>

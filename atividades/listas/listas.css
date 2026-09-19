@@ -499,8 +499,20 @@ body {
    ══════════════════════════════════════════════════════════════════════ */
 
 .question-block { scroll-margin-top: 80px; }
-.question-block ol.sub-itens { padding-left: 22px; margin-top: -8px; margin-bottom: 0; }
-.question-block ol.sub-itens li { margin-bottom: 4px; }
+/* Numeração: a questão é 1, 2, 3…; o subitem é a), b), c)…; o subsubitem
+   (um <ol> dentro do <li>) é i), ii), iii)…. O marcador é desenhado por
+   contador, e não por list-style, para levar o parêntese em todo navegador. */
+.question-block ol.sub-itens { padding-left: 30px; margin-top: -8px; margin-bottom: 0; }
+.question-block ol.sub-itens,
+.question-block ol.sub-itens ol { list-style: none; counter-reset: subitem; }
+.question-block ol.sub-itens ol { padding-left: 30px; margin: 4px 0 0; }
+.question-block ol.sub-itens li { margin-bottom: 4px; counter-increment: subitem; position: relative; }
+.question-block ol.sub-itens li::before {
+  position: absolute; left: -30px; width: 24px; text-align: right;
+  font-weight: 600; color: var(--text-muted);
+}
+.question-block ol.sub-itens > li::before    { content: counter(subitem, lower-alpha) ")"; }
+.question-block ol.sub-itens ol > li::before { content: counter(subitem, lower-roman) ")"; }
 
 /* dado numérico avulso, solto ao pé do enunciado */
 .dado {
@@ -518,10 +530,13 @@ body {
   content: ""; flex: 1; height: 1px; background: var(--border);
 }
 
-/* Listas de resposta aberta não mostram a etiqueta de dificuldade ao aluno.
-   A etiqueta continua no HTML, que é onde ela serve de referência para quem
-   monta a lista. Basta pôr class="sem-tags" no <body>. */
-.sem-tags .q-tag { display: none !important; }
+/* As etiquetas de dificuldade e de tema (q-tag) não aparecem para quem
+   resolve a lista: sinalizam o caminho da questão e criam expectativa antes
+   da leitura. Elas continuam no HTML, como referência de quem monta a lista.
+   Escondidas por padrão; class="com-tags" no <body> reverte, para o dia em
+   que alguma lista precisar mostrá-las. */
+.q-tag { display: none; }
+.com-tags .q-tag { display: inline; }
 
 /* rodapé próprio das listas, distinto do <footer> global do site */
 .footer {
@@ -536,7 +551,8 @@ body {
    script de extração conseguir copiar a paleta ao gerar o arquivo avulso
    em img/animacoes/. Nunca escrever cor no atributo do elemento.
    Convenção das setas: peso roxo · normal verde · tração ciano ·
-   força aplicada vermelha · velocidade azul · aceleração laranja.
+   força aplicada vermelha · velocidade azul · aceleração laranja ·
+   atrito rosa.
    ══════════════════════════════════════════════════════════════════════ */
 
 :root {
@@ -562,6 +578,7 @@ body {
   --fig-pessoa:   #0f766e;
   --fig-balanca:  #e2e8f0;
   --fig-veloc:    #2563eb;
+  --fig-atrito:   #db2777;
   /* declaradas aqui, e nao herdadas de --fonte, porque o .svg avulso
      gerado a partir desta seção leva a paleta e mais nada */
   --fig-fonte-t:  'DM Sans', system-ui, sans-serif;
@@ -590,6 +607,7 @@ body {
   --fig-pessoa:   #5eead4;
   --fig-balanca:  #334155;
   --fig-veloc:    #60a5fa;
+  --fig-atrito:   #f472b6;
 }
 
 .fig-svg {
@@ -626,12 +644,14 @@ body {
 .fg-v-forca  { fill: none; stroke: var(--fig-forca);  stroke-width: 2.5; }
 .fg-v-veloc  { fill: none; stroke: var(--fig-veloc);  stroke-width: 2.5; }
 .fg-v-acel   { fill: none; stroke: var(--fig-angulo); stroke-width: 2.5; }
+.fg-v-atrito { fill: none; stroke: var(--fig-atrito); stroke-width: 2.5; }
 .fg-p-peso   { fill: var(--fig-peso); }
 .fg-p-normal { fill: var(--fig-normal); }
 .fg-p-tracao { fill: var(--fig-tracao); }
 .fg-p-forca  { fill: var(--fig-forca); }
 .fg-p-veloc  { fill: var(--fig-veloc); }
 .fg-p-acel   { fill: var(--fig-angulo); }
+.fg-p-atrito { fill: var(--fig-atrito); }
 
 .fg-t     { font-family: var(--fig-fonte-t); font-size: 12px; fill: var(--fig-texto); }
 .fg-rot   { font-family: var(--fig-fonte-t); font-size: 11px; fill: var(--fig-rotulo); }
@@ -642,6 +662,7 @@ body {
 .fg-forc  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-forca); }
 .fg-angt  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-angulo); }
 .fg-vel   { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-veloc); }
+.fg-atr   { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-atrito); }
 
 /* ══════════════════════════════════════════════════════════════════════
    IMPRESSÃO

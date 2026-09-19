@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <script src="/js/theme.js"></script>
+  <meta name="description" content="Lista de 25 exercícios sobre força de atrito, das questões conceituais aos problemas com plano inclinado, blocos encostados, fios e polias — Física Ensino Médio.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Lista 2 — Força de Atrito · Piras na Física">
+  <meta property="og:description" content="Vinte e cinco questões em ordem crescente de dificuldade: do sentido do atrito ao bloco lançado rampa acima, passando por blocos ligados, polias e bloco sobre bloco.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/atividades/listas/forcas/lista_2_atrito.html">
+  <title>Lista 2 — Força de Atrito · Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/style.css" />
+  <link rel="stylesheet" href="../listas.css" />
+</head>
+<body>
+  <a href="#questoes" class="skip-link">Ir para as questões</a>
+
+  <div id="header"></div>
+  <script src="../../../js/include.js"></script>
+
+  <!-- Pontas de seta, definidas uma vez e usadas por todas as figuras. -->
+  <svg class="fig-defs" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="sp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path class="fg-p-peso" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+      <marker id="sn" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path class="fg-p-normal" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+      <marker id="sf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path class="fg-p-forca" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+      <marker id="sv" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path class="fg-p-veloc" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+      <marker id="sat" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path class="fg-p-atrito" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+  </svg>
+
+  <div class="content-hero">
+    <div class="content-hero-inner">
+      <nav class="breadcrumb">
+        <a href="../../../atividades.html">Atividades</a>
+        <span>/</span>
+        <a href="../../../lista_de_exercicios.html">Listas de Exercícios</a>
+        <span>/</span>
+        <span>Lista 2 — Força de Atrito</span>
+      </nav>
+      <h1 class="content-title">Lista 2 — Força de Atrito<br><em>Vinte e cinco questões, do conceito aos sistemas de corpos</em></h1>
+      <p class="content-subtitle">
+        Use <strong>g = 10 m/s²</strong>, salvo indicação em contrário. Antes de calcular, faça o
+        <strong>diagrama de corpo livre</strong> e decida se o atrito é estático ou cinético: essa
+        escolha vem antes de qualquer fórmula.
+      </p>
+      <div class="lista-meta">
+        <span class="lista-badge azul">Dinâmica</span>
+        <span class="lista-badge roxo">25 questões</span>
+        <span class="lista-badge muted">Conceitual e cálculo · Sem gabarito</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="main" id="questoes">
+
+    <!-- Fórmulas -->
+    <section class="lista-formulas" aria-label="Fórmulas desta lista">
+      <div class="lf-label">📐 Fórmulas desta lista</div>
+      <div class="formulas-grid">
+
+        <div class="formula-group">
+          <div class="formula-group-title">Atrito</div>
+          <ul>
+            <li>f<sub>e</sub> ≤ f<sub>e,máx</sub> = μ<sub>e</sub> · N <span>(estático)</span></li>
+            <li>f<sub>c</sub> = μ<sub>c</sub> · N <span>(cinético)</span></li>
+          </ul>
+        </div>
+
+        <div class="formula-group">
+          <div class="formula-group-title">Peso e 2ª Lei</div>
+          <ul>
+            <li>P = m · g</li>
+            <li>F<sub>res</sub> = m · a</li>
+          </ul>
+        </div>
+
+        <div class="formula-group">
+          <div class="formula-group-title">Plano inclinado</div>
+          <ul>
+            <li>P<sub>x</sub> = P · sen θ <span>(ao longo da rampa)</span></li>
+            <li>P<sub>y</sub> = P · cos θ <span>(perpendicular)</span></li>
+            <li>sen 37° = 0,6 · cos 37° = 0,8</li>
+          </ul>
+        </div>
+
+        <div class="formula-group">
+          <div class="formula-group-title">Cinemática</div>
+          <ul>
+            <li>v = v<sub>0</sub> + a · t</li>
+            <li>v² = v<sub>0</sub>² + 2 · a · ΔS</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="lista-aviso">
+      <span class="la-icon">✏️</span>
+      <div>
+        <strong>Sem gabarito incorporado.</strong>
+        Resolva em folha separada, mostrando os cálculos. As cinco primeiras questões são conceituais e
+        pedem resposta escrita; a partir da sexta, o cálculo entra e a dificuldade cresce até os sistemas
+        de dois e três corpos.
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!--  CONCEITOS (Q1–Q5)                                     -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="divisor-section">O que é o atrito</div>
+
+    <!-- Q1 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 1</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Conceitual · sentido do atrito</span>
+      </div>
+      <p class="question-text">
+        Em cada situação, indique o sentido da força de atrito que o chão exerce sobre o corpo e diga se
+        esse atrito é estático ou cinético.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Uma caixa é arrastada para a direita sobre o piso da sala.</li>
+        <li>Uma pessoa, parada, dá o primeiro passo para a frente. Considere o pé que fica apoiado no chão e empurra o corpo.</li>
+        <li>Muitos resumos dizem que "o atrito sempre se opõe ao movimento". Com base no item anterior, reescreva a frase de modo que ela fique correta.</li>
+      </ol>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 2</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Conceitual · o estático se ajusta</span>
+      </div>
+      <p class="question-text">
+        Um bloco está em repouso sobre uma mesa horizontal. Uma pessoa passa a puxá-lo com uma força
+        horizontal F, que cresce devagar a partir de zero até bem depois de o bloco começar a deslizar.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Esboce o gráfico da força de atrito sobre o bloco em função de F, indicando o trecho em que o atrito é estático e o trecho em que é cinético.</li>
+        <li>Explique por que o gráfico tem um pico logo antes de o bloco começar a deslizar.</li>
+        <li>Um colega afirma que, enquanto o bloco está parado, o atrito vale sempre μ<sub>e</sub> · N. Mostre, pelo gráfico, onde está o erro.</li>
+      </ol>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 3</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Conceitual · área de contato</span>
+      </div>
+      <p class="question-text">
+        Um tijolo é arrastado com velocidade constante sobre um piso, primeiro apoiado na face maior e
+        depois apoiado na face menor.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Em qual das duas situações a força de atrito é maior? Justifique com a expressão f<sub>c</sub> = μ<sub>c</sub> · N.</li>
+        <li>O que acontece com o atrito se um segundo tijolo idêntico for colocado sobre o primeiro?</li>
+        <li>O resultado do item (a) costuma surpreender. Proponha uma explicação, pensando no que acontece nos pontos em que as duas superfícies de fato se tocam.</li>
+      </ol>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 4</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Conceitual · atrito que acelera</span>
+      </div>
+      <p class="question-text">
+        Uma caixa está solta sobre a carroceria de uma caminhonete, que arranca e acelera sem que a caixa
+        escorregue.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Desenhe o diagrama de corpo livre da caixa enquanto a caminhonete acelera.</li>
+        <li>Qual força faz a caixa acelerar junto com a caminhonete, e qual é o sentido dela?</li>
+        <li>Esse atrito é estático ou cinético?</li>
+        <li>Se a caminhonete arrancar de forma muito brusca, a caixa escorrega. Para que lado ela escorrega em relação à carroceria? E para que lado ela se move em relação ao chão?</li>
+      </ol>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 5</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Conceitual · roda travada e ABS</span>
+      </div>
+      <p class="question-text">
+        Numa frenagem, as rodas de um carro podem continuar girando enquanto ele desacelera, ou podem travar
+        e deslizar sobre o asfalto.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Em cada caso, o atrito entre o pneu e o asfalto é estático ou cinético? Justifique pensando no ponto do pneu que toca o chão.</li>
+        <li>Para borracha em asfalto seco, valores típicos são μ<sub>e</sub> ≈ 0,9 e μ<sub>c</sub> ≈ 0,7. Explique por que o carro para numa distância menor quando as rodas não travam.</li>
+        <li>O freio ABS existe para aproveitar essa diferença. Descreva, em poucas linhas, o que o sistema precisa detectar e o que ele faz em seguida.</li>
+      </ol>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!--  ESTÁTICO E CINÉTICO (Q6–Q11)                          -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="divisor-section">Atrito estático e cinético</div>
+
+    <!-- Q6 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 6</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Cinético · f = μ·N</span>
+      </div>
+      <p class="question-text">
+        Uma caixa de <strong>20 kg</strong> é arrastada sobre um piso horizontal. O coeficiente de atrito
+        cinético entre a caixa e o piso é <strong>0,3</strong>. Determine:
+      </p>
+      <ol class="question-text sub-itens">
+        <li>a força normal sobre a caixa;</li>
+        <li>a força de atrito cinético;</li>
+        <li>a força horizontal necessária para manter a caixa em movimento com velocidade constante.</li>
+      </ol>
+    </div>
+
+    <!-- Q7 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 7</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Estático · até o limite</span>
+      </div>
+      <p class="question-text">
+        Um armário de <strong>50 kg</strong> está em repouso sobre um piso horizontal. Os coeficientes de
+        atrito entre ele e o piso são <strong>μ<sub>e</sub> = 0,4</strong> e <strong>μ<sub>c</sub> = 0,3</strong>.
+        Uma pessoa o empurra na horizontal, partindo sempre do repouso, com cada uma das forças abaixo. Diga
+        em cada caso se o armário se move e qual é o valor da força de atrito; nos casos em que ele se mover,
+        calcule também a aceleração.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>80 N;</li>
+        <li>150 N;</li>
+        <li>200 N;</li>
+        <li>250 N.</li>
+      </ol>
+      <span class="dado">Depois que o armário começa a andar, qual força basta para mantê-lo com velocidade constante?</span>
+    </div>
+
+    <!-- Q8 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 8</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Coeficientes a partir de medidas</span>
+      </div>
+      <p class="question-text">
+        Para medir os coeficientes de atrito entre um bloco de madeira de <strong>4 kg</strong> e o tampo de
+        uma mesa, um estudante puxa o bloco com um dinamômetro mantido na horizontal, como mostra a figura.
+        Aumentando a força devagar, ele vê o bloco começar a se mover quando o dinamômetro marca
+        <strong>16 N</strong>. Depois disso, para mantê-lo deslizando com velocidade constante, basta uma
+        leitura de <strong>12 N</strong>.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Determine μ<sub>e</sub> e μ<sub>c</sub>.</li>
+        <li>Explique por que a leitura do dinamômetro cai no instante em que o bloco começa a andar.</li>
+      </ol>
+      <svg class="fig-svg" data-avulso="forcas/31-dinamometro-puxando-bloco" viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bloco A sobre uma mesa horizontal, preso a um dinamômetro de mola que é puxado para a direita pela força F, mantida na horizontal.">
+        <line class="fg-chao" x1="20" y1="120" x2="420" y2="120"/>
+        <path class="fg-hachura" d="M30,120 L18,134 M60,120 L48,134 M90,120 L78,134 M120,120 L108,134 M150,120 L138,134 M180,120 L168,134 M210,120 L198,134 M240,120 L228,134 M270,120 L258,134 M300,120 L288,134 M330,120 L318,134 M360,120 L348,134 M390,120 L378,134"/>
+
+        <rect class="fg-bloco" x="70" y="74" width="80" height="46" rx="3"/>
+        <text class="fg-t" x="110" y="102" text-anchor="middle">A</text>
+
+        <line class="fg-fio" x1="150" y1="97" x2="180" y2="97"/>
+        <rect class="fg-balanca" x="180" y="84" width="110" height="26" rx="4"/>
+        <path class="fg-fio" d="M186,97 l5,-7 l8,14 l8,-14 l8,14 l8,-14 l8,14 l8,-14 l5,7 L284,97"/>
+        <text class="fg-rot" x="235" y="76" text-anchor="middle">dinamômetro</text>
+
+        <line class="fg-v-forca" x1="292" y1="97" x2="382" y2="97" marker-end="url(#sf)"/>
+        <text class="fg-forc" x="332" y="86">F</text>
+
+        <text class="fg-rot" x="20" y="156">mesa horizontal · dinamômetro mantido na horizontal</text>
+      </svg>
+    </div>
+
+    <!-- Q9 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 9</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Cinético · desaceleração</span>
+      </div>
+      <p class="question-text">
+        Um disco de <strong>0,5 kg</strong> é lançado com velocidade de <strong>6 m/s</strong> sobre um piso
+        horizontal e desliza até parar. O coeficiente de atrito cinético entre o disco e o piso é
+        <strong>0,3</strong>. Determine:
+      </p>
+      <ol class="question-text sub-itens">
+        <li>a aceleração do disco;</li>
+        <li>o tempo que ele leva para parar;</li>
+        <li>a distância percorrida até parar;</li>
+        <li>a aceleração de um disco de 2 kg, do mesmo material, lançado no mesmo piso. Explique por que o resultado não muda.</li>
+      </ol>
+    </div>
+
+    <!-- Q10 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 10</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Cinético · frenagem</span>
+      </div>
+      <p class="question-text">
+        Um carro de <strong>1 000 kg</strong> trafega a <strong>72 km/h</strong> numa pista horizontal quando o
+        motorista freia bruscamente e as rodas travam. O coeficiente de atrito cinético entre pneu e asfalto
+        é <strong>0,8</strong> com a pista seca e <strong>0,4</strong> com a pista molhada.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Calcule a desaceleração do carro em cada caso.</li>
+        <li>Calcule a distância de frenagem em cada caso.</li>
+        <li>O que acontece com a distância de frenagem quando o coeficiente cai pela metade? A massa do carro fez diferença no resultado?</li>
+      </ol>
+    </div>
+
+    <!-- Q11 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 11</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Cinético · força retirada</span>
+      </div>
+      <p class="question-text">
+        Um bloco de <strong>10 kg</strong>, inicialmente em repouso sobre um piso horizontal, é puxado por uma
+        força horizontal de <strong>60 N</strong> durante <strong>3 s</strong> e começa a se mover assim que
+        ela é aplicada. Em seguida, a força é retirada e o bloco desliza até parar. O coeficiente de atrito
+        cinético é <strong>0,2</strong>. Determine:
+      </p>
+      <ol class="question-text sub-itens">
+        <li>a aceleração do bloco nos 3 primeiros segundos;</li>
+        <li>a velocidade dele no instante em que a força é retirada;</li>
+        <li>a aceleração depois que a força é retirada;</li>
+        <li>o tempo e a distância percorrida desde a retirada da força até a parada;</li>
+        <li>a distância total percorrida pelo bloco.</li>
+      </ol>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!--  FORÇAS INCLINADAS, PAREDE E RAMPA (Q12–Q17)           -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="divisor-section">Forças inclinadas, parede e plano inclinado</div>
+
+    <!-- Q12 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 12</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Força inclinada · puxando</span>
+      </div>
+      <p class="question-text">
+        O bloco <strong>A</strong>, de <strong>10 kg</strong>, desliza para a direita sobre um piso horizontal,
+        puxado por uma corda que forma <strong>37°</strong> com a horizontal e exerce a força
+        <strong>F</strong>, de <strong>50 N</strong>, como mostra a figura. O coeficiente de atrito cinético
+        entre o bloco e o piso é <strong>0,5</strong>. Determine:
+      </p>
+      <ol class="question-text sub-itens">
+        <li>as componentes horizontal e vertical de F;</li>
+        <li>a força normal;</li>
+        <li>a força de atrito;</li>
+        <li>a aceleração do bloco;</li>
+        <li>a aceleração que o bloco teria se a mesma força de 50 N fosse aplicada na horizontal. Compare com o item anterior.</li>
+      </ol>
+      <svg class="fig-svg" data-avulso="forcas/32-forca-inclinada-puxando-com-atrito" viewBox="0 0 420 225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bloco A sobre um piso horizontal com atrito, puxado por uma corda que forma trinta e sete graus acima da horizontal. Estão indicadas a força F ao longo da corda, a normal para cima, o peso para baixo e o atrito para a esquerda, junto ao piso.">
+        <line class="fg-chao" x1="30" y1="150" x2="390" y2="150"/>
+        <path class="fg-hachura" d="M40,150 L28,164 M70,150 L58,164 M100,150 L88,164 M130,150 L118,164 M160,150 L148,164 M190,150 L178,164 M220,150 L208,164 M250,150 L238,164 M280,150 L268,164 M310,150 L298,164 M340,150 L328,164 M370,150 L358,164"/>
+        <rect class="fg-bloco" x="150" y="106" width="80" height="44" rx="3"/>
+        <text class="fg-t" x="190" y="133" text-anchor="middle">A</text>
+
+        <!-- força ao longo da corda, 37° acima da horizontal -->
+        <line class="fg-v-forca" x1="232" y1="106" x2="296" y2="58" marker-end="url(#sf)"/>
+        <text class="fg-forc" x="302" y="56">F</text>
+        <line class="fg-guia" x1="232" y1="106" x2="330" y2="106"/>
+        <path class="fg-ang" d="M272,106 A40,40 0 0,0 264,82"/>
+        <text class="fg-angt" x="278" y="98">37°</text>
+
+        <!-- normal, peso e atrito -->
+        <line class="fg-v-normal" x1="190" y1="104" x2="190" y2="52" marker-end="url(#sn)"/>
+        <text class="fg-norm" x="198" y="58">N</text>
+        <line class="fg-v-peso" x1="190" y1="152" x2="190" y2="196" marker-end="url(#sp)"/>
+        <text class="fg-peso" x="198" y="190">P</text>
+        <line class="fg-v-atrito" x1="150" y1="145" x2="96" y2="145" marker-end="url(#sat)"/>
+        <text class="fg-atr" x="104" y="138">f</text>
+
+        <text class="fg-rot" x="30" y="216">piso com atrito · corda a 37° acima da horizontal</text>
+      </svg>
+      <p class="fig-legenda">A componente vertical da força alivia o apoio: a normal fica menor que o peso, e o atrito diminui junto.</p>
+    </div>
+
+    <!-- Q13 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 13</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Força inclinada · empurrando</span>
+      </div>
+      <p class="question-text">
+        O mesmo bloco da questão anterior está agora em repouso, e uma pessoa o empurra com um cabo de
+        vassoura que exerce uma força de <strong>50 N</strong> inclinada <strong>37° abaixo</strong> da
+        horizontal, como mostra a figura. O coeficiente de atrito estático entre o bloco e o piso é <strong>0,6</strong>.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Calcule a força normal.</li>
+        <li>Calcule a força de atrito estático máxima.</li>
+        <li>O bloco se move? Qual é o valor da força de atrito nessa situação?</li>
+        <li>Com base nesta questão e na anterior, explique por que é mais fácil puxar um carrinho pela alça, inclinada para cima, do que empurrá-lo com os braços inclinados para baixo.</li>
+      </ol>
+      <svg class="fig-svg" data-avulso="forcas/44-forca-inclinada-empurrando-com-atrito" viewBox="0 0 420 225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bloco A em repouso sobre um piso horizontal com atrito, empurrado pela força F, inclinada trinta e sete graus abaixo da horizontal, que aponta para a direita e para baixo. Estão indicadas a normal para cima e o peso para baixo; o atrito fica para ser determinado.">
+        <line class="fg-chao" x1="30" y1="150" x2="390" y2="150"/>
+        <path class="fg-hachura" d="M40,150 L28,164 M70,150 L58,164 M100,150 L88,164 M130,150 L118,164 M160,150 L148,164 M190,150 L178,164 M220,150 L208,164 M250,150 L238,164 M280,150 L268,164 M310,150 L298,164 M340,150 L328,164 M370,150 L358,164"/>
+        <rect class="fg-bloco" x="200" y="106" width="80" height="44" rx="3"/>
+        <text class="fg-t" x="240" y="133" text-anchor="middle">A</text>
+
+        <!-- força ao longo do cabo, 37° abaixo da horizontal -->
+        <line class="fg-v-forca" x1="124" y1="56" x2="196" y2="110" marker-end="url(#sf)"/>
+        <text class="fg-forc" x="108" y="52">F</text>
+        <line class="fg-guia" x1="124" y1="56" x2="200" y2="56"/>
+        <path class="fg-ang" d="M164,56 A40,40 0 0,1 156,80"/>
+        <text class="fg-angt" x="170" y="80">37°</text>
+
+        <!-- normal e peso -->
+        <line class="fg-v-normal" x1="240" y1="104" x2="240" y2="52" marker-end="url(#sn)"/>
+        <text class="fg-norm" x="248" y="58">N</text>
+        <line class="fg-v-peso" x1="240" y1="152" x2="240" y2="196" marker-end="url(#sp)"/>
+        <text class="fg-peso" x="248" y="190">P</text>
+
+        <text class="fg-rot" x="30" y="216">piso com atrito · força a 37° abaixo da horizontal · bloco em repouso</text>
+      </svg>
+      <p class="fig-legenda">Agora a componente vertical da força aperta o bloco contra o piso: a normal passa do peso, e o atrito máximo cresce junto.</p>
+    </div>
+
+    <!-- Q14 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 14</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Atrito na parede</span>
+      </div>
+      <p class="question-text">
+        Um professor segura um apagador de <strong>200 g</strong> contra o quadro, que é vertical, empurrando-o
+        com uma força horizontal <strong>F</strong>, como mostra a figura. O coeficiente de atrito estático
+        entre o apagador e o quadro é <strong>0,4</strong>.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Liste as forças que agem sobre o apagador. Qual delas equilibra o peso?</li>
+        <li>Determine o menor valor de F que impede o apagador de escorregar.</li>
+        <li>Se o professor empurrar com 10 N, quanto vale a força de atrito? Explique por que a resposta não é 0,4 × 10 N.</li>
+      </ol>
+      <svg class="fig-svg" data-avulso="forcas/33-apagador-contra-o-quadro" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Apagador pressionado contra um quadro vertical, à direita. A força F empurra o apagador na horizontal, contra o quadro; a normal do quadro aponta para a esquerda; o peso aponta para baixo e o atrito aponta para cima, junto à superfície do quadro.">
+        <line class="fg-chao" x1="250" y1="20" x2="250" y2="220"/>
+        <path class="fg-hachura" d="M250,30 L264,18 M250,60 L264,48 M250,90 L264,78 M250,120 L264,108 M250,150 L264,138 M250,180 L264,168 M250,210 L264,198"/>
+        <text class="fg-rot" x="272" y="124">quadro</text>
+
+        <rect class="fg-bloco" x="200" y="100" width="50" height="40" rx="3"/>
+        <text class="fg-rot" x="210" y="92" text-anchor="middle">apagador</text>
+
+        <line class="fg-v-forca" x1="112" y1="110" x2="196" y2="110" marker-end="url(#sf)"/>
+        <text class="fg-forc" x="150" y="102">F</text>
+        <line class="fg-v-normal" x1="200" y1="130" x2="140" y2="130" marker-end="url(#sn)"/>
+        <text class="fg-norm" x="144" y="148">N</text>
+        <line class="fg-v-peso" x1="225" y1="142" x2="225" y2="196" marker-end="url(#sp)"/>
+        <text class="fg-peso" x="233" y="190">P</text>
+        <line class="fg-v-atrito" x1="244" y1="120" x2="244" y2="58" marker-end="url(#sat)"/>
+        <text class="fg-atr" x="230" y="66">f</text>
+
+        <text class="fg-rot" x="20" y="232">quadro vertical · a mão empurra na horizontal</text>
+      </svg>
+      <p class="fig-legenda">Quem segura o apagador é o atrito, e não a mão. A mão só aperta: ela aumenta a normal e, com ela, o atrito máximo.</p>
+    </div>
+
+    <!-- Q15 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 15</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Rampa · repouso</span>
+      </div>
+      <p class="question-text">
+        O bloco <strong>A</strong>, de <strong>5 kg</strong>, está em repouso sobre uma rampa inclinada
+        <strong>37°</strong> com a horizontal, como mostra a figura. O coeficiente de atrito estático entre o
+        bloco e a rampa é <strong>0,8</strong>. Determine:
+      </p>
+      <ol class="question-text sub-itens">
+        <li>as componentes do peso paralela e perpendicular à rampa;</li>
+        <li>a força normal;</li>
+        <li>o valor e o sentido da força de atrito que mantém o bloco parado;</li>
+        <li>a força de atrito estático máxima, confirmando que o bloco de fato fica em repouso.</li>
+      </ol>
+      <span class="dado">Mostre que um bloco fica parado numa rampa de inclinação θ sempre que μ<sub>e</sub> ≥ tg θ, e que a massa dele não entra nessa condição.</span>
+      <svg class="fig-svg" data-avulso="forcas/34-bloco-parado-na-rampa-com-atrito" viewBox="0 0 440 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bloco A em repouso sobre uma rampa com atrito, inclinada trinta e sete graus. A normal sai do bloco perpendicular à superfície da rampa, o peso aponta na vertical para baixo e o atrito aponta rampa acima, ao longo da superfície.">
+        <polygon class="fg-rampa" points="40,220 300,220 300,24"/>
+        <path class="fg-ang" d="M90,220 A50,50 0 0,0 80,190"/>
+        <text class="fg-angt" x="96" y="212">37°</text>
+
+        <g transform="translate(160,130) rotate(-37)">
+          <rect class="fg-bloco" x="-32" y="-28" width="64" height="28" rx="3"/>
+          <text class="fg-t" x="0" y="-10" text-anchor="middle">A</text>
+          <line class="fg-v-normal" x1="0" y1="-30" x2="0" y2="-84" marker-end="url(#sn)"/>
+          <line class="fg-v-atrito" x1="10" y1="-3" x2="70" y2="-3" marker-end="url(#sat)"/>
+        </g>
+        <text class="fg-norm" x="92" y="60">N</text>
+        <text class="fg-atr" x="206" y="78">f</text>
+
+        <line class="fg-v-peso" x1="160" y1="132" x2="160" y2="200" marker-end="url(#sp)"/>
+        <text class="fg-peso" x="168" y="194">P</text>
+
+        <text class="fg-rot" x="40" y="248">rampa com atrito · bloco em repouso</text>
+      </svg>
+    </div>
+
+    <!-- Q16 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 16</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Rampa · descida com atrito</span>
+      </div>
+      <p class="question-text">
+        Um bloco de <strong>2 kg</strong> é abandonado no alto de uma rampa de <strong>4 m</strong> de
+        comprimento, inclinada <strong>37°</strong>, e começa a deslizar. O coeficiente de atrito cinético
+        entre o bloco e a rampa é <strong>0,5</strong>. Determine:
+      </p>
+      <ol class="question-text sub-itens">
+        <li>a aceleração do bloco;</li>
+        <li>a velocidade com que ele chega à base da rampa;</li>
+        <li>o tempo da descida;</li>
+        <li>a velocidade com que ele chegaria à base se a rampa não tivesse atrito.</li>
+      </ol>
+    </div>
+
+    <!-- Q17 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 17</span>
+        <span class="q-tag dif">Difícil</span>
+        <span class="q-tag tipo">Rampa · subir e descer</span>
+      </div>
+      <p class="question-text">
+        Uma caixa de <strong>10 kg</strong> é empurrada rampa acima por uma força <strong>F</strong> paralela à
+        superfície da rampa, que é inclinada <strong>37°</strong>, e sobe com velocidade constante, como
+        mostra a figura. O coeficiente de atrito cinético entre a caixa e a rampa é <strong>0,25</strong>.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Desenhe o diagrama de corpo livre da caixa, indicando o sentido do atrito.</li>
+        <li>Calcule o valor de F.</li>
+        <li>Agora a caixa desce a rampa com velocidade constante, e a pessoa a segura com uma força paralela à rampa, apontada para cima. Calcule essa força.</li>
+        <li>Explique por que as respostas dos itens (b) e (c) são diferentes, se a caixa, a rampa e o módulo do atrito são os mesmos.</li>
+      </ol>
+      <svg class="fig-svg" data-avulso="forcas/35-caixa-empurrada-rampa-acima" viewBox="0 0 440 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Caixa A sobre uma rampa com atrito inclinada trinta e sete graus. A força F, paralela à rampa, empurra a caixa por trás, rampa acima. Uma seta azul acima da caixa indica a velocidade, também rampa acima, e o peso aponta na vertical para baixo.">
+        <polygon class="fg-rampa" points="40,220 300,220 300,24"/>
+        <path class="fg-ang" d="M90,220 A50,50 0 0,0 80,190"/>
+        <text class="fg-angt" x="96" y="212">37°</text>
+
+        <g transform="translate(136,148) rotate(-37)">
+          <rect class="fg-bloco" x="-32" y="-28" width="64" height="28" rx="3"/>
+          <text class="fg-t" x="0" y="-10" text-anchor="middle">A</text>
+          <line class="fg-v-forca" x1="-92" y1="-14" x2="-36" y2="-14" marker-end="url(#sf)"/>
+          <line class="fg-v-veloc" x1="-20" y1="-44" x2="30" y2="-44" marker-end="url(#sv)"/>
+        </g>
+        <text class="fg-forc" x="62" y="166">F</text>
+        <text class="fg-vel" x="144" y="88">v</text>
+
+        <line class="fg-v-peso" x1="136" y1="150" x2="136" y2="208" marker-end="url(#sp)"/>
+        <text class="fg-peso" x="144" y="204">P</text>
+
+        <text class="fg-rot" x="40" y="248">rampa com atrito · F paralela à rampa · sobe com velocidade constante</text>
+      </svg>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!--  SISTEMAS DE CORPOS (Q18–Q23)                          -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="divisor-section">Sistemas de corpos</div>
+
+    <!-- Q18 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 18</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Blocos encostados</span>
+      </div>
+      <p class="question-text">
+        Os blocos <strong>A</strong>, de <strong>6 kg</strong>, e <strong>B</strong>, de <strong>4 kg</strong>,
+        estão encostados sobre um piso horizontal e são empurrados pela força horizontal <strong>F</strong>, de
+        <strong>50 N</strong>, aplicada ao bloco A, como mostra a figura. O coeficiente de atrito cinético
+        entre cada bloco e o piso é <strong>0,2</strong>, e os blocos já estão em movimento.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Calcule a aceleração do conjunto.</li>
+        <li>Calcule a força que o bloco A exerce sobre o bloco B.</li>
+        <li>Se a mesma força fosse aplicada ao bloco B, empurrando o conjunto para a esquerda, quanto valeria a força de contato entre os blocos?</li>
+        <li>Explique por que a força de contato é maior num caso do que no outro.</li>
+      </ol>
+      <svg class="fig-svg" data-avulso="forcas/36-blocos-encostados-com-atrito" viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dois blocos encostados sobre um piso horizontal com atrito. O bloco A, maior, está à esquerda e o bloco B, menor, à direita, em contato com ele. A força F empurra o bloco A para a direita.">
+        <line class="fg-chao" x1="20" y1="120" x2="420" y2="120"/>
+        <path class="fg-hachura" d="M30,120 L18,134 M60,120 L48,134 M90,120 L78,134 M120,120 L108,134 M150,120 L138,134 M180,120 L168,134 M210,120 L198,134 M240,120 L228,134 M270,120 L258,134 M300,120 L288,134 M330,120 L318,134 M360,120 L348,134 M390,120 L378,134"/>
+
+        <line class="fg-v-forca" x1="40" y1="95" x2="106" y2="95" marker-end="url(#sf)"/>
+        <text class="fg-forc" x="64" y="84">F</text>
+
+        <rect class="fg-bloco" x="110" y="66" width="80" height="54" rx="3"/>
+        <text class="fg-t" x="150" y="98" text-anchor="middle">A</text>
+        <rect class="fg-bloco2" x="190" y="80" width="64" height="40" rx="3"/>
+        <text class="fg-t" x="222" y="105" text-anchor="middle">B</text>
+
+        <text class="fg-rot" x="20" y="156">piso com atrito · A e B apenas encostados</text>
+      </svg>
+    </div>
+
+    <!-- Q19 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 19</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Fio · atritos diferentes</span>
+      </div>
+      <p class="question-text">
+        Os blocos <strong>A</strong>, de <strong>2 kg</strong>, e <strong>B</strong>, de <strong>3 kg</strong>,
+        estão ligados por um fio ideal e são puxados sobre um piso horizontal pela força <strong>F</strong>, de
+        <strong>36 N</strong>, aplicada ao bloco B, como mostra a figura. Os coeficientes de atrito cinético
+        com o piso são <strong>0,5</strong> para o bloco A e <strong>0,2</strong> para o bloco B. Determine:
+      </p>
+      <ol class="question-text sub-itens">
+        <li>a força de atrito sobre cada bloco;</li>
+        <li>a aceleração do conjunto;</li>
+        <li>a tração no fio.</li>
+      </ol>
+      <span class="dado">Confira a tração aplicando a 2ª Lei ao outro bloco.</span>
+      <svg class="fig-svg" data-avulso="forcas/37-blocos-ligados-com-atrito" viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dois blocos sobre um piso horizontal com atrito, ligados por um fio. O bloco A está à esquerda; o bloco B, maior, à direita. A força F puxa o bloco B para a direita.">
+        <line class="fg-chao" x1="20" y1="120" x2="420" y2="120"/>
+        <path class="fg-hachura" d="M30,120 L18,134 M60,120 L48,134 M90,120 L78,134 M120,120 L108,134 M150,120 L138,134 M180,120 L168,134 M210,120 L198,134 M240,120 L228,134 M270,120 L258,134 M300,120 L288,134 M330,120 L318,134 M360,120 L348,134 M390,120 L378,134"/>
+
+        <rect class="fg-bloco" x="70" y="76" width="60" height="44" rx="3"/>
+        <text class="fg-t" x="100" y="103" text-anchor="middle">A</text>
+
+        <line class="fg-fio" x1="130" y1="98" x2="230" y2="98"/>
+        <text class="fg-rot" x="180" y="90" text-anchor="middle">fio</text>
+
+        <rect class="fg-bloco" x="230" y="70" width="72" height="50" rx="3"/>
+        <text class="fg-t" x="266" y="100" text-anchor="middle">B</text>
+
+        <line class="fg-v-forca" x1="302" y1="95" x2="392" y2="95" marker-end="url(#sf)"/>
+        <text class="fg-forc" x="342" y="84">F</text>
+
+        <text class="fg-rot" x="20" y="156">piso com atrito, de coeficiente diferente para cada bloco · fio ideal</text>
+      </svg>
+    </div>
+
+    <!-- Q20 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 20</span>
+        <span class="q-tag dif">Difícil</span>
+        <span class="q-tag tipo">Mesa com atrito e polia</span>
+      </div>
+      <p class="question-text">
+        O bloco <strong>A</strong>, de <strong>6 kg</strong>, está sobre uma mesa horizontal, ligado por um fio
+        ideal que passa por uma polia na borda da mesa ao corpo <strong>B</strong>, de <strong>4 kg</strong>,
+        pendurado, como mostra a figura. De início, o sistema está em repouso e o coeficiente de atrito
+        estático entre A e a mesa é <strong>0,8</strong>.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>O sistema permanece em repouso? Qual é o valor da força de atrito sobre A?</li>
+        <li>Qual é a maior massa que B poderia ter sem que o sistema se movesse?</li>
+        <li>A mesa é trocada por outra, com μ<sub>e</sub> = 0,5 e μ<sub>c</sub> = 0,25, e B continua com 4 kg. Mostre que agora o sistema se move e calcule a aceleração e a tração no fio.</li>
+      </ol>
+      <svg class="fig-svg" data-avulso="forcas/38-mesa-com-atrito-e-corpo-pendurado" viewBox="0 0 440 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bloco A sobre uma mesa horizontal com atrito, ligado por um fio que passa por uma polia na borda da mesa ao corpo B, pendurado ao lado.">
+        <line class="fg-chao" x1="30" y1="100" x2="310" y2="100"/>
+        <line class="fg-chao" x1="60" y1="100" x2="60" y2="200"/>
+        <line class="fg-chao" x1="280" y1="100" x2="280" y2="200"/>
+
+        <rect class="fg-bloco" x="110" y="58" width="64" height="42" rx="3"/>
+        <text class="fg-t" x="142" y="84" text-anchor="middle">A</text>
+
+        <line class="fg-fio" x1="174" y1="78" x2="310" y2="78"/>
+        <text class="fg-trac" x="234" y="68" text-anchor="middle">T</text>
+
+        <circle class="fg-polia" cx="310" cy="100" r="22"/>
+        <circle class="fg-eixo" cx="310" cy="100" r="4.5"/>
+
+        <line class="fg-fio" x1="332" y1="100" x2="332" y2="150"/>
+        <rect class="fg-bloco2" x="296" y="150" width="72" height="46" rx="3"/>
+        <text class="fg-t" x="332" y="178" text-anchor="middle">B</text>
+
+        <line class="fg-v-peso" x1="332" y1="198" x2="332" y2="232" marker-end="url(#sp)"/>
+
+        <text class="fg-rot" x="30" y="228">mesa com atrito · fio e polia ideais</text>
+      </svg>
+    </div>
+
+    <!-- Q21 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 21</span>
+        <span class="q-tag dif">Difícil</span>
+        <span class="q-tag tipo">Bloco sobre bloco</span>
+      </div>
+      <p class="question-text">
+        O bloco <strong>A</strong>, de <strong>2 kg</strong>, está apoiado sobre o bloco <strong>B</strong>, de
+        <strong>8 kg</strong>, que repousa num piso horizontal <strong>sem atrito</strong>. Entre A e B, o
+        coeficiente de atrito estático é <strong>0,3</strong>. Uma força horizontal <strong>F</strong> é
+        aplicada ao bloco B, como mostra a figura.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Nenhuma força externa horizontal age sobre A. Qual força o faz acelerar, e qual é o sentido dela?</li>
+        <li>Determine a maior aceleração que A pode ter sem escorregar sobre B.</li>
+        <li>Determine o maior valor de F para que os dois blocos se movam juntos.</li>
+        <li>Para F = 20 N, calcule a aceleração do conjunto e a força de atrito sobre A.</li>
+      </ol>
+      <svg class="fig-svg" data-avulso="forcas/39-bloco-sobre-bloco" viewBox="0 0 440 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bloco A, menor, apoiado sobre o bloco B, que está num piso horizontal. A força F puxa o bloco B para a direita. Há atrito entre A e B, mas não entre B e o piso.">
+        <line class="fg-chao" x1="20" y1="140" x2="420" y2="140"/>
+        <path class="fg-hachura" d="M30,140 L18,154 M60,140 L48,154 M90,140 L78,154 M120,140 L108,154 M150,140 L138,154 M180,140 L168,154 M210,140 L198,154 M240,140 L228,154 M270,140 L258,154 M300,140 L288,154 M330,140 L318,154 M360,140 L348,154 M390,140 L378,154"/>
+
+        <rect class="fg-bloco" x="120" y="96" width="180" height="44" rx="3"/>
+        <text class="fg-t" x="210" y="124" text-anchor="middle">B</text>
+        <rect class="fg-bloco2" x="150" y="62" width="70" height="34" rx="3"/>
+        <text class="fg-t" x="185" y="84" text-anchor="middle">A</text>
+
+        <line class="fg-v-forca" x1="300" y1="118" x2="390" y2="118" marker-end="url(#sf)"/>
+        <text class="fg-forc" x="338" y="108">F</text>
+
+        <text class="fg-rot" x="20" y="176">entre A e B há atrito · entre B e o piso, não</text>
+      </svg>
+    </div>
+
+    <!-- Q22 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 22</span>
+        <span class="q-tag dif">Difícil</span>
+        <span class="q-tag tipo">Rampa com atrito e polia</span>
+      </div>
+      <p class="question-text">
+        Na configuração da figura, o bloco <strong>A</strong>, de <strong>5 kg</strong>, está sobre uma rampa
+        inclinada <strong>37°</strong> e é ligado por um fio ideal, que passa por uma polia no topo, ao corpo
+        <strong>B</strong>, de <strong>5 kg</strong>, pendurado. O coeficiente de atrito cinético entre A e a
+        rampa é <strong>0,2</strong>. O sistema é abandonado e começa a se mover.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Determine, com justificativa, para que lado o sistema se move.</li>
+        <li>Indique o sentido da força de atrito sobre A.</li>
+        <li>Calcule a aceleração do sistema.</li>
+        <li>Calcule a tração no fio.</li>
+        <li>Qual deveria ser o menor coeficiente de atrito estático para que o sistema, abandonado em repouso, continuasse parado?</li>
+      </ol>
+      <svg class="fig-svg" data-avulso="forcas/40-rampa-com-atrito-e-polia" viewBox="0 0 460 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rampa com atrito inclinada trinta e sete graus, com o bloco A apoiado sobre ela. Um fio sai do bloco, sobe paralelo à rampa, passa por uma polia montada no topo e desce verticalmente até o corpo B, pendurado fora da rampa.">
+        <polygon class="fg-rampa" points="30,240 250,240 250,74"/>
+        <path class="fg-ang" d="M80,240 A50,50 0 0,0 70,210"/>
+        <text class="fg-angt" x="86" y="232">37°</text>
+
+        <g transform="translate(110,180) rotate(-37)">
+          <rect class="fg-bloco" x="-30" y="-24" width="60" height="24" rx="3"/>
+          <text class="fg-t" x="0" y="-8" text-anchor="middle">A</text>
+        </g>
+
+        <line class="fg-fio" x1="127" y1="152" x2="258" y2="53"/>
+        <text class="fg-trac" x="184" y="94">T</text>
+
+        <line class="fg-fio" x1="250" y1="74" x2="266" y2="65"/>
+        <circle class="fg-polia" cx="266" cy="65" r="14"/>
+        <circle class="fg-eixo" cx="266" cy="65" r="4"/>
+
+        <line class="fg-fio" x1="280" y1="65" x2="280" y2="130"/>
+        <rect class="fg-bloco2" x="250" y="130" width="60" height="44" rx="3"/>
+        <text class="fg-t" x="280" y="157" text-anchor="middle">B</text>
+        <line class="fg-v-peso" x1="280" y1="176" x2="280" y2="218" marker-end="url(#sp)"/>
+        <text class="fg-peso" x="288" y="210">P<tspan font-size="9">B</tspan></text>
+
+        <text class="fg-rot" x="30" y="275">rampa com atrito · fio e polia ideais</text>
+      </svg>
+    </div>
+
+    <!-- Q23 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 23</span>
+        <span class="q-tag dif">Difícil</span>
+        <span class="q-tag tipo">Três corpos · mesa e duas polias</span>
+      </div>
+      <p class="question-text">
+        O bloco <strong>B</strong>, de <strong>3 kg</strong>, está sobre uma mesa horizontal e é ligado por fios
+        ideais, que passam por polias nas duas bordas da mesa, aos corpos pendurados <strong>A</strong>, de
+        <strong>2 kg</strong>, e <strong>C</strong>, de <strong>5 kg</strong>, como mostra a figura. O
+        coeficiente de atrito cinético entre B e a mesa é <strong>0,5</strong>. O sistema é abandonado e começa
+        a se mover.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Determine o sentido do movimento e o sentido do atrito sobre B.</li>
+        <li>Calcule a aceleração do sistema.</li>
+        <li>Calcule as trações T<sub>1</sub>, no fio que sustenta A, e T<sub>2</sub>, no fio que sustenta C.</li>
+        <li>Confira os resultados aplicando a 2ª Lei ao bloco B.</li>
+      </ol>
+      <svg class="fig-svg" data-avulso="forcas/41-mesa-entre-dois-corpos-pendurados" viewBox="0 0 460 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bloco B sobre uma mesa horizontal com atrito. Um fio sai de cada lado do bloco e passa por uma polia em cada borda da mesa. Do lado esquerdo pende o corpo A, menor; do lado direito pende o corpo C, maior. As trações nos fios estão marcadas como T um, à esquerda, e T dois, à direita.">
+        <line class="fg-chao" x1="110" y1="90" x2="350" y2="90"/>
+        <line class="fg-chao" x1="140" y1="90" x2="140" y2="240"/>
+        <line class="fg-chao" x1="320" y1="90" x2="320" y2="240"/>
+
+        <rect class="fg-bloco" x="196" y="48" width="68" height="42" rx="3"/>
+        <text class="fg-t" x="230" y="74" text-anchor="middle">B</text>
+
+        <line class="fg-fio" x1="196" y1="70" x2="110" y2="70"/>
+        <line class="fg-fio" x1="264" y1="70" x2="350" y2="70"/>
+        <text class="fg-trac" x="152" y="62" text-anchor="middle">T₁</text>
+        <text class="fg-trac" x="308" y="62" text-anchor="middle">T₂</text>
+
+        <circle class="fg-polia" cx="110" cy="90" r="20"/>
+        <circle class="fg-eixo" cx="110" cy="90" r="4"/>
+        <circle class="fg-polia" cx="350" cy="90" r="20"/>
+        <circle class="fg-eixo" cx="350" cy="90" r="4"/>
+
+        <line class="fg-fio" x1="90" y1="90" x2="90" y2="150"/>
+        <rect class="fg-bloco2" x="62" y="150" width="56" height="38" rx="3"/>
+        <text class="fg-t" x="90" y="174" text-anchor="middle">A</text>
+
+        <line class="fg-fio" x1="370" y1="90" x2="370" y2="130"/>
+        <rect class="fg-bloco2" x="336" y="130" width="68" height="48" rx="3"/>
+        <text class="fg-t" x="370" y="159" text-anchor="middle">C</text>
+
+        <text class="fg-rot" x="20" y="260">mesa com atrito · fios e polias ideais</text>
+      </svg>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!--  INTEGRADAS (Q24–Q25)                                  -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="divisor-section">Problemas integrados</div>
+
+    <!-- Q24 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 24</span>
+        <span class="q-tag dif">Difícil</span>
+        <span class="q-tag tipo">Integradora · caixa na caminhonete</span>
+      </div>
+      <p class="question-text">
+        Uma caixa de <strong>50 kg</strong> está solta sobre a carroceria horizontal de uma caminhonete, como
+        mostra a figura. Os coeficientes de atrito entre a caixa e a carroceria são
+        <strong>μ<sub>e</sub> = 0,4</strong> e <strong>μ<sub>c</sub> = 0,3</strong>. Esta questão retoma, com
+        números, a situação da questão 4.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Determine a maior aceleração que a caminhonete pode ter sem que a caixa escorregue.</li>
+        <li>Com a caminhonete acelerando a 2 m/s², calcule o valor da força de atrito sobre a caixa e indique o sentido dela.</li>
+        <li>A caminhonete trafega a 20 m/s e freia até parar em 40 m, com desaceleração constante. Mostre que a caixa escorrega e diga para que lado, em relação à carroceria.</li>
+        <li>Durante essa frenagem, qual é a aceleração da caixa em relação ao chão enquanto ela escorrega?</li>
+        <li>A caixa estava a 2 m da cabine quando a frenagem começou. Mostre que ela bate na cabine antes de a caminhonete parar.</li>
+      </ol>
+      <svg class="fig-svg" data-avulso="forcas/42-caixa-na-carroceria" viewBox="0 0 460 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Caminhonete vista de lado, andando para a direita, com a cabine à frente. Sobre a carroceria horizontal, atrás da cabine, há uma caixa solta. Uma seta azul acima da cabine indica o sentido da velocidade.">
+        <line class="fg-chao" x1="20" y1="170" x2="440" y2="170"/>
+        <path class="fg-hachura" d="M30,170 L18,184 M60,170 L48,184 M90,170 L78,184 M120,170 L108,184 M150,170 L138,184 M180,170 L168,184 M210,170 L198,184 M240,170 L228,184 M270,170 L258,184 M300,170 L288,184 M330,170 L318,184 M360,170 L348,184 M390,170 L378,184 M420,170 L408,184"/>
+
+        <rect class="fg-cabine" x="60" y="110" width="250" height="26" rx="3"/>
+        <rect class="fg-cabine" x="310" y="66" width="80" height="70" rx="6"/>
+        <rect class="fg-balanca" x="350" y="76" width="30" height="24" rx="3"/>
+
+        <circle class="fg-polia" cx="110" cy="150" r="18"/>
+        <circle class="fg-eixo" cx="110" cy="150" r="5"/>
+        <circle class="fg-polia" cx="340" cy="150" r="18"/>
+        <circle class="fg-eixo" cx="340" cy="150" r="5"/>
+
+        <rect class="fg-bloco" x="160" y="76" width="60" height="34" rx="3"/>
+        <text class="fg-t" x="190" y="98" text-anchor="middle">caixa</text>
+
+        <line class="fg-v-veloc" x1="330" y1="40" x2="400" y2="40" marker-end="url(#sv)"/>
+        <text class="fg-vel" x="360" y="32">v</text>
+
+        <text class="fg-rot" x="20" y="197">carroceria horizontal · a caixa não está presa</text>
+      </svg>
+    </div>
+
+    <!-- Q25 · FIGURA -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 25</span>
+        <span class="q-tag dif">Difícil</span>
+        <span class="q-tag tipo">Integradora · lançado rampa acima</span>
+      </div>
+      <p class="question-text">
+        Um bloco de <strong>1 kg</strong> é lançado da base de uma rampa inclinada <strong>37°</strong>, subindo
+        ao longo dela com velocidade inicial de <strong>8 m/s</strong>, como mostra a figura. Os coeficientes
+        de atrito estático e cinético entre o bloco e a rampa valem ambos <strong>0,5</strong>.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Calcule a aceleração do bloco durante a subida, indicando o sentido.</li>
+        <li>Calcule a distância que ele percorre rampa acima até parar e o tempo da subida.</li>
+        <li>No ponto mais alto, o bloco fica parado ou volta a descer? Justifique comparando forças.</li>
+        <li>Se ele descer, calcule a aceleração na descida e a velocidade com que volta à base.</li>
+        <li>Explique por que o bloco volta à base com velocidade menor que a de lançamento, e por que a descida demora mais que a subida.</li>
+      </ol>
+      <svg class="fig-svg" data-avulso="forcas/43-bloco-lancado-rampa-acima" viewBox="0 0 440 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bloco perto da base de uma rampa com atrito inclinada trinta e sete graus, com uma seta azul indicando a velocidade inicial rampa acima. Mais adiante na rampa, uma marca tracejada pergunta até onde o bloco chega.">
+        <polygon class="fg-rampa" points="40,220 300,220 300,24"/>
+        <path class="fg-ang" d="M90,220 A50,50 0 0,0 80,190"/>
+        <text class="fg-angt" x="96" y="212">37°</text>
+
+        <g transform="translate(88,184) rotate(-37)">
+          <rect class="fg-bloco" x="-28" y="-26" width="56" height="26" rx="3"/>
+          <line class="fg-v-veloc" x1="34" y1="-13" x2="100" y2="-13" marker-end="url(#sv)"/>
+        </g>
+        <text class="fg-vel" x="126" y="118">v₀</text>
+
+        <line class="fg-fixo" x1="232" y1="76" x2="220" y2="60"/>
+        <text class="fg-rot" x="214" y="52" text-anchor="end">até onde?</text>
+
+        <text class="fg-rot" x="40" y="248">rampa com atrito · bloco lançado para cima a partir da base</text>
+      </svg>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p>Física · Ensino Médio · Dinâmica · Lista 2 — Força de Atrito · Piras na Física</p>
+  </footer>
+</body>
+</html>
