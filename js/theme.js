@@ -1,8 +1,24 @@
 // Tema claro/escuro do site.
 // Carregado de forma síncrona no <head> para aplicar o tema antes da pintura (sem "flash").
+// A escolha vai também para um cookie em .pirasnafisica.com.br, para valer entre
+// os subdomínios (o localStorage é por origem). Valores: 'escuro' | 'claro'.
 (function () {
-  var salvo = null;
-  try { salvo = localStorage.getItem('tema'); } catch (e) {}
+  var DOMINIO = /(^|\.)pirasnafisica\.com\.br$/.test(location.hostname)
+    ? '; domain=.pirasnafisica.com.br' : '';
+
+  function lerCookie() {
+    var m = document.cookie.match(/(?:^|;\s*)tema=(escuro|claro)/);
+    return m ? m[1] : null;
+  }
+
+  function gravarCookie(valor) {
+    try {
+      document.cookie = 'tema=' + valor + DOMINIO + '; path=/; max-age=31536000; SameSite=Lax';
+    } catch (e) {}
+  }
+
+  var salvo = lerCookie();
+  if (!salvo) { try { salvo = localStorage.getItem('tema'); } catch (e) {} }
   var escuro = salvo
     ? salvo === 'escuro'
     : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
@@ -22,6 +38,7 @@
     if (novoEscuro) { html.setAttribute('data-theme', 'dark'); }
     else { html.removeAttribute('data-theme'); }
     try { localStorage.setItem('tema', novoEscuro ? 'escuro' : 'claro'); } catch (e2) {}
+    gravarCookie(novoEscuro ? 'escuro' : 'claro');
     atualizarIcone();
   });
 
