@@ -80,3 +80,19 @@ copa_do_mundo/gincana/index.html -> https://gincanas.pirasnafisica.com.br/gincan
 copa_do_mundo/gincana/login.html -> https://gincanas.pirasnafisica.com.br/gincana/login.html
 copa_do_mundo/gincana/regulamento.html -> https://gincanas.pirasnafisica.com.br/gincana/regulamento.html
 copa_do_mundo/gincana/regulamento_gincana_copa.html -> https://gincanas.pirasnafisica.com.br/gincana/regulamento_gincana_copa.html
+
+# Programas e simulacoes -> subdominio proprio (2026-09-20).
+# Destino absoluto (https://): o stub repassa ?query e #hash ao destino.
+# Gerar so estes:  powershell -File scripts\gerar-redirects.ps1 -Somente programas
+programas.html -> https://labs.pirasnafisica.com.br/
+programas/ -> https://labs.pirasnafisica.com.br/
+programas/conversor/conversor.html -> https://labs.pirasnafisica.com.br/conversor/conversor.html
+programas/forca_eletrica/forca_eletrica.html -> https://labs.pirasnafisica.com.br/forca_eletrica/forca_eletrica.html
+programas/graficos_avancados/graficos_cientificos.html -> https://labs.pirasnafisica.com.br/graficos_avancados/graficos_cientificos.html
+programas/graficos_avancados/tutorial.html -> https://labs.pirasnafisica.com.br/graficos_avancados/tutorial.html
+programas/jogo_alfandega/jogo_ilha.html -> https://labs.pirasnafisica.com.br/jogo_alfandega/jogo_ilha.html
+programas/jogo_alfandega/professor.html -> https://labs.pirasnafisica.com.br/jogo_alfandega/professor.html
+programas/juntar_pdf/juntar_pdf.html -> https://labs.pirasnafisica.com.br/juntar_pdf/juntar_pdf.html
+programas/pendulo_forcado/pendulo_forcado.html -> https://labs.pirasnafisica.com.br/pendulo_forcado/pendulo_forcado.html
+programas/simulador_movimento_avancado/simulador_movimento_avancado.html -> https://labs.pirasnafisica.com.br/simulador_movimento_avancado/simulador_movimento_avancado.html
+programas/simulador_movimento_avancado/tutorial.html -> https://labs.pirasnafisica.com.br/simulador_movimento_avancado/tutorial.html

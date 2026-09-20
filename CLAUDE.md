@@ -33,7 +33,7 @@ atividades/              # estudos dirigidos e listas de exercícios interativas
 atividades/estudos_dirigidos/<area>/ed_<slug>/   # um ED por pasta, agrupados pelas áreas de conteudos/
 atividades/listas/<assunto>/                     # listas de exercícios, uma pasta por assunto
 atividades/listas/listas.css                     # folha única de todas as listas
-Programas/               # simulações (Canvas) publicadas como mini-apps
+programas/               # só stubs de redirecionamento para labs.pirasnafisica.com.br (os mini-apps moravam aqui)
 scripts/                 # utilitários PowerShell (sitemap, favicon, meta tags)
 copa_do_mundo/           # só stubs de redirecionamento para gincanas.pirasnafisica.com.br (o bolão morava aqui)
 ```
@@ -279,6 +279,15 @@ O banco continua o mesmo (Supabase `zmbgprapzgvpnmbtrakp`). Migrações, comando
 O keep-alive dos projetos Supabase (`.github/workflows/supabase-keepalive.yml`) continua **neste** repositório.
 
 **Regra do Lucas:** só se publica o que o site precisa servir. SQL, Edge Function, ferramentas e bancos de perguntas não ficam em repositório público. Ver o `CLAUDE.md` da pasta geral `pirasnafisica`.
+
+## Labs (mudou de repositório)
+
+Os mini-apps (conversor, força elétrica, gráficos, pêndulo forçado, simulador de movimento, jogo da alfândega e juntar PDFs) **saíram deste repositório em 2026-09-20** e vivem em **https://labs.pirasnafisica.com.br**: repositório público `lucaspiras/labs-pirasnafisica`, pasta `Programacao/pirasnafisica/labs`. `programas.html` e `programas/` guardam **só stubs de redirecionamento** (`scripts/gerar-redirects.ps1`, entradas em `scripts/redirects.txt`). O item "Simulações" do cabeçalho (`header/header.html`) aponta para o labs.
+
+- **`simulacoes/` fica aqui**: são widgets usados em `<iframe>` por 3 páginas deste site, e o tema deles só acompanha a página na mesma origem. O hub do labs tem cartões que apontam para eles.
+- O labs usa **cópias** de `css/style.css`, `js/theme.js`, `js/feedback-modal.js`, dos favicons e dos logos deste repositório, mantidas por `scripts/sync-shared.ps1` na pasta geral `pirasnafisica`. **Ao mudar qualquer um desses arquivos aqui, rodar o sync**, senão o labs fica para trás.
+- Programa novo: criar no repositório do labs e rodar `scripts/labs-sync-hub.ps1` (pasta geral), que acrescenta o cartão ao hub.
+- Notas de desenvolvimento dos apps (ex.: `REFACTORING-simulador.md`) ficam em `pirasnafisica/notas/labs/`, fora do repositório público.
 
 ## Listas de exercícios (`atividades/listas/`)
 

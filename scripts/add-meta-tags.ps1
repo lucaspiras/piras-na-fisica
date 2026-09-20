@@ -28,10 +28,6 @@ $pages = [ordered]@{
     'Listas de Exercícios — Piras na Física',
     'Listas de exercícios de Física com modo estudo (gabarito imediato) e modo avaliação, com relatório de desempenho exportável.',
     '/lista_de_exercicios.html')
-  'programas.html' = @(
-    'Simuladores e Programas — Piras na Física',
-    'Simuladores interativos de Física: movimento 2D, pêndulo forçado, força elétrica, gráficos científicos, conversor de unidades e mais.',
-    '/programas.html')
   'conteudos\grandezas-fisicas\index.html' = @(
     'Grandezas Físicas e Unidades — Piras na Física',
     'O que é Física, método científico, grandezas físicas, Sistema Internacional, notação científica e algarismos significativos.',
