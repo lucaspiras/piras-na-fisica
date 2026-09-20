@@ -28,3 +28,9 @@ atividades/testes/**/*.csv
 atividades/testes/**/relatorio*
 atividades/testes/**/respostas*
 atividades/testes/**/resultados*
+
+# copa_do_mundo/ virou so redirecionamento (Fase 6). Estas sobras LOCAIS nunca vao para o git:
+# o .env tem chaves; o resto e regeneravel. (Antes o bolao/.gitignore protegia; foi removido.)
+copa_do_mundo/**/.env
+copa_do_mundo/**/node_modules/
+copa_do_mundo/**/package-lock.json

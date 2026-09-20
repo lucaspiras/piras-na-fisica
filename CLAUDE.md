@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Sobre o projeto
 
-**pirasnafisica.com.br** — portal gratuito de Física para o Ensino Médio brasileiro. Site estático (HTML/CSS/JS vanilla) hospedado no GitHub Pages com domínio customizado. Supabase é usado apenas pelo bolão da Copa do Mundo (subprojeto isolado).
+**pirasnafisica.com.br** — portal gratuito de Física para o Ensino Médio brasileiro. Site estático (HTML/CSS/JS vanilla) hospedado no GitHub Pages com domínio customizado. Supabase é usado pelo feedback, pelos testes e pelo bolão/gincanas, que **saíram deste repositório** e vivem em `gincanas.pirasnafisica.com.br` (ver a seção "Bolão e gincanas").
 
 ## Como rodar localmente
 
@@ -35,7 +35,7 @@ atividades/listas/<assunto>/                     # listas de exercícios, uma pa
 atividades/listas/listas.css                     # folha única de todas as listas
 Programas/               # simulações (Canvas) publicadas como mini-apps
 scripts/                 # utilitários PowerShell (sitemap, favicon, meta tags)
-copa_do_mundo/bolao/     # jogo de bolão — subprojeto separado com Supabase
+copa_do_mundo/           # só stubs de redirecionamento para gincanas.pirasnafisica.com.br (o bolão morava aqui)
 ```
 
 ## Sistema de tema (dark mode)
@@ -265,36 +265,20 @@ Preservar o vocabulário e o ritmo do original: as inserções devem parecer esc
 
 **Progresso:** `banco-questoes/resolucoes_progresso.json` (300/300 com resolução).
 
-## Bolão da Copa (`copa_do_mundo/bolao/`)
+## Bolão e gincanas (mudaram de repositório)
 
-Subprojeto isolado com Supabase próprio. Não usa os arquivos `css/style.css` e `js/` da raiz.
+O bolão da Copa e a gincana quiz **saíram deste repositório em 2026-09-20** e vivem em **https://gincanas.pirasnafisica.com.br**, em dois repositórios:
 
-**Supabase:** projeto `zmbgprapzgvpnmbtrakp`  
-**Auth:** `profiles.is_admin = true` define o administrador  
-**Cliente JS:** `supabase.js` — exporta helpers de auth e `callAdmin(action, payload)` para chamar a Edge Function
+- o **site**, **público**: `lucaspiras/gincanas-pirasnafisica` (pasta `Programacao/pirasnafisica/gincanas`);
+- o **suporte que não se publica** (migrações SQL, Edge Function `admin`, `sync.mjs`, bancos de perguntas), **privado**: `lucaspiras/gincanas-fontes` (pasta `pirasnafisica/gincanas-fontes`).
 
-**Edge Function `admin`** (`supabase/functions/admin/index.ts`):
-- Guarda a `service_role` no servidor; verifica `is_admin` antes de qualquer ação
-- Rota por `action` via `switch`: `list_participants`, `create_participant`, `reset_password`, `delete_participant`, `list_pools`, `create_pool`, `add_member`, `delete_pool`, `export_data`, `audit_grid`, `prediction_history`
-- Deploy: `npx supabase functions deploy admin --project-ref zmbgprapzgvpnmbtrakp`
-- Docker não é necessário para o deploy
+O banco continua o mesmo (Supabase `zmbgprapzgvpnmbtrakp`). Migrações, comandos de deploy e o estado de cada uma estão no `CLAUDE.md` de `gincanas-fontes`.
 
-**Migrações SQL** em `copa_do_mundo/bolao/sql/` — rodar manualmente no Supabase SQL Editor:
+`copa_do_mundo/` guarda **só stubs de redirecionamento** que levam os endereços antigos ao novo, **repassando `?query` e `#hash`** (o telão usa `board.html?game=<id>`). Eles são gerados por `scripts/gerar-redirects.ps1` a partir de `scripts/redirects.txt`; não recriar páginas ali. O `.gitignore` protege as sobras locais dessa pasta (`.env`, `node_modules`).
 
-| Arquivo | Status |
-|---|---|
-| `pool-scoring-rules-columns.sql` | ✅ rodado |
-| `pool-scoring-rules-rls.sql` | ✅ rodado |
-| `views-security-invoker.sql` | ✅ rodado |
-| `restore-scoring-grants.sql` | ✅ rodado |
-| `admin-lockdown.sql` | ⏳ pendente (verificar nomes de policies antes) |
-| `prediction-audit.sql` | ⏳ pendente (+ redeploy Edge Function) |
-| `group-standings-fifa.sql` | ⏳ pendente (faz `drop view group_standings_actual`) |
-| `match-scoring-per-pool.sql` | ⏳ pendente |
-| `prediction-deadlines.sql` | ⏳ pendente |
-| `ko-advancing-team.sql` | ⏳ pendente (mata-mata: 8 pts p/ quem acerta o time que avança; adiciona `matches.advancing_team` e `predictions.advancing_team`; substitui `set_match_result`/`update_match_predictions_points`/`clear_match_result`. **Rodar ANTES de usar pool.html/admin.html/sync.mjs novos**) |
+O keep-alive dos projetos Supabase (`.github/workflows/supabase-keepalive.yml`) continua **neste** repositório.
 
-**Geração de PDF do regulamento:** Puppeteer instalado fora do OneDrive em `C:\Users\Usuario\reg-pdf-tool\`. Rodar de lá: `node gerar_pdf_regulamento.mjs <input.html> <output.pdf>`. O script usa mídia `screen` e calcula altura real para gerar página única.
+**Regra do Lucas:** só se publica o que o site precisa servir. SQL, Edge Function, ferramentas e bancos de perguntas não ficam em repositório público. Ver o `CLAUDE.md` da pasta geral `pirasnafisica`.
 
 ## Listas de exercícios (`atividades/listas/`)
 
@@ -368,6 +352,7 @@ powershell -File scripts\inject-favicon.ps1        # injetar favicons em página
 powershell -File scripts\add-meta-tags.ps1         # injetar meta description + OG tags
 powershell -File scripts\extrair-figuras-eds.ps1   # gerar os .svg avulsos das figuras dos EDs
 powershell -File scripts\extrair-figuras-paginas.ps1 # idem, para listas e apresentações
+powershell -File scripts\gerar-redirects.ps1 -Somente <prefixo>  # stubs de páginas movidas; o destino pode ser https://... (repassa ?query e #hash)
 ```
 
 **Atenção:** scripts `.ps1` com caracteres acentuados precisam ser salvos com UTF-8 **com BOM** (PowerShell 5.1 no Windows lê sem BOM como ANSI e corrompe os acentos).

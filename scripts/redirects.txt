@@ -58,3 +58,25 @@ conteudos/leis-newton/atrito.html -> /conteudos/dinamica/atrito.html
 conteudos/leis-newton/plano-inclinado.html -> /conteudos/dinamica/plano-inclinado.html
 conteudos/leis-newton/forca-centripeta.html -> /conteudos/dinamica/forca-centripeta.html
 conteudos/leis-newton/ -> /conteudos/dinamica/
+
+# Bolao e gincanas -> subdominio proprio (2026-09-20).
+# Destino absoluto (https://): o stub repassa ?query e #hash ao destino.
+# Gerar so estes:  powershell -File scripts\gerar-redirects.ps1 -Somente copa_do_mundo/
+copa_do_mundo/ -> https://gincanas.pirasnafisica.com.br/
+copa_do_mundo/bolao/admin.html -> https://gincanas.pirasnafisica.com.br/bolao/admin.html
+copa_do_mundo/bolao/dashboard.html -> https://gincanas.pirasnafisica.com.br/bolao/dashboard.html
+copa_do_mundo/bolao/final.html -> https://gincanas.pirasnafisica.com.br/bolao/final.html
+copa_do_mundo/bolao/index.html -> https://gincanas.pirasnafisica.com.br/bolao/index.html
+copa_do_mundo/bolao/login.html -> https://gincanas.pirasnafisica.com.br/bolao/login.html
+copa_do_mundo/bolao/pool.html -> https://gincanas.pirasnafisica.com.br/bolao/pool.html
+copa_do_mundo/bolao/profile.html -> https://gincanas.pirasnafisica.com.br/bolao/profile.html
+copa_do_mundo/bolao/regulamento_bolao_ifsul.html -> https://gincanas.pirasnafisica.com.br/bolao/regulamento_bolao_ifsul.html
+copa_do_mundo/bolao/rules.html -> https://gincanas.pirasnafisica.com.br/bolao/rules.html
+copa_do_mundo/bolao/standings.html -> https://gincanas.pirasnafisica.com.br/bolao/standings.html
+copa_do_mundo/bolao/tournament.html -> https://gincanas.pirasnafisica.com.br/bolao/tournament.html
+copa_do_mundo/gincana/admin.html -> https://gincanas.pirasnafisica.com.br/gincana/admin.html
+copa_do_mundo/gincana/board.html -> https://gincanas.pirasnafisica.com.br/gincana/board.html
+copa_do_mundo/gincana/index.html -> https://gincanas.pirasnafisica.com.br/gincana/index.html
+copa_do_mundo/gincana/login.html -> https://gincanas.pirasnafisica.com.br/gincana/login.html
+copa_do_mundo/gincana/regulamento.html -> https://gincanas.pirasnafisica.com.br/gincana/regulamento.html
+copa_do_mundo/gincana/regulamento_gincana_copa.html -> https://gincanas.pirasnafisica.com.br/gincana/regulamento_gincana_copa.html
