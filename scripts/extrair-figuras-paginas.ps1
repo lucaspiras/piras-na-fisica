@@ -142,19 +142,19 @@ $Figuras = @(
      Resumo = 'Bloco em repouso empurrado por forca a 37 graus abaixo da horizontal: a normal passa do peso.' }
 
   @{ Html = $LISTA_ASSOC
-     Slug = 'circuitos/1-dois-resistores-em-serie'
+     Slug = 'associacao-resistores/14-lista-serie-20-40'
      Resumo = 'Bateria de 12 V alimentando dois resistores em serie, de 20 e 40 ohms.' }
 
   @{ Html = $LISTA_ASSOC
-     Slug = 'circuitos/2-dois-resistores-em-paralelo'
+     Slug = 'associacao-resistores/15-lista-paralelo-30-60'
      Resumo = 'Bateria de 12 V alimentando dois resistores em paralelo, de 30 e 60 ohms.' }
 
   @{ Html = $LISTA_ASSOC
-     Slug = 'circuitos/3-associacao-mista-serie-com-paralelo'
+     Slug = 'associacao-resistores/16-lista-mista-6-12-4'
      Resumo = 'Associacao mista: resistor de 6 ohms em serie com o paralelo de 12 e 4 ohms.' }
 
   @{ Html = $LISTA_ASSOC
-     Slug = 'circuitos/4-resistor-em-curto-circuito'
+     Slug = 'associacao-resistores/17-lista-resistor-em-curto'
      Resumo = 'Resistor de 30 ohms curto-circuitado por um fio ideal, em serie com um de 10 ohms.' }
 
 

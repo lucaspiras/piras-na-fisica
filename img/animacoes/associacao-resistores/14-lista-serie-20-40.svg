@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Luminaria sustentada por dois fios simetricos a 30 graus do teto.
+<!-- Bateria de 12 V alimentando dois resistores em serie, de 20 e 40 ohms.
      Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
      inserido em slide ou importado em editor vetorial.
-     Fonte da geometria: atividades/listas/forcas/lista_1_peso_normal_tracao.html
+     Fonte da geometria: atividades/listas/circuitos/lista_3_associacao_resistores.html
      Gerado por scripts/extrair-figuras-paginas.ps1 — nao editar a mao. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 230" width="840" height="460"
-     role="img" aria-labelledby="forcas-7-luminaria-em-dois-fios">
-  <title id="forcas-7-luminaria-em-dois-fios">Corpo A pendurado por dois fios simétricos presos ao teto, cada um formando trinta graus com o teto horizontal. As trações apontam de cada fio para o respectivo ponto de fixação e o peso aponta para baixo.</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 175" width="880" height="350"
+     role="img" aria-labelledby="associacao-resistores-14-lista-serie-20-40">
+  <title id="associacao-resistores-14-lista-serie-20-40">Circuito de malha única. Uma bateria de doze volts, à esquerda, alimenta dois resistores ligados um depois do outro no fio de cima: R1, de vinte ohms, e R2, de quarenta ohms.</title>
   <style><![CDATA[
     svg {
       --fig-bloco:    #dbeafe;
@@ -122,35 +122,14 @@
     .fg-res   { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-resistor-b); }
     .fg-batt  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-bateria); }
   ]]></style>
-  <defs>
-    <marker id="sp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-            <path class="fg-p-peso" d="M0,0 L10,5 L0,10 z"/>
-          </marker>
-    <marker id="st" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-            <path class="fg-p-tracao" d="M0,0 L10,5 L0,10 z"/>
-          </marker>
-  </defs>
-  <line class="fg-chao" x1="30" y1="40" x2="390" y2="40"/>
-  <path class="fg-hachura" d="M40,40 L28,26 M70,40 L58,26 M100,40 L88,26 M130,40 L118,26 M160,40 L148,26 M190,40 L178,26 M220,40 L208,26 M250,40 L238,26 M280,40 L268,26 M310,40 L298,26 M340,40 L328,26 M370,40 L358,26"/>
-
-  <line class="fg-fio" x1="106" y1="40" x2="210" y2="100"/>
-  <line class="fg-fio" x1="314" y1="40" x2="210" y2="100"/>
-
-  <!-- ângulos com o teto -->
-  <path class="fg-ang" d="M140,40 A34,34 0 0,1 135,58"/>
-  <text class="fg-angt" x="142" y="60">30°</text>
-  <path class="fg-ang" d="M280,40 A34,34 0 0,0 285,58"/>
-  <text class="fg-angt" x="252" y="60">30°</text>
-
-  <!-- trações ao longo dos fios, saindo da luminária -->
-  <line class="fg-v-tracao" x1="204" y1="96" x2="140" y2="59" marker-end="url(#st)"/>
-  <text class="fg-trac" x="150" y="86">T</text>
-  <line class="fg-v-tracao" x1="216" y1="96" x2="280" y2="59" marker-end="url(#st)"/>
-  <text class="fg-trac" x="252" y="86">T</text>
-
-  <rect class="fg-bloco" x="176" y="100" width="68" height="34" rx="4"/>
-  <text class="fg-t" x="210" y="122" text-anchor="middle">A</text>
-
-  <line class="fg-v-peso" x1="210" y1="136" x2="210" y2="188" marker-end="url(#sp)"/>
-  <text class="fg-peso" x="218" y="180">P</text>
+  <path class="fg-fio" d="M70 45 H120 M182 45 H238 M300 45 H380 M380 45 V135 M380 135 H70 M70 135 V96 M70 84 V45"/>
+  <path class="fg-bat" d="M54 84 H86 M62 96 H78"/>
+  <text class="fg-batt" x="46" y="94" text-anchor="end">12 V</text>
+  <rect class="fg-resistor" x="120" y="33" width="62" height="24" rx="3"/>
+  <text class="fg-m" x="151" y="50" text-anchor="middle">R₁</text>
+  <text class="fg-res" x="151" y="78" text-anchor="middle">20 Ω</text>
+  <rect class="fg-resistor" x="238" y="33" width="62" height="24" rx="3"/>
+  <text class="fg-m" x="269" y="50" text-anchor="middle">R₂</text>
+  <text class="fg-res" x="269" y="78" text-anchor="middle">40 Ω</text>
+  <text class="fg-rot" x="220" y="162" text-anchor="middle">associação em série</text>
 </svg>
