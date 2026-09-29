@@ -40,11 +40,14 @@
 /* ===== RESET & VARIABLES ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Os neutros do tema claro são os mesmos do site (--bg, --surface-2 e --border
+   de css/style.css): fundo dourado leve, e não o cinza frio que estava aqui.
+   O tema escuro logo abaixo já coincidia com o do site. */
 :root {
-  --fundo:        #f9fafb;
+  --fundo:        #faf6ea;
   --surface:      #ffffff;
-  --surface2:     #f3f4f6;
-  --border:       #e5e7eb;
+  --surface2:     #f2ecda;
+  --border:       #e7ddc6;
   --azul-escuro:  #1e2a78;
   --azul:         #2f5bea;
   --roxo:         #6a2fe8;
@@ -52,7 +55,7 @@
   --vermelho:     #dc2626;
   --amarelo:      #d97706;
   --texto:        #1f2933;
-  --texto-muted:  #6b7280;
+  --texto-muted:  #5b6573;
   /* variantes para uso como TEXTO (clareiam no tema escuro) */
   --azul-texto:   #2f5bea;
   --texto-destaque: #1e2a78;
@@ -579,6 +582,10 @@ body {
   --fig-balanca:  #e2e8f0;
   --fig-veloc:    #2563eb;
   --fig-atrito:   #db2777;
+  --fig-resistor:   #fde68a;
+  --fig-resistor-b: #b45309;
+  --fig-bateria:    #0f766e;
+  --fig-no:         #334155;
   /* declaradas aqui, e nao herdadas de --fonte, porque o .svg avulso
      gerado a partir desta seção leva a paleta e mais nada */
   --fig-fonte-t:  'DM Sans', system-ui, sans-serif;
@@ -608,6 +615,10 @@ body {
   --fig-balanca:  #334155;
   --fig-veloc:    #60a5fa;
   --fig-atrito:   #f472b6;
+  --fig-resistor:   #4a3a12;
+  --fig-resistor-b: #fbbf24;
+  --fig-bateria:    #2dd4bf;
+  --fig-no:         #cbd5e1;
 }
 
 .fig-svg {
@@ -638,6 +649,11 @@ body {
 .fg-membro  { fill: none; stroke: var(--fig-pessoa); stroke-width: 3.2; stroke-linecap: round; }
 .fg-fixo    { fill: none; stroke: var(--fig-apoio); stroke-width: 2; }
 
+/* circuitos: o fio reaproveita .fg-fio */
+.fg-resistor { fill: var(--fig-resistor); stroke: var(--fig-resistor-b); stroke-width: 2; }
+.fg-bat      { fill: none; stroke: var(--fig-bateria); stroke-width: 2.6; stroke-linecap: round; }
+.fg-no       { fill: var(--fig-no); }
+
 .fg-v-peso   { fill: none; stroke: var(--fig-peso);   stroke-width: 2.5; }
 .fg-v-normal { fill: none; stroke: var(--fig-normal); stroke-width: 2.5; }
 .fg-v-tracao { fill: none; stroke: var(--fig-tracao); stroke-width: 2.5; }
@@ -663,6 +679,8 @@ body {
 .fg-angt  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-angulo); }
 .fg-vel   { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-veloc); }
 .fg-atr   { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-atrito); }
+.fg-res   { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-resistor-b); }
+.fg-batt  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-bateria); }
 
 /* ══════════════════════════════════════════════════════════════════════
    IMPRESSÃO

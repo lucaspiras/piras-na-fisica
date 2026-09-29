@@ -42,6 +42,7 @@ $ErrorActionPreference = 'Stop'
 # ----------------------------------------------------------------------------
 $LISTA_FORCAS = 'atividades/listas/forcas/lista_1_peso_normal_tracao.html'
 $LISTA_ATRITO = 'atividades/listas/forcas/lista_2_atrito.html'
+$LISTA_ASSOC  = 'atividades/listas/circuitos/lista_3_associacao_resistores.html'
 
 $Figuras = @(
   @{ Html = $LISTA_FORCAS
@@ -139,6 +140,22 @@ $Figuras = @(
   @{ Html = $LISTA_ATRITO
      Slug = 'forcas/44-forca-inclinada-empurrando-com-atrito'
      Resumo = 'Bloco em repouso empurrado por forca a 37 graus abaixo da horizontal: a normal passa do peso.' }
+
+  @{ Html = $LISTA_ASSOC
+     Slug = 'circuitos/1-dois-resistores-em-serie'
+     Resumo = 'Bateria de 12 V alimentando dois resistores em serie, de 20 e 40 ohms.' }
+
+  @{ Html = $LISTA_ASSOC
+     Slug = 'circuitos/2-dois-resistores-em-paralelo'
+     Resumo = 'Bateria de 12 V alimentando dois resistores em paralelo, de 30 e 60 ohms.' }
+
+  @{ Html = $LISTA_ASSOC
+     Slug = 'circuitos/3-associacao-mista-serie-com-paralelo'
+     Resumo = 'Associacao mista: resistor de 6 ohms em serie com o paralelo de 12 e 4 ohms.' }
+
+  @{ Html = $LISTA_ASSOC
+     Slug = 'circuitos/4-resistor-em-curto-circuito'
+     Resumo = 'Resistor de 30 ohms curto-circuitado por um fio ideal, em serie com um de 10 ohms.' }
 
 
   @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
