@@ -10,6 +10,11 @@ not_commit/
 # Gabarito da gincana (expõe as respostas certas — só uso local do apresentador)
 copa_do_mundo/gincana/perguntas.html
 
+# Gabaritos de prova discursiva. A prova de múltipla escolha guarda o gabarito no
+# banco, fora do HTML; a discursiva não tem onde guardar, e a resolução mora no
+# arquivo. Repositório público: a prova pode ir, a resolução não.
+atividades/testes/**/gabarito_*.html
+
 # Briefs de redação/correção (instruções de trabalho, não fazem parte do site)
 # Barra inicial: ignora só a pasta da raiz, não .claude/skills/briefs/
 /briefs/

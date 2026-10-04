@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prova 3 de Física — Leis de Newton e Forças (objetiva)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000;
+    background: #e9e9ec;
+  }
+
+  .folha {
+    width: 210mm;
+    margin: 0 auto;
+    padding: 12mm 14mm 16mm;
+    background: #fff;
+  }
+
+  /* ── cabeçalho ── */
+  .cabecalho { text-align: center; border-bottom: 1.6px solid #000; padding-bottom: 3mm; }
+  .cabecalho h1 { font-size: 13pt; text-transform: uppercase; letter-spacing: .05em; }
+  .cabecalho h2 { font-size: 9.5pt; font-weight: normal; margin-top: 1.2mm; }
+
+  .campos { display: flex; gap: 5mm; margin: 4mm 0; }
+  .campo { display: flex; flex-direction: column; flex: 1; }
+  .campo.curto { flex: 0 0 26mm; }
+  .campo.nota  { flex: 0 0 24mm; }
+  .campo label { font-size: 7pt; font-weight: bold; text-transform: uppercase; letter-spacing: .05em; }
+  .campo .linha-campo { border-bottom: 1px solid #000; height: 6mm; }
+  .campo.nota .linha-campo { border: 1.4px solid #000; height: 11mm; }
+
+  .instrucoes {
+    border: 1.2px solid #000;
+    padding: 2.5mm 3mm;
+    font-size: 8.6pt;
+    line-height: 1.5;
+    margin-bottom: 5mm;
+  }
+  .instrucoes h3 { font-size: 8.6pt; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 1.2mm; }
+  .instrucoes ol { margin: 0 0 0 4.5mm; }
+  .instrucoes li { margin-bottom: 0.8mm; }
+  .dados { margin-top: 1.8mm; padding-top: 1.8mm; border-top: 1px dashed #777; }
+
+  /* ── figuras ── */
+  .fig svg { display: block; width: 100%; height: auto; }
+
+  .botao {
+    display: block; margin: 6mm auto; padding: 9px 30px;
+    background: #1a56db; color: #fff; border: none; border-radius: 6px;
+    font: bold 14px Arial, sans-serif; cursor: pointer;
+  }
+
+  @page { size: A4; margin: 18mm 14mm 18mm; }
+
+  @media print {
+    body { background: #fff; }
+    .folha { width: auto; padding: 0; }
+    .nao-imprime { display: none !important; }
+  }
+
+  body { font-size: 9.6pt; line-height: 1.45; }
+
+  /* A grade fica ANTES das questões, no alto da primeira folha: é onde o professor
+     olha primeiro ao corrigir, e é onde o aluno não a esquece. */
+  .grade { border: 1.2px solid #000; padding: 2.2mm 3mm 3mm; margin-bottom: 5mm; }
+  .grade h3 { font-size: 8.6pt; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 2mm; }
+  .casas { display: grid; grid-template-columns: repeat(10, 1fr); gap: 1.6mm; }
+  .casa { text-align: center; font-size: 7pt; }
+  .casa span { display: block; margin-bottom: .6mm; }
+  .casa .quadro { height: 7mm; border: 1px solid #000; }
+
+  /* ── duas colunas ──
+     column-count pagina sozinho: o navegador preenche a coluna da esquerda, depois a
+     da direita, e só então vira a folha. O break-inside nas questões impede que uma
+     delas comece no pé de uma coluna e termine no alto da outra. */
+  .colunas {
+    column-count: 2;
+    column-gap: 9mm;
+    column-rule: .6px solid #bbb;
+  }
+  .q {
+    break-inside: avoid; page-break-inside: avoid;
+    margin: 0 0 5.5mm;
+  }
+  .txt { text-align: justify; }
+  .num { font-weight: bold; }
+
+  .alts { list-style: none; margin: 1.8mm 0 0 3.6mm; }
+  .alts li { text-indent: -3.6mm; padding-left: 3.6mm; margin-bottom: 1.1mm; }
+  .L { font-weight: bold; }
+
+  /* SEM MOLDURA na figura: o desenho já tem o próprio contorno, e o retângulo em volta
+     só acrescenta ruído e some com o ar entre a figura e o texto. */
+  .fig { margin: 2.6mm auto 3mm; width: 100%; }
+
+  /* Afirmações em linhas próprias, e SEM o filete à esquerda: a quebra de linha já
+     separa uma da outra, e o traço competia com o filete que divide as colunas. */
+  .afirmacoes { list-style: none; margin: 1.6mm 0; padding-left: 1.5mm; }
+  .afirmacoes li { margin-bottom: 1mm; }
+
+  /* ── radical ──
+     O glifo √ não traz a barra sobre o radicando, e sem ela "√3" sai como um "v"
+     encostado no 3. A barra é o traço de cima do .radicando. O line-height não é
+     chute: a borda nasce no topo da caixa de linha, e a caixa de um inline-block tem
+     topo a (L + ascendente − descendente)/2 acima da base, de onde
+     L = 2·(ápice do √) − ascendente + descendente. Medido na Arial, que é a fonte
+     desta folha, e NÃO na DM Sans do site, onde o mesmo cálculo dá 0,8: na Arial o
+     ápice do √ está a 0,915 em contra 0,74, de modo que L = 2(0,915) − 0,905 + 0,21. */
+  .raiz { white-space: nowrap; }
+  .raiz > .radicando {
+    display: inline-block;
+    line-height: 1.135;
+    border-top: 1px solid currentColor;
+    padding: 0 .1em 0 .02em;
+    margin-left: -.04em;
+    /* TEXT-INDENT: 0 NÃO É SUPÉRFLUO.
+       text-indent é herdado e vale para a primeira linha de todo container de bloco,
+       e um inline-block é um container de bloco. As alternativas usam recuo pendente
+       (text-indent negativo com padding-left igual), e o .radicando herdava esses
+       −12 px: o algarismo saía do seu próprio quadro e ia parar em cima da letra da
+       alternativa. A questão 18, que tem radical em quatro das cinco alternativas,
+       saía "A)3√/3" no lugar de "A) √3/3". */
+    text-indent: 0;
+  }
+</style>
+</head>
+<body>
+<div class="folha">
+
+  <div class="cabecalho">
+    <h1>Prova de Física</h1>
+    <h2>Leis de Newton e Forças &nbsp;|&nbsp; Questões objetivas &nbsp;|&nbsp; Física I — Mecânica</h2>
+  </div>
+
+  <div class="campos">
+    <div class="campo"><label>Nome do aluno</label><div class="linha-campo"></div></div>
+    <div class="campo curto"><label>Turma</label><div class="linha-campo"></div></div>
+    <div class="campo curto"><label>Data</label><div class="linha-campo"></div></div>
+    <div class="campo nota"><label>Nota</label><div class="linha-campo"></div></div>
+  </div>
+
+  <div class="instrucoes">
+    <h3>Instruções</h3>
+    <ol>
+      <li>A prova tem <strong>20 questões</strong> de múltipla escolha, todas com o
+          mesmo peso. Marque <strong>uma única alternativa</strong> em cada uma.</li>
+      <li>Transcreva a letra escolhida para a <strong>grade de respostas</strong> abaixo. Vale o que
+          está na grade; questão com duas marcações ou com rasura na grade é anulada.</li>
+      <li>É <strong>proibido</strong> o uso de calculadora, celular, relógio inteligente ou
+          qualquer outro dispositivo eletrônico. Todas as contas fecham em números simples.</li>
+      <li>Use caneta esferográfica preta ou azul. Rascunhos podem ser feitos a lápis nas margens.</li>
+    </ol>
+    <div class="dados"><strong>Dados:</strong> g = 10 m/s² &nbsp;·&nbsp; sen 30° = 1/2 &nbsp;·&nbsp; cos 30° = <span class="raiz">√<span class="radicando">3</span></span>/2 &nbsp;·&nbsp;
+      sen 37° = 0,6 &nbsp;·&nbsp; cos 37° = 0,8 &nbsp;·&nbsp; fios e polias ideais &nbsp;·&nbsp;
+      resistência do ar desprezada.</div>
+  </div>
+
+  <div class="grade">
+    <h3>Grade de respostas</h3>
+    <div class="casas"><div class="casa"><span>1</span><div class="quadro"></div></div><div class="casa"><span>2</span><div class="quadro"></div></div><div class="casa"><span>3</span><div class="quadro"></div></div><div class="casa"><span>4</span><div class="quadro"></div></div><div class="casa"><span>5</span><div class="quadro"></div></div><div class="casa"><span>6</span><div class="quadro"></div></div><div class="casa"><span>7</span><div class="quadro"></div></div><div class="casa"><span>8</span><div class="quadro"></div></div><div class="casa"><span>9</span><div class="quadro"></div></div><div class="casa"><span>10</span><div class="quadro"></div></div><div class="casa"><span>11</span><div class="quadro"></div></div><div class="casa"><span>12</span><div class="quadro"></div></div><div class="casa"><span>13</span><div class="quadro"></div></div><div class="casa"><span>14</span><div class="quadro"></div></div><div class="casa"><span>15</span><div class="quadro"></div></div><div class="casa"><span>16</span><div class="quadro"></div></div><div class="casa"><span>17</span><div class="quadro"></div></div><div class="casa"><span>18</span><div class="quadro"></div></div><div class="casa"><span>19</span><div class="quadro"></div></div><div class="casa"><span>20</span><div class="quadro"></div></div></div>
+  </div>
+  <div class="colunas">
+    <article class="q">
+      <p class="txt"><span class="num">1.</span> Um ônibus freia bruscamente e um passageiro que estava em pé é lançado para a frente. Qual é a melhor explicação para o que aconteceu?</p>
+      
+      <ol class="alts"><li><span class="L">A)</span> Uma força para a frente passou a agir sobre o passageiro no instante da freada.</li><li><span class="L">B)</span> O passageiro tende a manter a velocidade que tinha, e é o ônibus que desacelera debaixo dele.</li><li><span class="L">C)</span> A força de atrito dos pés com o piso empurrou o passageiro para a frente.</li><li><span class="L">D)</span> O peso do passageiro aumentou durante a freada.</li><li><span class="L">E)</span> A inércia é uma força que age para a frente sempre que há freada.</li></ol>
+    </article>
+    <article class="q">
+      <p class="txt"><span class="num">2.</span> Considere as seguintes afirmações sobre as leis de Newton:<ul class="afirmacoes"><li>I. Um corpo que desliza sobre uma superfície horizontal perfeitamente lisa, sem força horizontal aplicada, segue em linha reta com velocidade constante.</li><li>II. Se a força resultante sobre um corpo é nula, ele está necessariamente em repouso.</li><li>III. Dobrar a força resultante sobre um mesmo corpo dobra a sua aceleração.</li><li>IV. As forças de um par ação–reação agem sempre sobre corpos diferentes e, por isso, nunca se cancelam.</li></ul>Estão CORRETAS apenas as afirmações:</p>
+      
+      <ol class="alts"><li><span class="L">A)</span> I e II.</li><li><span class="L">B)</span> II, III e IV.</li><li><span class="L">C)</span> I e III.</li><li><span class="L">D)</span> I, III e IV.</li><li><span class="L">E)</span> Todas estão corretas.</li></ol>
+    </article>
+    <article class="q">
+      <p class="txt"><span class="num">3.</span> Sobre um corpo de 3 kg, apoiado em uma superfície horizontal sem atrito, age uma força resultante de 12 N. Qual é o módulo da aceleração adquirida pelo corpo?</p>
+      
+      <ol class="alts"><li><span class="L">A)</span> 4 m/s²</li><li><span class="L">B)</span> 0,25 m/s²</li><li><span class="L">C)</span> 9 m/s²</li><li><span class="L">D)</span> 36 m/s²</li><li><span class="L">E)</span> 15 m/s²</li></ol>
+    </article>
+    <article class="q">
+      <p class="txt"><span class="num">4.</span> Um livro está em repouso sobre uma mesa horizontal. Um estudante afirma que o peso do livro e a força normal que a mesa exerce sobre ele formam um par ação–reação. A afirmação está correta?</p>
+      
+      <ol class="alts"><li><span class="L">A)</span> Sim, porque as duas forças têm o mesmo módulo e sentidos opostos.</li><li><span class="L">B)</span> Sim, porque uma é a causa da outra.</li><li><span class="L">C)</span> Não, porque o peso é uma força de contato e a normal é uma força de campo.</li><li><span class="L">D)</span> Não, porque a normal é maior que o peso quando o livro está em repouso.</li><li><span class="L">E)</span> Não, porque as duas agem sobre o mesmo corpo, e um par ação–reação age sempre em corpos diferentes.</li></ol>
+    </article>
+    <article class="q">
+      <p class="txt"><span class="num">5.</span> Sobre um corpo de 2 kg agem duas forças perpendiculares entre si: uma de 8 N e outra de 6 N. Qual é o módulo da aceleração do corpo?</p>
+      
+      <ol class="alts"><li><span class="L">A)</span> 1 m/s²</li><li><span class="L">B)</span> 7 m/s²</li><li><span class="L">C)</span> 5 m/s²</li><li><span class="L">D)</span> 14 m/s²</li><li><span class="L">E)</span> 20 m/s²</li></ol>
+    </article>
+    <article class="q">
+      <p class="txt"><span class="num">6.</span> Um corpo tem massa de 6 kg na Terra, onde g = 10 m/s². Esse mesmo corpo é levado à Lua, onde g = 1,6 m/s². Quais são, respectivamente, a massa e o peso do corpo na Lua?</p>
+      
+      <ol class="alts"><li><span class="L">A)</span> 6 kg e 9,6 N</li><li><span class="L">B)</span> 6 kg e 60 N</li><li><span class="L">C)</span> 0,96 kg e 9,6 N</li><li><span class="L">D)</span> 9,6 kg e 9,6 N</li><li><span class="L">E)</span> 6 kg e 6 N</li></ol>
+    </article>
+    <article class="q">
+      <p class="txt"><span class="num">7.</span> O bloco A, de 5 kg, está em repouso sobre uma mesa horizontal. Além do peso, uma força F de 20 N é aplicada sobre ele, verticalmente de cima para baixo, como mostra a figura. Qual é o módulo da força normal que a mesa exerce sobre o bloco?</p>
+      <figure class="fig" role="img" aria-label="Bloco A apoiado numa mesa horizontal. Uma força F de 20 N aponta verticalmente para baixo sobre o bloco.">
+        <svg viewBox="0 0 420 230" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <rect width="100%" height="100%" fill="#fff"/><defs>
+      <marker id="ap-q7" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="an-q7" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="at-q7" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+      <marker id="af-q7" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="aa-q7" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+    </defs><line x1="20" y1="180" x2="400" y2="180" stroke="#111" stroke-width="2.5"/><path d="M30,180 L19,193 M56,180 L45,193 M82,180 L71,193 M108,180 L97,193 M134,180 L123,193 M160,180 L149,193 M186,180 L175,193 M212,180 L201,193 M238,180 L227,193 M264,180 L253,193 M290,180 L279,193 M316,180 L305,193 M342,180 L331,193 M368,180 L357,193" stroke="#111" stroke-width="1.6" fill="none" opacity=".7"/>
+    <rect x="160" y="130" width="80" height="50" rx="3" fill="#f2f2f2"
+      stroke="#111" stroke-width="2"/><text x="200" y="160"
+      text-anchor="middle" font-size="15" font-weight="700" fill="#111">A</text>
+    <line x1="200" y1="60" x2="200" y2="122" stroke="#111" stroke-width="3"
+      marker-end="url(#af-q7)"/><text x="208" y="70" font-size="15" font-weight="700" fill="#111">F = 20 N</text>
+        </svg>
+      </figure>
+      <ol class="alts"><li><span class="L">A)</span> 30 N</li><li><span class="L">B)</span> 50 N</li><li><span class="L">C)</span> 20 N</li><li><span class="L">D)</span> 70 N</li><li><span class="L">E)</span> 120 N</li></ol>
+    </article>
+    <article class="q">
+      <p class="txt"><span class="num">8.</span> Um bloco de 8 kg, inicialmente em repouso sobre um piso horizontal sem atrito, passa a ser puxado por uma força horizontal constante de 32 N, que age durante 5 s. Quais são, respectivamente, o módulo da velocidade do bloco ao fim desse intervalo e a distância percorrida por ele?</p>
+      
+      <ol class="alts"><li><span class="L">A)</span> 20 m/s e 100 m</li><li><span class="L">B)</span> 20 m/s e 50 m</li><li><span class="L">C)</span> 4 m/s e 20 m</li><li><span class="L">D)</span> 32 m/s e 80 m</li><li><span class="L">E)</span> 50 m/s e 20 m</li></ol>
+    </article>
+    <article class="q">
+      <p class="txt"><span class="num">9.</span> Um bloco de 10 kg está apoiado em repouso sobre uma rampa sem atrito que faz 30° com a horizontal, como mostra a figura. Qual é o módulo da força normal que a rampa exerce sobre o bloco? Use sen 30° = 1/2 e cos 30° = <span class="raiz">√<span class="radicando">3</span></span>/2.</p>
+      <figure class="fig" role="img" aria-label="Bloco apoiado sobre um plano inclinado de 30 graus, sem atrito.">
+        <svg viewBox="0 0 440 260" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <rect width="100%" height="100%" fill="#fff"/><defs>
+      <marker id="ap-q9" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="an-q9" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="at-q9" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+      <marker id="af-q9" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="aa-q9" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+    </defs><polygon points="40,220 360,220 360,36" fill="#fafafa" stroke="#111" stroke-width="2.5"/>
+    <path d="M50,220 L39,233 M76,220 L65,233 M102,220 L91,233 M128,220 L117,233 M154,220 L143,233 M180,220 L169,233 M206,220 L195,233 M232,220 L221,233 M258,220 L247,233 M284,220 L273,233 M310,220 L299,233 M336,220 L325,233" stroke="#111" stroke-width="1.6" fill="none" opacity=".7"/>
+    <path d="M100,220 A60,60 0 0,0 92,190" fill="none" stroke="#111" stroke-width="1.8"/>
+    <text x="106" y="213" font-size="14" font-weight="700" fill="#111">30°</text>
+    <g transform="translate(205,125.1) rotate(-30)"><rect x="-34" y="-28" width="68" height="28" rx="3" fill="#f2f2f2"
+      stroke="#111" stroke-width="2"/><text x="0" y="-9"
+      text-anchor="middle" font-size="15" font-weight="700" fill="#111">A</text></g>
+    <text x="40" y="250" font-size="13" font-weight="700" fill="#111">rampa sem atrito</text>
+        </svg>
+      </figure>
+      <ol class="alts"><li><span class="L">A)</span> 100 N</li><li><span class="L">B)</span> 50 N</li><li><span class="L">C)</span> 25<span class="raiz">√<span class="radicando">3</span></span> N</li><li><span class="L">D)</span> 100<span class="raiz">√<span class="radicando">3</span></span> N</li><li><span class="L">E)</span> 50<span class="raiz">√<span class="radicando">3</span></span> N</li></ol>
+    </article>
+    <article class="q">
+      <p class="txt"><span class="num">10.</span> Um lustre de 4 kg está pendurado por um único fio ideal. Considere duas situações: na primeira, ele está preso ao teto de uma sala e permanece em repouso; na segunda, está preso ao teto de um elevador que desce com aceleração constante de 3 m/s², dirigida para baixo. Quais são, respectivamente, as trações no fio nas duas situações?</p>
+      
+      <ol class="alts"><li><span class="L">A)</span> 28 N e 40 N</li><li><span class="L">B)</span> 40 N e 52 N</li><li><span class="L">C)</span> 40 N e 28 N</li><li><span class="L">D)</span> 12 N e 28 N</li><li><span class="L">E)</span> 4 N e 2,8 N</li></ol>
+    </article>
+    <article class="q">
+      <p class="txt"><span class="num">11.</span> Os blocos A, de 3 kg, e B, de 5 kg, estão ligados por um fio ideal sobre uma mesa horizontal sem atrito. A força F, de 24 N, puxa o bloco B, como mostra a figura. Qual é a tração no fio que liga os dois blocos?</p>
+      <figure class="fig" role="img" aria-label="Dois blocos sobre uma mesa horizontal sem atrito, ligados por um fio. O bloco A está à esquerda; o bloco B, à direita. Uma força F de 24 N puxa o bloco B para a direita.">
+        <svg viewBox="0 0 460 190" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <rect width="100%" height="100%" fill="#fff"/><defs>
+      <marker id="ap-q11" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="an-q11" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="at-q11" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+      <marker id="af-q11" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="aa-q11" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+    </defs><line x1="20" y1="140" x2="440" y2="140" stroke="#111" stroke-width="2.5"/><path d="M30,140 L19,153 M56,140 L45,153 M82,140 L71,153 M108,140 L97,153 M134,140 L123,153 M160,140 L149,153 M186,140 L175,153 M212,140 L201,153 M238,140 L227,153 M264,140 L253,153 M290,140 L279,153 M316,140 L305,153 M342,140 L331,153 M368,140 L357,153 M394,140 L383,153 M420,140 L409,153" stroke="#111" stroke-width="1.6" fill="none" opacity=".7"/>
+    <rect x="70" y="95" width="62" height="45" rx="3" fill="#f2f2f2"
+      stroke="#111" stroke-width="2"/><text x="101" y="122.5"
+      text-anchor="middle" font-size="15" font-weight="700" fill="#111">A</text>
+    <line x1="132" y1="118" x2="212" y2="118" stroke="#111" stroke-width="3"/>
+    <text x="158" y="108" font-size="13" font-weight="700" fill="#111">fio</text>
+    <rect x="212" y="88" width="78" height="52" rx="3" fill="#f2f2f2"
+      stroke="#111" stroke-width="2"/><text x="251" y="119"
+      text-anchor="middle" font-size="15" font-weight="700" fill="#111">B</text>
+    <line x1="290" y1="114" x2="380" y2="114" stroke="#111" stroke-width="3"
+      marker-end="url(#af-q11)"/><text x="330" y="104" font-size="15" font-weight="700" fill="#111">F = 24 N</text>
+    <text x="20" y="175" font-size="13" font-weight="700" fill="#111">mesa horizontal, sem atrito</text>
+        </svg>
+      </figure>
+      <ol class="alts"><li><span class="L">A)</span> 24 N</li><li><span class="L">B)</span> 15 N</li><li><span class="L">C)</span> 9 N</li><li><span class="L">D)</span> 3 N</li><li><span class="L">E)</span> 12 N</li></ol>
+    </article>
+    <article class="q">
+      <p class="txt"><span class="num">12.</span> Os blocos A, de 2 kg, e B, de 3 kg, estão encostados um no outro sobre uma mesa horizontal, como mostra a figura. O coeficiente de atrito cinético entre os blocos e a mesa vale 0,20, e a força F, de 30 N, é aplicada sobre A. Quais são, respectivamente, a aceleração do conjunto e o módulo da força de contato que A exerce sobre B?</p>
+      <figure class="fig" role="img" aria-label="Dois blocos encostados um no outro sobre uma mesa horizontal com atrito. A força F de 30 N empurra o bloco A, que por sua vez empurra o bloco B.">
+        <svg viewBox="0 0 460 190" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <rect width="100%" height="100%" fill="#fff"/><defs>
+      <marker id="ap-q12" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="an-q12" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="at-q12" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+      <marker id="af-q12" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="aa-q12" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+    </defs><line x1="20" y1="140" x2="440" y2="140" stroke="#111" stroke-width="2.5"/><path d="M30,140 L19,153 M56,140 L45,153 M82,140 L71,153 M108,140 L97,153 M134,140 L123,153 M160,140 L149,153 M186,140 L175,153 M212,140 L201,153 M238,140 L227,153 M264,140 L253,153 M290,140 L279,153 M316,140 L305,153 M342,140 L331,153 M368,140 L357,153 M394,140 L383,153 M420,140 L409,153" stroke="#111" stroke-width="1.6" fill="none" opacity=".7"/>
+    <line x1="60" y1="112" x2="148" y2="112" stroke="#111" stroke-width="3"
+      marker-end="url(#af-q12)"/><text x="62" y="100" font-size="15" font-weight="700" fill="#111">F = 30 N</text>
+    <rect x="150" y="92" width="68" height="48" rx="3" fill="#f2f2f2"
+      stroke="#111" stroke-width="2"/><text x="184" y="121"
+      text-anchor="middle" font-size="15" font-weight="700" fill="#111">A</text>
+    <rect x="218" y="84" width="80" height="56" rx="3" fill="#dadada"
+      stroke="#111" stroke-width="2"/><text x="258" y="117"
+      text-anchor="middle" font-size="15" font-weight="700" fill="#111">B</text>
+    <text x="20" y="175" font-size="13" font-weight="700" fill="#111">mesa com atrito, μ = 0,20</text>
+        </svg>
+      </figure>
+      <ol class="alts"><li><span class="L">A)</span> 4 m/s² e 18 N</li><li><span class="L">B)</span> 6 m/s² e 18 N</li><li><span class="L">C)</span> 4 m/s² e 12 N</li><li><span class="L">D)</span> 4 m/s² e 30 N</li><li><span class="L">E)</span> 6 m/s² e 12 N</li></ol>
+    </article>
+    <article class="q">
+      <p class="txt"><span class="num">13.</span> O bloco A, de 2 kg, está sobre uma mesa horizontal sem atrito, ligado por um fio ideal que passa por uma polia e sustenta o bloco B, de 3 kg, pendurado, como mostra a figura. Soltos do repouso, qual é o módulo da aceleração do conjunto?</p>
+      <figure class="fig" role="img" aria-label="Bloco A sobre uma mesa horizontal sem atrito, ligado por um fio que passa por uma polia na borda da mesa e sustenta o bloco B, pendurado.">
+        <svg viewBox="0 0 440 240" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <rect width="100%" height="100%" fill="#fff"/><defs>
+      <marker id="ap-q13" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="an-q13" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="at-q13" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+      <marker id="af-q13" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="aa-q13" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+    </defs>
+    <line x1="20" y1="110" x2="300" y2="110" stroke="#111" stroke-width="2.5"/>
+    <path d="M30,110 L19,123 M56,110 L45,123 M82,110 L71,123 M108,110 L97,123 M134,110 L123,123 M160,110 L149,123 M186,110 L175,123 M212,110 L201,123 M238,110 L227,123 M264,110 L253,123 M290,110 L279,123" stroke="#111" stroke-width="1.6" fill="none" opacity=".7"/>
+    <line x1="300" y1="110" x2="300" y2="146" stroke="#111" stroke-width="2.5"/>
+    <rect x="110" y="66" width="64" height="44" rx="3" fill="#f2f2f2"
+      stroke="#111" stroke-width="2"/><text x="142" y="93"
+      text-anchor="middle" font-size="15" font-weight="700" fill="#111">A</text>
+    <line x1="174" y1="88" x2="330" y2="88" stroke="#111" stroke-width="3"/>
+    <circle cx="330" cy="96" r="15" fill="none" stroke="#111" stroke-width="2.5"/>
+    <circle cx="330" cy="96" r="3" fill="#111"/>
+    <line x1="345" y1="96" x2="345" y2="166" stroke="#111" stroke-width="3"/>
+    <rect x="313" y="166" width="64" height="48" rx="3" fill="#f2f2f2"
+      stroke="#111" stroke-width="2"/><text x="345" y="195"
+      text-anchor="middle" font-size="15" font-weight="700" fill="#111">B</text>
+    <text x="20" y="146" font-size="13" font-weight="700" fill="#111">mesa sem atrito</text>
+        </svg>
+      </figure>
+      <ol class="alts"><li><span class="L">A)</span> 10 m/s²</li><li><span class="L">B)</span> 2 m/s²</li><li><span class="L">C)</span> 15 m/s²</li><li><span class="L">D)</span> 5 m/s²</li><li><span class="L">E)</span> 6 m/s²</li></ol>
+    </article>
+    <article class="q">
+      <p class="txt"><span class="num">14.</span> Uma pessoa empurra horizontalmente uma caixa pesada com uma força de 30 N, e a caixa não sai do lugar. Qual é o módulo da força de atrito que o chão exerce sobre a caixa nesse instante?</p>
+      
+      <ol class="alts"><li><span class="L">A)</span> Zero, porque a caixa está parada.</li><li><span class="L">B)</span> 30 N, porque o atrito estático se ajusta à força aplicada enquanto houver equilíbrio.</li><li><span class="L">C)</span> Depende apenas do coeficiente de atrito, e não da força aplicada.</li><li><span class="L">D)</span> Maior que 30 N, senão a caixa não ficaria parada.</li><li><span class="L">E)</span> Igual ao peso da caixa.</li></ol>
+    </article>
+    <article class="q">
+      <p class="txt"><span class="num">15.</span> O bloco B, de 2 kg, está apoiado sobre o bloco A, de 4 kg, que repousa num piso horizontal sem atrito. O coeficiente de atrito estático entre B e A vale 0,50. Uma força horizontal F é aplicada ao bloco A, como mostra a figura. Qual é o maior valor de F para que B seja arrastado junto, sem deslizar sobre A?</p>
+      <figure class="fig" role="img" aria-label="O bloco B está apoiado em cima do bloco A, que por sua vez está sobre um piso horizontal. Uma força F horizontal é aplicada ao bloco A, o de baixo.">
+        <svg viewBox="0 0 440 210" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <rect width="100%" height="100%" fill="#fff"/><defs>
+      <marker id="ap-q15" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="an-q15" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="at-q15" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+      <marker id="af-q15" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="aa-q15" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+    </defs><line x1="20" y1="160" x2="420" y2="160" stroke="#111" stroke-width="2.5"/><path d="M30,160 L19,173 M56,160 L45,173 M82,160 L71,173 M108,160 L97,173 M134,160 L123,173 M160,160 L149,173 M186,160 L175,173 M212,160 L201,173 M238,160 L227,173 M264,160 L253,173 M290,160 L279,173 M316,160 L305,173 M342,160 L331,173 M368,160 L357,173 M394,160 L383,173" stroke="#111" stroke-width="1.6" fill="none" opacity=".7"/>
+    <rect x="140" y="112" width="130" height="48" rx="3" fill="#f2f2f2"
+      stroke="#111" stroke-width="2"/><text x="205" y="141"
+      text-anchor="middle" font-size="15" font-weight="700" fill="#111">A</text>
+    <rect x="168" y="68" width="74" height="44" rx="3" fill="#dadada"
+      stroke="#111" stroke-width="2"/><text x="205" y="95"
+      text-anchor="middle" font-size="15" font-weight="700" fill="#111">B</text>
+    <line x1="48" y1="136" x2="136" y2="136" stroke="#111" stroke-width="3"
+      marker-end="url(#af-q15)"/><text x="52" y="124" font-size="15" font-weight="700" fill="#111">F</text>
+    <text x="20" y="195" font-size="13" font-weight="700" fill="#111">piso sem atrito · entre A e B há atrito</text>
+        </svg>
+      </figure>
+      <ol class="alts"><li><span class="L">A)</span> 10 N</li><li><span class="L">B)</span> 20 N</li><li><span class="L">C)</span> 60 N</li><li><span class="L">D)</span> 30 N</li><li><span class="L">E)</span> 120 N</li></ol>
+    </article>
+    <article class="q">
+      <p class="txt"><span class="num">16.</span> Um bloco de 5 kg está em repouso sobre uma superfície horizontal. O coeficiente de atrito estático entre eles vale 0,40. Qual é o maior valor de uma força horizontal que ainda pode ser aplicada sem que o bloco comece a deslizar?</p>
+      
+      <ol class="alts"><li><span class="L">A)</span> 2 N</li><li><span class="L">B)</span> 12,5 N</li><li><span class="L">C)</span> 50 N</li><li><span class="L">D)</span> 5 N</li><li><span class="L">E)</span> 20 N</li></ol>
+    </article>
+    <article class="q">
+      <p class="txt"><span class="num">17.</span> Um carro trava as rodas e derrapa até parar sobre uma pista horizontal. O coeficiente de atrito cinético entre os pneus e o asfalto vale 0,50. Qual é o módulo da desaceleração do carro durante a derrapagem?</p>
+      
+      <ol class="alts"><li><span class="L">A)</span> 0,5 m/s²</li><li><span class="L">B)</span> 10 m/s²</li><li><span class="L">C)</span> 5 m/s²</li><li><span class="L">D)</span> 20 m/s²</li><li><span class="L">E)</span> Depende da massa do carro.</li></ol>
+    </article>
+    <article class="q">
+      <p class="txt"><span class="num">18.</span> Um bloco de 4 kg está em repouso sobre uma rampa com atrito que faz 30° com a horizontal, como mostra a figura. Qual é o menor valor do coeficiente de atrito estático entre o bloco e a rampa capaz de mantê-lo em repouso? Use sen 30° = 1/2 e cos 30° = <span class="raiz">√<span class="radicando">3</span></span>/2.</p>
+      <figure class="fig" role="img" aria-label="Bloco em repouso sobre uma rampa de 30 graus que tem atrito.">
+        <svg viewBox="0 0 440 260" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <rect width="100%" height="100%" fill="#fff"/><defs>
+      <marker id="ap-q18" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="an-q18" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="at-q18" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+      <marker id="af-q18" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="aa-q18" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+    </defs><polygon points="40,220 360,220 360,36" fill="#fafafa" stroke="#111" stroke-width="2.5"/>
+    <path d="M50,220 L39,233 M76,220 L65,233 M102,220 L91,233 M128,220 L117,233 M154,220 L143,233 M180,220 L169,233 M206,220 L195,233 M232,220 L221,233 M258,220 L247,233 M284,220 L273,233 M310,220 L299,233 M336,220 L325,233" stroke="#111" stroke-width="1.6" fill="none" opacity=".7"/>
+    <path d="M100,220 A60,60 0 0,0 92,190" fill="none" stroke="#111" stroke-width="1.8"/>
+    <text x="106" y="213" font-size="14" font-weight="700" fill="#111">30°</text>
+    <g transform="translate(205,125.1) rotate(-30)"><rect x="-34" y="-28" width="68" height="28" rx="3" fill="#f2f2f2"
+      stroke="#111" stroke-width="2"/><text x="0" y="-9"
+      text-anchor="middle" font-size="15" font-weight="700" fill="#111">A</text></g>
+    <text x="40" y="250" font-size="13" font-weight="700" fill="#111">rampa COM atrito · bloco parado</text>
+        </svg>
+      </figure>
+      <ol class="alts"><li><span class="L">A)</span> <span class="raiz">√<span class="radicando">3</span></span>/3</li><li><span class="L">B)</span> <span class="raiz">√<span class="radicando">3</span></span>/2</li><li><span class="L">C)</span> 1/2</li><li><span class="L">D)</span> <span class="raiz">√<span class="radicando">3</span></span></li><li><span class="L">E)</span> <span class="raiz">√<span class="radicando">2</span></span>/2</li></ol>
+    </article>
+    <article class="q">
+      <p class="txt"><span class="num">19.</span> Um bloco é solto do repouso sobre uma rampa sem atrito que faz 37° com a horizontal. Qual é o módulo da aceleração com que ele desce? Use sen 37° = 0,6 e cos 37° = 0,8.</p>
+      
+      <ol class="alts"><li><span class="L">A)</span> 8 m/s²</li><li><span class="L">B)</span> 6 m/s²</li><li><span class="L">C)</span> 10 m/s²</li><li><span class="L">D)</span> Depende da massa do bloco.</li><li><span class="L">E)</span> 4,8 m/s²</li></ol>
+    </article>
+    <article class="q">
+      <p class="txt"><span class="num">20.</span> O bloco A, de 6 kg, está sobre uma mesa horizontal com atrito e ligado por um fio ideal que passa por uma polia e sustenta o bloco B, de 9 kg, pendurado, como mostra a figura. O coeficiente de atrito cinético entre A e a mesa vale 0,50. Soltos do repouso, qual é o módulo da aceleração do conjunto?</p>
+      <figure class="fig" role="img" aria-label="Bloco A sobre uma mesa horizontal com atrito, ligado por um fio que passa por uma polia e sustenta o bloco B, pendurado.">
+        <svg viewBox="0 0 440 240" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <rect width="100%" height="100%" fill="#fff"/><defs>
+      <marker id="ap-q20" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="an-q20" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="at-q20" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+      <marker id="af-q20" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker><marker id="aa-q20" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker>
+    </defs>
+    <line x1="20" y1="110" x2="300" y2="110" stroke="#111" stroke-width="2.5"/>
+    <path d="M30,110 L19,123 M56,110 L45,123 M82,110 L71,123 M108,110 L97,123 M134,110 L123,123 M160,110 L149,123 M186,110 L175,123 M212,110 L201,123 M238,110 L227,123 M264,110 L253,123 M290,110 L279,123" stroke="#111" stroke-width="1.6" fill="none" opacity=".7"/>
+    <line x1="300" y1="110" x2="300" y2="146" stroke="#111" stroke-width="2.5"/>
+    <rect x="110" y="66" width="64" height="44" rx="3" fill="#f2f2f2"
+      stroke="#111" stroke-width="2"/><text x="142" y="93"
+      text-anchor="middle" font-size="15" font-weight="700" fill="#111">A</text>
+    <line x1="174" y1="88" x2="330" y2="88" stroke="#111" stroke-width="3"/>
+    <circle cx="330" cy="96" r="15" fill="none" stroke="#111" stroke-width="2.5"/>
+    <circle cx="330" cy="96" r="3" fill="#111"/>
+    <line x1="345" y1="96" x2="345" y2="166" stroke="#111" stroke-width="3"/>
+    <rect x="313" y="166" width="64" height="48" rx="3" fill="#f2f2f2"
+      stroke="#111" stroke-width="2"/><text x="345" y="195"
+      text-anchor="middle" font-size="15" font-weight="700" fill="#111">B</text>
+    <text x="20" y="146" font-size="13" font-weight="700" fill="#111">mesa com atrito, μ = 0,50</text>
+        </svg>
+      </figure>
+      <ol class="alts"><li><span class="L">A)</span> 10 m/s²</li><li><span class="L">B)</span> 6 m/s²</li><li><span class="L">C)</span> 3 m/s²</li><li><span class="L">D)</span> 4 m/s²</li><li><span class="L">E)</span> 8 m/s²</li></ol>
+    </article>
+  </div>
+</div>
+
+<button class="botao nao-imprime" onclick="window.print()">Imprimir / salvar em PDF</button>
+</body>
+</html>

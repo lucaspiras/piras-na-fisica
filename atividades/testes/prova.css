@@ -230,6 +230,47 @@ main {
   margin-bottom: 1.1rem;
 }
 
+/* ---- Radical ----
+   O glifo √ não traz a barra horizontal sobre o radicando, então "√3" escrito como
+   texto corrido sai como um "v" encostado no 3. A barra aqui é o traço de cima de
+   .radicando, e a cor vem de currentColor para acompanhar o tema e a impressão.
+   O nowrap existe porque uma raiz separada do seu número no fim da linha mente.
+
+   O line-height de 0,8 NÃO é chute. A borda nasce no topo da caixa de linha, que
+   fica bem acima da ponta do √, e a caixa de um inline-block tem topo a
+   (L + ascendente − descendente)/2 acima da base. Medindo a DM Sans, fonte do site:
+   ápice do √ = 0,74em, ascendente = 0,99, descendente = 0,31, de onde
+   L = 2(0,74) − 0,99 + 0,31 = 0,80. Com isso a barra encosta na ponta do radical. */
+.raiz {
+  white-space: nowrap;
+}
+
+.raiz > .radicando {
+  display: inline-block;
+  line-height: 0.8;
+  border-top: 1px solid currentColor;
+  padding: 0 0.1em 0 0.02em;
+  margin-left: -0.04em;
+}
+
+/* ---- Afirmações para avaliar (I, II, III...) ----
+   Cada uma em linha própria: numeral romano no meio da prosa obriga o aluno a
+   separar as afirmações antes de poder pensar em qualquer uma delas. */
+.question-text .afirmacoes {
+  list-style: none;
+  margin: 0.8rem 0;
+  padding: 0 0 0 0.9rem;
+  border-left: 3px solid var(--border);
+}
+
+.question-text .afirmacoes li {
+  margin-bottom: 0.5rem;
+}
+
+.question-text .afirmacoes li:last-child {
+  margin-bottom: 0;
+}
+
 /* ---- Figuras e gráficos ---- */
 .graph-figure,
 .figura,
