@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- O bloco A sobre a mesa, ligado por fio e polia ao bloco B pendurado. Enunciado da questão 6.
+     Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Tinta preta: a figura nasceu numa prova impressa e nao tem tema escuro.
+     Fonte da geometria: atividades/testes/prova-newton-discursiva/prova_newton_discursiva.html
+     Gerado por scripts/extrair-figuras-provas.ps1 - nao editar a mao. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 245" width="840" height="490"
+     role="img" aria-labelledby="prova-newton-discursiva-6-fio-e-polia">
+  <title id="prova-newton-discursiva-6-fio-e-polia">O bloco A sobre a mesa, ligado por fio e polia ao bloco B pendurado. Enunciado da questão 6.</title>
+
+          <rect width="100%" height="100%" fill="#fff"/><defs><marker id="pf-polia" viewBox="0 0 10 10" refX="8" refY="5"
+      markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#111"/></marker></defs><line x1="20" y1="112" x2="290" y2="112" stroke="#111" stroke-width="2.2"/>
+    <path d="M30,112 L20,124 M54,112 L44,124 M78,112 L68,124 M102,112 L92,124 M126,112 L116,124 M150,112 L140,124 M174,112 L164,124 M198,112 L188,124 M222,112 L212,124 M246,112 L236,124 M270,112 L260,124" stroke="#111" stroke-width="1.3" fill="none" opacity=".75"/>
+    <line x1="290" y1="112" x2="290" y2="150" stroke="#111" stroke-width="2.2"/>
+    <rect x="112" y="66" width="66" height="46" rx="3" fill="#f2f2f2" stroke="#111" stroke-width="2"/>
+   <text x="145" y="95" text-anchor="middle" font-size="17" font-weight="700" fill="#111">A</text>
+    <!-- o fio tangencia a roldana: horizontal no topo (cy − r) e vertical na direita
+         (cx + r). Fora dessas duas retas ele aparece atravessando a roda. -->
+    <line x1="178" y1="82" x2="320" y2="82" stroke="#111" stroke-width="2.2"/>
+    <circle cx="320" cy="97" r="15" fill="none" stroke="#111" stroke-width="2.2"/>
+    <circle cx="320" cy="97" r="3" fill="#111"/>
+    <line x1="335" y1="97" x2="335" y2="168" stroke="#111" stroke-width="2.2"/>
+    <rect x="303" y="168" width="64" height="48" rx="3" fill="#f2f2f2" stroke="#111" stroke-width="2"/>
+   <text x="335" y="198" text-anchor="middle" font-size="17" font-weight="700" fill="#111">B</text>
+    <text x="20" y="148" font-size="13" font-weight="400" fill="#111">mesa com atrito</text>
+        
+</svg>

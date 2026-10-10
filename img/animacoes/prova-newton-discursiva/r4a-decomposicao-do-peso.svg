@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Resposta do item 4a: o peso decomposto nas direções da rampa, com a normal equilibrando a componente perpendicular.
+     Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Cor pelo sistema de variaveis fig-* do site, com o modo escuro junto.
+     Fonte da geometria: atividades/testes/prova-newton-discursiva/gabarito_newton_discursiva.html
+     Gerado por scripts/extrair-figuras-provas.ps1 - nao editar a mao. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 236" width="700" height="472"
+     role="img" aria-labelledby="prova-newton-discursiva-r4a-decomposicao-do-peso">
+  <title id="prova-newton-discursiva-r4a-decomposicao-do-peso">Resposta do item 4a: o peso decomposto nas direções da rampa, com a normal equilibrando a componente perpendicular.</title>
+  <style><![CDATA[
+/* === CORES DAS FIGURAS === */
+  /* Mesma paleta do catálogo em img/animacoes/. Em classe, e não em atributo, para o
+     .svg avulso poder carregar a versão noturna junto. */
+  /* `:root` serve aos dois destinos de uma vez: na página HTML ele é o elemento html,
+     e as variáveis descem para o SVG embutido E para a legenda ao lado dele; no
+     arquivo .svg avulso, o elemento raiz é o próprio svg. Preso num seletor `svg`, o
+     bloco pintava o desenho e deixava as bolinhas da legenda sem cor. */
+  :root {
+    --fig-superficie-2:#f8fafc;
+    --fig-corpo:       #f1f5f9;
+    --fig-corpo-b:     #334155;
+    --fig-apoio:       #64748b;
+    --fig-guia:        #cbd5e1;
+    --fig-divisor:     #e2e8f0;
+    --fig-texto:       #334155;
+    --fig-rotulo:      #64748b;
+    --fig-peso:        #9333ea;
+    --fig-normal:      #16a34a;
+    --fig-atrito:      #ea580c;
+    --fig-aplicada:    #ef4444;
+    --fig-tracao:      #0e7490;
+    --fig-cinza:       #94a3b8;
+  }
+  .fig-chao      { fill: none; stroke: var(--fig-apoio); stroke-width: 2.6; }
+  .fig-chao-fino { fill: none; stroke: var(--fig-guia);  stroke-width: 1.4; }
+  .fig-corpo     { fill: var(--fig-corpo);   stroke: var(--fig-corpo-b); stroke-width: 1.8; }
+  .fig-corpo-2   { fill: var(--fig-divisor); stroke: var(--fig-apoio);   stroke-width: 1.6; }
+  .fig-rampa     { fill: var(--fig-superficie-2); stroke: var(--fig-corpo-b); stroke-width: 2; }
+  .fig-haste     { fill: none; stroke: var(--fig-corpo-b); stroke-width: 2; }
+  .fig-divisor   { fill: none; stroke: var(--fig-divisor); stroke-width: 1.4; stroke-dasharray: 5 4; }
+  .fig-cabine    { fill: none; stroke: var(--fig-apoio); stroke-width: 1.6; stroke-dasharray: 6 4; }
+  .fig-terra     { fill: none; stroke: var(--fig-apoio); stroke-width: 2; }
+  .fig-tarja     { fill: var(--fig-superficie-2); opacity: .9; }
+  .fig-texto     { fill: var(--fig-texto); }
+  .fig-rotulo    { fill: var(--fig-rotulo); }
+  .fig-v-peso     { fill: none; stroke: var(--fig-peso);     stroke-width: 2.8; }
+  .fig-v-normal   { fill: none; stroke: var(--fig-normal);   stroke-width: 2.8; }
+  .fig-v-atrito   { fill: none; stroke: var(--fig-atrito);   stroke-width: 2.8; }
+  .fig-v-aplicada { fill: none; stroke: var(--fig-aplicada); stroke-width: 2.8; }
+  .fig-v-tracao   { fill: none; stroke: var(--fig-tracao);   stroke-width: 2.8; }
+  .fig-v-fantasma { fill: none; stroke: var(--fig-cinza);    stroke-width: 2.2; }
+  .fig-trac       { stroke-dasharray: 5 3; }
+  .fig-fina       { stroke-width: 2.2; }
+  .fig-p-peso     { fill: var(--fig-peso); }
+  .fig-p-normal   { fill: var(--fig-normal); }
+  .fig-p-atrito   { fill: var(--fig-atrito); }
+  .fig-p-aplicada { fill: var(--fig-aplicada); }
+  .fig-p-tracao   { fill: var(--fig-tracao); }
+  .fig-p-fantasma { fill: var(--fig-cinza); }
+  .fig-r-peso     { fill: var(--fig-peso); }
+  .fig-r-normal   { fill: var(--fig-normal); }
+  .fig-r-atrito   { fill: var(--fig-atrito); }
+  .fig-r-aplicada { fill: var(--fig-aplicada); }
+  .fig-r-tracao   { fill: var(--fig-tracao); }
+  .fig-r-cinza    { fill: var(--fig-cinza); }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fig-superficie-2:#172033;
+      --fig-corpo:       #1e293b;
+      --fig-corpo-b:     #cbd5e1;
+      --fig-apoio:       #94a3b8;
+      --fig-guia:        #475569;
+      --fig-divisor:     #334155;
+      --fig-texto:       #e2e8f0;
+      --fig-rotulo:      #94a3b8;
+      --fig-peso:        #c084fc;
+      --fig-normal:      #4ade80;
+      --fig-atrito:      #fb923c;
+      --fig-aplicada:    #f87171;
+      --fig-tracao:      #22d3ee;
+      --fig-cinza:       #64748b;
+    }
+  }
+  /* === FIM DAS CORES DAS FIGURAS === */
+  ]]></style>
+<defs><marker id="p-g4a-peso" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path class="fig-p-peso" d="M 0 0 L 10 5 L 0 10 z"/></marker><marker id="p-g4a-normal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path class="fig-p-normal" d="M 0 0 L 10 5 L 0 10 z"/></marker></defs><polygon class="fig-rampa" points="30,208 300,208 300,5.5"/><line class="fig-chao" x1="30" y1="208" x2="300" y2="208"/><line class="fig-chao-fino" x1="30" y1="208" x2="23" y2="215"/><line class="fig-chao-fino" x1="39" y1="208" x2="32" y2="215"/><line class="fig-chao-fino" x1="48" y1="208" x2="41" y2="215"/><line class="fig-chao-fino" x1="57" y1="208" x2="50" y2="215"/><line class="fig-chao-fino" x1="66" y1="208" x2="59" y2="215"/><line class="fig-chao-fino" x1="75" y1="208" x2="68" y2="215"/><line class="fig-chao-fino" x1="84" y1="208" x2="77" y2="215"/><line class="fig-chao-fino" x1="93" y1="208" x2="86" y2="215"/><line class="fig-chao-fino" x1="102" y1="208" x2="95" y2="215"/><line class="fig-chao-fino" x1="111" y1="208" x2="104" y2="215"/><line class="fig-chao-fino" x1="120" y1="208" x2="113" y2="215"/><line class="fig-chao-fino" x1="129" y1="208" x2="122" y2="215"/><line class="fig-chao-fino" x1="138" y1="208" x2="131" y2="215"/><line class="fig-chao-fino" x1="147" y1="208" x2="140" y2="215"/><line class="fig-chao-fino" x1="156" y1="208" x2="149" y2="215"/><line class="fig-chao-fino" x1="165" y1="208" x2="158" y2="215"/><line class="fig-chao-fino" x1="174" y1="208" x2="167" y2="215"/><line class="fig-chao-fino" x1="183" y1="208" x2="176" y2="215"/><line class="fig-chao-fino" x1="192" y1="208" x2="185" y2="215"/><line class="fig-chao-fino" x1="201" y1="208" x2="194" y2="215"/><line class="fig-chao-fino" x1="210" y1="208" x2="203" y2="215"/><line class="fig-chao-fino" x1="219" y1="208" x2="212" y2="215"/><line class="fig-chao-fino" x1="228" y1="208" x2="221" y2="215"/><line class="fig-chao-fino" x1="237" y1="208" x2="230" y2="215"/><line class="fig-chao-fino" x1="246" y1="208" x2="239" y2="215"/><line class="fig-chao-fino" x1="255" y1="208" x2="248" y2="215"/><line class="fig-chao-fino" x1="264" y1="208" x2="257" y2="215"/><line class="fig-chao-fino" x1="273" y1="208" x2="266" y2="215"/><line class="fig-chao-fino" x1="282" y1="208" x2="275" y2="215"/><line class="fig-chao-fino" x1="291" y1="208" x2="284" y2="215"/><text class="fig-texto" x="250" y="199" font-size="12" font-weight="700">37°</text><text class="fig-texto" x="28" y="22" font-size="10.5" font-weight="600">bloco de 5 kg sobre a rampa</text><g transform="translate(154.2 114.85) rotate(-36.8699)"><rect class="fig-corpo" x="-26" y="-21" width="52" height="21" rx="2"/></g><line class="fig-v-peso" x1="147.6" y1="106.05" x2="147.6" y2="161.05" marker-end="url(#p-g4a-peso)"/><text class="fig-r-peso" x="77.6" y="179.05" font-size="13" font-weight="700">P = 50 N</text><line class="fig-v-peso fig-trac fig-fina" x1="147.6" y1="106.05" x2="121.2" y2="125.85" marker-end="url(#p-g4a-peso)"/><text class="fig-r-peso" x="25.2" y="142.85" font-size="13" font-weight="700">P<tspan dy="4" font-size="0.75em">x</tspan><tspan dy="-4"> = 30 N</tspan></text><line class="fig-v-peso fig-trac fig-fina" x1="147.6" y1="106.05" x2="174" y2="141.25" marker-end="url(#p-g4a-peso)"/><text class="fig-r-peso" x="183" y="156.25" font-size="13" font-weight="700">P<tspan dy="4" font-size="0.75em">y</tspan><tspan dy="-4"> = 40 N</tspan></text><line class="fig-v-normal" x1="147.6" y1="106.05" x2="121.2" y2="70.85" marker-end="url(#p-g4a-normal)"/><text class="fig-r-normal" x="35.2" y="64.85" font-size="13" font-weight="700">N = 40 N</text><text class="fig-texto" x="174" y="228" font-size="11" font-weight="400" text-anchor="middle" font-style="italic">sem atrito: só o peso e a normal agem no bloco</text>
+</svg>

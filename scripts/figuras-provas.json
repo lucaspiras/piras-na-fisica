@@ -1,0 +1,87 @@
+[
+  {
+    "html": "atividades/testes/prova-newton-discursiva/prova_newton_discursiva.html",
+    "slug": "prova-newton-discursiva/1c-caixote-empurrado",
+    "resumo": "O caixote empurrado pela força F, que desliza com velocidade constante. Enunciado do item 1c."
+  },
+  {
+    "html": "atividades/testes/prova-newton-discursiva/prova_newton_discursiva.html",
+    "slug": "prova-newton-discursiva/2-carrinho-duas-forcas",
+    "resumo": "O carrinho de 4 kg com duas forças horizontais opostas. Enunciado da questão 2."
+  },
+  {
+    "html": "atividades/testes/prova-newton-discursiva/prova_newton_discursiva.html",
+    "slug": "prova-newton-discursiva/3b-caixote-forca-para-baixo",
+    "resumo": "O caixote de 20 kg com uma força vertical de 50 N aplicada de cima para baixo. Enunciado do item 3b."
+  },
+  {
+    "html": "atividades/testes/prova-newton-discursiva/prova_newton_discursiva.html",
+    "slug": "prova-newton-discursiva/4-rampa-37-graus",
+    "resumo": "O bloco de 5 kg abandonado sobre a rampa de 37 graus. Enunciado da questão 4."
+  },
+  {
+    "html": "atividades/testes/prova-newton-discursiva/prova_newton_discursiva.html",
+    "slug": "prova-newton-discursiva/5-blocos-sobrepostos",
+    "resumo": "O bloco B apoiado sobre o bloco A, com a força F aplicada ao de baixo. Enunciado da questão 5."
+  },
+  {
+    "html": "atividades/testes/prova-newton-discursiva/prova_newton_discursiva.html",
+    "slug": "prova-newton-discursiva/6-fio-e-polia",
+    "resumo": "O bloco A sobre a mesa, ligado por fio e polia ao bloco B pendurado. Enunciado da questão 6."
+  },
+  {
+    "html": "atividades/testes/prova-newton-discursiva/prova_newton_discursiva.html",
+    "slug": "prova-newton-discursiva/7-elevador-balanca",
+    "resumo": "A pessoa sobre a balança dentro do elevador. Enunciado da questão 7."
+  },
+  {
+    "html": "atividades/testes/prova-newton-discursiva/gabarito_newton_discursiva.html",
+    "slug": "prova-newton-discursiva/r1b-pares-acao-reacao",
+    "resumo": "Resposta do item 1b: as duas forças sobre o livro, ao lado das suas reações, cada uma aplicada no outro corpo."
+  },
+  {
+    "html": "atividades/testes/prova-newton-discursiva/gabarito_newton_discursiva.html",
+    "slug": "prova-newton-discursiva/r1c-caixote-quatro-forcas",
+    "resumo": "Resposta do item 1c: as quatro forças sobre o caixote em velocidade constante, com a resultante nula nas duas direções."
+  },
+  {
+    "html": "atividades/testes/prova-newton-discursiva/gabarito_newton_discursiva.html",
+    "slug": "prova-newton-discursiva/r3a-caixote-apoiado",
+    "resumo": "Resposta do item 3a: peso e normal do caixote apenas apoiado, ambos de 200 N."
+  },
+  {
+    "html": "atividades/testes/prova-newton-discursiva/gabarito_newton_discursiva.html",
+    "slug": "prova-newton-discursiva/r3b-normal-aumenta",
+    "resumo": "Resposta do item 3b: com a força de 50 N para baixo, a normal sobe para 250 N."
+  },
+  {
+    "html": "atividades/testes/prova-newton-discursiva/gabarito_newton_discursiva.html",
+    "slug": "prova-newton-discursiva/r3c-normal-diminui-e-zera",
+    "resumo": "Resposta do item 3c: com a força para cima a normal cai para 150 N e, no limite, chega a zero."
+  },
+  {
+    "html": "atividades/testes/prova-newton-discursiva/gabarito_newton_discursiva.html",
+    "slug": "prova-newton-discursiva/r4a-decomposicao-do-peso",
+    "resumo": "Resposta do item 4a: o peso decomposto nas direções da rampa, com a normal equilibrando a componente perpendicular."
+  },
+  {
+    "html": "atividades/testes/prova-newton-discursiva/gabarito_newton_discursiva.html",
+    "slug": "prova-newton-discursiva/r4c-rampa-com-atrito",
+    "resumo": "Resposta do item 4c: a mesma rampa com a força de atrito subindo, contra o movimento."
+  },
+  {
+    "html": "atividades/testes/prova-newton-discursiva/gabarito_newton_discursiva.html",
+    "slug": "prova-newton-discursiva/r5a-atrito-como-motor",
+    "resumo": "Resposta do item 5a: o atrito que A exerce sobre B é o que põe B em movimento, e a reação age sobre A."
+  },
+  {
+    "html": "atividades/testes/prova-newton-discursiva/gabarito_newton_discursiva.html",
+    "slug": "prova-newton-discursiva/r6a-dois-diagramas",
+    "resumo": "Resposta do item 6a: os diagramas de corpo livre de A e de B, desenhados separadamente."
+  },
+  {
+    "html": "atividades/testes/prova-newton-discursiva/gabarito_newton_discursiva.html",
+    "slug": "prova-newton-discursiva/r7a-balanca-tres-casos",
+    "resumo": "Resposta do item 7a: a balança no elevador nas três situações, mostrando que ela marca a normal e não o peso."
+  }
+]

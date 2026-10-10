@@ -13,7 +13,15 @@ copa_do_mundo/gincana/perguntas.html
 # Gabaritos de prova discursiva. A prova de múltipla escolha guarda o gabarito no
 # banco, fora do HTML; a discursiva não tem onde guardar, e a resolução mora no
 # arquivo. Repositório público: a prova pode ir, a resolução não.
+#
+# A REGRA SEGUE VALENDO POR PADRÃO, e cada exceção é nomeada uma a uma, para que
+# publicar um gabarito seja sempre uma decisão tomada e não um descuido.
 atividades/testes/**/gabarito_*.html
+
+# Exceção, decidida pelo Lucas em 10/10/2026: o gabarito da prova 3 discursiva vai ao
+# ar. A prova já foi aplicada, e a resolução comentada serve de material de estudo.
+# O preço é não poder reaproveitar esta prova em outra turma, e isso foi considerado.
+!atividades/testes/prova-newton-discursiva/gabarito_newton_discursiva.html
 
 # Briefs de redação/correção (instruções de trabalho, não fazem parte do site)
 # Barra inicial: ignora só a pasta da raiz, não .claude/skills/briefs/
