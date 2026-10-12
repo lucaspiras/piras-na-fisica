@@ -178,6 +178,8 @@ Valem para todo texto de conteúdo, novo ou editado. Nasceram nos briefs de reda
 
 **Voz, ritmo e vícios a evitar ficam em `.claude/rules/guia-de-estilo-lucas_1.md`**, que é carregado automaticamente e é a fonte única desse assunto (travessão, negrito, conectores, estrutura do parágrafo, vícios de escrita de IA, citações e epígrafes). Esta seção cobre apenas o que é específico do site: marcação, CSS e onde cada coisa entra na página.
 
+**Qual letra representa cada grandeza fica em `.claude/rules/simbolos-e-notacao.md`**, também carregado automaticamente, e vale para texto, apresentação, lista, estudo dirigido e prova por igual. É lá que estão a decisão de eletricidade (U para tensão, V para potencial, i para corrente), as colisões conhecidas de P, T, U e E, as regras de `<sub>` e unidade, e a justificativa de cada escolha. Antes de escrever uma fórmula nova, conferir ali.
+
 ### Parágrafo de abertura
 
 A maioria dos textos abre com um `<p class="content-lead">` **antes** da primeira `<section>`, apresentando o assunto e anunciando o percurso. CSS em `conteudos/shared.css`.

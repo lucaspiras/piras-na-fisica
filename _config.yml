@@ -12,6 +12,23 @@
 # Estado de cada texto: scripts/revisao-textos.json
 # Aplicacao:            powershell -File scripts\aplicar-revisao.ps1
 
+# Desde 12/10/2026, o bloco tambem tira do ar os Markdown. Nenhum deles e' pagina:
+# sao nota de trabalho (CLAUDE.md, REVISAO.md), descricao do repositorio (README.md)
+# e o roteiro de criacao das tabelas do Supabase (CONFIGURACAO_SUPABASE.md), que
+# estavam sendo servidos com 200 em pirasnafisica.com.br. Eles continuam no git, onde
+# tem utilidade; o que muda e' so o site deixar de publica-los. Nenhuma pagina linka
+# para .md, entao nada quebra.
+#
+# O glob cobre os que vierem depois; a lista explicita garante estes seis mesmo que o
+# Jekyll trate ** de outro modo.
+
 exclude:
   - "conteudos/*/_*.html"
   - "_em-revisao.html"
+  - "**/*.md"
+  - "CLAUDE.md"
+  - "README.md"
+  - "conteudos/grandezas-fisicas/REVISAO.md"
+  - "atividades/testes/forca-movimento/CONFIGURACAO_SUPABASE.md"
+  - "atividades/testes/prova-final-cinematica/CONFIGURACAO_SUPABASE.md"
+  - "atividades/testes/prova-mru/CONFIGURACAO_SUPABASE.md"

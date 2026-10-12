@@ -47,3 +47,8 @@ atividades/testes/**/resultados*
 copa_do_mundo/**/.env
 copa_do_mundo/**/node_modules/
 copa_do_mundo/**/package-lock.json
+
+# Configuracao do editor, tirada do git a pedido do Lucas em 12/10/2026. O arquivo
+# continua no disco (e no OneDrive): ele esconde do explorador as 12 pastas que viraram
+# so stub de redirect. Quem clonar o repositorio noutra maquina nao recebe isso.
+.vscode/
