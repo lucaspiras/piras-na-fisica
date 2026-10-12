@@ -275,3 +275,11 @@ document.getElementById('btn-buscar').addEventListener('click', async function (
     if (e.key === 'Enter') document.getElementById('btn-buscar').click();
   });
 });
+
+// ── Preenchimento automático depois do envio ─────────────────────────────────
+// Quem acabou de entregar a prova chega aqui com nome e palavra já guardados, e a
+// busca dispara sozinha. Quem chega direto não vê diferença nenhuma.
+if (window.preencherConsulta) {
+  preencherConsulta('forca-movimento',
+    { nome: 'nome-busca', palavra: 'palavra-busca', botao: 'btn-buscar' });
+}

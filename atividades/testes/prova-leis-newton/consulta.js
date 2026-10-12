@@ -452,9 +452,18 @@ function renderResultado(resultado) {
   const pct = Math.round((acertos / total) * 100);
   const data = new Date(calculado_em).toLocaleString('pt-BR');
 
-  document.getElementById('res-nome').textContent = nome_aluno;
-  document.getElementById('res-score').textContent = `${acertos} / ${total}`;
-  document.getElementById('res-detalhe').textContent = `${pct}% de acertos — enviado em ${data}`;
+  // O gabarito é uma entrega como a dos alunos, e por isso cai na mesma tela. Só que
+  // ali "20/20" e "sua resposta" não querem dizer nada: não houve aluno nenhum. O
+  // painel muda de texto nesse caso, e só nesse.
+  const ehGabarito = /^gabarito$/i.test((nome_aluno || '').trim());
+
+  document.getElementById('res-nome').textContent =
+    ehGabarito ? 'Gabarito da prova' : nome_aluno;
+  document.getElementById('res-score').textContent =
+    ehGabarito ? `${total} questões` : `${acertos} / ${total}`;
+  document.getElementById('res-detalhe').textContent = ehGabarito
+    ? 'A alternativa correta de cada questão, com o enunciado completo.'
+    : `${pct}% de acertos — enviado em ${data}`;
 
   const container = document.getElementById('questoes-resultado');
   container.innerHTML = '';
@@ -466,7 +475,9 @@ function renderResultado(resultado) {
     const acertou = det.acertou;
 
     let statusBadge = '';
-    if (!marcada) {
+    if (ehGabarito) {
+      statusBadge = '';
+    } else if (!marcada) {
       statusBadge = '<span class="badge badge-vazio">Não respondida</span>';
     } else if (acertou) {
       statusBadge = '<span class="badge badge-acertou">✓ Acertou</span>';
@@ -481,7 +492,9 @@ function renderResultado(resultado) {
 
       if (op.id === correta && op.id === marcada) {
         cls = 'correct';
-        badge = '<span class="result-badge correct-badge">✓ Correta — sua resposta</span>';
+        badge = ehGabarito
+          ? '<span class="result-badge correct-badge">✓ Correta</span>'
+          : '<span class="result-badge correct-badge">✓ Correta — sua resposta</span>';
       } else if (op.id === correta) {
         cls = 'correct';
         badge = '<span class="result-badge correct-badge">✓ Correta</span>';
@@ -552,3 +565,25 @@ document.getElementById('btn-buscar').addEventListener('click', async function (
     if (e.key === 'Enter') document.getElementById('btn-buscar').click();
   });
 });
+
+// ── Atalho do gabarito ───────────────────────────────────────────────────────
+// O gabarito foi enviado pela própria prova, com nome "Gabarito" e palavra secreta
+// "gabarito", e por isso a consulta de sempre o encontra. O botão só preenche os dois
+// campos e dispara a busca: nada de caminho paralelo, para o aluno ver exatamente a
+// mesma tela que vê com o resultado dele.
+const btnGabarito = document.getElementById('btn-gabarito');
+if (btnGabarito) {
+  btnGabarito.addEventListener('click', () => {
+    document.getElementById('nome-busca').value = 'Gabarito';
+    document.getElementById('palavra-busca').value = 'gabarito';
+    document.getElementById('btn-buscar').click();
+  });
+}
+
+// ── Preenchimento automático depois do envio ─────────────────────────────────
+// Quem acabou de entregar a prova chega aqui com nome e palavra já guardados, e a
+// busca dispara sozinha. Quem chega direto não vê diferença nenhuma.
+if (window.preencherConsulta) {
+  preencherConsulta('prova-leis-newton',
+    { nome: 'nome-busca', palavra: 'palavra-busca', botao: 'btn-buscar' });
+}

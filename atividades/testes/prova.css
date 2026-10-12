@@ -511,6 +511,25 @@ main {
 #result-score { font-size: 1.8rem; font-weight: 800; color: var(--titulo); margin-bottom: 0.4rem; }
 #result-detail { color: var(--text-muted); font-size: 0.98rem; margin-bottom: 1.2rem; }
 
+/* O caminho até o resultado, no painel que aparece logo após o envio. Vem antes do
+   "refazer", e com mais peso visual: entregar e consultar é o percurso normal;
+   refazer é a exceção. */
+.btn-consultar {
+  display: inline-block;
+  margin: 0 0.6rem 0.8rem 0;
+  padding: 0.75rem 2rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--azul), var(--roxo));
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.12s;
+}
+
+.btn-consultar:hover { opacity: 0.92; transform: translateY(-1px); color: #fff; }
+.btn-consultar:focus-visible { outline: 3px solid var(--azul); outline-offset: 3px; }
+
 #btn-retry {
   background: var(--surface-2);
   color: var(--texto);
@@ -577,6 +596,49 @@ main {
   margin-top: 0.6rem;
   display: none;
 }
+
+/* ---- Atalho para o gabarito ----
+   O gabarito e' uma "resposta" como a dos alunos, enviada com nome e palavra
+   secreta proprios, e por isso a mesma consulta o abre. O aviso existe para que
+   isso nao dependa de alguem ter contado: a chave fica escrita na pagina. */
+.dica-gabarito {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border: 1.5px dashed var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  font-size: 0.93rem;
+  color: var(--texto);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 0.9rem;
+}
+
+.dica-gabarito p { margin: 0; flex: 1; min-width: 240px; }
+
+.dica-gabarito code {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.93em;
+}
+
+.btn-gabarito {
+  padding: 0.6rem 1.1rem;
+  border: 1.5px solid var(--prova-cor);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--prova-cor);
+  font-family: inherit;
+  font-size: 0.93rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-gabarito:hover { background: var(--prova-cor); color: var(--surface); }
 
 .score-panel {
   background: var(--surface);

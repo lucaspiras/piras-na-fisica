@@ -210,7 +210,14 @@ document.getElementById('btn-submit').addEventListener('click', async function (
     panel.style.display = 'block';
     document.getElementById('result-score').textContent = '✓ Teste enviado!';
     document.getElementById('result-detail').textContent =
-      `Suas respostas foram registradas, ${campos.nome}. Guarde sua palavra secreta para consultar o resultado depois.`;
+      `Suas respostas foram registradas, ${campos.nome}. O resultado já está pronto: ` +
+      `é só abrir a consulta abaixo. Guarde a palavra secreta para voltar depois.`;
+
+    // o caminho até o resultado, que antes faltava
+    if (window.guardarEntrega) {
+      guardarEntrega('forca-movimento', campos.nome, campos.palavra);
+      oferecerConsulta('result-panel', 'consulta.html');
+    }
     document.getElementById('btn-retry').style.display = 'inline-block';
 
     panel.focus();

@@ -135,7 +135,14 @@ document.getElementById('btn-submit').addEventListener('click', async function (
     panel.style.display = 'block';
     document.getElementById('result-score').textContent = '✓ Prova enviada!';
     document.getElementById('result-detail').textContent =
-      `Suas respostas foram registradas com sucesso, ${nomeAluno}. Você receberá o resultado em breve.`;
+      `Suas respostas foram registradas, ${nomeAluno}. O resultado já está pronto: ` +
+      `é só abrir a consulta abaixo.`;
+
+    // o caminho até o resultado, que antes faltava
+    if (window.guardarEntrega) {
+      guardarEntrega('prova-final-cinematica', nomeAluno, palavraSecreta);
+      oferecerConsulta('result-panel', 'consulta_resultado.html');
+    }
     const btnRetry = document.getElementById('btn-retry');
     btnRetry.style.display = 'inline-block';
     btnRetry.textContent = 'Iniciar nova prova';
