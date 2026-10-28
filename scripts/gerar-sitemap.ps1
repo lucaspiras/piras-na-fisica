@@ -30,7 +30,9 @@ $incluirMesmoAssim = @(
   '/disciplinas/eletricidade_basica/apresentacoes/circuitos/index.html',
   '/disciplinas/eletricidade_basica/apresentacoes/associacao-de-resistores/index.html',
   '/disciplinas/fisica_1_mecanica/apresentacoes/leis-de-newton/index.html',
-  '/disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html'
+  '/disciplinas/fisica_1_mecanica/apresentacoes/forcas-newton/index.html',
+  '/disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html',
+  '/disciplinas/fisica_1_mecanica/apresentacoes/energia-dissipacao-potencia/index.html'
 )
 $padraoIncluir = ($incluirMesmoAssim -join '|')
 

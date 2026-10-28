@@ -36,6 +36,14 @@
       --fig-resistor-b: #b45309;
       --fig-bateria:    #0f766e;
       --fig-no:         #334155;
+      /* energia: as mesmas cores dos decks de energia (css/apresentacoes.css),
+         para a turma reconhecer cada forma de energia de um material ao outro */
+      --fig-ec:         #2563eb;
+      --fig-epg:        #15803d;
+      --fig-epe:        #be185d;
+      --fig-term:       #b91c1c;
+      --fig-trab:       #c2410c;
+      --fig-trilho:     #e7e4dc;
       /* declaradas aqui, e nao herdadas de --fonte, porque o .svg avulso
          gerado a partir desta seção leva a paleta e mais nada */
       --fig-fonte-t:  'DM Sans', system-ui, sans-serif;
@@ -74,6 +82,12 @@
         --fig-resistor-b: #fbbf24;
         --fig-bateria:    #2dd4bf;
         --fig-no:         #cbd5e1;
+        --fig-ec:         #60a5fa;
+        --fig-epg:        #4ade80;
+        --fig-epe:        #f472b6;
+        --fig-term:       #f87171;
+        --fig-trab:       #fb923c;
+        --fig-trilho:     #2a2f3a;
       }
     }
 
@@ -121,6 +135,26 @@
     .fg-atr   { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-atrito); }
     .fg-res   { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-resistor-b); }
     .fg-batt  { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-bateria); }
+    .fg-v-trab   { fill: none; stroke: var(--fig-trab); stroke-width: 2.5; }
+    .fg-p-trab   { fill: var(--fig-trab); }
+    .fg-ec       { fill: var(--fig-ec); }
+    .fg-epg      { fill: var(--fig-epg); }
+    .fg-term     { fill: var(--fig-term); }
+    .fg-trilho   { fill: var(--fig-trilho); }
+    .fg-pista    { fill: none; stroke: var(--fig-apoio); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .fg-mola     { fill: none; stroke: var(--fig-fio); stroke-width: 2; stroke-linejoin: round; }
+    .fg-reta     { fill: none; stroke: var(--fig-epe); stroke-width: 2.5; stroke-linecap: round; }
+    .fg-reta-trab { fill: none; stroke: var(--fig-trab); stroke-width: 2.5; stroke-linejoin: round; }
+    .fg-area     { fill: var(--fig-trab); fill-opacity: .15; }
+    .fg-eixo-g   { fill: none; stroke: var(--fig-texto); stroke-width: 1.6; }
+    .fg-ponto    { fill: var(--fig-texto); }
+    .fg-bola     { fill: var(--fig-forca); fill-opacity: .85; stroke: var(--fig-texto); stroke-width: 1.2; }
+    .fg-trajeto  { fill: none; stroke: var(--fig-trab); stroke-width: 2.2; stroke-dasharray: 6 4; }
+    .fg-trab     { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-trab); }
+    .fg-ect      { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-ec); }
+    .fg-epgt     { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-epg); }
+    .fg-epet     { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-epe); }
+    .fg-termt    { font-family: var(--fig-fonte-m); font-size: 12px; font-weight: 700; fill: var(--fig-term); }
   ]]></style>
   <path class="fg-fio" d="M70 45 H120 M178 45 H262 M320 45 H400 M240 45 V112 M360 45 V112 M240 112 H262 M320 112 H360 M400 45 V185 M400 185 H70 M70 185 V116 M70 104 V45"/>
   <path class="fg-bat" d="M54 104 H86 M62 116 H78"/>

@@ -58,6 +58,24 @@
       --figa-pneu:         #23252B;
       --figa-roda:         #A8ABB2;
       --figa-eixo:         #54565C;
+      /* As formas de energia têm cor fixa nos dois decks de energia e nas listas:
+         a mesma energia, a mesma cor, em toda figura. A cinética herda o azul da
+         velocidade, que é de onde ela vem. Contraste no creme: 4,78 · 4,64 · 5,58 · 5,98. */
+      --figa-ec:           #2563EB;
+      --figa-epg:          #15803D;
+      --figa-epe:          #BE185D;
+      --figa-term:         #B91C1C;
+      --figa-trab:         #C2410C;
+      --figa-barra:        #E7E4DC;
+      --figa-pele:         #E9B48A;
+      --figa-roupa:        #334155;
+      --figa-agua:         #5B9BD5;
+      --figa-branco:       #FFFFFF;
+      --figa-asfalto:      #DCD9D1;
+      --figa-livro:        #0F766E;
+      --figa-concreto:     #CFCBC0;
+      --figa-relevo:       #B9A27F;
+      --figa-luz:          #E8930C;
       /* declaradas aqui, e não herdadas do deck, porque o .svg avulso gerado a
          partir desta seção leva a paleta e mais nada */
       --figa-fonte-t:    'IBM Plex Sans', system-ui, sans-serif;
@@ -118,6 +136,21 @@
         --figa-pneu:         #0F1013;
         --figa-roda:         #6B7078;
         --figa-eixo:         #A8ABB2;
+        --figa-ec:           #60A5FA;
+        --figa-epg:          #4ADE80;
+        --figa-epe:          #F472B6;
+        --figa-term:         #F87171;
+        --figa-trab:         #FB923C;
+        --figa-barra:        #2A2F3A;
+        --figa-pele:         #C98F66;
+        --figa-roupa:        #CBD5E1;
+        --figa-agua:         #3F78B5;
+        --figa-branco:       #1F2128;
+        --figa-asfalto:      #2A2C33;
+        --figa-livro:        #2DD4BF;
+        --figa-concreto:     #3A3D45;
+        --figa-relevo:       #6B5A40;
+        --figa-luz:          #FBBF24;
       }
     }
 
@@ -199,6 +232,113 @@
     .fga-haste      { fill: none; stroke: var(--figa-piano-luz); stroke-width: 4; stroke-linecap: round; }
     .fga-teclas     { fill: var(--figa-teclas); stroke: var(--figa-contorno); stroke-width: 2.5; }
     .fga-tecla-p    { fill: var(--figa-piano); }
+    .fga-ec         { fill: var(--figa-ec); }
+    .fga-epg        { fill: var(--figa-epg); }
+    .fga-epe        { fill: var(--figa-epe); }
+    .fga-term       { fill: var(--figa-term); }
+    .fga-trab       { fill: var(--figa-trab); }
+    .fga-trilho     { fill: var(--figa-barra); }
+    .fga-no         { fill: var(--figa-branco); stroke: var(--figa-barra); stroke-width: 3; }
+    .fga-grade      { fill: none; stroke: var(--figa-barra); stroke-width: 2; }
+    .fga-fantasma   { opacity: .35; }
+    .fga-p-trab     { fill: var(--figa-trab); }
+    .fga-p-ec       { fill: var(--figa-ec); }
+    .fga-p-epg      { fill: var(--figa-epg); }
+    .fga-p-epe      { fill: var(--figa-epe); }
+    .fga-p-term     { fill: var(--figa-term); }
+    .fga-p-veloc    { fill: var(--figa-veloc); }
+    .fga-p-guia     { fill: var(--figa-guia); }
+    .fga-p-texto    { fill: var(--figa-texto); }
+    .fga-v-trab     { fill: none; stroke: var(--figa-trab); stroke-width: 5; }
+    .fga-v-epe      { fill: none; stroke: var(--figa-epe); stroke-width: 5; }
+    .fga-comp-trab  { fill: none; stroke: var(--figa-trab); stroke-width: 5; stroke-opacity: .45; }
+    .fga-e-tit      { font-family: var(--figa-fonte-t); font-size: 28px; font-weight: 600; fill: var(--figa-texto); }
+    .fga-e-rot      { font-family: var(--figa-fonte-t); font-size: 24px; fill: var(--figa-rotulo); }
+    .fga-e-m        { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-texto); }
+    .fga-e-mp       { font-family: var(--figa-fonte-m); font-size: 22px; font-weight: 500; fill: var(--figa-rotulo); }
+    .fga-e-m-trab   { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-trab); }
+    .fga-e-m-ec     { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-ec); }
+    .fga-e-m-epg    { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-epg); }
+    .fga-e-m-epe    { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-epe); }
+    .fga-e-m-term   { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-term); }
+    .fga-e-m-v      { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-veloc); }
+    .fga-e-m-peso   { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-peso); }
+    .fga-e-m-normal { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-normal); }
+    .fga-e-m-atrito { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-atrito); }
+    .fga-e-m-luz    { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-luz); }
+    .fga-e-m-claro  { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-branco); }
+    .fga-e-mp-term  { font-family: var(--figa-fonte-m); font-size: 22px; font-weight: 500; fill: var(--figa-term); }
+    .fga-e-mp-epg   { font-family: var(--figa-fonte-m); font-size: 22px; font-weight: 500; fill: var(--figa-epg); }
+    .fga-e-mp-ec    { font-family: var(--figa-fonte-m); font-size: 22px; font-weight: 500; fill: var(--figa-ec); }
+    .fga-pessoa     { fill: none; stroke: var(--figa-roupa); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+    .fga-cabeca     { fill: var(--figa-pele); stroke: var(--figa-roupa); stroke-width: 4; }
+    .fga-maca       { fill: var(--figa-carro); stroke: var(--figa-carro-b); stroke-width: 2.5; }
+    .fga-roda-b     { fill: none; stroke: var(--figa-roupa); stroke-width: 6; }
+    .fga-quadro     { fill: none; stroke: var(--figa-roupa); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+    .fga-rastro     { fill: none; stroke: var(--figa-guia); stroke-width: 4; stroke-linecap: round; }
+    .fga-calor      { fill: none; stroke: var(--figa-term); stroke-width: 4; stroke-linecap: round; }
+    .fga-metal      { fill: var(--figa-polia); stroke: var(--figa-polia-b); stroke-width: 2.5; }
+    .fga-anilha     { fill: var(--figa-pneu); }
+    .fga-asfalto    { fill: var(--figa-asfalto); }
+    .fga-faixa      { fill: none; stroke: var(--figa-branco); stroke-width: 4; stroke-dasharray: 30 24; }
+    .fga-largada    { fill: none; stroke: var(--figa-texto); stroke-width: 3; stroke-dasharray: 10 8; }
+    .fga-marca-pare { fill: none; stroke: var(--figa-term); stroke-width: 5; }
+    .fga-livro      { fill: var(--figa-livro); }
+    .fga-ripa-livro { fill: none; stroke: var(--figa-branco); stroke-width: 2; }
+    .fga-zero       { fill: none; stroke: var(--figa-epg); stroke-width: 4; stroke-dasharray: 12 8; }
+    .fga-zero2      { fill: none; stroke: var(--figa-ec); stroke-width: 4; stroke-dasharray: 12 8; }
+    .fga-predio     { fill: var(--figa-concreto); stroke: var(--figa-apoio); stroke-width: 2.5; }
+    .fga-poco       { fill: var(--figa-cabine); stroke: var(--figa-apoio); stroke-width: 2; }
+    .fga-elevador   { fill: var(--figa-bloco); stroke: var(--figa-bloco-b); stroke-width: 2.5; }
+    .fga-escada     { fill: none; stroke: var(--figa-apoio); stroke-width: 5; stroke-linejoin: round; }
+    .fga-escada-cheia { fill: var(--figa-concreto); stroke: var(--figa-apoio); stroke-width: 3; stroke-linejoin: round; }
+    .fga-relevo     { fill: var(--figa-relevo); }
+    .fga-agua       { fill: var(--figa-agua); }
+    .fga-concreto   { fill: var(--figa-concreto); stroke: var(--figa-apoio); stroke-width: 2.5; }
+    .fga-cano       { fill: none; stroke: var(--figa-apoio); stroke-width: 26; stroke-linecap: round; }
+    .fga-pas        { fill: none; stroke: var(--figa-polia-b); stroke-width: 5; stroke-linecap: round; }
+    .fga-fio-luz    { fill: none; stroke: var(--figa-fio); stroke-width: 3; }
+    .fga-casa       { fill: var(--figa-cabine); stroke: var(--figa-apoio); stroke-width: 3; stroke-linejoin: round; }
+    .fga-luz        { fill: var(--figa-sol-halo); stroke: var(--figa-luz); stroke-width: 3; }
+    .fga-mola       { fill: none; stroke: var(--figa-fio); stroke-width: 4; stroke-linejoin: round; stroke-linecap: round; }
+    .fga-reta-epe   { fill: none; stroke: var(--figa-epe); stroke-width: 5; stroke-linecap: round; }
+    .fga-area-epe   { fill: var(--figa-epe); fill-opacity: .2; stroke: var(--figa-epe); stroke-width: 2; }
+    .fga-ponto-epe  { fill: var(--figa-epe); }
+    .fga-bola       { fill: var(--figa-carro); stroke: var(--figa-carro-b); stroke-width: 3; }
+    .fga-contorno-trac { fill: none; stroke: var(--figa-guia); stroke-width: 3; stroke-dasharray: 9 7; }
+    .fga-pista-u    { fill: none; stroke: var(--figa-apoio); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+    .fga-prancha    { fill: var(--figa-roupa); }
+    .fga-rotulo     { fill: var(--figa-branco); stroke: var(--figa-texto); stroke-width: 4; }
+    .fga-rotulo-linha { fill: none; stroke: var(--figa-texto); stroke-width: 6; }
+    .fga-moldura    { fill: var(--figa-branco); stroke: var(--figa-guia); stroke-width: 2; }
+    .fga-vara       { fill: none; stroke: var(--figa-caixa-b); stroke-width: 9; stroke-linecap: round; }
+    .fga-colchao    { fill: var(--figa-bloco); stroke: var(--figa-bloco-b); stroke-width: 3; }
+    .fga-torre      { fill: none; stroke: var(--figa-polia-b); stroke-width: 5; stroke-linejoin: round; }
+    .fga-mostrador  { fill: var(--figa-branco); stroke: var(--figa-texto); stroke-width: 3; }
+    .fga-ponteiro   { fill: none; stroke: var(--figa-texto); stroke-width: 5; stroke-linecap: round; }
+    .fga-banda-ent  { fill: var(--figa-roupa); }
+    .fga-banda-luz  { fill: var(--figa-luz); }
+    .fga-banda-calor { fill: var(--figa-term); fill-opacity: .8; }
+    .fga-banda-perda { fill: var(--figa-term); fill-opacity: .18; }
+    .fga-chamine    { fill: var(--figa-roupa); }
+    .fga-fumaca     { fill: var(--figa-guia); fill-opacity: .7; }
+    .fga-carvao     { fill: var(--figa-pneu); }
+    .fga-anda       { animation: fga-anda 6s linear infinite; }
+    .fga-enche      { transform-box: fill-box; transform-origin: left center; animation: fga-enche 6s linear infinite; }
+    .fga-sobe       { animation: fga-sobe 6s linear infinite; }
+    .fga-enche-v    { transform-box: fill-box; transform-origin: center bottom; animation: fga-enche-v 6s linear infinite; }
+    .fga-freia-1    { animation: fga-freia-1 7s infinite; }
+    .fga-freia-2    { animation: fga-freia-2 7s infinite; }
+    .fga-oscila     { animation: fga-oscila 3.2s ease-in-out infinite; }
+    .fga-mola-estica { transform-box: fill-box; transform-origin: left center; animation: fga-mola-estica 3.2s ease-in-out infinite; }
+    .fga-forca-mola { transform-box: fill-box; transform-origin: left center; animation: fga-forca-mola 3.2s ease-in-out infinite; }
+    .fga-area-cresce { transform-box: fill-box; transform-origin: left bottom; animation: fga-area-cresce 6s linear infinite; }
+    .fga-ponto-anda { animation: fga-ponto-anda 6s linear infinite; }
+    .fga-sobe-rapido { animation: fga-sobe-rapido 8s linear infinite; }
+    .fga-sobe-lento { animation: fga-sobe-lento 8s linear infinite; }
+    .fga-fluxo      { fill: none; stroke: var(--figa-trab); stroke-width: 5; stroke-dasharray: 12 10; animation: fga-flui 1.4s linear infinite; }
+    .fga-fluxo-agua { fill: none; stroke: var(--figa-agua); stroke-width: 10; stroke-linecap: round; stroke-dasharray: 16 18; animation: fga-flui 1s linear infinite; }
+    .fga-fluxo-claro { fill: none; stroke: var(--figa-branco); stroke-width: 3; stroke-opacity: .7; stroke-dasharray: 12 10; animation: fga-flui 1.4s linear infinite; }
     .fga-t          { font-family: var(--figa-fonte-t); font-size: 20px; font-weight: 600; fill: var(--figa-texto); }
     .fga-rot        { font-family: var(--figa-fonte-t); font-size: 17px; fill: var(--figa-rotulo); }
     .fga-rot-claro  { font-family: var(--figa-fonte-t); font-size: 17px; fill: var(--figa-rotulo-claro); }
@@ -217,10 +357,102 @@
       96%, 100% { transform: translateX(0); }
     }
 
+    @keyframes fga-anda {
+      0%, 12%     { transform: translateX(0); }
+      70%, 94%    { transform: translateX(420px); }
+      94.1%, 100% { transform: translateX(0); }
+    }
+
+    @keyframes fga-enche {
+      0%, 12%     { transform: scaleX(0); }
+      70%, 94%    { transform: scaleX(1); }
+      94.1%, 100% { transform: scaleX(0); }
+    }
+
+    @keyframes fga-sobe {
+      0%, 12%     { transform: translateY(0); }
+      70%, 94%    { transform: translateY(-290px); }
+      94.1%, 100% { transform: translateY(0); }
+    }
+
+    @keyframes fga-enche-v {
+      0%, 12%     { transform: scaleY(0); }
+      70%, 94%    { transform: scaleY(1); }
+      94.1%, 100% { transform: scaleY(0); }
+    }
+
+    @keyframes fga-freia-1 {
+      0%, 8%      { transform: translateX(0); animation-timing-function: cubic-bezier(.33,.67,.67,1); }
+      36.57%, 92% { transform: translateX(150px); }
+      92.1%, 100% { transform: translateX(0); }
+    }
+
+    @keyframes fga-freia-2 {
+      0%, 8%      { transform: translateX(0); animation-timing-function: cubic-bezier(.33,.67,.67,1); }
+      65.14%, 92% { transform: translateX(600px); }
+      92.1%, 100% { transform: translateX(0); }
+    }
+
+    @keyframes fga-oscila {
+      0%, 100% { transform: translateX(-110px); }
+      50%      { transform: translateX(110px); }
+    }
+
+    @keyframes fga-mola-estica {
+      0%, 100% { transform: scaleX(.725); }
+      50%      { transform: scaleX(1.275); }
+    }
+
+    @keyframes fga-forca-mola {
+      0%, 100% { transform: scaleX(1); }
+      50%      { transform: scaleX(-1); }
+    }
+
+    @keyframes fga-area-cresce {
+      0%, 10%     { transform: scale(0); }
+      70%, 92%    { transform: scale(1); }
+      92.1%, 100% { transform: scale(0); }
+    }
+
+    @keyframes fga-ponto-anda {
+      0%, 10%     { transform: translate(0, 0); }
+      70%, 92%    { transform: translate(580px, -360px); }
+      92.1%, 100% { transform: translate(0, 0); }
+    }
+
+    @keyframes fga-sobe-rapido {
+      0%, 4%      { transform: translate(0, 0); }
+      22.75%, 94% { transform: translate(330px, -280px); }
+      94.1%, 100% { transform: translate(0, 0); }
+    }
+
+    @keyframes fga-sobe-lento {
+      0%, 4%      { transform: translate(0, 0); }
+      79%, 94%    { transform: translate(330px, -280px); }
+      94.1%, 100% { transform: translate(0, 0); }
+    }
+
+    @keyframes fga-flui {
+      to { stroke-dashoffset: -44; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .fga-tilt, .fga-desce { animation: none; }
       .fga-tilt  { transform: rotate(-27deg); }
       .fga-desce { transform: translateX(-112px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fga-anda, .fga-enche, .fga-sobe, .fga-enche-v, .fga-freia-1, .fga-freia-2, .fga-oscila, .fga-mola-estica, .fga-forca-mola, .fga-area-cresce, .fga-ponto-anda, .fga-sobe-rapido, .fga-sobe-lento, .fga-fluxo, .fga-fluxo-agua, .fga-fluxo-claro { animation: none; }
+      .fga-anda        { transform: translateX(420px); }
+      .fga-sobe        { transform: translateY(-290px); }
+      .fga-freia-1     { transform: translateX(150px); }
+      .fga-freia-2     { transform: translateX(600px); }
+      .fga-oscila      { transform: translateX(110px); }
+      .fga-mola-estica { transform: scaleX(1.275); }
+      .fga-forca-mola  { transform: scaleX(-1); }
+      .fga-ponto-anda  { transform: translate(580px, -360px); }
+      .fga-sobe-rapido, .fga-sobe-lento { transform: translate(330px, -280px); }
     }
   ]]></style>
   <path class="fga-guia" d="M60,179 H360"/>

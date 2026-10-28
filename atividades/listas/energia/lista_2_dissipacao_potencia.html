@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="/img/icons/apple-touch-icon.png">
+  <script src="/js/theme.js"></script>
+  <meta name="description" content="Lista de 20 exercícios sobre forças dissipativas e energia térmica, potência, consumo de energia elétrica em kWh e eficiência energética. Física Ensino Médio.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Lista 2 · Dissipação, potência e eficiência · Piras na Física">
+  <meta property="og:description" content="Vinte questões em ordem crescente de dificuldade: da bola que quica à potência de uma turbina de hidrelétrica.">
+  <meta property="og:image" content="https://pirasnafisica.com.br/img/og-logo.jpg">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://pirasnafisica.com.br/atividades/listas/energia/lista_2_dissipacao_potencia.html">
+  <title>Lista 2 · Dissipação, potência e eficiência · Piras na Física</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TY56KM22X8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TY56KM22X8');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/style.css" />
+  <link rel="stylesheet" href="../listas.css" />
+</head>
+<body>
+  <a href="#questoes" class="skip-link">Ir para as questões</a>
+
+  <div id="header"></div>
+  <script src="../../../js/include.js"></script>
+
+  <!-- Pontas de seta, definidas uma vez e usadas por todas as figuras. -->
+  <svg class="fig-defs" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="st" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path class="fg-p-trab" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+      <marker id="sv" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path class="fg-p-veloc" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+      <marker id="sg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path class="fg-eixo" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+      <marker id="sk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path class="fg-ponto" d="M0,0 L10,5 L0,10 z"/>
+      </marker>
+    </defs>
+  </svg>
+
+  <div class="content-hero">
+    <div class="content-hero-inner">
+      <nav class="breadcrumb">
+        <a href="../../../atividades.html">Atividades</a>
+        <span>/</span>
+        <a href="../../../lista_de_exercicios.html">Listas de Exercícios</a>
+        <span>/</span>
+        <span>Lista 2 · Dissipação, potência e eficiência</span>
+      </nav>
+      <h1 class="content-title">Lista 2 · Dissipação, potência e eficiência<br><em>Vinte questões sobre para onde vai a energia, com que rapidez e quanto se aproveita</em></h1>
+      <p class="content-subtitle">
+        Use <strong>g = 10 m/s²</strong>, salvo indicação em contrário. Atenção às unidades: potência em kW com tempo em horas dá kWh; potência em W com tempo em segundos dá J.
+      </p>
+      <div class="lista-meta">
+        <span class="lista-badge azul">Trabalho e energia</span>
+        <span class="lista-badge roxo">20 questões</span>
+        <span class="lista-badge muted">Conceitual e cálculo · Sem gabarito</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="main" id="questoes">
+
+    <section class="lista-formulas" aria-label="Fórmulas desta lista">
+      <div class="lf-label">📐 Fórmulas desta lista</div>
+      <div class="formulas-grid">
+        <div class="formula-group">
+          <div class="formula-group-title">Dissipação</div>
+          <ul>
+            <li>W<sub>at</sub> = ΔE<sub>m</sub></li>
+            <li>E<sub>dissipada</sub> = F<sub>at</sub> · d</li>
+            <li>F<sub>at</sub> = μ<sub>c</sub> · N</li>
+          </ul>
+        </div>
+        <div class="formula-group">
+          <div class="formula-group-title">Potência</div>
+          <ul>
+            <li>P = <span class="frac"><span class="frac-num">E</span><span class="frac-den">t</span></span> = <span class="frac"><span class="frac-num">W</span><span class="frac-den">t</span></span></li>
+            <li>P = F · v</li>
+            <li>1 cv = 735,5 W</li>
+          </ul>
+        </div>
+        <div class="formula-group">
+          <div class="formula-group-title">Energia elétrica</div>
+          <ul>
+            <li>E = P · t</li>
+            <li>1 kWh = 3,6 · 10<sup>6</sup> J</li>
+          </ul>
+        </div>
+        <div class="formula-group">
+          <div class="formula-group-title">Eficiência</div>
+          <ul>
+            <li>η = <span class="frac"><span class="frac-num">E<sub>útil</sub></span><span class="frac-den">E<sub>total</sub></span></span></li>
+            <li>η = η<sub>1</sub> · η<sub>2</sub> · η<sub>3</sub></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="lista-aviso">
+      <span class="la-icon">✏️</span>
+      <div>
+        <strong>Sem gabarito incorporado.</strong>
+        Resolva em folha separada, mostrando os cálculos. Cada bloco começa por questões conceituais, que pedem resposta escrita; o cálculo entra em seguida, e a dificuldade cresce até a última questão.
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!--  FORÇAS DISSIPATIVAS                                 -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="divisor-section">Forças dissipativas</div>
+
+    <!-- Q1 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 1</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Conceitual · a bola que para</span>
+      </div>
+      <p class="question-text">
+        Uma bola de borracha é solta de certa altura e quica várias vezes no chão, subindo cada vez menos, até parar.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>O que acontece com a energia mecânica da bola a cada quique?</li>
+        <li>Para onde vai a energia que falta?</li>
+        <li>Esse fenômeno contradiz a conservação da energia? Explique.</li>
+      </ol>
+    </div>
+
+    <!-- Q2 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 2</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Conceitual · paraquedista</span>
+      </div>
+      <p class="question-text">
+        Um paraquedista, já com o paraquedas aberto, desce com velocidade constante.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>O que acontece com a energia cinética dele durante a descida? E com a energia potencial gravitacional?</li>
+        <li>A energia mecânica se conserva? Justifique.</li>
+        <li>Que força é responsável pela diferença, e em que forma a energia termina?</li>
+      </ol>
+    </div>
+
+    <!-- Q3 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 3</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Cálculo · escorregador</span>
+      </div>
+      <p class="question-text">
+        Uma criança de <strong>30 kg</strong> parte do repouso no alto de um escorregador de <strong>3 m</strong> de altura e chega embaixo a <strong>6 m/s</strong>, como mostra a figura.
+      </p>
+      <svg class="fig-svg" data-avulso="trabalho-energia/47-lista-escorregador" viewBox="0 0 440 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escorregador de 3 metros de altura e 6 metros de pista. A criança parte do repouso no alto e chega embaixo a 6 metros por segundo.">
+        <line class="fg-chao" x1="20" y1="160" x2="420" y2="160"/>
+        <path class="fg-hachura" d="M30,160 L18,174 M60,160 L48,174 M90,160 L78,174 M120,160 L108,174 M150,160 L138,174 M180,160 L168,174 M210,160 L198,174 M240,160 L228,174 M270,160 L258,174 M300,160 L288,174 M330,160 L318,174 M360,160 L348,174 M390,160 L378,174"/>
+        <path class="fg-rampa" d="M60,60 L80,60 C140,60 220,150 320,156 L380,156 L380,160 L60,160 Z"/>
+        <circle class="fg-bola" cx="70" cy="48" r="10"/>
+        <line class="fg-fixo" x1="40" y1="63" x2="40" y2="157" marker-start="url(#sg)" marker-end="url(#sg)"/>
+        <text class="fg-m" x="34" y="114" text-anchor="end">3 m</text>
+        <line class="fg-v-veloc" x1="330" y1="140" x2="390" y2="140" marker-end="url(#sv)"/>
+        <text class="fg-vel" x="395" y="144" text-anchor="start">6 m/s</text>
+        <text class="fg-rot" x="200" y="60" text-anchor="middle">comprimento da pista: 6 m</text>
+      </svg>
+      <ol class="question-text sub-itens">
+        <li>Calcule a energia mecânica da criança no alto e embaixo, com o nível zero embaixo.</li>
+        <li>Calcule a energia dissipada na descida.</li>
+        <li>Sabendo que a pista do escorregador mede 6 m, calcule a força de atrito média.</li>
+      </ol>
+    </div>
+
+    <!-- Q4 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 4</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Cálculo · bloco que desliza até parar</span>
+      </div>
+      <p class="question-text">
+        Um bloco de <strong>5 kg</strong> é lançado a <strong>6 m/s</strong> sobre um piso horizontal. O coeficiente de atrito cinético entre o bloco e o piso é <strong>μ<sub>c</sub> = 0,3</strong>.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Calcule a força de atrito sobre o bloco.</li>
+        <li>Calcule a energia cinética inicial.</li>
+        <li>Use o trabalho do atrito para calcular a distância que o bloco percorre até parar.</li>
+        <li>Quanta energia térmica foi produzida?</li>
+      </ol>
+    </div>
+
+    <!-- Q5 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 5</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Cálculo · montanha-russa real</span>
+      </div>
+      <p class="question-text">
+        Um carrinho de montanha-russa de <strong>300 kg</strong> parte do repouso a <strong>20 m</strong> de altura e passa pelo ponto mais baixo da pista, no nível do chão, a <strong>18 m/s</strong>.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Com que velocidade ele passaria nesse ponto se não houvesse atrito?</li>
+        <li>Calcule a energia dissipada até o ponto mais baixo.</li>
+        <li>Que porcentagem da energia mecânica inicial foi dissipada?</li>
+      </ol>
+    </div>
+
+    <!-- Q6 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 6</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Cálculo · quiques</span>
+      </div>
+      <p class="question-text">
+        Uma bola de <strong>0,5 kg</strong> é solta de <strong>2 m</strong> de altura. Depois do primeiro quique, ela sobe só até <strong>1,5 m</strong>, como mostra a figura. Despreze a resistência do ar.
+      </p>
+      <svg class="fig-svg" data-avulso="trabalho-energia/48-lista-bola-quicando" viewBox="0 0 440 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bola solta de 2 metros de altura que, depois do primeiro quique, sobe só até 1,5 metro, e cada vez menos nos quiques seguintes.">
+        <line class="fg-chao" x1="20" y1="160" x2="420" y2="160"/>
+        <path class="fg-hachura" d="M30,160 L18,174 M60,160 L48,174 M90,160 L78,174 M120,160 L108,174 M150,160 L138,174 M180,160 L168,174 M210,160 L198,174 M240,160 L228,174 M270,160 L258,174 M300,160 L288,174 M330,160 L318,174 M360,160 L348,174 M390,160 L378,174"/>
+        <circle class="fg-bola" cx="60" cy="40" r="9"/>
+        <path class="fg-guia" d="M60,49 L110,151 Q160,40 210,151 Q250,70 290,151 Q320,95 350,151"/>
+        <line class="fg-fixo" x1="30" y1="43" x2="30" y2="157" marker-start="url(#sg)" marker-end="url(#sg)"/>
+        <text class="fg-m" x="26" y="104" text-anchor="end">2 m</text>
+        <line class="fg-guia" x1="140" y1="72" x2="190" y2="72"/>
+        <text class="fg-m" x="194" y="76" text-anchor="start">1,5 m</text>
+      </svg>
+      <ol class="question-text sub-itens">
+        <li>Calcule a energia dissipada no primeiro quique.</li>
+        <li>Que fração da energia mecânica foi perdida?</li>
+        <li>Supondo que em cada quique se perca a mesma fração, a que altura a bola sobe depois do terceiro quique?</li>
+      </ol>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!--  POTÊNCIA                                            -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="divisor-section">Potência</div>
+
+    <!-- Q7 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 7</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Conceitual · potência</span>
+      </div>
+      <p class="question-text">
+        Dois carros de mesma massa partem do repouso e chegam a 100 km/h, um em 8 s e o outro em 12 s.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Compare as energias cinéticas dos dois carros ao atingir 100 km/h.</li>
+        <li>Qual motor entregou mais potência às rodas? Justifique.</li>
+        <li>Se a potência do primeiro motor fosse constante, em quanto tempo ele levaria o carro de 0 a 50 km/h? Pense em quanto vale a energia cinética a 50 km/h.</li>
+      </ol>
+    </div>
+
+    <!-- Q8 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 8</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Cálculo · elevador</span>
+      </div>
+      <p class="question-text">
+        Um elevador, somando cabine e passageiros, tem <strong>800 kg</strong>. Ele sobe <strong>30 m</strong> em <strong>20 s</strong>, com velocidade constante. Despreze o atrito e considere que não há contrapeso.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Calcule o trabalho realizado pelo motor.</li>
+        <li>Calcule a potência útil do motor, em watts e em cavalos-vapor (1 cv = 735,5 W).</li>
+      </ol>
+    </div>
+
+    <!-- Q9 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 9</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Cálculo · bomba d'água</span>
+      </div>
+      <p class="question-text">
+        Uma bomba eleva <strong>1200 litros</strong> de água (1200 kg) de um poço até uma caixa <strong>10 m</strong> acima, em <strong>2 minutos</strong>.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Calcule a energia transferida à água.</li>
+        <li>Calcule a potência útil da bomba.</li>
+        <li>Uma bomba com o dobro da potência faria o mesmo serviço em quanto tempo?</li>
+      </ol>
+    </div>
+
+    <!-- Q10 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 10</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Potência e velocidade</span>
+      </div>
+      <p class="question-text">
+        Um ciclista pedala numa estrada plana a <strong>10 m/s</strong>, constantes. A soma da resistência do ar com o atrito de rolamento vale <strong>25 N</strong>.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Calcule a potência que o ciclista precisa desenvolver.</li>
+        <li>A 15 m/s, a resistência passa a <strong>56 N</strong>. Calcule a nova potência.</li>
+        <li>A velocidade aumentou 50%. Por que a potência aumentou bem mais que isso?</li>
+      </ol>
+    </div>
+
+    <!-- Q11 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 11</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Potência · escalada</span>
+      </div>
+      <p class="question-text">
+        Na escalada de velocidade, uma atleta de <strong>48 kg</strong> sobe uma parede de <strong>15 m</strong> em <strong>6,1 s</strong>.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Calcule o aumento da energia potencial gravitacional da atleta.</li>
+        <li>Calcule a potência mecânica média desenvolvida por ela, em watts e em cavalos-vapor.</li>
+        <li>Durante a escalada, o trabalho realizado pelo peso da atleta é positivo ou negativo? Quanto vale?</li>
+      </ol>
+      <span class="dado">Inspirada numa questão da UFSC 2025.</span>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!--  ENERGIA ELÉTRICA E QUILOWATT-HORA                   -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="divisor-section">Energia elétrica e quilowatt-hora</div>
+
+    <!-- Q12 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 12</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Consumo de uma casa</span>
+      </div>
+      <p class="question-text">
+        Numa casa, o uso médio diário de alguns aparelhos é o seguinte: chuveiro de <strong>5500 W</strong>, ligado <strong>40 min</strong>; televisor de <strong>100 W</strong>, ligado <strong>4 h</strong>; quatro lâmpadas LED de <strong>9 W</strong>, acesas <strong>6 h</strong>; e a geladeira, que consome em média <strong>1,2 kWh</strong> por dia. Considere um mês de 30 dias e a tarifa de <strong>R$ 0,90</strong> por kWh.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Calcule o consumo mensal de cada aparelho, em kWh.</li>
+        <li>Calcule o consumo total e o valor da conta.</li>
+        <li>Qual aparelho deveria ser o primeiro alvo de quem quer economizar? Justifique com números.</li>
+      </ol>
+    </div>
+
+    <!-- Q13 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 13</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Economia · troca de lâmpadas</span>
+      </div>
+      <p class="question-text">
+        Uma escola troca <strong>10 lâmpadas incandescentes de 60 W</strong> por <strong>10 lâmpadas LED de 9 W</strong>, que iluminam tanto quanto. As lâmpadas ficam acesas <strong>5 h</strong> por dia.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Calcule a economia de energia num mês de 30 dias, em kWh.</li>
+        <li>Calcule a economia em reais, com tarifa de R$ 0,90 por kWh.</li>
+        <li>Explique, em termos de eficiência, por que a LED gasta tão menos energia para iluminar o mesmo.</li>
+      </ol>
+    </div>
+
+    <!-- Q14 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 14</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Leitura do medidor</span>
+      </div>
+      <p class="question-text">
+        O medidor digital de uma casa marcava <strong>4572 kWh</strong> no dia 1º e <strong>4788 kWh</strong> no dia 31, trinta dias depois.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Calcule o consumo nesse período.</li>
+        <li>Calcule a potência média da casa ao longo dos 30 dias, em watts. Lembre que 30 dias são 720 h.</li>
+      </ol>
+    </div>
+
+    <!-- Q15 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 15</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Conversões</span>
+      </div>
+      <p class="question-text">
+        Use 1 kWh = 3,6 · 10<sup>6</sup> J.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Mostre de onde vem essa conversão, partindo de 1 kW e de 1 h.</li>
+        <li>A bateria de um celular armazena cerca de 15 Wh. Quanto é isso em joules?</li>
+        <li>Quantas cargas completas desse celular cabem em 1 kWh?</li>
+      </ol>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════ -->
+    <!--  EFICIÊNCIA                                          -->
+    <!-- ══════════════════════════════════════════════════════ -->
+
+    <div class="divisor-section">Eficiência</div>
+
+    <!-- Q16 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 16</span>
+        <span class="q-tag f">Fácil</span>
+        <span class="q-tag tipo">Conceitual · eficiência</span>
+      </div>
+      <p class="question-text">
+        Um anúncio diz que um motor tem “eficiência de 120%”.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Explique por que isso é impossível.</li>
+        <li>Num motor real, a eficiência é sempre menor que 100%. Para onde vai a energia que não vira trabalho útil?</li>
+        <li>Por que motores e aparelhos elétricos costumam esquentar quando estão funcionando?</li>
+      </ol>
+    </div>
+
+    <!-- Q17 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 17</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Cálculo · motor</span>
+      </div>
+      <p class="question-text">
+        Um motor elétrico de eficiência <strong>80%</strong> recebe <strong>1500 W</strong> da rede.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Calcule a potência útil e a potência dissipada.</li>
+        <li>O motor ergue uma carga de 60 kg com velocidade constante. Calcule essa velocidade.</li>
+        <li>Quanta energia o motor dissipa em 10 minutos?</li>
+      </ol>
+    </div>
+
+    <!-- Q18 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 18</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Cálculo · elevador com rendimento</span>
+      </div>
+      <p class="question-text">
+        O motor de um elevador com contrapeso só precisa equilibrar o peso dos passageiros. Um passageiro de <strong>90 kg</strong> sobe sozinho, a <strong>2 m/s</strong> constantes. O rendimento do motor é de <strong>60%</strong>.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Calcule a potência útil do motor, usando P = F · v.</li>
+        <li>Calcule a potência que o motor consome da rede.</li>
+        <li>Calcule a potência dissipada.</li>
+      </ol>
+      <span class="dado">Inspirada numa questão da OBFEP 2018.</span>
+    </div>
+
+    <!-- Q19 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 19</span>
+        <span class="q-tag m">Médio</span>
+        <span class="q-tag tipo">Eficiência em cadeia</span>
+      </div>
+      <p class="question-text">
+        A energia de um combustível passa por três etapas até virar trabalho útil num motor elétrico, com as eficiências da figura.
+      </p>
+      <svg class="fig-svg" data-avulso="trabalho-energia/49-lista-eficiencia-em-cadeia" viewBox="0 0 440 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cadeia de três etapas: usina com eficiência de 40 por cento, linhas de transmissão com 90 por cento e motor com 80 por cento.">
+        <rect class="fg-cabine" x="20" y="40" width="110" height="60" rx="6"/>
+        <text class="fg-t" x="75" y="66" text-anchor="middle">usina</text>
+        <text class="fg-trab" x="75" y="86" text-anchor="middle">40%</text>
+        <rect class="fg-cabine" x="160" y="40" width="110" height="60" rx="6"/>
+        <text class="fg-t" x="215" y="66" text-anchor="middle">linhas</text>
+        <text class="fg-trab" x="215" y="86" text-anchor="middle">90%</text>
+        <rect class="fg-cabine" x="300" y="40" width="110" height="60" rx="6"/>
+        <text class="fg-t" x="355" y="66" text-anchor="middle">motor</text>
+        <text class="fg-trab" x="355" y="86" text-anchor="middle">80%</text>
+        <line class="fg-v-trab" x1="134" y1="70" x2="156" y2="70" marker-end="url(#st)"/>
+        <line class="fg-v-trab" x1="274" y1="70" x2="296" y2="70" marker-end="url(#st)"/>
+        <text class="fg-rot" x="20" y="26" text-anchor="start">energia química do combustível</text>
+        <text class="fg-rot" x="410" y="26" text-anchor="end">trabalho útil do motor</text>
+        <line class="fg-v-trab" x1="410" y1="70" x2="430" y2="70" marker-end="url(#st)"/>
+      </svg>
+      <ol class="question-text sub-itens">
+        <li>Calcule a eficiência do processo inteiro.</li>
+        <li>Se a usina térmica fosse trocada por uma hidrelétrica, de eficiência 90%, qual seria a nova eficiência total?</li>
+        <li>Qual das três etapas, melhorada, mais aumentaria a eficiência total? Justifique.</li>
+      </ol>
+    </div>
+
+    <!-- Q20 -->
+    <div class="question-block">
+      <div class="question-header">
+        <span class="question-num">Questão 20</span>
+        <span class="q-tag dif">Difícil</span>
+        <span class="q-tag tipo">Integradora · hidrelétrica</span>
+      </div>
+      <p class="question-text">
+        Uma das turbinas de uma grande hidrelétrica recebe <strong>700 m³</strong> de água por segundo, que descem <strong>120 m</strong> desde a represa. A turbina produz <strong>630 MW</strong> de potência elétrica. A densidade da água é 1000 kg/m³.
+      </p>
+      <ol class="question-text sub-itens">
+        <li>Calcule a massa de água que passa pela turbina a cada segundo.</li>
+        <li>Calcule a energia potencial gravitacional que essa água perde a cada segundo, que é a potência disponível.</li>
+        <li>Calcule o rendimento da turbina.</li>
+        <li>Uma casa consome em média 300 W. Quantas casas essa turbina abastece?</li>
+      </ol>
+      <span class="dado">Adaptada da OBFEP 2019.</span>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p>Física · Ensino Médio · Trabalho e energia · Lista 2 · Dissipação, potência e eficiência · Piras na Física</p>
+  </footer>
+</body>
+</html>

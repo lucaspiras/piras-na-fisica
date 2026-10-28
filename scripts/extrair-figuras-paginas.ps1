@@ -262,6 +262,193 @@ $Figuras = @(
      Perfil = 'apresentacao'
      Slug = 'forcas/30-bloco-na-rampa-com-atrito'
      Resumo = 'Bloco abandonado numa rampa com atrito, com as tres forcas marcadas.' }
+
+  # --- Trabalho e energia: decks energia-mecanica e energia-dissipacao-potencia, listas de energia ---
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/4-cadeia-de-transformacoes'
+     Resumo = 'Cadeia de transformacoes de energia em cinco etapas: o Sol emite energia luminosa, a planta a guarda como energia quimica, o alimento leva essa energia quimica ao corpo, e o corpo a transforma na energia cinetica da bicicleta, com uma parte saindo como energia termica.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/32-rotulo-barra-de-cereal'
+     Resumo = 'Tabela de informacao nutricional de uma barra de cereal de 25 gramas, com valor energetico de 90 quilocalorias.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/5-trabalho-transfere-energia'
+     Resumo = 'Um bloco e empurrado por uma forca F ao longo de um deslocamento d.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/6-forca-inclinada-componentes'
+     Resumo = 'Bloco puxado por uma forca F inclinada de um angulo teta em relacao ao chao.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/7-sinal-do-trabalho'
+     Resumo = 'Tres blocos em movimento para a direita.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/8-carrinho-quatro-forcas'
+     Resumo = 'Carrinho de supermercado empurrado para a direita por uma forca F, ao longo de dez metros.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/9-bloco-acelerado-do-repouso'
+     Resumo = 'Um bloco de massa m parte do repouso e e empurrado por uma forca resultante constante ao longo de um deslocamento d.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/10-frenagem-v-e-2v'
+     Resumo = 'Dois carros iguais comecam a frear na mesma linha, com o mesmo freio.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/11-erguer-caixa-epg'
+     Resumo = 'Uma caixa e erguida com velocidade constante por uma forca F igual ao seu peso.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/12-sobe-guarda-desce-devolve'
+     Resumo = 'Dois paineis.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/13-nivel-zero'
+     Resumo = 'Um livro de um quilograma sobre uma mesa de 0,8 metro.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/14-tres-caminhos-mesma-altura'
+     Resumo = 'Tres maneiras de subir ao topo de um predio de altura h: uma escada, um elevador e uma rampa.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/15-hidreletrica'
+     Resumo = 'Usina hidreletrica em corte.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/16-halter-erguido'
+     Resumo = 'Um halter de 50 quilogramas erguido do chao ate dois metros de altura.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/17-mola-lei-de-hooke'
+     Resumo = 'Bloco preso a uma mola horizontal, oscilando em torno da posicao de equilibrio.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/18-area-forca-elastica'
+     Resumo = 'Grafico da forca elastica em funcao da deformacao x: uma reta que sai da origem e chega a k vezes x.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/19-mola-comprimida'
+     Resumo = 'Mola de constante 200 newtons por metro, comprimida 10 centimetros por um bloco encostado nela.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/20-queda-livre'
+     Resumo = 'Bola solta do repouso a cinco metros de altura, caindo ate o chao.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/21-mola-lanca-bloco-rampa'
+     Resumo = 'Mola de constante 800 newtons por metro, comprimida 0,2 metro, prestes a lancar um bloco de 0,4 quilograma por um piso liso ate uma rampa lisa.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/22-enem-salto-com-vara'
+     Resumo = 'As quatro etapas de um salto com vara: na etapa I o atleta corre com a vara; na II apoia a vara no chao e ela se curva; na III atinge certa altura sobre a vara; na IV cai em um colchao.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-dissipacao-potencia/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/23-rampa-com-atrito'
+     Resumo = 'Bloco de dois quilogramas solto do alto de uma rampa de cinco metros de altura e dez metros de comprimento.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-dissipacao-potencia/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/24-carro-freando'
+     Resumo = 'Carro de mil quilogramas a vinte metros por segundo comecando a frear.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-dissipacao-potencia/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/25-escada-rapida-e-lenta'
+     Resumo = 'Duas pessoas iguais sobem escadas iguais.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-dissipacao-potencia/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/26-guindaste'
+     Resumo = 'Guindaste erguendo uma carga de quinhentos quilogramas a vinte metros de altura em dez segundos.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-dissipacao-potencia/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/27-relogio-medidor'
+     Resumo = 'Medidor de energia com quatro relogios.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-dissipacao-potencia/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/28-enem-relogios-de-luz'
+     Resumo = 'Duas leituras do medidor de energia, cada uma com quatro relogios: a leitura atual, de cima, e a do mes passado, de baixo.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-dissipacao-potencia/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/29-sankey-lampadas'
+     Resumo = 'Diagramas de fluxo de energia de duas lampadas, com valores tipicos.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-dissipacao-potencia/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/30-eficiencia-em-cadeia'
+     Resumo = 'Eficiencia em cadeia.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-dissipacao-potencia/index.html'
+     Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/31-enem-eficiencia-em-cadeia'
+     Resumo = 'Processo em tres etapas: a usina de forca, com eficiencia 0,35; as linhas de transmissao, com 0,90; e a lampada, com 0,05.' }
+
+  @{ Html = 'atividades/listas/energia/lista_1_energia_mecanica.html'
+     Slug = 'trabalho-energia/40-lista-caixa-puxada-37-graus'
+     Resumo = 'Caixa arrastada sobre um piso horizontal por uma forca de 50 newtons inclinada 37 graus acima da horizontal, ao longo de 8 metros.' }
+
+  @{ Html = 'atividades/listas/energia/lista_1_energia_mecanica.html'
+     Slug = 'trabalho-energia/41-lista-grafico-forca-deslocamento'
+     Resumo = 'Grafico da forca em funcao do deslocamento: a forca vale 20 newtons de 0 a 4 metros e cai em linha reta ate zero em 8 metros.' }
+
+  @{ Html = 'atividades/listas/energia/lista_1_energia_mecanica.html'
+     Slug = 'trabalho-energia/42-lista-tres-trajetorias'
+     Resumo = 'Tres trajetorias diferentes, 1, 2 e 3, que levam um corpo do ponto inicial i ao ponto final f, situado uma altura h abaixo.' }
+
+  @{ Html = 'atividades/listas/energia/lista_1_energia_mecanica.html'
+     Slug = 'trabalho-energia/43-lista-grafico-mola'
+     Resumo = 'Grafico da forca elastica de uma mola em funcao da deformacao: uma reta pela origem que passa por 30 newtons em 0,15 metro.' }
+
+  @{ Html = 'atividades/listas/energia/lista_1_energia_mecanica.html'
+     Slug = 'trabalho-energia/44-lista-montanha-russa'
+     Resumo = 'Perfil de uma montanha-russa com quatro pontos: A a 20 metros, B a 5 metros, C a 12 metros e D no nivel do chao.' }
+
+  @{ Html = 'atividades/listas/energia/lista_1_energia_mecanica.html'
+     Slug = 'trabalho-energia/45-lista-pendulo'
+     Resumo = 'Pendulo simples solto do repouso com a massa 0,45 metro acima do ponto mais baixo da trajetoria.' }
+
+  @{ Html = 'atividades/listas/energia/lista_1_energia_mecanica.html'
+     Slug = 'trabalho-energia/46-lista-bloco-cai-sobre-mola'
+     Resumo = 'Bloco de 2 quilogramas solto 1,8 metro acima do topo de uma mola vertical de constante 2000 newtons por metro.' }
+
+  @{ Html = 'atividades/listas/energia/lista_2_dissipacao_potencia.html'
+     Slug = 'trabalho-energia/47-lista-escorregador'
+     Resumo = 'Escorregador de 3 metros de altura e 6 metros de pista.' }
+
+  @{ Html = 'atividades/listas/energia/lista_2_dissipacao_potencia.html'
+     Slug = 'trabalho-energia/48-lista-bola-quicando'
+     Resumo = 'Bola solta de 2 metros de altura que, depois do primeiro quique, sobe so ate 1,5 metro, e cada vez menos nos quiques seguintes.' }
+
+  @{ Html = 'atividades/listas/energia/lista_2_dissipacao_potencia.html'
+     Slug = 'trabalho-energia/49-lista-eficiencia-em-cadeia'
+     Resumo = 'Cadeia de tres etapas: usina com eficiencia de 40 por cento, linhas de transmissao com 90 por cento e motor com 80 por cento.' }
+
 )
 
 # ----------------------------------------------------------------------------
@@ -342,6 +529,21 @@ $TemasEscuros = @{
         --figa-pneu:         #0F1013;
         --figa-roda:         #6B7078;
         --figa-eixo:         #A8ABB2;
+        --figa-ec:           #60A5FA;
+        --figa-epg:          #4ADE80;
+        --figa-epe:          #F472B6;
+        --figa-term:         #F87171;
+        --figa-trab:         #FB923C;
+        --figa-barra:        #2A2F3A;
+        --figa-pele:         #C98F66;
+        --figa-roupa:        #CBD5E1;
+        --figa-agua:         #3F78B5;
+        --figa-branco:       #1F2128;
+        --figa-asfalto:      #2A2C33;
+        --figa-livro:        #2DD4BF;
+        --figa-concreto:     #3A3D45;
+        --figa-relevo:       #6B5A40;
+        --figa-luz:          #FBBF24;
 '@
 }
 

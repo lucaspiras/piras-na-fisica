@@ -324,7 +324,7 @@ Ao mover um ED de pasta, deixar no caminho antigo um `index.html` de redireciona
 
 ## Apresentações (`disciplinas/<disciplina>/apresentacoes/<slug>/`)
 
-Deck HTML de uma página só, sem build. Cada slide é um `<section>` envolvido num `<div class="slide-frame">`; o primeiro leva também `active`. Todo o CSS mora em `css/apresentacoes.css` e o script de navegação vai inline no fim do arquivo. O deck se monta sozinho a partir dos `<section>` presentes: **acrescentar ou remover slide não exige mexer em contador nenhum**.
+Deck HTML de uma página só, sem build. **Caminhos sempre relativos** (`../../../../css/apresentacoes.css`, idem para `img/` e para o link do portal): com `/css/...`, o deck abre sem estilo no Live Server, que serve a pasta geral `pirasnafisica`, e o slide aparece cortado. Cada slide é um `<section>` envolvido num `<div class="slide-frame">`; o primeiro leva também `active`. Todo o CSS mora em `css/apresentacoes.css` e o script de navegação vai inline no fim do arquivo. O deck se monta sozinho a partir dos `<section>` presentes: **acrescentar ou remover slide não exige mexer em contador nenhum**.
 
 Três atributos comandam o slide:
 

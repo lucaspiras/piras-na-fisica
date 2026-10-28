@@ -7,3 +7,9 @@ Thumbs.db
 # execucao, e o deck-stage.js pesa 136 KB. A versao publicavel, autossuficiente,
 # esta em apresentacoes/leis-de-newton/.
 apresentacoes/Apresentação Leis de Newton/
+
+# Originais em PowerPoint, guardados só como referência. O deck publicável de
+# energia mecânica mora em apresentacoes/energia-mecanica/ (com hífen); a pasta
+# com sublinhado é a do .pptx antigo e não vai para o repositório.
+*.pptx
+apresentacoes/energia_mecanica/
