@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mapa mental com a energia no centro, ligada as formas quimica, eletrica, mecanica, termica, nuclear e luminosa; entre formas vizinhas, um exemplo que transforma uma na outra, e em volta de cada forma exemplos e palavras associadas.
+     Autossuficiente: pode ser aberto direto no navegador, usado em <img src>,
+     inserido em slide ou importado em editor vetorial.
+     Fonte da geometria: disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html
+     Gerado por scripts/extrair-figuras-paginas.ps1 — nao editar a mao. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 870" width="3400" height="1740"
+     role="img" aria-labelledby="trabalho-energia-33-mapa-mental-energia">
+  <title id="trabalho-energia-33-mapa-mental-energia">Mapa mental com a energia no centro, ligada a seis formas: química, elétrica, mecânica, térmica, nuclear e luminosa. Entre cada par de formas vizinhas há um exemplo que transforma uma na outra: as pilhas, de química para elétrica; as usinas hidrelétricas, de mecânica para elétrica; o corpo, de química para mecânica e térmica; as usinas nucleares, de nuclear para térmica; o Sol e as estrelas, de nuclear para luminosa; e as plantas, de luminosa para química. Cada forma tem ainda exemplos e palavras em volta: alimentos, combustíveis, ligações entre átomos, digestão e gás de cozinha na química; lâmpadas, tomada, corrente elétrica, raios e conta de luz na elétrica; movimento, cinética e potencial, som, altura e mola, e vento na mecânica; fogo, calor e temperatura, agitação das partículas e atrito na térmica; o átomo, radioatividade, fusão e fissão na nuclear; painel solar, arco-íris, luz e cores e visão na luminosa.</title>
+  <style><![CDATA[
+    svg {
+      --figa-sol:          #F4A024;
+      --figa-sol-halo:     #FBE3BB;
+      --figa-terra:        #144E96;
+      --figa-terra-claro:  #3D86DB;
+      --figa-terra-borda:  #0C3A73;
+      --figa-atmosfera:    #9CC6F2;
+      --figa-continente:   #2F9E5E;
+      --figa-continente-2: #57BE7E;
+      --figa-contorno:     #16171A;
+      --figa-vetor:        #B3261E;
+      --figa-guia:         #A8ABB2;
+      --figa-texto:        #16171A;
+      --figa-rotulo:       #54565C;
+      --figa-rotulo-claro: #EAF1FC;
+      --figa-piano:        #1B1D22;
+      --figa-piano-2:      #33363E;
+      --figa-piano-luz:    #4A4E58;
+      --figa-teclas:       #F7F6F2;
+      --figa-lua:          #C9CCD4;
+      --figa-cratera:      #A2A6AE;
+      --figa-caixa:        #E0BE8E;
+      --figa-caixa-b:      #8A6234;
+      --figa-apoio:        #54565C;
+      --figa-hachura:      #A8ABB2;
+      --figa-bloco:        #DBEAFE;
+      --figa-bloco-b:      #3B82F6;
+      --figa-rampa:        #EDEFF2;
+      --figa-peso:         #9333EA;
+      --figa-normal:       #16A34A;
+      --figa-atrito:       #C2410C;
+      --figa-tracao:       #0E7490;
+      --figa-fio:          #334155;
+      --figa-polia:        #CBD5E1;
+      --figa-polia-b:      #475569;
+      --figa-cabine:       #F1F3F6;
+      --figa-vaso:         #C97B4A;
+      --figa-vaso-b:       #8A4B22;
+      --figa-folha:        #3F9E5E;
+      --figa-oleo:         #7FB6E8;
+      --figa-sofa:         #6E8CA8;
+      --figa-sofa-2:       #8FA9C0;
+      --figa-sofa-b:       #3E5670;
+      --figa-veloc:        #2563EB;
+      --figa-carro:        #C2544A;
+      --figa-carro-b:      #7A2E27;
+      --figa-vidro:        #BFD8EC;
+      --figa-pneu:         #23252B;
+      --figa-roda:         #A8ABB2;
+      --figa-eixo:         #54565C;
+      /* As formas de energia têm cor fixa nos dois decks de energia e nas listas:
+         a mesma energia, a mesma cor, em toda figura. A cinética herda o azul da
+         velocidade, que é de onde ela vem. Contraste no creme: 4,78 · 4,64 · 5,58 · 5,98. */
+      --figa-ec:           #2563EB;
+      --figa-epg:          #15803D;
+      --figa-epe:          #BE185D;
+      --figa-term:         #B91C1C;
+      --figa-trab:         #C2410C;
+      --figa-barra:        #E7E4DC;
+      --figa-pele:         #E9B48A;
+      --figa-roupa:        #334155;
+      --figa-agua:         #5B9BD5;
+      --figa-branco:       #FFFFFF;
+      --figa-asfalto:      #DCD9D1;
+      --figa-livro:        #0F766E;
+      --figa-concreto:     #CFCBC0;
+      --figa-relevo:       #B9A27F;
+      --figa-luz:          #E8930C;
+      /* química, elétrica, nuclear e luminosa só aparecem no mapa mental de abertura
+         do deck de energia mecânica; a mecânica, ali, usa o azul da cinética e a
+         térmica, o vermelho de sempre. A luminosa é mais escura que --figa-luz para
+         o nome do ramo ser legível no creme */
+      --figa-quim:         #0F766E;
+      --figa-elet:         #6D28D9;
+      --figa-nucl:         #4D7C0F;
+      --figa-lumi:         #B45309;
+      /* declaradas aqui, e não herdadas do deck, porque o .svg avulso gerado a
+         partir desta seção leva a paleta e mais nada */
+      --figa-fonte-t:    'IBM Plex Sans', system-ui, sans-serif;
+      --figa-fonte-m:    'IBM Plex Mono', ui-monospace, monospace;
+    }
+
+    /* Quem abrir o arquivo com o sistema no modo escuro ve a versao noturna.
+       Embutido aqui porque o .svg carregado como imagem e um documento a
+       parte e nao enxerga o data-theme da pagina. */
+    @media (prefers-color-scheme: dark) {
+      svg {
+        --figa-sol:          #F4B95A;
+        --figa-sol-halo:     #4A3A1C;
+        --figa-terra:        #0B2F5E;
+        --figa-terra-claro:  #2A6BB8;
+        --figa-terra-borda:  #7FAEE4;
+        --figa-atmosfera:    #4E7CB4;
+        --figa-continente:   #2E8B57;
+        --figa-continente-2: #46A96C;
+        --figa-contorno:     #E6E7EA;
+        --figa-vetor:        #F87171;
+        --figa-guia:         #6B7280;
+        --figa-texto:        #E6E7EA;
+        --figa-rotulo:       #A8ABB2;
+        --figa-rotulo-claro: #EAF1FC;
+        --figa-piano:        #0B0C0E;
+        --figa-piano-2:      #23252B;
+        --figa-piano-luz:    #3C4049;
+        --figa-teclas:       #E8E6E0;
+        --figa-lua:          #8B909A;
+        --figa-cratera:      #6B7078;
+        --figa-caixa:        #7A5A31;
+        --figa-caixa-b:      #D2AE79;
+        --figa-apoio:        #A8ABB2;
+        --figa-hachura:      #6B7280;
+        --figa-bloco:        #1E3A5F;
+        --figa-bloco-b:      #60A5FA;
+        --figa-rampa:        #1E293B;
+        --figa-peso:         #C084FC;
+        --figa-normal:       #4ADE80;
+        --figa-atrito:       #FB923C;
+        --figa-tracao:       #22D3EE;
+        --figa-fio:          #CBD5E1;
+        --figa-polia:        #475569;
+        --figa-polia-b:      #CBD5E1;
+        --figa-cabine:       #172033;
+        --figa-vaso:         #8A5433;
+        --figa-vaso-b:       #D89A6C;
+        --figa-folha:        #4FB877;
+        --figa-oleo:         #3F6E9E;
+        --figa-sofa:         #47637E;
+        --figa-sofa-2:       #5E7C99;
+        --figa-sofa-b:       #A9C0D6;
+        --figa-veloc:        #60A5FA;
+        --figa-carro:        #A84238;
+        --figa-carro-b:      #E8A79F;
+        --figa-vidro:        #3E5A73;
+        --figa-pneu:         #0F1013;
+        --figa-roda:         #6B7078;
+        --figa-eixo:         #A8ABB2;
+        --figa-ec:           #60A5FA;
+        --figa-epg:          #4ADE80;
+        --figa-epe:          #F472B6;
+        --figa-term:         #F87171;
+        --figa-trab:         #FB923C;
+        --figa-barra:        #2A2F3A;
+        --figa-pele:         #C98F66;
+        --figa-roupa:        #CBD5E1;
+        --figa-agua:         #3F78B5;
+        --figa-branco:       #1F2128;
+        --figa-asfalto:      #2A2C33;
+        --figa-livro:        #2DD4BF;
+        --figa-concreto:     #3A3D45;
+        --figa-relevo:       #6B5A40;
+        --figa-luz:          #FBBF24;
+        --figa-quim:         #2DD4BF;
+        --figa-elet:         #A78BFA;
+        --figa-nucl:         #A3E635;
+        --figa-lumi:         #FBBF24;
+      }
+    }
+
+    .fga-sol        { fill: var(--figa-sol); stroke: var(--figa-contorno); stroke-width: 3; }
+    .fga-halo       { fill: none; stroke: var(--figa-sol-halo); stroke-width: 10; }
+    .fga-raio       { fill: none; stroke: var(--figa-sol); stroke-width: 5; stroke-linecap: round; }
+    .fga-terra      { fill: var(--figa-terra); stroke: var(--figa-contorno); stroke-width: 3; }
+    .fga-continente { fill: var(--figa-continente); }
+    .fga-oc-raso    { stop-color: var(--figa-terra-claro); }
+    .fga-oc-fundo   { stop-color: var(--figa-terra); }
+    .fga-cont       { fill: var(--figa-continente); }
+    .fga-cont-luz   { fill: var(--figa-continente-2); }
+    .fga-crosta     { fill: none; stroke: var(--figa-terra-borda); stroke-width: 3; }
+    .fga-lua        { fill: var(--figa-lua); stroke: var(--figa-contorno); stroke-width: 2.5; }
+    .fga-cratera    { fill: var(--figa-cratera); }
+    .fga-centro     { fill: var(--figa-teclas); stroke: var(--figa-contorno); stroke-width: 1.5; }
+    .fga-caixa      { fill: var(--figa-caixa); stroke: var(--figa-caixa-b); stroke-width: 2.5; }
+    .fga-ripa       { fill: none; stroke: var(--figa-caixa-b); stroke-width: 2; }
+    .fga-chao       { fill: none; stroke: var(--figa-apoio); stroke-width: 3; stroke-linecap: round; }
+    .fga-hachura    { fill: none; stroke: var(--figa-hachura); stroke-width: 1.6; }
+    .fga-bloco      { fill: var(--figa-bloco); stroke: var(--figa-bloco-b); stroke-width: 2.5; }
+    .fga-rampa      { fill: var(--figa-rampa); stroke: var(--figa-apoio); stroke-width: 2.5; stroke-linejoin: round; }
+    .fga-ang        { fill: none; stroke: var(--figa-atrito); stroke-width: 1.8; }
+    .fga-v-peso     { fill: none; stroke: var(--figa-peso); stroke-width: 4; }
+    .fga-v-normal   { fill: none; stroke: var(--figa-normal); stroke-width: 4; }
+    .fga-v-atrito   { fill: none; stroke: var(--figa-atrito); stroke-width: 4; }
+    .fga-v-tracao   { fill: none; stroke: var(--figa-tracao); stroke-width: 4; }
+    .fga-v-acel     { fill: none; stroke: var(--figa-atrito); stroke-width: 4; }
+    .fga-fio        { fill: none; stroke: var(--figa-fio); stroke-width: 3; stroke-linecap: round; }
+    .fga-polia      { fill: var(--figa-polia); stroke: var(--figa-polia-b); stroke-width: 2.5; }
+    .fga-eixo       { fill: var(--figa-polia-b); }
+    .fga-cabine     { fill: var(--figa-cabine); stroke: var(--figa-apoio); stroke-width: 2.5; }
+    .fga-vaso       { fill: var(--figa-vaso); stroke: var(--figa-vaso-b); stroke-width: 2.5; }
+    .fga-folha      { fill: var(--figa-folha); }
+    .fga-caule      { fill: none; stroke: var(--figa-folha); stroke-width: 3; stroke-linecap: round; }
+    .fga-patim      { fill: none; stroke: var(--figa-apoio); stroke-width: 5; stroke-linecap: round; }
+    .fga-contato    { fill: none; stroke: var(--figa-atrito); stroke-width: 3; }
+    .fga-oleo       { fill: var(--figa-oleo); }
+    .fga-perp       { fill: none; stroke: var(--figa-rotulo); stroke-width: 2; }
+    .fga-sofa       { fill: var(--figa-sofa); stroke: var(--figa-sofa-b); stroke-width: 2.5; }
+    .fga-sofa-2     { fill: var(--figa-sofa-2); stroke: var(--figa-sofa-b); stroke-width: 2.5; }
+    .fga-pe         { fill: var(--figa-caixa-b); }
+    .fga-v-veloc    { fill: none; stroke: var(--figa-veloc); stroke-width: 4; }
+    .fga-p-veloc    { fill: var(--figa-veloc); }
+    .fga-m-veloc    { font-family: var(--figa-fonte-m); font-size: 19px; font-weight: 700; fill: var(--figa-veloc); }
+    .fga-carro      { fill: var(--figa-carro); stroke: var(--figa-carro-b); stroke-width: 2.5; }
+    .fga-vidro      { fill: var(--figa-vidro); stroke: var(--figa-carro-b); stroke-width: 2; }
+    .fga-pneu       { fill: var(--figa-pneu); }
+    .fga-roda       { fill: var(--figa-roda); }
+    .fga-travada    { fill: none; stroke: var(--figa-vetor); stroke-width: 5; stroke-linecap: round; }
+    .fga-marca      { fill: none; stroke: var(--figa-pneu); stroke-width: 4; opacity: .45; }
+    .fga-giro       { fill: none; stroke: var(--figa-veloc); stroke-width: 4; }
+    .fga-eixo-x     { fill: none; stroke: var(--figa-eixo); stroke-width: 2.5; }
+    .fga-eixo-p     { fill: var(--figa-eixo); }
+    .fga-eixo-t     { font-family: var(--figa-fonte-m); font-size: 20px; font-weight: 700; fill: var(--figa-eixo); }
+    .fga-decomp     { fill: none; stroke: var(--figa-peso); stroke-width: 2.5; stroke-dasharray: 7 5; }
+    .fga-tilt       { transform-box: view-box; transform-origin: 60px 179px; animation: fga-inclina 7s ease-in-out infinite; }
+    .fga-desce      { animation: fga-desliza 7s ease-in-out infinite; }
+    .fga-v-forca    { fill: none; stroke: var(--figa-vetor); stroke-width: 4; }
+    .fga-p-peso     { fill: var(--figa-peso); }
+    .fga-p-normal   { fill: var(--figa-normal); }
+    .fga-p-atrito   { fill: var(--figa-atrito); }
+    .fga-p-tracao   { fill: var(--figa-tracao); }
+    .fga-m-peso     { font-family: var(--figa-fonte-m); font-size: 19px; font-weight: 700; fill: var(--figa-peso); }
+    .fga-m-normal   { font-family: var(--figa-fonte-m); font-size: 19px; font-weight: 700; fill: var(--figa-normal); }
+    .fga-m-atrito   { font-family: var(--figa-fonte-m); font-size: 19px; font-weight: 700; fill: var(--figa-atrito); }
+    .fga-m-tracao   { font-family: var(--figa-fonte-m); font-size: 19px; font-weight: 700; fill: var(--figa-tracao); }
+    .fga-tit        { font-family: var(--figa-fonte-t); font-size: 19px; font-weight: 700; fill: var(--figa-texto); }
+    .fga-rel        { font-family: var(--figa-fonte-m); font-size: 20px; font-weight: 700; fill: var(--figa-texto); }
+    .fga-cota-t     { font-family: var(--figa-fonte-m); font-size: 18px; font-weight: 700; fill: var(--figa-rotulo); }
+    .fga-atm        { fill: none; stroke: var(--figa-atmosfera); stroke-width: 12; opacity: .55; }
+    .fga-guia       { fill: none; stroke: var(--figa-guia); stroke-width: 2; stroke-dasharray: 7 6; }
+    .fga-cota       { fill: none; stroke: var(--figa-guia); stroke-width: 2; }
+    .fga-vetor      { fill: none; stroke: var(--figa-vetor); stroke-width: 5; }
+    .fga-ponta      { fill: var(--figa-vetor); }
+    .fga-piano      { fill: var(--figa-piano); stroke: var(--figa-contorno); stroke-width: 2.5; }
+    .fga-piano-2    { fill: var(--figa-piano-2); stroke: var(--figa-contorno); stroke-width: 2.5; }
+    .fga-piano-luz  { fill: var(--figa-piano-luz); }
+    .fga-haste      { fill: none; stroke: var(--figa-piano-luz); stroke-width: 4; stroke-linecap: round; }
+    .fga-teclas     { fill: var(--figa-teclas); stroke: var(--figa-contorno); stroke-width: 2.5; }
+    .fga-tecla-p    { fill: var(--figa-piano); }
+    .fga-ec         { fill: var(--figa-ec); }
+    .fga-epg        { fill: var(--figa-epg); }
+    .fga-epe        { fill: var(--figa-epe); }
+    .fga-term       { fill: var(--figa-term); }
+    .fga-trab       { fill: var(--figa-trab); }
+    .fga-trilho     { fill: var(--figa-barra); }
+    .fga-no         { fill: var(--figa-branco); stroke: var(--figa-barra); stroke-width: 3; }
+    .fga-grade      { fill: none; stroke: var(--figa-barra); stroke-width: 2; }
+    .fga-fantasma   { opacity: .35; }
+    .fga-p-trab     { fill: var(--figa-trab); }
+    .fga-p-ec       { fill: var(--figa-ec); }
+    .fga-p-epg      { fill: var(--figa-epg); }
+    .fga-p-epe      { fill: var(--figa-epe); }
+    .fga-p-term     { fill: var(--figa-term); }
+    .fga-p-veloc    { fill: var(--figa-veloc); }
+    .fga-p-guia     { fill: var(--figa-guia); }
+    .fga-p-texto    { fill: var(--figa-texto); }
+    .fga-v-trab     { fill: none; stroke: var(--figa-trab); stroke-width: 5; }
+    .fga-v-epe      { fill: none; stroke: var(--figa-epe); stroke-width: 5; }
+    .fga-comp-trab  { fill: none; stroke: var(--figa-trab); stroke-width: 5; stroke-opacity: .45; }
+    .fga-e-tit      { font-family: var(--figa-fonte-t); font-size: 28px; font-weight: 600; fill: var(--figa-texto); }
+    .fga-e-rot      { font-family: var(--figa-fonte-t); font-size: 24px; fill: var(--figa-rotulo); }
+    .fga-e-m        { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-texto); }
+    .fga-e-mp       { font-family: var(--figa-fonte-m); font-size: 22px; font-weight: 500; fill: var(--figa-rotulo); }
+    .fga-e-m-trab   { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-trab); }
+    .fga-e-m-ec     { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-ec); }
+    .fga-e-m-epg    { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-epg); }
+    .fga-e-m-epe    { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-epe); }
+    .fga-e-m-term   { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-term); }
+    .fga-e-m-v      { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-veloc); }
+    .fga-e-m-peso   { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-peso); }
+    .fga-e-m-normal { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-normal); }
+    .fga-e-m-atrito { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-atrito); }
+    .fga-e-m-luz    { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-luz); }
+    .fga-e-m-claro  { font-family: var(--figa-fonte-m); font-size: 27px; font-weight: 700; fill: var(--figa-branco); }
+    .fga-e-mp-term  { font-family: var(--figa-fonte-m); font-size: 22px; font-weight: 500; fill: var(--figa-term); }
+    .fga-e-mp-epg   { font-family: var(--figa-fonte-m); font-size: 22px; font-weight: 500; fill: var(--figa-epg); }
+    .fga-e-mp-ec    { font-family: var(--figa-fonte-m); font-size: 22px; font-weight: 500; fill: var(--figa-ec); }
+    .fga-pessoa     { fill: none; stroke: var(--figa-roupa); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+    .fga-cabeca     { fill: var(--figa-pele); stroke: var(--figa-roupa); stroke-width: 4; }
+    .fga-maca       { fill: var(--figa-carro); stroke: var(--figa-carro-b); stroke-width: 2.5; }
+    .fga-roda-b     { fill: none; stroke: var(--figa-roupa); stroke-width: 6; }
+    .fga-quadro     { fill: none; stroke: var(--figa-roupa); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+    .fga-rastro     { fill: none; stroke: var(--figa-guia); stroke-width: 4; stroke-linecap: round; }
+    .fga-calor      { fill: none; stroke: var(--figa-term); stroke-width: 4; stroke-linecap: round; }
+    .fga-metal      { fill: var(--figa-polia); stroke: var(--figa-polia-b); stroke-width: 2.5; }
+    .fga-anilha     { fill: var(--figa-pneu); }
+    .fga-asfalto    { fill: var(--figa-asfalto); }
+    .fga-faixa      { fill: none; stroke: var(--figa-branco); stroke-width: 4; stroke-dasharray: 30 24; }
+    .fga-largada    { fill: none; stroke: var(--figa-texto); stroke-width: 3; stroke-dasharray: 10 8; }
+    .fga-marca-pare { fill: none; stroke: var(--figa-term); stroke-width: 5; }
+    .fga-livro      { fill: var(--figa-livro); }
+    .fga-ripa-livro { fill: none; stroke: var(--figa-branco); stroke-width: 2; }
+    .fga-zero       { fill: none; stroke: var(--figa-epg); stroke-width: 4; stroke-dasharray: 12 8; }
+    .fga-zero2      { fill: none; stroke: var(--figa-ec); stroke-width: 4; stroke-dasharray: 12 8; }
+    .fga-predio     { fill: var(--figa-concreto); stroke: var(--figa-apoio); stroke-width: 2.5; }
+    .fga-poco       { fill: var(--figa-cabine); stroke: var(--figa-apoio); stroke-width: 2; }
+    .fga-elevador   { fill: var(--figa-bloco); stroke: var(--figa-bloco-b); stroke-width: 2.5; }
+    .fga-escada     { fill: none; stroke: var(--figa-apoio); stroke-width: 5; stroke-linejoin: round; }
+    .fga-escada-cheia { fill: var(--figa-concreto); stroke: var(--figa-apoio); stroke-width: 3; stroke-linejoin: round; }
+    .fga-relevo     { fill: var(--figa-relevo); }
+    .fga-agua       { fill: var(--figa-agua); }
+    .fga-concreto   { fill: var(--figa-concreto); stroke: var(--figa-apoio); stroke-width: 2.5; }
+    .fga-cano       { fill: none; stroke: var(--figa-apoio); stroke-width: 26; stroke-linecap: round; }
+    .fga-pas        { fill: none; stroke: var(--figa-polia-b); stroke-width: 5; stroke-linecap: round; }
+    .fga-fio-luz    { fill: none; stroke: var(--figa-fio); stroke-width: 3; }
+    .fga-casa       { fill: var(--figa-cabine); stroke: var(--figa-apoio); stroke-width: 3; stroke-linejoin: round; }
+    .fga-luz        { fill: var(--figa-sol-halo); stroke: var(--figa-luz); stroke-width: 3; }
+    .fga-mola       { fill: none; stroke: var(--figa-fio); stroke-width: 4; stroke-linejoin: round; stroke-linecap: round; }
+    .fga-reta-epe   { fill: none; stroke: var(--figa-epe); stroke-width: 5; stroke-linecap: round; }
+    .fga-area-epe   { fill: var(--figa-epe); fill-opacity: .2; stroke: var(--figa-epe); stroke-width: 2; }
+    .fga-ponto-epe  { fill: var(--figa-epe); }
+    .fga-bola       { fill: var(--figa-carro); stroke: var(--figa-carro-b); stroke-width: 3; }
+    .fga-contorno-trac { fill: none; stroke: var(--figa-guia); stroke-width: 3; stroke-dasharray: 9 7; }
+    .fga-pista-u    { fill: none; stroke: var(--figa-apoio); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+    .fga-prancha    { fill: var(--figa-roupa); }
+    .fga-rotulo     { fill: var(--figa-branco); stroke: var(--figa-texto); stroke-width: 4; }
+    .fga-rotulo-linha { fill: none; stroke: var(--figa-texto); stroke-width: 6; }
+    .fga-moldura    { fill: var(--figa-branco); stroke: var(--figa-guia); stroke-width: 2; }
+    .fga-vara       { fill: none; stroke: var(--figa-caixa-b); stroke-width: 9; stroke-linecap: round; }
+    .fga-colchao    { fill: var(--figa-bloco); stroke: var(--figa-bloco-b); stroke-width: 3; }
+    .fga-torre      { fill: none; stroke: var(--figa-polia-b); stroke-width: 5; stroke-linejoin: round; }
+    .fga-mostrador  { fill: var(--figa-branco); stroke: var(--figa-texto); stroke-width: 3; }
+    .fga-ponteiro   { fill: none; stroke: var(--figa-texto); stroke-width: 5; stroke-linecap: round; }
+    .fga-banda-ent  { fill: var(--figa-roupa); }
+    .fga-banda-luz  { fill: var(--figa-luz); }
+    .fga-banda-calor { fill: var(--figa-term); fill-opacity: .8; }
+    .fga-banda-perda { fill: var(--figa-term); fill-opacity: .18; }
+    .fga-chamine    { fill: var(--figa-roupa); }
+    .fga-fumaca     { fill: var(--figa-guia); fill-opacity: .7; }
+    .fga-carvao     { fill: var(--figa-pneu); }
+    .fga-no-centro  { fill: var(--figa-branco); stroke: var(--figa-texto); stroke-width: 3; }
+    .fga-ramo-quim  { fill: none; stroke: var(--figa-quim); stroke-width: 4; stroke-linecap: round; }
+    .fga-ramo-elet  { fill: none; stroke: var(--figa-elet); stroke-width: 4; stroke-linecap: round; }
+    .fga-ramo-mec   { fill: none; stroke: var(--figa-ec); stroke-width: 4; stroke-linecap: round; }
+    .fga-ramo-term  { fill: none; stroke: var(--figa-term); stroke-width: 4; stroke-linecap: round; }
+    .fga-ramo-nucl  { fill: none; stroke: var(--figa-nucl); stroke-width: 4; stroke-linecap: round; }
+    .fga-ramo-lumi  { fill: none; stroke: var(--figa-lumi); stroke-width: 4; stroke-linecap: round; }
+    .fga-hub-nucl   { fill: var(--figa-branco); stroke: var(--figa-nucl); stroke-width: 2.5; }
+    .fga-hub-lumi   { fill: var(--figa-branco); stroke: var(--figa-lumi); stroke-width: 2.5; }
+    .fga-lig-nucl   { fill: none; stroke: var(--figa-nucl); stroke-width: 2.5; stroke-linecap: round; }
+    .fga-lig-lumi   { fill: none; stroke: var(--figa-lumi); stroke-width: 2.5; stroke-linecap: round; }
+    .fga-sat-nucl   { fill: none; stroke: var(--figa-nucl); stroke-width: 1.6; stroke-opacity: .55; }
+    .fga-sat-lumi   { fill: none; stroke: var(--figa-lumi); stroke-width: 1.6; stroke-opacity: .55; }
+    .fga-pto-nucl   { fill: var(--figa-nucl); }
+    .fga-pto-lumi   { fill: var(--figa-lumi); }
+    .fga-e-hub-nucl { font-family: var(--figa-fonte-t); font-size: 28px; font-weight: 600; fill: var(--figa-nucl); }
+    .fga-e-hub-lumi { font-family: var(--figa-fonte-t); font-size: 28px; font-weight: 600; fill: var(--figa-lumi); }
+    .fga-orbita     { fill: none; stroke: var(--figa-nucl); stroke-width: 2.5; }
+    .fga-proton     { fill: var(--figa-carro); stroke: var(--figa-carro-b); stroke-width: 1.5; }
+    .fga-neutron    { fill: var(--figa-polia); stroke: var(--figa-polia-b); stroke-width: 1.5; }
+    .fga-eletron    { fill: var(--figa-veloc); }
+    .fga-hub-quim   { fill: var(--figa-branco); stroke: var(--figa-quim); stroke-width: 2.5; }
+    .fga-hub-elet   { fill: var(--figa-branco); stroke: var(--figa-elet); stroke-width: 2.5; }
+    .fga-hub-mec    { fill: var(--figa-branco); stroke: var(--figa-ec); stroke-width: 2.5; }
+    .fga-hub-term   { fill: var(--figa-branco); stroke: var(--figa-term); stroke-width: 2.5; }
+    .fga-lig-quim   { fill: none; stroke: var(--figa-quim); stroke-width: 2.5; stroke-linecap: round; }
+    .fga-lig-elet   { fill: none; stroke: var(--figa-elet); stroke-width: 2.5; stroke-linecap: round; }
+    .fga-lig-mec    { fill: none; stroke: var(--figa-ec); stroke-width: 2.5; stroke-linecap: round; }
+    .fga-lig-term   { fill: none; stroke: var(--figa-term); stroke-width: 2.5; stroke-linecap: round; }
+    .fga-sat-quim   { fill: none; stroke: var(--figa-quim); stroke-width: 1.6; stroke-opacity: .55; }
+    .fga-sat-elet   { fill: none; stroke: var(--figa-elet); stroke-width: 1.6; stroke-opacity: .55; }
+    .fga-sat-mec    { fill: none; stroke: var(--figa-ec); stroke-width: 1.6; stroke-opacity: .55; }
+    .fga-sat-term   { fill: none; stroke: var(--figa-term); stroke-width: 1.6; stroke-opacity: .55; }
+    .fga-pto-quim   { fill: var(--figa-quim); }
+    .fga-pto-elet   { fill: var(--figa-elet); }
+    .fga-pto-mec    { fill: var(--figa-ec); }
+    .fga-pto-term   { fill: var(--figa-term); }
+    .fga-e-sat      { font-family: var(--figa-fonte-t); font-size: 21px; font-weight: 500; fill: var(--figa-rotulo); }
+    .fga-e-img      { font-family: var(--figa-fonte-t); font-size: 23px; font-weight: 600; fill: var(--figa-texto); }
+    .fga-e-imgs     { font-family: var(--figa-fonte-m); font-size: 16px; font-weight: 500; fill: var(--figa-rotulo); }
+    .fga-e-centro   { font-family: var(--figa-fonte-t); font-size: 42px; font-weight: 600; fill: var(--figa-texto); }
+    .fga-e-hub-quim { font-family: var(--figa-fonte-t); font-size: 28px; font-weight: 600; fill: var(--figa-quim); }
+    .fga-e-hub-elet { font-family: var(--figa-fonte-t); font-size: 28px; font-weight: 600; fill: var(--figa-elet); }
+    .fga-e-hub-mec  { font-family: var(--figa-fonte-t); font-size: 28px; font-weight: 600; fill: var(--figa-ec); }
+    .fga-e-hub-term { font-family: var(--figa-fonte-t); font-size: 28px; font-weight: 600; fill: var(--figa-term); }
+    .fga-painel     { fill: var(--figa-terra); stroke: var(--figa-contorno); stroke-width: 2; stroke-linejoin: round; }
+    .fga-painel-grade { fill: none; stroke: var(--figa-branco); stroke-width: 1.5; }
+    .fga-pilha-banda { fill: var(--figa-sol); }
+    .fga-chama-in   { fill: var(--figa-sol); }
+    .fga-gota       { fill: var(--figa-branco); }
+    .fga-anda       { animation: fga-anda 6s linear infinite; }
+    .fga-enche      { transform-box: fill-box; transform-origin: left center; animation: fga-enche 6s linear infinite; }
+    .fga-sobe       { animation: fga-sobe 6s linear infinite; }
+    .fga-enche-v    { transform-box: fill-box; transform-origin: center bottom; animation: fga-enche-v 6s linear infinite; }
+    .fga-freia-1    { animation: fga-freia-1 7s infinite; }
+    .fga-freia-2    { animation: fga-freia-2 7s infinite; }
+    .fga-oscila     { animation: fga-oscila 3.2s ease-in-out infinite; }
+    .fga-mola-estica { transform-box: fill-box; transform-origin: left center; animation: fga-mola-estica 3.2s ease-in-out infinite; }
+    .fga-forca-mola { transform-box: fill-box; transform-origin: left center; animation: fga-forca-mola 3.2s ease-in-out infinite; }
+    .fga-area-cresce { transform-box: fill-box; transform-origin: left bottom; animation: fga-area-cresce 6s linear infinite; }
+    .fga-ponto-anda { animation: fga-ponto-anda 6s linear infinite; }
+    .fga-sobe-rapido { animation: fga-sobe-rapido 8s linear infinite; }
+    .fga-sobe-lento { animation: fga-sobe-lento 8s linear infinite; }
+    .fga-fluxo      { fill: none; stroke: var(--figa-trab); stroke-width: 5; stroke-dasharray: 12 10; animation: fga-flui 1.4s linear infinite; }
+    .fga-fluxo-agua { fill: none; stroke: var(--figa-agua); stroke-width: 10; stroke-linecap: round; stroke-dasharray: 16 18; animation: fga-flui 1s linear infinite; }
+    .fga-fluxo-claro { fill: none; stroke: var(--figa-branco); stroke-width: 3; stroke-opacity: .7; stroke-dasharray: 12 10; animation: fga-flui 1.4s linear infinite; }
+    .fga-t          { font-family: var(--figa-fonte-t); font-size: 20px; font-weight: 600; fill: var(--figa-texto); }
+    .fga-rot        { font-family: var(--figa-fonte-t); font-size: 17px; fill: var(--figa-rotulo); }
+    .fga-rot-claro  { font-family: var(--figa-fonte-t); font-size: 17px; fill: var(--figa-rotulo-claro); }
+    .fga-m          { font-family: var(--figa-fonte-m); font-size: 20px; font-weight: 500; fill: var(--figa-vetor); }
+    .fga-mg         { font-family: var(--figa-fonte-m); font-size: 19px; font-weight: 500; fill: var(--figa-rotulo); }
+  ]]></style>
+  <path class="fga-ramo-quim" d="M770,401 L655,241"/>
+  <path class="fga-ramo-elet" d="M930,401 L1045,241"/>
+  <path class="fga-ramo-mec" d="M965,440 L1198,440"/>
+  <path class="fga-ramo-term" d="M930,479 L1045,639"/>
+  <path class="fga-ramo-nucl" d="M770,479 L655,639"/>
+  <path class="fga-ramo-lumi" d="M735,440 L502,440"/>
+  <path class="fga-lig-quim" d="M722,200 C745,200 745,74 794,74"/>
+  <path class="fga-lig-elet" d="M978,200 C955,200 955,74 906,74"/>
+  <path class="fga-lig-elet" d="M1162,198 C1220,195 1262,170 1280,142"/>
+  <path class="fga-lig-elet" d="M1162,215 C1280,215 1400,250 1450,262"/>
+  <path class="fga-lig-mec" d="M1340,414 C1370,395 1420,375 1470,364"/>
+  <path class="fga-lig-mec" d="M1382,440 C1450,440 1500,460 1535,466"/>
+  <path class="fga-lig-mec" d="M1340,466 C1370,520 1430,580 1474,604"/>
+  <path class="fga-lig-term" d="M1162,665 C1300,665 1400,650 1468,645"/>
+  <path class="fga-lig-term" d="M1120,691 C1160,730 1215,768 1250,780"/>
+  <path class="fga-lig-term" d="M978,675 C930,690 920,735 902,748"/>
+  <path class="fga-lig-nucl" d="M722,675 C770,690 780,735 798,748"/>
+  <path class="fga-lig-nucl" d="M580,691 C540,730 490,770 462,782"/>
+  <path class="fga-lig-nucl" d="M538,665 C430,665 320,650 252,642"/>
+  <path class="fga-lig-lumi" d="M360,466 C330,520 275,570 240,594"/>
+  <path class="fga-lig-lumi" d="M318,440 L190,440"/>
+  <path class="fga-lig-lumi" d="M360,414 C345,392 315,375 292,362"/>
+  <path class="fga-lig-quim" d="M538,215 C430,215 320,250 258,258"/>
+  <path class="fga-lig-quim" d="M590,189 C570,150 510,105 470,95"/>
+  <path class="fga-lig-quim" d="M538,200 C460,198 380,190 345,186"/>
+  <line class="fga-sat-quim" x1="630" y1="189" x2="630" y2="115"/>
+  <circle class="fga-pto-quim" cx="630" cy="115" r="4"/>
+  <text class="fga-e-sat" x="630" y="103" text-anchor="middle">ligações entre átomos</text>
+  <line class="fga-sat-quim" x1="672" y1="241" x2="725" y2="274"/>
+  <circle class="fga-pto-quim" cx="725" cy="274" r="4"/>
+  <text class="fga-e-sat" x="735" y="281" text-anchor="start">digestão</text>
+  <line class="fga-sat-quim" x1="631" y1="241" x2="633" y2="315"/>
+  <circle class="fga-pto-quim" cx="633" cy="315" r="4"/>
+  <text class="fga-e-sat" x="633" y="341" text-anchor="middle">gás de cozinha</text>
+  <line class="fga-sat-elet" x1="1070" y1="189" x2="1070" y2="115"/>
+  <circle class="fga-pto-elet" cx="1070" cy="115" r="4"/>
+  <text class="fga-e-sat" x="1070" y="103" text-anchor="middle">tomada</text>
+  <line class="fga-sat-elet" x1="1085" y1="189" x2="1120" y2="128"/>
+  <circle class="fga-pto-elet" cx="1120" cy="128" r="4"/>
+  <text class="fga-e-sat" x="1130" y="135" text-anchor="start">raios</text>
+  <line class="fga-sat-elet" x1="1025" y1="241" x2="968" y2="274"/>
+  <circle class="fga-pto-elet" cx="968" cy="274" r="4"/>
+  <text class="fga-e-sat" x="958" y="281" text-anchor="end">conta de luz</text>
+  <line class="fga-sat-elet" x1="1099" y1="241" x2="1153" y2="290"/>
+  <circle class="fga-pto-elet" cx="1153" cy="290" r="4"/>
+  <text class="fga-e-sat" x="1163" y="297" text-anchor="start">corrente elétrica</text>
+  <line class="fga-sat-lumi" x1="405" y1="414" x2="393" y2="343"/>
+  <circle class="fga-pto-lumi" cx="393" cy="343" r="4"/>
+  <text class="fga-e-sat" x="393" y="331" text-anchor="middle">arco-íris</text>
+  <line class="fga-sat-lumi" x1="428" y1="466" x2="474" y2="532"/>
+  <circle class="fga-pto-lumi" cx="474" cy="532" r="4"/>
+  <text class="fga-e-sat" x="484" y="539" text-anchor="start">luz e cores</text>
+  <line class="fga-sat-lumi" x1="412" y1="466" x2="419" y2="538"/>
+  <circle class="fga-pto-lumi" cx="419" cy="538" r="4"/>
+  <text class="fga-e-sat" x="419" y="564" text-anchor="middle">visão</text>
+  <line class="fga-sat-mec" x1="1274" y1="414" x2="1231" y2="345"/>
+  <circle class="fga-pto-mec" cx="1231" cy="345" r="4"/>
+  <text class="fga-e-sat" x="1221" y="352" text-anchor="end">cinética e potencial</text>
+  <line class="fga-sat-mec" x1="1226" y1="414" x2="1181" y2="396"/>
+  <circle class="fga-pto-mec" cx="1181" cy="396" r="4"/>
+  <text class="fga-e-sat" x="1171" y="403" text-anchor="end">som</text>
+  <line class="fga-sat-mec" x1="1226" y1="466" x2="1181" y2="484"/>
+  <circle class="fga-pto-mec" cx="1181" cy="484" r="4"/>
+  <text class="fga-e-sat" x="1171" y="491" text-anchor="end">vento</text>
+  <line class="fga-sat-mec" x1="1274" y1="466" x2="1231" y2="535"/>
+  <circle class="fga-pto-mec" cx="1231" cy="535" r="4"/>
+  <text class="fga-e-sat" x="1221" y="542" text-anchor="end">altura e mola</text>
+  <line class="fga-sat-term" x1="1065" y1="639" x2="1053" y2="567"/>
+  <circle class="fga-pto-term" cx="1053" cy="567" r="4"/>
+  <text class="fga-e-sat" x="1053" y="555" text-anchor="middle">atrito</text>
+  <line class="fga-sat-term" x1="1103" y1="639" x2="1165" y2="591"/>
+  <circle class="fga-pto-term" cx="1165" cy="591" r="4"/>
+  <text class="fga-e-sat" x="1175" y="598" text-anchor="start">calor e temperatura</text>
+  <line class="fga-sat-term" x1="1070" y1="691" x2="1070" y2="757"/>
+  <circle class="fga-pto-term" cx="1070" cy="757" r="4"/>
+  <text class="fga-e-sat" x="1070" y="783" text-anchor="middle">agitação das partículas</text>
+  <line class="fga-sat-nucl" x1="585" y1="639" x2="528" y2="606"/>
+  <circle class="fga-pto-nucl" cx="528" cy="606" r="4"/>
+  <text class="fga-e-sat" x="518" y="613" text-anchor="end">radioatividade</text>
+  <line class="fga-sat-nucl" x1="618" y1="691" x2="589" y2="756"/>
+  <circle class="fga-pto-nucl" cx="589" cy="756" r="4"/>
+  <text class="fga-e-sat" x="579" y="763" text-anchor="end">fusão</text>
+  <line class="fga-sat-nucl" x1="642" y1="691" x2="671" y2="756"/>
+  <circle class="fga-pto-nucl" cx="671" cy="756" r="4"/>
+  <text class="fga-e-sat" x="681" y="763" text-anchor="start">fissão</text>
+  <ellipse class="fga-no-centro" cx="850" cy="440" rx="112" ry="52"/>
+  <text class="fga-e-centro" x="850" y="455" text-anchor="middle">Energia</text>
+  <rect class="fga-hub-quim" x="538" y="189" width="184" height="52" rx="10"/>
+  <text class="fga-e-hub-quim" x="630" y="225" text-anchor="middle">Química</text>
+  <rect class="fga-hub-elet" x="978" y="189" width="184" height="52" rx="10"/>
+  <text class="fga-e-hub-elet" x="1070" y="225" text-anchor="middle">Elétrica</text>
+  <rect class="fga-hub-mec" x="1198" y="414" width="184" height="52" rx="10"/>
+  <text class="fga-e-hub-mec" x="1290" y="450" text-anchor="middle">Mecânica</text>
+  <rect class="fga-hub-term" x="978" y="639" width="184" height="52" rx="10"/>
+  <text class="fga-e-hub-term" x="1070" y="675" text-anchor="middle">Térmica</text>
+  <rect class="fga-hub-nucl" x="538" y="639" width="184" height="52" rx="10"/>
+  <text class="fga-e-hub-nucl" x="630" y="675" text-anchor="middle">Nuclear</text>
+  <rect class="fga-hub-lumi" x="318" y="414" width="184" height="52" rx="10"/>
+  <text class="fga-e-hub-lumi" x="410" y="450" text-anchor="middle">Luminosa</text>
+  <g transform="translate(850 74) scale(0.82) translate(-856 -77)"><rect class="fga-pneu" x="790" y="52" width="120" height="50" rx="6"/><rect class="fga-pilha-banda" x="872" y="52" width="38" height="50" rx="6"/><rect class="fga-metal" x="910" y="67" width="12" height="20" rx="2"/></g>
+  <text class="fga-e-img" x="850" y="122" text-anchor="middle">pilhas</text>
+  <text class="fga-e-imgs" x="850" y="144" text-anchor="middle">química → elétrica</text>
+  <g transform="translate(1290 92) scale(0.68) translate(-1560 -113)"><line class="fga-raio" x1="1560" y1="62" x2="1560" y2="46"/><line class="fga-raio" x1="1508" y1="115" x2="1492" y2="115"/><line class="fga-raio" x1="1612" y1="115" x2="1628" y2="115"/><line class="fga-raio" x1="1522" y1="77" x2="1511" y2="66"/><line class="fga-raio" x1="1598" y1="77" x2="1609" y2="66"/><circle class="fga-luz" cx="1560" cy="115" r="38"/><path class="fga-fio-luz" d="M1548,140 L1552,112 L1560,126 L1568,112 L1572,140"/><rect class="fga-metal" x="1543" y="150" width="34" height="30" rx="4"/></g>
+  <text class="fga-e-img" x="1345" y="98" text-anchor="start">lâmpadas</text>
+  <text class="fga-e-imgs" x="1345" y="120" text-anchor="start">elétrica → luminosa</text>
+  <g transform="translate(1520 262) scale(0.68) translate(-1541 -375)"><path class="fga-agua" d="M1450,345 L1522,345 L1522,430 L1450,430 Z"/><path class="fga-concreto" d="M1520,318 L1546,318 L1578,430 L1520,430 Z"/><path class="fga-agua" d="M1578,414 L1632,414 L1632,430 L1578,430 Z"/><path class="fga-torre" d="M1598,412 L1612,328 L1626,412 M1594,348 L1630,348 M1602,378 L1622,378"/><line class="fga-chao" x1="1444" y1="431" x2="1638" y2="431"/></g>
+  <text class="fga-e-img" x="1520" y="326" text-anchor="middle">usinas</text>
+  <text class="fga-e-imgs" x="1520" y="348" text-anchor="middle">mecânica → elétrica</text>
+  <g transform="translate(1600 466) scale(0.62) translate(-1474 -179)"><line class="fga-rastro" x1="1386" y1="159" x2="1404" y2="159"/><line class="fga-rastro" x1="1378" y1="181" x2="1400" y2="181"/><circle class="fga-roda-b" cx="1444" cy="199" r="34"/><circle class="fga-roda-b" cx="1536" cy="199" r="34"/><path class="fga-quadro" d="M1444,199 L1478,147 L1520,147 L1536,199 M1478,147 L1492,199 L1520,147 M1520,147 L1514,127 L1532,125 M1472,137 L1488,137"/></g>
+  <text class="fga-e-img" x="1600" y="527" text-anchor="middle">movimento</text>
+  <g transform="translate(1510 640) scale(0.68) translate(-1164 -173)"><path class="fga-pessoa" d="M1150,136.4 L1150,193.8 M1150,193.8 L1131.96,243 M1150,193.8 L1168.04,243 M1150,151.16 L1125.4,183.96 M1150,151.16 L1174.6,183.96"/><circle class="fga-cabeca" cx="1150" cy="120" r="16.4"/><path class="fga-calor" d="M1186,160 q8,-10 0,-20 q-8,-10 0,-20"/><path class="fga-calor" d="M1202,168 q8,-10 0,-20 q-8,-10 0,-20"/></g>
+  <text class="fga-e-img" x="1510" y="712" text-anchor="middle">o corpo</text>
+  <text class="fga-e-imgs" x="1510" y="734" text-anchor="middle">química → mecânica + térmica</text>
+  <g transform="translate(1285 782) scale(0.68) translate(-150 -611)"><path class="fga-term" d="M150,560 C176,590 186,612 176,636 C168,652 132,652 124,636 C114,612 124,590 150,560 Z"/><path class="fga-chama-in" d="M150,598 C162,612 166,624 160,637 C156,644 144,644 140,637 C134,624 138,612 150,598 Z"/><line class="fga-vara" x1="112" y1="660" x2="188" y2="646"/><line class="fga-vara" x1="112" y1="646" x2="188" y2="660"/></g>
+  <text class="fga-e-img" x="1285" y="844" text-anchor="middle">fogo</text>
+  <g transform="translate(850 762) scale(0.68) translate(-878 -636)"><circle class="fga-fumaca" cx="838" cy="604" r="17"/><circle class="fga-fumaca" cx="862" cy="592" r="21"/><circle class="fga-fumaca" cx="888" cy="602" r="15"/><path class="fga-concreto" d="M812,700 C824,668 824,646 814,622 L888,622 C878,646 878,668 890,700 Z"/><rect class="fga-casa" x="898" y="664" width="52" height="36"/><line class="fga-chao" x1="796" y1="701" x2="960" y2="701"/></g>
+  <text class="fga-e-img" x="850" y="830" text-anchor="middle">usinas nucleares</text>
+  <text class="fga-e-imgs" x="850" y="852" text-anchor="middle">nuclear → térmica</text>
+  <g transform="translate(420 795) scale(0.7) translate(0 0)"><ellipse class="fga-orbita" cx="0" cy="0" rx="56" ry="20"/><ellipse class="fga-orbita" cx="0" cy="0" rx="56" ry="20" transform="rotate(60)"/><ellipse class="fga-orbita" cx="0" cy="0" rx="56" ry="20" transform="rotate(-60)"/><circle class="fga-proton" cx="-5" cy="-4" r="8"/><circle class="fga-neutron" cx="6" cy="-3" r="8"/><circle class="fga-neutron" cx="-4" cy="7" r="8"/><circle class="fga-proton" cx="7" cy="7" r="8"/><circle class="fga-eletron" cx="56" cy="0" r="5"/><circle class="fga-eletron" cx="-28" cy="48" r="5"/><circle class="fga-eletron" cx="-28" cy="-48" r="5"/></g>
+  <text class="fga-e-img" x="330" y="802" text-anchor="middle">átomo</text>
+  <g transform="translate(200 640) scale(0.68) translate(0 0)"><line class="fga-raio" x1="52" y1="0" x2="74" y2="0"/><line class="fga-raio" x1="37" y1="37" x2="52" y2="52"/><line class="fga-raio" x1="0" y1="52" x2="0" y2="74"/><line class="fga-raio" x1="-37" y1="37" x2="-52" y2="52"/><line class="fga-raio" x1="-52" y1="0" x2="-74" y2="0"/><line class="fga-raio" x1="-37" y1="-37" x2="-52" y2="-52"/><line class="fga-raio" x1="-0" y1="-52" x2="-0" y2="-74"/><line class="fga-raio" x1="37" y1="-37" x2="52" y2="-52"/><circle class="fga-sol" cx="0" cy="0" r="40"/></g>
+  <text class="fga-e-img" x="200" y="715" text-anchor="middle">Sol e estrelas</text>
+  <text class="fga-e-imgs" x="200" y="737" text-anchor="middle">nuclear → luminosa</text>
+  <g transform="translate(130 434) scale(1.0) translate(-2 -10)"><path class="fga-painel" d="M-50,-22 L38,-22 L54,16 L-34,16 Z"/><line class="fga-painel-grade" x1="-21" y1="-22" x2="-5" y2="16"/><line class="fga-painel-grade" x1="9" y1="-22" x2="25" y2="16"/><line class="fga-painel-grade" x1="-42" y1="-3" x2="46" y2="-3"/><line class="fga-chao" x1="8" y1="16" x2="8" y2="42"/><line class="fga-chao" x1="-12" y1="42" x2="28" y2="42"/></g>
+  <text class="fga-e-img" x="130" y="498" text-anchor="middle">painel solar</text>
+  <text class="fga-e-imgs" x="130" y="520" text-anchor="middle">luminosa → elétrica</text>
+  <g transform="translate(215 258) scale(0.68) translate(-470 -165)"><path class="fga-caule" d="M470,227 C468,185 474,145 470,107"/><ellipse class="fga-folha" cx="440" cy="167" rx="34" ry="14" transform="rotate(-28 440 167)"/><ellipse class="fga-folha" cx="502" cy="143" rx="34" ry="14" transform="rotate(28 502 143)"/><ellipse class="fga-folha" cx="452" cy="113" rx="26" ry="11" transform="rotate(-40 452 113)"/><line class="fga-chao" x1="420" y1="227" x2="520" y2="227"/></g>
+  <text class="fga-e-img" x="215" y="330" text-anchor="middle">plantas</text>
+  <text class="fga-e-imgs" x="215" y="352" text-anchor="middle">luminosa → química</text>
+  <g transform="translate(432 90) scale(0.68) translate(-810 -165)"><path class="fga-maca" d="M810,137 C790,113 748,125 750,167 C752,209 786,231 810,217 C834,231 868,209 870,167 C872,125 830,113 810,137 Z"/><path class="fga-caule" d="M810,137 C810,121 814,111 820,103"/><ellipse class="fga-folha" cx="836" cy="111" rx="18" ry="8" transform="rotate(-20 836 111)"/></g>
+  <text class="fga-e-img" x="432" y="156" text-anchor="middle">alimentos</text>
+  <g transform="translate(275 95) scale(0.68) translate(-151 -383)"><path class="fga-carro" d="M110,350 L170,350 L192,372 L192,432 L110,432 Z"/><rect class="fga-metal" x="120" y="335" width="24" height="15" rx="3"/><path class="fga-gota" d="M151,370 C151,370 137,390 137,400 C137,409 143,415 151,415 C159,415 165,409 165,400 C165,390 151,370 151,370 Z"/></g>
+  <text class="fga-e-img" x="275" y="152" text-anchor="middle">combustíveis</text>
+  <text class="fga-e-imgs" x="275" y="174" text-anchor="middle">química → térmica</text>
+</svg>

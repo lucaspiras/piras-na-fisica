@@ -266,6 +266,11 @@ $Figuras = @(
   # --- Trabalho e energia: decks energia-mecanica e energia-dissipacao-potencia, listas de energia ---
   @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
      Perfil = 'apresentacao'
+     Slug = 'trabalho-energia/33-mapa-mental-energia'
+     Resumo = 'Mapa mental com a energia no centro, ligada as formas quimica, eletrica, mecanica, termica, nuclear e luminosa; entre formas vizinhas, um exemplo que transforma uma na outra, e em volta de cada forma exemplos e palavras associadas.' }
+
+  @{ Html = 'disciplinas/fisica_1_mecanica/apresentacoes/energia-mecanica/index.html'
+     Perfil = 'apresentacao'
      Slug = 'trabalho-energia/4-cadeia-de-transformacoes'
      Resumo = 'Cadeia de transformacoes de energia em cinco etapas: o Sol emite energia luminosa, a planta a guarda como energia quimica, o alimento leva essa energia quimica ao corpo, e o corpo a transforma na energia cinetica da bicicleta, com uma parte saindo como energia termica.' }
 
@@ -544,6 +549,10 @@ $TemasEscuros = @{
         --figa-concreto:     #3A3D45;
         --figa-relevo:       #6B5A40;
         --figa-luz:          #FBBF24;
+        --figa-quim:         #2DD4BF;
+        --figa-elet:         #A78BFA;
+        --figa-nucl:         #A3E635;
+        --figa-lumi:         #FBBF24;
 '@
 }
 

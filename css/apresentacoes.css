@@ -350,6 +350,14 @@ body {
   --figa-concreto:     #CFCBC0;
   --figa-relevo:       #B9A27F;
   --figa-luz:          #E8930C;
+  /* química, elétrica, nuclear e luminosa só aparecem no mapa mental de abertura
+     do deck de energia mecânica; a mecânica, ali, usa o azul da cinética e a
+     térmica, o vermelho de sempre. A luminosa é mais escura que --figa-luz para
+     o nome do ramo ser legível no creme */
+  --figa-quim:         #0F766E;
+  --figa-elet:         #6D28D9;
+  --figa-nucl:         #4D7C0F;
+  --figa-lumi:         #B45309;
   /* declaradas aqui, e não herdadas do deck, porque o .svg avulso gerado a
      partir desta seção leva a paleta e mais nada */
   --figa-fonte-t:    'IBM Plex Sans', system-ui, sans-serif;
@@ -554,6 +562,57 @@ body {
 .fga-chamine    { fill: var(--figa-roupa); }
 .fga-fumaca     { fill: var(--figa-guia); fill-opacity: .7; }
 .fga-carvao     { fill: var(--figa-pneu); }
+/* mapa mental da energia */
+.fga-no-centro  { fill: var(--figa-branco); stroke: var(--figa-texto); stroke-width: 3; }
+.fga-ramo-quim  { fill: none; stroke: var(--figa-quim); stroke-width: 4; stroke-linecap: round; }
+.fga-ramo-elet  { fill: none; stroke: var(--figa-elet); stroke-width: 4; stroke-linecap: round; }
+.fga-ramo-mec   { fill: none; stroke: var(--figa-ec); stroke-width: 4; stroke-linecap: round; }
+.fga-ramo-term  { fill: none; stroke: var(--figa-term); stroke-width: 4; stroke-linecap: round; }
+.fga-ramo-nucl  { fill: none; stroke: var(--figa-nucl); stroke-width: 4; stroke-linecap: round; }
+.fga-ramo-lumi  { fill: none; stroke: var(--figa-lumi); stroke-width: 4; stroke-linecap: round; }
+.fga-hub-nucl   { fill: var(--figa-branco); stroke: var(--figa-nucl); stroke-width: 2.5; }
+.fga-hub-lumi   { fill: var(--figa-branco); stroke: var(--figa-lumi); stroke-width: 2.5; }
+.fga-lig-nucl   { fill: none; stroke: var(--figa-nucl); stroke-width: 2.5; stroke-linecap: round; }
+.fga-lig-lumi   { fill: none; stroke: var(--figa-lumi); stroke-width: 2.5; stroke-linecap: round; }
+.fga-sat-nucl   { fill: none; stroke: var(--figa-nucl); stroke-width: 1.6; stroke-opacity: .55; }
+.fga-sat-lumi   { fill: none; stroke: var(--figa-lumi); stroke-width: 1.6; stroke-opacity: .55; }
+.fga-pto-nucl   { fill: var(--figa-nucl); }
+.fga-pto-lumi   { fill: var(--figa-lumi); }
+.fga-e-hub-nucl { font-family: var(--figa-fonte-t); font-size: 28px; font-weight: 600; fill: var(--figa-nucl); }
+.fga-e-hub-lumi { font-family: var(--figa-fonte-t); font-size: 28px; font-weight: 600; fill: var(--figa-lumi); }
+.fga-orbita     { fill: none; stroke: var(--figa-nucl); stroke-width: 2.5; }
+.fga-proton     { fill: var(--figa-carro); stroke: var(--figa-carro-b); stroke-width: 1.5; }
+.fga-neutron    { fill: var(--figa-polia); stroke: var(--figa-polia-b); stroke-width: 1.5; }
+.fga-eletron    { fill: var(--figa-veloc); }
+.fga-hub-quim   { fill: var(--figa-branco); stroke: var(--figa-quim); stroke-width: 2.5; }
+.fga-hub-elet   { fill: var(--figa-branco); stroke: var(--figa-elet); stroke-width: 2.5; }
+.fga-hub-mec    { fill: var(--figa-branco); stroke: var(--figa-ec); stroke-width: 2.5; }
+.fga-hub-term   { fill: var(--figa-branco); stroke: var(--figa-term); stroke-width: 2.5; }
+.fga-lig-quim   { fill: none; stroke: var(--figa-quim); stroke-width: 2.5; stroke-linecap: round; }
+.fga-lig-elet   { fill: none; stroke: var(--figa-elet); stroke-width: 2.5; stroke-linecap: round; }
+.fga-lig-mec    { fill: none; stroke: var(--figa-ec); stroke-width: 2.5; stroke-linecap: round; }
+.fga-lig-term   { fill: none; stroke: var(--figa-term); stroke-width: 2.5; stroke-linecap: round; }
+.fga-sat-quim   { fill: none; stroke: var(--figa-quim); stroke-width: 1.6; stroke-opacity: .55; }
+.fga-sat-elet   { fill: none; stroke: var(--figa-elet); stroke-width: 1.6; stroke-opacity: .55; }
+.fga-sat-mec    { fill: none; stroke: var(--figa-ec); stroke-width: 1.6; stroke-opacity: .55; }
+.fga-sat-term   { fill: none; stroke: var(--figa-term); stroke-width: 1.6; stroke-opacity: .55; }
+.fga-pto-quim   { fill: var(--figa-quim); }
+.fga-pto-elet   { fill: var(--figa-elet); }
+.fga-pto-mec    { fill: var(--figa-ec); }
+.fga-pto-term   { fill: var(--figa-term); }
+.fga-e-sat      { font-family: var(--figa-fonte-t); font-size: 21px; font-weight: 500; fill: var(--figa-rotulo); }
+.fga-e-img      { font-family: var(--figa-fonte-t); font-size: 23px; font-weight: 600; fill: var(--figa-texto); }
+.fga-e-imgs     { font-family: var(--figa-fonte-m); font-size: 16px; font-weight: 500; fill: var(--figa-rotulo); }
+.fga-e-centro   { font-family: var(--figa-fonte-t); font-size: 42px; font-weight: 600; fill: var(--figa-texto); }
+.fga-e-hub-quim { font-family: var(--figa-fonte-t); font-size: 28px; font-weight: 600; fill: var(--figa-quim); }
+.fga-e-hub-elet { font-family: var(--figa-fonte-t); font-size: 28px; font-weight: 600; fill: var(--figa-elet); }
+.fga-e-hub-mec  { font-family: var(--figa-fonte-t); font-size: 28px; font-weight: 600; fill: var(--figa-ec); }
+.fga-e-hub-term { font-family: var(--figa-fonte-t); font-size: 28px; font-weight: 600; fill: var(--figa-term); }
+.fga-painel     { fill: var(--figa-terra); stroke: var(--figa-contorno); stroke-width: 2; stroke-linejoin: round; }
+.fga-painel-grade { fill: none; stroke: var(--figa-branco); stroke-width: 1.5; }
+.fga-pilha-banda { fill: var(--figa-sol); }
+.fga-chama-in   { fill: var(--figa-sol); }
+.fga-gota       { fill: var(--figa-branco); }
 .fga-anda       { animation: fga-anda 6s linear infinite; }
 .fga-enche      { transform-box: fill-box; transform-origin: left center; animation: fga-enche 6s linear infinite; }
 .fga-sobe       { animation: fga-sobe 6s linear infinite; }
